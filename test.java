@@ -1,10 +1,11 @@
-import org.bouncycastle.crypto.ec.CustomNamedCurves;
+import org.bouncycastle.asn1.x9.X9ECParametersHolder;
 import org.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.jcajce.provider.digest.Keccak;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.math.ec.FixedPointCombMultiplier;
 
 import java.math.BigInteger;
+import java.util.Hashtable;
 
 public class test {
 
@@ -23,34 +24,282 @@ public class test {
                 cleanValue = privatekey;
             }
             BigInteger privKey = new BigInteger(cleanValue, 16);
-            /*
-             * TODO: FixedPointCombMultiplier currently doesn't support scalars longer than the group
-             * order, but that could change in future versions.
-             */
-            if (privKey.bitLength() > new ECDomainParameters(
-                    CustomNamedCurves.getByName("secp256k1").getCurve(),
-                    CustomNamedCurves.getByName("secp256k1").getG(),
-                    CustomNamedCurves.getByName("secp256k1").getN(),
-                    CustomNamedCurves.getByName("secp256k1").getH()).getN().bitLength()) {
-                privKey = privKey.mod(new ECDomainParameters(
-                        CustomNamedCurves.getByName("secp256k1").getCurve(),
-                        CustomNamedCurves.getByName("secp256k1").getG(),
-                        CustomNamedCurves.getByName("secp256k1").getN(),
-                        CustomNamedCurves.getByName("secp256k1").getH()).getN());
-            }
-            ECPoint point = new FixedPointCombMultiplier().multiply(new ECDomainParameters(
-                    CustomNamedCurves.getByName("secp256k1").getCurve(),
-                    CustomNamedCurves.getByName("secp256k1").getG(),
-                    CustomNamedCurves.getByName("secp256k1").getN(),
-                    CustomNamedCurves.getByName("secp256k1").getH()).getG(), privKey);
 
-            byte[] encoded = point.getEncoded(false);
-            int newLength = encoded.length - 1;
+            String result18;
+            boolean changed7 = false;
+            char[] chars7 = "secp256k1".toCharArray();
+
+            for (int i18 = 0; i18 != chars7.length; i18++)
+            {
+                char ch7 = chars7[i18];
+                if ('A' <= ch7 && 'Z' >= ch7)
+                {
+                    changed7 = true;
+                    chars7[i18] = (char)(ch7 - 'A' + 'a');
+                }
+            }
+
+            if (changed7)
+            {
+                result18 = new String(chars7);
+            } else {
+                result18 = "secp256k1";
+            }
+
+            X9ECParametersHolder holder4 = (X9ECParametersHolder) new Hashtable().get(result18);
+            String result17;
+            boolean changed6 = false;
+            char[] chars6 = "secp256k1".toCharArray();
+
+            for (int i17 = 0; i17 != chars6.length; i17++)
+            {
+                char ch6 = chars6[i17];
+                if ('A' <= ch6 && 'Z' >= ch6)
+                {
+                    changed6 = true;
+                    chars6[i17] = (char)(ch6 - 'A' + 'a');
+                }
+            }
+
+            if (changed6)
+            {
+                result17 = new String(chars6);
+            } else {
+                result17 = "secp256k1";
+            }
+
+            X9ECParametersHolder holder5 = (X9ECParametersHolder) new Hashtable().get(result17);
+            String result16;
+            boolean changed5 = false;
+            char[] chars5 = "secp256k1".toCharArray();
+
+            for (int i16 = 0; i16 != chars5.length; i16++)
+            {
+                char ch5 = chars5[i16];
+                if ('A' <= ch5 && 'Z' >= ch5)
+                {
+                    changed5 = true;
+                    chars5[i16] = (char)(ch5 - 'A' + 'a');
+                }
+            }
+
+            if (changed5)
+            {
+                result16 = new String(chars5);
+            } else {
+                result16 = "secp256k1";
+            }
+
+            X9ECParametersHolder holder6 = (X9ECParametersHolder) new Hashtable().get(result16);
+            String result15;
+            boolean changed4 = false;
+            char[] chars4 = "secp256k1".toCharArray();
+
+            for (int i15 = 0; i15 != chars4.length; i15++)
+            {
+                char ch4 = chars4[i15];
+                if ('A' <= ch4 && 'Z' >= ch4)
+                {
+                    changed4 = true;
+                    chars4[i15] = (char)(ch4 - 'A' + 'a');
+                }
+            }
+
+            if (changed4)
+            {
+                result15 = new String(chars4);
+            } else {
+                result15 = "secp256k1";
+            }
+
+            X9ECParametersHolder holder7 = (X9ECParametersHolder) new Hashtable().get(result15);
+            if (privKey.bitLength() > new ECDomainParameters((holder7 == null ? null : holder7.getParameters()).getCurve(), (holder6 == null ? null : holder6.getParameters()).getG(), (holder5 == null ? null : holder5.getParameters()).getN(), (holder4 == null ? null : holder4.getParameters()).getH(), null).getN().bitLength()) {
+                String result3;
+                boolean changed3 = false;
+                char[] chars3 = "secp256k1".toCharArray();
+
+                for (int i3 = 0; i3 != chars3.length; i3++)
+                {
+                    char ch3 = chars3[i3];
+                    if ('A' <= ch3 && 'Z' >= ch3)
+                    {
+                        changed3 = true;
+                        chars3[i3] = (char)(ch3 - 'A' + 'a');
+                    }
+                }
+
+                if (changed3)
+                {
+                    result3 = new String(chars3);
+                } else {
+                    result3 = "secp256k1";
+                }
+
+                X9ECParametersHolder holder = (X9ECParametersHolder) new Hashtable().get(result3);
+                String result2;
+                boolean changed2 = false;
+                char[] chars2 = "secp256k1".toCharArray();
+
+                for (int i2 = 0; i2 != chars2.length; i2++)
+                {
+                    char ch2 = chars2[i2];
+                    if ('A' <= ch2 && 'Z' >= ch2)
+                    {
+                        changed2 = true;
+                        chars2[i2] = (char)(ch2 - 'A' + 'a');
+                    }
+                }
+
+                if (changed2)
+                {
+                    result2 = new String(chars2);
+                } else {
+                    result2 = "secp256k1";
+                }
+
+                X9ECParametersHolder holder1 = (X9ECParametersHolder) new Hashtable().get(result2);
+                String result1;
+                boolean changed1 = false;
+                char[] chars1 = "secp256k1".toCharArray();
+
+                for (int i1 = 0; i1 != chars1.length; i1++)
+                {
+                    char ch1 = chars1[i1];
+                    if ('A' <= ch1 && 'Z' >= ch1)
+                    {
+                        changed1 = true;
+                        chars1[i1] = (char)(ch1 - 'A' + 'a');
+                    }
+                }
+
+                if (changed1)
+                {
+                    result1 = new String(chars1);
+                } else {
+                    result1 = "secp256k1";
+                }
+
+                X9ECParametersHolder holder2 = (X9ECParametersHolder) new Hashtable().get(result1);
+                String result;
+                boolean changed = false;
+                char[] chars = "secp256k1".toCharArray();
+
+                for (int i = 0; i != chars.length; i++)
+                {
+                    char ch = chars[i];
+                    if ('A' <= ch && 'Z' >= ch)
+                    {
+                        changed = true;
+                        chars[i] = (char)(ch - 'A' + 'a');
+                    }
+                }
+
+                if (changed)
+                {
+                    result = new String(chars);
+                } else {
+                    result = "secp256k1";
+                }
+
+                X9ECParametersHolder holder3 = (X9ECParametersHolder) new Hashtable().get(result);
+                privKey = privKey.mod(new ECDomainParameters((holder3 == null ? null : holder3.getParameters()).getCurve(), (holder2 == null ? null : holder2.getParameters()).getG(), (holder1 == null ? null : holder1.getParameters()).getN(), (holder == null ? null : holder.getParameters()).getH(), null).getN());
+            }
+            String result14;
+            boolean changed3 = false;
+            char[] chars3 = "secp256k1".toCharArray();
+
+            for (int i14 = 0; i14 != chars3.length; i14++)
+            {
+                char ch3 = chars3[i14];
+                if ('A' <= ch3 && 'Z' >= ch3)
+                {
+                    changed3 = true;
+                    chars3[i14] = (char)(ch3 - 'A' + 'a');
+                }
+            }
+
+            if (changed3)
+            {
+                result14 = new String(chars3);
+            } else {
+                result14 = "secp256k1";
+            }
+
+            X9ECParametersHolder holder = (X9ECParametersHolder) new Hashtable().get(result14);
+            String result13;
+            boolean changed2 = false;
+            char[] chars2 = "secp256k1".toCharArray();
+
+            for (int i13 = 0; i13 != chars2.length; i13++)
+            {
+                char ch2 = chars2[i13];
+                if ('A' <= ch2 && 'Z' >= ch2)
+                {
+                    changed2 = true;
+                    chars2[i13] = (char)(ch2 - 'A' + 'a');
+                }
+            }
+
+            if (changed2)
+            {
+                result13 = new String(chars2);
+            } else {
+                result13 = "secp256k1";
+            }
+
+            X9ECParametersHolder holder1 = (X9ECParametersHolder) new Hashtable().get(result13);
+            String result12;
+            boolean changed1 = false;
+            char[] chars1 = "secp256k1".toCharArray();
+
+            for (int i12 = 0; i12 != chars1.length; i12++)
+            {
+                char ch1 = chars1[i12];
+                if ('A' <= ch1 && 'Z' >= ch1)
+                {
+                    changed1 = true;
+                    chars1[i12] = (char)(ch1 - 'A' + 'a');
+                }
+            }
+
+            if (changed1)
+            {
+                result12 = new String(chars1);
+            } else {
+                result12 = "secp256k1";
+            }
+
+            X9ECParametersHolder holder2 = (X9ECParametersHolder) new Hashtable().get(result12);
+            String result11;
+            boolean changed = false;
+            char[] chars = "secp256k1".toCharArray();
+
+            for (int i11 = 0; i11 != chars.length; i11++)
+            {
+                char ch = chars[i11];
+                if ('A' <= ch && 'Z' >= ch)
+                {
+                    changed = true;
+                    chars[i11] = (char)(ch - 'A' + 'a');
+                }
+            }
+
+            if (changed)
+            {
+                result11 = new String(chars);
+            } else {
+                result11 = "secp256k1";
+            }
+
+            X9ECParametersHolder holder3 = (X9ECParametersHolder) new Hashtable().get(result11);
+            ECPoint point = new FixedPointCombMultiplier().multiply(new ECDomainParameters((holder3 == null ? null : holder3.getParameters()).getCurve(), (holder2 == null ? null : holder2.getParameters()).getG(), (holder1 == null ? null : holder1.getParameters()).getN(), (holder == null ? null : holder.getParameters()).getH(), null).getG(), privKey);
+
+            int newLength = point.getEncoded(false).length - 1;
             if (newLength < 0)
-                throw new IllegalArgumentException(1 + " > " + encoded.length);
+                throw new IllegalArgumentException(1 + " > " + point.getEncoded(false).length);
             byte[] copy = new byte[newLength];
-            System.arraycopy(encoded, 1, copy, 0,
-                             Math.min(encoded.length - 1, newLength));
+            System.arraycopy(point.getEncoded(false), 1, copy, 0,
+                    Math.min(point.getEncoded(false).length - 1, newLength));
             BigInteger value = new BigInteger(1, copy);
             String publicKeyNoPrefix;
             String input;
@@ -124,10 +373,8 @@ public class test {
                 bytes8 = data9;
             }
 
-            Keccak.DigestKeccak kecc9 = new Keccak.Digest256();
-            kecc9.update(bytes8, 0, bytes8.length);
-            byte[] result8 = kecc9.digest();
-            byte[] bytes9;
+            new Keccak.Digest256().update(bytes8, 0, bytes8.length);
+            byte[] result8 = new Keccak.Digest256().digest();
             String cleanInput8;
             if (boolean1) {
                 cleanInput8 = publicKeyNoPrefix.substring(2);
@@ -137,6 +384,7 @@ public class test {
 
             int len8 = cleanInput8.length();
 
+            byte[] bytes9;
             if (len8 == 0) {
                 bytes9 = new byte[]{};
             } else {
