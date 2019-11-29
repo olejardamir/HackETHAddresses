@@ -1,11 +1,16 @@
 import org.bouncycastle.asn1.x9.X9ECParametersHolder;
+import org.bouncycastle.crypto.ec.CustomNamedCurves;
 import org.bouncycastle.crypto.params.ECDomainParameters;
 import org.bouncycastle.jcajce.provider.digest.Keccak;
 import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.math.ec.FixedPointCombMultiplier;
 
 import java.math.BigInteger;
-import java.util.Hashtable;
+import java.util.Optional;
+
+import static java.lang.System.arraycopy;
+import static java.lang.System.out;
+import static java.util.Objects.requireNonNull;
 
 public class test {
 
@@ -14,18 +19,6 @@ public class test {
         {
             String privatekey = "a392604efc2fad9c0b3da43b5f698a2e3f270f170d859912be0d54742275c5f6";
 
-            String cleanValue;
-            if (!(privatekey == null || privatekey.length() == 0)
-                    && privatekey.length() > 1
-                    && privatekey.charAt(0) == '0'
-                    && privatekey.charAt(1) == 'x') {
-                cleanValue = privatekey.substring(2);
-            } else {
-                cleanValue = privatekey;
-            }
-            BigInteger privKey = new BigInteger(cleanValue, 16);
-
-            String result18;
             boolean changed7 = false;
             char[] chars7 = "secp256k1".toCharArray();
 
@@ -39,6 +32,7 @@ public class test {
                 }
             }
 
+            String result18;
             if (changed7)
             {
                 result18 = new String(chars7);
@@ -46,7 +40,7 @@ public class test {
                 result18 = "secp256k1";
             }
 
-            X9ECParametersHolder holder4 = (X9ECParametersHolder) new Hashtable().get(result18);
+            X9ECParametersHolder holder4 = (X9ECParametersHolder) CustomNamedCurves.nameToCurve.get(result18);
             String result17;
             boolean changed6 = false;
             char[] chars6 = "secp256k1".toCharArray();
@@ -68,7 +62,7 @@ public class test {
                 result17 = "secp256k1";
             }
 
-            X9ECParametersHolder holder5 = (X9ECParametersHolder) new Hashtable().get(result17);
+            X9ECParametersHolder holder5 = (X9ECParametersHolder) CustomNamedCurves.nameToCurve.get(result17);
             String result16;
             boolean changed5 = false;
             char[] chars5 = "secp256k1".toCharArray();
@@ -90,7 +84,7 @@ public class test {
                 result16 = "secp256k1";
             }
 
-            X9ECParametersHolder holder6 = (X9ECParametersHolder) new Hashtable().get(result16);
+            X9ECParametersHolder holder6 = (X9ECParametersHolder) CustomNamedCurves.nameToCurve.get(result16);
             String result15;
             boolean changed4 = false;
             char[] chars4 = "secp256k1".toCharArray();
@@ -112,8 +106,9 @@ public class test {
                 result15 = "secp256k1";
             }
 
-            X9ECParametersHolder holder7 = (X9ECParametersHolder) new Hashtable().get(result15);
-            if (privKey.bitLength() > new ECDomainParameters((holder7 == null ? null : holder7.getParameters()).getCurve(), (holder6 == null ? null : holder6.getParameters()).getG(), (holder5 == null ? null : holder5.getParameters()).getN(), (holder4 == null ? null : holder4.getParameters()).getH(), null).getN().bitLength()) {
+            X9ECParametersHolder holder7 = (X9ECParametersHolder) CustomNamedCurves.nameToCurve.get(result15);
+            BigInteger privKey = new BigInteger(privatekey, 16);
+            if (privKey.bitLength() > new ECDomainParameters((requireNonNull(Optional.ofNullable(holder7).map(X9ECParametersHolder::getParameters).orElse(null))).getCurve(), (requireNonNull(holder6 == null ? null : holder6.getParameters())).getG(), (requireNonNull(holder5 == null ? null : holder5.getParameters())).getN(), (requireNonNull((holder4 == null) ? null : holder4.getParameters())).getH(), null).getN().bitLength()) {
                 String result3;
                 boolean changed3 = false;
                 char[] chars3 = "secp256k1".toCharArray();
@@ -135,7 +130,7 @@ public class test {
                     result3 = "secp256k1";
                 }
 
-                X9ECParametersHolder holder = (X9ECParametersHolder) new Hashtable().get(result3);
+                X9ECParametersHolder holder = (X9ECParametersHolder) CustomNamedCurves.nameToCurve.get(result3);
                 String result2;
                 boolean changed2 = false;
                 char[] chars2 = "secp256k1".toCharArray();
@@ -157,7 +152,7 @@ public class test {
                     result2 = "secp256k1";
                 }
 
-                X9ECParametersHolder holder1 = (X9ECParametersHolder) new Hashtable().get(result2);
+                X9ECParametersHolder holder1 = (X9ECParametersHolder) CustomNamedCurves.nameToCurve.get(result2);
                 String result1;
                 boolean changed1 = false;
                 char[] chars1 = "secp256k1".toCharArray();
@@ -179,7 +174,7 @@ public class test {
                     result1 = "secp256k1";
                 }
 
-                X9ECParametersHolder holder2 = (X9ECParametersHolder) new Hashtable().get(result1);
+                X9ECParametersHolder holder2 = (X9ECParametersHolder) CustomNamedCurves.nameToCurve.get(result1);
                 String result;
                 boolean changed = false;
                 char[] chars = "secp256k1".toCharArray();
@@ -201,8 +196,8 @@ public class test {
                     result = "secp256k1";
                 }
 
-                X9ECParametersHolder holder3 = (X9ECParametersHolder) new Hashtable().get(result);
-                privKey = privKey.mod(new ECDomainParameters((holder3 == null ? null : holder3.getParameters()).getCurve(), (holder2 == null ? null : holder2.getParameters()).getG(), (holder1 == null ? null : holder1.getParameters()).getN(), (holder == null ? null : holder.getParameters()).getH(), null).getN());
+                X9ECParametersHolder holder3 = (X9ECParametersHolder) CustomNamedCurves.nameToCurve.get(result);
+                privKey = privKey.mod(new ECDomainParameters(((holder3 == null) ? null : holder3.getParameters()).getCurve(), (holder2 == null ? null : holder2.getParameters()).getG(), (holder1 == null ? null : holder1.getParameters()).getN(), (holder == null ? null : holder.getParameters()).getH(), null).getN());
             }
             String result14;
             boolean changed3 = false;
@@ -225,7 +220,7 @@ public class test {
                 result14 = "secp256k1";
             }
 
-            X9ECParametersHolder holder = (X9ECParametersHolder) new Hashtable().get(result14);
+            X9ECParametersHolder holder = (X9ECParametersHolder) CustomNamedCurves.nameToCurve.get(result14);
             String result13;
             boolean changed2 = false;
             char[] chars2 = "secp256k1".toCharArray();
@@ -247,7 +242,7 @@ public class test {
                 result13 = "secp256k1";
             }
 
-            X9ECParametersHolder holder1 = (X9ECParametersHolder) new Hashtable().get(result13);
+            X9ECParametersHolder holder1 = (X9ECParametersHolder) CustomNamedCurves.nameToCurve.get(result13);
             String result12;
             boolean changed1 = false;
             char[] chars1 = "secp256k1".toCharArray();
@@ -269,7 +264,7 @@ public class test {
                 result12 = "secp256k1";
             }
 
-            X9ECParametersHolder holder2 = (X9ECParametersHolder) new Hashtable().get(result12);
+            X9ECParametersHolder holder2 = (X9ECParametersHolder) CustomNamedCurves.nameToCurve.get(result12);
             String result11;
             boolean changed = false;
             char[] chars = "secp256k1".toCharArray();
@@ -291,14 +286,15 @@ public class test {
                 result11 = "secp256k1";
             }
 
-            X9ECParametersHolder holder3 = (X9ECParametersHolder) new Hashtable().get(result11);
-            ECPoint point = new FixedPointCombMultiplier().multiply(new ECDomainParameters((holder3 == null ? null : holder3.getParameters()).getCurve(), (holder2 == null ? null : holder2.getParameters()).getG(), (holder1 == null ? null : holder1.getParameters()).getN(), (holder == null ? null : holder.getParameters()).getH(), null).getG(), privKey);
+            X9ECParametersHolder holder3 = (X9ECParametersHolder) CustomNamedCurves.nameToCurve.get(result11);
+            ECPoint point;
+            point = new FixedPointCombMultiplier().multiply(new ECDomainParameters((holder3 == null ? null : holder3.getParameters()).getCurve(), (holder2 == null ? null : holder2.getParameters()).getG(), (holder1 == null ? null : holder1.getParameters()).getN(), (holder == null ? null : holder.getParameters()).getH(), null).getG(), privKey);
 
             int newLength = point.getEncoded(false).length - 1;
             if (newLength < 0)
                 throw new IllegalArgumentException(1 + " > " + point.getEncoded(false).length);
             byte[] copy = new byte[newLength];
-            System.arraycopy(point.getEncoded(false), 1, copy, 0,
+            arraycopy(point.getEncoded(false), 1, copy, 0,
                     Math.min(point.getEncoded(false).length - 1, newLength));
             BigInteger value = new BigInteger(1, copy);
             String publicKeyNoPrefix;
@@ -317,18 +313,11 @@ public class test {
                 result10 = new String(new char[(64 << 1) - length]).replace("\0", String.valueOf('0')) + result10;
             }
 
-            if (true) {
-                input = "0x" + result10;
-            } else {
-                input = result10;
-            }
-            if (!(input == null || input.length() == 0)
-                    && input.length() > 1
-                    && input.charAt(0) == '0'
-                    && input.charAt(1) == 'x') {
-                publicKeyNoPrefix = input.substring(2);
-            } else {
+            input = "0x" + result10;
+            if (input.length() == 0 || (input.length() <= 1) || (input.charAt(0) != '0') || (input.charAt(1) != 'x')) {
                 publicKeyNoPrefix = input;
+            } else {
+                publicKeyNoPrefix = input.substring(2);
             }
 
             if (publicKeyNoPrefix.length() < 64 << 1) {
@@ -339,10 +328,12 @@ public class test {
             String address1;
             byte[] bytes8;
             String cleanInput9;
-            final boolean boolean1 = !(publicKeyNoPrefix == null || publicKeyNoPrefix.length() == 0)
-                    && publicKeyNoPrefix.length() > 1
-                    && publicKeyNoPrefix.charAt(0) == '0'
-                    && publicKeyNoPrefix.charAt(1) == 'x';
+            final boolean boolean1;
+            if (publicKeyNoPrefix.length() == 0) {
+                boolean1 = false;
+            } else {
+                boolean1 = publicKeyNoPrefix.length() > 1 && publicKeyNoPrefix.charAt(0) == '0' && publicKeyNoPrefix.charAt(1) == 'x';
+            }
             if (boolean1) {
                 cleanInput9 = publicKeyNoPrefix.substring(2);
             } else {
@@ -411,19 +402,15 @@ public class test {
             kecc8.update(bytes9, 0, bytes9.length);
             byte[] result9 = kecc8.digest();
             StringBuilder stringBuilder8 = new StringBuilder();
-            if (true) {
-                stringBuilder8.append("0x");
-            }
-            for (int i2 = 0; i2 < 0 + result8.length; i2++) {
-                stringBuilder8.append(String.format("%02x", result8[i2] & 0xFF));
+            stringBuilder8.append("0x");
+            for (byte b7 : result8) {
+                stringBuilder8.append(String.format("%02x", b7 & 0xFF));
             }
 
             StringBuilder stringBuilder9 = new StringBuilder();
-            if (true) {
-                stringBuilder9.append("0x");
-            }
-            for (int i2 = 0; i2 < 0 + result9.length; i2++) {
-                stringBuilder9.append(String.format("%02x", result9[i2] & 0xFF));
+            stringBuilder9.append("0x");
+            for (byte b6 : result9) {
+                stringBuilder9.append(String.format("%02x", b6 & 0xFF));
             }
 
             String s = stringBuilder9.toString().substring(stringBuilder8.toString().length() - (160 >> 2));
@@ -638,57 +625,42 @@ public class test {
             kecc2.update(bytes7, 0, bytes7.length);
             byte[] result7 = kecc2.digest();
             StringBuilder stringBuilder2 = new StringBuilder();
-            if (true) {
-                stringBuilder2.append("0x");
-            }
-            for (int i1 = 0; i1 < 0 + result2.length; i1++) {
-                stringBuilder2.append(String.format("%02x", result2[i1] & 0xFF));
+            stringBuilder2.append("0x");
+            for (byte b5 : result2) {
+                stringBuilder2.append(String.format("%02x", b5 & 0xFF));
             }
 
             StringBuilder stringBuilder3 = new StringBuilder();
-            if (true) {
-                stringBuilder3.append("0x");
-            }
-            for (int i1 = 0; i1 < 0 + result3.length; i1++) {
-                stringBuilder3.append(String.format("%02x", result3[i1] & 0xFF));
+            stringBuilder3.append("0x");
+            for (byte b4 : result3) {
+                stringBuilder3.append(String.format("%02x", b4 & 0xFF));
             }
 
             StringBuilder stringBuilder4 = new StringBuilder();
-            if (true) {
-                stringBuilder4.append("0x");
-            }
-            for (int i1 = 0; i1 < 0 + result4.length; i1++) {
-                stringBuilder4.append(String.format("%02x", result4[i1] & 0xFF));
+            stringBuilder4.append("0x");
+            for (byte b3 : result4) {
+                stringBuilder4.append(String.format("%02x", b3 & 0xFF));
             }
 
             StringBuilder stringBuilder5 = new StringBuilder();
-            if (true) {
-                stringBuilder5.append("0x");
-            }
-            for (int i1 = 0; i1 < 0 + result5.length; i1++) {
-                stringBuilder5.append(String.format("%02x", result5[i1] & 0xFF));
+            stringBuilder5.append("0x");
+            for (byte b2 : result5) {
+                stringBuilder5.append(String.format("%02x", b2 & 0xFF));
             }
 
             StringBuilder stringBuilder6 = new StringBuilder();
-            if (true) {
-                stringBuilder6.append("0x");
-            }
-            for (int i1 = 0; i1 < 0 + result6.length; i1++) {
-                stringBuilder6.append(String.format("%02x", result6[i1] & 0xFF));
+            stringBuilder6.append("0x");
+            for (byte b1 : result6) {
+                stringBuilder6.append(String.format("%02x", b1 & 0xFF));
             }
 
             StringBuilder stringBuilder7 = new StringBuilder();
-            if (true) {
-                stringBuilder7.append("0x");
-            }
-            for (int i1 = 0; i1 < 0 + result7.length; i1++) {
-                stringBuilder7.append(String.format("%02x", result7[i1] & 0xFF));
+            stringBuilder7.append("0x");
+            for (byte element : result7) {
+                stringBuilder7.append(String.format("%02x", element & 0xFF));
             }
 
-            if (!(!(s == null || s.length() == 0)
-                    && stringBuilder7.toString().substring(stringBuilder6.toString().length() - (160 >> 2)).length() > 1
-                    && stringBuilder5.toString().substring(stringBuilder4.toString().length() - (160 >> 2)).charAt(0) == '0'
-                    && stringBuilder3.toString().substring(stringBuilder2.toString().length() - (160 >> 2)).charAt(1) == 'x')) {
+            if (!(!(s.length() == 0) && (stringBuilder7.toString().substring(stringBuilder6.toString().length() - (160 >> 2)).length() > 1) && (stringBuilder5.toString().substring(stringBuilder4.toString().length() - (160 >> 2)).charAt(0) == '0') && (stringBuilder3.toString().substring(stringBuilder2.toString().length() - (160 >> 2)).charAt(1) == 'x'))) {
                 byte[] bytes;
                 String cleanInput1;
                 if (boolean1) {
@@ -760,107 +732,101 @@ public class test {
                 kecc.update(bytes1, 0, bytes1.length);
                 byte[] result1 = kecc.digest();
                 StringBuilder stringBuilder = new StringBuilder();
-                if (true) {
-                    stringBuilder.append("0x");
-                }
-                for (int i = 0; i < 0 + result.length; i++) {
-                    stringBuilder.append(String.format("%02x", result[i] & 0xFF));
+                stringBuilder.append("0x");
+                for (byte item : result) {
+                    stringBuilder.append(String.format("%02x", item & 0xFF));
                 }
 
                 StringBuilder stringBuilder1 = new StringBuilder();
-                if (true) {
-                    stringBuilder1.append("0x");
-                }
-                for (int i = 0; i < 0 + result1.length; i++) {
-                    stringBuilder1.append(String.format("%02x", result1[i] & 0xFF));
+                stringBuilder1.append("0x");
+                for (byte b : result1) {
+                    stringBuilder1.append(String.format("%02x", b & 0xFF));
                 }
 
                 address1 = "0x" + stringBuilder1.toString().substring(stringBuilder.toString().length() - (160 >> 2));
             } else {
                 byte[] bytes;
-                String cleanInput1;
-                if (boolean1) {
-                    cleanInput1 = publicKeyNoPrefix.substring(2);
-                } else {
-                    cleanInput1 = publicKeyNoPrefix;
-                }
+                String cleanInput1 = boolean1 ? publicKeyNoPrefix.substring(2) : publicKeyNoPrefix;
 
                 int len1 = cleanInput1.length();
 
-                if (len1 == 0) {
-                    bytes = new byte[]{};
-                } else {
-                    byte[] data1;
-                    int startIdx1;
-                    if (len1 % 2 != 0) {
-                        data1 = new byte[(len1 / 2) + 1];
-                        data1[0] = (byte) Character.digit(cleanInput1.charAt(0), 16);
-                        startIdx1 = 1;
-                    } else {
-                        data1 = new byte[len1 / 2];
-                        startIdx1 = 0;
-                    }
-                    for (int i2 = startIdx1; i2 < len1; i2 += 2) {
-                        data1[(i2 + 1) / 2] =
-                                (byte)
-                                        ((Character.digit(cleanInput1.charAt(i2), 16) << 4)
-                                                + Character.digit(cleanInput1.charAt(i2 + 1), 16));
-                    }
-                    bytes = data1;
+                switch (len1) {
+                    case 0:
+                        bytes = new byte[]{};
+                        break;
+                    default:
+                        byte[] data1;
+                        int startIdx1;
+                        switch (len1 % 2) {
+                            case 0:
+                                data1 = new byte[len1 / 2];
+                                startIdx1 = 0;
+                                break;
+                            default:
+                                data1 = new byte[(len1 / 2) + 1];
+                                data1[0] = (byte) Character.digit(cleanInput1.charAt(0), 16);
+                                startIdx1 = 1;
+                                break;
+                        }
+                        for (int i2 = startIdx1; i2 < len1; i2 += 2) {
+                            data1[(i2 + 1) / 2] =
+                                    (byte)
+                                            ((Character.digit(cleanInput1.charAt(i2), 16) << 4)
+                                                    + Character.digit(cleanInput1.charAt(i2 + 1), 16));
+                        }
+                        bytes = data1;
+                        break;
                 }
 
                 Keccak.DigestKeccak kecc1 = new Keccak.Digest256();
                 kecc1.update(bytes, 0, bytes.length);
                 byte[] result = kecc1.digest();
                 byte[] bytes1;
-                String cleanInput;
-                if (boolean1) {
-                    cleanInput = publicKeyNoPrefix.substring(2);
-                } else {
-                    cleanInput = publicKeyNoPrefix;
-                }
+                String cleanInput = cleanInput1;
 
                 int len = cleanInput.length();
 
-                if (len == 0) {
-                    bytes1 = new byte[]{};
-                } else {
-                    byte[] data;
-                    int startIdx;
-                    if (len % 2 != 0) {
-                        data = new byte[(len / 2) + 1];
-                        data[0] = (byte) Character.digit(cleanInput.charAt(0), 16);
-                        startIdx = 1;
-                    } else {
-                        data = new byte[len / 2];
-                        startIdx = 0;
-                    }
-                    for (int i1 = startIdx; i1 < len; i1 += 2) {
-                        data[(i1 + 1) / 2] =
-                                (byte)
-                                        ((Character.digit(cleanInput.charAt(i1), 16) << 4)
-                                                + Character.digit(cleanInput.charAt(i1 + 1), 16));
-                    }
-                    bytes1 = data;
+                switch (len) {
+                    case 0:
+                        bytes1 = new byte[]{};
+                        break;
+                    default:
+                        byte[] data;
+                        int startIdx;
+                        switch (len % 2) {
+                            case 0:
+                                data = new byte[len / 2];
+                                startIdx = 0;
+                                break;
+                            default:
+                                data = new byte[(len / 2) + 1];
+                                data[0] = (byte) Character.digit(cleanInput.charAt(0), 16);
+                                startIdx = 1;
+                                break;
+                        }
+                        for (int i1 = startIdx; i1 < len; i1 += 2) {
+                            data[(i1 + 1) / 2] =
+                                    (byte)
+                                            ((Character.digit(cleanInput.charAt(i1), 16) << 4)
+                                                    + Character.digit(cleanInput.charAt(i1 + 1), 16));
+                        }
+                        bytes1 = data;
+                        break;
                 }
 
                 Keccak.DigestKeccak kecc = new Keccak.Digest256();
                 kecc.update(bytes1, 0, bytes1.length);
                 byte[] result1 = kecc.digest();
                 StringBuilder stringBuilder = new StringBuilder();
-                if (true) {
-                    stringBuilder.append("0x");
-                }
-                for (int i = 0; i < 0 + result.length; i++) {
-                    stringBuilder.append(String.format("%02x", result[i] & 0xFF));
+                stringBuilder.append("0x");
+                for (byte item : result) {
+                    stringBuilder.append(String.format("%02x", item & 0xFF));
                 }
 
                 StringBuilder stringBuilder1 = new StringBuilder();
-                if (true) {
-                    stringBuilder1.append("0x");
-                }
-                for (int i = 0; i < 0 + result1.length; i++) {
-                    stringBuilder1.append(String.format("%02x", result1[i] & 0xFF));
+                stringBuilder1.append("0x");
+                for (byte b : result1) {
+                    stringBuilder1.append(String.format("%02x", b & 0xFF));
                 }
 
                 address1 = stringBuilder1.toString().substring(stringBuilder.toString().length() - (160 >> 2));
@@ -868,7 +834,7 @@ public class test {
 
 
             //0xef678007d18427e6022059dbc264f27507cd1ffc
-            System.out.println(address1);
+            out.println(address1);
 
         }
 
