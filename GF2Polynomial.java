@@ -1,6 +1,6 @@
 class GF2Polynomial implements Polynomial
 {
-    protected final int[] exponents;
+    private final int[] exponents;
 
     GF2Polynomial(int[] exponents)
     {

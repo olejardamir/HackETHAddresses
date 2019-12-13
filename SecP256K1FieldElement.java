@@ -3,9 +3,9 @@ import java.math.BigInteger;
 
 public class SecP256K1FieldElement extends ECFieldElement.AbstractFp
 {
-    public static final BigInteger Q = SecP256K1Curve.q;
+    private static final BigInteger Q = SecP256K1Curve.q;
 
-    protected int[] x;
+    int[] x;
 
     public SecP256K1FieldElement(BigInteger x)
     {
@@ -17,7 +17,7 @@ public class SecP256K1FieldElement extends ECFieldElement.AbstractFp
         this.x = SecP256K1Field.fromBigInteger(x);
     }
 
-    protected SecP256K1FieldElement(int[] x)
+    SecP256K1FieldElement(int[] x)
     {
         this.x = x;
     }

@@ -14,8 +14,8 @@ public class DERBitString
      * @exception IllegalArgumentException if the object cannot be converted.
      * @return a DERBitString instance, or null.
      */
-    public static DERBitString getInstance(
-            Object  obj)
+    private static DERBitString getInstance(
+            Object obj)
     {
         if (obj == null || obj instanceof DERBitString)
         {
@@ -135,7 +135,7 @@ public class DERBitString
         out.writeEncoded(BERTags.BIT_STRING, bytes);
     }
 
-    static DERBitString fromOctetString(byte[] bytes)
+    private static DERBitString fromOctetString(byte[] bytes)
     {
         if (bytes.length < 1)
         {

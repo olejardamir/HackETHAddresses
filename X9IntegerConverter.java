@@ -4,7 +4,7 @@ import java.math.BigInteger;
  * A class which converts integers to byte arrays, allowing padding and calculations
  * to be done according the the filed size of the curve or field element involved.
  */
-public class X9IntegerConverter
+class X9IntegerConverter
 {
 
     /**

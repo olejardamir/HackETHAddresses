@@ -1,10 +1,9 @@
 import java.math.BigInteger;
 
-public class ECDomainParameters
+class ECDomainParameters
         implements ECConstants
 {
     private ECCurve     curve;
-    private byte[]      seed;
     private ECPoint     G;
     private BigInteger  n;
     private BigInteger  h;
@@ -13,18 +12,16 @@ public class ECDomainParameters
             ECCurve     curve,
             ECPoint     G,
             BigInteger  n,
-            BigInteger  h)
-    {
+            BigInteger  h) throws CloneNotSupportedException {
         this(curve, G, n, h, null);
     }
 
-    public ECDomainParameters(
-            ECCurve     curve,
-            ECPoint     G,
-            BigInteger  n,
-            BigInteger  h,
-            byte[]      seed)
-    {
+    private ECDomainParameters(
+            ECCurve curve,
+            ECPoint G,
+            BigInteger n,
+            BigInteger h,
+            byte[] seed) throws CloneNotSupportedException {
         if (curve == null)
         {
             throw new NullPointerException("curve");
@@ -39,7 +36,7 @@ public class ECDomainParameters
         this.G = validate(curve, G);
         this.n = n;
         this.h = h;
-        this.seed = Arrays.clone(seed);
+        byte[] seed1 = Arrays.clone(seed);
     }
 
     public ECPoint getG()
@@ -64,7 +61,11 @@ public class ECDomainParameters
         {
             ECDomainParameters other = (ECDomainParameters)obj;
 
-            return this.curve.equals(other.curve) && this.G.equals(other.G) && this.n.equals(other.n) && this.h.equals(other.h);
+            try {
+                return this.curve.equals(other.curve) && this.G.equals(other.G) && this.n.equals(other.n) && this.h.equals(other.h);
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
         }
 
         return false;
@@ -82,8 +83,7 @@ public class ECDomainParameters
         return hc;
     }
 
-    static ECPoint validate(ECCurve c, ECPoint q)
-    {
+    private static ECPoint validate(ECCurve c, ECPoint q) throws CloneNotSupportedException {
         if (q == null)
         {
             throw new IllegalArgumentException("Point has null value");

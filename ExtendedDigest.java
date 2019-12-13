@@ -1,5 +1,5 @@
 
-public interface ExtendedDigest
+interface ExtendedDigest
         extends Digest
 {
 }

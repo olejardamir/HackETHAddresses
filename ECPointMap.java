@@ -1,5 +1,5 @@
 
 public interface ECPointMap
 {
-    ECPoint map(ECPoint p);
+    ECPoint map(ECPoint p) throws CloneNotSupportedException;
 }

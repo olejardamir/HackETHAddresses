@@ -1,15 +1,14 @@
 
 public class ScaleXPointMap implements ECPointMap
 {
-    protected final ECFieldElement scale;
+    private final ECFieldElement scale;
 
     public ScaleXPointMap(ECFieldElement scale)
     {
         this.scale = scale;
     }
 
-    public ECPoint map(ECPoint p)
-    {
+    public ECPoint map(ECPoint p) throws CloneNotSupportedException {
         return p.scaleX(scale);
     }
 }

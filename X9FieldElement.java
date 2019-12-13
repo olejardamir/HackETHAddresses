@@ -4,7 +4,7 @@
 public class X9FieldElement
         extends ASN1Object
 {
-    protected ECFieldElement  f;
+    private ECFieldElement  f;
 
     private static X9IntegerConverter converter = new X9IntegerConverter();
 

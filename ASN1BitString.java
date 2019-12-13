@@ -10,15 +10,15 @@ public abstract class ASN1BitString
 {
     private static final char[]  table = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
-    protected final byte[]      data;
-    protected final int         padBits;
+    final byte[]      data;
+    final int         padBits;
 
     /**
      * @param bitString an int containing the BIT STRING
      * @return the correct number of pad bits for a bit string defined in
      * a 32 bit constant
      */
-    static protected int getPadBits(
+    static int getPadBits(
             int bitString)
     {
         int val = 0;
@@ -67,7 +67,7 @@ public abstract class ASN1BitString
      * @return the correct number of bytes for a bit string defined in
      * a 32 bit constant
      */
-    static protected byte[] getBytes(int bitString)
+    static byte[] getBytes(int bitString)
     {
         if (bitString == 0)
         {
@@ -99,9 +99,9 @@ public abstract class ASN1BitString
      * @param data the octets making up the bit string.
      * @param padBits the number of extra bits at the end of the string.
      */
-    public ASN1BitString(
-            byte[]  data,
-            int     padBits)
+    ASN1BitString(
+            byte[] data,
+            int padBits)
     {
         if (data == null)
         {
@@ -126,7 +126,7 @@ public abstract class ASN1BitString
      * @return a String representation.
      */
     public String getString() throws IOException {
-        StringBuffer          buf = new StringBuffer("#");
+        StringBuilder buf = new StringBuilder("#");
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
         ASN1OutputStream aOut = new ASN1OutputStream(bOut);
 
@@ -144,12 +144,12 @@ public abstract class ASN1BitString
         return buf.toString();
     }
 
-    public byte[] getBytes()
+    private byte[] getBytes()
     {
         return derForm(data, padBits);
     }
 
-    public int getPadBits()
+    int getPadBits()
     {
         return padBits;
     }
@@ -183,7 +183,7 @@ public abstract class ASN1BitString
                 && Arrays.areEqual(this.getBytes(), other.getBytes());
     }
 
-    protected static byte[] derForm(byte[] data, int padBits)
+    static byte[] derForm(byte[] data, int padBits)
     {
         byte[] rv = Arrays.clone(data);
         // DER requires pad bits be zero

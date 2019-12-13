@@ -1,5 +1,5 @@
 
-public interface ASN1Choice
+interface ASN1Choice
 {
     // marker interface
 }

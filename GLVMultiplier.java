@@ -4,8 +4,8 @@ import java.math.BigInteger;
 
 public class GLVMultiplier extends AbstractECMultiplier
 {
-    protected final ECCurve curve;
-    protected final GLVEndomorphism glvEndomorphism;
+    private final ECCurve curve;
+    private final GLVEndomorphism glvEndomorphism;
 
     public GLVMultiplier(ECCurve curve, GLVEndomorphism glvEndomorphism)
     {
@@ -18,8 +18,7 @@ public class GLVMultiplier extends AbstractECMultiplier
         this.glvEndomorphism = glvEndomorphism;
     }
 
-    protected ECPoint multiplyPositive(ECPoint p, BigInteger k)
-    {
+    protected ECPoint multiplyPositive(ECPoint p, BigInteger k) throws CloneNotSupportedException {
         if (!curve.equals(p.getCurve()))
         {
             throw new IllegalStateException();

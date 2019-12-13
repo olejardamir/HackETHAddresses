@@ -3,7 +3,7 @@ import java.math.BigInteger;
 public class FixedPointCombMultiplier extends AbstractECMultiplier
 {
     @Override
-    protected ECPoint multiplyPositive(ECPoint p, BigInteger k) {
+    protected ECPoint multiplyPositive(ECPoint p, BigInteger k) throws CloneNotSupportedException {
 
         ECCurve c = p.getCurve();
         int size = FixedPointUtil.getCombSize(c);

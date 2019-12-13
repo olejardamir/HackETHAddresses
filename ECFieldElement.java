@@ -7,17 +7,17 @@ public abstract class ECFieldElement
     public abstract BigInteger     toBigInteger();
 
     public abstract int            getFieldSize();
-    public abstract ECFieldElement add(ECFieldElement b);
+    public abstract ECFieldElement add(ECFieldElement b) throws CloneNotSupportedException;
     public abstract ECFieldElement addOne();
-    public abstract ECFieldElement subtract(ECFieldElement b);
+    public abstract ECFieldElement subtract(ECFieldElement b) throws CloneNotSupportedException;
     public abstract ECFieldElement multiply(ECFieldElement b);
-    public abstract ECFieldElement divide(ECFieldElement b);
+    public abstract ECFieldElement divide(ECFieldElement b) throws CloneNotSupportedException;
     public abstract ECFieldElement negate();
     public abstract ECFieldElement square();
-    public abstract ECFieldElement invert();
+    public abstract ECFieldElement invert() throws CloneNotSupportedException;
     public abstract ECFieldElement sqrt();
 
-    public ECFieldElement()
+    ECFieldElement()
     {
 
     }
@@ -37,18 +37,15 @@ public abstract class ECFieldElement
         return 0 == toBigInteger().signum();
     }
 
-    public ECFieldElement multiplyMinusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y)
-    {
+    public ECFieldElement multiplyMinusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y) throws CloneNotSupportedException {
         return multiply(b).subtract(x.multiply(y));
     }
 
-    public ECFieldElement multiplyPlusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y)
-    {
+    public ECFieldElement multiplyPlusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y) throws CloneNotSupportedException {
         return multiply(b).add(x.multiply(y));
     }
 
-    public ECFieldElement squarePlusProduct(ECFieldElement x, ECFieldElement y)
-    {
+    public ECFieldElement squarePlusProduct(ECFieldElement x, ECFieldElement y) throws CloneNotSupportedException {
         return square().add(x.multiply(y));
     }
 
@@ -77,7 +74,7 @@ public abstract class ECFieldElement
         return BigIntegers.asUnsignedByteArray((getFieldSize() + 7) / 8, toBigInteger());
     }
 
-    public static abstract class AbstractFp extends ECFieldElement
+    static abstract class AbstractFp extends ECFieldElement
     {
     }
 
@@ -342,7 +339,7 @@ public abstract class ECFieldElement
             return new BigInteger[]{ Uh, Vl };
         }
 
-        protected BigInteger modAdd(BigInteger x1, BigInteger x2)
+        BigInteger modAdd(BigInteger x1, BigInteger x2)
         {
             BigInteger x3 = x1.add(x2);
             if (x3.compareTo(q) >= 0)
@@ -352,7 +349,7 @@ public abstract class ECFieldElement
             return x3;
         }
 
-        protected BigInteger modDouble(BigInteger x)
+        BigInteger modDouble(BigInteger x)
         {
             BigInteger _2x = x.shiftLeft(1);
             if (_2x.compareTo(q) >= 0)
@@ -362,7 +359,7 @@ public abstract class ECFieldElement
             return _2x;
         }
 
-        protected BigInteger modHalfAbs(BigInteger x)
+        BigInteger modHalfAbs(BigInteger x)
         {
             if (x.testBit(0))
             {
@@ -371,7 +368,7 @@ public abstract class ECFieldElement
             return x.shiftRight(1);
         }
 
-        protected BigInteger modInverse(BigInteger x)
+        BigInteger modInverse(BigInteger x)
         {
             int bits = getFieldSize();
             int len = (bits + 31) >> 5;
@@ -382,12 +379,12 @@ public abstract class ECFieldElement
             return Nat.toBigInteger(len, z);
         }
 
-        protected BigInteger modMult(BigInteger x1, BigInteger x2)
+        BigInteger modMult(BigInteger x1, BigInteger x2)
         {
             return modReduce(x1.multiply(x2));
         }
 
-        protected BigInteger modReduce(BigInteger x)
+        BigInteger modReduce(BigInteger x)
         {
             if (r != null)
             {
@@ -424,7 +421,7 @@ public abstract class ECFieldElement
             return x;
         }
 
-        protected BigInteger modSubtract(BigInteger x1, BigInteger x2)
+        BigInteger modSubtract(BigInteger x1, BigInteger x2)
         {
             BigInteger x3 = x1.subtract(x2);
             if (x3.signum() < 0)
@@ -459,8 +456,7 @@ public abstract class ECFieldElement
     public static abstract class AbstractF2m extends ECFieldElement
     {
 
-        public int trace()
-        {
+        public int trace() throws CloneNotSupportedException {
             int m = this.getFieldSize();
             ECFieldElement fe = this;
             ECFieldElement tr = fe;
@@ -495,13 +491,13 @@ public abstract class ECFieldElement
          * Indicates trinomial basis representation (TPB). Number chosen
          * according to X9.62.
          */
-        public static final int TPB = 2;
+        static final int TPB = 2;
 
         /**
          * Indicates pentanomial basis representation (PPB). Number chosen
          * according to X9.62.
          */
-        public static final int PPB = 3;
+        static final int PPB = 3;
 
         /**
          * TPB or PPB.
@@ -647,8 +643,7 @@ public abstract class ECFieldElement
             }
         }
 
-        public ECFieldElement add(final ECFieldElement b)
-        {
+        public ECFieldElement add(final ECFieldElement b) throws CloneNotSupportedException {
             // No check performed here for performance reasons. Instead the
             // elements involved are checked in ECPoint.F2m
             // checkFieldElements(this, b);
@@ -663,8 +658,7 @@ public abstract class ECFieldElement
             return new F2m(m, ks, x.addOne());
         }
 
-        public ECFieldElement subtract(final ECFieldElement b)
-        {
+        public ECFieldElement subtract(final ECFieldElement b) throws CloneNotSupportedException {
             // Addition and subtraction are the same in F2m
             return add(b);
         }
@@ -681,13 +675,11 @@ public abstract class ECFieldElement
             return new F2m(m, ks, x.modMultiply(((F2m)b).x, m, ks));
         }
 
-        public ECFieldElement multiplyMinusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y)
-        {
+        public ECFieldElement multiplyMinusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y) throws CloneNotSupportedException {
             return multiplyPlusProduct(b, x, y);
         }
 
-        public ECFieldElement multiplyPlusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y)
-        {
+        public ECFieldElement multiplyPlusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y) throws CloneNotSupportedException {
             LongArray ax = this.x, bx = ((F2m)b).x, xx = ((F2m)x).x, yx = ((F2m)y).x;
 
             LongArray ab = ax.multiply(bx);
@@ -704,8 +696,7 @@ public abstract class ECFieldElement
             return new F2m(m, ks, ab);
         }
 
-        public ECFieldElement divide(final ECFieldElement b)
-        {
+        public ECFieldElement divide(final ECFieldElement b) throws CloneNotSupportedException {
             // There may be more efficient implementations
             ECFieldElement bInv = b.invert();
             return multiply(bInv);
@@ -722,8 +713,7 @@ public abstract class ECFieldElement
             return new F2m(m, ks, x.modSquare(m, ks));
         }
 
-        public ECFieldElement squarePlusProduct(ECFieldElement x, ECFieldElement y)
-        {
+        public ECFieldElement squarePlusProduct(ECFieldElement x, ECFieldElement y) throws CloneNotSupportedException {
             LongArray ax = this.x, xx = ((F2m)x).x, yx = ((F2m)y).x;
 
             LongArray aa = ax.square();
@@ -745,8 +735,7 @@ public abstract class ECFieldElement
             return pow < 1 ? this : new F2m(m, ks, x.modSquareN(pow, m, ks));
         }
 
-        public ECFieldElement invert()
-        {
+        public ECFieldElement invert() throws CloneNotSupportedException {
             return new ECFieldElement.F2m(this.m, this.ks, this.x.modInverse(m, ks));
         }
 

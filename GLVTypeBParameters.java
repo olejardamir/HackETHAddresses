@@ -11,11 +11,15 @@ public class GLVTypeBParameters
         }
     }
 
-    protected final BigInteger beta;
-    protected final BigInteger lambda;
-    protected final BigInteger v1A, v1B, v2A, v2B;
-    protected final BigInteger g1, g2;
-    protected final int bits;
+    private final BigInteger beta;
+    private final BigInteger lambda;
+    private final BigInteger v1A;
+    private final BigInteger v1B;
+    private final BigInteger v2A;
+    private final BigInteger v2B;
+    private final BigInteger g1;
+    private final BigInteger g2;
+    private final int bits;
 
     public GLVTypeBParameters(BigInteger beta, BigInteger lambda, BigInteger[] v1, BigInteger[] v2, BigInteger g1,
                               BigInteger g2, int bits)

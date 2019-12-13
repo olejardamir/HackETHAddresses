@@ -17,7 +17,7 @@ public class DERUTF8String
      *                if the object cannot be converted.
      * @return a DERUTF8String instance, or null
      */
-    public static DERUTF8String getInstance(Object obj)
+    private static DERUTF8String getInstance(Object obj)
     {
         if (obj == null || obj instanceof DERUTF8String)
         {

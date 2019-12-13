@@ -43,8 +43,7 @@ public class Curve25519Point extends ECPoint.AbstractFp
         this.withCompression = withCompression;
     }
 
-    protected ECPoint detach()
-    {
+    protected ECPoint detach() throws CloneNotSupportedException {
         return new Curve25519Point(null, getAffineXCoord(), getAffineYCoord());
     }
 
@@ -58,8 +57,7 @@ public class Curve25519Point extends ECPoint.AbstractFp
         return super.getZCoord(index);
     }
 
-    public ECPoint add(ECPoint b)
-    {
+    public ECPoint add(ECPoint b) throws CloneNotSupportedException {
         if (this.isInfinity())
         {
             return b;
@@ -203,8 +201,7 @@ public class Curve25519Point extends ECPoint.AbstractFp
         return twiceJacobianModified(true);
     }
 
-    public ECPoint twicePlus(ECPoint b)
-    {
+    public ECPoint twicePlus(ECPoint b) throws CloneNotSupportedException {
         if (this == b)
         {
             return threeTimes();
@@ -227,8 +224,7 @@ public class Curve25519Point extends ECPoint.AbstractFp
         return twiceJacobianModified(false).add(b);
     }
 
-    public ECPoint threeTimes()
-    {
+    public ECPoint threeTimes() throws CloneNotSupportedException {
         if (this.isInfinity())
         {
             return this;
@@ -253,7 +249,7 @@ public class Curve25519Point extends ECPoint.AbstractFp
         return new Curve25519Point(this.getCurve(), this.x, this.y.negate(), this.zs, this.withCompression);
     }
 
-    protected Curve25519FieldElement calculateJacobianModifiedW(Curve25519FieldElement Z, int[] ZSquared)
+    private Curve25519FieldElement calculateJacobianModifiedW(Curve25519FieldElement Z, int[] ZSquared)
     {
         Curve25519FieldElement a4 = (Curve25519FieldElement)this.getCurve().getA();
         if (Z.isOne())
@@ -272,7 +268,7 @@ public class Curve25519Point extends ECPoint.AbstractFp
         return W;
     }
 
-    protected Curve25519FieldElement getJacobianModifiedW()
+    private Curve25519FieldElement getJacobianModifiedW()
     {
         Curve25519FieldElement W = (Curve25519FieldElement)this.zs[1];
         if (W == null)
@@ -283,7 +279,7 @@ public class Curve25519Point extends ECPoint.AbstractFp
         return W;
     }
 
-    protected Curve25519Point twiceJacobianModified(boolean calculateW)
+    private Curve25519Point twiceJacobianModified(boolean calculateW)
     {
         Curve25519FieldElement X1 = (Curve25519FieldElement)this.x, Y1 = (Curve25519FieldElement)this.y,
                 Z1 = (Curve25519FieldElement)this.zs[0], W1 = getJacobianModifiedW();

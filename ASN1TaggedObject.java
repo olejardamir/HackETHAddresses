@@ -22,10 +22,10 @@ public abstract class ASN1TaggedObject
      * @param tagNo the tag number for this object.
      * @param obj the tagged object.
      */
-    public ASN1TaggedObject(
-            boolean         explicit,
-            int             tagNo,
-            ASN1Encodable   obj)
+    ASN1TaggedObject(
+            boolean explicit,
+            int tagNo,
+            ASN1Encodable obj)
     {
         if (obj instanceof ASN1Choice)
         {

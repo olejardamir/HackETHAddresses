@@ -13,12 +13,12 @@ public class KeccakDigest
             0x8000000000000080L, 0x000000000000800aL, 0x800000008000000aL, 0x8000000080008081L, 0x8000000000008080L,
             0x0000000080000001L, 0x8000000080008008L };
 
-    protected long[] state = new long[25];
-    protected byte[] dataQueue = new byte[192];
-    protected int rate;
-    protected int bitsInQueue;
-    protected int fixedOutputLength;
-    protected boolean squeezing;
+    private long[] state = new long[25];
+    private byte[] dataQueue = new byte[192];
+    private int rate;
+    private int bitsInQueue;
+    private int fixedOutputLength;
+    private boolean squeezing;
 
     public KeccakDigest(int bitLength)
     {
@@ -104,7 +104,7 @@ public class KeccakDigest
         this.fixedOutputLength = (1600 - rate) / 2;
     }
 
-    protected void absorb(byte[] data, int off, int len)
+    private void absorb(byte[] data, int off, int len)
     {
         if ((bitsInQueue % 8) != 0)
         {
@@ -183,7 +183,7 @@ public class KeccakDigest
         squeezing = true;
     }
 
-    protected void squeeze(byte[] output, int offset, long outputLength)
+    private void squeeze(byte[] output, int offset, long outputLength)
     {
         if (!squeezing)
         {
@@ -246,11 +246,11 @@ public class KeccakDigest
             long c3 = a03 ^ a08 ^ a13 ^ a18 ^ a23;
             long c4 = a04 ^ a09 ^ a14 ^ a19 ^ a24;
 
-            long d1 = (c1 << 1 | c1 >>> -1) ^ c4;
-            long d2 = (c2 << 1 | c2 >>> -1) ^ c0;
-            long d3 = (c3 << 1 | c3 >>> -1) ^ c1;
-            long d4 = (c4 << 1 | c4 >>> -1) ^ c2;
-            long d0 = (c0 << 1 | c0 >>> -1) ^ c3;
+            long d1 = (c1 << 1 | c1 >>> 63) ^ c4;
+            long d2 = (c2 << 1 | c2 >>> 63) ^ c0;
+            long d3 = (c3 << 1 | c3 >>> 63) ^ c1;
+            long d4 = (c4 << 1 | c4 >>> 63) ^ c2;
+            long d0 = (c0 << 1 | c0 >>> 63) ^ c3;
 
             a00 ^= d1; a05 ^= d1; a10 ^= d1; a15 ^= d1; a20 ^= d1;
             a01 ^= d2; a06 ^= d2; a11 ^= d2; a16 ^= d2; a21 ^= d2;

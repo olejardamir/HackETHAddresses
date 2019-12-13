@@ -40,8 +40,8 @@ public class DERPrintableString
      * @exception IllegalArgumentException if the object cannot be converted.
      * @return a DERPrintableString instance, or null.
      */
-    public static DERPrintableString getInstance(
-            Object  obj)
+    private static DERPrintableString getInstance(
+            Object obj)
     {
         if (obj == null || obj instanceof DERPrintableString)
         {
@@ -115,9 +115,9 @@ public class DERPrintableString
      * @throws IllegalArgumentException if validate is true and the string
      * contains characters that should not be in a PrintableString.
      */
-    public DERPrintableString(
-            String   string,
-            boolean  validate)
+    private DERPrintableString(
+            String string,
+            boolean validate)
     {
         if (validate && !isPrintableString(string))
         {
@@ -183,8 +183,8 @@ public class DERPrintableString
      *
      * @return true if in printable set, false otherwise.
      */
-    public static boolean isPrintableString(
-            String  str)
+    private static boolean isPrintableString(
+            String str)
     {
         for (int i = str.length() - 1; i >= 0; i--)
         {

@@ -1,13 +1,13 @@
 import java.math.BigInteger;
 
-public class ECAlgorithms
+class ECAlgorithms
 {
     public static boolean isF2mCurve(ECCurve c)
     {
         return isF2mField(c.getField());
     }
 
-    public static boolean isF2mField(FiniteField field)
+    private static boolean isF2mField(FiniteField field)
     {
         return field.getDimension() > 1 && field.getCharacteristic().equals(ECConstants.TWO)
                 && field instanceof PolynomialExtensionField;
@@ -18,13 +18,12 @@ public class ECAlgorithms
         return isFpField(c.getField());
     }
 
-    public static boolean isFpField(FiniteField field)
+    private static boolean isFpField(FiniteField field)
     {
         return field.getDimension() == 1;
     }
 
-    public static ECPoint importPoint(ECCurve c, ECPoint p)
-    {
+    public static ECPoint importPoint(ECCurve c, ECPoint p) throws CloneNotSupportedException {
         ECCurve cp = p.getCurve();
         if (!c.equals(cp))
         {
@@ -34,8 +33,7 @@ public class ECAlgorithms
     }
 
 
-    public static void montgomeryTrick(ECFieldElement[] zs, int off, int len, ECFieldElement scale)
-    {
+    public static void montgomeryTrick(ECFieldElement[] zs, int off, int len, ECFieldElement scale) throws CloneNotSupportedException {
         /*
          * Uses the "Montgomery Trick" to invert many field elements, with only a single actual
          * field inversion. See e.g. the paper:
@@ -82,8 +80,7 @@ public class ECAlgorithms
      *            The multiplier.
      * @return The result of the point multiplication <code>kP</code>.
      */
-    public static ECPoint referenceMultiply(ECPoint p, BigInteger k)
-    {
+    public static ECPoint referenceMultiply(ECPoint p, BigInteger k) throws CloneNotSupportedException {
         BigInteger x = k.abs();
         ECPoint q = p.getCurve().getInfinity();
         int t = x.bitLength();
@@ -109,8 +106,7 @@ public class ECAlgorithms
 
 
 
-    static ECPoint implCheckResult(ECPoint p)
-    {
+    static ECPoint implCheckResult(ECPoint p) throws CloneNotSupportedException {
         if (!p.isValidPartial())
         {
             throw new IllegalStateException("Invalid result");
@@ -120,8 +116,7 @@ public class ECAlgorithms
     }
 
     static ECPoint implShamirsTrickWNaf(ECPoint P, BigInteger k,
-                                        ECPoint Q, BigInteger l)
-    {
+                                        ECPoint Q, BigInteger l) throws CloneNotSupportedException {
         boolean negK = k.signum() < 0, negL = l.signum() < 0;
 
         k = k.abs();
@@ -144,8 +139,7 @@ public class ECAlgorithms
         return implShamirsTrickWNaf(preCompP, preCompNegP, wnafP, preCompQ, preCompNegQ, wnafQ);
     }
 
-    static ECPoint implShamirsTrickWNaf(ECPoint P, BigInteger k, ECPointMap pointMapQ, BigInteger l)
-    {
+    static ECPoint implShamirsTrickWNaf(ECPoint P, BigInteger k, ECPointMap pointMapQ, BigInteger l) throws CloneNotSupportedException {
         boolean negK = k.signum() < 0, negL = l.signum() < 0;
 
         k = k.abs();
@@ -169,8 +163,7 @@ public class ECAlgorithms
     }
 
     private static ECPoint implShamirsTrickWNaf(ECPoint[] preCompP, ECPoint[] preCompNegP, byte[] wnafP,
-                                                ECPoint[] preCompQ, ECPoint[] preCompNegQ, byte[] wnafQ)
-    {
+                                                ECPoint[] preCompQ, ECPoint[] preCompNegQ, byte[] wnafQ) throws CloneNotSupportedException {
         int len = Math.max(wnafP.length, wnafQ.length);
 
         ECCurve curve = preCompP[0].getCurve();

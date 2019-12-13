@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * An indefinite-length encoding version of an ASN.1 ApplicationSpecific object.
  */
-public class BERApplicationSpecific
+class BERApplicationSpecific
         extends ASN1ApplicationSpecific
 {
 

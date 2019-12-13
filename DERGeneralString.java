@@ -23,7 +23,7 @@ public class DERGeneralString
      * @exception IllegalArgumentException if the object cannot be converted.
      * @return a DERBMPString instance, or null.
      */
-    public static DERGeneralString getInstance(
+    private static DERGeneralString getInstance(
             Object obj)
     {
         if (obj == null || obj instanceof DERGeneralString)

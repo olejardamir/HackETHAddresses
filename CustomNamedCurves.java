@@ -3,7 +3,7 @@ import java.math.BigInteger;
 import java.util.Hashtable;
 import java.util.Vector;
 
-public class CustomNamedCurves
+class CustomNamedCurves
 {
 
     private static ECCurve configureCurveGLV(ECCurve c, GLVTypeBParameters p) throws IOException {
@@ -13,7 +13,7 @@ public class CustomNamedCurves
     /*
      * secp256k1
      */
-    static X9ECParametersHolder secp256k1 = new X9ECParametersHolder()
+    private static X9ECParametersHolder secp256k1 = new X9ECParametersHolder()
     {
         protected X9ECParameters createParameters() throws IOException {
             byte[] S = null;
@@ -38,26 +38,26 @@ public class CustomNamedCurves
     };
 
 
-    static final Hashtable nameToCurve = new Hashtable();
-    static final Hashtable nameToOID = new Hashtable();
-    static final Hashtable oidToCurve = new Hashtable();
-    static final Hashtable oidToName = new Hashtable();
-    static final Vector names = new Vector();
+    private static final Hashtable nameToCurve = new Hashtable();
+    private static final Hashtable nameToOID = new Hashtable();
+    private static final Hashtable oidToCurve = new Hashtable();
+    private static final Hashtable oidToName = new Hashtable();
+    private static final Vector names = new Vector();
 
-    static void defineCurveWithOID(String name, ASN1ObjectIdentifier oid, X9ECParametersHolder holder)
+    private static void defineCurveWithOID(String name, X9ECParametersHolder holder)
     {
         names.addElement(name);
-        oidToName.put(oid, name);
-        oidToCurve.put(oid, holder);
+        oidToName.put(SECObjectIdentifiers.secp256k1, name);
+        oidToCurve.put(SECObjectIdentifiers.secp256k1, holder);
         name = Strings.toLowerCase(name);
-        nameToOID.put(name, oid);
+        nameToOID.put(name, SECObjectIdentifiers.secp256k1);
         nameToCurve.put(name, holder);
     }
 
     static
     {
 
-        defineCurveWithOID("secp256k1", SECObjectIdentifiers.secp256k1, secp256k1);
+        defineCurveWithOID("secp256k1", secp256k1);
 
     }
 

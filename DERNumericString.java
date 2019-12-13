@@ -88,8 +88,8 @@ public class DERNumericString
      * @param str string to validate.
      * @return true if numeric, fale otherwise.
      */
-    public static boolean isNumericString(
-            String  str)
+    private static boolean isNumericString(
+            String str)
     {
         for (int i = str.length() - 1; i >= 0; i--)
         {

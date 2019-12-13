@@ -42,7 +42,7 @@ class IndefiniteLengthInputStream
         if (!_eofReached && _eofOn00 && (_b1 == 0x00 && _b2 == 0x00))
         {
             _eofReached = true;
-            setParentEofDetect(true);
+            setParentEofDetect();
         }
         return _eofReached;
     }

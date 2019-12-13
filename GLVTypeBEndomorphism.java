@@ -3,8 +3,8 @@ import java.math.BigInteger;
 
 public class GLVTypeBEndomorphism implements GLVEndomorphism
 {
-    protected final GLVTypeBParameters parameters;
-    protected final ECPointMap pointMap;
+    private final GLVTypeBParameters parameters;
+    private final ECPointMap pointMap;
 
     public GLVTypeBEndomorphism(ECCurve curve, GLVTypeBParameters parameters)
     {
@@ -35,7 +35,7 @@ public class GLVTypeBEndomorphism implements GLVEndomorphism
         return true;
     }
 
-    protected BigInteger calculateB(BigInteger k, BigInteger g, int t)
+    private BigInteger calculateB(BigInteger k, BigInteger g, int t)
     {
         boolean negative = (g.signum() < 0);
         BigInteger b = k.multiply(g.abs());

@@ -65,8 +65,7 @@ public class X9ECParameters
         return curve;
     }
 
-    public ECPoint getG()
-    {
+    public ECPoint getG() throws CloneNotSupportedException {
         return g.getPoint();
     }
 

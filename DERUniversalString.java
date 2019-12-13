@@ -21,8 +21,8 @@ public class DERUniversalString
      * @exception IllegalArgumentException if the object cannot be converted.
      * @return a DERUniversalString instance, or null
      */
-    public static DERUniversalString getInstance(
-            Object  obj)
+    private static DERUniversalString getInstance(
+            Object obj)
     {
         if (obj == null || obj instanceof DERUniversalString)
         {
@@ -83,7 +83,7 @@ public class DERUniversalString
 
     public String getString()
     {
-        StringBuffer    buf = new StringBuffer("#");
+        StringBuilder buf = new StringBuilder("#");
         ByteArrayOutputStream    bOut = new ByteArrayOutputStream();
         ASN1OutputStream            aOut = new ASN1OutputStream(bOut);
 
@@ -112,7 +112,7 @@ public class DERUniversalString
         return getString();
     }
 
-    public byte[] getOctets()
+    private byte[] getOctets()
     {
         return Arrays.clone(string);
     }

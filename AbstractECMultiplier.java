@@ -1,10 +1,9 @@
 
 import java.math.BigInteger;
 
-public abstract class AbstractECMultiplier implements ECMultiplier
+abstract class AbstractECMultiplier implements ECMultiplier
 {
-    public ECPoint multiply(ECPoint p, BigInteger k)
-    {
+    public ECPoint multiply(ECPoint p, BigInteger k) throws CloneNotSupportedException {
         int sign = k.signum();
         if (sign == 0 || p.isInfinity())
         {
@@ -21,10 +20,9 @@ public abstract class AbstractECMultiplier implements ECMultiplier
         return checkResult(result);
     }
 
-    protected abstract ECPoint multiplyPositive(ECPoint p, BigInteger k);
+    protected abstract ECPoint multiplyPositive(ECPoint p, BigInteger k) throws CloneNotSupportedException;
 
-    protected ECPoint checkResult(ECPoint p)
-    {
+    private ECPoint checkResult(ECPoint p) throws CloneNotSupportedException {
         return ECAlgorithms.implCheckResult(p);
     }
 }

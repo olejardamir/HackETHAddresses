@@ -1,5 +1,5 @@
 
-public interface PreCompCallback
+interface PreCompCallback
 {
-    PreCompInfo precompute(PreCompInfo existing);
+    PreCompInfo precompute(PreCompInfo existing) throws CloneNotSupportedException;
 }

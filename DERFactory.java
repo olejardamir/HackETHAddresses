@@ -1,8 +1,8 @@
 
 class DERFactory
 {
-    static final ASN1Sequence EMPTY_SEQUENCE = new DERSequence();
-    static final ASN1Set EMPTY_SET = new DERSet();
+    private static final ASN1Sequence EMPTY_SEQUENCE = new DERSequence();
+    private static final ASN1Set EMPTY_SET = new DERSet();
 
     static ASN1Sequence createSequence(ASN1EncodableVector v)
     {

@@ -16,7 +16,7 @@ public class SecP256K1Curve extends ECCurve.AbstractFp
 
     private static final int SECP256K1_DEFAULT_COORDS = COORD_JACOBIAN;
 
-    protected SecP256K1Point infinity;
+    private SecP256K1Point infinity;
 
     public SecP256K1Curve() throws IOException {
         super(q);
@@ -36,13 +36,10 @@ public class SecP256K1Curve extends ECCurve.AbstractFp
 
     public boolean supportsCoordinateSystem(int coord)
     {
-        switch (coord)
-        {
-            case COORD_JACOBIAN:
-                return true;
-            default:
-                return false;
+        if (coord == COORD_JACOBIAN) {
+            return true;
         }
+        return false;
     }
 
     public int getFieldSize()

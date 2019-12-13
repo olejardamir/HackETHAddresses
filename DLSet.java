@@ -50,7 +50,7 @@ import java.util.Enumeration;
  * an encoding for any component value which is equal to
  * its default value.
  */
-public class DLSet
+class DLSet
         extends ASN1Set
 {
     private int bodyLength = -1;
@@ -86,7 +86,7 @@ public class DLSet
     public DLSet(
             ASN1Encodable[] a)
     {
-        super(a, false);
+        super(a);
     }
 
     private int getBodyLength()

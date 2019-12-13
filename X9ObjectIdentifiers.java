@@ -1,5 +1,5 @@
 
-public interface X9ObjectIdentifiers
+interface X9ObjectIdentifiers
 {
     /** Base OID: 1.2.840.10045 */
     ASN1ObjectIdentifier ansi_X9_62 = new ASN1ObjectIdentifier("1.2.840.10045");

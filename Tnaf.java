@@ -24,7 +24,7 @@ class Tnaf
     };
 
 
-    public static final byte[][] alpha0Tnaf = {
+    private static final byte[][] alpha0Tnaf = {
             null, {1}, null, {-1, 0, 1}, null, {1, 0, 1}, null, {-1, 0, 0, 1}
     };
 
@@ -37,12 +37,12 @@ class Tnaf
     };
 
 
-    public static final byte[][] alpha1Tnaf = {
+    private static final byte[][] alpha1Tnaf = {
             null, {1}, null, {-1, 0, 1}, null, {1, 0, 1}, null, {-1, 0, 0, -1}
     };
 
 
-    public static BigInteger norm(final byte mu, ZTauElement lambda)
+    private static BigInteger norm(final byte mu, ZTauElement lambda)
     {
         BigInteger norm;
 
@@ -73,8 +73,8 @@ class Tnaf
 
 
 
-    public static ZTauElement round(SimpleBigDecimal lambda0,
-                                    SimpleBigDecimal lambda1, byte mu)
+    private static ZTauElement round(SimpleBigDecimal lambda0,
+                                     SimpleBigDecimal lambda1, byte mu)
     {
         int scale = lambda0.getScale();
         if (lambda1.getScale() != scale)
@@ -175,8 +175,8 @@ class Tnaf
     }
 
 
-    public static SimpleBigDecimal approximateDivisionByN(BigInteger k,
-                                                          BigInteger s, BigInteger vm, byte a, int m, int c)
+    private static SimpleBigDecimal approximateDivisionByN(BigInteger k,
+                                                           BigInteger s, BigInteger vm, byte a, int m, int c)
     {
         int _k = (m + 5)/2 + c;
         BigInteger ns = k.shiftRight(m - _k - 2 + a);
@@ -205,7 +205,7 @@ class Tnaf
     }
 
 
-    public static BigInteger[] getLucas(byte mu, int k, boolean doV)
+    private static BigInteger[] getLucas(byte mu, int k, boolean doV)
     {
         if (!((mu == 1) || (mu == -1)))
         {
@@ -308,7 +308,7 @@ class Tnaf
         return new BigInteger[] { dividend0, dividend1 };
     }
 
-    protected static int getShiftsForCofactor(BigInteger h)
+    private static int getShiftsForCofactor(BigInteger h)
     {
         if (h != null)
         {
@@ -360,8 +360,7 @@ class Tnaf
     }
 
 
-    public static ECPoint.AbstractF2m multiplyFromTnaf(ECPoint.AbstractF2m p, byte[] u)
-    {
+    private static ECPoint.AbstractF2m multiplyFromTnaf(ECPoint.AbstractF2m p, byte[] u) throws CloneNotSupportedException {
         ECCurve curve = p.getCurve();
         ECPoint.AbstractF2m q = (ECPoint.AbstractF2m)curve.getInfinity();
         ECPoint.AbstractF2m pNeg = (ECPoint.AbstractF2m)p.negate();
@@ -479,8 +478,7 @@ class Tnaf
     }
 
 
-    public static ECPoint.AbstractF2m[] getPreComp(ECPoint.AbstractF2m p, byte a)
-    {
+    public static ECPoint.AbstractF2m[] getPreComp(ECPoint.AbstractF2m p, byte a) throws CloneNotSupportedException {
         byte[][] alphaTnaf = (a == 0) ? Tnaf.alpha0Tnaf : Tnaf.alpha1Tnaf;
 
         ECPoint.AbstractF2m[] pu = new ECPoint.AbstractF2m[(alphaTnaf.length + 1) >>> 1];

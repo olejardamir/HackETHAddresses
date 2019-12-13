@@ -7,9 +7,9 @@ public class Curve25519 extends ECCurve.AbstractFp
 
     private static final int Curve25519_DEFAULT_COORDS = COORD_JACOBIAN_MODIFIED;
 
-    protected Curve25519Point infinity;
+    private Curve25519Point infinity;
 
-    public Curve25519() throws IOException {
+    private Curve25519() throws IOException {
         super(q);
 
         this.infinity = new Curve25519Point(this, null, null);
@@ -30,13 +30,10 @@ public class Curve25519 extends ECCurve.AbstractFp
 
     public boolean supportsCoordinateSystem(int coord)
     {
-        switch (coord)
-        {
-            case COORD_JACOBIAN_MODIFIED:
-                return true;
-            default:
-                return false;
+        if (coord == COORD_JACOBIAN_MODIFIED) {
+            return true;
         }
+        return false;
     }
 
     public BigInteger getQ()

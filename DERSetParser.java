@@ -35,7 +35,7 @@ public class DERSetParser
     public ASN1Primitive getLoadedObject()
             throws IOException
     {
-        return new DERSet(_parser.readVector(), false);
+        return new DERSet(_parser.readVector());
     }
 
     /**

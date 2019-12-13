@@ -8,8 +8,7 @@ import java.math.BigInteger;
 public class WNafL2RMultiplier extends AbstractECMultiplier
 {
 
-    protected ECPoint multiplyPositive(ECPoint p, BigInteger k)
-    {
+    protected ECPoint multiplyPositive(ECPoint p, BigInteger k) throws CloneNotSupportedException {
          int width = Math.max(2, Math.min(16, getWindowSize(k.bitLength())));
 
         WNafPreCompInfo wnafPreCompInfo = WNafUtil.precompute(p, width, true);
@@ -72,7 +71,7 @@ public class WNafL2RMultiplier extends AbstractECMultiplier
     }
 
 
-    protected int getWindowSize(int bits)
+    private int getWindowSize(int bits)
     {
         return WNafUtil.getWindowSize(bits);
     }

@@ -2,7 +2,7 @@
 import java.math.BigInteger;
 
 
-public abstract class Nat
+abstract class Nat
 {
     private static final long M = 0xFFFFFFFFL;
 

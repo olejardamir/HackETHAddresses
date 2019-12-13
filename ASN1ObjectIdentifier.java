@@ -18,10 +18,10 @@ public class ASN1ObjectIdentifier
 
     private static final long LONG_LIMIT = (Long.MAX_VALUE >> 7) - 0x7f;
 
-    ASN1ObjectIdentifier(
+    private ASN1ObjectIdentifier(
             byte[] bytes)
     {
-        StringBuffer objId = new StringBuffer();
+        StringBuilder objId = new StringBuilder();
         long value = 0;
         BigInteger bigValue = null;
         boolean first = true;
@@ -121,7 +121,7 @@ public class ASN1ObjectIdentifier
      * @param branchID node numbers for the new branch.
      * @return the OID for the new created branch.
      */
-    ASN1ObjectIdentifier(ASN1ObjectIdentifier oid, String branchID)
+    private ASN1ObjectIdentifier(ASN1ObjectIdentifier oid, String branchID)
     {
         if (!isValidBranchID(branchID, 0))
         {
@@ -136,7 +136,7 @@ public class ASN1ObjectIdentifier
      *
      * @return the string representation of the OID carried by this object.
      */
-    public String getId()
+    private String getId()
     {
         return identifier;
     }

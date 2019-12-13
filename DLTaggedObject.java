@@ -6,7 +6,7 @@ import java.io.IOException;
  * a [n] where n is some number - these are assumed to follow the construction
  * rules (as with sequences).
  */
-public class DLTaggedObject
+class DLTaggedObject
         extends ASN1TaggedObject
 {
     private static final byte[] ZERO_BYTES = new byte[0];

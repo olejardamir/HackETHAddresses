@@ -1,8 +1,8 @@
 
-public class WTauNafPreCompInfo implements PreCompInfo
+class WTauNafPreCompInfo implements PreCompInfo
 {
 
-    protected ECPoint.AbstractF2m[] preComp = null;
+    private ECPoint.AbstractF2m[] preComp = null;
 
     public ECPoint.AbstractF2m[] getPreComp()
     {

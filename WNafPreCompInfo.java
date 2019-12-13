@@ -6,11 +6,11 @@
 public class WNafPreCompInfo implements PreCompInfo
 {
 
-    protected ECPoint[] preComp = null;
+    private ECPoint[] preComp = null;
 
-    protected ECPoint[] preCompNeg = null;
+    private ECPoint[] preCompNeg = null;
 
-    protected ECPoint twice = null;
+    private ECPoint twice = null;
 
     public ECPoint[] getPreComp()
     {

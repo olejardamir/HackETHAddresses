@@ -1,6 +1,6 @@
 import java.math.BigInteger;
 
-public abstract class Nat256
+abstract class Nat256
 {
     private static final long M = 0xFFFFFFFFL;
 
@@ -96,7 +96,7 @@ public abstract class Nat256
 
     public static void copy(int[] x, int xOff, int[] z, int zOff)
     {
-        z[zOff + 0] = x[xOff + 0];
+        z[zOff] = x[xOff];
         z[zOff + 1] = x[xOff + 1];
         z[zOff + 2] = x[xOff + 2];
         z[zOff + 3] = x[xOff + 3];
@@ -245,8 +245,8 @@ public abstract class Nat256
         for (int i = 1; i < 8; ++i)
         {
             long c = 0, x_i = x[i] & M;
-            c += x_i * y_0 + (zz[i + 0] & M);
-            zz[i + 0] = (int)c;
+            c += x_i * y_0 + (zz[i] & M);
+            zz[i] = (int)c;
             c >>>= 32;
             c += x_i * y_1 + (zz[i + 1] & M);
             zz[i + 1] = (int)c;
@@ -288,8 +288,8 @@ public abstract class Nat256
         for (int i = 0; i < 8; ++i)
         {
             long c = 0, x_i = x[i] & M;
-            c += x_i * y_0 + (zz[i + 0] & M);
-            zz[i + 0] = (int)c;
+            c += x_i * y_0 + (zz[i] & M);
+            zz[i] = (int)c;
             c >>>= 32;
             c += x_i * y_1 + (zz[i + 1] & M);
             zz[i + 1] = (int)c;
@@ -324,9 +324,9 @@ public abstract class Nat256
         // assert w >>> 31 == 0;
 
         long c = 0, wVal = w & M;
-        long x0 = x[xOff + 0] & M;
-        c += wVal * x0 + (y[yOff + 0] & M);
-        z[zOff + 0] = (int)c;
+        long x0 = x[xOff] & M;
+        c += wVal * x0 + (y[yOff] & M);
+        z[zOff] = (int)c;
         c >>>= 32;
         long x1 = x[xOff + 1] & M;
         c += wVal * x1 + x0 + (y[yOff + 1] & M);
@@ -397,8 +397,8 @@ public abstract class Nat256
 
         long c = 0, xVal = x & M;
         long y00 = y & M;
-        c += xVal * y00 + (z[zOff + 0] & M);
-        z[zOff + 0] = (int)c;
+        c += xVal * y00 + (z[zOff] & M);
+        z[zOff] = (int)c;
         c >>>= 32;
         long y01 = y >>> 32;
         c += xVal * y01 + y00 + (z[zOff + 1] & M);
@@ -419,8 +419,8 @@ public abstract class Nat256
         // assert zOff <= 5;
 
         long c = 0, xVal = x & M, yVal = y & M;
-        c += yVal * xVal + (z[zOff + 0] & M);
-        z[zOff + 0] = (int)c;
+        c += yVal * xVal + (z[zOff] & M);
+        z[zOff] = (int)c;
         c >>>= 32;
         c += yVal + (z[zOff + 1] & M);
         z[zOff + 1] = (int)c;

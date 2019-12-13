@@ -3,7 +3,7 @@ import java.io.IOException;
 /**
  * A holding class that allows for X9ECParameters to be lazily constructed.
  */
-public abstract class X9ECParametersHolder
+abstract class X9ECParametersHolder
 {
     private X9ECParameters params;
 

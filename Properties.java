@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Utility method for accessing system properties.
  */
-public class Properties
+class Properties
 {
     private Properties()
     {

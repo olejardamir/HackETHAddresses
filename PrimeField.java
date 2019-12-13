@@ -3,7 +3,7 @@ import java.math.BigInteger;
 
 class PrimeField implements FiniteField
 {
-    protected final BigInteger characteristic;
+    private final BigInteger characteristic;
 
     PrimeField(BigInteger characteristic)
     {

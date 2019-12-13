@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * Class representing the Definite-Length-type External
  */
-public class DLExternal
+class DLExternal
         extends ASN1External
 {
     /**
@@ -47,7 +47,7 @@ public class DLExternal
      * @param encoding The encoding to be used for the external data
      * @param externalData The external data
      */
-    public DLExternal(ASN1ObjectIdentifier directReference, ASN1Integer indirectReference, ASN1Primitive dataValueDescriptor, int encoding, ASN1Primitive externalData)
+    private DLExternal(ASN1ObjectIdentifier directReference, ASN1Integer indirectReference, ASN1Primitive dataValueDescriptor, int encoding, ASN1Primitive externalData)
     {
         super(directReference, indirectReference, dataValueDescriptor, encoding, externalData);
     }

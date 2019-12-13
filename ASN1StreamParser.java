@@ -5,7 +5,7 @@ import java.io.InputStream;
 /**
  * A parser for ASN.1 streams which also returns, where possible, parsers for the objects it encounters.
  */
-public class ASN1StreamParser
+class ASN1StreamParser
 {
     private final InputStream _in;
     private final int         _limit;
@@ -27,7 +27,7 @@ public class ASN1StreamParser
         this.tmpBuffers = new byte[11][];
     }
 
-    ASN1Encodable readIndef(int tagValue) {
+    private ASN1Encodable readIndef(int tagValue) {
         // Note: INDEF => CONSTRUCTED
 
         // TODO There are other tags that may be constructed (e.g. BIT_STRING)
@@ -123,7 +123,7 @@ public class ASN1StreamParser
         //
         // turn of looking for "00" while we resolve the tag
         //
-        set00Check(false);
+        set00Check();
 
         //
         // calculate tag number
@@ -195,10 +195,8 @@ public class ASN1StreamParser
             }
 
             // Some primitive encodings can be handled by parsers too...
-            switch (tagNo)
-            {
-                case BERTags.OCTET_STRING:
-                    return new DEROctetStringParser(defIn);
+            if (tagNo == BERTags.OCTET_STRING) {
+                return new DEROctetStringParser(defIn);
             }
 
             try
@@ -213,11 +211,11 @@ public class ASN1StreamParser
         return null;
     }
 
-    private void set00Check(boolean enabled)
+    private void set00Check()
     {
         if (_in instanceof IndefiniteLengthInputStream)
         {
-            ((IndefiniteLengthInputStream)_in).setEofOn00(enabled);
+            ((IndefiniteLengthInputStream)_in).setEofOn00(false);
         }
     }
 

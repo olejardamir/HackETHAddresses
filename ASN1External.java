@@ -7,11 +7,11 @@ import java.io.IOException;
 public abstract class ASN1External
         extends ASN1Primitive
 {
-    protected ASN1ObjectIdentifier directReference;
-    protected ASN1Integer indirectReference;
-    protected ASN1Primitive dataValueDescriptor;
-    protected int encoding;
-    protected ASN1Primitive externalContent;
+    ASN1ObjectIdentifier directReference;
+    ASN1Integer indirectReference;
+    ASN1Primitive dataValueDescriptor;
+    int encoding;
+    ASN1Primitive externalContent;
 
     /**
      * Construct an EXTERNAL object, the input encoding vector must have exactly two elements on it.
@@ -25,7 +25,7 @@ public abstract class ASN1External
      *
      * @throws IllegalArgumentException if input size is wrong, or
      */
-    public ASN1External(ASN1EncodableVector vector)
+    ASN1External(ASN1EncodableVector vector)
     {
         int offset = 0;
 
@@ -82,7 +82,7 @@ public abstract class ASN1External
      * @param encoding The encoding to be used for the external data
      * @param externalData The external data
      */
-    public ASN1External(ASN1ObjectIdentifier directReference, ASN1Integer indirectReference, ASN1Primitive dataValueDescriptor, int encoding, ASN1Primitive externalData)
+    ASN1External(ASN1ObjectIdentifier directReference, ASN1Integer indirectReference, ASN1Primitive dataValueDescriptor, int encoding, ASN1Primitive externalData)
     {
         setDirectReference(directReference);
         setIndirectReference(indirectReference);

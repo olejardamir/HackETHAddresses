@@ -4,7 +4,7 @@ import java.util.Enumeration;
 /**
  * The DLSequence encodes a SEQUENCE using definite length form.
  */
-public class DLSequence
+class DLSequence
         extends ASN1Sequence
 {
     private int bodyLength = -1;

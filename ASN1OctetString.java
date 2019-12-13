@@ -163,8 +163,8 @@ public abstract class ASN1OctetString
      *
      * @param string the octets making up the octet string.
      */
-    public ASN1OctetString(
-            byte[]  string)
+    ASN1OctetString(
+            byte[] string)
     {
         if (string == null)
         {

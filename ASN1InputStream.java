@@ -6,7 +6,7 @@ import java.io.*;
  * the stream. If an ASN.1 NULL is encountered a DER/BER Null object is
  * returned.
  */
-public class ASN1InputStream
+class ASN1InputStream
         extends FilterInputStream
         implements BERTags
 {
@@ -15,7 +15,7 @@ public class ASN1InputStream
 
     private final byte[][] tmpBuffers;
 
-    public ASN1InputStream(
+    private ASN1InputStream(
             InputStream is)
     {
         this(is, StreamUtil.findLimit(is));
@@ -84,7 +84,7 @@ public class ASN1InputStream
         return limit;
     }
 
-    protected int readLength()
+    private int readLength()
             throws IOException
     {
         return readLength(this, limit);
@@ -99,10 +99,10 @@ public class ASN1InputStream
      * @return the resulting primitive.
      * @throws java.io.IOException on processing exception.
      */
-    protected ASN1Primitive buildObject(
-            int       tag,
-            int       tagNo,
-            int       length)
+    private ASN1Primitive buildObject(
+            int tag,
+            int tagNo,
+            int length)
             throws IOException
     {
         boolean isConstructed = (tag & CONSTRUCTED) != 0;
@@ -158,7 +158,7 @@ public class ASN1InputStream
         return createPrimitiveDERObject(tagNo, defIn, tmpBuffers);
     }
 
-    ASN1EncodableVector buildEncodableVector()
+    private ASN1EncodableVector buildEncodableVector()
             throws IOException
     {
         ASN1EncodableVector v = new ASN1EncodableVector();
@@ -172,7 +172,7 @@ public class ASN1InputStream
         return v;
     }
 
-    ASN1EncodableVector buildDEREncodableVector(
+    private ASN1EncodableVector buildDEREncodableVector(
             DefiniteLengthInputStream dIn) throws IOException
     {
         return new ASN1InputStream(dIn).buildEncodableVector();
@@ -394,7 +394,7 @@ public class ASN1InputStream
             case IA5_STRING:
                 return new DERIA5String(defIn.toByteArray());
             case INTEGER:
-                return new ASN1Integer(defIn.toByteArray(), false);
+                return new ASN1Integer(defIn.toByteArray());
             case NULL:
                 return DERNull.INSTANCE;   // actual content is ignored (enforce 0 length?)
             case NUMERIC_STRING:

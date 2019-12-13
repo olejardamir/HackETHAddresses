@@ -91,7 +91,7 @@ public abstract class ASN1Set
         throw new IllegalArgumentException("unknown object in getInstance: " + obj.getClass().getName());
     }
 
-    protected ASN1Set()
+    ASN1Set()
     {
     }
 
@@ -99,7 +99,7 @@ public abstract class ASN1Set
      * Create a SET containing one object
      * @param obj object to be added to the SET.
      */
-    protected ASN1Set(
+    ASN1Set(
             ASN1Encodable obj)
     {
         set.addElement(obj);
@@ -110,9 +110,9 @@ public abstract class ASN1Set
      * @param v a vector of objects to make up the SET.
      * @param doSort true if should be sorted DER style, false otherwise.
      */
-    protected ASN1Set(
+    ASN1Set(
             ASN1EncodableVector v,
-            boolean                  doSort)
+            boolean doSort)
     {
         for (int i = 0; i != v.size(); i++)
         {
@@ -128,24 +128,19 @@ public abstract class ASN1Set
     /**
      * Create a SET containing an array of objects.
      * @param array an array of objects to make up the SET.
-     * @param doSort true if should be sorted DER style, false otherwise.
+     *
      */
-    protected ASN1Set(
-            ASN1Encodable[]   array,
-            boolean doSort)
+    ASN1Set(
+            ASN1Encodable[] array)
     {
         for (int i = 0; i != array.length; i++)
         {
             set.addElement(array[i]);
         }
 
-        if (doSort)
-        {
-            this.sort();
-        }
     }
 
-    public Enumeration getObjects()
+    Enumeration getObjects()
     {
         return set.elements();
     }
@@ -156,7 +151,7 @@ public abstract class ASN1Set
      * @param index the set number (starting at zero) of the object
      * @return the object at the set position indicated by index.
      */
-    public ASN1Encodable getObjectAt(
+    private ASN1Encodable getObjectAt(
             int index)
     {
         return (ASN1Encodable)set.elementAt(index);
@@ -167,12 +162,12 @@ public abstract class ASN1Set
      *
      * @return the number of objects in this set.
      */
-    public int size()
+    private int size()
     {
         return set.size();
     }
 
-    public ASN1Encodable[] toArray()
+    private ASN1Encodable[] toArray()
     {
         ASN1Encodable[] values = new ASN1Encodable[this.size()];
 
@@ -298,7 +293,7 @@ public abstract class ASN1Set
         }
     }
 
-    protected void sort()
+    private void sort()
     {
         if (!isSorted)
         {

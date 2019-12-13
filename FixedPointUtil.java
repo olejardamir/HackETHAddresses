@@ -1,9 +1,9 @@
 
 import java.math.BigInteger;
 
-public class FixedPointUtil
+class FixedPointUtil
 {
-    public static final String PRECOMP_NAME = "bc_fixed_point";
+    private static final String PRECOMP_NAME = "bc_fixed_point";
 
     public static int getCombSize(ECCurve c)
     {
@@ -11,14 +11,12 @@ public class FixedPointUtil
         return order == null ? c.getFieldSize() + 1 : order.bitLength();
     }
 
-    public static FixedPointPreCompInfo precompute(final ECPoint p)
-    {
+    public static FixedPointPreCompInfo precompute(final ECPoint p) throws CloneNotSupportedException {
         final ECCurve c = p.getCurve();
 
         return (FixedPointPreCompInfo)c.precompute(p, PRECOMP_NAME, new PreCompCallback()
         {
-            public PreCompInfo precompute(PreCompInfo existing)
-            {
+            public PreCompInfo precompute(PreCompInfo existing) throws CloneNotSupportedException {
                 FixedPointPreCompInfo existingFP = (existing instanceof FixedPointPreCompInfo) ? (FixedPointPreCompInfo)existing : null;
 
                 int bits = getCombSize(c);

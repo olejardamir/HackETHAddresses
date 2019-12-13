@@ -1,6 +1,6 @@
 import java.math.BigInteger;
 
-public class Curve25519Field
+class Curve25519Field
 {
     private static final long M = 0xFFFFFFFFL;
 

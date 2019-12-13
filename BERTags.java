@@ -1,5 +1,5 @@
 
-public interface BERTags
+interface BERTags
 {
     int BOOLEAN             = 0x01;
     int INTEGER             = 0x02;

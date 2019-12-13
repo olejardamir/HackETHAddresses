@@ -2,13 +2,13 @@ import java.math.BigInteger;
 
 public class Curve25519FieldElement extends ECFieldElement.AbstractFp
 {
-    public static final BigInteger Q = Curve25519.q;
+    private static final BigInteger Q = Curve25519.q;
 
     // Calculated as ECConstants.TWO.modPow(Q.shiftRight(2), Q)
     private static final int[] PRECOMP_POW2 = new int[]{ 0x4a0ea0b0, 0xc4ee1b27, 0xad2fe478, 0x2f431806,
             0x3dfbd7a7, 0x2b4d0099, 0x4fc1df0b, 0x2b832480 };
 
-    protected int[] x;
+    int[] x;
 
     public Curve25519FieldElement(BigInteger x)
     {
@@ -25,7 +25,7 @@ public class Curve25519FieldElement extends ECFieldElement.AbstractFp
         this.x = Nat256.create();
     }
 
-    protected Curve25519FieldElement(int[] x)
+    Curve25519FieldElement(int[] x)
     {
         this.x = x;
     }

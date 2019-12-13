@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * Class representing the DER-type External
  */
-public class DERExternal
+class DERExternal
         extends ASN1External
 {
     /**
@@ -47,7 +47,7 @@ public class DERExternal
      * @param encoding The encoding to be used for the external data
      * @param externalData The external data
      */
-    public DERExternal(ASN1ObjectIdentifier directReference, ASN1Integer indirectReference, ASN1Primitive dataValueDescriptor, int encoding, ASN1Primitive externalData)
+    private DERExternal(ASN1ObjectIdentifier directReference, ASN1Integer indirectReference, ASN1Primitive dataValueDescriptor, int encoding, ASN1Primitive externalData)
     {
         super(directReference, indirectReference, dataValueDescriptor, encoding, externalData);
     }

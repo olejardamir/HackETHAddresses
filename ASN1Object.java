@@ -14,7 +14,7 @@ public abstract class ASN1Object
      * @return BER/DER byte encoded object.
      * @throws java.io.IOException on encoding error.
      */
-    public byte[] getEncoded()
+    byte[] getEncoded()
             throws IOException
     {
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
@@ -32,7 +32,7 @@ public abstract class ASN1Object
      * @return byte encoded object.
      * @throws IOException on encoding error.
      */
-    public byte[] getEncoded(
+    byte[] getEncoded(
             String encoding)
             throws IOException
     {

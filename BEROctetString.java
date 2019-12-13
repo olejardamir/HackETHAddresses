@@ -18,7 +18,7 @@ import java.util.Vector;
  * See {@link ASN1OctetString} for X.690 encoding rules of OCTET-STRING objects.
  * </p>
  */
-public class BEROctetString
+class BEROctetString
         extends ASN1OctetString
 {
     private static final int DEFAULT_LENGTH = 1000;
@@ -82,9 +82,9 @@ public class BEROctetString
      * @param string the octets making up the octet string.
      * @param chunkSize the number of octets stored in each DER encoded component OCTET STRING.
      */
-    public BEROctetString(
+    private BEROctetString(
             byte[] string,
-            int    chunkSize)
+            int chunkSize)
     {
         this(string, null, chunkSize);
     }
@@ -96,7 +96,7 @@ public class BEROctetString
      * @param octs an array of OCTET STRING to construct the BER OCTET STRING from.
      * @param chunkSize the number of octets stored in each DER encoded component OCTET STRING.
      */
-    public BEROctetString(
+    private BEROctetString(
             ASN1OctetString[] octs,
             int chunkSize)
     {
@@ -115,7 +115,7 @@ public class BEROctetString
      *
      * @return an Enumeration of the component OCTET STRINGs.
      */
-    public Enumeration getObjects()
+    private Enumeration getObjects()
     {
         if (octs == null)
         {

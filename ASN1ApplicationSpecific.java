@@ -6,9 +6,9 @@ import java.io.IOException;
 public abstract class ASN1ApplicationSpecific
         extends ASN1Primitive
 {
-    protected final boolean   isConstructed;
-    protected final int       tag;
-    protected final byte[]    octets;
+    final boolean   isConstructed;
+    final int       tag;
+    final byte[]    octets;
 
     ASN1ApplicationSpecific(
             boolean isConstructed,
@@ -20,7 +20,7 @@ public abstract class ASN1ApplicationSpecific
         this.octets = Arrays.clone(octets);
     }
 
-    protected static int getLengthOfHeader(byte[] data)
+    static int getLengthOfHeader(byte[] data)
     {
         int length = data[1] & 0xff; // TODO: assumes 1 byte tag
 
@@ -50,7 +50,7 @@ public abstract class ASN1ApplicationSpecific
      *
      * @return true if constructed, otherwise false.
      */
-    public boolean isConstructed()
+    boolean isConstructed()
     {
         return isConstructed;
     }
@@ -60,7 +60,7 @@ public abstract class ASN1ApplicationSpecific
      *
      * @return the application tag number.
      */
-    public int getApplicationTag()
+    private int getApplicationTag()
     {
         return tag;
     }
@@ -86,7 +86,7 @@ public abstract class ASN1ApplicationSpecific
 
     public String toString()
     {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("[");
         if (isConstructed())
         {

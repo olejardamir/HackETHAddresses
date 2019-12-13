@@ -21,8 +21,8 @@ public class DERIA5String
      * @exception IllegalArgumentException if the object cannot be converted.
      * @return a DERIA5String instance, or null.
      */
-    public static DERIA5String getInstance(
-            Object  obj)
+    private static DERIA5String getInstance(
+            Object obj)
     {
         if (obj == null || obj instanceof DERIA5String)
         {
@@ -98,9 +98,9 @@ public class DERIA5String
      * @throws IllegalArgumentException if validate is true and the string
      * contains characters that should not be in an IA5String.
      */
-    public DERIA5String(
-            String   string,
-            boolean  validate)
+    private DERIA5String(
+            String string,
+            boolean validate)
     {
         if (string == null)
         {
@@ -171,8 +171,8 @@ public class DERIA5String
      * @param str the string to check.
      * @return true if character set in IA5String set, false otherwise.
      */
-    public static boolean isIA5String(
-            String  str)
+    private static boolean isIA5String(
+            String str)
     {
         for (int i = str.length() - 1; i >= 0; i--)
         {

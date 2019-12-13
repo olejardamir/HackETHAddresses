@@ -7,9 +7,8 @@ import java.io.OutputStream;
 /**
  * Utility methods to assist with stream processing.
  */
-public final class Streams
+final class Streams
 {
-    private static int BUFFER_SIZE = 4096;
 
     /**
      * Read stream fully, returning contents in a byte array.
@@ -50,7 +49,7 @@ public final class Streams
      * @return the number of bytes read into the buffer.
      * @throws IOException in case of underlying IOException.
      */
-    public static int readFully(InputStream inStr, byte[] buf, int off, int len)
+    private static int readFully(InputStream inStr, byte[] buf, int off, int len)
             throws IOException
     {
         int totalRead = 0;
@@ -73,9 +72,10 @@ public final class Streams
      * @param outStr destination output stream.
      * @throws IOException in case of underlying IOException.
      */
-    public static void pipeAll(InputStream inStr, OutputStream outStr)
+    private static void pipeAll(InputStream inStr, OutputStream outStr)
             throws IOException
     {
+        int BUFFER_SIZE = 4096;
         byte[] bs = new byte[BUFFER_SIZE];
         int numRead;
         while ((numRead = inStr.read(bs, 0, bs.length)) >= 0)

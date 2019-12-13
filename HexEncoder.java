@@ -8,7 +8,7 @@ import java.io.OutputStream;
 public class HexEncoder
         implements Encoder
 {
-    protected final byte[] encodingTable =
+    private final byte[] encodingTable =
             {
                     (byte)'0', (byte)'1', (byte)'2', (byte)'3', (byte)'4', (byte)'5', (byte)'6', (byte)'7',
                     (byte)'8', (byte)'9', (byte)'a', (byte)'b', (byte)'c', (byte)'d', (byte)'e', (byte)'f'
@@ -17,9 +17,9 @@ public class HexEncoder
     /*
      * set up the decoding table.
      */
-    protected final byte[] decodingTable = new byte[128];
+    private final byte[] decodingTable = new byte[128];
 
-    protected void initialiseDecodingTable()
+    private void initialiseDecodingTable()
     {
         for (int i = 0; i < decodingTable.length; i++)
         {

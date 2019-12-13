@@ -18,9 +18,9 @@ public abstract class ECCurve
 
     public class Config
     {
-        protected int coord;
-        protected ECEndomorphism endomorphism;
-        protected ECMultiplier multiplier;
+        int coord;
+        ECEndomorphism endomorphism;
+        ECMultiplier multiplier;
 
         Config(int coord, ECEndomorphism endomorphism, ECMultiplier multiplier)
         {
@@ -59,15 +59,17 @@ public abstract class ECCurve
         }
     }
 
-    protected FiniteField field;
-    protected ECFieldElement a, b;
-    protected BigInteger order, cofactor;
+    private FiniteField field;
+    ECFieldElement a;
+    ECFieldElement b;
+    BigInteger order;
+    BigInteger cofactor;
 
-    protected int coord = COORD_AFFINE;
-    protected ECEndomorphism endomorphism = null;
-    protected ECMultiplier multiplier = null;
+    int coord = COORD_AFFINE;
+    private ECEndomorphism endomorphism = null;
+    private ECMultiplier multiplier = null;
 
-    protected ECCurve(FiniteField field)
+    ECCurve(FiniteField field)
     {
         this.field = field;
     }
@@ -81,8 +83,7 @@ public abstract class ECCurve
         return new Config(this.coord, this.endomorphism, this.multiplier);
     }
 
-    public ECPoint validatePoint(BigInteger x, BigInteger y)
-    {
+    private ECPoint validatePoint(BigInteger x, BigInteger y) throws CloneNotSupportedException {
         ECPoint p = createPoint(x, y);
         if (p.isValid())
         {
@@ -95,8 +96,7 @@ public abstract class ECCurve
      * @deprecated per-point compression property will be removed, use {@link #validatePoint(BigInteger, BigInteger)}
      * and refer {@link ECPoint#getEncoded(boolean)}
      */
-    public ECPoint validatePoint(BigInteger x, BigInteger y, boolean withCompression)
-    {
+    public ECPoint validatePoint(BigInteger x, BigInteger y, boolean withCompression) throws CloneNotSupportedException {
         ECPoint p = createPoint(x, y, withCompression);
         if (p.isValid())
         {
@@ -125,7 +125,7 @@ public abstract class ECCurve
 
     protected abstract ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, ECFieldElement[] zs, boolean withCompression);
 
-    protected ECMultiplier createDefaultMultiplier()
+    ECMultiplier createDefaultMultiplier()
     {
         if (endomorphism instanceof GLVEndomorphism)
         {
@@ -135,7 +135,7 @@ public abstract class ECCurve
         return new WNafL2RMultiplier();
     }
 
-    public boolean supportsCoordinateSystem(int coord)
+    boolean supportsCoordinateSystem(int coord)
     {
         return coord == COORD_AFFINE;
     }
@@ -173,8 +173,7 @@ public abstract class ECCurve
      * @param callback
      *            Called to calculate the <code>PreCompInfo</code>.
      */
-    public PreCompInfo precompute(ECPoint point, String name, PreCompCallback callback)
-    {
+    public PreCompInfo precompute(ECPoint point, String name, PreCompCallback callback) throws CloneNotSupportedException {
         checkPoint(point);
 
         Hashtable table;
@@ -201,8 +200,7 @@ public abstract class ECCurve
         }
     }
 
-    public ECPoint importPoint(ECPoint p)
-    {
+    public ECPoint importPoint(ECPoint p) throws CloneNotSupportedException {
         if (this == p.getCurve())
         {
             return p;
@@ -228,8 +226,7 @@ public abstract class ECCurve
      *            An array of points that will be updated in place with their normalized versions,
      *            where necessary
      */
-    public void normalizeAll(ECPoint[] points)
-    {
+    public void normalizeAll(ECPoint[] points) throws CloneNotSupportedException {
         normalizeAll(points, 0, points.length, null);
     }
 
@@ -251,8 +248,7 @@ public abstract class ECCurve
      * @param iso
      *            The (optional) z-scaling factor - can be null
      */
-    public void normalizeAll(ECPoint[] points, int off, int len, ECFieldElement iso)
-    {
+    public void normalizeAll(ECPoint[] points, int off, int len, ECFieldElement iso) throws CloneNotSupportedException {
         checkPoints(points, off, len);
 
         switch (this.getCoordinateSystem())
@@ -330,7 +326,7 @@ public abstract class ECCurve
         return coord;
     }
 
-    protected abstract ECPoint decompressPoint(int yTilde, BigInteger X1);
+    protected abstract ECPoint decompressPoint(int yTilde, BigInteger X1) throws CloneNotSupportedException;
 
     /**
      * Decode a point on this curve from its ASN.1 encoding. The different
@@ -338,8 +334,7 @@ public abstract class ECCurve
      * <code>F<sub>p</sub></code> (X9.62 s 4.2.1 pg 17).
      * @return The decoded point.
      */
-    public ECPoint decodePoint(byte[] encoded)
-    {
+    public ECPoint decodePoint(byte[] encoded) throws CloneNotSupportedException {
         ECPoint p;
         int expectedLength = (getFieldSize() + 7) / 8;
 
@@ -474,7 +469,7 @@ public abstract class ECCurve
         };
     }
 
-    protected void checkPoint(ECPoint point)
+    private void checkPoint(ECPoint point)
     {
         if (null == point || (this != point.getCurve()))
         {
@@ -482,7 +477,7 @@ public abstract class ECCurve
         }
     }
 
-    protected void checkPoints(ECPoint[] points, int off, int len)
+    private void checkPoints(ECPoint[] points, int off, int len)
     {
         if (points == null)
         {
@@ -524,15 +519,14 @@ public abstract class ECCurve
                 ^ Integers.rotateLeft(getB().toBigInteger().hashCode(), 16);
     }
 
-    public static abstract class AbstractFp extends ECCurve
+    protected static abstract class AbstractFp extends ECCurve
     {
-        protected AbstractFp(BigInteger q)
+        AbstractFp(BigInteger q)
         {
             super(FiniteFields.getPrimeField(q));
         }
 
-        protected ECPoint decompressPoint(int yTilde, BigInteger X1)
-        {
+        protected ECPoint decompressPoint(int yTilde, BigInteger X1) throws CloneNotSupportedException {
             ECFieldElement x = this.fromBigInteger(X1);
             ECFieldElement rhs = x.square().add(this.a).multiply(x).add(this.b);
             ECFieldElement y = rhs.sqrt();
@@ -573,7 +567,7 @@ public abstract class ECCurve
             this(q, a, b, null, null);
         }
 
-        public Fp(BigInteger q, BigInteger a, BigInteger b, BigInteger order, BigInteger cofactor)
+        Fp(BigInteger q, BigInteger a, BigInteger b, BigInteger order, BigInteger cofactor)
         {
             super(q);
 
@@ -596,7 +590,7 @@ public abstract class ECCurve
             this(q, r, a, b, null, null);
         }
 
-        protected Fp(BigInteger q, BigInteger r, ECFieldElement a, ECFieldElement b, BigInteger order, BigInteger cofactor)
+        Fp(BigInteger q, BigInteger r, ECFieldElement a, ECFieldElement b, BigInteger order, BigInteger cofactor)
         {
             super(q);
 
@@ -650,8 +644,7 @@ public abstract class ECCurve
             return new ECPoint.Fp(this, x, y, zs, withCompression);
         }
 
-        public ECPoint importPoint(ECPoint p)
-        {
+        public ECPoint importPoint(ECPoint p) throws CloneNotSupportedException {
             if (this != p.getCurve() && this.getCoordinateSystem() == ECCurve.COORD_JACOBIAN && !p.isInfinity())
             {
                 switch (p.getCurve().getCoordinateSystem())
@@ -718,7 +711,7 @@ public abstract class ECCurve
             return FiniteFields.getBinaryExtensionField(new int[]{ 0, k1, k2, k3, m });
         }
 
-        protected AbstractF2m(int m, int k1, int k2, int k3)
+        AbstractF2m(int m, int k1, int k2, int k3)
         {
             super(buildField(m, k1, k2, k3));
         }
@@ -732,8 +725,7 @@ public abstract class ECCurve
          *            The field element xp.
          * @return the decompressed point.
          */
-        protected ECPoint decompressPoint(int yTilde, BigInteger X1)
-        {
+        protected ECPoint decompressPoint(int yTilde, BigInteger X1) throws CloneNotSupportedException {
             ECFieldElement x = this.fromBigInteger(X1), y = null;
             if (x.isZero())
             {
@@ -784,8 +776,7 @@ public abstract class ECCurve
          * @return the solution for <code>z<sup>2</sup> + z = beta</code> or
          *         <code>null</code> if no solution exists.
          */
-        protected ECFieldElement solveQuadraticEquation(ECFieldElement beta)
-        {
+        ECFieldElement solveQuadraticEquation(ECFieldElement beta) throws CloneNotSupportedException {
             if (beta.isZero())
             {
                 return beta;
@@ -964,7 +955,7 @@ public abstract class ECCurve
          * @param cofactor The cofactor of the elliptic curve, i.e.
          * <code>#E<sub>a</sub>(F<sub>2<sup>m</sup></sub>) = h * n</code>.
          */
-        public F2m(
+        F2m(
                 int m,
                 int k1,
                 int k2,
@@ -989,7 +980,7 @@ public abstract class ECCurve
             this.coord = F2M_DEFAULT_COORDS;
         }
 
-        protected F2m(int m, int k1, int k2, int k3, ECFieldElement a, ECFieldElement b, BigInteger order, BigInteger cofactor)
+        F2m(int m, int k1, int k2, int k3, ECFieldElement a, ECFieldElement b, BigInteger order, BigInteger cofactor)
         {
             super(m, k1, k2, k3);
 
@@ -1064,7 +1055,7 @@ public abstract class ECCurve
          *
          * @return true if curve Trinomial, false otherwise.
          */
-        public boolean isTrinomial()
+        boolean isTrinomial()
         {
             return k2 == 0 && k3 == 0;
         }

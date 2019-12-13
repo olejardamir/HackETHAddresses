@@ -5,7 +5,7 @@
  * lightweight Java environment don't support classes like
  * StringTokenizer.
  */
-public class OIDTokenizer
+class OIDTokenizer
 {
     private String  oid;
     private int     index;

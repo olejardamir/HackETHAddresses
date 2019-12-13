@@ -1,11 +1,11 @@
 import java.security.MessageDigest;
 
-public class BCMessageDigest
+class BCMessageDigest
         extends MessageDigest
 {
-    protected Digest  digest;
+    Digest  digest;
 
-    protected BCMessageDigest(
+    BCMessageDigest(
             Digest digest)
     {
         super(digest.getAlgorithmName());

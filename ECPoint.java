@@ -7,9 +7,9 @@ import java.util.Hashtable;
  */
 public abstract class ECPoint
 {
-    protected final static ECFieldElement[] EMPTY_ZS = new ECFieldElement[0];
+    private final static ECFieldElement[] EMPTY_ZS = new ECFieldElement[0];
 
-    protected static ECFieldElement[] getInitialZCoords(ECCurve curve)
+    private static ECFieldElement[] getInitialZCoords(ECCurve curve)
     {
         // Cope with null curve, most commonly used by implicitlyCa
         int coord = null == curve ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
@@ -40,22 +40,22 @@ public abstract class ECPoint
         }
     }
 
-    protected ECCurve curve;
-    protected ECFieldElement x;
-    protected ECFieldElement y;
-    protected ECFieldElement[] zs;
+    ECCurve curve;
+    ECFieldElement x;
+    ECFieldElement y;
+    ECFieldElement[] zs;
 
-    protected boolean withCompression;
+    boolean withCompression;
 
     // Hashtable is (String -> PreCompInfo)
-    protected Hashtable preCompTable = null;
+    Hashtable preCompTable = null;
 
-    protected ECPoint(ECCurve curve, ECFieldElement x, ECFieldElement y)
+    ECPoint(ECCurve curve, ECFieldElement x, ECFieldElement y)
     {
         this(curve, x, y, getInitialZCoords(curve));
     }
 
-    protected ECPoint(ECCurve curve, ECFieldElement x, ECFieldElement y, ECFieldElement[] zs)
+    ECPoint(ECCurve curve, ECFieldElement x, ECFieldElement y, ECFieldElement[] zs)
     {
         this.curve = curve;
         this.x = x;
@@ -63,10 +63,9 @@ public abstract class ECPoint
         this.zs = zs;
     }
 
-    protected abstract boolean satisfiesCurveEquation();
+    protected abstract boolean satisfiesCurveEquation() throws CloneNotSupportedException;
 
-    protected boolean satisfiesOrder()
-    {
+    boolean satisfiesOrder() throws CloneNotSupportedException {
         if (ECConstants.ONE.equals(curve.getCofactor()))
         {
             return false;
@@ -84,7 +83,7 @@ public abstract class ECPoint
         return curve;
     }
 
-    protected int getCurveCoordinateSystem()
+    int getCurveCoordinateSystem()
     {
         // Cope with null curve, most commonly used by implicitlyCa
         return null == curve ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
@@ -96,7 +95,7 @@ public abstract class ECPoint
      * @return The affine x-coordinate of this point
      * @throws IllegalStateException if the point is not normalized
      */
-    public ECFieldElement getAffineXCoord()
+    ECFieldElement getAffineXCoord()
     {
         checkNormalized();
         return getXCoord();
@@ -108,8 +107,7 @@ public abstract class ECPoint
      * @return The affine y-coordinate of this point
      * @throws IllegalStateException if the point is not normalized
      */
-    public ECFieldElement getAffineYCoord()
-    {
+    ECFieldElement getAffineYCoord() throws CloneNotSupportedException {
         checkNormalized();
         return getYCoord();
     }
@@ -139,8 +137,7 @@ public abstract class ECPoint
      *
      * @return the y-coordinate of this point
      */
-    public ECFieldElement getYCoord()
-    {
+    public ECFieldElement getYCoord() throws CloneNotSupportedException {
         return y;
     }
 
@@ -159,12 +156,12 @@ public abstract class ECPoint
         return y;
     }
 
-    protected final ECFieldElement[] getRawZCoords()
+    final ECFieldElement[] getRawZCoords()
     {
         return zs;
     }
 
-    protected void checkNormalized()
+    private void checkNormalized()
     {
         if (isNormalized())
         {
@@ -188,8 +185,7 @@ public abstract class ECPoint
      *
      * @return a new ECPoint instance representing the same point, but with normalized coordinates
      */
-    public ECPoint normalize()
-    {
+    public ECPoint normalize() throws CloneNotSupportedException {
         if (this.isInfinity())
         {
             return this;
@@ -238,7 +234,7 @@ public abstract class ECPoint
         }
     }
 
-    protected ECPoint createScaledPoint(ECFieldElement sx, ECFieldElement sy)
+    private ECPoint createScaledPoint(ECFieldElement sx, ECFieldElement sy)
     {
         return this.getCurve().createRawPoint(getRawXCoord().multiply(sx), getRawYCoord().multiply(sy), this.withCompression);
     }
@@ -256,18 +252,15 @@ public abstract class ECPoint
         return this.withCompression;
     }
 
-    public boolean isValid()
-    {
+    public boolean isValid() throws CloneNotSupportedException {
         return !implIsValid(false, true);
     }
 
-    boolean isValidPartial()
-    {
+    boolean isValidPartial() throws CloneNotSupportedException {
         return implIsValid(false, false);
     }
 
-    boolean implIsValid(final boolean decompressed, final boolean checkOrder)
-    {
+    boolean implIsValid(final boolean decompressed, final boolean checkOrder) throws CloneNotSupportedException {
         if (isInfinity())
         {
             return true;
@@ -275,8 +268,7 @@ public abstract class ECPoint
 
         ValidityPrecompInfo validity = (ValidityPrecompInfo)getCurve().precompute(this, ValidityPrecompInfo.PRECOMP_NAME, new PreCompCallback()
         {
-            public PreCompInfo precompute(PreCompInfo existing)
-            {
+            public PreCompInfo precompute(PreCompInfo existing) throws CloneNotSupportedException {
                 ValidityPrecompInfo info = (existing instanceof ValidityPrecompInfo) ? (ValidityPrecompInfo)existing : null;
                 if (info == null)
                 {
@@ -312,22 +304,19 @@ public abstract class ECPoint
         return !validity.hasFailed();
     }
 
-    public ECPoint scaleX(ECFieldElement scale)
-    {
+    public ECPoint scaleX(ECFieldElement scale) throws CloneNotSupportedException {
         return isInfinity()
                 ?   this
                 :   getCurve().createRawPoint(getRawXCoord().multiply(scale), getRawYCoord(), getRawZCoords(), this.withCompression);
     }
 
-    public ECPoint scaleY(ECFieldElement scale)
-    {
+    public ECPoint scaleY(ECFieldElement scale) throws CloneNotSupportedException {
         return isInfinity()
                 ?   this
                 :   getCurve().createRawPoint(getRawXCoord(), getRawYCoord().multiply(scale), getRawZCoords(), this.withCompression);
     }
 
-    public boolean equals(ECPoint other)
-    {
+    public boolean equals(ECPoint other) throws CloneNotSupportedException {
         if (null == other)
         {
             return false;
@@ -387,7 +376,12 @@ public abstract class ECPoint
             return false;
         }
 
-        return equals((ECPoint)other);
+        try {
+            return equals((ECPoint)other);
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public int hashCode()
@@ -399,10 +393,19 @@ public abstract class ECPoint
         {
             // TODO Consider just requiring already normalized, to avoid silent performance degradation
 
-            ECPoint p = normalize();
+            ECPoint p = null;
+            try {
+                p = normalize();
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
 
             hc ^= p.getXCoord().hashCode() * 17;
-            hc ^= p.getYCoord().hashCode() * 257;
+            try {
+                hc ^= p.getYCoord().hashCode() * 257;
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
         }
 
         return hc;
@@ -415,15 +418,14 @@ public abstract class ECPoint
             return "INF";
         }
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append('(');
         sb.append(getRawXCoord());
         sb.append(',');
         sb.append(getRawYCoord());
-        for (int i = 0; i < zs.length; ++i)
-        {
+        for (ECFieldElement z : zs) {
             sb.append(',');
-            sb.append(zs[i]);
+            sb.append(z);
         }
         sb.append(')');
         return sb.toString();
@@ -433,8 +435,7 @@ public abstract class ECPoint
      * @deprecated per-point compression property will be removed, refer {@link #getEncoded(boolean)}
      * @return a byte encoding.
      */
-    public byte[] getEncoded()
-    {
+    public byte[] getEncoded() throws CloneNotSupportedException {
         return getEncoded(this.withCompression);
     }
 
@@ -444,8 +445,7 @@ public abstract class ECPoint
      * @param compressed whether to generate a compressed point encoding.
      * @return the point encoding
      */
-    public byte[] getEncoded(boolean compressed)
-    {
+    public byte[] getEncoded(boolean compressed) throws CloneNotSupportedException {
         if (this.isInfinity())
         {
             return new byte[1];
@@ -472,16 +472,15 @@ public abstract class ECPoint
         return PO;
     }
 
-    protected abstract boolean getCompressionYTilde();
+    protected abstract boolean getCompressionYTilde() throws CloneNotSupportedException;
 
-    public abstract ECPoint add(ECPoint b);
+    public abstract ECPoint add(ECPoint b) throws CloneNotSupportedException;
 
-    public abstract ECPoint negate();
+    public abstract ECPoint negate() throws CloneNotSupportedException;
 
-    public abstract ECPoint subtract(ECPoint b);
+    public abstract ECPoint subtract(ECPoint b) throws CloneNotSupportedException;
 
-    public ECPoint timesPow2(int e)
-    {
+    public ECPoint timesPow2(int e) throws CloneNotSupportedException {
         if (e < 0)
         {
             throw new IllegalArgumentException("'e' cannot be negative");
@@ -495,37 +494,33 @@ public abstract class ECPoint
         return p;
     }
 
-    public abstract ECPoint twice();
+    public abstract ECPoint twice() throws CloneNotSupportedException;
 
-    public ECPoint twicePlus(ECPoint b)
-    {
+    public ECPoint twicePlus(ECPoint b) throws CloneNotSupportedException {
         return twice().add(b);
     }
 
-    public ECPoint threeTimes()
-    {
+    public ECPoint threeTimes() throws CloneNotSupportedException {
         return twicePlus(this);
     }
 
     public static abstract class AbstractFp extends ECPoint
     {
-        protected AbstractFp(ECCurve curve, ECFieldElement x, ECFieldElement y)
+        AbstractFp(ECCurve curve, ECFieldElement x, ECFieldElement y)
         {
             super(curve, x, y);
         }
 
-        protected AbstractFp(ECCurve curve, ECFieldElement x, ECFieldElement y, ECFieldElement[] zs)
+        AbstractFp(ECCurve curve, ECFieldElement x, ECFieldElement y, ECFieldElement[] zs)
         {
             super(curve, x, y, zs);
         }
 
-        protected boolean getCompressionYTilde()
-        {
+        protected boolean getCompressionYTilde() throws CloneNotSupportedException {
             return this.getAffineYCoord().testBitZero();
         }
 
-        protected boolean satisfiesCurveEquation()
-        {
+        protected boolean satisfiesCurveEquation() throws CloneNotSupportedException {
             ECFieldElement X = this.x, Y = this.y, A = curve.getA(), B = curve.getB();
             ECFieldElement lhs = Y.square();
 
@@ -566,8 +561,7 @@ public abstract class ECPoint
             return lhs.equals(rhs);
         }
 
-        public ECPoint subtract(ECPoint b)
-        {
+        public ECPoint subtract(ECPoint b) throws CloneNotSupportedException {
             if (b.isInfinity())
             {
                 return this;
@@ -623,8 +617,7 @@ public abstract class ECPoint
         }
 
         // B.3 pg 62
-        public ECPoint add(ECPoint b)
-        {
+        public ECPoint add(ECPoint b) throws CloneNotSupportedException {
             if (this.isInfinity())
             {
                 return b;
@@ -842,8 +835,7 @@ public abstract class ECPoint
         }
 
         // B.3 pg 62
-        public ECPoint twice()
-        {
+        public ECPoint twice() throws CloneNotSupportedException {
             if (this.isInfinity())
             {
                 return this;
@@ -974,8 +966,7 @@ public abstract class ECPoint
             }
         }
 
-        public ECPoint twicePlus(ECPoint b)
-        {
+        public ECPoint twicePlus(ECPoint b) throws CloneNotSupportedException {
             if (this == b)
             {
                 return threeTimes();
@@ -1051,8 +1042,7 @@ public abstract class ECPoint
             }
         }
 
-        public ECPoint threeTimes()
-        {
+        public ECPoint threeTimes() throws CloneNotSupportedException {
             if (this.isInfinity())
             {
                 return this;
@@ -1105,8 +1095,7 @@ public abstract class ECPoint
             }
         }
 
-        public ECPoint timesPow2(int e)
-        {
+        public ECPoint timesPow2(int e) throws CloneNotSupportedException {
             if (e < 0)
             {
                 throw new IllegalArgumentException("'e' cannot be negative");
@@ -1201,23 +1190,19 @@ public abstract class ECPoint
             }
         }
 
-        protected ECFieldElement two(ECFieldElement x)
-        {
+        ECFieldElement two(ECFieldElement x) throws CloneNotSupportedException {
             return x.add(x);
         }
 
-        protected ECFieldElement three(ECFieldElement x)
-        {
+        ECFieldElement three(ECFieldElement x) throws CloneNotSupportedException {
             return two(x).add(x);
         }
 
-        protected ECFieldElement four(ECFieldElement x)
-        {
+        ECFieldElement four(ECFieldElement x) throws CloneNotSupportedException {
             return two(two(x));
         }
 
-        protected ECFieldElement eight(ECFieldElement x)
-        {
+        ECFieldElement eight(ECFieldElement x) throws CloneNotSupportedException {
             return four(two(x));
         }
 
@@ -1239,7 +1224,7 @@ public abstract class ECPoint
             return new ECPoint.Fp(curve, this.x, this.y.negate(), this.withCompression);
         }
 
-        protected ECFieldElement calculateJacobianModifiedW(ECFieldElement Z, ECFieldElement ZSquared)
+        ECFieldElement calculateJacobianModifiedW(ECFieldElement Z, ECFieldElement ZSquared)
         {
             ECFieldElement a4 = this.getCurve().getA();
             if (a4.isZero() || Z.isOne())
@@ -1265,7 +1250,7 @@ public abstract class ECPoint
             return W;
         }
 
-        protected ECFieldElement getJacobianModifiedW()
+        ECFieldElement getJacobianModifiedW()
         {
             ECFieldElement W = this.zs[1];
             if (W == null)
@@ -1276,8 +1261,7 @@ public abstract class ECPoint
             return W;
         }
 
-        protected ECPoint.Fp twiceJacobianModified(boolean calculateW)
-        {
+        ECPoint.Fp twiceJacobianModified(boolean calculateW) throws CloneNotSupportedException {
             ECFieldElement X1 = this.x, Y1 = this.y, Z1 = this.zs[0], W1 = getJacobianModifiedW();
 
             ECFieldElement X1Squared = X1.square();
@@ -1298,18 +1282,17 @@ public abstract class ECPoint
 
     public static abstract class AbstractF2m extends ECPoint
     {
-        protected AbstractF2m(ECCurve curve, ECFieldElement x, ECFieldElement y)
+        AbstractF2m(ECCurve curve, ECFieldElement x, ECFieldElement y)
         {
             super(curve, x, y);
         }
 
-        protected AbstractF2m(ECCurve curve, ECFieldElement x, ECFieldElement y, ECFieldElement[] zs)
+        AbstractF2m(ECCurve curve, ECFieldElement x, ECFieldElement y, ECFieldElement[] zs)
         {
             super(curve, x, y, zs);
         }
 
-        protected boolean satisfiesCurveEquation()
-        {
+        protected boolean satisfiesCurveEquation() throws CloneNotSupportedException {
             ECCurve curve = this.getCurve();
             ECFieldElement X = this.x, A = curve.getA(), B = curve.getB();
 
@@ -1376,8 +1359,7 @@ public abstract class ECPoint
             return lhs.equals(rhs);
         }
 
-        protected boolean satisfiesOrder()
-        {
+        protected boolean satisfiesOrder() throws CloneNotSupportedException {
             BigInteger cofactor = curve.getCofactor();
             if (ECConstants.TWO.equals(cofactor))
             {
@@ -1416,8 +1398,7 @@ public abstract class ECPoint
             return super.satisfiesOrder();
         }
 
-        public ECPoint scaleX(ECFieldElement scale)
-        {
+        public ECPoint scaleX(ECFieldElement scale) throws CloneNotSupportedException {
             if (this.isInfinity())
             {
                 return this;
@@ -1456,8 +1437,7 @@ public abstract class ECPoint
             }
         }
 
-        public ECPoint scaleY(ECFieldElement scale)
-        {
+        public ECPoint scaleY(ECFieldElement scale) throws CloneNotSupportedException {
             if (this.isInfinity())
             {
                 return this;
@@ -1484,8 +1464,7 @@ public abstract class ECPoint
             }
         }
 
-        public ECPoint subtract(ECPoint b)
-        {
+        public ECPoint subtract(ECPoint b) throws CloneNotSupportedException {
             if (b.isInfinity())
             {
                 return this;
@@ -1578,8 +1557,7 @@ public abstract class ECPoint
 //            checkCurveEquation();
         }
 
-        public ECFieldElement getYCoord()
-        {
+        public ECFieldElement getYCoord() throws CloneNotSupportedException {
             int coord = this.getCurveCoordinateSystem();
 
             switch (coord)
@@ -1613,8 +1591,7 @@ public abstract class ECPoint
             }
         }
 
-        protected boolean getCompressionYTilde()
-        {
+        protected boolean getCompressionYTilde() throws CloneNotSupportedException {
             ECFieldElement X = this.getRawXCoord();
             if (X.isZero())
             {
@@ -1638,8 +1615,7 @@ public abstract class ECPoint
             }
         }
 
-        public ECPoint add(ECPoint b)
-        {
+        public ECPoint add(ECPoint b) throws CloneNotSupportedException {
             if (this.isInfinity())
             {
                 return b;
@@ -1818,8 +1794,7 @@ public abstract class ECPoint
             }
         }
 
-        public ECPoint twice()
-        {
+        public ECPoint twice() throws CloneNotSupportedException {
             if (this.isInfinity())
             {
                 return this;
@@ -1927,8 +1902,7 @@ public abstract class ECPoint
             }
         }
 
-        public ECPoint twicePlus(ECPoint b)
-        {
+        public ECPoint twicePlus(ECPoint b) throws CloneNotSupportedException {
             if (this.isInfinity())
             {
                 return b;
@@ -1949,61 +1923,48 @@ public abstract class ECPoint
 
             int coord = curve.getCoordinateSystem();
 
-            switch (coord)
-            {
-                case ECCurve.COORD_LAMBDA_PROJECTIVE:
-                {
-                    // NOTE: twicePlus() only optimized for lambda-affine argument
-                    ECFieldElement X2 = b.x, Z2 = b.zs[0];
-                    if (X2.isZero() || !Z2.isOne())
-                    {
-                        return twice().add(b);
-                    }
-
-                    ECFieldElement L1 = this.y, Z1 = this.zs[0];
-                    ECFieldElement L2 = b.y;
-
-                    ECFieldElement X1Sq = X1.square();
-                    ECFieldElement L1Sq = L1.square();
-                    ECFieldElement Z1Sq = Z1.square();
-                    ECFieldElement L1Z1 = L1.multiply(Z1);
-
-                    ECFieldElement T = curve.getA().multiply(Z1Sq).add(L1Sq).add(L1Z1);
-                    ECFieldElement L2plus1 = L2.addOne();
-                    ECFieldElement A = curve.getA().add(L2plus1).multiply(Z1Sq).add(L1Sq).multiplyPlusProduct(T, X1Sq, Z1Sq);
-                    ECFieldElement X2Z1Sq = X2.multiply(Z1Sq);
-                    ECFieldElement B = X2Z1Sq.add(T).square();
-
-                    if (B.isZero())
-                    {
-                        if (A.isZero())
-                        {
-                            return b.twice();
-                        }
-
-                        return curve.getInfinity();
-                    }
-
-                    if (A.isZero())
-                    {
-                        return new ECPoint.F2m(curve, A, curve.getB().sqrt(), withCompression);
-                    }
-
-                    ECFieldElement X3 = A.square().multiply(X2Z1Sq);
-                    ECFieldElement Z3 = A.multiply(B).multiply(Z1Sq);
-                    ECFieldElement L3 = A.add(B).square().multiplyPlusProduct(T, L2plus1, Z3);
-
-                    return new ECPoint.F2m(curve, X3, L3, new ECFieldElement[]{ Z3 }, this.withCompression);
-                }
-                default:
-                {
+            if (coord == ECCurve.COORD_LAMBDA_PROJECTIVE) {// NOTE: twicePlus() only optimized for lambda-affine argument
+                ECFieldElement X2 = b.x, Z2 = b.zs[0];
+                if (X2.isZero() || !Z2.isOne()) {
                     return twice().add(b);
                 }
+
+                ECFieldElement L1 = this.y, Z1 = this.zs[0];
+                ECFieldElement L2 = b.y;
+
+                ECFieldElement X1Sq = X1.square();
+                ECFieldElement L1Sq = L1.square();
+                ECFieldElement Z1Sq = Z1.square();
+                ECFieldElement L1Z1 = L1.multiply(Z1);
+
+                ECFieldElement T = curve.getA().multiply(Z1Sq).add(L1Sq).add(L1Z1);
+                ECFieldElement L2plus1 = L2.addOne();
+                ECFieldElement A = curve.getA().add(L2plus1).multiply(Z1Sq).add(L1Sq).multiplyPlusProduct(T, X1Sq, Z1Sq);
+                ECFieldElement X2Z1Sq = X2.multiply(Z1Sq);
+                ECFieldElement B = X2Z1Sq.add(T).square();
+
+                if (B.isZero()) {
+                    if (A.isZero()) {
+                        return b.twice();
+                    }
+
+                    return curve.getInfinity();
+                }
+
+                if (A.isZero()) {
+                    return new F2m(curve, A, curve.getB().sqrt(), withCompression);
+                }
+
+                ECFieldElement X3 = A.square().multiply(X2Z1Sq);
+                ECFieldElement Z3 = A.multiply(B).multiply(Z1Sq);
+                ECFieldElement L3 = A.add(B).square().multiplyPlusProduct(T, L2plus1, Z3);
+
+                return new F2m(curve, X3, L3, new ECFieldElement[]{Z3}, this.withCompression);
             }
+            return twice().add(b);
         }
 
-        public ECPoint negate()
-        {
+        public ECPoint negate() throws CloneNotSupportedException {
             if (this.isInfinity())
             {
                 return this;

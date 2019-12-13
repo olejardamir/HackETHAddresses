@@ -1,9 +1,9 @@
 
 import java.math.BigInteger;
 
-public abstract class WNafUtil
+abstract class WNafUtil
 {
-    public static final String PRECOMP_NAME = "bc_wnaf";
+    private static final String PRECOMP_NAME = "bc_wnaf";
 
     private static final int[] DEFAULT_WINDOW_SIZE_CUTOFFS = new int[]{ 13, 41, 121, 337, 897, 2305 };
 
@@ -11,7 +11,7 @@ public abstract class WNafUtil
     private static final int[] EMPTY_INTS = new int[0];
     private static final ECPoint[] EMPTY_POINTS = new ECPoint[0];
 
-    public static int[] generateCompactNaf(BigInteger k)
+    private static int[] generateCompactNaf(BigInteger k)
     {
         if ((k.bitLength() >>> 16) != 0)
         {
@@ -120,7 +120,7 @@ public abstract class WNafUtil
         return wnaf;
     }
 
-    public static byte[] generateNaf(BigInteger k)
+    private static byte[] generateNaf(BigInteger k)
     {
         if (k.signum() == 0)
         {
@@ -215,7 +215,7 @@ public abstract class WNafUtil
         return getWNafPreCompInfo(p.getCurve().getPreCompInfo(p, PRECOMP_NAME));
     }
 
-    public static WNafPreCompInfo getWNafPreCompInfo(PreCompInfo preCompInfo)
+    private static WNafPreCompInfo getWNafPreCompInfo(PreCompInfo preCompInfo)
     {
         return (preCompInfo instanceof WNafPreCompInfo) ? (WNafPreCompInfo)preCompInfo : null;
     }
@@ -226,7 +226,7 @@ public abstract class WNafUtil
     }
 
 
-    public static int getWindowSize(int bits, int[] windowSizeCutoffs)
+    private static int getWindowSize(int bits, int[] windowSizeCutoffs)
     {
         int w = 0;
         for (; w < windowSizeCutoffs.length; ++w)
@@ -240,16 +240,14 @@ public abstract class WNafUtil
     }
 
     public static ECPoint mapPointWithPrecomp(ECPoint p, final int width, final boolean includeNegated,
-                                              final ECPointMap pointMap)
-    {
+                                              final ECPointMap pointMap) throws CloneNotSupportedException {
         final ECCurve c = p.getCurve();
         final WNafPreCompInfo wnafPreCompP = precompute(p, width, includeNegated);
 
         ECPoint q = pointMap.map(p);
         c.precompute(q, PRECOMP_NAME, new PreCompCallback()
         {
-            public PreCompInfo precompute(PreCompInfo existing)
-            {
+            public PreCompInfo precompute(PreCompInfo existing) throws CloneNotSupportedException {
                 WNafPreCompInfo result = new WNafPreCompInfo();
 
                 ECPoint twiceP = wnafPreCompP.getTwice();
@@ -284,14 +282,12 @@ public abstract class WNafUtil
         return q;
     }
 
-    public static WNafPreCompInfo precompute(final ECPoint p, final int width, final boolean includeNegated)
-    {
+    public static WNafPreCompInfo precompute(final ECPoint p, final int width, final boolean includeNegated) throws CloneNotSupportedException {
         final ECCurve c = p.getCurve();
 
         return (WNafPreCompInfo)c.precompute(p, PRECOMP_NAME, new PreCompCallback()
         {
-            public PreCompInfo precompute(PreCompInfo existing)
-            {
+            public PreCompInfo precompute(PreCompInfo existing) throws CloneNotSupportedException {
                 WNafPreCompInfo existingWNaf = (existing instanceof WNafPreCompInfo) ? (WNafPreCompInfo)existing : null;
 
                 int reqPreCompLen = 1 << Math.max(0, width - 2);

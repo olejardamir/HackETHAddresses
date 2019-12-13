@@ -12,7 +12,7 @@ import java.util.Enumeration;
  * This is different from the way {@link BERSet},{@link DLSet} does things.
  * </p>
  */
-public class DERSet
+class DERSet
         extends ASN1Set
 {
     private int bodyLength = -1;
@@ -25,10 +25,9 @@ public class DERSet
     }
 
     DERSet(
-            ASN1EncodableVector v,
-            boolean                  doSort)
+            ASN1EncodableVector v)
     {
-        super(v, doSort);
+        super(v, false);
     }
 
     private int getBodyLength()

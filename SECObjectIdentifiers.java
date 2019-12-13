@@ -8,7 +8,7 @@
  *     iso(1) identified-organization(3) certicom(132) schemes(1) }
  * </pre>
  */
-public interface SECObjectIdentifiers
+interface SECObjectIdentifiers
 {
     /** Base OID: 1.3.132.0 */
     ASN1ObjectIdentifier ellipticCurve = new ASN1ObjectIdentifier("1.3.132.0");

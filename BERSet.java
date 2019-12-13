@@ -15,7 +15,7 @@ import java.util.Enumeration;
  * nor does the sorting happen before serialization. This is different
  * </p>
  */
-public class BERSet
+class BERSet
         extends ASN1Set
 {
     /**
@@ -53,7 +53,7 @@ public class BERSet
     public BERSet(
             ASN1Encodable[]   a)
     {
-        super(a, false);
+        super(a);
     }
 
     int encodedLength()

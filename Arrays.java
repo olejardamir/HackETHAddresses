@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 /**
  * General array utilities.
  */
-public final class Arrays
+final class Arrays
 {
 
     public static boolean areEqual(

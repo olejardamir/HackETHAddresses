@@ -34,7 +34,7 @@ class SimpleBigDecimal
         }
     }
 
-    public SimpleBigDecimal adjustScale(int newScale)
+    private SimpleBigDecimal adjustScale(int newScale)
     {
         if (newScale < 0)
         {
@@ -61,7 +61,7 @@ class SimpleBigDecimal
         return new SimpleBigDecimal(bigInt.add(b.shiftLeft(scale)), scale);
     }
 
-    public SimpleBigDecimal negate()
+    private SimpleBigDecimal negate()
     {
         return new SimpleBigDecimal(bigInt.negate(), scale);
     }
@@ -93,7 +93,7 @@ class SimpleBigDecimal
         return bigInt.compareTo(val.shiftLeft(scale));
     }
 
-    public BigInteger floor()
+    private BigInteger floor()
     {
         return bigInt.shiftRight(scale);
     }
@@ -144,11 +144,9 @@ class SimpleBigDecimal
         }
         String rightOfPoint = new String(fractCharArr);
 
-        StringBuffer sb = new StringBuffer(leftOfPoint);
-        sb.append(".");
-        sb.append(rightOfPoint);
-
-        return sb.toString();
+        String sb = leftOfPoint + "." +
+                rightOfPoint;
+        return sb;
     }
 
     public boolean equals(Object o)

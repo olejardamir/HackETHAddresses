@@ -1,10 +1,10 @@
 
 import java.math.BigInteger;
 
-public abstract class FiniteFields
+abstract class FiniteFields
 {
     static final FiniteField GF_2 = new PrimeField(BigInteger.valueOf(2));
-    static final FiniteField GF_3 = new PrimeField(BigInteger.valueOf(3));
+    private static final FiniteField GF_3 = new PrimeField(BigInteger.valueOf(3));
 
     public static PolynomialExtensionField getBinaryExtensionField(int[] exponents)
     {
@@ -20,7 +20,7 @@ public abstract class FiniteFields
             }
         }
 
-        return new GenericPolynomialExtensionField(GF_2, new GF2Polynomial(exponents));
+        return new GenericPolynomialExtensionField(new GF2Polynomial(exponents));
     }
 
 

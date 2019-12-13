@@ -32,7 +32,7 @@ public class ASN1Integer
         bytes = value.toByteArray();
     }
 
-    ASN1Integer(byte[] bytes, boolean clone)
+    ASN1Integer(byte[] bytes)
     {
         // Apply loose validation, see note in public constructor ANS1Integer(byte[])
         if (!Properties.isOverrideSet("org.bouncycastle.asn1.allow_unsafe_integer"))
@@ -42,7 +42,7 @@ public class ASN1Integer
                 throw new IllegalArgumentException("malformed integer");
             }
         }
-        this.bytes = (clone) ? Arrays.clone(bytes) : bytes;
+        this.bytes = (false) ? Arrays.clone(bytes) : bytes;
     }
 
     /**
@@ -51,7 +51,7 @@ public class ASN1Integer
      * @param bytes The raw encoding of the integer.
      * @return true if the (in)put fails this validation.
      */
-    static boolean isMalformed(byte[] bytes)
+    private static boolean isMalformed(byte[] bytes)
     {
         if (bytes.length > 1)
         {
@@ -65,7 +65,7 @@ public class ASN1Integer
         return false;
     }
 
-    public BigInteger getValue()
+    private BigInteger getValue()
     {
         return new BigInteger(bytes);
     }

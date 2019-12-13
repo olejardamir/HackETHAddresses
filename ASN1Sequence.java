@@ -8,7 +8,7 @@ public abstract class ASN1Sequence
         extends ASN1Primitive
         implements  Iterable<ASN1Encodable>
 {
-    protected Vector seq = new Vector();
+    Vector seq = new Vector();
 
     /**
      * Return an ASN1Sequence from the given object.
@@ -117,7 +117,7 @@ public abstract class ASN1Sequence
     /**
      * Create an empty SEQUENCE
      */
-    protected ASN1Sequence()
+    ASN1Sequence()
     {
     }
 
@@ -125,7 +125,7 @@ public abstract class ASN1Sequence
      * Create a SEQUENCE containing one object.
      * @param obj the object to be put in the SEQUENCE.
      */
-    protected ASN1Sequence(
+    ASN1Sequence(
             ASN1Encodable obj)
     {
         seq.addElement(obj);
@@ -135,7 +135,7 @@ public abstract class ASN1Sequence
      * Create a SEQUENCE containing a vector of objects.
      * @param v the vector of objects to be put in the SEQUENCE.
      */
-    protected ASN1Sequence(
+    ASN1Sequence(
             ASN1EncodableVector v)
     {
         for (int i = 0; i != v.size(); i++)
@@ -148,8 +148,8 @@ public abstract class ASN1Sequence
      * Create a SEQUENCE containing an array of objects.
      * @param array the array of objects to be put in the SEQUENCE.
      */
-    protected ASN1Sequence(
-            ASN1Encodable[]   array)
+    ASN1Sequence(
+            ASN1Encodable[] array)
     {
         for (int i = 0; i != array.length; i++)
         {
@@ -221,7 +221,7 @@ public abstract class ASN1Sequence
      * @param index the sequence number (starting at zero) of the object
      * @return the object at the sequence position indicated by index.
      */
-    public ASN1Encodable getObjectAt(
+    private ASN1Encodable getObjectAt(
             int index)
     {
         return (ASN1Encodable)seq.elementAt(index);

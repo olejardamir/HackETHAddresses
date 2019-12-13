@@ -4,7 +4,7 @@ import java.io.IOException;
 /**
  * A Definite length BIT STRING
  */
-public class DLBitString
+class DLBitString
         extends ASN1BitString
 {
 

@@ -4,7 +4,7 @@ import java.io.IOException;
 /**
  * Utility class for converting hex data to bytes and back again.
  */
-public class Hex
+class Hex
 {
     private static final Encoder encoder = new HexEncoder();
 
@@ -13,10 +13,10 @@ public class Hex
         return toHexString(data, 0, data.length);
     }
 
-    public static String toHexString(
+    private static String toHexString(
             byte[] data,
-            int    off,
-            int    length) throws IOException {
+            int off,
+            int length) throws IOException {
         byte[] encoded = encode(data, off, length);
         return  Strings.fromByteArray(encoded);
     }
@@ -36,10 +36,10 @@ public class Hex
      *
      * @return a byte array containing the Hex encoded data.
      */
-    public static byte[] encode(
-            byte[]    data,
-            int       off,
-            int       length) throws IOException {
+    private static byte[] encode(
+            byte[] data,
+            int off,
+            int length) throws IOException {
         ByteArrayOutputStream    bOut = new ByteArrayOutputStream();
 
 

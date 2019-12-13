@@ -6,7 +6,7 @@ import java.io.IOException;
  * a [n] where n is some number - these are assumed to follow the construction
  * rules (as with sequences).
  */
-public class BERTaggedObject
+class BERTaggedObject
         extends ASN1TaggedObject
 {
     /**

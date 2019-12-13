@@ -8,7 +8,7 @@ import java.util.Enumeration;
  * <p>
  * For X.690 syntax rules, see {@link ASN1Sequence}.
  */
-public class DERSequence
+class DERSequence
         extends ASN1Sequence
 {
     private int bodyLength = -1;

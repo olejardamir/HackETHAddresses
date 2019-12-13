@@ -4,7 +4,7 @@ import java.io.IOException;
 /**
  * Interface to parse ASN.1 ApplicationSpecific objects.
  */
-public interface ASN1ApplicationSpecificParser
+interface ASN1ApplicationSpecificParser
         extends ASN1Encodable, InMemoryRepresentable
 {
     /**

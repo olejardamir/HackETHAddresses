@@ -13,8 +13,8 @@ public class DERGraphicString
      * @exception IllegalArgumentException if the object cannot be converted.
      * @return a DERGraphicString instance, or null.
      */
-    public static DERGraphicString getInstance(
-            Object  obj)
+    private static DERGraphicString getInstance(
+            Object obj)
     {
         if (obj == null || obj instanceof DERGraphicString)
         {

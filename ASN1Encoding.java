@@ -2,7 +2,7 @@
 /**
  * Supported encoding formats.
  */
-public interface ASN1Encoding
+interface ASN1Encoding
 {
     /**
      * DER - distinguished encoding rules.

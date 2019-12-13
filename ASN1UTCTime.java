@@ -40,8 +40,8 @@ public class ASN1UTCTime
      * @exception IllegalArgumentException if the object cannot be converted.
      * @return an ASN1UTCTime instance, or null.
      */
-    public static ASN1UTCTime getInstance(
-            Object  obj)
+    private static ASN1UTCTime getInstance(
+            Object obj)
     {
         if (obj == null || obj instanceof ASN1UTCTime)
         {
@@ -136,7 +136,7 @@ public class ASN1UTCTime
      *
      * @exception ParseException if the date string cannot be parsed.
      */
-    public void getDate() {
+    private void getDate() {
         SimpleDateFormat dateF = new SimpleDateFormat("yyMMddHHmmssz");
 
         //return DateUtil.epochAdjust(dateF.parse(getTime()));
@@ -160,7 +160,7 @@ public class ASN1UTCTime
      * may lead to unexpected results. If you want to stick the normal
      * convention of 1950 to 2049 use the getAdjustedTime() method.
      */
-    public String getTime()
+    private String getTime()
     {
         String stime = Strings.fromByteArray(time);
 

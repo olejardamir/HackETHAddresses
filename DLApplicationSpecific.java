@@ -4,7 +4,7 @@ import java.io.IOException;
 /**
  * A DER encoding version of an application specific object.
  */
-public class DLApplicationSpecific
+class DLApplicationSpecific
         extends ASN1ApplicationSpecific
 {
     DLApplicationSpecific(

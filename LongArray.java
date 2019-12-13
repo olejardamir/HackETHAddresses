@@ -73,7 +73,7 @@ class LongArray implements Cloneable
 
     private long[] m_ints;
 
-    public LongArray(int intLen)
+    private LongArray(int intLen)
     {
         m_ints = new long[intLen];
     }
@@ -83,7 +83,7 @@ class LongArray implements Cloneable
         m_ints = ints;
     }
 
-    public LongArray(long[] ints, int off, int len)
+    private LongArray(long[] ints, int off, int len)
     {
         if (off == 0 && len == ints.length)
         {
@@ -175,22 +175,20 @@ class LongArray implements Cloneable
     public boolean isZero()
     {
         long[] a = m_ints;
-        for (int i = 0; i < a.length; ++i)
-        {
-            if (a[i] != 0L)
-            {
+        for (long l : a) {
+            if (l != 0L) {
                 return false;
             }
         }
         return true;
     }
 
-    public int getUsedLength()
+    private int getUsedLength()
     {
         return getUsedLengthFrom(m_ints.length);
     }
 
-    public int getUsedLengthFrom(int from)
+    private int getUsedLengthFrom(int from)
     {
         long[] a = m_ints;
         from = Math.min(from, a.length);
@@ -338,10 +336,7 @@ class LongArray implements Cloneable
 
         int barrLen = 8 * (usedLen - 1) + barrI;
         byte[] barr = new byte[barrLen];
-        for (int j = 0; j < barrI; j++)
-        {
-            barr[j] = temp[j];
-        }
+        if (barrI >= 0) System.arraycopy(temp, 0, barr, 0, barrI);
         // Highest value int is done now
 
         for (int iarrJ = usedLen - 2; iarrJ >= 0; iarrJ--)
@@ -587,21 +582,21 @@ class LongArray implements Cloneable
 //        buf[off + theInt] &= ~setter;
 //    }
 
-    private static void multiplyWord(long a, long[] b, int bLen, long[] c, int cOff)
+    private static void multiplyWord(long a, long[] b, int bLen, long[] c)
     {
         if ((a & 1L) != 0L)
         {
-            add(c, cOff, b, 0, bLen);
+            add(c, 0, b, 0, bLen);
         }
         int k = 1;
         while ((a >>>= 1) != 0L)
         {
             if ((a & 1L) != 0L)
             {
-                long carry = addShiftedUp(c, cOff, b, 0, bLen, k);
+                long carry = addShiftedUp(c, 0, b, 0, bLen, k);
                 if (carry != 0L)
                 {
-                    c[cOff + bLen] ^= carry;
+                    c[bLen] ^= carry;
                 }
             }
             ++k;
@@ -653,12 +648,12 @@ class LongArray implements Cloneable
              * Fast path for small A, with performance dependent only on the number of set bits
              */
             long[] c0 = new long[cLen];
-            multiplyWord(a0, B.m_ints, bLen, c0, 0);
+            multiplyWord(a0, B.m_ints, bLen, c0);
 
             /*
              * Reduce the raw answer against the reduction coefficients
              */
-            return reduceResult(c0, 0, cLen, m, ks);
+            return reduceResult(c0, cLen, m, ks);
         }
 
         /*
@@ -737,7 +732,7 @@ class LongArray implements Cloneable
         /*
          * Finally the raw answer is collected, reduce it against the reduction coefficients
          */
-        return reduceResult(c, 0, cLen, m, ks);
+        return reduceResult(c, cLen, m, ks);
     }
 
     public LongArray multiply(LongArray other)
@@ -785,7 +780,7 @@ class LongArray implements Cloneable
              * Fast path for small A, with performance dependent only on the number of set bits
              */
             long[] c0 = new long[cLen];
-            multiplyWord(a0, B.m_ints, bLen, c0, 0);
+            multiplyWord(a0, B.m_ints, bLen, c0);
 
             /*
              * Reduce the raw answer against the reduction coefficients
@@ -885,10 +880,10 @@ class LongArray implements Cloneable
         }
     }
 
-    private static LongArray reduceResult(long[] buf, int off, int len, int m, int[] ks)
+    private static LongArray reduceResult(long[] buf, int len, int m, int[] ks)
     {
-        int rLen = reduceInPlace(buf, off, len, m, ks);
-        return new LongArray(buf, off, rLen);
+        int rLen = reduceInPlace(buf, 0, len, m, ks);
+        return new LongArray(buf, 0, rLen);
     }
 
 //    private static void deInterleave(long[] x, int xOff, long[] z, int zOff, int count, int rounds)
@@ -1246,8 +1241,7 @@ class LongArray implements Cloneable
 //        return t4.modMultiply(t1, m, ks);
 //    }
 
-    public LongArray modInverse(int m, int[] ks)
-    {
+    public LongArray modInverse(int m, int[] ks) throws CloneNotSupportedException {
         /*
          * Fermat's Little Theorem
          */
@@ -1397,8 +1391,8 @@ class LongArray implements Cloneable
         return hash;
     }
 
-    public Object clone()
-    {
+    public Object clone() throws CloneNotSupportedException {
+        Object o = super.clone();
         return new LongArray(Arrays.clone(m_ints));
     }
 
@@ -1410,7 +1404,7 @@ class LongArray implements Cloneable
             return "0";
         }
 
-        StringBuffer sb = new StringBuffer(Long.toBinaryString(m_ints[--i]));
+        StringBuilder sb = new StringBuilder(Long.toBinaryString(m_ints[--i]));
         while (--i >= 0)
         {
             String s = Long.toBinaryString(m_ints[i]);

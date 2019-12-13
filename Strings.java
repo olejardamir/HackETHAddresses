@@ -5,12 +5,12 @@ import java.security.PrivilegedAction;
 /**
  * String utilities.
  */
-public final class Strings
+final class Strings
 {
-    private static String LINE_SEPARATOR;
 
     static
     {
+        String LINE_SEPARATOR;
         try
         {
             LINE_SEPARATOR = AccessController.doPrivileged(new PrivilegedAction<String>()
@@ -32,7 +32,6 @@ public final class Strings
             }
             catch (Exception ef)
             {
-                LINE_SEPARATOR = "\n";   // we're desperate use this...
             }
         }
     }
@@ -82,7 +81,7 @@ public final class Strings
         return new String(asCharArray(bytes));
     }
 
-    public static char[] asCharArray(byte[] bytes)
+    private static char[] asCharArray(byte[] bytes)
     {
         char[] chars = new char[bytes.length];
 

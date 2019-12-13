@@ -19,8 +19,8 @@ public class DERT61String
      * @exception IllegalArgumentException if the object cannot be converted.
      * @return a DERT61String instance, or null
      */
-    public static DERT61String getInstance(
-            Object  obj)
+    private static DERT61String getInstance(
+            Object obj)
     {
         if (obj == null || obj instanceof DERT61String)
         {

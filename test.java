@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 public class test {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, CloneNotSupportedException {
 
         {
             String privatekey = "8da4ef21b864d2cc526dbdb2a120bd2874c36c9d0a1fb7f8c63d7f7a8b41de8f";
@@ -164,16 +164,16 @@ public class test {
             if (true) {
                 stringBuilder8.append("0x");
             }
-            for (int i2 = 0; i2 < 0 + result8.length; i2++) {
-                stringBuilder8.append(String.format("%02x", result8[i2] & 0xFF));
+            for (byte b7 : result8) {
+                stringBuilder8.append(String.format("%02x", b7 & 0xFF));
             }
 
             StringBuilder stringBuilder9 = new StringBuilder();
             if (true) {
                 stringBuilder9.append("0x");
             }
-            for (int i2 = 0; i2 < 0 + result9.length; i2++) {
-                stringBuilder9.append(String.format("%02x", result9[i2] & 0xFF));
+            for (byte b6 : result9) {
+                stringBuilder9.append(String.format("%02x", b6 & 0xFF));
             }
 
             String s = stringBuilder9.toString().substring(stringBuilder8.toString().length() - (160 >> 2));
@@ -391,48 +391,48 @@ public class test {
             if (true) {
                 stringBuilder2.append("0x");
             }
-            for (int i1 = 0; i1 < 0 + result2.length; i1++) {
-                stringBuilder2.append(String.format("%02x", result2[i1] & 0xFF));
+            for (byte b5 : result2) {
+                stringBuilder2.append(String.format("%02x", b5 & 0xFF));
             }
 
             StringBuilder stringBuilder3 = new StringBuilder();
             if (true) {
                 stringBuilder3.append("0x");
             }
-            for (int i1 = 0; i1 < 0 + result3.length; i1++) {
-                stringBuilder3.append(String.format("%02x", result3[i1] & 0xFF));
+            for (byte b4 : result3) {
+                stringBuilder3.append(String.format("%02x", b4 & 0xFF));
             }
 
             StringBuilder stringBuilder4 = new StringBuilder();
             if (true) {
                 stringBuilder4.append("0x");
             }
-            for (int i1 = 0; i1 < 0 + result4.length; i1++) {
-                stringBuilder4.append(String.format("%02x", result4[i1] & 0xFF));
+            for (byte b3 : result4) {
+                stringBuilder4.append(String.format("%02x", b3 & 0xFF));
             }
 
             StringBuilder stringBuilder5 = new StringBuilder();
             if (true) {
                 stringBuilder5.append("0x");
             }
-            for (int i1 = 0; i1 < 0 + result5.length; i1++) {
-                stringBuilder5.append(String.format("%02x", result5[i1] & 0xFF));
+            for (byte b2 : result5) {
+                stringBuilder5.append(String.format("%02x", b2 & 0xFF));
             }
 
             StringBuilder stringBuilder6 = new StringBuilder();
             if (true) {
                 stringBuilder6.append("0x");
             }
-            for (int i1 = 0; i1 < 0 + result6.length; i1++) {
-                stringBuilder6.append(String.format("%02x", result6[i1] & 0xFF));
+            for (byte b1 : result6) {
+                stringBuilder6.append(String.format("%02x", b1 & 0xFF));
             }
 
             StringBuilder stringBuilder7 = new StringBuilder();
             if (true) {
                 stringBuilder7.append("0x");
             }
-            for (int i1 = 0; i1 < 0 + result7.length; i1++) {
-                stringBuilder7.append(String.format("%02x", result7[i1] & 0xFF));
+            for (byte element : result7) {
+                stringBuilder7.append(String.format("%02x", element & 0xFF));
             }
 
             if (!(!(s == null || s.length() == 0)
@@ -513,16 +513,16 @@ public class test {
                 if (true) {
                     stringBuilder.append("0x");
                 }
-                for (int i = 0; i < 0 + result.length; i++) {
-                    stringBuilder.append(String.format("%02x", result[i] & 0xFF));
+                for (byte item : result) {
+                    stringBuilder.append(String.format("%02x", item & 0xFF));
                 }
 
                 StringBuilder stringBuilder1 = new StringBuilder();
                 if (true) {
                     stringBuilder1.append("0x");
                 }
-                for (int i = 0; i < 0 + result1.length; i++) {
-                    stringBuilder1.append(String.format("%02x", result1[i] & 0xFF));
+                for (byte b : result1) {
+                    stringBuilder1.append(String.format("%02x", b & 0xFF));
                 }
 
                 address1 = "0x" + stringBuilder1.toString().substring(stringBuilder.toString().length() - (160 >> 2));
@@ -601,16 +601,16 @@ public class test {
                 if (true) {
                     stringBuilder.append("0x");
                 }
-                for (int i = 0; i < 0 + result.length; i++) {
-                    stringBuilder.append(String.format("%02x", result[i] & 0xFF));
+                for (byte item : result) {
+                    stringBuilder.append(String.format("%02x", item & 0xFF));
                 }
 
                 StringBuilder stringBuilder1 = new StringBuilder();
                 if (true) {
                     stringBuilder1.append("0x");
                 }
-                for (int i = 0; i < 0 + result1.length; i++) {
-                    stringBuilder1.append(String.format("%02x", result1[i] & 0xFF));
+                for (byte b : result1) {
+                    stringBuilder1.append(String.format("%02x", b & 0xFF));
                 }
 
                 address1 = stringBuilder1.toString().substring(stringBuilder.toString().length() - (160 >> 2));

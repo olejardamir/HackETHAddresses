@@ -7,10 +7,10 @@ import java.io.InputStream;
 abstract class LimitedInputStream
         extends InputStream
 {
-    protected final InputStream _in;
+    final InputStream _in;
     private int _limit;
 
-    protected LimitedInputStream(InputStream in) {
+    LimitedInputStream(InputStream in) {
         _in = in;
     }
 
@@ -20,11 +20,11 @@ abstract class LimitedInputStream
         return _limit;
     }
 
-    protected void setParentEofDetect(boolean on)
+    void setParentEofDetect()
     {
         if (_in instanceof IndefiniteLengthInputStream)
         {
-            ((IndefiniteLengthInputStream)_in).setEofOn00(on);
+            ((IndefiniteLengthInputStream)_in).setEofOn00(true);
         }
     }
 }

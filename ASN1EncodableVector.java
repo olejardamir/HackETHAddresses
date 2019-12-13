@@ -4,7 +4,7 @@ import java.util.Vector;
 /**
  * Mutable class for building ASN.1 constructed objects such as SETs or SEQUENCEs.
  */
-public class ASN1EncodableVector
+class ASN1EncodableVector
 {
     private final Vector v = new Vector();
 

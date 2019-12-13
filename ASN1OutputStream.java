@@ -5,7 +5,7 @@ import java.io.OutputStream;
 /**
  * Stream that produces output based on the default encoding for the passed in objects.
  */
-public class ASN1OutputStream
+class ASN1OutputStream
 {
     private OutputStream os;
 
@@ -54,7 +54,7 @@ public class ASN1OutputStream
         os.write(bytes);
     }
 
-    void write(byte[] bytes, int off, int len)
+    private void write(byte[] bytes, int off, int len)
             throws IOException
     {
         os.write(bytes, off, len);
@@ -152,7 +152,7 @@ public class ASN1OutputStream
             extends ASN1OutputStream
     {
 
-        public ImplicitOutputStream(OutputStream os)
+        ImplicitOutputStream(OutputStream os)
         {
             super(os);
         }

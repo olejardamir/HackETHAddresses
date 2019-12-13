@@ -3,12 +3,12 @@ import java.math.BigInteger;
 
 class GenericPolynomialExtensionField implements PolynomialExtensionField
 {
-    protected final FiniteField subfield;
-    protected final Polynomial minimalPolynomial;
+    private final FiniteField subfield;
+    private final Polynomial minimalPolynomial;
 
-    GenericPolynomialExtensionField(FiniteField subfield, Polynomial polynomial)
+    GenericPolynomialExtensionField(Polynomial polynomial)
     {
-        this.subfield = subfield;
+        this.subfield = FiniteFields.GF_2;
         this.minimalPolynomial = polynomial;
     }
 

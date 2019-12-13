@@ -1,4 +1,4 @@
-public interface ExtensionField extends FiniteField
+interface ExtensionField extends FiniteField
 {
 
 }

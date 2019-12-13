@@ -29,7 +29,7 @@ class DefiniteLengthInputStream
 
         if (length == 0)
         {
-            setParentEofDetect(true);
+            setParentEofDetect();
         }
     }
 
@@ -55,7 +55,7 @@ class DefiniteLengthInputStream
 
         if (--_remaining == 0)
         {
-            setParentEofDetect(true);
+            setParentEofDetect();
         }
 
         return b;
@@ -79,7 +79,7 @@ class DefiniteLengthInputStream
 
         if ((_remaining -= numRead) == 0)
         {
-            setParentEofDetect(true);
+            setParentEofDetect();
         }
 
         return numRead;
@@ -98,7 +98,7 @@ class DefiniteLengthInputStream
         {
             throw new EOFException("DEF length " + _originalLength + " object truncated by " + _remaining);
         }
-        setParentEofDetect(true);
+        setParentEofDetect();
         return bytes;
     }
 }

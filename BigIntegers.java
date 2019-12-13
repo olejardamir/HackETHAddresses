@@ -3,7 +3,7 @@ import java.math.BigInteger;
 /**
  * BigInteger utilities.
  */
-public final class BigIntegers
+final class BigIntegers
 {
 
     /**

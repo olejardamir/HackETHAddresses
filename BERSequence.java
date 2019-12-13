@@ -10,7 +10,7 @@ import java.util.Enumeration;
  * For X.690 syntax rules, see {@link ASN1Sequence}.
  * </p>
  */
-public class BERSequence
+class BERSequence
         extends ASN1Sequence
 {
     /**

@@ -4,10 +4,9 @@ import java.math.BigInteger;
 
 public class WTauNafMultiplier extends AbstractECMultiplier
 {
-     static final String PRECOMP_NAME = "bc_wtnaf";
+     private static final String PRECOMP_NAME = "bc_wtnaf";
 
-    protected ECPoint multiplyPositive(ECPoint point, BigInteger k)
-    {
+    protected ECPoint multiplyPositive(ECPoint point, BigInteger k) throws CloneNotSupportedException {
         if (!(point instanceof ECPoint.AbstractF2m))
         {
             throw new IllegalArgumentException("Only ECPoint.AbstractF2m can be " +
@@ -25,8 +24,7 @@ public class WTauNafMultiplier extends AbstractECMultiplier
     }
 
 
-    private ECPoint.AbstractF2m multiplyWTnaf(ECPoint.AbstractF2m p, ZTauElement lambda, byte a, byte mu)
-    {
+    private ECPoint.AbstractF2m multiplyWTnaf(ECPoint.AbstractF2m p, ZTauElement lambda, byte a, byte mu) throws CloneNotSupportedException {
 
         BigInteger tw = Tnaf.getTw(mu, Tnaf.WIDTH);
 
@@ -37,15 +35,13 @@ public class WTauNafMultiplier extends AbstractECMultiplier
     }
 
 
-    private static ECPoint.AbstractF2m multiplyFromWTnaf(final ECPoint.AbstractF2m p, byte[] u)
-    {
+    private static ECPoint.AbstractF2m multiplyFromWTnaf(final ECPoint.AbstractF2m p, byte[] u) throws CloneNotSupportedException {
         ECCurve.AbstractF2m curve = (ECCurve.AbstractF2m)p.getCurve();
         final byte a = curve.getA().toBigInteger().byteValue();
 
         WTauNafPreCompInfo preCompInfo = (WTauNafPreCompInfo)curve.precompute(p, PRECOMP_NAME, new PreCompCallback()
         {
-            public PreCompInfo precompute(PreCompInfo existing)
-            {
+            public PreCompInfo precompute(PreCompInfo existing) throws CloneNotSupportedException {
                 if (existing instanceof WTauNafPreCompInfo)
                 {
                     return existing;

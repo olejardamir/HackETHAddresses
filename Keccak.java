@@ -1,4 +1,4 @@
-public class Keccak
+class Keccak
 {
     private Keccak()
     {
@@ -9,7 +9,7 @@ public class Keccak
             extends BCMessageDigest
             implements Cloneable
     {
-        public DigestKeccak(int size)
+        DigestKeccak(int size)
         {
             super(new KeccakDigest(size));
         }
