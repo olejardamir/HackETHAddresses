@@ -3,10 +3,10 @@ import java.security.MessageDigest;
 class BCMessageDigest
         extends MessageDigest
 {
-    Digest  digest;
+    ExtendedDigest digest;
 
     BCMessageDigest(
-            Digest digest)
+            ExtendedDigest digest)
     {
         super(digest.getAlgorithmName());
 

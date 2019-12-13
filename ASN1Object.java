@@ -6,8 +6,7 @@ import java.io.IOException;
  * Base class for defining an ASN.1 object.
  */
 public abstract class ASN1Object
-        implements ASN1Encodable, Encodable
-{
+        implements ASN1Encodable {
     /**
      * Return the default BER or DER encoding for this object.
      *

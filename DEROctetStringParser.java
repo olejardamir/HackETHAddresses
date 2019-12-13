@@ -8,7 +8,7 @@ import java.io.InputStream;
 public class DEROctetStringParser
         implements ASN1OctetStringParser
 {
-    private DefiniteLengthInputStream stream;
+    private final DefiniteLengthInputStream stream;
 
     DEROctetStringParser(
             DefiniteLengthInputStream stream)

@@ -7,7 +7,7 @@ import java.io.IOException;
 public class DERExternalParser
         implements ASN1Encodable, InMemoryRepresentable
 {
-    private ASN1StreamParser _parser;
+    private final ASN1StreamParser _parser;
 
     /**
      * Base constructor.

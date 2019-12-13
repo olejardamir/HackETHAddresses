@@ -144,7 +144,7 @@ class ASN1StreamParser
                 throw new IOException("indefinite-length primitive encoding encountered");
             }
 
-            IndefiniteLengthInputStream indIn = new IndefiniteLengthInputStream(_in, _limit);
+            IndefiniteLengthInputStream indIn = new IndefiniteLengthInputStream(_in);
             ASN1StreamParser sp = new ASN1StreamParser(indIn, _limit);
 
             if ((tag & BERTags.APPLICATION) != 0)

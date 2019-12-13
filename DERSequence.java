@@ -59,9 +59,8 @@ class DERSequence
 
             for (Enumeration e = this.getObjects(); e.hasMoreElements();)
             {
-                Object    obj = e.nextElement();
 
-                length += ((ASN1Encodable)obj).toASN1Primitive().toDERObject().encodedLength();
+                length += ((ASN1Encodable) e.nextElement()).toASN1Primitive().toDERObject().encodedLength();
             }
 
             bodyLength = length;
@@ -73,9 +72,8 @@ class DERSequence
     int encodedLength()
             throws IOException
     {
-        int length = getBodyLength();
 
-        return 1 + StreamUtil.calculateBodyLength(length) + length;
+        return 1 + StreamUtil.calculateBodyLength(getBodyLength()) + getBodyLength();
     }
 
     /*
@@ -90,17 +88,14 @@ class DERSequence
             ASN1OutputStream out)
             throws IOException
     {
-        ASN1OutputStream        dOut = out.getDERSubStream();
-        int                     length = getBodyLength();
 
         out.write(BERTags.SEQUENCE | BERTags.CONSTRUCTED);
-        out.writeLength(length);
+        out.writeLength(getBodyLength());
 
         for (Enumeration e = this.getObjects(); e.hasMoreElements();)
         {
-            Object    obj = e.nextElement();
 
-            dOut.writeObject((ASN1Encodable)obj);
+            out.getDERSubStream().writeObject((ASN1Encodable) e.nextElement());
         }
     }
 }

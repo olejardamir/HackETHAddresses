@@ -108,18 +108,17 @@ public abstract class ASN1Set
     /**
      * Create a SET containing a vector of objects.
      * @param v a vector of objects to make up the SET.
-     * @param doSort true if should be sorted DER style, false otherwise.
+     *
      */
     ASN1Set(
-            ASN1EncodableVector v,
-            boolean doSort)
+            ASN1EncodableVector v)
     {
         for (int i = 0; i != v.size(); i++)
         {
             set.addElement(v.get(i));
         }
 
-        if (doSort)
+        if (false)
         {
             this.sort();
         }

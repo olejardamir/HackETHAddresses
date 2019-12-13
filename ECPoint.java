@@ -40,10 +40,10 @@ public abstract class ECPoint
         }
     }
 
-    ECCurve curve;
-    ECFieldElement x;
-    ECFieldElement y;
-    ECFieldElement[] zs;
+    final ECCurve curve;
+    final ECFieldElement x;
+    final ECFieldElement y;
+    final ECFieldElement[] zs;
 
     boolean withCompression;
 

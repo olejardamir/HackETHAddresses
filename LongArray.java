@@ -83,16 +83,16 @@ class LongArray implements Cloneable
         m_ints = ints;
     }
 
-    private LongArray(long[] ints, int off, int len)
+    private LongArray(long[] ints, int len)
     {
-        if (off == 0 && len == ints.length)
+        if (len == ints.length)
         {
             m_ints = ints;
         }
         else
         {
             m_ints = new long[len];
-            System.arraycopy(ints, off, m_ints, 0, len);
+            System.arraycopy(ints, 0, m_ints, 0, len);
         }
     }
 
@@ -786,7 +786,7 @@ class LongArray implements Cloneable
              * Reduce the raw answer against the reduction coefficients
              */
 //            return reduceResult(c0, 0, cLen, m, ks);
-            return new LongArray(c0, 0, cLen);
+            return new LongArray(c0, cLen);
         }
 
         /*
@@ -866,13 +866,13 @@ class LongArray implements Cloneable
          * Finally the raw answer is collected, reduce it against the reduction coefficients
          */
 //        return reduceResult(c, 0, cLen, m, ks);
-        return new LongArray(c, 0, cLen);
+        return new LongArray(c, cLen);
     }
 
     public void reduce(int m, int[] ks)
     {
         long[] buf = m_ints;
-        int rLen = reduceInPlace(buf, 0, buf.length, m, ks);
+        int rLen = reduceInPlace(buf, buf.length, m, ks);
         if (rLen < buf.length)
         {
             m_ints = new long[rLen];
@@ -882,8 +882,8 @@ class LongArray implements Cloneable
 
     private static LongArray reduceResult(long[] buf, int len, int m, int[] ks)
     {
-        int rLen = reduceInPlace(buf, 0, len, m, ks);
-        return new LongArray(buf, 0, rLen);
+        int rLen = reduceInPlace(buf, len, m, ks);
+        return new LongArray(buf, rLen);
     }
 
 //    private static void deInterleave(long[] x, int xOff, long[] z, int zOff, int count, int rounds)
@@ -913,7 +913,7 @@ class LongArray implements Cloneable
 //        return x;
 //    }
 
-    private static int reduceInPlace(long[] buf, int off, int len, int m, int[] ks)
+    private static int reduceInPlace(long[] buf, int len, int m, int[] ks)
     {
         int mLen = (m + 63) >>> 6;
         if (len < mLen)
@@ -935,35 +935,35 @@ class LongArray implements Cloneable
         if (vectorableWords > 1)
         {
             int vectorWiseWords = len - vectorableWords;
-            reduceVectorWise(buf, off, len, vectorWiseWords, m, ks);
+            reduceVectorWise(buf, len, vectorWiseWords, m, ks);
             while (len > vectorWiseWords)
             {
-                buf[off + --len] = 0L;
+                buf[--len] = 0L;
             }
             numBits = vectorWiseWords << 6;
         }
 
         if (numBits > wordWiseLimit)
         {
-            reduceWordWise(buf, off, len, wordWiseLimit, m, ks);
+            reduceWordWise(buf, len, wordWiseLimit, m, ks);
             numBits = wordWiseLimit;
         }
 
         if (numBits > m)
         {
-            reduceBitWise(buf, off, numBits, m, ks);
+            reduceBitWise(buf, numBits, m, ks);
         }
 
         return mLen;
     }
 
-    private static void reduceBitWise(long[] buf, int off, int bitlength, int m, int[] ks)
+    private static void reduceBitWise(long[] buf, int bitlength, int m, int[] ks)
     {
         while (--bitlength >= m)
         {
-            if (testBit(buf, off, bitlength))
+            if (testBit(buf, 0, bitlength))
             {
-                reduceBit(buf, off, bitlength, m, ks);
+                reduceBit(buf, 0, bitlength, m, ks);
             }
         }
     }
@@ -980,27 +980,27 @@ class LongArray implements Cloneable
         flipBit(buf, off, n);
     }
 
-    private static void reduceWordWise(long[] buf, int off, int len, int toBit, int m, int[] ks)
+    private static void reduceWordWise(long[] buf, int len, int toBit, int m, int[] ks)
     {
         int toPos = toBit >>> 6;
 
         while (--len > toPos)
         {
-            long word = buf[off + len];
+            long word = buf[0 + len];
             if (word != 0)
             {
-                buf[off + len] = 0;
-                reduceWord(buf, off, (len << 6), word, m, ks);
+                buf[0 + len] = 0;
+                reduceWord(buf, 0, (len << 6), word, m, ks);
             }
         }
 
         {
             int partial = toBit & 0x3F;
-            long word = buf[off + toPos] >>> partial;
+            long word = buf[0 + toPos] >>> partial;
             if (word != 0)
             {
-                buf[off + toPos] ^= word << partial;
-                reduceWord(buf, off, toBit, word, m, ks);
+                buf[0 + toPos] ^= word << partial;
+                reduceWord(buf, 0, toBit, word, m, ks);
             }
         }
     }
@@ -1016,7 +1016,7 @@ class LongArray implements Cloneable
         flipWord(buf, off, offset, word);
     }
 
-    private static void reduceVectorWise(long[] buf, int off, int len, int words, int m, int[] ks)
+    private static void reduceVectorWise(long[] buf, int len, int words, int m, int[] ks)
     {
         /*
          * NOTE: It's important we go from highest coefficient to lowest, because for the highest
@@ -1027,9 +1027,9 @@ class LongArray implements Cloneable
         int j = ks.length;
         while (--j >= 0)
         {
-            flipVector(buf, off, buf, off + words, len - words, baseBit + ks[j]);
+            flipVector(buf, 0, buf, 0 + words, len - words, baseBit + ks[j]);
         }
-        flipVector(buf, off, buf, off + words, len - words, baseBit);
+        flipVector(buf, 0, buf, 0 + words, len - words, baseBit);
     }
 
     private static void flipVector(long[] x, int xOff, long[] y, int yOff, int yLen, int bits)
@@ -1067,7 +1067,7 @@ class LongArray implements Cloneable
             r[pos++] = interleave2_32to64((int)(mi >>> 32));
         }
 
-        return new LongArray(r, 0, reduceInPlace(r, 0, r.length, m, ks));
+        return new LongArray(r, reduceInPlace(r, r.length, m, ks));
     }
 
     public LongArray modSquareN(int n, int m, int[] ks)
@@ -1085,10 +1085,10 @@ class LongArray implements Cloneable
         while (--n >= 0)
         {
             squareInPlace(r, len);
-            len = reduceInPlace(r, 0, r.length, m, ks);
+            len = reduceInPlace(r, r.length, m, ks);
         }
 
-        return new LongArray(r, 0, len);
+        return new LongArray(r, len);
     }
 
     public LongArray square()
@@ -1110,7 +1110,7 @@ class LongArray implements Cloneable
             r[pos++] = interleave2_32to64((int)(mi >>> 32));
         }
 
-        return new LongArray(r, 0, r.length);
+        return new LongArray(r, r.length);
     }
 
     private static void squareInPlace(long[] x, int xLen)

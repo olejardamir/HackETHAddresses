@@ -9,9 +9,9 @@ class Keccak
             extends BCMessageDigest
             implements Cloneable
     {
-        DigestKeccak(int size)
+        DigestKeccak()
         {
-            super(new KeccakDigest(size));
+            super(new KeccakDigest(256));
         }
 
         public Object clone()
@@ -29,7 +29,7 @@ class Keccak
     {
         public Digest256()
         {
-            super(256);
+            super();
         }
     }
 

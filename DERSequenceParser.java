@@ -7,7 +7,7 @@ import java.io.IOException;
 public class DERSequenceParser
         implements ASN1SequenceParser
 {
-    private ASN1StreamParser _parser;
+    private final ASN1StreamParser _parser;
 
     DERSequenceParser(ASN1StreamParser parser)
     {

@@ -42,7 +42,7 @@ public class ASN1Integer
                 throw new IllegalArgumentException("malformed integer");
             }
         }
-        this.bytes = (false) ? Arrays.clone(bytes) : bytes;
+        this.bytes = bytes;
     }
 
     /**

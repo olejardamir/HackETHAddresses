@@ -31,7 +31,7 @@ import java.util.SimpleTimeZone;
 public class ASN1UTCTime
         extends ASN1Primitive
 {
-    private byte[]      time;
+    private final byte[]      time;
 
     /**
      * Return an UTC Time from the passed in object.

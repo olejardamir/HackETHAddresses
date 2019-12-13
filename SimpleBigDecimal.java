@@ -144,9 +144,8 @@ class SimpleBigDecimal
         }
         String rightOfPoint = new String(fractCharArr);
 
-        String sb = leftOfPoint + "." +
+        return leftOfPoint + "." +
                 rightOfPoint;
-        return sb;
     }
 
     public boolean equals(Object o)

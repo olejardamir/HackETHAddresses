@@ -77,7 +77,7 @@ class DERTaggedObject
     }
 
     @Override
-    void encode(ASN1OutputStream out) throws IOException {
+    void encode(ASN1OutputStream out) {
 
     }
 

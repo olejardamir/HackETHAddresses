@@ -1,7 +1,7 @@
 
 import java.math.BigInteger;
 
-public class GLVTypeBParameters
+class GLVTypeBParameters
 {
     private static void checkVector(BigInteger[] v, String name)
     {
@@ -12,7 +12,6 @@ public class GLVTypeBParameters
     }
 
     private final BigInteger beta;
-    private final BigInteger lambda;
     private final BigInteger v1A;
     private final BigInteger v1B;
     private final BigInteger v2A;
@@ -28,7 +27,6 @@ public class GLVTypeBParameters
         checkVector(v2, "v2");
 
         this.beta = beta;
-        this.lambda = lambda;
         this.v1A = v1[0];
         this.v1B = v1[1];
         this.v2A = v2[0];

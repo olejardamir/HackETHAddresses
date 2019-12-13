@@ -18,11 +18,11 @@ public abstract class ECCurve
 
     public class Config
     {
-        int coord;
+        final int coord;
         ECEndomorphism endomorphism;
-        ECMultiplier multiplier;
+        final AbstractECMultiplier multiplier;
 
-        Config(int coord, ECEndomorphism endomorphism, ECMultiplier multiplier)
+        Config(int coord, ECEndomorphism endomorphism, AbstractECMultiplier multiplier)
         {
             this.coord = coord;
             this.endomorphism = endomorphism;
@@ -59,7 +59,7 @@ public abstract class ECCurve
         }
     }
 
-    private FiniteField field;
+    private final FiniteField field;
     ECFieldElement a;
     ECFieldElement b;
     BigInteger order;
@@ -67,7 +67,7 @@ public abstract class ECCurve
 
     int coord = COORD_AFFINE;
     private ECEndomorphism endomorphism = null;
-    private ECMultiplier multiplier = null;
+    private AbstractECMultiplier multiplier = null;
 
     ECCurve(FiniteField field)
     {
@@ -125,7 +125,7 @@ public abstract class ECCurve
 
     protected abstract ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, ECFieldElement[] zs, boolean withCompression);
 
-    ECMultiplier createDefaultMultiplier()
+    AbstractECMultiplier createDefaultMultiplier()
     {
         if (endomorphism instanceof GLVEndomorphism)
         {
@@ -556,18 +556,19 @@ public abstract class ECCurve
     {
         private static final int FP_DEFAULT_COORDS = ECCurve.COORD_JACOBIAN_MODIFIED;
 
-        BigInteger q, r;
-        ECPoint.Fp infinity;
+        final BigInteger q;
+        final BigInteger r;
+        final ECPoint.Fp infinity;
 
         /**
          * @deprecated use constructor taking order/cofactor
          */
         public Fp(BigInteger q, BigInteger a, BigInteger b)
         {
-            this(q, a, b, null, null);
+            this(q, a, b, null);
         }
 
-        Fp(BigInteger q, BigInteger a, BigInteger b, BigInteger order, BigInteger cofactor)
+        Fp(BigInteger q, BigInteger a, BigInteger b, BigInteger order)
         {
             super(q);
 
@@ -578,7 +579,7 @@ public abstract class ECCurve
             this.a = fromBigInteger(a);
             this.b = fromBigInteger(b);
             this.order = order;
-            this.cofactor = cofactor;
+            this.cofactor = null;
             this.coord = FP_DEFAULT_COORDS;
         }
 
@@ -843,7 +844,7 @@ public abstract class ECCurve
         /**
          * The exponent <code>m</code> of <code>F<sub>2<sup>m</sup></sub></code>.
          */
-        private int m;  // can't be final - JDK 1.1
+        private final int m;  // can't be final - JDK 1.1
 
         /**
          * TPB: The integer <code>k</code> where <code>x<sup>m</sup> +
@@ -853,7 +854,7 @@ public abstract class ECCurve
          * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
          * represents the reduction polynomial <code>f(z)</code>.<br>
          */
-        private int k1;  // can't be final - JDK 1.1
+        private final int k1;  // can't be final - JDK 1.1
 
         /**
          * TPB: Always set to <code>0</code><br>
@@ -861,7 +862,7 @@ public abstract class ECCurve
          * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
          * represents the reduction polynomial <code>f(z)</code>.<br>
          */
-        private int k2;  // can't be final - JDK 1.1
+        private final int k2;  // can't be final - JDK 1.1
 
         /**
          * TPB: Always set to <code>0</code><br>
@@ -869,12 +870,12 @@ public abstract class ECCurve
          * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
          * represents the reduction polynomial <code>f(z)</code>.<br>
          */
-        private int k3;  // can't be final - JDK 1.1
+        private final int k3;  // can't be final - JDK 1.1
 
         /**
          * The point at infinity on this curve.
          */
-        private ECPoint.F2m infinity;  // can't be final - JDK 1.1
+        private final ECPoint.F2m infinity;  // can't be final - JDK 1.1
 
         /**
          * Constructor for Trinomial Polynomial Basis (TPB).
@@ -897,7 +898,7 @@ public abstract class ECCurve
                 BigInteger a,
                 BigInteger b)
         {
-            this(m, k, 0, 0, a, b, null, null);
+            this(m, k, 0, 0, a, b, null);
         }
 
         /**
@@ -929,7 +930,7 @@ public abstract class ECCurve
                 BigInteger a,
                 BigInteger b)
         {
-            this(m, k1, k2, k3, a, b, null, null);
+            this(m, k1, k2, k3, a, b, null);
         }
 
         /**
@@ -940,20 +941,18 @@ public abstract class ECCurve
          * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
          * represents the reduction polynomial <code>f(z)</code>.
          * @param k2 The integer <code>k2</code> where <code>x<sup>m</sup> +
-         * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-         * represents the reduction polynomial <code>f(z)</code>.
+ * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
+ * represents the reduction polynomial <code>f(z)</code>.
          * @param k3 The integer <code>k3</code> where <code>x<sup>m</sup> +
-         * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-         * represents the reduction polynomial <code>f(z)</code>.
+* x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
+* represents the reduction polynomial <code>f(z)</code>.
          * @param a The coefficient <code>a</code> in the Weierstrass equation
-         * for non-supersingular elliptic curves over
-         * <code>F<sub>2<sup>m</sup></sub></code>.
+* for non-supersingular elliptic curves over
+* <code>F<sub>2<sup>m</sup></sub></code>.
          * @param b The coefficient <code>b</code> in the Weierstrass equation
-         * for non-supersingular elliptic curves over
-         * <code>F<sub>2<sup>m</sup></sub></code>.
+* for non-supersingular elliptic curves over
+* <code>F<sub>2<sup>m</sup></sub></code>.
          * @param order The order of the main subgroup of the elliptic curve.
-         * @param cofactor The cofactor of the elliptic curve, i.e.
-         * <code>#E<sub>a</sub>(F<sub>2<sup>m</sup></sub>) = h * n</code>.
          */
         F2m(
                 int m,
@@ -962,8 +961,7 @@ public abstract class ECCurve
                 int k3,
                 BigInteger a,
                 BigInteger b,
-                BigInteger order,
-                BigInteger cofactor)
+                BigInteger order)
         {
             super(m, k1, k2, k3);
 
@@ -972,7 +970,7 @@ public abstract class ECCurve
             this.k2 = k2;
             this.k3 = k3;
             this.order = order;
-            this.cofactor = cofactor;
+            this.cofactor = null;
 
             this.infinity = new ECPoint.F2m(this, null, null, false);
             this.a = fromBigInteger(a);
@@ -1015,7 +1013,7 @@ public abstract class ECCurve
             }
         }
 
-        protected ECMultiplier createDefaultMultiplier()
+        protected AbstractECMultiplier createDefaultMultiplier()
         {
             if (isKoblitz())
             {

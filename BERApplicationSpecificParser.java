@@ -5,8 +5,7 @@ import java.io.IOException;
  * A parser for indefinite-length ASN.1 ApplicationSpecific objects.
  */
 public class BERApplicationSpecificParser
-        implements ASN1ApplicationSpecificParser
-{
+        implements ASN1Encodable, InMemoryRepresentable {
     private final int tag;
     private final ASN1StreamParser parser;
 

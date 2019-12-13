@@ -30,7 +30,7 @@ final class Strings
                 // the harder way
                 LINE_SEPARATOR = String.format("%n");
             }
-            catch (Exception ef)
+            catch (Exception ignored)
             {
             }
         }

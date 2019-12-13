@@ -43,7 +43,7 @@ class BERSet
     public BERSet(
             ASN1EncodableVector v)
     {
-        super(v, false);
+        super(v);
     }
 
     /**

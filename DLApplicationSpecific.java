@@ -16,7 +16,7 @@ class DLApplicationSpecific
     }
 
     @Override
-    int encodedLength() throws IOException {
+    int encodedLength() {
         return 0;
     }
 

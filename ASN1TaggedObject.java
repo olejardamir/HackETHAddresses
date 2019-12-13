@@ -7,10 +7,10 @@ public abstract class ASN1TaggedObject
         extends ASN1Primitive
         implements ASN1TaggedObjectParser
 {
-    int             tagNo;
-    boolean         empty = false;
-    boolean         explicit;
-    ASN1Encodable obj;
+    final int             tagNo;
+    final boolean         empty = false;
+    final boolean         explicit;
+    final ASN1Encodable obj;
 
     /**
      * Create a tagged object with the style given by the value of explicit.

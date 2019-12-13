@@ -7,7 +7,7 @@ import java.io.OutputStream;
  */
 class ASN1OutputStream
 {
-    private OutputStream os;
+    private final OutputStream os;
 
     public ASN1OutputStream(
             OutputStream    os)

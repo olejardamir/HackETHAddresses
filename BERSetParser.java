@@ -7,7 +7,7 @@ import java.io.IOException;
 public class BERSetParser
         implements ASN1SetParser
 {
-    private ASN1StreamParser _parser;
+    private final ASN1StreamParser _parser;
 
     BERSetParser(ASN1StreamParser parser)
     {

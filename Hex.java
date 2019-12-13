@@ -10,14 +10,13 @@ class Hex
 
     public static String toHexString(
             byte[] data) throws IOException {
-        return toHexString(data, 0, data.length);
+        return toHexString(data, data.length);
     }
 
     private static String toHexString(
             byte[] data,
-            int off,
             int length) throws IOException {
-        byte[] encoded = encode(data, off, length);
+        byte[] encoded = encode(data, length);
         return  Strings.fromByteArray(encoded);
     }
 
@@ -28,7 +27,7 @@ class Hex
      */
     public static byte[] encode(
             byte[]    data) throws IOException {
-        return encode(data, 0, data.length);
+        return encode(data, data.length);
     }
 
     /**
@@ -38,12 +37,11 @@ class Hex
      */
     private static byte[] encode(
             byte[] data,
-            int off,
             int length) throws IOException {
         ByteArrayOutputStream    bOut = new ByteArrayOutputStream();
 
 
-            encoder.encode(data, off, length, bOut);
+            encoder.encode(data, 0, length, bOut);
 
 
         return bOut.toByteArray();

@@ -36,7 +36,7 @@ final class Streams
     public static int readFully(InputStream inStr, byte[] buf)
             throws IOException
     {
-        return readFully(inStr, buf, 0, buf.length);
+        return readFully(inStr, buf, buf.length);
     }
 
     /**
@@ -44,18 +44,17 @@ final class Streams
      *
      * @param inStr the stream to be read.
      * @param buf the buffer to be read into.
-     * @param off offset into buf to start putting bytes into.
      * @param len  the number of bytes to be read.
      * @return the number of bytes read into the buffer.
      * @throws IOException in case of underlying IOException.
      */
-    private static int readFully(InputStream inStr, byte[] buf, int off, int len)
+    private static int readFully(InputStream inStr, byte[] buf, int len)
             throws IOException
     {
         int totalRead = 0;
         while (totalRead < len)
         {
-            int numRead = inStr.read(buf, off + totalRead, len - totalRead);
+            int numRead = inStr.read(buf, totalRead, len - totalRead);
             if (numRead < 0)
             {
                 break;

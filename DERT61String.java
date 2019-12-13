@@ -10,7 +10,7 @@ public class DERT61String
         extends ASN1Primitive
         implements ASN1String
 {
-    private byte[] string;
+    private final byte[] string;
 
     /**
      * Return a T61 string from the passed in object.

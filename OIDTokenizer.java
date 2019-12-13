@@ -7,7 +7,7 @@
  */
 class OIDTokenizer
 {
-    private String  oid;
+    private final String  oid;
     private int     index;
 
     /**

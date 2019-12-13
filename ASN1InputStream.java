@@ -53,9 +53,9 @@ class ASN1InputStream
      * @param input stream containing ASN.1 encoded data.
      * @param limit maximum size of a DER encoded object.
      */
-    public ASN1InputStream(
+    private ASN1InputStream(
             InputStream input,
-            int         limit)
+            int limit)
     {
         this(input, limit, false);
     }
@@ -68,10 +68,10 @@ class ASN1InputStream
      * @param limit maximum size of a DER encoded object.
      * @param lazyEvaluate true if parsing inside constructed objects can be delayed.
      */
-    public ASN1InputStream(
+    private ASN1InputStream(
             InputStream input,
-            int         limit,
-            boolean     lazyEvaluate)
+            int limit,
+            boolean lazyEvaluate)
     {
         super(input);
         this.limit = limit;
@@ -211,7 +211,7 @@ class ASN1InputStream
                 throw new IOException("indefinite-length primitive encoding encountered");
             }
 
-            IndefiniteLengthInputStream indIn = new IndefiniteLengthInputStream(this, limit);
+            IndefiniteLengthInputStream indIn = new IndefiniteLengthInputStream(this);
             ASN1StreamParser sp = new ASN1StreamParser(indIn, limit);
 
             if ((tag & APPLICATION) != 0)

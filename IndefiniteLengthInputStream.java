@@ -12,8 +12,7 @@ class IndefiniteLengthInputStream
     private boolean _eofOn00 = true;
 
     IndefiniteLengthInputStream(
-            InputStream in,
-            int         limit)
+            InputStream in)
             throws IOException
     {
         super(in);

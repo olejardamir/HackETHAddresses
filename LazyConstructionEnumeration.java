@@ -5,7 +5,7 @@ import java.util.Enumeration;
 class LazyConstructionEnumeration
         implements Enumeration
 {
-    private ASN1InputStream aIn;
+    private final ASN1InputStream aIn;
     private Object          nextObj;
 
     public LazyConstructionEnumeration(byte[] encoded)

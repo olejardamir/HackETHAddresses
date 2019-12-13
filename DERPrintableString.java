@@ -1,48 +1,16 @@
 
 import java.io.IOException;
 
-/**
- * DER PrintableString object.
- * <p>
- * X.680 section 37.4 defines PrintableString character codes as ASCII subset of following characters:
- * </p>
- * <ul>
- * <li>Latin capital letters: 'A' .. 'Z'</li>
- * <li>Latin small letters: 'a' .. 'z'</li>
- * <li>Digits: '0'..'9'</li>
- * <li>Space</li>
- * <li>Apostrophe: '\''</li>
- * <li>Left parenthesis: '('</li>
- * <li>Right parenthesis: ')'</li>
- * <li>Plus sign: '+'</li>
- * <li>Comma: ','</li>
- * <li>Hyphen-minus: '-'</li>
- * <li>Full stop: '.'</li>
- * <li>Solidus: '/'</li>
- * <li>Colon: ':'</li>
- * <li>Equals sign: '='</li>
- * <li>Question mark: '?'</li>
- * </ul>
- * <p>
- * Explicit character set escape sequences are not allowed.
- * </p>
- */
+
 public class DERPrintableString
         extends ASN1Primitive
         implements ASN1String
 {
     private final byte[]  string;
 
-    /**
-     * Return a printable string from the passed in object.
-     *
-     * @param obj a DERPrintableString or an object that can be converted into one.
-     * @exception IllegalArgumentException if the object cannot be converted.
-     * @return a DERPrintableString instance, or null.
-     */
+
     private static DERPrintableString getInstance(
-            Object obj)
-    {
+            Object obj) throws IOException {
         if (obj == null || obj instanceof DERPrintableString)
         {
             return (DERPrintableString)obj;
@@ -50,14 +18,10 @@ public class DERPrintableString
 
         if (obj instanceof byte[])
         {
-            try
-            {
+
                 return (DERPrintableString)fromByteArray((byte[])obj);
-            }
-            catch (Exception e)
-            {
-                throw new IllegalArgumentException("encoding error in getInstance: " + e.toString());
-            }
+
+
         }
 
         throw new IllegalArgumentException("illegal object in getInstance: " + obj.getClass().getName());
@@ -75,8 +39,7 @@ public class DERPrintableString
      */
     public static DERPrintableString getInstance(
             ASN1TaggedObject obj,
-            boolean          explicit)
-    {
+            boolean          explicit) throws IOException {
         ASN1Primitive o = obj.getObject();
 
         if (explicit || o instanceof DERPrintableString)

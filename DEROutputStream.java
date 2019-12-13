@@ -18,14 +18,10 @@ public class DEROutputStream
             ASN1Encodable obj)
             throws IOException
     {
-        if (obj != null)
-        {
+
             obj.toASN1Primitive().toDERObject().encode(this);
-        }
-        else
-        {
-            throw new IOException("null object detected");
-        }
+
+
     }
 
     ASN1OutputStream getDERSubStream()

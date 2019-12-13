@@ -13,7 +13,7 @@ class CustomNamedCurves
     /*
      * secp256k1
      */
-    private static X9ECParametersHolder secp256k1 = new X9ECParametersHolder()
+    private static final X9ECParametersHolder secp256k1 = new X9ECParametersHolder()
     {
         protected X9ECParameters createParameters() throws IOException {
             byte[] S = null;

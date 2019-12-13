@@ -77,7 +77,7 @@ class DLSet
     public DLSet(
             ASN1EncodableVector v)
     {
-        super(v, false);
+        super(v);
     }
 
     /**

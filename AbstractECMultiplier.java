@@ -1,8 +1,7 @@
 
 import java.math.BigInteger;
 
-abstract class AbstractECMultiplier implements ECMultiplier
-{
+abstract class AbstractECMultiplier {
     public ECPoint multiply(ECPoint p, BigInteger k) throws CloneNotSupportedException {
         int sign = k.signum();
         if (sign == 0 || p.isInfinity())

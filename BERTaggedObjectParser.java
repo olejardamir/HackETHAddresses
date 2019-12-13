@@ -7,9 +7,9 @@ import java.io.IOException;
 public class BERTaggedObjectParser
         implements ASN1TaggedObjectParser
 {
-    private boolean _constructed;
-    private int _tagNumber;
-    private ASN1StreamParser _parser;
+    private final boolean _constructed;
+    private final int _tagNumber;
+    private final ASN1StreamParser _parser;
 
     BERTaggedObjectParser(
             boolean             constructed,

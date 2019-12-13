@@ -6,11 +6,6 @@ import java.io.IOException;
  */
 interface InMemoryRepresentable
 {
-    /**
-     * Get the in-memory representation of the ASN.1 object.
-     * @return an ASN1Primitive representing the loaded object.
-     * @throws IOException for bad input data.
-     */
-    ASN1Primitive getLoadedObject()
-            throws IOException;
+
+    ASN1Primitive getLoadedObject() throws IOException;
 }

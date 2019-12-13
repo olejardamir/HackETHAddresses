@@ -1,6 +1,6 @@
 
 
-public interface ECEndomorphism
+interface ECEndomorphism
 {
     ECPointMap getPointMap();
 
