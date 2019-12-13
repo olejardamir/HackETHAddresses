@@ -15,18 +15,6 @@ public class BERSetParser
     }
 
     /**
-     * Read the next object in the SET.
-     *
-     * @return the next object in the SET, null if there are no more.
-     * @throws IOException if there is an issue reading the underlying stream.
-     */
-    public ASN1Encodable readObject()
-            throws IOException
-    {
-        return _parser.readObject();
-    }
-
-    /**
      * Return an in-memory, encodable, representation of the SET.
      *
      * @return a BERSet.

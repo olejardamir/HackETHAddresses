@@ -233,11 +233,6 @@ public class ASN1ObjectIdentifier
         return body;
     }
 
-    boolean isConstructed()
-    {
-        return false;
-    }
-
     int encodedLength() {
         int length = getBody().length;
 

@@ -164,11 +164,6 @@ class BEROctetString
         return vec;
     }
 
-    boolean isConstructed()
-    {
-        return true;
-    }
-
     int encodedLength()
             throws IOException
     {
@@ -201,17 +196,4 @@ class BEROctetString
         out.write(0x00);
     }
 
-    static BEROctetString fromSequence(ASN1Sequence seq)
-    {
-        ASN1OctetString[]     v = new ASN1OctetString[seq.size()];
-        Enumeration e = seq.getObjects();
-        int                   index = 0;
-
-        while (e.hasMoreElements())
-        {
-            v[index++] = (ASN1OctetString)e.nextElement();
-        }
-
-        return new BEROctetString(v);
-    }
 }

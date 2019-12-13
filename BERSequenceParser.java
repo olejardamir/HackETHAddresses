@@ -15,18 +15,6 @@ public class BERSequenceParser
     }
 
     /**
-     * Read the next object in the SEQUENCE.
-     *
-     * @return the next object in the SEQUENCE, null if there are no more.
-     * @throws IOException if there is an issue reading the underlying stream.
-     */
-    public ASN1Encodable readObject()
-            throws IOException
-    {
-        return _parser.readObject();
-    }
-
-    /**
      * Return an in-memory, encodable, representation of the SEQUENCE.
      *
      * @return a BERSequence.

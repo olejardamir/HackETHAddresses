@@ -125,16 +125,6 @@ public abstract class ECCurve
 
     protected abstract ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, ECFieldElement[] zs, boolean withCompression);
 
-    AbstractECMultiplier createDefaultMultiplier()
-    {
-        if (endomorphism instanceof GLVEndomorphism)
-        {
-            return new GLVMultiplier(this, (GLVEndomorphism)endomorphism);
-        }
-
-        return new WNafL2RMultiplier();
-    }
-
     boolean supportsCoordinateSystem(int coord)
     {
         return coord == COORD_AFFINE;
@@ -1011,16 +1001,6 @@ public abstract class ECCurve
                 default:
                     return false;
             }
-        }
-
-        protected AbstractECMultiplier createDefaultMultiplier()
-        {
-            if (isKoblitz())
-            {
-                return new WTauNafMultiplier();
-            }
-
-            return super.createDefaultMultiplier();
         }
 
         public int getFieldSize()

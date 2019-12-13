@@ -79,12 +79,6 @@ public abstract class ASN1Primitive
     public abstract int hashCode();
 
     /**
-     * Return true if this objected is a CONSTRUCTED one, false otherwise.
-     * @return true if CONSTRUCTED bit set on object's tag, false otherwise.
-     */
-    abstract boolean isConstructed();
-
-    /**
      * Return the length of the encoding this object will produce.
      * @return the length of the object's encoding.
      * @throws IOException if the encoding length cannot be calculated.

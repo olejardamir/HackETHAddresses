@@ -125,7 +125,7 @@ public abstract class ASN1BitString
      *
      * @return a String representation.
      */
-    public String getString() throws IOException {
+    private String getString() throws IOException {
         StringBuilder buf = new StringBuilder("#");
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
         ASN1OutputStream aOut = new ASN1OutputStream(bOut);

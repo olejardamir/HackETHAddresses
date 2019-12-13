@@ -16,11 +16,6 @@ public class DERVideotexString
         this.string = Arrays.clone(string);
     }
 
-    boolean isConstructed()
-    {
-        return false;
-    }
-
     int encodedLength()
     {
         return 1 + StreamUtil.calculateBodyLength(string.length) + string.length;
@@ -51,8 +46,4 @@ public class DERVideotexString
         return Arrays.areEqual(string, s.string);
     }
 
-    public String getString()
-    {
-        return Strings.fromByteArray(string);
-    }
 }

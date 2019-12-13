@@ -10,40 +10,6 @@ class BERApplicationSpecific
 {
 
     /**
-     * Create an application specific object with the tagging style given by the value of constructed.
-     *
-     * @param constructed true if the object is constructed.
-     * @param tag the tag number for this object.
-     * @param object the object to be contained.
-     */
-    public BERApplicationSpecific(
-            boolean constructed,
-            int tag,
-            ASN1Encodable object)
-            throws IOException
-    {
-        super(constructed || object.toASN1Primitive().isConstructed(), tag, getEncoding(constructed, object));
-    }
-
-    private static byte[] getEncoding(boolean explicit, ASN1Encodable object)
-            throws IOException
-    {
-        byte[] data = object.toASN1Primitive().getEncoded(ASN1Encoding.BER);
-
-        if (explicit)
-        {
-            return data;
-        }
-        else
-        {
-            int lenBytes = getLengthOfHeader(data);
-            byte[] tmp = new byte[data.length - lenBytes];
-            System.arraycopy(data, lenBytes, tmp, 0, tmp.length);
-            return tmp;
-        }
-    }
-
-    /**
      * Create an application specific object which is marked as constructed
      *
      * @param tagNo the tag number for this object.
@@ -77,22 +43,9 @@ class BERApplicationSpecific
         return 0;
     }
 
-    /* (non-Javadoc)
-     * @see org.bouncycastle.asn1.ASN1Primitive#encode(org.bouncycastle.asn1.DEROutputStream)
-     */
-    void encode(ASN1OutputStream out) throws IOException
-    {
-        int classBits = BERTags.APPLICATION;
-        if (isConstructed)
-        {
-            classBits |= BERTags.CONSTRUCTED;
-        }
+    @Override
+    void encode(ASN1OutputStream out) {
 
-        out.writeTag(classBits, tag);
-        out.write(0x80);
-        out.write(octets);
-        out.write(0x00);
-        out.write(0x00);
     }
 
     @Override

@@ -17,27 +17,7 @@ public class DERNumericString
         this.string = string;
     }
 
-    /**
-     * Constructor with optional validation.
-     *
-     * @param string the base string to wrap.
-     * @param validate whether or not to check the string.
-     * @throws IllegalArgumentException if validate is true and the string
-     * contains characters that should not be in a NumericString.
-     */
-    public DERNumericString(
-            String   string,
-            boolean  validate)
-    {
-        if (validate && !isNumericString(string))
-        {
-            throw new IllegalArgumentException("string contains illegal characters");
-        }
-
-        this.string = Strings.toByteArray(string);
-    }
-
-    public String getString()
+    private String getString()
     {
         return Strings.fromByteArray(string);
     }
@@ -45,11 +25,6 @@ public class DERNumericString
     public String toString()
     {
         return getString();
-    }
-
-    boolean isConstructed()
-    {
-        return false;
     }
 
     int encodedLength()

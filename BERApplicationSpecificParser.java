@@ -16,17 +16,6 @@ public class BERApplicationSpecificParser
     }
 
     /**
-     * Return the object contained in this application specific object,
-     * @return the contained object.
-     * @throws IOException if the underlying stream cannot be read, or does not contain an ASN.1 encoding.
-     */
-    public ASN1Encodable readObject()
-            throws IOException
-    {
-        return parser.readObject();
-    }
-
-    /**
      * Return an in-memory, encodable, representation of the application specific object.
      *
      * @return a BERApplicationSpecific.

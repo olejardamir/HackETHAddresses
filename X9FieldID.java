@@ -1,5 +1,3 @@
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.math.BigInteger;
 
 public class X9FieldID {
@@ -15,7 +13,6 @@ public class X9FieldID {
     public static final ASN1ObjectIdentifier tpBasis = characteristic_two_field.branch("3.2");
     /** OID: 1.2.840.10045.1.2.3.3 */
     public static final ASN1ObjectIdentifier ppBasis = characteristic_two_field.branch("3.3");
-    public static final ASN1ObjectIdentifier ellipticCurve = ansi_X9_62.branch("3");
     private final ASN1ObjectIdentifier     id;
     private ASN1Primitive parameters;
 
@@ -77,56 +74,6 @@ public class X9FieldID {
         v.add(this.parameters);
 
         return new DERSequence(v);
-    }
-
-    /**
-     * Return the default BER or DER encoding for this object.
-     *
-     * @return BER/DER byte encoded object.
-     * @throws java.io.IOException on encoding error.
-     */
-    byte[] getEncoded()
-            throws IOException
-    {
-        ByteArrayOutputStream bOut = new ByteArrayOutputStream();
-        ASN1OutputStream      aOut = new ASN1OutputStream(bOut);
-
-        aOut.writeObject((ASN1Encodable) this);
-
-        return bOut.toByteArray();
-    }
-
-    /**
-     * Return either the default for "BER" or a DER encoding if "DER" is specified.
-     *
-     * @param encoding name of encoding to use.
-     * @return byte encoded object.
-     * @throws IOException on encoding error.
-     */
-    byte[] getEncoded(
-            String encoding)
-            throws IOException
-    {
-        if (encoding.equals(ASN1Encoding.DER))
-        {
-            ByteArrayOutputStream   bOut = new ByteArrayOutputStream();
-            DEROutputStream         dOut = new DEROutputStream(bOut);
-
-            dOut.writeObject((ASN1Encodable) this);
-
-            return bOut.toByteArray();
-        }
-        else if (encoding.equals(ASN1Encoding.DL))
-        {
-            ByteArrayOutputStream   bOut = new ByteArrayOutputStream();
-            DLOutputStream          dOut = new DLOutputStream(bOut);
-
-            dOut.writeObject((ASN1Encodable) this);
-
-            return bOut.toByteArray();
-        }
-
-        return this.getEncoded();
     }
 
     public int hashCode()

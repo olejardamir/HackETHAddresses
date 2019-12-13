@@ -20,11 +20,6 @@ public class DERNull
     {
     }
 
-    boolean isConstructed()
-    {
-        return false;
-    }
-
     int encodedLength()
     {
         return 2;

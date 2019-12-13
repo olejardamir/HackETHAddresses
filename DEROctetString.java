@@ -18,11 +18,6 @@ class DEROctetString
         super(string);
     }
 
-    boolean isConstructed()
-    {
-        return false;
-    }
-
     int encodedLength()
     {
         return 1 + StreamUtil.calculateBodyLength(string.length) + string.length;

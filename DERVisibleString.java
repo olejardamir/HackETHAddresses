@@ -21,7 +21,7 @@ public class DERVisibleString
         this.string = string;
     }
 
-    public String getString()
+    private String getString()
     {
         return Strings.fromByteArray(string);
     }
@@ -29,11 +29,6 @@ public class DERVisibleString
     public String toString()
     {
         return getString();
-    }
-
-    boolean isConstructed()
-    {
-        return false;
     }
 
     int encodedLength()

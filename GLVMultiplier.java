@@ -4,19 +4,8 @@ import java.math.BigInteger;
 
 public class GLVMultiplier extends AbstractECMultiplier
 {
-    private final ECCurve curve;
-    private final GLVEndomorphism glvEndomorphism;
-
-    public GLVMultiplier(ECCurve curve, GLVEndomorphism glvEndomorphism)
-    {
-        if (curve == null || curve.getOrder() == null)
-        {
-            throw new IllegalArgumentException("Need curve with known group order");
-        }
-
-        this.curve = curve;
-        this.glvEndomorphism = glvEndomorphism;
-    }
+    private ECCurve curve;
+    private GLVEndomorphism glvEndomorphism;
 
     protected ECPoint multiplyPositive(ECPoint p, BigInteger k) throws CloneNotSupportedException {
         if (!curve.equals(p.getCurve()))

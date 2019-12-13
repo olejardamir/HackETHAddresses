@@ -17,17 +17,15 @@ class DERSet
 {
     private int bodyLength = -1;
 
-    /**
-     * create an empty set
-     */
-    public DERSet()
-    {
-    }
 
     DERSet(
             ASN1EncodableVector v)
     {
         super(v);
+    }
+
+    public DERSet() {
+
     }
 
     private int getBodyLength()
@@ -58,30 +56,9 @@ class DERSet
         return 1 + StreamUtil.calculateBodyLength(length) + length;
     }
 
-    /*
-     * A note on the implementation:
-     * <p>
-     * As DER requires the constructed, definite-length model to
-     * be used for structured types, this varies slightly from the
-     * ASN.1 descriptions given. Rather than just outputting SET,
-     * we also have to specify CONSTRUCTED, and the objects length.
-     */
-    void encode(
-            ASN1OutputStream out)
-            throws IOException
-    {
-        ASN1OutputStream        dOut = out.getDERSubStream();
-        int                     length = getBodyLength();
+    @Override
+    void encode(ASN1OutputStream out) {
 
-        out.write(BERTags.SET | BERTags.CONSTRUCTED);
-        out.writeLength(length);
-
-        for (Enumeration e = this.getObjects(); e.hasMoreElements();)
-        {
-            Object    obj = e.nextElement();
-
-            dOut.writeObject((ASN1Encodable)obj);
-        }
     }
 
     @Override

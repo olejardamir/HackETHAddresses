@@ -97,31 +97,6 @@ public abstract class ASN1OctetString
     byte[]  string;
 
     /**
-     * return an Octet String from a tagged object.
-     *
-     * @param obj the tagged object holding the object we want.
-     * @param explicit true if the object is meant to be explicitly
-     *              tagged false otherwise.
-     * @exception IllegalArgumentException if the tagged object cannot
-     *              be converted.
-     */
-    public static ASN1OctetString getInstance(
-            ASN1TaggedObject    obj,
-            boolean             explicit)
-    {
-        ASN1Primitive o = obj.getObject();
-
-        if (explicit || o instanceof ASN1OctetString)
-        {
-            return getInstance(o);
-        }
-        else
-        {
-            return BEROctetString.fromSequence(ASN1Sequence.getInstance(o));
-        }
-    }
-
-    /**
      * return an Octet String from the given object.
      *
      * @param obj the object we want converted.
@@ -181,16 +156,6 @@ public abstract class ASN1OctetString
     public InputStream getOctetStream()
     {
         return new ByteArrayInputStream(string);
-    }
-
-    /**
-     * Return the parser associated with this object.
-     *
-     * @return a parser based on this OCTET STRING
-     */
-    public ASN1OctetStringParser parser()
-    {
-        return this;
     }
 
     /**

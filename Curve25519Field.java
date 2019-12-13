@@ -22,15 +22,6 @@ class Curve25519Field
         }
     }
 
-    public static void addExt(int[] xx, int[] yy, int[] zz)
-    {
-        Nat.add(16, xx, yy, zz);
-        if (Nat.gte(16, zz, PExt))
-        {
-            subPExtFrom(zz);
-        }
-    }
-
     public static void addOne(int[] x, int[] z)
     {
         Nat.inc(8, x, z);
@@ -48,19 +39,6 @@ class Curve25519Field
             Nat256.subFrom(P, z);
         }
         return z;
-    }
-
-    public static void half(int[] x, int[] z)
-    {
-        if ((x[0] & 1) == 0)
-        {
-            Nat.shiftDownBit(8, x, 0, z);
-        }
-        else
-        {
-            Nat256.add(x, P, z);
-            Nat.shiftDownBit(8, z, 0);
-        }
     }
 
     public static void multiply(int[] x, int[] y, int[] z)
@@ -155,15 +133,6 @@ class Curve25519Field
         }
     }
 
-    public static void subtractExt(int[] xx, int[] yy, int[] zz)
-    {
-        int c = Nat.sub(16, xx, yy, zz);
-        if (c != 0)
-        {
-            addPExtTo(zz);
-        }
-    }
-
     public static void twice(int[] x, int[] z)
     {
         Nat.shiftUpBit(8, x, 0, z);
@@ -184,26 +153,6 @@ class Curve25519Field
         }
         c += (z[7] & M) + ((P7 + 1) & M);
         z[7] = (int)c;
-    }
-
-    private static void addPExtTo(int[] zz)
-    {
-        long c = (zz[0] & M) + (PExt[0] & M);
-        zz[0] = (int)c;
-        c >>= 32;
-        if (c != 0)
-        {
-            c = Nat.incAt(8, zz, 1);
-        }
-        c += (zz[8] & M) - PInv;
-        zz[8] = (int)c;
-        c >>= 32;
-        if (c != 0)
-        {
-            c = Nat.decAt(15, zz, 9);
-        }
-        c += (zz[15] & M) + ((PExt[15] + 1) & M);
-        zz[15] = (int)c;
     }
 
     private static void subPFrom(int[] z)

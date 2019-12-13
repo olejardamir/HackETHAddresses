@@ -15,62 +15,6 @@ public class DERIA5String
     private final byte[]  string;
 
     /**
-     * Return an IA5 string from the passed in object
-     *
-     * @param obj a DERIA5String or an object that can be converted into one.
-     * @exception IllegalArgumentException if the object cannot be converted.
-     * @return a DERIA5String instance, or null.
-     */
-    private static DERIA5String getInstance(
-            Object obj)
-    {
-        if (obj == null || obj instanceof DERIA5String)
-        {
-            return (DERIA5String)obj;
-        }
-
-        if (obj instanceof byte[])
-        {
-            try
-            {
-                return (DERIA5String)fromByteArray((byte[])obj);
-            }
-            catch (Exception e)
-            {
-                throw new IllegalArgumentException("encoding error in getInstance: " + e.toString());
-            }
-        }
-
-        throw new IllegalArgumentException("illegal object in getInstance: " + obj.getClass().getName());
-    }
-
-    /**
-     * Return an IA5 String from a tagged object.
-     *
-     * @param obj the tagged object holding the object we want
-     * @param explicit true if the object is meant to be explicitly
-     *              tagged false otherwise.
-     * @exception IllegalArgumentException if the tagged object cannot
-     *               be converted.
-     * @return a DERIA5String instance, or null.
-     */
-    public static DERIA5String getInstance(
-            ASN1TaggedObject obj,
-            boolean          explicit)
-    {
-        ASN1Primitive o = obj.getObject();
-
-        if (explicit || o instanceof DERIA5String)
-        {
-            return getInstance(o);
-        }
-        else
-        {
-            return new DERIA5String(((ASN1OctetString)o).getOctets());
-        }
-    }
-
-    /**
      * Basic constructor - with bytes.
      * @param string the byte encoding of the characters making up the string.
      */
@@ -78,16 +22,6 @@ public class DERIA5String
             byte[]   string)
     {
         this.string = string;
-    }
-
-    /**
-     * Basic constructor - without validation.
-     * @param string the base string to use..
-     */
-    public DERIA5String(
-            String   string)
-    {
-        this(string, false);
     }
 
     /**
@@ -114,7 +48,7 @@ public class DERIA5String
         this.string = Strings.toByteArray(string);
     }
 
-    public String getString()
+    private String getString()
     {
         return Strings.fromByteArray(string);
     }
@@ -122,16 +56,6 @@ public class DERIA5String
     public String toString()
     {
         return getString();
-    }
-
-    public byte[] getOctets()
-    {
-        return Arrays.clone(string);
-    }
-
-    boolean isConstructed()
-    {
-        return false;
     }
 
     int encodedLength()

@@ -8,13 +8,7 @@ class SimpleBigDecimal
     private final int scale;
 
 
-    public static SimpleBigDecimal getInstance(BigInteger value, int scale)
-    {
-        return new SimpleBigDecimal(value.shiftLeft(scale), scale);
-    }
-
-
-    public SimpleBigDecimal(BigInteger bigInt, int scale)
+     public SimpleBigDecimal(BigInteger bigInt, int scale)
     {
         if (scale < 0)
         {

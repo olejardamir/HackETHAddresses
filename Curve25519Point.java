@@ -43,10 +43,6 @@ public class Curve25519Point extends ECPoint.AbstractFp
         this.withCompression = withCompression;
     }
 
-    protected ECPoint detach() throws CloneNotSupportedException {
-        return new Curve25519Point(null, getAffineXCoord(), getAffineYCoord());
-    }
-
     public ECFieldElement getZCoord(int index)
     {
         if (index == 1)

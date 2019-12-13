@@ -1,4 +1,3 @@
-
 import java.io.IOException;
 
 /**
@@ -20,17 +19,11 @@ class DLApplicationSpecific
         return 0;
     }
 
+    @Override
+    void encode(ASN1OutputStream out) {
 
-    void encode(ASN1OutputStream out) throws IOException
-    {
-        int classBits = BERTags.APPLICATION;
-        if (isConstructed)
-        {
-            classBits |= BERTags.CONSTRUCTED;
-        }
-
-        out.writeEncoded(classBits, tag, octets);
     }
+
 
     @Override
     boolean asn1Equals(ASN1Primitive o) {

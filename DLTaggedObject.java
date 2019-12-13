@@ -9,7 +9,6 @@ import java.io.IOException;
 class DLTaggedObject
         extends ASN1TaggedObject
 {
-    private static final byte[] ZERO_BYTES = new byte[0];
 
     /**
      * @param explicit true if an explicitly tagged object.
@@ -22,27 +21,6 @@ class DLTaggedObject
             ASN1Encodable obj)
     {
         super(explicit, tagNo, obj);
-    }
-
-    boolean isConstructed()
-    {
-        if (!empty)
-        {
-            if (explicit)
-            {
-                return true;
-            }
-            else
-            {
-                ASN1Primitive primitive = obj.toASN1Primitive().toDLObject();
-
-                return primitive.isConstructed();
-            }
-        }
-        else
-        {
-            return true;
-        }
     }
 
     int encodedLength()

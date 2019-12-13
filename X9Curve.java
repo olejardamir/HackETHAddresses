@@ -13,11 +13,6 @@ public class X9Curve
     public static final ASN1ObjectIdentifier prime_field = id_fieldType.branch("1");
     /** OID: 1.2.840.10045.1.2 */
     public static final ASN1ObjectIdentifier characteristic_two_field = id_fieldType.branch("2");
-    /** OID: 1.2.840.10045.1.2.3.2 */
-    public static final ASN1ObjectIdentifier tpBasis = characteristic_two_field.branch("3.2");
-    /** OID: 1.2.840.10045.1.2.3.3 */
-    public static final ASN1ObjectIdentifier ppBasis = characteristic_two_field.branch("3.3");
-    public static final ASN1ObjectIdentifier ellipticCurve = ansi_X9_62.branch("3");
     private final ECCurve     curve;
     private final byte[]      seed;
     private ASN1ObjectIdentifier fieldIdentifier = null;

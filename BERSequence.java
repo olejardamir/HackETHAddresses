@@ -21,15 +21,6 @@ class BERSequence
     }
 
     /**
-     * Create a sequence containing one object
-     */
-    public BERSequence(
-            ASN1Encodable obj)
-    {
-        super(obj);
-    }
-
-    /**
      * Create a sequence containing a vector of objects.
      */
     public BERSequence(

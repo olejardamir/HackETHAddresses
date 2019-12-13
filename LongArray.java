@@ -1392,7 +1392,7 @@ class LongArray implements Cloneable
     }
 
     public Object clone() throws CloneNotSupportedException {
-        Object o = super.clone();
+
         return new LongArray(Arrays.clone(m_ints));
     }
 

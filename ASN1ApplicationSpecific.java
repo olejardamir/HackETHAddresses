@@ -20,37 +20,12 @@ public abstract class ASN1ApplicationSpecific
         this.octets = Arrays.clone(octets);
     }
 
-    static int getLengthOfHeader(byte[] data)
-    {
-        int length = data[1] & 0xff; // TODO: assumes 1 byte tag
-
-        if (length == 0x80)
-        {
-            return 2;      // indefinite-length encoding
-        }
-
-        if (length > 127)
-        {
-            int size = length & 0x7f;
-
-            // Note: The invalid long form "0xff" (see X.690 8.1.3.5c) will be caught here
-            if (size > 4)
-            {
-                throw new IllegalStateException("DER length more than 4 bytes: " + size);
-            }
-
-            return size + 2;
-        }
-
-        return 2;
-    }
-
     /**
      * Return true if the object is marked as constructed, false otherwise.
      *
      * @return true if constructed, otherwise false.
      */
-    boolean isConstructed()
+    private boolean isConstructed()
     {
         return isConstructed;
     }
@@ -63,20 +38,6 @@ public abstract class ASN1ApplicationSpecific
     private int getApplicationTag()
     {
         return tag;
-    }
-
-    /* (non-Javadoc)
-     * @see org.bouncycastle.asn1.ASN1Primitive#encode(org.bouncycastle.asn1.DEROutputStream)
-     */
-    void encode(ASN1OutputStream out) throws IOException
-    {
-        int classBits = BERTags.APPLICATION;
-        if (isConstructed)
-        {
-            classBits |= BERTags.CONSTRUCTED;
-        }
-
-        out.writeEncoded(classBits, tag, octets);
     }
 
     public int hashCode()

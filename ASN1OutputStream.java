@@ -125,19 +125,6 @@ class ASN1OutputStream
         }
     }
 
-    void writeImplicitObject(ASN1Primitive obj)
-            throws IOException
-    {
-        if (obj != null)
-        {
-            obj.encode(new ImplicitOutputStream(os));
-        }
-        else
-        {
-            throw new IOException("null object detected");
-        }
-    }
-
     ASN1OutputStream getDERSubStream()
     {
         return new DEROutputStream(os);
@@ -148,14 +135,4 @@ class ASN1OutputStream
         return new DLOutputStream(os);
     }
 
-    private class ImplicitOutputStream
-            extends ASN1OutputStream
-    {
-
-        ImplicitOutputStream(OutputStream os)
-        {
-            super(os);
-        }
-
-    }
 }

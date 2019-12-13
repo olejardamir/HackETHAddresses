@@ -1,6 +1,3 @@
-
-import java.io.IOException;
-
 /**
  * Class representing the DER-type External
  */
@@ -111,17 +108,6 @@ public abstract class ASN1External
         }
         ret ^= externalContent.hashCode();
         return ret;
-    }
-
-    boolean isConstructed()
-    {
-        return true;
-    }
-
-    int encodedLength()
-            throws IOException
-    {
-        return this.getEncoded().length;
     }
 
     /**

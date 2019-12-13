@@ -9,7 +9,6 @@ import java.io.IOException;
 class DERTaggedObject
         extends ASN1TaggedObject
 {
-    private static final byte[] ZERO_BYTES = new byte[0];
 
     /**
      * @param explicit true if an explicitly tagged object.
@@ -22,32 +21,6 @@ class DERTaggedObject
             ASN1Encodable obj)
     {
         super(explicit, tagNo, obj);
-    }
-
-    public DERTaggedObject(int tagNo, ASN1Encodable encodable)
-    {
-        super(true, tagNo, encodable);
-    }
-
-    boolean isConstructed()
-    {
-        if (!empty)
-        {
-            if (explicit)
-            {
-                return true;
-            }
-            else
-            {
-                ASN1Primitive primitive = obj.toASN1Primitive().toDERObject();
-
-                return primitive.isConstructed();
-            }
-        }
-        else
-        {
-            return true;
-        }
     }
 
     int encodedLength()

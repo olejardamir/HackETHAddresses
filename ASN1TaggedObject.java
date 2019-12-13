@@ -38,21 +38,10 @@ public abstract class ASN1TaggedObject
 
         this.tagNo = tagNo;
 
-        if (this.explicit)
-        {
-            this.obj = obj;
-        }
-        else
-        {
-            ASN1Primitive prim = obj.toASN1Primitive();
-
-            if (prim instanceof ASN1Set)
-            {
-                ASN1Set s = null;
-            }
 
             this.obj = obj;
-        }
+
+
     }
 
     public int hashCode()

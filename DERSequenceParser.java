@@ -15,18 +15,6 @@ public class DERSequenceParser
     }
 
     /**
-     * Return the next object in the SEQUENCE.
-     *
-     * @return next object in SEQUENCE.
-     * @throws IOException if there is an issue loading the object.
-     */
-    public ASN1Encodable readObject()
-            throws IOException
-    {
-        return _parser.readObject();
-    }
-
-    /**
      * Return an in memory, encodable, representation of the SEQUENCE.
      *
      * @return a DERSequence.

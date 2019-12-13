@@ -47,47 +47,6 @@ class ASN1StreamParser
         return null;
     }
 
-    ASN1Encodable readImplicit(boolean constructed, int tag) throws IOException
-    {
-        if (_in instanceof IndefiniteLengthInputStream)
-        {
-            if (!constructed)
-            {
-                throw new IOException("indefinite-length primitive encoding encountered");
-            }
-
-            return readIndef(tag);
-        }
-
-        if (constructed)
-        {
-            switch (tag)
-            {
-                case BERTags.SET:
-                    return new DERSetParser(this);
-                case BERTags.SEQUENCE:
-                    return new DERSequenceParser(this);
-                case BERTags.OCTET_STRING:
-                    return new BEROctetStringParser(this);
-            }
-        }
-        else
-        {
-            switch (tag)
-            {
-                case BERTags.SET:
-                   // throw new ASN1Exception("sequences must use constructed encoding (see X.690 8.9.1/8.10.1)");
-                case BERTags.SEQUENCE:
-                   // throw new ASN1Exception("sets must use constructed encoding (see X.690 8.11.1/8.12.1)");
-                case BERTags.OCTET_STRING:
-                    return new DEROctetStringParser((DefiniteLengthInputStream)_in);
-            }
-        }
-
-        //throw new ASN1Exception("implicit tagging not implemented");
-        return null;
-    }
-
     ASN1Primitive readTaggedObject(boolean constructed, int tag) throws IOException
     {
         if (!constructed)

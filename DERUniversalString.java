@@ -15,62 +15,6 @@ public class DERUniversalString
     private final byte[] string;
 
     /**
-     * Return a Universal String from the passed in object.
-     *
-     * @param obj a DERUniversalString or an object that can be converted into one.
-     * @exception IllegalArgumentException if the object cannot be converted.
-     * @return a DERUniversalString instance, or null
-     */
-    private static DERUniversalString getInstance(
-            Object obj)
-    {
-        if (obj == null || obj instanceof DERUniversalString)
-        {
-            return (DERUniversalString)obj;
-        }
-
-        if (obj instanceof byte[])
-        {
-            try
-            {
-                return (DERUniversalString)fromByteArray((byte[])obj);
-            }
-            catch (Exception e)
-            {
-                throw new IllegalArgumentException("encoding error getInstance: " + e.toString());
-            }
-        }
-
-        throw new IllegalArgumentException("illegal object in getInstance: " + obj.getClass().getName());
-    }
-
-    /**
-     * Return a Universal String from a tagged object.
-     *
-     * @param obj the tagged object holding the object we want
-     * @param explicit true if the object is meant to be explicitly
-     *              tagged false otherwise.
-     * @exception IllegalArgumentException if the tagged object cannot
-     *               be converted.
-     * @return a DERUniversalString instance, or null
-     */
-    public static DERUniversalString getInstance(
-            ASN1TaggedObject obj,
-            boolean          explicit)
-    {
-        ASN1Primitive o = obj.getObject();
-
-        if (explicit || o instanceof DERUniversalString)
-        {
-            return getInstance(o);
-        }
-        else
-        {
-            return new DERUniversalString(((ASN1OctetString)o).getOctets());
-        }
-    }
-
-    /**
      * Basic constructor - byte encoded string.
      *
      * @param string the byte encoding of the string to be carried in the UniversalString object,
@@ -81,7 +25,7 @@ public class DERUniversalString
         this.string = Arrays.clone(string);
     }
 
-    public String getString()
+    private String getString()
     {
         StringBuilder buf = new StringBuilder("#");
         ByteArrayOutputStream    bOut = new ByteArrayOutputStream();
@@ -115,11 +59,6 @@ public class DERUniversalString
     private byte[] getOctets()
     {
         return Arrays.clone(string);
-    }
-
-    boolean isConstructed()
-    {
-        return false;
     }
 
     int encodedLength()

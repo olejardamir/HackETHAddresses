@@ -20,7 +20,7 @@ class GLVTypeBParameters
     private final BigInteger g2;
     private final int bits;
 
-    public GLVTypeBParameters(BigInteger beta, BigInteger lambda, BigInteger[] v1, BigInteger[] v2, BigInteger g1,
+    public GLVTypeBParameters(BigInteger beta, BigInteger[] v1, BigInteger[] v2, BigInteger g1,
                               BigInteger g2, int bits)
     {
         checkVector(v1, "v1");

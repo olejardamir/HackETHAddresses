@@ -8,15 +8,6 @@ class DLBitString
         extends ASN1BitString
 {
 
-    private static byte[] toByteArray(byte data)
-    {
-        byte[] rv = new byte[1];
-
-        rv[0] = data;
-
-        return rv;
-    }
-
     /**
      * @param data the octets making up the bit string.
      * @param padBits the number of extra bits at the end of the string.
@@ -26,11 +17,6 @@ class DLBitString
             int     padBits)
     {
         super(data, padBits);
-    }
-
-    boolean isConstructed()
-    {
-        return false;
     }
 
     int encodedLength()

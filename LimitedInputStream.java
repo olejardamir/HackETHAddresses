@@ -7,11 +7,10 @@ import java.io.InputStream;
 abstract class LimitedInputStream
         extends InputStream
 {
-    final InputStream _in;
+    InputStream _in;
     private int _limit;
 
-    LimitedInputStream(InputStream in) {
-        _in = in;
+    public LimitedInputStream(InputStream in) {
     }
 
     int getRemaining()

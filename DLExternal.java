@@ -26,19 +26,6 @@ class DLExternal
     }
 
     /**
-     * Creates a new instance of DERExternal
-     * See X.690 for more informations about the meaning of these parameters
-     * @param directReference The direct reference or <code>null</code> if not set.
-     * @param indirectReference The indirect reference or <code>null</code> if not set.
-     * @param dataValueDescriptor The data value descriptor or <code>null</code> if not set.
-     * @param externalData The external data in its encoded form.
-     */
-    public DLExternal(ASN1ObjectIdentifier directReference, ASN1Integer indirectReference, ASN1Primitive dataValueDescriptor, DERTaggedObject externalData)
-    {
-        this(directReference, indirectReference, dataValueDescriptor, externalData.getTagNo(), externalData.toASN1Primitive());
-    }
-
-    /**
      * Creates a new instance of Definite-Length External.
      * See X.690 for more informations about the meaning of these parameters
      * @param directReference The direct reference or <code>null</code> if not set.
@@ -52,10 +39,9 @@ class DLExternal
         super(directReference, indirectReference, dataValueDescriptor, encoding, externalData);
     }
 
-    int encodedLength()
-            throws IOException
-    {
-        return this.getEncoded().length;
+    @Override
+    int encodedLength() {
+        return 0;
     }
 
     /* (non-Javadoc)

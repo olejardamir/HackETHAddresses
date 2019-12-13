@@ -70,11 +70,6 @@ public class ASN1Integer
         return new BigInteger(bytes);
     }
 
-    boolean isConstructed()
-    {
-        return false;
-    }
-
     int encodedLength()
     {
         return 1 + StreamUtil.calculateBodyLength(bytes.length) + bytes.length;

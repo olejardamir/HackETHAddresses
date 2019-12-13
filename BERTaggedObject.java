@@ -9,16 +9,6 @@ import java.io.IOException;
 class BERTaggedObject
         extends ASN1TaggedObject
 {
-    /**
-     * @param tagNo the tag number for this object.
-     * @param obj the tagged object.
-     */
-    public BERTaggedObject(
-            int             tagNo,
-            ASN1Encodable    obj)
-    {
-        super(true, tagNo, obj);
-    }
 
     /**
      * @param explicit true if an explicitly tagged object.
@@ -31,37 +21,6 @@ class BERTaggedObject
             ASN1Encodable    obj)
     {
         super(explicit, tagNo, obj);
-    }
-
-    /**
-     * create an implicitly tagged object that contains a zero
-     * length sequence.
-     */
-    public BERTaggedObject(
-            int             tagNo)
-    {
-        super(false, tagNo, new BERSequence());
-    }
-
-    boolean isConstructed()
-    {
-        if (!empty)
-        {
-            if (explicit)
-            {
-                return true;
-            }
-            else
-            {
-                ASN1Primitive primitive = obj.toASN1Primitive().toDERObject();
-
-                return primitive.isConstructed();
-            }
-        }
-        else
-        {
-            return true;
-        }
     }
 
     int encodedLength()

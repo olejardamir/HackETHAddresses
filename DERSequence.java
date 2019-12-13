@@ -21,16 +21,6 @@ class DERSequence
     }
 
     /**
-     * Create a sequence containing one object
-     * @param obj the object to go in the sequence.
-     */
-    public DERSequence(
-            ASN1Encodable obj)
-    {
-        super(obj);
-    }
-
-    /**
      * Create a sequence containing a vector of objects.
      * @param v the vector of objects to make up the sequence.
      */
@@ -38,16 +28,6 @@ class DERSequence
             ASN1EncodableVector v)
     {
         super(v);
-    }
-
-    /**
-     * Create a sequence containing an array of objects.
-     * @param array the array of objects to make up the sequence.
-     */
-    public DERSequence(
-            ASN1Encodable[]   array)
-    {
-        super(array);
     }
 
     private int getBodyLength()

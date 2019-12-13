@@ -19,7 +19,6 @@ class CustomNamedCurves
             byte[] S = null;
             GLVTypeBParameters glv = new GLVTypeBParameters(
                     new BigInteger("7ae96a2b657c07106e64479eac3434e99cf0497512f58995c1396c28719501ee", 16),
-                    new BigInteger("5363ad4cc05c30e0a5261c028812645a122e22ea20816678df02967c1b23bd72", 16),
                     new BigInteger[]{
                             new BigInteger("3086d221a7d46bcde86c90e49284eb15", 16),
                             new BigInteger("-e4437ed6010e88286f547fa90abfe4c3", 16) },

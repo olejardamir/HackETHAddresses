@@ -16,6 +16,4 @@ interface SECObjectIdentifiers
     /**  secp256k1 OID: 1.3.132.0.10 */
     ASN1ObjectIdentifier secp256k1 = ellipticCurve.branch("10");
 
-    ASN1ObjectIdentifier secg_scheme = new ASN1ObjectIdentifier("1.3.132.1");
-
 }

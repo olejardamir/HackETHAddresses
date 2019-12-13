@@ -1,6 +1,3 @@
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-
 /**
  * Class for describing an ECPoint as a DER object.
  */
@@ -35,56 +32,6 @@ public class X9ECPoint {
     public ASN1Primitive toASN1Primitive()
     {
         return encoding;
-    }
-
-    /**
-     * Return the default BER or DER encoding for this object.
-     *
-     * @return BER/DER byte encoded object.
-     * @throws java.io.IOException on encoding error.
-     */
-    byte[] getEncoded()
-            throws IOException
-    {
-        ByteArrayOutputStream bOut = new ByteArrayOutputStream();
-        ASN1OutputStream      aOut = new ASN1OutputStream(bOut);
-
-        aOut.writeObject((ASN1Encodable) this);
-
-        return bOut.toByteArray();
-    }
-
-    /**
-     * Return either the default for "BER" or a DER encoding if "DER" is specified.
-     *
-     * @param encoding name of encoding to use.
-     * @return byte encoded object.
-     * @throws IOException on encoding error.
-     */
-    byte[] getEncoded(
-            String encoding)
-            throws IOException
-    {
-        if (encoding.equals(ASN1Encoding.DER))
-        {
-            ByteArrayOutputStream   bOut = new ByteArrayOutputStream();
-            DEROutputStream         dOut = new DEROutputStream(bOut);
-
-            dOut.writeObject((ASN1Encodable) this);
-
-            return bOut.toByteArray();
-        }
-        else if (encoding.equals(ASN1Encoding.DL))
-        {
-            ByteArrayOutputStream   bOut = new ByteArrayOutputStream();
-            DLOutputStream          dOut = new DLOutputStream(bOut);
-
-            dOut.writeObject((ASN1Encodable) this);
-
-            return bOut.toByteArray();
-        }
-
-        return this.getEncoded();
     }
 
     public int hashCode()

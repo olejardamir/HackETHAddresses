@@ -9,49 +9,6 @@ public class DERPrintableString
     private final byte[]  string;
 
 
-    private static DERPrintableString getInstance(
-            Object obj) throws IOException {
-        if (obj == null || obj instanceof DERPrintableString)
-        {
-            return (DERPrintableString)obj;
-        }
-
-        if (obj instanceof byte[])
-        {
-
-                return (DERPrintableString)fromByteArray((byte[])obj);
-
-
-        }
-
-        throw new IllegalArgumentException("illegal object in getInstance: " + obj.getClass().getName());
-    }
-
-    /**
-     * Return a Printable String from a tagged object.
-     *
-     * @param obj the tagged object holding the object we want
-     * @param explicit true if the object is meant to be explicitly
-     *              tagged false otherwise.
-     * @exception IllegalArgumentException if the tagged object cannot
-     *               be converted.
-     * @return a DERPrintableString instance, or null.
-     */
-    public static DERPrintableString getInstance(
-            ASN1TaggedObject obj,
-            boolean          explicit) throws IOException {
-        ASN1Primitive o = obj.getObject();
-
-        if (explicit || o instanceof DERPrintableString)
-        {
-            return getInstance(o);
-        }
-        else
-        {
-            return new DERPrintableString(ASN1OctetString.getInstance(o).getOctets());
-        }
-    }
-
     /**
      * Basic constructor - byte encoded string.
      */
@@ -59,15 +16,6 @@ public class DERPrintableString
             byte[]   string)
     {
         this.string = string;
-    }
-
-    /**
-     * Basic constructor - this does not validate the string
-     */
-    public DERPrintableString(
-            String   string)
-    {
-        this(string, false);
     }
 
     /**
@@ -90,19 +38,9 @@ public class DERPrintableString
         this.string = Strings.toByteArray(string);
     }
 
-    public String getString()
+    private String getString()
     {
         return Strings.fromByteArray(string);
-    }
-
-    public byte[] getOctets()
-    {
-        return Arrays.clone(string);
-    }
-
-    boolean isConstructed()
-    {
-        return false;
     }
 
     int encodedLength()

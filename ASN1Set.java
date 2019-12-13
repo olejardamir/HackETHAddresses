@@ -11,86 +11,6 @@ public abstract class ASN1Set
     private Vector set = new Vector();
     private boolean isSorted = false;
 
-    /**
-     * Return an ASN1 set from a tagged object. There is a special
-     * case here, if an object appears to have been explicitly tagged on
-     * reading but we were expecting it to be implicitly tagged in the
-     * normal course of events it indicates that we lost the surrounding
-     * set - so we need to add it back (this will happen if the tagged
-     * object is a sequence that contains other sequences). If you are
-     * dealing with implicitly tagged sets you really <b>should</b>
-     * be using this method.
-     *
-     * @param obj the tagged object.
-     * @param explicit true if the object is meant to be explicitly tagged
-     *          false otherwise.
-     * @exception IllegalArgumentException if the tagged object cannot
-     *          be converted.
-     * @return an ASN1Set instance.
-     */
-    public static ASN1Set getInstance(
-            ASN1TaggedObject    obj,
-            boolean             explicit)
-    {
-        if (explicit)
-        {
-            if (!obj.isExplicit())
-            {
-                throw new IllegalArgumentException("object implicit - explicit expected.");
-            }
-
-            return (ASN1Set)obj.getObject();
-        }
-        else
-        {
-            ASN1Primitive o = obj.getObject();
-
-            //
-            // constructed object which appears to be explicitly tagged
-            // and it's really implicit means we have to add the
-            // surrounding set.
-            //
-            if (obj.isExplicit())
-            {
-                if (obj instanceof BERTaggedObject)
-                {
-                    return new BERSet(o);
-                }
-                else
-                {
-                    return new DLSet(o);
-                }
-            }
-            else
-            {
-                if (o instanceof ASN1Set)
-                {
-                    return (ASN1Set)o;
-                }
-
-                //
-                // in this case the parser returns a sequence, convert it
-                // into a set.
-                //
-                if (o instanceof ASN1Sequence)
-                {
-                    ASN1Sequence s = (ASN1Sequence)o;
-
-                    if (obj instanceof BERTaggedObject)
-                    {
-                        return new BERSet(s.toArray());
-                    }
-                    else
-                    {
-                        return new DLSet(s.toArray());
-                    }
-                }
-            }
-        }
-
-        throw new IllegalArgumentException("unknown object in getInstance: " + obj.getClass().getName());
-    }
-
     ASN1Set()
     {
     }
@@ -176,47 +96,6 @@ public abstract class ASN1Set
         }
 
         return values;
-    }
-
-    public ASN1SetParser parser()
-    {
-        final ASN1Set outer = this;
-
-        return new ASN1SetParser()
-        {
-            private final int max = size();
-
-            private int index;
-
-            public ASN1Encodable readObject() {
-                if (index == max)
-                {
-                    return null;
-                }
-
-                ASN1Encodable obj = getObjectAt(index++);
-                if (obj instanceof ASN1Sequence)
-                {
-                    return ((ASN1Sequence)obj).parser();
-                }
-                if (obj instanceof ASN1Set)
-                {
-                    return ((ASN1Set)obj).parser();
-                }
-
-                return obj;
-            }
-
-            public ASN1Primitive getLoadedObject()
-            {
-                return outer;
-            }
-
-            public ASN1Primitive toASN1Primitive()
-            {
-                return outer;
-            }
-        };
     }
 
     public int hashCode()
@@ -337,14 +216,6 @@ public abstract class ASN1Set
             }
         }
     }
-
-    boolean isConstructed()
-    {
-        return true;
-    }
-
-    abstract void encode(ASN1OutputStream out)
-            throws IOException;
 
     public String toString()
     {

@@ -33,11 +33,6 @@ public class Curve25519 extends ECCurve.AbstractFp
         return coord == COORD_JACOBIAN_MODIFIED;
     }
 
-    public BigInteger getQ()
-    {
-        return q;
-    }
-
     public int getFieldSize()
     {
         return q.bitLength();

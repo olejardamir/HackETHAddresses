@@ -18,23 +18,6 @@ import java.util.Enumeration;
 class BERSet
         extends ASN1Set
 {
-    /**
-     * Create an empty SET.
-     */
-    public BERSet()
-    {
-    }
-
-    /**
-     * Create a SET containing one object.
-     *
-     * @param obj - a single object that makes up the set.
-     */
-    public BERSet(
-            ASN1Encodable obj)
-    {
-        super(obj);
-    }
 
     /**
      * Create a SET containing multiple objects.
@@ -44,16 +27,6 @@ class BERSet
             ASN1EncodableVector v)
     {
         super(v);
-    }
-
-    /**
-     * Create a SET from an array of objects.
-     * @param a an array of ASN.1 objects.
-     */
-    public BERSet(
-            ASN1Encodable[]   a)
-    {
-        super(a);
     }
 
     int encodedLength()
@@ -68,21 +41,9 @@ class BERSet
         return 2 + length + 2;
     }
 
-    void encode(
-            ASN1OutputStream out)
-            throws IOException
-    {
-        out.write(BERTags.SET | BERTags.CONSTRUCTED);
-        out.write(0x80);
+    @Override
+    void encode(ASN1OutputStream out) {
 
-        Enumeration e = getObjects();
-        while (e.hasMoreElements())
-        {
-            out.writeObject((ASN1Encodable)e.nextElement());
-        }
-
-        out.write(0x00);
-        out.write(0x00);
     }
 
     @Override
