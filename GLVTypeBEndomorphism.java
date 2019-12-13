@@ -3,13 +3,11 @@ import java.math.BigInteger;
 
 public class GLVTypeBEndomorphism implements GLVEndomorphism
 {
-    protected final ECCurve curve;
     protected final GLVTypeBParameters parameters;
     protected final ECPointMap pointMap;
 
     public GLVTypeBEndomorphism(ECCurve curve, GLVTypeBParameters parameters)
     {
-        this.curve = curve;
         this.parameters = parameters;
         this.pointMap = new ScaleXPointMap(curve.fromBigInteger(parameters.getBeta()));
     }

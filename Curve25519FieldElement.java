@@ -50,11 +50,6 @@ public class Curve25519FieldElement extends ECFieldElement.AbstractFp
         return Nat256.toBigInteger(x);
     }
 
-    public String getFieldName()
-    {
-        return "Curve25519Field";
-    }
-
     public int getFieldSize()
     {
         return Q.bitLength();
@@ -146,59 +141,49 @@ public class Curve25519FieldElement extends ECFieldElement.AbstractFp
         int[] x2 = Nat256.create();
         Curve25519Field.square(x1, x2);
         Curve25519Field.multiply(x2, x1, x2);
-        int[] x3 = x2;
-        Curve25519Field.square(x2, x3);
-        Curve25519Field.multiply(x3, x1, x3);
+        Curve25519Field.square(x2, x2);
+        Curve25519Field.multiply(x2, x1, x2);
         int[] x4 = Nat256.create();
-        Curve25519Field.square(x3, x4);
+        Curve25519Field.square(x2, x4);
         Curve25519Field.multiply(x4, x1, x4);
         int[] x7 = Nat256.create();
         Curve25519Field.squareN(x4, 3, x7);
-        Curve25519Field.multiply(x7, x3, x7);
-        int[] x11 = x3;
-        Curve25519Field.squareN(x7, 4, x11);
-        Curve25519Field.multiply(x11, x4, x11);
-        int[] x15 = x7;
-        Curve25519Field.squareN(x11, 4, x15);
-        Curve25519Field.multiply(x15, x4, x15);
-        int[] x30 = x4;
-        Curve25519Field.squareN(x15, 15, x30);
-        Curve25519Field.multiply(x30, x15, x30);
-        int[] x60 = x15;
-        Curve25519Field.squareN(x30, 30, x60);
-        Curve25519Field.multiply(x60, x30, x60);
-        int[] x120 = x30;
-        Curve25519Field.squareN(x60, 60, x120);
-        Curve25519Field.multiply(x120, x60, x120);
-        int[] x131 = x60;
-        Curve25519Field.squareN(x120, 11, x131);
-        Curve25519Field.multiply(x131, x11, x131);
-        int[] x251 = x11;
-        Curve25519Field.squareN(x131, 120, x251);
-        Curve25519Field.multiply(x251, x120, x251);
+        Curve25519Field.multiply(x7, x2, x7);
+        Curve25519Field.squareN(x7, 4, x2);
+        Curve25519Field.multiply(x2, x4, x2);
+        Curve25519Field.squareN(x2, 4, x7);
+        Curve25519Field.multiply(x7, x4, x7);
+        Curve25519Field.squareN(x7, 15, x4);
+        Curve25519Field.multiply(x4, x7, x4);
+        Curve25519Field.squareN(x4, 30, x7);
+        Curve25519Field.multiply(x7, x4, x7);
+        Curve25519Field.squareN(x7, 60, x4);
+        Curve25519Field.multiply(x4, x7, x4);
+        Curve25519Field.squareN(x4, 11, x7);
+        Curve25519Field.multiply(x7, x2, x7);
+        Curve25519Field.squareN(x7, 120, x2);
+        Curve25519Field.multiply(x2, x4, x2);
 
-        int[] t1 = x251;
-        Curve25519Field.square(t1, t1);
+        Curve25519Field.square(x2, x2);
 
-        int[] t2 = x120;
-        Curve25519Field.square(t1, t2);
+        Curve25519Field.square(x2, x4);
 
-        if (Nat256.eq(x1, t2))
+        if (Nat256.eq(x1, x4))
         {
-            return new Curve25519FieldElement(t1);
+            return new Curve25519FieldElement(x2);
         }
 
         /*
          * If the first guess is incorrect, we multiply by a precomputed power of 2 to get the second guess,
          * which is ((4x)^(m + 1))/2 mod Q
          */
-        Curve25519Field.multiply(t1, PRECOMP_POW2, t1);
+        Curve25519Field.multiply(x2, PRECOMP_POW2, x2);
 
-        Curve25519Field.square(t1, t2);
+        Curve25519Field.square(x2, x4);
 
-        if (Nat256.eq(x1, t2))
+        if (Nat256.eq(x1, x4))
         {
-            return new Curve25519FieldElement(t1);
+            return new Curve25519FieldElement(x2);
         }
 
         return null;

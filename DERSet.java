@@ -24,36 +24,6 @@ public class DERSet
     {
     }
 
-    /**
-     * create a set containing one object
-     * @param obj the object to go in the set
-     */
-    public DERSet(
-            ASN1Encodable obj)
-    {
-        super(obj);
-    }
-
-    /**
-     * create a set containing a vector of objects.
-     * @param v the vector of objects to make up the set.
-     */
-    public DERSet(
-            ASN1EncodableVector v)
-    {
-        super(v, true);
-    }
-
-    /**
-     * create a set containing an array of objects.
-     * @param a the array of objects to make up the set.
-     */
-    public DERSet(
-            ASN1Encodable[]   a)
-    {
-        super(a, true);
-    }
-
     DERSet(
             ASN1EncodableVector v,
             boolean                  doSort)
@@ -113,5 +83,10 @@ public class DERSet
 
             dOut.writeObject((ASN1Encodable)obj);
         }
+    }
+
+    @Override
+    boolean asn1Equals(ASN1Primitive o) {
+        return false;
     }
 }

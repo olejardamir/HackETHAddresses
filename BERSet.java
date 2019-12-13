@@ -84,4 +84,9 @@ public class BERSet
         out.write(0x00);
         out.write(0x00);
     }
+
+    @Override
+    boolean asn1Equals(ASN1Primitive o) {
+        return false;
+    }
 }

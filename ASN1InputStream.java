@@ -65,20 +65,6 @@ public class ASN1InputStream
      * objects such as sequences will be parsed lazily.
      *
      * @param input stream containing ASN.1 encoded data.
-     * @param lazyEvaluate true if parsing inside constructed objects can be delayed.
-     */
-    public ASN1InputStream(
-            InputStream input,
-            boolean     lazyEvaluate)
-    {
-        this(input, StreamUtil.findLimit(input), lazyEvaluate);
-    }
-
-    /**
-     * Create an ASN1InputStream where no DER object will be longer than limit, and constructed
-     * objects such as sequences will be parsed lazily.
-     *
-     * @param input stream containing ASN.1 encoded data.
      * @param limit maximum size of a DER encoded object.
      * @param lazyEvaluate true if parsing inside constructed objects can be delayed.
      */
@@ -102,16 +88,6 @@ public class ASN1InputStream
             throws IOException
     {
         return readLength(this, limit);
-    }
-
-    protected void readFully(
-            byte[]  bytes)
-            throws IOException
-    {
-        if (Streams.readFully(this, bytes) != bytes.length)
-        {
-            throw new EOFException("EOF encountered in middle of object");
-        }
     }
 
     /**
@@ -388,30 +364,6 @@ public class ASN1InputStream
         {
             return defIn.toByteArray();
         }
-    }
-
-    private static char[] getBMPCharBuffer(DefiniteLengthInputStream defIn)
-            throws IOException
-    {
-        int len = defIn.getRemaining() / 2;
-        char[] buf = new char[len];
-        int totalRead = 0;
-        while (totalRead < len)
-        {
-            int ch1 = defIn.read();
-            if (ch1 < 0)
-            {
-                break;
-            }
-            int ch2 = defIn.read();
-            if (ch2 < 0)
-            {
-                break;
-            }
-            buf[totalRead++] = (char)((ch1 << 8) | (ch2 & 0xff));
-        }
-
-        return buf;
     }
 
     static ASN1Primitive createPrimitiveDERObject(

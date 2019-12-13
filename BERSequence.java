@@ -38,15 +38,6 @@ public class BERSequence
         super(v);
     }
 
-    /**
-     * Create a sequence containing an array of objects.
-     */
-    public BERSequence(
-            ASN1Encodable[]   array)
-    {
-        super(array);
-    }
-
     int encodedLength()
             throws IOException
     {

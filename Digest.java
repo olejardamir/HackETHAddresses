@@ -9,21 +9,21 @@ public interface Digest
      *
      * @return the algorithm name
      */
-    public String getAlgorithmName();
+    String getAlgorithmName();
 
     /**
      * return the size, in bytes, of the digest produced by this message digest.
      *
      * @return the size, in bytes, of the digest produced by this message digest.
      */
-    public int getDigestSize();
+    int getDigestSize();
 
     /**
      * update the message digest with a single byte.
      *
      * @param in the input byte to be entered.
      */
-    public void update(byte in);
+    void update(byte in);
 
     /**
      * update the message digest with a block of bytes.
@@ -32,19 +32,18 @@ public interface Digest
      * @param inOff the offset into the byte array where the data starts.
      * @param len the length of the data.
      */
-    public void update(byte[] in, int inOff, int len);
+    void update(byte[] in, int inOff, int len);
 
     /**
      * close the digest, producing the final digest value. The doFinal
      * call leaves the digest reset.
-     *
-     * @param out the array the digest is to be copied into.
+     *  @param out the array the digest is to be copied into.
      * @param outOff the offset into the out array the digest is to start at.
      */
-    public int doFinal(byte[] out, int outOff);
+    void doFinal(byte[] out, int outOff);
 
     /**
      * reset the digest back to it's initial state.
      */
-    public void reset();
+    void reset();
 }

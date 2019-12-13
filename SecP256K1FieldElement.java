@@ -17,11 +17,6 @@ public class SecP256K1FieldElement extends ECFieldElement.AbstractFp
         this.x = SecP256K1Field.fromBigInteger(x);
     }
 
-    public SecP256K1FieldElement()
-    {
-        this.x = Nat256.create();
-    }
-
     protected SecP256K1FieldElement(int[] x)
     {
         this.x = x;
@@ -45,11 +40,6 @@ public class SecP256K1FieldElement extends ECFieldElement.AbstractFp
     public BigInteger toBigInteger()
     {
         return Nat256.toBigInteger(x);
-    }
-
-    public String getFieldName()
-    {
-        return "SecP256K1Field";
     }
 
     public int getFieldSize()
@@ -148,42 +138,35 @@ public class SecP256K1FieldElement extends ECFieldElement.AbstractFp
         int[] x6 = Nat256.create();
         SecP256K1Field.squareN(x3, 3, x6);
         SecP256K1Field.multiply(x6, x3, x6);
-        int[] x9 = x6;
-        SecP256K1Field.squareN(x6, 3, x9);
-        SecP256K1Field.multiply(x9, x3, x9);
-        int[] x11 = x9;
-        SecP256K1Field.squareN(x9, 2, x11);
-        SecP256K1Field.multiply(x11, x2, x11);
+        SecP256K1Field.squareN(x6, 3, x6);
+        SecP256K1Field.multiply(x6, x3, x6);
+        SecP256K1Field.squareN(x6, 2, x6);
+        SecP256K1Field.multiply(x6, x2, x6);
         int[] x22 = Nat256.create();
-        SecP256K1Field.squareN(x11, 11, x22);
-        SecP256K1Field.multiply(x22, x11, x22);
-        int[] x44 = x11;
-        SecP256K1Field.squareN(x22, 22, x44);
-        SecP256K1Field.multiply(x44, x22, x44);
+        SecP256K1Field.squareN(x6, 11, x22);
+        SecP256K1Field.multiply(x22, x6, x22);
+        SecP256K1Field.squareN(x22, 22, x6);
+        SecP256K1Field.multiply(x6, x22, x6);
         int[] x88 = Nat256.create();
-        SecP256K1Field.squareN(x44, 44, x88);
-        SecP256K1Field.multiply(x88, x44, x88);
+        SecP256K1Field.squareN(x6, 44, x88);
+        SecP256K1Field.multiply(x88, x6, x88);
         int[] x176 = Nat256.create();
         SecP256K1Field.squareN(x88, 88, x176);
         SecP256K1Field.multiply(x176, x88, x176);
-        int[] x220 = x88;
-        SecP256K1Field.squareN(x176, 44, x220);
-        SecP256K1Field.multiply(x220, x44, x220);
-        int[] x223 = x44;
-        SecP256K1Field.squareN(x220, 3, x223);
-        SecP256K1Field.multiply(x223, x3, x223);
+        SecP256K1Field.squareN(x176, 44, x88);
+        SecP256K1Field.multiply(x88, x6, x88);
+        SecP256K1Field.squareN(x88, 3, x6);
+        SecP256K1Field.multiply(x6, x3, x6);
 
-        int[] t1 = x223;
-        SecP256K1Field.squareN(t1, 23, t1);
-        SecP256K1Field.multiply(t1, x22, t1);
-        SecP256K1Field.squareN(t1, 6, t1);
-        SecP256K1Field.multiply(t1, x2, t1);
-        SecP256K1Field.squareN(t1, 2, t1);
+        SecP256K1Field.squareN(x6, 23, x6);
+        SecP256K1Field.multiply(x6, x22, x6);
+        SecP256K1Field.squareN(x6, 6, x6);
+        SecP256K1Field.multiply(x6, x2, x6);
+        SecP256K1Field.squareN(x6, 2, x6);
 
-        int[] t2 = x2;
-        SecP256K1Field.square(t1, t2);
+        SecP256K1Field.square(x6, x2);
 
-        return Nat256.eq(x1, t2) ? new SecP256K1FieldElement(t1) : null;
+        return Nat256.eq(x1, x2) ? new SecP256K1FieldElement(x6) : null;
     }
 
     public boolean equals(Object other)

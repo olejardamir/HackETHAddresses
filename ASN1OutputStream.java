@@ -111,13 +111,6 @@ public class ASN1OutputStream
         write(bytes);
     }
 
-    protected void writeNull()
-            throws IOException
-    {
-        os.write(BERTags.NULL);
-        os.write(0x00);
-    }
-
     public void writeObject(
             ASN1Encodable obj)
             throws IOException
@@ -145,18 +138,6 @@ public class ASN1OutputStream
         }
     }
 
-    public void close()
-            throws IOException
-    {
-        os.close();
-    }
-
-    public void flush()
-            throws IOException
-    {
-        os.flush();
-    }
-
     ASN1OutputStream getDERSubStream()
     {
         return new DEROutputStream(os);
@@ -170,24 +151,11 @@ public class ASN1OutputStream
     private class ImplicitOutputStream
             extends ASN1OutputStream
     {
-        private boolean first = true;
 
         public ImplicitOutputStream(OutputStream os)
         {
             super(os);
         }
 
-        public void write(int b)
-                throws IOException
-        {
-            if (first)
-            {
-                first = false;
-            }
-            else
-            {
-                super.write(b);
-            }
-        }
     }
 }

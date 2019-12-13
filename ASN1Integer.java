@@ -32,34 +32,6 @@ public class ASN1Integer
         bytes = value.toByteArray();
     }
 
-    /**
-     * Construct an INTEGER from the passed in byte array.
-     *
-     * <p>
-     * <b>NB: Strict Validation applied by default.</b>
-     * </p>
-     * <p>
-     * It has turned out that there are still a few applications that struggle with
-     * the ASN.1 BER encoding rules for an INTEGER as described in:
-     *
-     * https://www.itu.int/ITU-T/studygroups/com17/languages/X.690-0207.pdf
-     * Section 8.3.2.
-     * </p>
-     * <p>
-     * Users can set the 'org.bouncycastle.asn1.allow_unsafe_integer' to 'true'
-     * and a looser validation will be applied. Users must recognise that this is
-     * not ideal and may pave the way for an exploit based around a faulty encoding
-     * in the future.
-     * </p>
-     *
-     * @param bytes the byte array representing a 2's complement encoding of a BigInteger.
-     */
-    public ASN1Integer(
-            byte[] bytes)
-    {
-        this(bytes, true);
-    }
-
     ASN1Integer(byte[] bytes, boolean clone)
     {
         // Apply loose validation, see note in public constructor ANS1Integer(byte[])
@@ -87,10 +59,7 @@ public class ASN1Integer
             {
                 return true;
             }
-            if (bytes[0] == (byte)0xff && (bytes[1] & 0x80) != 0)
-            {
-                return true;
-            }
+            return bytes[0] == (byte) 0xff && (bytes[1] & 0x80) != 0;
         }
 
         return false;

@@ -96,7 +96,7 @@ public class ECDomainParameters
             throw new IllegalArgumentException("Point at infinity");
         }
 
-        if (!q.isValid())
+        if (q.isValid())
         {
             throw new IllegalArgumentException("Point not on curve");
         }

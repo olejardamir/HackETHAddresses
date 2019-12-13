@@ -79,9 +79,7 @@ class StreamUtil
         return count;
     }
 
-    static int calculateTagLength(int tagNo)
-            throws IOException
-    {
+    static int calculateTagLength(int tagNo) {
         int length = 1;
 
         if (tagNo >= 31)

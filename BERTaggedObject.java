@@ -1,6 +1,5 @@
 
 import java.io.IOException;
-import java.util.Enumeration;
 
 /**
  * BER TaggedObject - in ASN.1 notation this is any object preceded by
@@ -91,56 +90,13 @@ public class BERTaggedObject
         }
     }
 
-    void encode(
-            ASN1OutputStream out)
-            throws IOException
-    {
-        out.writeTag(BERTags.CONSTRUCTED | BERTags.TAGGED, tagNo);
-        out.write(0x80);
+    @Override
+    void encode(ASN1OutputStream out) throws IOException {
 
-        if (!empty)
-        {
-            if (!explicit)
-            {
-                Enumeration e = null;
-                if (obj instanceof ASN1OctetString)
-                {
-                    if (obj instanceof BEROctetString)
-                    {
-                        e = ((BEROctetString)obj).getObjects();
-                    }
-                    else
-                    {
-                        ASN1OctetString             octs = (ASN1OctetString)obj;
-                        BEROctetString berO = new BEROctetString(octs.getOctets());
-                        e = berO.getObjects();
-                    }
-                }
-                else if (obj instanceof ASN1Sequence)
-                {
-                    e = ((ASN1Sequence)obj).getObjects();
-                }
-                else if (obj instanceof ASN1Set)
-                {
-                    e = ((ASN1Set)obj).getObjects();
-                }
-                else
-                {
-                  //  throw new ASN1Exception("not implemented: " + obj.getClass().getName());
-                }
+    }
 
-                while (e.hasMoreElements())
-                {
-                    out.writeObject((ASN1Encodable)e.nextElement());
-                }
-            }
-            else
-            {
-                out.writeObject(obj);
-            }
-        }
-
-        out.write(0x00);
-        out.write(0x00);
+    @Override
+    boolean asn1Equals(ASN1Primitive o) {
+        return false;
     }
 }

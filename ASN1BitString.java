@@ -125,19 +125,13 @@ public abstract class ASN1BitString
      *
      * @return a String representation.
      */
-    public String getString()
-    {
+    public String getString() throws IOException {
         StringBuffer          buf = new StringBuffer("#");
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
         ASN1OutputStream aOut = new ASN1OutputStream(bOut);
 
-        try
-        {
+
             aOut.writeObject(this);
-        }
-        catch (IOException e)
-        {
-        }
 
         byte[]    string = bOut.toByteArray();
 
@@ -162,7 +156,12 @@ public abstract class ASN1BitString
 
     public String toString()
     {
-        return getString();
+        try {
+            return getString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public int hashCode()

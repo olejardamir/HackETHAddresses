@@ -142,4 +142,9 @@ public class DLSet
             dOut.writeObject((ASN1Encodable)obj);
         }
     }
+
+    @Override
+    boolean asn1Equals(ASN1Primitive o) {
+        return false;
+    }
 }

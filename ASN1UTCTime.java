@@ -103,14 +103,7 @@ public class ASN1UTCTime
             String time)
     {
         this.time = Strings.toByteArray(time);
-        try
-        {
-            this.getDate();
-        }
-        catch (ParseException e)
-        {
-            throw new IllegalArgumentException("invalid date string: " + e.getMessage());
-        }
+        this.getDate();
     }
 
     /**
@@ -141,36 +134,14 @@ public class ASN1UTCTime
      * Return the time as a date based on whatever a 2 digit year will return. For
      * standardised processing use getAdjustedDate().
      *
-     * @return the resulting date
      * @exception ParseException if the date string cannot be parsed.
      */
-    public Date getDate()
-            throws ParseException
-    {
+    public void getDate() {
         SimpleDateFormat dateF = new SimpleDateFormat("yyMMddHHmmssz");
 
         //return DateUtil.epochAdjust(dateF.parse(getTime()));
         //do we need this crap?
 
-        return null;
-    }
-
-    /**
-     * Return the time as an adjusted date
-     * in the range of 1950 - 2049.
-     *
-     * @return a date in the range of 1950 to 2049.
-     * @exception ParseException if the date string cannot be parsed.
-     */
-    public Date getAdjustedDate()
-            throws ParseException
-    {
-        SimpleDateFormat dateF = new SimpleDateFormat("yyyyMMddHHmmssz");
-
-        dateF.setTimeZone(new SimpleTimeZone(0,"Z"));
-        //do we need this crap?
-//        return DateUtil.epochAdjust(dateF.parse(getAdjustedTime()));
-        return null;
     }
 
     /**
@@ -274,7 +245,7 @@ public class ASN1UTCTime
 
         for (int i = 0; i != length; i++)
         {
-            out.write((byte)time[i]);
+            out.write(time[i]);
         }
     }
 

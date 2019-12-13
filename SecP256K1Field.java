@@ -23,18 +23,6 @@ public class SecP256K1Field
         }
     }
 
-    public static void addExt(int[] xx, int[] yy, int[] zz)
-    {
-        int c = Nat.add(16, xx, yy, zz);
-        if (c != 0 || (zz[15] == PExt15 && Nat.gte(16, zz, PExt)))
-        {
-            if (Nat.addTo(PExtInv.length, PExtInv, zz) != 0)
-            {
-                Nat.incAt(16, zz, PExtInv.length);
-            }
-        }
-    }
-
     public static void addOne(int[] x, int[] z)
     {
         int c = Nat.inc(8, x, z);
@@ -52,19 +40,6 @@ public class SecP256K1Field
             Nat256.subFrom(P, z);
         }
         return z;
-    }
-
-    public static void half(int[] x, int[] z)
-    {
-        if ((x[0] & 1) == 0)
-        {
-            Nat.shiftDownBit(8, x, 0, z);
-        }
-        else
-        {
-            int c = Nat256.add(x, P, z);
-            Nat.shiftDownBit(8, z, c);
-        }
     }
 
     public static void multiply(int[] x, int[] y, int[] z)
@@ -148,18 +123,6 @@ public class SecP256K1Field
         if (c != 0)
         {
             Nat.sub33From(8, PInv33, z);
-        }
-    }
-
-    public static void subtractExt(int[] xx, int[] yy, int[] zz)
-    {
-        int c = Nat.sub(16, xx, yy, zz);
-        if (c != 0)
-        {
-            if (Nat.subFrom(PExtInv.length, PExtInv, zz) != 0)
-            {
-                Nat.decAt(16, zz, PExtInv.length);
-            }
         }
     }
 

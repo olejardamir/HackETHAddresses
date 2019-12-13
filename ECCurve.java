@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Hashtable;
 import java.util.Random;
@@ -14,13 +15,6 @@ public abstract class ECCurve
     public static final int COORD_JACOBIAN_MODIFIED = 4;
     public static final int COORD_LAMBDA_AFFINE = 5;
     public static final int COORD_LAMBDA_PROJECTIVE = 6;
-    public static final int COORD_SKEWED = 7;
-
-    public static int[] getAllCoordinateSystems()
-    {
-        return new int[]{ COORD_AFFINE, COORD_HOMOGENEOUS, COORD_JACOBIAN, COORD_JACOBIAN_CHUDNOVSKY,
-                COORD_JACOBIAN_MODIFIED, COORD_LAMBDA_AFFINE, COORD_LAMBDA_PROJECTIVE, COORD_SKEWED };
-    }
 
     public class Config
     {
@@ -35,26 +29,13 @@ public abstract class ECCurve
             this.multiplier = multiplier;
         }
 
-        public Config setCoordinateSystem(int coord)
-        {
-            this.coord = coord;
-            return this;
-        }
-
         public Config setEndomorphism(ECEndomorphism endomorphism)
         {
             this.endomorphism = endomorphism;
             return this;
         }
 
-        public Config setMultiplier(ECMultiplier multiplier)
-        {
-            this.multiplier = multiplier;
-            return this;
-        }
-
-        public ECCurve create()
-        {
+        public ECCurve create() throws IOException {
             if (!supportsCoordinateSystem(coord))
             {
                 throw new IllegalStateException("unsupported coordinate system");
@@ -95,8 +76,6 @@ public abstract class ECCurve
 
     public abstract ECFieldElement fromBigInteger(BigInteger x);
 
-    public abstract boolean isValidFieldElement(BigInteger x);
-
     public synchronized Config configure()
     {
         return new Config(this.coord, this.endomorphism, this.multiplier);
@@ -105,7 +84,7 @@ public abstract class ECCurve
     public ECPoint validatePoint(BigInteger x, BigInteger y)
     {
         ECPoint p = createPoint(x, y);
-        if (!p.isValid())
+        if (p.isValid())
         {
             throw new IllegalArgumentException("Invalid point coordinates");
         }
@@ -119,7 +98,7 @@ public abstract class ECCurve
     public ECPoint validatePoint(BigInteger x, BigInteger y, boolean withCompression)
     {
         ECPoint p = createPoint(x, y, withCompression);
-        if (!p.isValid())
+        if (p.isValid())
         {
             throw new IllegalArgumentException("Invalid point coordinates");
         }
@@ -140,7 +119,7 @@ public abstract class ECCurve
         return createRawPoint(fromBigInteger(x), fromBigInteger(y), withCompression);
     }
 
-    protected abstract ECCurve cloneCurve();
+    protected abstract ECCurve cloneCurve() throws IOException;
 
     protected abstract ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, boolean withCompression);
 
@@ -298,7 +277,7 @@ public abstract class ECCurve
         for (int i = 0; i < len; ++i)
         {
             ECPoint p = points[off + i];
-            if (null != p && (iso != null || !p.isNormalized()))
+            if (null != p && (iso != null || p.isNormalized()))
             {
                 zs[count] = p.getZCoord(0);
                 indices[count++] = off + i;
@@ -353,23 +332,6 @@ public abstract class ECCurve
 
     protected abstract ECPoint decompressPoint(int yTilde, BigInteger X1);
 
-    public ECEndomorphism getEndomorphism()
-    {
-        return endomorphism;
-    }
-
-    /**
-     * Sets the default <code>ECMultiplier</code>, unless already set.
-     */
-    public synchronized ECMultiplier getMultiplier()
-    {
-        if (this.multiplier == null)
-        {
-            this.multiplier = createDefaultMultiplier();
-        }
-        return this.multiplier;
-    }
-
     /**
      * Decode a point on this curve from its ASN.1 encoding. The different
      * encodings are taken account of, including point compression for
@@ -378,7 +340,7 @@ public abstract class ECCurve
      */
     public ECPoint decodePoint(byte[] encoded)
     {
-        ECPoint p = null;
+        ECPoint p;
         int expectedLength = (getFieldSize() + 7) / 8;
 
         byte type = encoded[0];
@@ -567,11 +529,6 @@ public abstract class ECCurve
         protected AbstractFp(BigInteger q)
         {
             super(FiniteFields.getPrimeField(q));
-        }
-
-        public boolean isValidFieldElement(BigInteger x)
-        {
-            return x != null && x.signum() >= 0 && x.compareTo(this.getField().getCharacteristic()) < 0;
         }
 
         protected ECPoint decompressPoint(int yTilde, BigInteger X1)
@@ -766,56 +723,6 @@ public abstract class ECCurve
             super(buildField(m, k1, k2, k3));
         }
 
-        public boolean isValidFieldElement(BigInteger x)
-        {
-            return x != null && x.signum() >= 0 && x.bitLength() <= this.getFieldSize();
-        }
-
-        public ECPoint createPoint(BigInteger x, BigInteger y, boolean withCompression)
-        {
-            ECFieldElement X = this.fromBigInteger(x), Y = this.fromBigInteger(y);
-
-            int coord = this.getCoordinateSystem();
-
-            switch (coord)
-            {
-                case ECCurve.COORD_LAMBDA_AFFINE:
-                case ECCurve.COORD_LAMBDA_PROJECTIVE:
-                {
-                    if (X.isZero())
-                    {
-                        if (!Y.square().equals(this.getB()))
-                        {
-                            throw new IllegalArgumentException();
-                        }
-                    }
-                    /*
-                     * NOTE: A division could be avoided using a projective result, except at present
-                     * callers will expect that the result is already normalized.
-                     */
-//                else if (coord == COORD_LAMBDA_PROJECTIVE)
-//                {
-//                    ECFieldElement Z = X;
-//                    X = X.square();
-//                    Y = Y.add(X);
-//                    return createRawPoint(X, Y, new ECFieldElement[]{ Z }, withCompression);
-//                }
-                    else
-                    {
-                        // Y becomes Lambda (X + Y/X) here
-                        Y = Y.divide(X).add(X);
-                    }
-                    break;
-                }
-                default:
-                {
-                    break;
-                }
-            }
-
-            return this.createRawPoint(X, Y, withCompression);
-        }
-
         /**
          * Decompresses a compressed point P = (xp, yp) (X9.62 s 4.2.2).
          *
@@ -1003,34 +910,6 @@ public abstract class ECCurve
         }
 
         /**
-         * Constructor for Trinomial Polynomial Basis (TPB).
-         * @param m  The exponent <code>m</code> of
-         * <code>F<sub>2<sup>m</sup></sub></code>.
-         * @param k The integer <code>k</code> where <code>x<sup>m</sup> +
-         * x<sup>k</sup> + 1</code> represents the reduction
-         * polynomial <code>f(z)</code>.
-         * @param a The coefficient <code>a</code> in the Weierstrass equation
-         * for non-supersingular elliptic curves over
-         * <code>F<sub>2<sup>m</sup></sub></code>.
-         * @param b The coefficient <code>b</code> in the Weierstrass equation
-         * for non-supersingular elliptic curves over
-         * <code>F<sub>2<sup>m</sup></sub></code>.
-         * @param order The order of the main subgroup of the elliptic curve.
-         * @param cofactor The cofactor of the elliptic curve, i.e.
-         * <code>#E<sub>a</sub>(F<sub>2<sup>m</sup></sub>) = h * n</code>.
-         */
-        public F2m(
-                int m,
-                int k,
-                BigInteger a,
-                BigInteger b,
-                BigInteger order,
-                BigInteger cofactor)
-        {
-            this(m, k, 0, 0, a, b, order, cofactor);
-        }
-
-        /**
          * Constructor for Pentanomial Polynomial Basis (PPB).
          * @param m  The exponent <code>m</code> of
          * <code>F<sub>2<sup>m</sup></sub></code>.
@@ -1180,11 +1059,6 @@ public abstract class ECCurve
             return infinity;
         }
 
-        public int getM()
-        {
-            return m;
-        }
-
         /**
          * Return true if curve uses a Trinomial basis.
          *
@@ -1193,11 +1067,6 @@ public abstract class ECCurve
         public boolean isTrinomial()
         {
             return k2 == 0 && k3 == 0;
-        }
-
-        public int getK1()
-        {
-            return k1;
         }
 
         public ECLookupTable createCacheSafeLookupTable(ECPoint[] points, int off, final int len)

@@ -69,27 +69,20 @@ public abstract class ECPoint
     {
         if (ECConstants.ONE.equals(curve.getCofactor()))
         {
-            return true;
+            return false;
         }
 
         BigInteger n = curve.getOrder();
 
         // TODO Require order to be available for all curves
 
-        return n == null || ECAlgorithms.referenceMultiply(this, n).isInfinity();
-    }
-
-    public final ECPoint getDetachedPoint()
-    {
-        return normalize().detach();
+        return n != null && !ECAlgorithms.referenceMultiply(this, n).isInfinity();
     }
 
     public ECCurve getCurve()
     {
         return curve;
     }
-
-    protected abstract ECPoint detach();
 
     protected int getCurveCoordinateSystem()
     {
@@ -156,18 +149,6 @@ public abstract class ECPoint
         return (index < 0 || index >= zs.length) ? null : zs[index];
     }
 
-    public ECFieldElement[] getZCoords()
-    {
-        int zsLen = zs.length;
-        if (zsLen == 0)
-        {
-            return EMPTY_ZS;
-        }
-        ECFieldElement[] copy = new ECFieldElement[zsLen];
-        System.arraycopy(zs, 0, copy, 0, zsLen);
-        return copy;
-    }
-
     public final ECFieldElement getRawXCoord()
     {
         return x;
@@ -185,7 +166,7 @@ public abstract class ECPoint
 
     protected void checkNormalized()
     {
-        if (!isNormalized())
+        if (isNormalized())
         {
             throw new IllegalStateException("point not in normal form");
         }
@@ -195,10 +176,10 @@ public abstract class ECPoint
     {
         int coord = this.getCurveCoordinateSystem();
 
-        return coord == ECCurve.COORD_AFFINE
-                || coord == ECCurve.COORD_LAMBDA_AFFINE
-                || isInfinity()
-                || zs[0].isOne();
+        return coord != ECCurve.COORD_AFFINE
+                && coord != ECCurve.COORD_LAMBDA_AFFINE
+                && !isInfinity()
+                && !zs[0].isOne();
     }
 
     /**
@@ -277,7 +258,7 @@ public abstract class ECPoint
 
     public boolean isValid()
     {
-        return implIsValid(false, true);
+        return !implIsValid(false, true);
     }
 
     boolean isValidPartial()
@@ -317,7 +298,7 @@ public abstract class ECPoint
                 }
                 if (checkOrder && !info.hasOrderPassed())
                 {
-                    if (!satisfiesOrder())
+                    if (satisfiesOrder())
                     {
                         info.reportFailed();
                         return info;
@@ -526,16 +507,6 @@ public abstract class ECPoint
         return twicePlus(this);
     }
 
-    /**
-     * Multiplies this <code>ECPoint</code> by the given number.
-     * @param k The multiplicator.
-     * @return <code>k * this</code>.
-     */
-    public ECPoint multiply(BigInteger k)
-    {
-        return this.getCurve().getMultiplier().multiply(this, k);
-    }
-
     public static abstract class AbstractFp extends ECPoint
     {
         protected AbstractFp(ECCurve curve, ECFieldElement x, ECFieldElement y)
@@ -639,11 +610,6 @@ public abstract class ECPoint
             super(curve, x, y, zs);
 
             this.withCompression = withCompression;
-        }
-
-        protected ECPoint detach()
-        {
-            return new ECPoint.Fp(null, this.getAffineXCoord(), this.getAffineYCoord(), false);
         }
 
         public ECFieldElement getZCoord(int index)
@@ -784,7 +750,7 @@ public abstract class ECPoint
                         ECFieldElement Z1Squared, U2, S2;
                         if (Z1IsOne)
                         {
-                            Z1Squared = Z1; U2 = X2; S2 = Y2;
+                            U2 = X2; S2 = Y2;
                         }
                         else
                         {
@@ -798,7 +764,7 @@ public abstract class ECPoint
                         ECFieldElement Z2Squared, U1, S1;
                         if (Z2IsOne)
                         {
-                            Z2Squared = Z2; U1 = X1; S1 = Y1;
+                            U1 = X1; S1 = Y1;
                         }
                         else
                         {
@@ -1255,16 +1221,6 @@ public abstract class ECPoint
             return four(two(x));
         }
 
-        protected ECFieldElement doubleProductFromSquares(ECFieldElement a, ECFieldElement b,
-                                                          ECFieldElement aSquared, ECFieldElement bSquared)
-        {
-            /*
-             * NOTE: If squaring in the field is faster than multiplication, then this is a quicker
-             * way to calculate 2.A.B, if A^2 and B^2 are already known.
-             */
-            return a.add(b).square().subtract(aSquared).subtract(bSquared);
-        }
-
         public ECPoint negate()
         {
             if (this.isInfinity())
@@ -1432,7 +1388,7 @@ public abstract class ECPoint
                 ECPoint N = this.normalize();
                 ECFieldElement X = N.getAffineXCoord();
                 ECFieldElement rhs = X.add(curve.getA());
-                return ((ECFieldElement.AbstractF2m)rhs).trace() == 0;
+                return ((ECFieldElement.AbstractF2m) rhs).trace() != 0;
             }
             if (ECConstants.FOUR.equals(cofactor))
             {
@@ -1449,12 +1405,12 @@ public abstract class ECPoint
                 ECFieldElement lambda = ((ECCurve.AbstractF2m)curve).solveQuadraticEquation(X.add(curve.getA()));
                 if (lambda == null)
                 {
-                    return false;
+                    return true;
                 }
                 ECFieldElement w = X.multiply(lambda).add(N.getAffineYCoord());
                 ECFieldElement t = w.add(curve.getA());
-                return ((ECFieldElement.AbstractF2m)t).trace() == 0
-                        || ((ECFieldElement.AbstractF2m)(t.add(X))).trace() == 0;
+                return ((ECFieldElement.AbstractF2m) t).trace() != 0
+                        && ((ECFieldElement.AbstractF2m) (t.add(X))).trace() != 0;
             }
 
             return super.satisfiesOrder();
@@ -1539,40 +1495,6 @@ public abstract class ECPoint
             return this.add(b.negate());
         }
 
-        public ECPoint.AbstractF2m tau()
-        {
-            if (this.isInfinity())
-            {
-                return this;
-            }
-
-            ECCurve curve = this.getCurve();
-            int coord = curve.getCoordinateSystem();
-
-            ECFieldElement X1 = this.x;
-
-            switch (coord)
-            {
-                case ECCurve.COORD_AFFINE:
-                case ECCurve.COORD_LAMBDA_AFFINE:
-                {
-                    ECFieldElement Y1 = this.y;
-                    return (ECPoint.AbstractF2m)curve.createRawPoint(X1.square(), Y1.square(), this.withCompression);
-                }
-                case ECCurve.COORD_HOMOGENEOUS:
-                case ECCurve.COORD_LAMBDA_PROJECTIVE:
-                {
-                    ECFieldElement Y1 = this.y, Z1 = this.zs[0];
-                    return (ECPoint.AbstractF2m)curve.createRawPoint(X1.square(), Y1.square(),
-                            new ECFieldElement[]{ Z1.square() }, this.withCompression);
-                }
-                default:
-                {
-                    throw new IllegalStateException("unsupported coordinate system");
-                }
-            }
-        }
-
         public ECPoint.AbstractF2m tauPow(int pow)
         {
             if (this.isInfinity())
@@ -1654,11 +1576,6 @@ public abstract class ECPoint
             this.withCompression = withCompression;
 
 //            checkCurveEquation();
-        }
-
-        protected ECPoint detach()
-        {
-            return new ECPoint.F2m(null, this.getAffineXCoord(), this.getAffineYCoord(), false); // earlier JDK
         }
 
         public ECFieldElement getYCoord()
@@ -1852,8 +1769,7 @@ public abstract class ECPoint
                         X1 = p.getXCoord();
                         ECFieldElement Y1 = p.getYCoord();
 
-                        ECFieldElement Y2 = L2;
-                        ECFieldElement L = Y1.add(Y2).divide(X1);
+                        ECFieldElement L = Y1.add(L2).divide(X1);
 
                         X3 = L.square().add(L).add(X1).add(curve.getA());
                         if (X3.isZero())
@@ -1943,14 +1859,13 @@ public abstract class ECPoint
 
                     ECFieldElement X1Sq = X1.square();
                     ECFieldElement S = X1Sq.add(Y1Z1);
-                    ECFieldElement V = X1Z1;
-                    ECFieldElement vSquared = V.square();
-                    ECFieldElement sv = S.add(V);
+                    ECFieldElement vSquared = X1Z1.square();
+                    ECFieldElement sv = S.add(X1Z1);
                     ECFieldElement h = sv.multiplyPlusProduct(S, vSquared, curve.getA());
 
-                    ECFieldElement X3 = V.multiply(h);
-                    ECFieldElement Y3 = X1Sq.square().multiplyPlusProduct(V, h, sv);
-                    ECFieldElement Z3 = V.multiply(vSquared);
+                    ECFieldElement X3 = X1Z1.multiply(h);
+                    ECFieldElement Y3 = X1Sq.square().multiplyPlusProduct(X1Z1, h, sv);
+                    ECFieldElement Z3 = X1Z1.multiply(vSquared);
 
                     return new ECPoint.F2m(curve, X3, Y3, new ECFieldElement[]{ Z3 }, this.withCompression);
                 }

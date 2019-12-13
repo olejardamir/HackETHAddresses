@@ -12,6 +12,6 @@ public interface ASN1OctetStringParser
      *
      * @return an InputStream representing the OCTET STRING's content.
      */
-    public InputStream getOctetStream();
+    InputStream getOctetStream();
 }
 

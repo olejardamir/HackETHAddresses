@@ -10,12 +10,8 @@ abstract class LimitedInputStream
     protected final InputStream _in;
     private int _limit;
 
-    LimitedInputStream(
-            InputStream in,
-            int         limit)
-    {
-        this._in = in;
-        this._limit = limit;
+    protected LimitedInputStream(InputStream in) {
+        _in = in;
     }
 
     int getRemaining()

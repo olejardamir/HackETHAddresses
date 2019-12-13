@@ -91,18 +91,6 @@ public abstract class ASN1Object
     }
 
     /**
-     * Return true if obj is a byte array and represents an object with the given tag value.
-     *
-     * @param obj object of interest.
-     * @param tagValue tag value to check for.
-     * @return  true if obj is a byte encoding starting with the given tag value, false otherwise.
-     */
-    protected static boolean hasEncodedTagValue(Object obj, int tagValue)
-    {
-        return (obj instanceof byte[]) && ((byte[])obj)[0] == tagValue;
-    }
-
-    /**
      * Method providing a primitive representation of this object suitable for encoding.
      * @return a primitive representation of this object.
      */

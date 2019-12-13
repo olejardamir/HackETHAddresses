@@ -230,7 +230,7 @@ class Tnaf
         for (int i = 1; i < k; i++)
         {
             // u2 = mu*u1 - 2*u0;
-            BigInteger s = null;
+            BigInteger s;
             if (mu == 1)
             {
                 s = u1;
@@ -248,8 +248,7 @@ class Tnaf
 //            System.out.println();
         }
 
-        BigInteger[] retVal = {u0, u1};
-        return retVal;
+        return new BigInteger[]{u0, u1};
     }
 
 
@@ -350,14 +349,12 @@ class Tnaf
         SimpleBigDecimal lambda1 = approximateDivisionByN(
                 k, s[1], vm, a, m, c);
 
-        ZTauElement q = round(lambda0, lambda1, mu);
-
         // r0 = n - d0*q0 - 2*s1*q1
-        BigInteger r0 = k.subtract(d0.multiply(q.u)).subtract(
-                BigInteger.valueOf(2).multiply(s[1]).multiply(q.v));
+        BigInteger r0 = k.subtract(d0.multiply(round(lambda0, lambda1, mu).u)).subtract(
+                BigInteger.valueOf(2).multiply(s[1]).multiply(round(lambda0, lambda1, mu).v));
 
         // r1 = s1*q0 - s0*q1
-        BigInteger r1 = s[1].multiply(q.u).subtract(s[0].multiply(q.v));
+        BigInteger r1 = s[1].multiply(round(lambda0, lambda1, mu).u).subtract(s[0].multiply(round(lambda0, lambda1, mu).v));
 
         return new ZTauElement(r0, r1);
     }

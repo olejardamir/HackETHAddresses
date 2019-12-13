@@ -55,28 +55,18 @@ public class KeccakDigest
         absorb(in, inOff, len);
     }
 
-    public int doFinal(byte[] out, int outOff)
+    public void doFinal(byte[] out, int outOff)
     {
         squeeze(out, outOff, fixedOutputLength);
 
         reset();
 
-        return getDigestSize();
+        getDigestSize();
     }
 
     public void reset()
     {
         init(fixedOutputLength);
-    }
-
-    /**
-     * Return the size of block that the compression function is applied to in bytes.
-     *
-     * @return internal byte length of a block.
-     */
-    public int getByteLength()
-    {
-        return rate / 8;
     }
 
     private void init(int bitLength)

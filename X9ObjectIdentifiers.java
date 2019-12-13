@@ -21,11 +21,5 @@ public interface X9ObjectIdentifiers
 
     ASN1ObjectIdentifier ellipticCurve = ansi_X9_62.branch("3");
 
-    ASN1ObjectIdentifier primeCurve = ellipticCurve.branch("1");
-
-    ASN1ObjectIdentifier prime192v1 = primeCurve.branch("1");
-
-    ASN1ObjectIdentifier prime256v1 = primeCurve.branch("7");
-
 
 }

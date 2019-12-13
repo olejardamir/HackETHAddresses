@@ -1,13 +1,12 @@
+import java.io.IOException;
 import java.math.BigInteger;
-import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
 public class CustomNamedCurves
 {
 
-    private static ECCurve configureCurveGLV(ECCurve c, GLVTypeBParameters p)
-    {
+    private static ECCurve configureCurveGLV(ECCurve c, GLVTypeBParameters p) throws IOException {
         return c.configure().setEndomorphism(new GLVTypeBEndomorphism(c, p)).create();
     }
 
@@ -16,8 +15,7 @@ public class CustomNamedCurves
      */
     static X9ECParametersHolder secp256k1 = new X9ECParametersHolder()
     {
-        protected X9ECParameters createParameters()
-        {
+        protected X9ECParameters createParameters() throws IOException {
             byte[] S = null;
             GLVTypeBParameters glv = new GLVTypeBParameters(
                     new BigInteger("7ae96a2b657c07106e64479eac3434e99cf0497512f58995c1396c28719501ee", 16),
@@ -35,7 +33,7 @@ public class CustomNamedCurves
             X9ECPoint G = new X9ECPoint(curve, Hex.decode("04"
                     + "79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798"
                     + "483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8"));
-            return new X9ECParameters(curve, G, curve.getOrder(), curve.getCofactor(), S);
+            return new X9ECParameters(curve, G, curve.getOrder(), curve.getCofactor(), null);
         }
     };
 
@@ -63,8 +61,7 @@ public class CustomNamedCurves
 
     }
 
-    public static X9ECParameters getByName(String name)
-    {
+    public static X9ECParameters getByName(String name) throws IOException {
         X9ECParametersHolder holder = (X9ECParametersHolder)nameToCurve.get(Strings.toLowerCase(name));
         return holder == null ? null : holder.getParameters();
     }

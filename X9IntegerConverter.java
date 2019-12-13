@@ -6,17 +6,6 @@ import java.math.BigInteger;
  */
 public class X9IntegerConverter
 {
-    /**
-     * Return the curve's field size in bytes.
-     *
-     * @param c the curve of interest.
-     * @return the field size in bytes (rounded up).
-     */
-    public int getByteLength(
-            ECCurve c)
-    {
-        return (c.getFieldSize() + 7) / 8;
-    }
 
     /**
      * Return the field element's field size in bytes.

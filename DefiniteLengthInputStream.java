@@ -17,7 +17,7 @@ class DefiniteLengthInputStream
             InputStream in,
             int         length)
     {
-        super(in, length);
+        super(in);
 
         if (length < 0)
         {

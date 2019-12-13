@@ -81,4 +81,9 @@ public class DLExternal
         baos.write(obj.getEncoded(ASN1Encoding.DL));
         out.writeEncoded(BERTags.CONSTRUCTED, BERTags.EXTERNAL, baos.toByteArray());
     }
+
+    @Override
+    boolean asn1Equals(ASN1Primitive o) {
+        return false;
+    }
 }

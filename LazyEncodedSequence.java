@@ -11,9 +11,7 @@ class LazyEncodedSequence
     private byte[] encoded;
 
     LazyEncodedSequence(
-            byte[] encoded)
-            throws IOException
-    {
+            byte[] encoded) {
         this.encoded = encoded;
     }
 
@@ -27,46 +25,6 @@ class LazyEncodedSequence
         }
 
         encoded = null;
-    }
-
-    public synchronized ASN1Encodable getObjectAt(int index)
-    {
-        if (encoded != null)
-        {
-            parse();
-        }
-
-        return super.getObjectAt(index);
-    }
-
-    public synchronized Enumeration getObjects()
-    {
-        if (encoded == null)
-        {
-            return super.getObjects();
-        }
-
-        return new LazyConstructionEnumeration(encoded);
-    }
-
-    public synchronized int size()
-    {
-        if (encoded != null)
-        {
-            parse();
-        }
-
-        return super.size();
-    }
-
-    ASN1Primitive toDERObject()
-    {
-        if (encoded != null)
-        {
-            parse();
-        }
-
-        return super.toDERObject();
     }
 
     ASN1Primitive toDLObject()

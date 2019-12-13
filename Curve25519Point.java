@@ -127,13 +127,12 @@ public class Curve25519Point extends ECPoint.AbstractFp
         int[] H = Nat256.create();
         Curve25519Field.subtract(U1, U2, H);
 
-        int[] R = t2;
-        Curve25519Field.subtract(S1, S2, R);
+        Curve25519Field.subtract(S1, S2, t2);
 
         // Check if b == this or b == -this
         if (Nat256.isZero(H))
         {
-            if (Nat256.isZero(R))
+            if (Nat256.isZero(t2))
             {
                 // this == b, i.e. this must be doubled
                 return this.twice();
@@ -149,22 +148,21 @@ public class Curve25519Point extends ECPoint.AbstractFp
         int[] G = Nat256.create();
         Curve25519Field.multiply(HSquared, H, G);
 
-        int[] V = t3;
-        Curve25519Field.multiply(HSquared, U1, V);
+        Curve25519Field.multiply(HSquared, U1, t3);
 
         Curve25519Field.negate(G, G);
         Nat256.mul(S1, G, tt1);
 
-        c = Nat256.addBothTo(V, V, G);
+        c = Nat256.addBothTo(t3, t3, G);
         Curve25519Field.reduce27(c, G);
 
         Curve25519FieldElement X3 = new Curve25519FieldElement(t4);
-        Curve25519Field.square(R, X3.x);
+        Curve25519Field.square(t2, X3.x);
         Curve25519Field.subtract(X3.x, G, X3.x);
 
         Curve25519FieldElement Y3 = new Curve25519FieldElement(G);
-        Curve25519Field.subtract(V, X3.x, Y3.x);
-        Curve25519Field.multiplyAddToExt(Y3.x, R, tt1);
+        Curve25519Field.subtract(t3, X3.x, Y3.x);
+        Curve25519Field.multiplyAddToExt(Y3.x, t2, tt1);
         Curve25519Field.reduce(tt1, Y3.x);
 
         Curve25519FieldElement Z3 = new Curve25519FieldElement(H);
@@ -180,7 +178,7 @@ public class Curve25519Point extends ECPoint.AbstractFp
         int[] Z3Squared = (Z1IsOne && Z2IsOne) ? HSquared : null;
 
         // TODO If the result will only be used in a subsequent addition, we don't need W3
-        Curve25519FieldElement W3 = calculateJacobianModifiedW((Curve25519FieldElement)Z3, Z3Squared);
+        Curve25519FieldElement W3 = calculateJacobianModifiedW(Z3, Z3Squared);
 
         ECFieldElement[] zs = new ECFieldElement[]{ Z3, W3 };
 

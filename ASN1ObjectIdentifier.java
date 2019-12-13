@@ -16,73 +16,6 @@ public class ASN1ObjectIdentifier
 
     private byte[] body;
 
-    /**
-     * Return an OID from the passed in object
-     *
-     * @param obj an ASN1ObjectIdentifier or an object that can be converted into one.
-     * @return an ASN1ObjectIdentifier instance, or null.
-     * @throws IllegalArgumentException if the object cannot be converted.
-     */
-    public static ASN1ObjectIdentifier getInstance(
-            Object obj)
-    {
-        if (obj == null || obj instanceof ASN1ObjectIdentifier)
-        {
-            return (ASN1ObjectIdentifier)obj;
-        }
-
-        if (obj instanceof ASN1Encodable)
-        {
-            ASN1Primitive primitive = ((ASN1Encodable)obj).toASN1Primitive();
-
-            if (primitive instanceof ASN1ObjectIdentifier)
-            {
-                return (ASN1ObjectIdentifier)primitive;
-            }
-        }
-
-        if (obj instanceof byte[])
-        {
-            byte[] enc = (byte[])obj;
-            try
-            {
-                return (ASN1ObjectIdentifier)fromByteArray(enc);
-            }
-            catch (IOException e)
-            {
-                throw new IllegalArgumentException("failed to construct object identifier from byte[]: " + e.getMessage());
-            }
-        }
-
-        throw new IllegalArgumentException("illegal object in getInstance: " + obj.getClass().getName());
-    }
-
-    /**
-     * Return an OBJECT IDENTIFIER from a tagged object.
-     *
-     * @param obj      the tagged object holding the object we want
-     * @param explicit true if the object is meant to be explicitly
-     *                 tagged false otherwise.
-     * @return an ASN1ObjectIdentifier instance, or null.
-     * @throws IllegalArgumentException if the tagged object cannot
-     * be converted.
-     */
-    public static ASN1ObjectIdentifier getInstance(
-            ASN1TaggedObject obj,
-            boolean explicit)
-    {
-        ASN1Primitive o = obj.getObject();
-
-        if (explicit || o instanceof ASN1ObjectIdentifier)
-        {
-            return getInstance(o);
-        }
-        else
-        {
-            return ASN1ObjectIdentifier.fromOctetString(ASN1OctetString.getInstance(o).getOctets());
-        }
-    }
-
     private static final long LONG_LIMIT = (Long.MAX_VALUE >> 7) - 0x7f;
 
     ASN1ObjectIdentifier(
@@ -219,18 +152,6 @@ public class ASN1ObjectIdentifier
         return new ASN1ObjectIdentifier(this, branchID);
     }
 
-    /**
-     * Return true if this oid is an extension of the passed in branch - stem.
-     *
-     * @param stem the arc or branch that is a possible parent.
-     * @return true if the branch is on the passed in stem, false otherwise.
-     */
-    public boolean on(ASN1ObjectIdentifier stem)
-    {
-        String id = getId(), stemId = stem.getId();
-        return id.length() > stemId.length() && id.charAt(stemId.length()) == '.' && id.startsWith(stemId);
-    }
-
     private void writeField(
             ByteArrayOutputStream out,
             long fieldValue)
@@ -317,9 +238,7 @@ public class ASN1ObjectIdentifier
         return false;
     }
 
-    int encodedLength()
-            throws IOException
-    {
+    int encodedLength() {
         int length = getBody().length;
 
         return 1 + StreamUtil.calculateBodyLength(length) + length;
@@ -411,31 +330,6 @@ public class ASN1ObjectIdentifier
         }
 
         return isValidBranchID(identifier, 2);
-    }
-
-    /**
-     * Intern will return a reference to a pooled version of this object, unless it
-     * is not present in which case intern will add it.
-     * <p>
-     * The pool is also used by the ASN.1 parsers to limit the number of duplicated OID
-     * objects in circulation.
-     * </p>
-     *
-     * @return a reference to the identifier in the pool.
-     */
-    public ASN1ObjectIdentifier intern()
-    {
-        final OidHandle hdl = new OidHandle(getBody());
-        ASN1ObjectIdentifier oid = pool.get(hdl);
-        if (oid == null)
-        {
-            oid = pool.putIfAbsent(hdl, this);
-            if (oid == null)
-            {
-                oid = this;
-            }
-        }
-        return oid;
     }
 
     private static final ConcurrentMap<OidHandle, ASN1ObjectIdentifier> pool = new ConcurrentHashMap<OidHandle, ASN1ObjectIdentifier>();

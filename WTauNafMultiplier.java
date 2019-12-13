@@ -21,20 +21,17 @@ public class WTauNafMultiplier extends AbstractECMultiplier
         byte mu = Tnaf.getMu(a);
         BigInteger[] s = curve.getSi();
 
-        ZTauElement rho = Tnaf.partModReduction(k, m, a, s, mu, (byte)10);
-
-        return multiplyWTnaf(p, rho, a, mu);
+        return multiplyWTnaf(p, Tnaf.partModReduction(k, m, a, s, mu, (byte)10), a, mu);
     }
 
 
     private ECPoint.AbstractF2m multiplyWTnaf(ECPoint.AbstractF2m p, ZTauElement lambda, byte a, byte mu)
     {
-        ZTauElement[] alpha = (a == 0) ? Tnaf.alpha0 : Tnaf.alpha1;
 
         BigInteger tw = Tnaf.getTw(mu, Tnaf.WIDTH);
 
         byte[]u = Tnaf.tauAdicWNaf(mu, lambda, Tnaf.WIDTH,
-                BigInteger.valueOf(Tnaf.POW_2_WIDTH), tw, alpha);
+                BigInteger.valueOf(Tnaf.POW_2_WIDTH), tw, (a == 0) ? Tnaf.alpha0 : Tnaf.alpha1);
 
         return multiplyFromWTnaf(p, u);
     }

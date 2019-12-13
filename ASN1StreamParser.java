@@ -1,5 +1,4 @@
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -28,14 +27,7 @@ public class ASN1StreamParser
         this.tmpBuffers = new byte[11][];
     }
 
-    public ASN1StreamParser(
-            byte[] encoding)
-    {
-        this(new ByteArrayInputStream(encoding), encoding.length);
-    }
-
-    ASN1Encodable readIndef(int tagValue) throws IOException
-    {
+    ASN1Encodable readIndef(int tagValue) {
         // Note: INDEF => CONSTRUCTED
 
         // TODO There are other tags that may be constructed (e.g. BIT_STRING)

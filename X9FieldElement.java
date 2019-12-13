@@ -1,5 +1,3 @@
-import java.math.BigInteger;
-
 /**
  * class for processing an FieldElement as a DER object.
  */
@@ -15,12 +13,6 @@ public class X9FieldElement
         this.f = f;
     }
 
-
-
-    public ECFieldElement getValue()
-    {
-        return f;
-    }
 
     public ASN1Primitive toASN1Primitive()
     {

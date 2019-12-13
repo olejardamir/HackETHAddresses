@@ -47,9 +47,8 @@ public class HexEncoder
     /**
      * encode the input data producing a Hex output stream.
      *
-     * @return the number of bytes produced.
      */
-    public int encode(
+    public void encode(
             byte[]                data,
             int                    off,
             int                    length,
@@ -64,7 +63,6 @@ public class HexEncoder
             out.write(encodingTable[v & 0xf]);
         }
 
-        return length * 2;
     }
 
     private static boolean ignore(
@@ -74,70 +72,11 @@ public class HexEncoder
     }
 
     /**
-     * decode the Hex encoded byte data writing it to the given output stream,
-     * whitespace characters will be ignored.
-     *
-     * @return the number of bytes produced.
-     */
-    public int decode(
-            byte[]          data,
-            int             off,
-            int             length,
-            OutputStream    out)
-            throws IOException
-    {
-        byte    b1, b2;
-        int     outLen = 0;
-
-        int     end = off + length;
-
-        while (end > off)
-        {
-            if (!ignore((char)data[end - 1]))
-            {
-                break;
-            }
-
-            end--;
-        }
-
-        int i = off;
-        while (i < end)
-        {
-            while (i < end && ignore((char)data[i]))
-            {
-                i++;
-            }
-
-            b1 = decodingTable[data[i++]];
-
-            while (i < end && ignore((char)data[i]))
-            {
-                i++;
-            }
-
-            b2 = decodingTable[data[i++]];
-
-            if ((b1 | b2) < 0)
-            {
-                throw new IOException("invalid characters encountered in Hex data");
-            }
-
-            out.write((b1 << 4) | b2);
-
-            outLen++;
-        }
-
-        return outLen;
-    }
-
-    /**
      * decode the Hex encoded String data writing it to the given output stream,
      * whitespace characters will be ignored.
      *
-     * @return the number of bytes produced.
      */
-    public int decode(
+    public void decode(
             String          data,
             OutputStream    out)
             throws IOException
@@ -184,6 +123,5 @@ public class HexEncoder
             length++;
         }
 
-        return length;
     }
 }

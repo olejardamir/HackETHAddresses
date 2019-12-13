@@ -1,6 +1,3 @@
-
-import java.io.IOException;
-
 /**
  * ASN.1 TaggedObject - in ASN.1 notation this is any object preceded by
  * a [n] where n is some number - these are assumed to follow the construction
@@ -12,42 +9,8 @@ public abstract class ASN1TaggedObject
 {
     int             tagNo;
     boolean         empty = false;
-    boolean         explicit = true;
-    ASN1Encodable obj = null;
-
-    static public ASN1TaggedObject getInstance(
-            ASN1TaggedObject    obj,
-            boolean             explicit)
-    {
-        if (explicit)
-        {
-            return (ASN1TaggedObject)obj.getObject();
-        }
-
-        throw new IllegalArgumentException("implicitly tagged tagged object");
-    }
-
-    static public ASN1TaggedObject getInstance(
-            Object obj)
-    {
-        if (obj == null || obj instanceof ASN1TaggedObject)
-        {
-            return (ASN1TaggedObject)obj;
-        }
-        else if (obj instanceof byte[])
-        {
-            try
-            {
-                return ASN1TaggedObject.getInstance(fromByteArray((byte[])obj));
-            }
-            catch (IOException e)
-            {
-                throw new IllegalArgumentException("failed to construct tagged object from byte[]: " + e.getMessage());
-            }
-        }
-
-        throw new IllegalArgumentException("unknown object in getInstance: " + obj.getClass().getName());
-    }
+    boolean         explicit;
+    ASN1Encodable obj;
 
     /**
      * Create a tagged object with the style given by the value of explicit.
@@ -92,39 +55,6 @@ public abstract class ASN1TaggedObject
         }
     }
 
-    boolean asn1Equals(
-            ASN1Primitive o)
-    {
-        if (!(o instanceof ASN1TaggedObject))
-        {
-            return false;
-        }
-
-        ASN1TaggedObject other = (ASN1TaggedObject)o;
-
-        if (tagNo != other.tagNo || empty != other.empty || explicit != other.explicit)
-        {
-            return false;
-        }
-
-        if(obj == null)
-        {
-            if (other.obj != null)
-            {
-                return false;
-            }
-        }
-        else
-        {
-            if (!(obj.toASN1Primitive().equals(other.obj.toASN1Primitive())))
-            {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
     public int hashCode()
     {
         int code = tagNo;
@@ -166,11 +96,6 @@ public abstract class ASN1TaggedObject
         return explicit;
     }
 
-    public boolean isEmpty()
-    {
-        return empty;
-    }
-
     /**
      * Return whatever was following the tag.
      * <p>
@@ -188,50 +113,15 @@ public abstract class ASN1TaggedObject
         return null;
     }
 
-    /**
-     * Return the object held in this tagged object as a parser assuming it has
-     * the type of the passed in tag. If the object doesn't have a parser
-     * associated with it, the base object is returned.
-     */
-    public ASN1Encodable getObjectParser(
-            int     tag,
-            boolean isExplicit)
-            throws IOException
-    {
-        switch (tag)
-        {
-            case BERTags.SET:
-                return ASN1Set.getInstance(this, isExplicit).parser();
-            case BERTags.SEQUENCE:
-                return ASN1Sequence.getInstance(this, isExplicit).parser();
-            case BERTags.OCTET_STRING:
-                return ASN1OctetString.getInstance(this, isExplicit).parser();
-        }
-
-        if (isExplicit)
-        {
-            return getObject();
-        }
-        return null;
-     }
-
     public ASN1Primitive getLoadedObject()
     {
         return this.toASN1Primitive();
-    }
-
-    ASN1Primitive toDERObject()
-    {
-        return new DERTaggedObject(explicit, tagNo, obj);
     }
 
     ASN1Primitive toDLObject()
     {
         return new DLTaggedObject(explicit, tagNo, obj);
     }
-
-    abstract void encode(ASN1OutputStream out)
-            throws IOException;
 
     public String toString()
     {

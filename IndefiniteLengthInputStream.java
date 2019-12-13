@@ -16,7 +16,7 @@ class IndefiniteLengthInputStream
             int         limit)
             throws IOException
     {
-        super(in, limit);
+        super(in);
 
         _b1 = in.read();
         _b2 = in.read();

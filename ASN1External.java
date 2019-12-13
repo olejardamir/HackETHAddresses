@@ -44,7 +44,7 @@ public abstract class ASN1External
         }
         if (!(enc instanceof ASN1TaggedObject))
         {
-            dataValueDescriptor = (ASN1Primitive) enc;
+            dataValueDescriptor = enc;
             offset++;
             enc = getObjFromVector(vector, offset);
         }
@@ -74,19 +74,6 @@ public abstract class ASN1External
     }
 
     /**
-     * Creates a new instance of External
-     * See X.690 for more informations about the meaning of these parameters
-     * @param directReference The direct reference or <code>null</code> if not set.
-     * @param indirectReference The indirect reference or <code>null</code> if not set.
-     * @param dataValueDescriptor The data value descriptor or <code>null</code> if not set.
-     * @param externalData The external data in its encoded form.
-     */
-    public ASN1External(ASN1ObjectIdentifier directReference, ASN1Integer indirectReference, ASN1Primitive dataValueDescriptor, DERTaggedObject externalData)
-    {
-        this(directReference, indirectReference, dataValueDescriptor, externalData.getTagNo(), externalData.toASN1Primitive());
-    }
-
-    /**
      * Creates a new instance of External.
      * See X.690 for more informations about the meaning of these parameters
      * @param directReference The direct reference or <code>null</code> if not set.
@@ -102,16 +89,6 @@ public abstract class ASN1External
         setDataValueDescriptor(dataValueDescriptor);
         setEncoding(encoding);
         setExternalContent(externalData.toASN1Primitive());
-    }
-
-    ASN1Primitive toDERObject()
-    {
-        if (this instanceof DERExternal)
-        {
-            return this;
-        }
-
-        return new DERExternal(directReference, indirectReference, dataValueDescriptor, encoding, externalContent);
     }
 
     /* (non-Javadoc)
@@ -145,94 +122,6 @@ public abstract class ASN1External
             throws IOException
     {
         return this.getEncoded().length;
-    }
-
-    /* (non-Javadoc)
-     * @see org.bouncycastle.asn1.ASN1Primitive#asn1Equals(org.bouncycastle.asn1.ASN1Primitive)
-     */
-    boolean asn1Equals(ASN1Primitive o)
-    {
-        if (!(o instanceof ASN1External))
-        {
-            return false;
-        }
-        if (this == o)
-        {
-            return true;
-        }
-        ASN1External other = (ASN1External)o;
-        if (directReference != null)
-        {
-            if (other.directReference == null || !other.directReference.equals(directReference))
-            {
-                return false;
-            }
-        }
-        if (indirectReference != null)
-        {
-            if (other.indirectReference == null || !other.indirectReference.equals(indirectReference))
-            {
-                return false;
-            }
-        }
-        if (dataValueDescriptor != null)
-        {
-            if (other.dataValueDescriptor == null || !other.dataValueDescriptor.equals(dataValueDescriptor))
-            {
-                return false;
-            }
-        }
-        return externalContent.equals(other.externalContent);
-    }
-
-    /**
-     * Returns the data value descriptor
-     * @return The descriptor
-     */
-    public ASN1Primitive getDataValueDescriptor()
-    {
-        return dataValueDescriptor;
-    }
-
-    /**
-     * Returns the direct reference of the external element
-     * @return The reference
-     */
-    public ASN1ObjectIdentifier getDirectReference()
-    {
-        return directReference;
-    }
-
-    /**
-     * Returns the encoding of the content. Valid values are
-     * <ul>
-     * <li><code>0</code> single-ASN1-type</li>
-     * <li><code>1</code> OCTET STRING</li>
-     * <li><code>2</code> BIT STRING</li>
-     * </ul>
-     * @return The encoding
-     */
-    public int getEncoding()
-    {
-        return encoding;
-    }
-
-    /**
-     * Returns the content of this element
-     * @return The content
-     */
-    public ASN1Primitive getExternalContent()
-    {
-        return externalContent;
-    }
-
-    /**
-     * Returns the indirect reference of this element
-     * @return The reference
-     */
-    public ASN1Integer getIndirectReference()
-    {
-        return indirectReference;
     }
 
     /**

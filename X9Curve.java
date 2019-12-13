@@ -39,11 +39,6 @@ public class X9Curve
         }
     }
 
-    public ECCurve  getCurve()
-    {
-        return curve;
-    }
-
     public ASN1Primitive toASN1Primitive()
     {
         ASN1EncodableVector v = new ASN1EncodableVector();

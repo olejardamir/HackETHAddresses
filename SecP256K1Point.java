@@ -7,10 +7,7 @@ public class SecP256K1Point extends ECPoint.AbstractFp
         this(curve, x, y, false);
     }
 
-    @Override
-    protected ECPoint detach() {
-        return null;
-    }
+
 
     public SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y, boolean withCompression)
     {
@@ -102,13 +99,12 @@ public class SecP256K1Point extends ECPoint.AbstractFp
         int[] H = Nat256.create();
         SecP256K1Field.subtract(U1, U2, H);
 
-        int[] R = t2;
-        SecP256K1Field.subtract(S1, S2, R);
+        SecP256K1Field.subtract(S1, S2, t2);
 
         // Check if b == this or b == -this
         if (Nat256.isZero(H))
         {
-            if (Nat256.isZero(R))
+            if (Nat256.isZero(t2))
             {
                 // this == b, i.e. this must be doubled
                 return this.twice();
@@ -118,28 +114,26 @@ public class SecP256K1Point extends ECPoint.AbstractFp
             return curve.getInfinity();
         }
 
-        int[] HSquared = t3;
-        SecP256K1Field.square(H, HSquared);
+        SecP256K1Field.square(H, t3);
 
         int[] G = Nat256.create();
-        SecP256K1Field.multiply(HSquared, H, G);
+        SecP256K1Field.multiply(t3, H, G);
 
-        int[] V = t3;
-        SecP256K1Field.multiply(HSquared, U1, V);
+        SecP256K1Field.multiply(t3, U1, t3);
 
         SecP256K1Field.negate(G, G);
         Nat256.mul(S1, G, tt1);
 
-        c = Nat256.addBothTo(V, V, G);
+        c = Nat256.addBothTo(t3, t3, G);
         SecP256K1Field.reduce32(c, G);
 
         SecP256K1FieldElement X3 = new SecP256K1FieldElement(t4);
-        SecP256K1Field.square(R, X3.x);
+        SecP256K1Field.square(t2, X3.x);
         SecP256K1Field.subtract(X3.x, G, X3.x);
 
         SecP256K1FieldElement Y3 = new SecP256K1FieldElement(G);
-        SecP256K1Field.subtract(V, X3.x, Y3.x);
-        SecP256K1Field.multiplyAddToExt(Y3.x, R, tt1);
+        SecP256K1Field.subtract(t3, X3.x, Y3.x);
+        SecP256K1Field.multiplyAddToExt(Y3.x, t2, tt1);
         SecP256K1Field.reduce(tt1, Y3.x);
 
         SecP256K1FieldElement Z3 = new SecP256K1FieldElement(H);
@@ -188,10 +182,9 @@ public class SecP256K1Point extends ECPoint.AbstractFp
         c = Nat256.addBothTo(M, M, M);
         SecP256K1Field.reduce32(c, M);
 
-        int[] S = Y1Squared;
-        SecP256K1Field.multiply(Y1Squared, X1.x, S);
-        c = Nat.shiftUpBits(8, S, 2, 0);
-        SecP256K1Field.reduce32(c, S);
+        SecP256K1Field.multiply(Y1Squared, X1.x, Y1Squared);
+        c = Nat.shiftUpBits(8, Y1Squared, 2, 0);
+        SecP256K1Field.reduce32(c, Y1Squared);
 
         int[] t1 = Nat256.create();
         c = Nat.shiftUpBits(8, T, 3, 0, t1);
@@ -199,11 +192,11 @@ public class SecP256K1Point extends ECPoint.AbstractFp
 
         SecP256K1FieldElement X3 = new SecP256K1FieldElement(T);
         SecP256K1Field.square(M, X3.x);
-        SecP256K1Field.subtract(X3.x, S, X3.x);
-        SecP256K1Field.subtract(X3.x, S, X3.x);
+        SecP256K1Field.subtract(X3.x, Y1Squared, X3.x);
+        SecP256K1Field.subtract(X3.x, Y1Squared, X3.x);
 
-        SecP256K1FieldElement Y3 = new SecP256K1FieldElement(S);
-        SecP256K1Field.subtract(S, X3.x, Y3.x);
+        SecP256K1FieldElement Y3 = new SecP256K1FieldElement(Y1Squared);
+        SecP256K1Field.subtract(Y1Squared, X3.x, Y3.x);
         SecP256K1Field.multiply(Y3.x, M, Y3.x);
         SecP256K1Field.subtract(Y3.x, t1, Y3.x);
 

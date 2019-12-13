@@ -114,9 +114,7 @@ public class DERUTF8String
         return false;
     }
 
-    int encodedLength()
-            throws IOException
-    {
+    int encodedLength() {
         return 1 + StreamUtil.calculateBodyLength(string.length) + string.length;
     }
 

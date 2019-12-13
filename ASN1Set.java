@@ -12,48 +12,6 @@ public abstract class ASN1Set
     private boolean isSorted = false;
 
     /**
-     * return an ASN1Set from the given object.
-     *
-     * @param obj the object we want converted.
-     * @exception IllegalArgumentException if the object cannot be converted.
-     * @return an ASN1Set instance, or null.
-     */
-    public static ASN1Set getInstance(
-            Object  obj)
-    {
-        if (obj == null || obj instanceof ASN1Set)
-        {
-            return (ASN1Set)obj;
-        }
-        else if (obj instanceof ASN1SetParser)
-        {
-            return ASN1Set.getInstance(((ASN1SetParser)obj).toASN1Primitive());
-        }
-        else if (obj instanceof byte[])
-        {
-            try
-            {
-                return ASN1Set.getInstance(ASN1Primitive.fromByteArray((byte[])obj));
-            }
-            catch (IOException e)
-            {
-                throw new IllegalArgumentException("failed to construct set from byte[]: " + e.getMessage());
-            }
-        }
-        else if (obj instanceof ASN1Encodable)
-        {
-            ASN1Primitive primitive = ((ASN1Encodable)obj).toASN1Primitive();
-
-            if (primitive instanceof ASN1Set)
-            {
-                return (ASN1Set)primitive;
-            }
-        }
-
-        throw new IllegalArgumentException("unknown object in getInstance: " + obj.getClass().getName());
-    }
-
-    /**
      * Return an ASN1 set from a tagged object. There is a special
      * case here, if an object appears to have been explicitly tagged on
      * reading but we were expecting it to be implicitly tagged in the
@@ -236,8 +194,7 @@ public abstract class ASN1Set
 
             private int index;
 
-            public ASN1Encodable readObject() throws IOException
-            {
+            public ASN1Encodable readObject() {
                 if (index == max)
                 {
                     return null;
@@ -285,39 +242,6 @@ public abstract class ASN1Set
     }
 
     /**
-     * Change current SET object to be encoded as {@link DERSet}.
-     * This is part of Distinguished Encoding Rules form serialization.
-     */
-    ASN1Primitive toDERObject()
-    {
-        if (isSorted)
-        {
-            ASN1Set derSet = new DERSet();
-
-            derSet.set = this.set;
-
-            return derSet;
-        }
-        else
-        {
-            Vector v = new Vector();
-
-            for (int i = 0; i != set.size(); i++)
-            {
-                v.addElement(set.elementAt(i));
-            }
-
-            ASN1Set derSet = new DERSet();
-
-            derSet.set = v;
-
-            derSet.sort();
-
-            return derSet;
-        }
-    }
-
-    /**
      * Change current SET object to be encoded as {@link DLSet}.
      * This is part of Direct Length form serialization.
      */
@@ -328,43 +252,6 @@ public abstract class ASN1Set
         derSet.set = this.set;
 
         return derSet;
-    }
-
-    boolean asn1Equals(
-            ASN1Primitive o)
-    {
-        if (!(o instanceof ASN1Set))
-        {
-            return false;
-        }
-
-        ASN1Set   other = (ASN1Set)o;
-
-        if (this.size() != other.size())
-        {
-            return false;
-        }
-
-        Enumeration s1 = this.getObjects();
-        Enumeration s2 = other.getObjects();
-
-        while (s1.hasMoreElements())
-        {
-            ASN1Encodable obj1 = getNext(s1);
-            ASN1Encodable obj2 = getNext(s2);
-
-            ASN1Primitive o1 = obj1.toASN1Primitive();
-            ASN1Primitive o2 = obj2.toASN1Primitive();
-
-            if (o1 == o2 || o1.equals(o2))
-            {
-                continue;
-            }
-
-            return false;
-        }
-
-        return true;
     }
 
     private ASN1Encodable getNext(Enumeration e)

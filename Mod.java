@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public abstract class Mod
 {
 
@@ -72,16 +70,6 @@ public abstract class Mod
         }
     }
 
-
-    public static void add(int[] p, int[] x, int[] y, int[] z)
-    {
-        int len = p.length;
-        int c = Nat.add(len, x, y, z);
-        if (c != 0)
-        {
-            Nat.subFrom(len, p, z);
-        }
-    }
 
     private static void inversionResult(int[] p, int ac, int[] a, int[] z)
     {

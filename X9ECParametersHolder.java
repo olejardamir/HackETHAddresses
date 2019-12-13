@@ -1,3 +1,4 @@
+import java.io.IOException;
 
 /**
  * A holding class that allows for X9ECParameters to be lazily constructed.
@@ -6,8 +7,7 @@ public abstract class X9ECParametersHolder
 {
     private X9ECParameters params;
 
-    public synchronized X9ECParameters getParameters()
-    {
+    public synchronized X9ECParameters getParameters() throws IOException {
         if (params == null)
         {
             params = createParameters();
@@ -16,5 +16,5 @@ public abstract class X9ECParametersHolder
         return params;
     }
 
-    protected abstract X9ECParameters createParameters();
+    protected abstract X9ECParameters createParameters() throws IOException;
 }

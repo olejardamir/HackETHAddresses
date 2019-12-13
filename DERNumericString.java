@@ -9,77 +9,12 @@ public class DERNumericString
     private final byte[]  string;
 
     /**
-     * Return a Numeric string from the passed in object
-     *
-     * @param obj a DERNumericString or an object that can be converted into one.
-     * @exception IllegalArgumentException if the object cannot be converted.
-     * @return a DERNumericString instance, or null
-     */
-    public static DERNumericString getInstance(
-            Object  obj)
-    {
-        if (obj == null || obj instanceof DERNumericString)
-        {
-            return (DERNumericString)obj;
-        }
-
-        if (obj instanceof byte[])
-        {
-            try
-            {
-                return (DERNumericString)fromByteArray((byte[])obj);
-            }
-            catch (Exception e)
-            {
-                throw new IllegalArgumentException("encoding error in getInstance: " + e.toString());
-            }
-        }
-
-        throw new IllegalArgumentException("illegal object in getInstance: " + obj.getClass().getName());
-    }
-
-    /**
-     * Return an Numeric String from a tagged object.
-     *
-     * @param obj the tagged object holding the object we want
-     * @param explicit true if the object is meant to be explicitly
-     *              tagged false otherwise.
-     * @exception IllegalArgumentException if the tagged object cannot
-     *               be converted.
-     * @return a DERNumericString instance, or null.
-     */
-    public static DERNumericString getInstance(
-            ASN1TaggedObject obj,
-            boolean          explicit)
-    {
-        ASN1Primitive o = obj.getObject();
-
-        if (explicit || o instanceof DERNumericString)
-        {
-            return getInstance(o);
-        }
-        else
-        {
-            return new DERNumericString(ASN1OctetString.getInstance(o).getOctets());
-        }
-    }
-
-    /**
      * Basic constructor - with bytes.
      */
     DERNumericString(
             byte[]   string)
     {
         this.string = string;
-    }
-
-    /**
-     * Basic constructor -  without validation..
-     */
-    public DERNumericString(
-            String   string)
-    {
-        this(string, false);
     }
 
     /**
@@ -110,11 +45,6 @@ public class DERNumericString
     public String toString()
     {
         return getString();
-    }
-
-    public byte[] getOctets()
-    {
-        return Arrays.clone(string);
     }
 
     boolean isConstructed()

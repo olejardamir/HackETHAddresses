@@ -1,16 +1,24 @@
+import java.io.IOException;
 import java.math.BigInteger;
 
 public class SecP256K1Curve extends ECCurve.AbstractFp
 {
-    public static final BigInteger q = new BigInteger(1,
-            Hex.decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F"));
+    public static BigInteger q;
+
+    static {
+        try {
+            q = new BigInteger(1,
+                        Hex.decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private static final int SECP256K1_DEFAULT_COORDS = COORD_JACOBIAN;
 
     protected SecP256K1Point infinity;
 
-    public SecP256K1Curve()
-    {
+    public SecP256K1Curve() throws IOException {
         super(q);
 
         this.infinity = new SecP256K1Point(this, null, null);
@@ -22,8 +30,7 @@ public class SecP256K1Curve extends ECCurve.AbstractFp
         this.coord = SECP256K1_DEFAULT_COORDS;
     }
 
-    protected ECCurve cloneCurve()
-    {
+    protected ECCurve cloneCurve() throws IOException {
         return new SecP256K1Curve();
     }
 
@@ -36,11 +43,6 @@ public class SecP256K1Curve extends ECCurve.AbstractFp
             default:
                 return false;
         }
-    }
-
-    public BigInteger getQ()
-    {
-        return q;
     }
 
     public int getFieldSize()

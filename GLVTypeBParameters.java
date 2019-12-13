@@ -39,11 +39,6 @@ public class GLVTypeBParameters
         return beta;
     }
 
-    public BigInteger getLambda()
-    {
-        return lambda;
-    }
-
     /**
      * @deprecated Use {@link #getV1A()} and {@link #getV1B()} instead.
      */

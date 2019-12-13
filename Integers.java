@@ -9,8 +9,4 @@ public class Integers
         return Integer.rotateLeft(i, distance);
     }
 
-    public static Integer valueOf(int value)
-    {
-        return Integer.valueOf(value);
-    }
 }

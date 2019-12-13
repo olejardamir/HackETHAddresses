@@ -173,7 +173,7 @@ public class Curve25519Field
         }
     }
 
-    private static int addPTo(int[] z)
+    private static void addPTo(int[] z)
     {
         long c = (z[0] & M) - PInv;
         z[0] = (int)c;
@@ -184,11 +184,9 @@ public class Curve25519Field
         }
         c += (z[7] & M) + ((P7 + 1) & M);
         z[7] = (int)c;
-        c >>= 32;
-        return (int)c;
     }
 
-    private static int addPExtTo(int[] zz)
+    private static void addPExtTo(int[] zz)
     {
         long c = (zz[0] & M) + (PExt[0] & M);
         zz[0] = (int)c;
@@ -206,11 +204,9 @@ public class Curve25519Field
         }
         c += (zz[15] & M) + ((PExt[15] + 1) & M);
         zz[15] = (int)c;
-        c >>= 32;
-        return (int)c;
     }
 
-    private static int subPFrom(int[] z)
+    private static void subPFrom(int[] z)
     {
         long c = (z[0] & M) + PInv;
         z[0] = (int)c;
@@ -221,11 +217,9 @@ public class Curve25519Field
         }
         c += (z[7] & M) - ((P7 + 1) & M);
         z[7] = (int)c;
-        c >>= 32;
-        return (int)c;
     }
 
-    private static int subPExtFrom(int[] zz)
+    private static void subPExtFrom(int[] zz)
     {
         long c = (zz[0] & M) - (PExt[0] & M);
         zz[0] = (int)c;
@@ -243,7 +237,5 @@ public class Curve25519Field
         }
         c += (zz[15] & M) - ((PExt[15] + 1) & M);
         zz[15] = (int)c;
-        c >>= 32;
-        return (int)c;
     }
 }

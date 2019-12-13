@@ -5,7 +5,7 @@ public abstract class ECFieldElement
         implements ECConstants
 {
     public abstract BigInteger     toBigInteger();
-    public abstract String         getFieldName();
+
     public abstract int            getFieldSize();
     public abstract ECFieldElement add(ECFieldElement b);
     public abstract ECFieldElement addOne();
@@ -45,11 +45,6 @@ public abstract class ECFieldElement
     public ECFieldElement multiplyPlusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y)
     {
         return multiply(b).add(x.multiply(y));
-    }
-
-    public ECFieldElement squareMinusProduct(ECFieldElement x, ECFieldElement y)
-    {
-        return square().subtract(x.multiply(y));
     }
 
     public ECFieldElement squarePlusProduct(ECFieldElement x, ECFieldElement y)
@@ -129,24 +124,9 @@ public abstract class ECFieldElement
             return x;
         }
 
-        /**
-         * return the field name for this field.
-         *
-         * @return the string "Fp".
-         */
-        public String getFieldName()
-        {
-            return "Fp";
-        }
-
         public int getFieldSize()
         {
             return q.bitLength();
-        }
-
-        public BigInteger getQ()
-        {
-            return q;
         }
 
         public ECFieldElement add(ECFieldElement b)
@@ -203,14 +183,6 @@ public abstract class ECFieldElement
         public ECFieldElement square()
         {
             return new Fp(q, r, modMult(x, x));
-        }
-
-        public ECFieldElement squareMinusProduct(ECFieldElement x, ECFieldElement y)
-        {
-            BigInteger ax = this.x, xx = x.toBigInteger(), yx = y.toBigInteger();
-            BigInteger aa = ax.multiply(ax);
-            BigInteger xy = xx.multiply(yx);
-            return new Fp(q, r, modReduce(aa.subtract(xy)));
         }
 
         public ECFieldElement squarePlusProduct(ECFieldElement x, ECFieldElement y)
@@ -390,15 +362,6 @@ public abstract class ECFieldElement
             return _2x;
         }
 
-        protected BigInteger modHalf(BigInteger x)
-        {
-            if (x.testBit(0))
-            {
-                x = q.add(x);
-            }
-            return x.shiftRight(1);
-        }
-
         protected BigInteger modHalfAbs(BigInteger x)
         {
             if (x.testBit(0))
@@ -495,24 +458,6 @@ public abstract class ECFieldElement
 
     public static abstract class AbstractF2m extends ECFieldElement
     {
-        public ECFieldElement halfTrace()
-        {
-            int m = this.getFieldSize();
-            if ((m & 1) == 0)
-            {
-                throw new IllegalStateException("Half-trace only defined for odd m");
-            }
-
-            ECFieldElement fe = this;
-            ECFieldElement ht = fe;
-            for (int i = 2; i < m; i += 2)
-            {
-                fe = fe.squarePow(2);
-                ht = ht.add(fe);
-            }
-
-            return ht;
-        }
 
         public int trace()
         {
@@ -545,11 +490,6 @@ public abstract class ECFieldElement
      */
     public static class F2m extends AbstractF2m
     {
-        /**
-         * Indicates gaussian normal basis representation (GNB). Number chosen
-         * according to X9.62. GNB is not implemented at present.
-         */
-        public static final int GNB = 1;
 
         /**
          * Indicates trinomial basis representation (TPB). Number chosen
@@ -666,11 +606,6 @@ public abstract class ECFieldElement
             return x.toBigInteger();
         }
 
-        public String getFieldName()
-        {
-            return "F2m";
-        }
-
         public int getFieldSize()
         {
             return m;
@@ -755,8 +690,8 @@ public abstract class ECFieldElement
         {
             LongArray ax = this.x, bx = ((F2m)b).x, xx = ((F2m)x).x, yx = ((F2m)y).x;
 
-            LongArray ab = ax.multiply(bx, m, ks);
-            LongArray xy = xx.multiply(yx, m, ks);
+            LongArray ab = ax.multiply(bx);
+            LongArray xy = xx.multiply(yx);
 
             if (ab == ax || ab == bx)
             {
@@ -787,17 +722,12 @@ public abstract class ECFieldElement
             return new F2m(m, ks, x.modSquare(m, ks));
         }
 
-        public ECFieldElement squareMinusProduct(ECFieldElement x, ECFieldElement y)
-        {
-            return squarePlusProduct(x, y);
-        }
-
         public ECFieldElement squarePlusProduct(ECFieldElement x, ECFieldElement y)
         {
             LongArray ax = this.x, xx = ((F2m)x).x, yx = ((F2m)y).x;
 
-            LongArray aa = ax.square(m, ks);
-            LongArray xy = xx.multiply(yx, m, ks);
+            LongArray aa = ax.square();
+            LongArray xy = xx.multiply(yx);
 
             if (aa == ax)
             {
@@ -823,63 +753,6 @@ public abstract class ECFieldElement
         public ECFieldElement sqrt()
         {
             return (x.isZero() || x.isOne()) ? this : squarePow(m - 1);
-        }
-
-        /**
-         * @return the representation of the field
-         * <code>F<sub>2<sup>m</sup></sub></code>, either of
-         * TPB (trinomial
-         * basis representation) or
-         * PPB (pentanomial
-         * basis representation).
-         */
-        public int getRepresentation()
-        {
-            return this.representation;
-        }
-
-        /**
-         * @return the degree <code>m</code> of the reduction polynomial
-         * <code>f(z)</code>.
-         */
-        public int getM()
-        {
-            return this.m;
-        }
-
-        /**
-         * @return TPB: The integer <code>k</code> where <code>x<sup>m</sup> +
-         * x<sup>k</sup> + 1</code> represents the reduction polynomial
-         * <code>f(z)</code>.<br>
-         * PPB: The integer <code>k1</code> where <code>x<sup>m</sup> +
-         * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-         * represents the reduction polynomial <code>f(z)</code>.<br>
-         */
-        public int getK1()
-        {
-            return this.ks[0];
-        }
-
-        /**
-         * @return TPB: Always returns <code>0</code><br>
-         * PPB: The integer <code>k2</code> where <code>x<sup>m</sup> +
-         * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-         * represents the reduction polynomial <code>f(z)</code>.<br>
-         */
-        public int getK2()
-        {
-            return this.ks.length >= 2 ? this.ks[1] : 0;
-        }
-
-        /**
-         * @return TPB: Always set to <code>0</code><br>
-         * PPB: The integer <code>k3</code> where <code>x<sup>m</sup> +
-         * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-         * represents the reduction polynomial <code>f(z)</code>.<br>
-         */
-        public int getK3()
-        {
-            return this.ks.length >= 3 ? this.ks[2] : 0;
         }
 
         public boolean equals(Object anObject)

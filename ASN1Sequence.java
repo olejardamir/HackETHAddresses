@@ -184,8 +184,7 @@ public abstract class ASN1Sequence
 
             private int index;
 
-            public ASN1Encodable readObject() throws IOException
-            {
+            public ASN1Encodable readObject() {
                 if (index == max)
                 {
                     return null;
@@ -293,9 +292,8 @@ public abstract class ASN1Sequence
 
     private ASN1Encodable getNext(Enumeration e)
     {
-        ASN1Encodable encObj = (ASN1Encodable)e.nextElement();
 
-        return encObj;
+        return (ASN1Encodable)e.nextElement();
     }
 
     /**

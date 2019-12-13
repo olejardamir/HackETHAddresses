@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.math.BigInteger;
 
 public class Curve25519 extends ECCurve.AbstractFp
@@ -8,8 +9,7 @@ public class Curve25519 extends ECCurve.AbstractFp
 
     protected Curve25519Point infinity;
 
-    public Curve25519()
-    {
+    public Curve25519() throws IOException {
         super(q);
 
         this.infinity = new Curve25519Point(this, null, null);
@@ -24,8 +24,7 @@ public class Curve25519 extends ECCurve.AbstractFp
         this.coord = Curve25519_DEFAULT_COORDS;
     }
 
-    protected ECCurve cloneCurve()
-    {
+    protected ECCurve cloneCurve() throws IOException {
         return new Curve25519();
     }
 

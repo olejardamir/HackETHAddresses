@@ -18,18 +18,6 @@ public class DEROctetString
         super(string);
     }
 
-    /**
-     * Constructor from the encoding of an ASN.1 object.
-     *
-     * @param obj the object to be encoded.
-     */
-    public DEROctetString(
-            ASN1Encodable obj)
-            throws IOException
-    {
-        super(obj.toASN1Primitive().getEncoded(ASN1Encoding.DER));
-    }
-
     boolean isConstructed()
     {
         return false;
@@ -47,11 +35,4 @@ public class DEROctetString
         out.writeEncoded(BERTags.OCTET_STRING, string);
     }
 
-    static void encode(
-            DEROutputStream derOut,
-            byte[]          bytes)
-            throws IOException
-    {
-        derOut.writeEncoded(BERTags.OCTET_STRING, bytes);
-    }
 }

@@ -8,27 +8,6 @@ import java.io.IOException;
 public class BERApplicationSpecific
         extends ASN1ApplicationSpecific
 {
-    BERApplicationSpecific(
-            boolean isConstructed,
-            int tag,
-            byte[] octets)
-    {
-        super(isConstructed, tag, octets);
-    }
-
-    /**
-     * Create an application specific object with a tagging of explicit/constructed.
-     *
-     * @param tag the tag number for this object.
-     * @param object the object to be contained.
-     */
-    public BERApplicationSpecific(
-            int tag,
-            ASN1Encodable object)
-            throws IOException
-    {
-        this(true, tag, object);
-    }
 
     /**
      * Create an application specific object with the tagging style given by the value of constructed.
@@ -93,6 +72,11 @@ public class BERApplicationSpecific
         return bOut.toByteArray();
     }
 
+    @Override
+    int encodedLength() {
+        return 0;
+    }
+
     /* (non-Javadoc)
      * @see org.bouncycastle.asn1.ASN1Primitive#encode(org.bouncycastle.asn1.DEROutputStream)
      */
@@ -109,5 +93,10 @@ public class BERApplicationSpecific
         out.write(octets);
         out.write(0x00);
         out.write(0x00);
+    }
+
+    @Override
+    boolean asn1Equals(ASN1Primitive o) {
+        return false;
     }
 }

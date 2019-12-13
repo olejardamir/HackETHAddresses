@@ -120,67 +120,6 @@ public abstract class WNafUtil
         return wnaf;
     }
 
-    public static byte[] generateJSF(BigInteger g, BigInteger h)
-    {
-        int digits = Math.max(g.bitLength(), h.bitLength()) + 1;
-        byte[] jsf = new byte[digits];
-
-        BigInteger k0 = g, k1 = h;
-        int j = 0, d0 = 0, d1 = 0;
-
-        int offset = 0;
-        while ((d0 | d1) != 0 || k0.bitLength() > offset || k1.bitLength() > offset)
-        {
-            int n0 = ((k0.intValue() >>> offset) + d0) & 7, n1 = ((k1.intValue() >>> offset) + d1) & 7;
-
-            int u0 = n0 & 1;
-            if (u0 != 0)
-            {
-                u0 -= (n0 & 2);
-                if ((n0 + u0) == 4 && (n1 & 3) == 2)
-                {
-                    u0 = -u0;
-                }
-            }
-
-            int u1 = n1 & 1;
-            if (u1 != 0)
-            {
-                u1 -= (n1 & 2);
-                if ((n1 + u1) == 4 && (n0 & 3) == 2)
-                {
-                    u1 = -u1;
-                }
-            }
-
-            if ((d0 << 1) == 1 + u0)
-            {
-                d0 ^= 1;
-            }
-            if ((d1 << 1) == 1 + u1)
-            {
-                d1 ^= 1;
-            }
-
-            if (++offset == 30)
-            {
-                offset = 0;
-                k0 = k0.shiftRight(30);
-                k1 = k1.shiftRight(30);
-            }
-
-            jsf[j++] = (byte)((u0 << 4) | (u1 & 0xF));
-        }
-
-        // Reduce the JSF array to its actual length
-        if (jsf.length > j)
-        {
-            jsf = trim(jsf, j);
-        }
-
-        return jsf;
-    }
-
     public static byte[] generateNaf(BigInteger k)
     {
         if (k.signum() == 0)
