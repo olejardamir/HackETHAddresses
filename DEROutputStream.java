@@ -28,8 +28,4 @@ public class DEROutputStream
         return this;
     }
 
-    ASN1OutputStream getDLSubStream()
-    {
-        return this;
-    }
 }

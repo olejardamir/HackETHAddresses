@@ -16,12 +16,12 @@ class DLBitString
         super(data, padBits);
     }
 
-     void encode(ASN1OutputStream out)   {
-
+     int encodedLength() throws Exception {
+        return 0;
     }
 
-    int encodedLength()  {
-        return 0;
+     void encode(ASN1OutputStream out) throws Exception {
+
     }
 
 }

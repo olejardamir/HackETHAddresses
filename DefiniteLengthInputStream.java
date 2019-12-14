@@ -1,5 +1,3 @@
-import java.io.EOFException;
-import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -9,21 +7,6 @@ class DefiniteLengthInputStream extends InputStream {
     private static final byte[] EMPTY_BYTES = new byte[0];
 
      private int _remaining;
-
-    DefiniteLengthInputStream(
-            int length)
-    {
-        super();
-
-        if (length < 0)
-        {
-            throw new IllegalArgumentException("negative lengths not allowed");
-        }
-
-         this._remaining = length;
-
-
-    }
 
     byte[] toByteArray()
 

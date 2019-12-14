@@ -1,7 +1,6 @@
 class DLSequence
         extends ASN1Sequence
 {
-    private int bodyLength = -1;
 
     /**
      * Create an empty sequence
@@ -10,7 +9,7 @@ class DLSequence
     {
     }
 
-     int encodedLength() {
+     int encodedLength() throws Exception {
         return 0;
     }
 
@@ -24,7 +23,7 @@ class DLSequence
         super(v);
     }
 
-     void encode(ASN1OutputStream out)   {
+     void encode(ASN1OutputStream out) throws Exception {
 
     }
 

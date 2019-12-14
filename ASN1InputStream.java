@@ -99,12 +99,12 @@ class ASN1InputStream
     {
         boolean isConstructed = (tag & CONSTRUCTED) != 0;
 
-        DefiniteLengthInputStream defIn = new DefiniteLengthInputStream(length);
+        //DefiniteLengthInputStream defIn = new DefiniteLengthInputStream(length);
 
-        if ((tag & APPLICATION) != 0)
-        {
-            return new DLApplicationSpecific(isConstructed, tagNo, defIn.toByteArray());
-        }
+//        if ((tag & APPLICATION) != 0)
+//        {
+//            return new DLApplicationSpecific(isConstructed, tagNo, defIn.toByteArray());
+//        }
 
 
 
@@ -113,32 +113,27 @@ class ASN1InputStream
             // TODO There are other tags that may be constructed (e.g. BIT_STRING)
             switch (tagNo)
             {
-                case OCTET_STRING:
-                    //
-                    // yes, people actually do this...
-                    //
-                    ASN1EncodableVector v = buildDEREncodableVector(defIn);
-                    ASN1OctetString[] strings = new ASN1OctetString[v.size()];
-
-                    for (int i = 0; i != strings.length; i++)
-                    {
-                        strings[i] = (ASN1OctetString)v.get(i);
-                    }
-
-                    return new BEROctetString();
-                case SEQUENCE:
-                    if (lazyEvaluate)
-                    {
-                        return new LazyEncodedSequence(defIn.toByteArray());
-                    }
-                    else
-                    {
-                        return DERFactory.createSequence(buildDEREncodableVector(defIn));
-                    }
-                case SET:
-                    return DERFactory.createSet(buildDEREncodableVector(defIn));
-                case EXTERNAL:
-                    return new DLExternal(buildDEREncodableVector(defIn));
+//                case OCTET_STRING:
+//                    //
+//                    // yes, people actually do this...
+//                    //
+//                    ASN1EncodableVector v = buildDEREncodableVector(defIn);
+//                    ASN1OctetString[] strings = new ASN1OctetString[v.size()];
+//
+//                    for (int i = 0; i != strings.length; i++)
+//                    {
+//                        strings[i] = (ASN1OctetString)v.get(i);
+//                    }
+//
+//                    return new BEROctetString();
+//                case SEQUENCE:
+//                    if (lazyEvaluate)
+//                    {
+//                        return new LazyEncodedSequence(defIn.toByteArray());
+//                    }
+//
+//                  case EXTERNAL:
+//                    return new DLExternal(buildDEREncodableVector(defIn));
               }
         }
 

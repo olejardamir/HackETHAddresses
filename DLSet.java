@@ -1,6 +1,3 @@
-
-import java.util.Enumeration;
-
 /**
  * The DLSet encodes ASN.1 SET value without element ordering,
  * and always using definite length form.
@@ -69,39 +66,15 @@ class DLSet
     }
 
 
-    private int getBodyLength()
-            throws Exception
-    {
-        if (bodyLength < 0)
-        {
-            int length = 0;
-
-            for (Enumeration e = this.getObjects(); e.hasMoreElements();)
-            {
-                Object obj = e.nextElement();
-
-                length += ((ASN1Encodable)obj).toASN1Primitive().toDLObject().encodedLength();
-            }
-
-            bodyLength = length;
-        }
-
-        return bodyLength;
+    int encodedLength() throws Exception {
+        return 0;
     }
 
-    int encodedLength()
-            throws Exception
-    {
-        int length = getBodyLength();
-
-        return 1 + StreamUtil.calculateBodyLength(length) + length;
-    }
-
-    void encode(ASN1OutputStream out) {
+     void encode(ASN1OutputStream out) throws Exception {
 
     }
 
-    boolean asn1Equals(ASN1Primitive o) {
+     boolean asn1Equals(ASN1Primitive o) {
         return false;
     }
 }

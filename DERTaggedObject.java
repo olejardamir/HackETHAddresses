@@ -10,11 +10,11 @@ class DERTaggedObject
         super(explicit, tagNo, obj);
     }
 
-     int encodedLength()  {
+     int encodedLength() throws Exception {
         return 0;
     }
 
-    void encode(ASN1OutputStream out) {
+     void encode(ASN1OutputStream out) throws Exception {
 
     }
 

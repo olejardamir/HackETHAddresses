@@ -4,13 +4,6 @@ class ECAlgorithms
 {
 
 
-    public static boolean isFpCurve(ECCurve c)
-    {
-        return true;
-    }
-
-
-
     public static ECPoint importPoint(ECCurve c, ECPoint p) throws CloneNotSupportedException {
         ECCurve cp = p.getCurve();
         if (!c.equals(cp))

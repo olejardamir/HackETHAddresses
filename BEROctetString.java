@@ -1,5 +1,4 @@
 
-import java.io.ByteArrayOutputStream;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -10,45 +9,17 @@ class BEROctetString
       private int chunkSize;
       private ASN1OctetString[] octs;
 
-    /**
-     * Convert a vector of octet strings into a single byte string
-     */
-    static private byte[] toBytes(
-            ASN1OctetString[]  octs)
-    {
-        ByteArrayOutputStream bOut = new ByteArrayOutputStream();
-
-        for (int i = 0; i != octs.length; i++)
-        {
-            try
-            {
-                DEROctetString o = (DEROctetString)octs[i];
-
-                bOut.write(o.getOctets());
-            }
-            catch (ClassCastException e)
-            {
-                throw new IllegalArgumentException(octs[i].getClass().getName() + " found in input should only contain DEROctetString");
-            }
-            catch (Exception e)
-            {
-                throw new IllegalArgumentException("exception converting octets " + e.toString());
-            }
-        }
-
-        return bOut.toByteArray();
-    }
-
     public BEROctetString() {
         super();
 
     }
 
-    private BEROctetString(byte[] string, ASN1OctetString[] octs, int chunkSize)
-    {
-        super(string);
-        this.octs = octs;
-        this.chunkSize = chunkSize;
+     int encodedLength() throws Exception {
+        return 0;
+    }
+
+     void encode(ASN1OutputStream out) throws Exception {
+
     }
 
     /**
@@ -103,29 +74,6 @@ class BEROctetString
         }
 
         return vec;
-    }
-
-    int encodedLength()
-            throws Exception
-    {
-        int length = 0;
-        for (Enumeration e = getObjects(); e.hasMoreElements();)
-        {
-            length += ((ASN1Encodable)e.nextElement()).toASN1Primitive().encodedLength();
-        }
-
-        return 2 + length + 2;
-    }
-
-    public void encode(ASN1OutputStream a) throws Exception {
-        a.write(36);
-        a.write(128);
-        Object a0 = this.getObjects();
-        while(((java.util.Enumeration)a0).hasMoreElements()) {
-            a.writeObject((ASN1Encodable)((java.util.Enumeration)a0).nextElement());
-        }
-        a.write(0);
-        a.write(0);
     }
 
 }

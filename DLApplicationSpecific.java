@@ -9,15 +9,16 @@ class DLApplicationSpecific
         super(isConstructed, tag, octets);
     }
 
-    int encodedLength() {
+    int encodedLength() throws Exception {
         return 0;
     }
 
-     void encode(ASN1OutputStream out)   {
+    void encode(ASN1OutputStream out)   {
 
     }
 
-    boolean asn1Equals(ASN1Primitive o) {
+     boolean asn1Equals(ASN1Primitive o) {
         return false;
     }
+
 }
