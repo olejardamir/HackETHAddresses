@@ -39,6 +39,10 @@ class DLBitString
 
     }
 
+     boolean asn1Equals(ASN1Primitive o) {
+        return false;
+    }
+
     private String getString() throws Exception {
         StringBuilder buf = new StringBuilder("#");
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
@@ -63,10 +67,6 @@ class DLBitString
         return derForm(data, padBits);
     }
 
-    int getPadBits()
-    {
-        return padBits;
-    }
 
     public String toString()
     {
@@ -83,27 +83,12 @@ class DLBitString
         return padBits ^ Arrays.hashCode(this.getBytes());
     }
 
-    protected boolean asn1Equals(
-            ASN1Primitive o)
-    {
-        if (!(o instanceof DLBitString))
-        {
-            return false;
-        }
 
-        DLBitString other = (DLBitString)o;
 
-        return this.padBits == other.padBits
-                && Arrays.areEqual(this.getBytes(), other.getBytes());
-    }
 
     ASN1Primitive toDERObject()
     {
         return new DERBitString(data, padBits);
     }
 
-    ASN1Primitive toDLObject()
-    {
-        return new DLBitString(data, padBits);
-    }
 }

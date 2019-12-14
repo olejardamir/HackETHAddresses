@@ -143,10 +143,6 @@ public abstract class ASN1OctetString
         return new DEROctetString(string);
     }
 
-    ASN1Primitive toDLObject()
-    {
-        return new DEROctetString(string);
-    }
 
     abstract void encode(ASN1OutputStream out)
             throws Exception;

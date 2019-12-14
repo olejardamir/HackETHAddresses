@@ -286,18 +286,6 @@ abstract class Nat
         return (int)c;
     }
 
-    public static BigInteger toBigInteger(int len, int[] x)
-    {
-        byte[] bs = new byte[len << 2];
-        for (int i = 0; i < len; ++i)
-        {
-            int x_i = x[i];
-            if (x_i != 0)
-            {
-                Pack.intToBigEndian(x_i, bs, (len - 1 - i) << 2);
-            }
-        }
-        return new BigInteger(1, bs);
-    }
+
 
 }

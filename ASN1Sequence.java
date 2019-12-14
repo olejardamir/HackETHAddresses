@@ -103,15 +103,7 @@ public abstract class ASN1Sequence
         return derSeq;
     }
 
-    
-    ASN1Primitive toDLObject()
-    {
-        ASN1Sequence dlSeq = new DLSequence();
 
-        dlSeq.seq = this.seq;
-
-        return dlSeq;
-    }
 
     abstract void encode(ASN1OutputStream out)
             throws Exception;

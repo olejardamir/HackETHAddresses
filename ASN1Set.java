@@ -40,15 +40,7 @@ public abstract class ASN1Set
         return hashCode;
     }
 
-    
-    ASN1Primitive toDLObject()
-    {
-        ASN1Set derSet = new DLSet();
 
-        derSet.set = this.set;
-
-        return derSet;
-    }
 
     private ASN1Encodable getNext(Enumeration e)
     {

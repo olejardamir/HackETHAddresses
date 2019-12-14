@@ -4,14 +4,11 @@ public class Curve25519 extends ECCurve.AbstractFp
 {
     public static final BigInteger q = Nat256.toBigInteger(Curve25519Field.P);
 
-    private static final int Curve25519_DEFAULT_COORDS = COORD_JACOBIAN_MODIFIED;
 
-    private final Curve25519Point infinity;
 
     private Curve25519() throws Exception {
         super(q);
 
-        this.infinity = new Curve25519Point(this, null, null);
 
         this.a = fromBigInteger(new BigInteger(1,
                 Hex.decode("2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA984914A144")));
@@ -20,37 +17,34 @@ public class Curve25519 extends ECCurve.AbstractFp
         this.order = new BigInteger(1, Hex.decode("1000000000000000000000000000000014DEF9DEA2F79CD65812631A5CF5D3ED"));
         this.cofactor = BigInteger.valueOf(8);
 
-        this.coord = Curve25519_DEFAULT_COORDS;
+     }
+
+     public int getFieldSize() {
+        return 0;
     }
 
-    protected ECCurve cloneCurve() throws Exception {
-        return new Curve25519();
+     public ECFieldElement fromBigInteger(BigInteger x) {
+        return null;
     }
 
-    public boolean supportsCoordinateSystem(int coord)
-    {
-        return coord == COORD_JACOBIAN_MODIFIED;
+     protected ECCurve cloneCurve()  {
+        return null;
     }
 
-    public int getFieldSize()
-    {
-        return q.bitLength();
+     protected ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, boolean withCompression) {
+        return null;
     }
 
-    public ECFieldElement fromBigInteger(BigInteger x)
-    {
-        return new Curve25519FieldElement(x);
+
+    public ECPoint getInfinity() {
+        return null;
     }
 
-    protected ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, boolean withCompression)
-    {
-        return new Curve25519Point(this, x, y, withCompression);
-    }
 
-    public ECPoint getInfinity()
-    {
-        return infinity;
-    }
+
+
+
+
 
     public ECLookupTable createCacheSafeLookupTable(ECPoint[] points, int off, final int len)
     {
@@ -69,30 +63,14 @@ public class Curve25519 extends ECCurve.AbstractFp
 
         return new ECLookupTable()
         {
-            public int getSize()
-            {
-                return len;
+
+
+             public int getSize() {
+                return 0;
             }
 
-            public ECPoint lookup(int index)
-            {
-                int[] x = Nat256.create(), y = Nat256.create();
-                int pos = 0;
-
-                for (int i = 0; i < len; ++i)
-                {
-                    int MASK = ((i ^ index) - 1) >> 31;
-
-                    for (int j = 0; j < FE_INTS; ++j)
-                    {
-                        x[j] ^= table[pos + j] & MASK;
-                        y[j] ^= table[pos + FE_INTS + j] & MASK;
-                    }
-
-                    pos += (FE_INTS * 2);
-                }
-
-                return createRawPoint(new Curve25519FieldElement(x), new Curve25519FieldElement(y), false);
+             public ECPoint lookup(int index) {
+                return null;
             }
         };
     }

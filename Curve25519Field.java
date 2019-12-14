@@ -13,23 +13,9 @@ class Curve25519Field
             0xFFFFFFFF, 0x3FFFFFFF };
     private static final int PInv = 0x13;
 
-    public static void add(int[] x, int[] y, int[] z)
-    {
-        Nat256.add(x, y, z);
-        if (Nat256.gte(z, P))
-        {
-            subPFrom(z);
-        }
-    }
 
-    public static void addOne(int[] x, int[] z)
-    {
-        Nat.inc(8, x, z);
-        if (Nat256.gte(z, P))
-        {
-            subPFrom(z);
-        }
-    }
+
+
 
     public static int[] fromBigInteger(BigInteger x)
     {
@@ -109,20 +95,7 @@ class Curve25519Field
         reduce(tt, z);
     }
 
-    public static void squareN(int[] x, int n, int[] z)
-    {
 
-
-        int[] tt = Nat256.createExt();
-        Nat256.square(x, tt);
-        reduce(tt, z);
-
-        while (--n > 0)
-        {
-            Nat256.square(z, tt);
-            reduce(tt, z);
-        }
-    }
 
     public static void subtract(int[] x, int[] y, int[] z)
     {

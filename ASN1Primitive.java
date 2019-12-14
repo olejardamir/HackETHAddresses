@@ -28,11 +28,7 @@ public abstract class ASN1Primitive
         return this;
     }
 
-    
-    ASN1Primitive toDLObject()
-    {
-        return this;
-    }
+
 
     public abstract int hashCode();
 

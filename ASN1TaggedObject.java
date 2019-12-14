@@ -29,9 +29,6 @@ public abstract class ASN1TaggedObject
     }
 
 
-    ASN1Primitive toDLObject() {
-        return new DLTaggedObject(explicit, tagNo, obj);
-    }
 
     public String toString() {
         return "[" + tagNo + "]" + obj;

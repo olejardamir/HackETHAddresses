@@ -54,19 +54,7 @@ public class SecP256K1FieldElement extends ECFieldElement.AbstractFp
         return new SecP256K1FieldElement(z);
     }
 
-    public ECFieldElement addOne()
-    {
-        int[] z = Nat256.create();
-        SecP256K1Field.addOne(x, z);
-        return new SecP256K1FieldElement(z);
-    }
 
-    public ECFieldElement subtract(ECFieldElement b)
-    {
-        int[] z = Nat256.create();
-        SecP256K1Field.subtract(x, ((SecP256K1FieldElement)b).x, z);
-        return new SecP256K1FieldElement(z);
-    }
 
     public ECFieldElement multiply(ECFieldElement b)
     {
@@ -75,14 +63,6 @@ public class SecP256K1FieldElement extends ECFieldElement.AbstractFp
         return new SecP256K1FieldElement(z);
     }
 
-    public ECFieldElement divide(ECFieldElement b)
-    {
-
-        int[] z = Nat256.create();
-        Mod.invert(SecP256K1Field.P, ((SecP256K1FieldElement)b).x, z);
-        SecP256K1Field.multiply(z, x, z);
-        return new SecP256K1FieldElement(z);
-    }
 
     public ECFieldElement negate()
     {

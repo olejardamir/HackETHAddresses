@@ -106,10 +106,7 @@ public abstract class ASN1BitString
         return new DERBitString(data, padBits);
     }
 
-    ASN1Primitive toDLObject()
-    {
-        return new DLBitString(data, padBits);
-    }
+
 
     abstract void encode(ASN1OutputStream out)
             throws Exception;
