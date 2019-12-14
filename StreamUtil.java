@@ -55,28 +55,27 @@ class StreamUtil
         return (int)MAX_MEMORY;
     }
 
-    static int calculateBodyLength(
-            int length)
-    {
-        int count = 1;
-
-        if (length > 127)
-        {
-            int size = 1;
-            int val = length;
-
-            while ((val >>>= 8) != 0)
-            {
-                size++;
+    static int calculateBodyLength(int i) {
+        int i0 = 0;
+        if (i <= 127) {
+            i0 = 1;
+        } else {
+            int i1 = 1;
+            while(true) {
+                int i2 = i >>> 8;
+                if (i2 == 0) {
+                    break;
+                }
+                i1 = i1 + 1;
+                i = i2;
             }
-
-            for (int i = (size - 1) * 8; i >= 0; i -= 8)
-            {
-                count++;
+            int i3 = (i1 - 1) * 8;
+            i0 = 1;
+            for(; i3 >= 0; i3 = i3 + -8) {
+                i0 = i0 + 1;
             }
         }
-
-        return count;
+        return i0;
     }
 
     static int calculateTagLength(int tagNo) {

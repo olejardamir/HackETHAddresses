@@ -521,8 +521,8 @@ public abstract class ECPoint
         }
 
         protected boolean satisfiesCurveEquation() throws CloneNotSupportedException {
-            ECFieldElement X = this.x, Y = this.y, A = curve.getA(), B = curve.getB();
-            ECFieldElement lhs = Y.square();
+            ECFieldElement X = this.x, A = curve.getA(), B = curve.getB();
+            ECFieldElement lhs = this.y.square();
 
             switch (this.getCurveCoordinateSystem())
             {
@@ -994,9 +994,9 @@ public abstract class ECPoint
                 case ECCurve.COORD_AFFINE:
                 {
                     ECFieldElement X1 = this.x;
-                    ECFieldElement X2 = b.x, Y2 = b.y;
+                    ECFieldElement X2 = b.x;
 
-                    ECFieldElement dx = X2.subtract(X1), dy = Y2.subtract(Y1);
+                    ECFieldElement dx = X2.subtract(X1), dy = b.y.subtract(Y1);
 
                     if (dx.isZero())
                     {
@@ -1305,8 +1305,7 @@ public abstract class ECPoint
                 if (X.isZero())
                 {
                     // NOTE: For x == 0, we expect the affine-y instead of the lambda-y
-                    ECFieldElement Y = this.y;
-                    ECFieldElement lhs = Y.square(), rhs = B;
+                    ECFieldElement lhs = this.y.square(), rhs = B;
                     if (!ZIsOne)
                     {
                         rhs = rhs.multiply(Z.square());
@@ -1565,9 +1564,8 @@ public abstract class ECPoint
                 case ECCurve.COORD_AFFINE:
                 {
                     ECFieldElement Y1 = this.y;
-                    ECFieldElement Y2 = b.y;
 
-                    ECFieldElement dx = X1.add(X2), dy = Y1.add(Y2);
+                    ECFieldElement dx = X1.add(X2), dy = Y1.add(b.y);
                     if (dx.isZero())
                     {
                         if (dy.isZero())
@@ -1588,11 +1586,11 @@ public abstract class ECPoint
                 case ECCurve.COORD_HOMOGENEOUS:
                 {
                     ECFieldElement Y1 = this.y, Z1 = this.zs[0];
-                    ECFieldElement Y2 = b.y, Z2 = b.zs[0];
+                    ECFieldElement Z2 = b.zs[0];
 
                     boolean Z2IsOne = Z2.isOne();
 
-                    ECFieldElement U1 = Z1.multiply(Y2);
+                    ECFieldElement U1 = Z1.multiply(b.y);
                     ECFieldElement U2 = Z2IsOne ? Y1 : Y1.multiply(Z2);
                     ECFieldElement U = U1.add(U2);
                     ECFieldElement V1 = Z1.multiply(X2);
@@ -1744,9 +1742,8 @@ public abstract class ECPoint
             {
                 case ECCurve.COORD_AFFINE:
                 {
-                    ECFieldElement Y1 = this.y;
 
-                    ECFieldElement L1 = Y1.divide(X1).add(X1);
+                    ECFieldElement L1 = this.y.divide(X1).add(X1);
 
                     ECFieldElement X3 = L1.square().add(L1).add(curve.getA());
                     ECFieldElement Y3 = X1.squarePlusProduct(X3, L1.addOne());
@@ -1859,7 +1856,6 @@ public abstract class ECPoint
                 }
 
                 ECFieldElement L1 = this.y, Z1 = this.zs[0];
-                ECFieldElement L2 = b.y;
 
                 ECFieldElement X1Sq = X1.square();
                 ECFieldElement L1Sq = L1.square();
@@ -1867,7 +1863,7 @@ public abstract class ECPoint
                 ECFieldElement L1Z1 = L1.multiply(Z1);
 
                 ECFieldElement T = curve.getA().multiply(Z1Sq).add(L1Sq).add(L1Z1);
-                ECFieldElement L2plus1 = L2.addOne();
+                ECFieldElement L2plus1 = b.y.addOne();
                 ECFieldElement A = curve.getA().add(L2plus1).multiply(Z1Sq).add(L1Sq).multiplyPlusProduct(T, X1Sq, Z1Sq);
                 ECFieldElement X2Z1Sq = X2.multiply(Z1Sq);
                 ECFieldElement B = X2Z1Sq.add(T).square();
@@ -1909,24 +1905,22 @@ public abstract class ECPoint
             {
                 case ECCurve.COORD_AFFINE:
                 {
-                    ECFieldElement Y = this.y;
-                    return new ECPoint.F2m(curve, X, Y.add(X), this.withCompression);
+                    return new ECPoint.F2m(curve, X, this.y.add(X), this.withCompression);
                 }
                 case ECCurve.COORD_HOMOGENEOUS:
                 {
-                    ECFieldElement Y = this.y, Z = this.zs[0];
-                    return new ECPoint.F2m(curve, X, Y.add(X), new ECFieldElement[]{ Z }, this.withCompression);
+                    ECFieldElement Z = this.zs[0];
+                    return new ECPoint.F2m(curve, X, this.y.add(X), new ECFieldElement[]{ Z }, this.withCompression);
                 }
                 case ECCurve.COORD_LAMBDA_AFFINE:
                 {
-                    ECFieldElement L = this.y;
-                    return new ECPoint.F2m(curve, X, L.addOne(), this.withCompression);
+                    return new ECPoint.F2m(curve, X, this.y.addOne(), this.withCompression);
                 }
                 case ECCurve.COORD_LAMBDA_PROJECTIVE:
                 {
                     // L is actually Lambda (X + Y/X) here
-                    ECFieldElement L = this.y, Z = this.zs[0];
-                    return new ECPoint.F2m(curve, X, L.add(Z), new ECFieldElement[]{ Z }, this.withCompression);
+                    ECFieldElement Z = this.zs[0];
+                    return new ECPoint.F2m(curve, X, this.y.add(Z), new ECFieldElement[]{ Z }, this.withCompression);
                 }
                 default:
                 {

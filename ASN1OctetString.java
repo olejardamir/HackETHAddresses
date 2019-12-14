@@ -1,6 +1,4 @@
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * Abstract base for the ASN.1 OCTET STRING data type

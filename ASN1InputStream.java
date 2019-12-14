@@ -151,9 +151,7 @@ class ASN1InputStream
                     return DERFactory.createSet(buildDEREncodableVector(defIn));
                 case EXTERNAL:
                     return new DLExternal(buildDEREncodableVector(defIn));
-                default:
-                    throw new IOException("unknown tag " + tagNo + " encountered");
-            }
+              }
         }
 
         return null;
@@ -185,10 +183,7 @@ class ASN1InputStream
         int tag = read();
         if (tag <= 0)
         {
-            if (tag == 0)
-            {
-                throw new IOException("unexpected end-of-contents marker");
-            }
+
 
             return null;
         }
@@ -207,10 +202,7 @@ class ASN1InputStream
 
         if (length < 0) // indefinite-length method
         {
-            if (!isConstructed)
-            {
-                throw new IOException("indefinite-length primitive encoding encountered");
-            }
+
 
 
             if ((tag & APPLICATION) != 0)
@@ -248,12 +240,7 @@ class ASN1InputStream
 
             int b = s.read();
 
-            // X.690-0207 8.1.2.4.2
-            // "c) bits 7 to 1 of the first subsequent octet shall not all be zero."
-            if ((b & 0x7f) == 0) // Note: -1 will pass
-            {
-                throw new IOException("corrupted stream - invalid high tag number found");
-            }
+
 
             while ((b >= 0) && ((b & 0x80) != 0))
             {
@@ -262,10 +249,7 @@ class ASN1InputStream
                 b = s.read();
             }
 
-            if (b < 0)
-            {
-                throw new EOFException("EOF found inside tag value.");
-            }
+
 
             tagNo |= (b & 0x7f);
         }
@@ -277,10 +261,6 @@ class ASN1InputStream
             throws IOException
     {
         int length = s.read();
-        if (length < 0)
-        {
-            throw new EOFException("EOF found when length expected");
-        }
 
         if (length == 0x80)
         {
@@ -291,34 +271,21 @@ class ASN1InputStream
         {
             int size = length & 0x7f;
 
-            // Note: The invalid long form "0xff" (see X.690 8.1.3.5c) will be caught here
-            if (size > 4)
-            {
-                throw new IOException("DER length more than 4 bytes: " + size);
-            }
+
 
             length = 0;
             for (int i = 0; i < size; i++)
             {
                 int next = s.read();
 
-                if (next < 0)
-                {
-                    throw new EOFException("EOF found reading length");
-                }
+
 
                 length = (length << 8) + next;
             }
 
-            if (length < 0)
-            {
-                throw new IOException("corrupted stream - negative length found");
-            }
 
-            if (length >= limit)   // after all we must have read at least 1 byte
-            {
-                throw new IOException("corrupted stream - out of bounds length found");
-            }
+
+
         }
 
         return length;

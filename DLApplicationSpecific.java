@@ -1,5 +1,3 @@
-import java.io.IOException;
-
 /**
  * A DER encoding version of an application specific object.
  */

@@ -223,8 +223,7 @@ public class SecP256K1Point extends ECPoint.AbstractFp
             return twice();
         }
 
-        ECFieldElement Y1 = this.y;
-        if (Y1.isZero())
+        if (this.y.isZero())
         {
             return b;
         }

@@ -549,7 +549,7 @@ class LongArray implements Cloneable
         // theBit = n % 64
         int theBit = n & 0x3F;
         long tester = 1L << theBit;
-        return (buf[0 + theInt] & tester) != 0;
+        return (buf[theInt] & tester) != 0;
     }
 
     private static void flipBit(long[] buf, int off, int n)
@@ -986,20 +986,20 @@ class LongArray implements Cloneable
 
         while (--len > toPos)
         {
-            long word = buf[0 + len];
+            long word = buf[len];
             if (word != 0)
             {
-                buf[0 + len] = 0;
+                buf[len] = 0;
                 reduceWord(buf, (len << 6), word, m, ks);
             }
         }
 
         {
             int partial = toBit & 0x3F;
-            long word = buf[0 + toPos] >>> partial;
+            long word = buf[toPos] >>> partial;
             if (word != 0)
             {
-                buf[0 + toPos] ^= word << partial;
+                buf[toPos] ^= word << partial;
                 reduceWord(buf, toBit, word, m, ks);
             }
         }
@@ -1027,9 +1027,9 @@ class LongArray implements Cloneable
         int j = ks.length;
         while (--j >= 0)
         {
-            flipVector(buf, 0, buf, 0 + words, len - words, baseBit + ks[j]);
+            flipVector(buf, 0, buf, words, len - words, baseBit + ks[j]);
         }
-        flipVector(buf, 0, buf, 0 + words, len - words, baseBit);
+        flipVector(buf, 0, buf, words, len - words, baseBit);
     }
 
     private static void flipVector(long[] x, int xOff, long[] y, int yOff, int yLen, int bits)

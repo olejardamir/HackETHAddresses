@@ -8,10 +8,9 @@ import java.util.Vector;
 class BEROctetString
         extends ASN1OctetString
 {
-    private static final int DEFAULT_LENGTH = 1000;
-
-    private final int chunkSize;
-    private final ASN1OctetString[] octs;
+    final private static int DEFAULT_LENGTH = 1000;
+    final private int chunkSize;
+    final private ASN1OctetString[] octs;
 
     /**
      * Convert a vector of octet strings into a single byte string
@@ -42,30 +41,12 @@ class BEROctetString
         return bOut.toByteArray();
     }
 
-    /**
-     * Multiple {@link ASN1OctetString} data blocks are input,
-     * the result is <i>constructed form</i>.
-     *
-     * @param octs an array of OCTET STRING to construct the BER OCTET STRING from.
-     */
-    public BEROctetString(
-            ASN1OctetString[] octs)
-    {
-        this(octs, DEFAULT_LENGTH);
+    public BEROctetString(ASN1OctetString[] a) {
+        this(a, 1000);
     }
 
-    /**
-     * Multiple {@link ASN1OctetString} data blocks are input,
-     * the result is <i>constructed form</i>.
-     *
-     * @param octs an array of OCTET STRING to construct the BER OCTET STRING from.
-     * @param chunkSize the number of octets stored in each DER encoded component OCTET STRING.
-     */
-    private BEROctetString(
-            ASN1OctetString[] octs,
-            int chunkSize)
-    {
-        this(toBytes(octs), octs, chunkSize);
+    private BEROctetString(ASN1OctetString[] a, int i) {
+        this(BEROctetString.toBytes(a), a, i);
     }
 
     private BEROctetString(byte[] string, ASN1OctetString[] octs, int chunkSize)
@@ -141,24 +122,15 @@ class BEROctetString
         return 2 + length + 2;
     }
 
-    public void encode(
-            ASN1OutputStream out)
-            throws IOException
-    {
-        out.write(ASN1InputStream.CONSTRUCTED | ASN1InputStream.OCTET_STRING);
-
-        out.write(0x80);
-
-        //
-        // write out the octet array
-        //
-        for (Enumeration e = getObjects(); e.hasMoreElements();)
-        {
-            out.writeObject((ASN1Encodable)e.nextElement());
+    public void encode(ASN1OutputStream a) throws IOException {
+        a.write(36);
+        a.write(128);
+        Object a0 = this.getObjects();
+        while(((java.util.Enumeration)a0).hasMoreElements()) {
+            a.writeObject((ASN1Encodable)((java.util.Enumeration)a0).nextElement());
         }
-
-        out.write(0x00);
-        out.write(0x00);
+        a.write(0);
+        a.write(0);
     }
 
 }

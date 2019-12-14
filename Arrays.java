@@ -1,9 +1,7 @@
 
 import java.util.NoSuchElementException;
 
-/**
- * General array utilities.
- */
+
 final class Arrays
 {
 

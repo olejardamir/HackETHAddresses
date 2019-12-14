@@ -1,50 +1,24 @@
-
 import java.io.IOException;
-import java.io.InputStream;
 
-/**
- * Utility methods to assist with stream processing.
- */
-final class Streams
-{
-
-    /**
-     * Fully read in buf's length in data, or up to EOF, whichever occurs first,
-     *
-     * @param inStr the stream to be read.
-     * @param buf the buffer to be read into.
-     * @return the number of bytes read into the buffer.
-     * @throws IOException in case of underlying IOException.
-     */
-    public static int readFully(InputStream inStr, byte[] buf)
-            throws IOException
-    {
-        return readFully(inStr, buf, buf.length);
+final class Streams {
+    Streams() {
     }
 
-    /**
-     * Fully read in len's bytes of data into buf, or up to EOF, whichever occurs first,
-     *
-     * @param inStr the stream to be read.
-     * @param buf the buffer to be read into.
-     * @param len  the number of bytes to be read.
-     * @return the number of bytes read into the buffer.
-     * @throws IOException in case of underlying IOException.
-     */
-    private static int readFully(InputStream inStr, byte[] buf, int len)
-            throws IOException
-    {
-        int totalRead = 0;
-        while (totalRead < len)
-        {
-            int numRead = inStr.read(buf, totalRead, len - totalRead);
-            if (numRead < 0)
-            {
-                break;
+    public static int readFully(java.io.InputStream a, byte[] a0) throws IOException {
+        return Streams.readFully(a, a0, a0.length);
+    }
+
+    private static int readFully(java.io.InputStream a, byte[] a0, int i) throws IOException {
+        int i0 = 0;
+        while(true) {
+            if (i0 < i) {
+                int i1 = a.read(a0, i0, i - i0);
+                if (i1 >= 0) {
+                    i0 = i0 + i1;
+                    continue;
+                }
             }
-            totalRead += numRead;
+            return i0;
         }
-        return totalRead;
     }
-
 }

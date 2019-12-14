@@ -8,33 +8,6 @@ import java.security.PrivilegedAction;
 final class Strings
 {
 
-    static
-    {
-        String LINE_SEPARATOR;
-        try
-        {
-            LINE_SEPARATOR = AccessController.doPrivileged(new PrivilegedAction<String>()
-            {
-                public String run()
-                {
-                    // the easy way
-                    return System.getProperty("line.separator");
-                }
-            });
-
-        }
-        catch (Exception e)
-        {
-            try
-            {
-                // the harder way
-                LINE_SEPARATOR = String.format("%n");
-            }
-            catch (Exception ignored)
-            {
-            }
-        }
-    }
 
 
     public static String toLowerCase(String string)

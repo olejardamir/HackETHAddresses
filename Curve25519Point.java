@@ -188,8 +188,7 @@ public class Curve25519Point extends ECPoint.AbstractFp
 
         ECCurve curve = this.getCurve();
 
-        ECFieldElement Y1 = this.y;
-        if (Y1.isZero())
+        if (this.y.isZero())
         {
             return curve.getInfinity();
         }
@@ -211,8 +210,7 @@ public class Curve25519Point extends ECPoint.AbstractFp
             return twice();
         }
 
-        ECFieldElement Y1 = this.y;
-        if (Y1.isZero())
+        if (this.y.isZero())
         {
             return b;
         }
@@ -226,8 +224,7 @@ public class Curve25519Point extends ECPoint.AbstractFp
             return this;
         }
 
-        ECFieldElement Y1 = this.y;
-        if (Y1.isZero())
+        if (this.y.isZero())
         {
             return this;
         }

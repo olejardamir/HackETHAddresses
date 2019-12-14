@@ -1,6 +1,5 @@
 import java.io.EOFException;
 import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * Parse data stream of expected ASN.1 data expecting definite-length encoding..

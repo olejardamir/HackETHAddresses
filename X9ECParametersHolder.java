@@ -1,13 +1,10 @@
-import java.io.IOException;
-
-abstract class X9ECParametersHolder
-{
-    private X9ECParameters params;
-
-    public synchronized X9ECParameters getParameters() throws IOException {
-        params = createParameters();
-        return params;
+abstract class X9ECParametersHolder {
+    X9ECParametersHolder() {
     }
 
-    protected abstract X9ECParameters createParameters() throws IOException;
+    public synchronized X9ECParameters getParameters() throws Exception {
+        return this.createParameters();
+    }
+
+    abstract protected X9ECParameters createParameters() throws Exception;
 }

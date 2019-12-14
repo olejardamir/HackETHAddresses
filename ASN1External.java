@@ -46,15 +46,8 @@ public abstract class ASN1External
             enc = getObjFromVector(vector, offset);
         }
 
-        if (vector.size() != offset + 1)
-        {
-            throw new IllegalArgumentException("input vector too large");
-        }
 
-        if (!(enc instanceof ASN1TaggedObject))
-        {
-            throw new IllegalArgumentException("No tagged object found in vector. Structure doesn't seem to be of type External");
-        }
+
         ASN1TaggedObject obj = (ASN1TaggedObject)enc;
         setEncoding(obj.getTagNo());
         externalContent = obj.getObject();
@@ -62,10 +55,7 @@ public abstract class ASN1External
 
     private ASN1Primitive getObjFromVector(ASN1EncodableVector v, int index)
     {
-        if (v.size() <= index)
-        {
-            throw new IllegalArgumentException("too few objects in input vector");
-        }
+
 
         return v.get(index).toASN1Primitive();
     }

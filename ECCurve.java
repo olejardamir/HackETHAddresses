@@ -42,12 +42,10 @@ public abstract class ECCurve
                 throw new IllegalStateException("implementation returned current curve");
             }
 
-            // NOTE: Synchronization added to keep FindBugs™ happy
-            synchronized (c)
-            {
+
                 c.coord = coord;
                  c.multiplier = multiplier;
-            }
+
 
             return c;
         }
@@ -139,17 +137,15 @@ public abstract class ECCurve
         checkPoint(point);
 
         Hashtable table;
-        synchronized (point)
-        {
+
             table = point.preCompTable;
             if (null == table)
             {
                 point.preCompTable = table = new Hashtable(4);
             }
-        }
 
-        synchronized (table)
-        {
+
+
             PreCompInfo existing = (PreCompInfo)table.get(name);
             PreCompInfo result = callback.precompute(existing);
 
@@ -159,7 +155,7 @@ public abstract class ECCurve
             }
 
             return result;
-        }
+
     }
 
     public ECPoint importPoint(ECPoint p) throws CloneNotSupportedException {

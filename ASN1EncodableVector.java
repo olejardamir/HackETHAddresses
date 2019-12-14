@@ -6,7 +6,7 @@ import java.util.Vector;
  */
 class ASN1EncodableVector
 {
-    private final Vector v = new Vector();
+    private final Vector<ASN1Encodable> v = new Vector<ASN1Encodable>();
 
     /**
      * Base constructor.
@@ -33,7 +33,7 @@ class ASN1EncodableVector
      */
     public ASN1Encodable get(int i)
     {
-        return (ASN1Encodable)v.elementAt(i);
+        return v.elementAt(i);
     }
 
     /**

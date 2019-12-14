@@ -2,17 +2,59 @@ import java.math.BigInteger;
 
 class SecP256K1Field
 {
-    // 2^256 - 2^32 - 2^9 - 2^8 - 2^7 - 2^6 - 2^4 - 1
-    static final int[] P = new int[]{ 0xFFFFFC2F, 0xFFFFFFFE, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-            0xFFFFFFFF, 0xFFFFFFFF };
-    private static final int[] PExt = new int[]{ 0x000E90A1, 0x000007A2, 0x00000001, 0x00000000, 0x00000000,
-            0x00000000, 0x00000000, 0x00000000, 0xFFFFF85E, 0xFFFFFFFD, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
-            0xFFFFFFFF, 0xFFFFFFFF };
-    private static final int[] PExtInv = new int[]{ 0xFFF16F5F, 0xFFFFF85D, 0xFFFFFFFE, 0xFFFFFFFF, 0xFFFFFFFF,
-            0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x000007A1, 0x00000002 };
-    private static final int P7 = 0xFFFFFFFF;
-    private static final int PExt15 = 0xFFFFFFFF;
-    private static final int PInv33 = 0x3D1;
+    final static int[] P;
+    final private static int[] PExt;
+    final private static int[] PExtInv;
+    final private static int P7 = -1;
+    final private static int PExt15 = -1;
+    final private static int PInv33 = 977;
+
+
+    static {
+        int[] a = new int[8];
+        a[0] = -977;
+        a[1] = -2;
+        a[2] = -1;
+        a[3] = -1;
+        a[4] = -1;
+        a[5] = -1;
+        a[6] = -1;
+        a[7] = -1;
+        P = a;
+        int[] a0 = new int[16];
+        a0[0] = 954529;
+        a0[1] = 1954;
+        a0[2] = 1;
+        a0[3] = 0;
+        a0[4] = 0;
+        a0[5] = 0;
+        a0[6] = 0;
+        a0[7] = 0;
+        a0[8] = -1954;
+        a0[9] = -3;
+        a0[10] = -1;
+        a0[11] = -1;
+        a0[12] = -1;
+        a0[13] = -1;
+        a0[14] = -1;
+        a0[15] = -1;
+        PExt = a0;
+        int[] a1 = new int[10];
+        a1[0] = -954529;
+        a1[1] = -1955;
+        a1[2] = -2;
+        a1[3] = -1;
+        a1[4] = -1;
+        a1[5] = -1;
+        a1[6] = -1;
+        a1[7] = -1;
+        a1[8] = 1953;
+        a1[9] = 2;
+        PExtInv = a1;
+    }
+
+
+
 
     public static void add(int[] x, int[] y, int[] z)
     {
@@ -42,11 +84,10 @@ class SecP256K1Field
         return z;
     }
 
-    public static void multiply(int[] x, int[] y, int[] z)
-    {
-        int[] tt = Nat256.createExt();
-        Nat256.mul(x, y, tt);
-        reduce(tt, z);
+    public static void multiply(int[] a, int[] a0, int[] a1) {
+        int[] a2 = Nat256.createExt();
+        Nat256.mul(a, a0, a2);
+        reduce(a2, a1);
     }
 
     public static void multiplyAddToExt(int[] x, int[] y, int[] zz)
@@ -61,15 +102,11 @@ class SecP256K1Field
         }
     }
 
-    public static void negate(int[] x, int[] z)
-    {
-        if (Nat256.isZero(x))
-        {
-            Nat256.zero(z);
-        }
-        else
-        {
-            Nat256.sub(P, x, z);
+    public static void negate(int[] a, int[] a0) {
+        if (Nat256.isZero(a)) {
+            Nat256.zero(a0);
+        } else {
+            Nat256.sub(P, a, a0);
         }
     }
 
@@ -95,34 +132,30 @@ class SecP256K1Field
         }
     }
 
-    public static void square(int[] x, int[] z)
-    {
-        int[] tt = Nat256.createExt();
-        Nat256.square(x, tt);
-        reduce(tt, z);
+    public static void square(int[] a, int[] a0) {
+        int[] a1 = Nat256.createExt();
+        Nat256.square(a, a1);
+        SecP256K1Field.reduce(a1, a0);
     }
 
-    public static void squareN(int[] x, int n, int[] z)
-    {
-//        assert n > 0;
-
-        int[] tt = Nat256.createExt();
-        Nat256.square(x, tt);
-        reduce(tt, z);
-
-        while (--n > 0)
-        {
-            Nat256.square(z, tt);
-            reduce(tt, z);
+    public static void squareN(int[] a, int i, int[] a0) {
+        int[] a1 = Nat256.createExt();
+        Nat256.square(a, a1);
+        SecP256K1Field.reduce(a1, a0);
+        while(true) {
+            int i0 = i + -1;
+            if (i0 <= 0) {
+                return;
+            }
+            Nat256.square(a0, a1);
+            SecP256K1Field.reduce(a1, a0);
+            i = i0;
         }
     }
 
-    public static void subtract(int[] x, int[] y, int[] z)
-    {
-        int c = Nat256.sub(x, y, z);
-        if (c != 0)
-        {
-            Nat.sub33From(8, PInv33, z);
+    public static void subtract(int[] a, int[] a0, int[] a1) {
+        if (Nat256.sub(a, a0, a1) != 0) {
+            Nat.sub33From(8, 977, a1);
         }
     }
 

@@ -25,25 +25,21 @@ abstract class FiniteFields
 
 
 
-    public static FiniteField getPrimeField(BigInteger characteristic)
-    {
-        int bitLength = characteristic.bitLength();
-        if (characteristic.signum() <= 0 || bitLength < 2)
-        {
-            throw new IllegalArgumentException("'characteristic' must be >= 2");
-        }
-
-        if (bitLength < 3)
-        {
-            switch (characteristic.intValue())
-            {
-                case 2:
-                    return GF_2;
-                case 3:
-                    return GF_3;
+    public static FiniteField getPrimeField(java.math.BigInteger a) {
+        int i = a.bitLength();
+        if (a.signum() > 0 && i >= 2) {
+            if (i < 3) {
+                switch(a.intValue()) {
+                    case 3: {
+                        return GF_3;
+                    }
+                    case 2: {
+                        return GF_2;
+                    }
+                }
             }
+            return (FiniteField)(Object)new PrimeField(a);
         }
-
-        return new PrimeField(characteristic);
+        return null;
     }
 }
