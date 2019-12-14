@@ -41,54 +41,7 @@ class GLVTypeBParameters
         return beta;
     }
 
-    /**
-     * @deprecated Use {@link #getV1A()} and {@link #getV1B()} instead.
-     */
-    public BigInteger[] getV1()
-    {
-        return new BigInteger[]{ v1A, v1B };
-    }
 
-    public BigInteger getV1A()
-    {
-        return v1A;
-    }
 
-    public BigInteger getV1B()
-    {
-        return v1B;
-    }
 
-    /**
-     * @deprecated Use {@link #getV2A()} and {@link #getV2B()} instead.
-     */
-    public BigInteger[] getV2()
-    {
-        return new BigInteger[]{ v2A, v2B };
-    }
-
-    public BigInteger getV2A()
-    {
-        return v2A;
-    }
-
-    public BigInteger getV2B()
-    {
-        return v2B;
-    }
-
-    public BigInteger getG1()
-    {
-        return g1;
-    }
-
-    public BigInteger getG2()
-    {
-        return g2;
-    }
-
-    public int getBits()
-    {
-        return bits;
-    }
 }

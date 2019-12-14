@@ -55,12 +55,6 @@ class DLSet
 {
     private int bodyLength = -1;
 
-    /**
-     * create an empty set
-     */
-    public DLSet()
-    {
-    }
 
     /**
      * @param v - a vector of objects making up the set.
@@ -69,6 +63,10 @@ class DLSet
             ASN1EncodableVector v)
     {
         super(v);
+    }
+
+    public DLSet() {
+
     }
 
     private int getBodyLength()

@@ -16,16 +16,6 @@ public abstract class ASN1Set
     }
 
     /**
-     * Create a SET containing one object
-     * @param obj object to be added to the SET.
-     */
-    ASN1Set(
-            ASN1Encodable obj)
-    {
-        set.addElement(obj);
-    }
-
-    /**
      * Create a SET containing a vector of objects.
      * @param v a vector of objects to make up the SET.
      *
@@ -42,21 +32,6 @@ public abstract class ASN1Set
         {
             this.sort();
         }
-    }
-
-    /**
-     * Create a SET containing an array of objects.
-     * @param array an array of objects to make up the SET.
-     *
-     */
-    ASN1Set(
-            ASN1Encodable[] array)
-    {
-        for (int i = 0; i != array.length; i++)
-        {
-            set.addElement(array[i]);
-        }
-
     }
 
     Enumeration getObjects()
@@ -163,7 +138,7 @@ public abstract class ASN1Set
     {
         try
         {
-            return obj.toASN1Primitive().getEncoded(ASN1Encoding.DER);
+            return obj.toASN1Primitive().getEncoded("DER");
         }
         catch (IOException e)
         {

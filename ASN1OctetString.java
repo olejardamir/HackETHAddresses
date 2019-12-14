@@ -97,43 +97,6 @@ public abstract class ASN1OctetString
     byte[]  string;
 
     /**
-     * return an Octet String from the given object.
-     *
-     * @param obj the object we want converted.
-     * @exception IllegalArgumentException if the object cannot be converted.
-     */
-    public static ASN1OctetString getInstance(
-            Object  obj)
-    {
-        if (obj == null || obj instanceof ASN1OctetString)
-        {
-            return (ASN1OctetString)obj;
-        }
-        else if (obj instanceof byte[])
-        {
-            try
-            {
-                return ASN1OctetString.getInstance(ASN1Primitive.fromByteArray((byte[])obj));
-            }
-            catch (IOException e)
-            {
-                throw new IllegalArgumentException("failed to construct OCTET STRING from byte[]: " + e.getMessage());
-            }
-        }
-        else if (obj instanceof ASN1Encodable)
-        {
-            ASN1Primitive primitive = ((ASN1Encodable)obj).toASN1Primitive();
-
-            if (primitive instanceof ASN1OctetString)
-            {
-                return (ASN1OctetString)primitive;
-            }
-        }
-
-        throw new IllegalArgumentException("illegal object in getInstance: " + obj.getClass().getName());
-    }
-
-    /**
      * Base constructor.
      *
      * @param string the octets making up the octet string.

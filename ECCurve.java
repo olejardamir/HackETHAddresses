@@ -19,20 +19,15 @@ public abstract class ECCurve
     public class Config
     {
         final int coord;
-        ECEndomorphism endomorphism;
-        final AbstractECMultiplier multiplier;
 
-        Config(int coord, ECEndomorphism endomorphism, AbstractECMultiplier multiplier)
+        Config(int coord)
         {
             this.coord = coord;
-            this.endomorphism = endomorphism;
-            this.multiplier = multiplier;
-        }
+         }
 
-        public Config setEndomorphism(ECEndomorphism endomorphism)
+        public Config setEndomorphism()
         {
-            this.endomorphism = endomorphism;
-            return this;
+             return this;
         }
 
         public ECCurve create() throws IOException {
@@ -51,8 +46,7 @@ public abstract class ECCurve
             synchronized (c)
             {
                 c.coord = coord;
-                c.endomorphism = endomorphism;
-                c.multiplier = multiplier;
+                 c.multiplier = multiplier;
             }
 
             return c;
@@ -66,8 +60,7 @@ public abstract class ECCurve
     BigInteger cofactor;
 
     int coord = COORD_AFFINE;
-    private ECEndomorphism endomorphism = null;
-    private AbstractECMultiplier multiplier = null;
+     private AbstractECMultiplier multiplier = null;
 
     ECCurve(FiniteField field)
     {
@@ -80,7 +73,7 @@ public abstract class ECCurve
 
     public synchronized Config configure()
     {
-        return new Config(this.coord, this.endomorphism, this.multiplier);
+        return new Config(this.coord);
     }
 
     private ECPoint validatePoint(BigInteger x, BigInteger y) throws CloneNotSupportedException {
@@ -128,27 +121,6 @@ public abstract class ECCurve
     boolean supportsCoordinateSystem(int coord)
     {
         return coord == COORD_AFFINE;
-    }
-
-    public PreCompInfo getPreCompInfo(ECPoint point, String name)
-    {
-        checkPoint(point);
-
-        Hashtable table;
-        synchronized (point)
-        {
-            table = point.preCompTable;
-        }
-
-        if (null == table)
-        {
-            return null;
-        }
-
-        synchronized (table)
-        {
-            return (PreCompInfo)table.get(name);
-        }
     }
 
     /**
@@ -665,13 +637,6 @@ public abstract class ECCurve
     public static abstract class AbstractF2m extends ECCurve
     {
 
-        /**
-         * The auxiliary values <code>s<sub>0</sub></code> and
-         * <code>s<sub>1</sub></code> used for partial modular reduction for
-         * Koblitz curves.
-         */
-        private BigInteger[] si = null;
-
         private static FiniteField buildField(int m, int k1, int k2, int k3)
         {
             if (k1 == 0)
@@ -797,20 +762,6 @@ public abstract class ECCurve
             while (gamma.isZero());
 
             return z;
-        }
-
-        /**
-         * @return the auxiliary values <code>s<sub>0</sub></code> and
-         * <code>s<sub>1</sub></code> used for partial modular reduction for
-         * Koblitz curves.
-         */
-        synchronized BigInteger[] getSi()
-        {
-            if (si == null)
-            {
-                si = Tnaf.getSi(this);
-            }
-            return si;
         }
 
         /**

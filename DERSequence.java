@@ -69,7 +69,7 @@ class DERSequence
             throws IOException
     {
 
-        out.write(BERTags.SEQUENCE | BERTags.CONSTRUCTED);
+        out.write(ASN1InputStream.SEQUENCE | ASN1InputStream.CONSTRUCTED);
         out.writeLength(getBodyLength());
 
         for (Enumeration e = this.getObjects(); e.hasMoreElements();)

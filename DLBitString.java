@@ -34,7 +34,7 @@ class DLBitString
         bytes[0] = (byte)getPadBits();
         System.arraycopy(string, 0, bytes, 1, bytes.length - 1);
 
-        out.writeEncoded(BERTags.BIT_STRING, bytes);
+        out.writeEncoded(ASN1InputStream.BIT_STRING, bytes);
     }
 
 }

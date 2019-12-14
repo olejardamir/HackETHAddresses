@@ -7,19 +7,8 @@ import java.io.IOException;
  * </p>
  */
 public class DERVisibleString
-        extends ASN1Primitive
-        implements ASN1String
-{
-    private final byte[]  string;
-
-    /*
-     * Basic constructor - byte encoded string.
-     */
-    DERVisibleString(
-            byte[]   string)
-    {
-        this.string = string;
-    }
+        extends ASN1Primitive {
+    private byte[]  string;
 
     private String getString()
     {
@@ -40,7 +29,7 @@ public class DERVisibleString
             ASN1OutputStream out)
             throws IOException
     {
-        out.writeEncoded(BERTags.VISIBLE_STRING, this.string);
+        out.writeEncoded(ASN1InputStream.VISIBLE_STRING, this.string);
     }
 
     boolean asn1Equals(

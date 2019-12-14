@@ -18,15 +18,10 @@ class DERSet
     private int bodyLength = -1;
 
 
-    DERSet(
-            ASN1EncodableVector v)
-    {
-        super(v);
-    }
-
     public DERSet() {
 
     }
+
 
     private int getBodyLength()
             throws IOException

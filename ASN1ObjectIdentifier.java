@@ -2,8 +2,6 @@
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.math.BigInteger;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 
 /**
@@ -245,7 +243,7 @@ public class ASN1ObjectIdentifier
     {
         byte[] enc = getBody();
 
-        out.write(BERTags.OBJECT_IDENTIFIER);
+        out.write(ASN1InputStream.OBJECT_IDENTIFIER);
         out.writeLength(enc.length);
         out.write(enc);
     }
@@ -327,8 +325,6 @@ public class ASN1ObjectIdentifier
         return isValidBranchID(identifier, 2);
     }
 
-    private static final ConcurrentMap<OidHandle, ASN1ObjectIdentifier> pool = new ConcurrentHashMap<OidHandle, ASN1ObjectIdentifier>();
-
     private static class OidHandle
     {
         private final int key;
@@ -356,14 +352,4 @@ public class ASN1ObjectIdentifier
         }
     }
 
-    static ASN1ObjectIdentifier fromOctetString(byte[] enc)
-    {
-        final OidHandle hdl = new OidHandle(enc);
-        ASN1ObjectIdentifier oid = pool.get(hdl);
-        if (oid == null)
-        {
-            return new ASN1ObjectIdentifier(enc);
-        }
-        return oid;
-    }
 }

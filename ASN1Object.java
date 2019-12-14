@@ -35,7 +35,7 @@ public abstract class ASN1Object
             String encoding)
             throws IOException
     {
-        if (encoding.equals(ASN1Encoding.DER))
+        if (encoding.equals("DER"))
         {
             ByteArrayOutputStream   bOut = new ByteArrayOutputStream();
             DEROutputStream         dOut = new DEROutputStream(bOut);
@@ -44,7 +44,7 @@ public abstract class ASN1Object
 
             return bOut.toByteArray();
         }
-        else if (encoding.equals(ASN1Encoding.DL))
+        else if (encoding.equals("DL"))
         {
             ByteArrayOutputStream   bOut = new ByteArrayOutputStream();
             DLOutputStream          dOut = new DLOutputStream(bOut);

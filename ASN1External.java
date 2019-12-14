@@ -70,24 +70,6 @@ public abstract class ASN1External
         return v.get(index).toASN1Primitive();
     }
 
-    /**
-     * Creates a new instance of External.
-     * See X.690 for more informations about the meaning of these parameters
-     * @param directReference The direct reference or <code>null</code> if not set.
-     * @param indirectReference The indirect reference or <code>null</code> if not set.
-     * @param dataValueDescriptor The data value descriptor or <code>null</code> if not set.
-     * @param encoding The encoding to be used for the external data
-     * @param externalData The external data
-     */
-    ASN1External(ASN1ObjectIdentifier directReference, ASN1Integer indirectReference, ASN1Primitive dataValueDescriptor, int encoding, ASN1Primitive externalData)
-    {
-        setDirectReference(directReference);
-        setIndirectReference(indirectReference);
-        setDataValueDescriptor(dataValueDescriptor);
-        setEncoding(encoding);
-        setExternalContent(externalData.toASN1Primitive());
-    }
-
     /* (non-Javadoc)
      * @see java.lang.Object#hashCode()
      */
@@ -111,24 +93,6 @@ public abstract class ASN1External
     }
 
     /**
-     * Sets the data value descriptor
-     * @param dataValueDescriptor The descriptor
-     */
-    private void setDataValueDescriptor(ASN1Primitive dataValueDescriptor)
-    {
-        this.dataValueDescriptor = dataValueDescriptor;
-    }
-
-    /**
-     * Sets the direct reference of the external element
-     * @param directReferemce The reference
-     */
-    private void setDirectReference(ASN1ObjectIdentifier directReferemce)
-    {
-        this.directReference = directReferemce;
-    }
-
-    /**
      * Sets the encoding of the content. Valid values are
      * <ul>
      * <li><code>0</code> single-ASN1-type</li>
@@ -146,21 +110,4 @@ public abstract class ASN1External
         this.encoding = encoding;
     }
 
-    /**
-     * Sets the content of this element
-     * @param externalContent The content
-     */
-    private void setExternalContent(ASN1Primitive externalContent)
-    {
-        this.externalContent = externalContent;
-    }
-
-    /**
-     * Sets the indirect reference of this element
-     * @param indirectReference The reference
-     */
-    private void setIndirectReference(ASN1Integer indirectReference)
-    {
-        this.indirectReference = indirectReference;
-    }
 }

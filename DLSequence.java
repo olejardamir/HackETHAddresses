@@ -69,7 +69,7 @@ class DLSequence
         ASN1OutputStream dOut = out.getDLSubStream();
         int length = getBodyLength();
 
-        out.write(BERTags.SEQUENCE | BERTags.CONSTRUCTED);
+        out.write(ASN1InputStream.SEQUENCE | ASN1InputStream.CONSTRUCTED);
         out.writeLength(length);
 
         for (Enumeration e = this.getObjects(); e.hasMoreElements();)

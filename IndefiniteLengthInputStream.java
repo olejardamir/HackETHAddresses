@@ -15,7 +15,7 @@ class IndefiniteLengthInputStream
             InputStream in)
             throws IOException
     {
-        super(in);
+        super();
 
         _b1 = in.read();
         _b2 = in.read();

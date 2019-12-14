@@ -32,19 +32,6 @@ public class ASN1Integer
         bytes = value.toByteArray();
     }
 
-    ASN1Integer(byte[] bytes)
-    {
-        // Apply loose validation, see note in public constructor ANS1Integer(byte[])
-        if (!Properties.isOverrideSet("org.bouncycastle.asn1.allow_unsafe_integer"))
-        {
-            if (isMalformed(bytes))
-            {
-                throw new IllegalArgumentException("malformed integer");
-            }
-        }
-        this.bytes = bytes;
-    }
-
     /**
      * Apply the correct validation for an INTEGER primitive following the BER rules.
      *
@@ -79,7 +66,7 @@ public class ASN1Integer
             ASN1OutputStream out)
             throws IOException
     {
-        out.writeEncoded(BERTags.INTEGER, bytes);
+        out.writeEncoded(ASN1InputStream.INTEGER, bytes);
     }
 
     public int hashCode()

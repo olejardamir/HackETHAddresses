@@ -18,16 +18,6 @@ public abstract class ASN1Sequence
     }
 
     /**
-     * Create a SEQUENCE containing one object.
-     * @param obj the object to be put in the SEQUENCE.
-     */
-    ASN1Sequence(
-            ASN1Encodable obj)
-    {
-        seq.addElement(obj);
-    }
-
-    /**
      * Create a SEQUENCE containing a vector of objects.
      * @param v the vector of objects to be put in the SEQUENCE.
      */
@@ -37,19 +27,6 @@ public abstract class ASN1Sequence
         for (int i = 0; i != v.size(); i++)
         {
             seq.addElement(v.get(i));
-        }
-    }
-
-    /**
-     * Create a SEQUENCE containing an array of objects.
-     * @param array the array of objects to be put in the SEQUENCE.
-     */
-    ASN1Sequence(
-            ASN1Encodable[] array)
-    {
-        for (int i = 0; i != array.length; i++)
-        {
-            seq.addElement(array[i]);
         }
     }
 

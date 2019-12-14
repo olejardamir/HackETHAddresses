@@ -7,7 +7,9 @@ class CustomNamedCurves
 {
 
     private static ECCurve configureCurveGLV(ECCurve c, GLVTypeBParameters p) throws IOException {
-        return c.configure().setEndomorphism(new GLVTypeBEndomorphism(c, p)).create();
+        ECCurve curve = c;
+        GLVTypeBParameters parameters = p;
+        return c.configure().setEndomorphism().create();
     }
 
     /*

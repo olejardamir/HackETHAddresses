@@ -56,7 +56,7 @@ class LazyEncodedSequence
     {
         if (encoded != null)
         {
-            out.writeEncoded(BERTags.SEQUENCE | BERTags.CONSTRUCTED, encoded);
+            out.writeEncoded(ASN1InputStream.SEQUENCE | ASN1InputStream.CONSTRUCTED, encoded);
         }
         else
         {

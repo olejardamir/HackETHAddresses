@@ -10,7 +10,7 @@ abstract class LimitedInputStream
     InputStream _in;
     private int _limit;
 
-    public LimitedInputStream(InputStream in) {
+    public LimitedInputStream() {
     }
 
     int getRemaining()

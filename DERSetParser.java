@@ -7,12 +7,7 @@ import java.io.IOException;
 public class DERSetParser
         implements ASN1SetParser
 {
-    private final ASN1StreamParser _parser;
-
-    DERSetParser(ASN1StreamParser parser)
-    {
-        this._parser = parser;
-    }
+    private ASN1StreamParser _parser;
 
     /**
      * Return an in memory, encodable, representation of the SET.
@@ -23,7 +18,7 @@ public class DERSetParser
     public ASN1Primitive getLoadedObject()
             throws IOException
     {
-        return new DERSet(_parser.readVector());
+        return null;
     }
 
     /**

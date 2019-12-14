@@ -5,93 +5,11 @@ import java.io.IOException;
  * Base class for BIT STRING objects
  */
 public abstract class ASN1BitString
-        extends ASN1Primitive
-        implements ASN1String
-{
+        extends ASN1Primitive {
     private static final char[]  table = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
     final byte[]      data;
     final int         padBits;
-
-    /**
-     * @param bitString an int containing the BIT STRING
-     * @return the correct number of pad bits for a bit string defined in
-     * a 32 bit constant
-     */
-    static int getPadBits(
-            int bitString)
-    {
-        int val = 0;
-        for (int i = 3; i >= 0; i--)
-        {
-            //
-            // this may look a little odd, but if it isn't done like this pre jdk1.2
-            // JVM's break!
-            //
-            if (i != 0)
-            {
-                if ((bitString >> (i * 8)) != 0)
-                {
-                    val = (bitString >> (i * 8)) & 0xFF;
-                    break;
-                }
-            }
-            else
-            {
-                if (bitString != 0)
-                {
-                    val = bitString & 0xFF;
-                    break;
-                }
-            }
-        }
-
-        if (val == 0)
-        {
-            return 0;
-        }
-
-
-        int bits = 1;
-
-        while (((val <<= 1) & 0xFF) != 0)
-        {
-            bits++;
-        }
-
-        return 8 - bits;
-    }
-
-    /**
-     * @param bitString an int containing the BIT STRING
-     * @return the correct number of bytes for a bit string defined in
-     * a 32 bit constant
-     */
-    static byte[] getBytes(int bitString)
-    {
-        if (bitString == 0)
-        {
-            return new byte[0];
-        }
-
-        int bytes = 4;
-        for (int i = 3; i >= 1; i--)
-        {
-            if ((bitString & (0xFF << (i * 8))) != 0)
-            {
-                break;
-            }
-            bytes--;
-        }
-
-        byte[] result = new byte[bytes];
-        for (int i = 0; i < bytes; i++)
-        {
-            result[i] = (byte) ((bitString >> (i * 8)) & 0xFF);
-        }
-
-        return result;
-    }
 
     /**
      * Base constructor.

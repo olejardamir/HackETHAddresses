@@ -8,15 +8,6 @@ public class DERBitString
         extends ASN1BitString
 {
 
-    private static byte[] toByteArray(byte data)
-    {
-        byte[] rv = new byte[1];
-
-        rv[0] = data;
-
-        return rv;
-    }
-
     /**
      * @param data the octets making up the bit string.
      * @param padBits the number of extra bits at the end of the string.
@@ -49,7 +40,7 @@ public class DERBitString
         bytes[0] = (byte)getPadBits();
         System.arraycopy(string, 0, bytes, 1, bytes.length - 1);
 
-        out.writeEncoded(BERTags.BIT_STRING, bytes);
+        out.writeEncoded(ASN1InputStream.BIT_STRING, bytes);
     }
 
 }

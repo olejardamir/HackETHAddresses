@@ -198,17 +198,6 @@ abstract class Nat
         }
     }
 
-    public static void shiftDownBit(int len, int[] x, int c, int[] z)
-    {
-        int i = len;
-        while (--i >= 0)
-        {
-            int next = x[i];
-            z[i] = (next >>> 1) | (c << 31);
-            c = next;
-        }
-    }
-
     public static void shiftDownBits(int len, int[] z, int bits, int c)
     {
 //        assert bits > 0 && bits < 32;
@@ -275,18 +264,6 @@ abstract class Nat
             c = next;
         }
         return c >>> -bits;
-    }
-
-    public static int sub(int len, int[] x, int[] y, int[] z)
-    {
-        long c = 0;
-        for (int i = 0; i < len; ++i)
-        {
-            c += (x[i] & M) - (y[i] & M);
-            z[i] = (int)c;
-            c >>= 32;
-        }
-        return (int)c;
     }
 
     public static void sub33From(int len, int x, int[] z)

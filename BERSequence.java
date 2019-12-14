@@ -45,7 +45,7 @@ class BERSequence
             ASN1OutputStream out)
             throws IOException
     {
-        out.write(BERTags.SEQUENCE | BERTags.CONSTRUCTED);
+        out.write(ASN1InputStream.SEQUENCE | ASN1InputStream.CONSTRUCTED);
         out.write(0x80);
 
         Enumeration e = getObjects();

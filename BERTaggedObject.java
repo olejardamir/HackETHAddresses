@@ -11,15 +11,17 @@ class BERTaggedObject
 {
 
     /**
-     * @param explicit true if an explicitly tagged object.
-     * @param tagNo the tag number for this object.
-     * @param obj the tagged object.
+     * Create a tagged object with the style given by the value of explicit.
+     * <p>
+     * If the object implements ASN1Choice the tag style will always be changed
+     * to explicit in accordance with the ASN.1 encoding rules.
+     * </p>
+     *
+     * @param explicit true if the object is explicitly tagged.
+     * @param tagNo    the tag number for this object.
+     * @param obj      the tagged object.
      */
-    public BERTaggedObject(
-            boolean         explicit,
-            int             tagNo,
-            ASN1Encodable    obj)
-    {
+    BERTaggedObject(boolean explicit, int tagNo, ASN1Encodable obj) {
         super(explicit, tagNo, obj);
     }
 

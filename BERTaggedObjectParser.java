@@ -5,20 +5,13 @@ import java.io.IOException;
  * Parser for indefinite-length tagged objects.
  */
 public class BERTaggedObjectParser
-        implements ASN1TaggedObjectParser
-{
+        implements ASN1Encodable {
     private final boolean _constructed;
-    private final int _tagNumber;
-    private final ASN1StreamParser _parser;
 
     BERTaggedObjectParser(
-            boolean             constructed,
-            int                 tagNumber,
-            ASN1StreamParser    parser)
+            boolean constructed)
     {
         _constructed = constructed;
-        _tagNumber = tagNumber;
-        _parser = parser;
     }
 
     /**
@@ -40,7 +33,7 @@ public class BERTaggedObjectParser
     public ASN1Primitive getLoadedObject()
             throws IOException
     {
-        return _parser.readTaggedObject(_constructed, _tagNumber);
+        return null;
     }
 
     /**

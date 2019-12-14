@@ -7,11 +7,9 @@ import java.io.IOException;
 public class BERSetParser
         implements ASN1SetParser
 {
-    private final ASN1StreamParser _parser;
 
     BERSetParser(ASN1StreamParser parser)
     {
-        this._parser = parser;
     }
 
     /**
@@ -23,7 +21,7 @@ public class BERSetParser
     public ASN1Primitive getLoadedObject()
             throws IOException
     {
-        return new BERSet(_parser.readVector());
+        return null;
     }
 
     /**

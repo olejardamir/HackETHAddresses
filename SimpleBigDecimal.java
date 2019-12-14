@@ -28,23 +28,7 @@ class SimpleBigDecimal
         }
     }
 
-    private SimpleBigDecimal adjustScale(int newScale)
-    {
-        if (newScale < 0)
-        {
-            throw new IllegalArgumentException("scale may not be negative");
-        }
-
-        if (newScale == scale)
-        {
-            return this;
-        }
-
-        return new SimpleBigDecimal(bigInt.shiftLeft(newScale - scale),
-                newScale);
-    }
-
-    public SimpleBigDecimal add(SimpleBigDecimal b)
+     public SimpleBigDecimal add(SimpleBigDecimal b)
     {
         checkScale(b);
         return new SimpleBigDecimal(bigInt.add(b.bigInt), scale);
@@ -82,28 +66,12 @@ class SimpleBigDecimal
         return new SimpleBigDecimal(bigInt.multiply(b), scale);
     }
 
-    public int compareTo(BigInteger val)
-    {
-        return bigInt.compareTo(val.shiftLeft(scale));
-    }
-
-    private BigInteger floor()
+     private BigInteger floor()
     {
         return bigInt.shiftRight(scale);
     }
 
-    public BigInteger round()
-    {
-        SimpleBigDecimal oneHalf = new SimpleBigDecimal(ECConstants.ONE, 1);
-        return add(oneHalf.adjustScale(scale)).floor();
-    }
-
-    public int getScale()
-    {
-        return scale;
-    }
-
-    public String toString()
+     public String toString()
     {
         if (scale == 0)
         {

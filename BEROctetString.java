@@ -180,7 +180,7 @@ class BEROctetString
             ASN1OutputStream out)
             throws IOException
     {
-        out.write(BERTags.CONSTRUCTED | BERTags.OCTET_STRING);
+        out.write(ASN1InputStream.CONSTRUCTED | ASN1InputStream.OCTET_STRING);
 
         out.write(0x80);
 

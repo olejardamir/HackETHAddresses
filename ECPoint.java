@@ -1474,39 +1474,6 @@ public abstract class ECPoint
             return this.add(b.negate());
         }
 
-        public ECPoint.AbstractF2m tauPow(int pow)
-        {
-            if (this.isInfinity())
-            {
-                return this;
-            }
-
-            ECCurve curve = this.getCurve();
-            int coord = curve.getCoordinateSystem();
-
-            ECFieldElement X1 = this.x;
-
-            switch (coord)
-            {
-                case ECCurve.COORD_AFFINE:
-                case ECCurve.COORD_LAMBDA_AFFINE:
-                {
-                    ECFieldElement Y1 = this.y;
-                    return (ECPoint.AbstractF2m)curve.createRawPoint(X1.squarePow(pow), Y1.squarePow(pow), this.withCompression);
-                }
-                case ECCurve.COORD_HOMOGENEOUS:
-                case ECCurve.COORD_LAMBDA_PROJECTIVE:
-                {
-                    ECFieldElement Y1 = this.y, Z1 = this.zs[0];
-                    return (ECPoint.AbstractF2m)curve.createRawPoint(X1.squarePow(pow), Y1.squarePow(pow),
-                            new ECFieldElement[]{ Z1.squarePow(pow) }, this.withCompression);
-                }
-                default:
-                {
-                    throw new IllegalStateException("unsupported coordinate system");
-                }
-            }
-        }
     }
 
     /**

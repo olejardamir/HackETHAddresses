@@ -25,20 +25,6 @@ class DLExternal
         super(vector);
     }
 
-    /**
-     * Creates a new instance of Definite-Length External.
-     * See X.690 for more informations about the meaning of these parameters
-     * @param directReference The direct reference or <code>null</code> if not set.
-     * @param indirectReference The indirect reference or <code>null</code> if not set.
-     * @param dataValueDescriptor The data value descriptor or <code>null</code> if not set.
-     * @param encoding The encoding to be used for the external data
-     * @param externalData The external data
-     */
-    private DLExternal(ASN1ObjectIdentifier directReference, ASN1Integer indirectReference, ASN1Primitive dataValueDescriptor, int encoding, ASN1Primitive externalData)
-    {
-        super(directReference, indirectReference, dataValueDescriptor, encoding, externalData);
-    }
-
     @Override
     int encodedLength() {
         return 0;
@@ -53,19 +39,19 @@ class DLExternal
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         if (directReference != null)
         {
-            baos.write(directReference.getEncoded(ASN1Encoding.DL));
+            baos.write(directReference.getEncoded("DL"));
         }
         if (indirectReference != null)
         {
-            baos.write(indirectReference.getEncoded(ASN1Encoding.DL));
+            baos.write(indirectReference.getEncoded("DL"));
         }
         if (dataValueDescriptor != null)
         {
-            baos.write(dataValueDescriptor.getEncoded(ASN1Encoding.DL));
+            baos.write(dataValueDescriptor.getEncoded("DL"));
         }
         DERTaggedObject obj = new DERTaggedObject(true, encoding, externalContent);
-        baos.write(obj.getEncoded(ASN1Encoding.DL));
-        out.writeEncoded(BERTags.CONSTRUCTED, BERTags.EXTERNAL, baos.toByteArray());
+        baos.write(obj.getEncoded("DL"));
+        out.writeEncoded(ASN1InputStream.CONSTRUCTED, ASN1InputStream.EXTERNAL, baos.toByteArray());
     }
 
     @Override

@@ -5,8 +5,7 @@
  */
 public abstract class ASN1TaggedObject
         extends ASN1Primitive
-        implements ASN1TaggedObjectParser
-{
+        implements ASN1Encodable {
     final int             tagNo;
     final boolean         empty = false;
     final boolean         explicit;
@@ -27,18 +26,8 @@ public abstract class ASN1TaggedObject
             int tagNo,
             ASN1Encodable obj)
     {
-        if (obj instanceof ASN1Choice)
-        {
-            this.explicit = true;
-        }
-        else
-        {
             this.explicit = explicit;
-        }
-
-        this.tagNo = tagNo;
-
-
+             this.tagNo = tagNo;
             this.obj = obj;
 
 
@@ -69,20 +58,6 @@ public abstract class ASN1TaggedObject
     public int getTagNo()
     {
         return tagNo;
-    }
-
-    /**
-     * return whether or not the object may be explicitly tagged.
-     * <p>
-     * Note: if the object has been read from an input stream, the only
-     * time you can be sure if isExplicit is returning the true state of
-     * affairs is if it returns false. An implicitly tagged object may appear
-     * to be explicitly tagged, so you need to understand the context under
-     * which the reading was done as well, see getObject below.
-     */
-    public boolean isExplicit()
-    {
-        return explicit;
     }
 
     /**

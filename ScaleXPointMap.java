@@ -8,7 +8,4 @@ public class ScaleXPointMap implements ECPointMap
         this.scale = scale;
     }
 
-    public ECPoint map(ECPoint p) throws CloneNotSupportedException {
-        return p.scaleX(scale);
-    }
 }

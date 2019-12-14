@@ -27,7 +27,7 @@ class DEROctetString
             ASN1OutputStream out)
             throws IOException
     {
-        out.writeEncoded(BERTags.OCTET_STRING, string);
+        out.writeEncoded(ASN1InputStream.OCTET_STRING, string);
     }
 
 }

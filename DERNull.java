@@ -29,6 +29,6 @@ public class DERNull
             ASN1OutputStream out)
             throws IOException
     {
-        out.writeEncoded(BERTags.NULL, zeroBytes);
+        out.writeEncoded(ASN1InputStream.NULL, zeroBytes);
     }
 }
