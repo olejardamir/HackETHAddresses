@@ -92,8 +92,7 @@ import java.io.InputStream;
  */
 public abstract class ASN1OctetString
         extends ASN1Primitive
-        implements ASN1OctetStringParser
-{
+ {
     byte[]  string;
 
     /**

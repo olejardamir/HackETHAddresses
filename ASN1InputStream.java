@@ -16,9 +16,7 @@ class ASN1InputStream
     public static final int EXTERNAL            = 0x08;//
      public static final int SEQUENCE            = 0x10; // decimal 16
     public static final int SET                 = 0x11; // decimal 17
-     public static final int PRINTABLE_STRING    = 0x13; // decimal 19
 
-    public static final int VISIBLE_STRING      = 0x1a; // decimal 26
 
     public static final int CONSTRUCTED         = 0x20; // decimal 32
     public static final int APPLICATION         = 0x40; // decimal 64

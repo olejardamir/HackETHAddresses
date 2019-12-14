@@ -7,10 +7,5 @@ import java.util.Iterator;
 interface Iterable<T>
         extends java.lang.Iterable<T>
 {
-    /**
-     * Returns an iterator over a set of elements of type T.
-     *
-     * @return an Iterator.
-     */
     Iterator<T> iterator();
 }

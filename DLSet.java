@@ -98,12 +98,10 @@ class DLSet
         return 1 + StreamUtil.calculateBodyLength(length) + length;
     }
 
-    @Override
     void encode(ASN1OutputStream out) {
 
     }
 
-    @Override
     boolean asn1Equals(ASN1Primitive o) {
         return false;
     }

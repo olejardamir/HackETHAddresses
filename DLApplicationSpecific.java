@@ -14,18 +14,14 @@ class DLApplicationSpecific
         super(isConstructed, tag, octets);
     }
 
-    @Override
     int encodedLength() {
         return 0;
     }
 
-    @Override
     void encode(ASN1OutputStream out) {
 
     }
 
-
-    @Override
     boolean asn1Equals(ASN1Primitive o) {
         return false;
     }

@@ -48,12 +48,10 @@ class DLTaggedObject
         }
     }
 
-    @Override
     void encode(ASN1OutputStream out) {
 
     }
 
-    @Override
     boolean asn1Equals(ASN1Primitive o) {
         return false;
     }

@@ -25,14 +25,10 @@ class DLExternal
         super(vector);
     }
 
-    @Override
     int encodedLength() {
         return 0;
     }
 
-    /* (non-Javadoc)
-     * @see org.bouncycastle.asn1.ASN1Primitive#encode(org.bouncycastle.asn1.DEROutputStream)
-     */
     void encode(ASN1OutputStream out)
             throws IOException
     {
@@ -54,7 +50,6 @@ class DLExternal
         out.writeEncoded(ASN1InputStream.CONSTRUCTED, ASN1InputStream.EXTERNAL, baos.toByteArray());
     }
 
-    @Override
     boolean asn1Equals(ASN1Primitive o) {
         return false;
     }
