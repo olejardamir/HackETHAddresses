@@ -13,24 +13,13 @@ class ASN1InputStream
 
     public static final int CONSTRUCTED         = 0x20; 
     private static final int APPLICATION         = 0x40; 
-    private static final int TAGGED              = 0x80; 
+    private static final int TAGGED              = 0x80;
 
 
-    
-    public ASN1InputStream(
-            byte[] input,
-            boolean lazyEvaluate)
-    {
-        this(new ByteArrayInputStream(input), input.length);
+    protected ASN1InputStream(InputStream in) {
+        super(in);
     }
 
-    
-    private ASN1InputStream(
-            InputStream input,
-            int limit)
-    {
-        super(input);
-    }
 
     private int readLength()
             throws Exception
@@ -38,46 +27,6 @@ class ASN1InputStream
         return readLength(this);
     }
 
-    
-    private ASN1Primitive buildObject(
-            int tag,
-            int tagNo) {
-        boolean isConstructed = (tag & CONSTRUCTED) != 0;
-
-
-
-
-        if (isConstructed)
-        {
-            
-            switch (tagNo)
-            {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              }
-        }
-
-        return null;
-    }
 
     public ASN1Primitive readObject()
             throws Exception
@@ -90,13 +39,6 @@ class ASN1InputStream
             return null;
         }
 
-        
-        
-        
-        int tagNo = readTagNumber(this, tag);
-
-        
-        
         
         int length = readLength();
 
@@ -117,44 +59,8 @@ class ASN1InputStream
 
 
         }
-        else
-        {
 
-                return buildObject(tag, tagNo);
-
-        }
         return null;
-    }
-
-    private static int readTagNumber(InputStream s, int tag)
-            throws Exception
-    {
-        int tagNo = tag & 0x1f;
-
-        
-        
-        
-        if (tagNo == 0x1f)
-        {
-            tagNo = 0;
-
-            int b = s.read();
-
-
-
-            while ((b >= 0) && ((b & 0x80) != 0))
-            {
-                tagNo |= (b & 0x7f);
-                tagNo <<= 7;
-                b = s.read();
-            }
-
-
-
-            tagNo |= (b & 0x7f);
-        }
-
-        return tagNo;
     }
 
     private static int readLength(InputStream s)

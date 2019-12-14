@@ -36,13 +36,7 @@ public abstract class ASN1TaggedObject
         return code;
     }
 
-    
-    public int getTagNo()
-    {
-        return tagNo;
-    }
 
-    
     public ASN1Primitive getObject()
     {
         if (obj != null)

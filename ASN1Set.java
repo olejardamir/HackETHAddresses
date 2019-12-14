@@ -12,16 +12,6 @@ public abstract class ASN1Set
     {
     }
 
-    
-    ASN1Set(
-            ASN1EncodableVector v)
-    {
-        for (int i = 0; i != v.size(); i++)
-        {
-            set.addElement(v.get(i));
-        }
-
-    }
 
     Enumeration getObjects()
     {

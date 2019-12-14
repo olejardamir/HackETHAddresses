@@ -41,9 +41,5 @@ class X9FieldElement {
         return this.toASN1Primitive().equals(other.toASN1Primitive());
     }
 
-    
-    public ASN1Primitive toASN1Object()
-    {
-        return this.toASN1Primitive();
-    }
+
 }

@@ -197,11 +197,7 @@ public abstract class ECPoint
         return x == null || y == null || (zs.length > 0 && zs[0].isZero());
     }
 
-    
-    public boolean isCompressed()
-    {
-        return this.withCompression;
-    }
+
 
     public boolean isValid() throws CloneNotSupportedException {
         return !implIsValid(false, true);

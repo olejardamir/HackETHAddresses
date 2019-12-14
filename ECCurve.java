@@ -84,15 +84,6 @@ public abstract class ECCurve
         return p;
     }
 
-    
-    public ECPoint validatePoint(BigInteger x, BigInteger y, boolean withCompression) throws CloneNotSupportedException {
-        ECPoint p = createPoint(x, y, withCompression);
-        if (p.isValid())
-        {
-            throw new IllegalArgumentException("Invalid point coordinates");
-        }
-        return p;
-    }
 
     private ECPoint createPoint(BigInteger x, BigInteger y)
     {
@@ -451,110 +442,9 @@ public abstract class ECCurve
         }
     }
 
-    
-    public static class Fp extends AbstractFp
-    {
-        private static final int FP_DEFAULT_COORDS = ECCurve.COORD_JACOBIAN_MODIFIED;
-
-          BigInteger q;
-          BigInteger r;
-          ECPoint.Fp infinity;
-
-        
-        public Fp()
-        {
-            super();
-
-        }
-
-        
-        protected Fp(BigInteger q, BigInteger r, ECFieldElement a, ECFieldElement b)
-        {
-            this(q, r, a, b, null, null);
-        }
-
-        Fp(BigInteger q, BigInteger r, ECFieldElement a, ECFieldElement b, BigInteger order, BigInteger cofactor)
-        {
-            super(q);
-
-            this.q = q;
-            this.r = r;
-            this.infinity = new ECPoint.Fp(this, null, null, false);
-
-            this.a = a;
-            this.b = b;
-            this.order = order;
-            this.cofactor = cofactor;
-            this.coord = FP_DEFAULT_COORDS;
-        }
-
-        protected ECCurve cloneCurve()
-        {
-            return new Fp(this.q, this.r, this.a, this.b, this.order, this.cofactor);
-        }
-
-        public boolean supportsCoordinateSystem(int coord)
-        {
-            switch (coord)
-            {
-                case ECCurve.COORD_AFFINE:
-                case ECCurve.COORD_HOMOGENEOUS:
-                case ECCurve.COORD_JACOBIAN:
-                case ECCurve.COORD_JACOBIAN_MODIFIED:
-                    return true;
-                default:
-                    return false;
-            }
-        }
-
-        public int getFieldSize()
-        {
-            return q.bitLength();
-        }
-
-        public ECFieldElement fromBigInteger(BigInteger x)
-        {
-            return new ECFieldElement.Fp(this.q, this.r, x);
-        }
-
-        protected ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, boolean withCompression)
-        {
-            return new ECPoint.Fp(this, x, y, withCompression);
-        }
-
-        public ECPoint importPoint(ECPoint p) throws CloneNotSupportedException {
-            if (this != p.getCurve() && this.getCoordinateSystem() == ECCurve.COORD_JACOBIAN && !p.isInfinity())
-            {
-                switch (p.getCurve().getCoordinateSystem())
-                {
-                    case ECCurve.COORD_JACOBIAN:
-                    case ECCurve.COORD_JACOBIAN_CHUDNOVSKY:
-                    case ECCurve.COORD_JACOBIAN_MODIFIED:
-                        return new ECPoint.Fp(this,
-                                fromBigInteger(p.x.toBigInteger()),
-                                fromBigInteger(p.y.toBigInteger()),
-                                new ECFieldElement[]{ fromBigInteger(p.zs[0].toBigInteger()) },
-                                p.withCompression);
-                    default:
-                        break;
-                }
-            }
-
-            return super.importPoint(p);
-        }
-
-        public ECPoint getInfinity()
-        {
-            return infinity;
-        }
-    }
 
     public static abstract class AbstractF2m extends ECCurve
     {
-
-        public AbstractF2m() {
-
-        }
 
         private static GenericPolynomialExtensionField buildField(int m, int k1, int k2, int k3)
         {
