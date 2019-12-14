@@ -14,9 +14,7 @@ public class HexEncoder
                     (byte)'8', (byte)'9', (byte)'a', (byte)'b', (byte)'c', (byte)'d', (byte)'e', (byte)'f'
             };
 
-    /*
-     * set up the decoding table.
-     */
+
     private final byte[] decodingTable = new byte[128];
 
     private void initialiseDecodingTable()

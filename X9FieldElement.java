@@ -1,7 +1,7 @@
 /**
  * class for processing an FieldElement as a DER object.
  */
-public class X9FieldElement {
+class X9FieldElement {
     private final ECFieldElement  f;
 
     private static final X9IntegerConverter converter = new X9IntegerConverter();

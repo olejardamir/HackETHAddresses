@@ -65,18 +65,18 @@ public abstract class ECPoint
 
     protected abstract boolean satisfiesCurveEquation() throws CloneNotSupportedException;
 
-    boolean satisfiesOrder() throws CloneNotSupportedException {
-        if (ECConstants.ONE.equals(curve.getCofactor()))
-        {
-            return false;
-        }
-
-        BigInteger n = curve.getOrder();
-
-        // TODO Require order to be available for all curves
-
-        return n != null && !ECAlgorithms.referenceMultiply(this, n).isInfinity();
-    }
+//    boolean satisfiesOrder() throws CloneNotSupportedException {
+//        if (ECConstants.ONE.equals(curve.getCofactor()))
+//        {
+//            return false;
+//        }
+//
+//        BigInteger n = curve.getOrder();
+//
+//        // TODO Require order to be available for all curves
+//
+//        return n != null && !ECAlgorithms.referenceMultiply(this, n).isInfinity();
+//    }
 
     public ECCurve getCurve()
     {
@@ -290,11 +290,11 @@ public abstract class ECPoint
                 }
                 if (checkOrder && !info.hasOrderPassed())
                 {
-                    if (satisfiesOrder())
-                    {
-                        info.reportFailed();
-                        return info;
-                    }
+//                    if (satisfiesOrder())
+//                    {
+//                        info.reportFailed();
+//                        return info;
+//                    }
                     info.reportOrderPassed();
                 }
                 return info;
@@ -304,13 +304,13 @@ public abstract class ECPoint
         return !validity.hasFailed();
     }
 
-    public ECPoint scaleX(ECFieldElement scale) throws CloneNotSupportedException {
+    ECPoint scaleX(ECFieldElement scale) throws CloneNotSupportedException {
         return isInfinity()
                 ?   this
                 :   getCurve().createRawPoint(getRawXCoord().multiply(scale), getRawYCoord(), getRawZCoords(), this.withCompression);
     }
 
-    public ECPoint scaleY(ECFieldElement scale) throws CloneNotSupportedException {
+    ECPoint scaleY(ECFieldElement scale) throws CloneNotSupportedException {
         return isInfinity()
                 ?   this
                 :   getCurve().createRawPoint(getRawXCoord(), getRawYCoord().multiply(scale), getRawZCoords(), this.withCompression);
@@ -1359,44 +1359,6 @@ public abstract class ECPoint
             return lhs.equals(rhs);
         }
 
-        protected boolean satisfiesOrder() throws CloneNotSupportedException {
-            BigInteger cofactor = curve.getCofactor();
-            if (ECConstants.TWO.equals(cofactor))
-            {
-                /*
-                 *  Check that the trace of (X + A) is 0, then there exists a solution to L^2 + L = X + A,
-                 *  and so a halving is possible, so this point is the double of another.
-                 */
-                ECPoint N = this.normalize();
-                ECFieldElement X = N.getAffineXCoord();
-                ECFieldElement rhs = X.add(curve.getA());
-                return ((ECFieldElement.AbstractF2m) rhs).trace() != 0;
-            }
-            if (ECConstants.FOUR.equals(cofactor))
-            {
-                /*
-                 * Solve L^2 + L = X + A to find the half of this point, if it exists (fail if not).
-                 * Generate both possibilities for the square of the half-point's x-coordinate (w),
-                 * and check if Tr(w + A) == 0 for at least one; then a second halving is possible
-                 * (see comments for cofactor 2 above), so this point is four times another.
-                 *
-                 * Note: Tr(x^2) == Tr(x).
-                 */
-                ECPoint N = this.normalize();
-                ECFieldElement X = N.getAffineXCoord();
-                ECFieldElement lambda = ((ECCurve.AbstractF2m)curve).solveQuadraticEquation(X.add(curve.getA()));
-                if (lambda == null)
-                {
-                    return true;
-                }
-                ECFieldElement w = X.multiply(lambda).add(N.getAffineYCoord());
-                ECFieldElement t = w.add(curve.getA());
-                return ((ECFieldElement.AbstractF2m) t).trace() != 0
-                        && ((ECFieldElement.AbstractF2m) (t.add(X))).trace() != 0;
-            }
-
-            return super.satisfiesOrder();
-        }
 
         public ECPoint scaleX(ECFieldElement scale) throws CloneNotSupportedException {
             if (this.isInfinity())

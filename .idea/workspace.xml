@@ -3,33 +3,60 @@
   <component name="ChangeListManager">
     <list default="true" id="0773b1ca-6e4c-45cb-8a52-9d8d30635c36" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1ApplicationSpecific.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1ApplicationSpecific.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ASN1InputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1InputStream.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASN1OctetString.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1OctetString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASN1StreamParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BEROctetString.java" beforeDir="false" afterPath="$PROJECT_DIR$/BEROctetString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BERSet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1OutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1OutputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1Sequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1Set.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BERApplicationSpecificParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BERTaggedObjectParser.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CustomNamedCurves.java" beforeDir="false" afterPath="$PROJECT_DIR$/CustomNamedCurves.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DERSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/DERSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DERTaggedObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/DERTaggedObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLExternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/DLExternal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLSequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/DLSequence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ECDomainParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/ECDomainParameters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/X9ECParametersHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/X9ECParametersHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DERBitString.java" beforeDir="false" afterPath="$PROJECT_DIR$/DERBitString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ECAlgorithms.java" beforeDir="false" afterPath="$PROJECT_DIR$/ECAlgorithms.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ECCurve.java" beforeDir="false" afterPath="$PROJECT_DIR$/ECCurve.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ECFieldElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/ECFieldElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ECPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/ECPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FixedPointCombMultiplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/FixedPointCombMultiplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FixedPointPreCompInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/FixedPointPreCompInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HexEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/HexEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IndefiniteLengthInputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/IndefiniteLengthInputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Iterable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LimitedInputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/LimitedInputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LongArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/LongArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/X9Curve.java" beforeDir="false" afterPath="$PROJECT_DIR$/X9Curve.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/X9ECParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/X9ECParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/X9ECPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/X9ECPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/X9FieldElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/X9FieldElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/X9FieldID.java" beforeDir="false" afterPath="$PROJECT_DIR$/X9FieldID.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1ApplicationSpecific.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1ApplicationSpecific.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1InputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1InputStream.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1OctetString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1OctetString.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1StreamParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/BEROctetString$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/BEROctetString$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/BEROctetString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/BEROctetString.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/BERSet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Object.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Object.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1OutputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1OutputStream.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Sequence.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Set.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Set.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/BERApplicationSpecificParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/BERTaggedObjectParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/CustomNamedCurves$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/CustomNamedCurves$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/CustomNamedCurves.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/CustomNamedCurves.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DLExternal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DLExternal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DLSequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DLSequence.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECDomainParameters.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECDomainParameters.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/SECObjectIdentifiers.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/SECObjectIdentifiers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/X9ECParametersHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/X9ECParametersHolder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DERBitString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DERBitString.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECFieldElement$F2m.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECFieldElement$F2m.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECFieldElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECFieldElement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointCombMultiplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointCombMultiplier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointPreCompInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointPreCompInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/HexEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/HexEncoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/IndefiniteLengthInputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/IndefiniteLengthInputStream.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Iterable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/LimitedInputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/LimitedInputStream.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/LongArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/LongArray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/X9Curve.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/X9Curve.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/X9ECParameters.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/X9ECParameters.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/X9ECPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/X9ECPoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/X9FieldElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/X9FieldElement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/X9FieldID.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/X9FieldID.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +68,63 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ASN1Set.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="186" selection-start-line="186" selection-end-line="186" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SecP256K1Curve.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LongArray.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="353">
+              <caret line="1394" column="1" selection-start-line="1394" selection-start-column="1" selection-end-line="1394" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ECAlgorithms.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
+              <folding>
+                <element signature="e#103#104#0" expanded="true" />
+                <element signature="e#150#151#0" expanded="true" />
+                <element signature="method#isF2mField#0;class#ECAlgorithms#0" />
+                <element signature="e#429#430#0" expanded="true" />
+                <element signature="e#475#476#0" expanded="true" />
+                <element signature="e#538#539#0" expanded="true" />
+                <element signature="e#586#587#0" expanded="true" />
+                <element signature="docComment;method#referenceMultiply#0;class#ECAlgorithms#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ASN1InputStream.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="222" column="28" selection-start-line="222" selection-start-column="28" selection-end-line="222" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,14 +132,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/WNafUtil.java" />
-        <option value="$PROJECT_DIR$/ECPoint.java" />
-        <option value="$PROJECT_DIR$/ASN1BitString.java" />
-        <option value="$PROJECT_DIR$/BERTags.java" />
-        <option value="$PROJECT_DIR$/DERSequenceParser.java" />
-        <option value="$PROJECT_DIR$/ECPointMap.java" />
-        <option value="$PROJECT_DIR$/GLVTypeBEndomorphism.java" />
-        <option value="$PROJECT_DIR$/ECFieldElement.java" />
         <option value="$PROJECT_DIR$/DERVisibleString.java" />
         <option value="$PROJECT_DIR$/DERVideotexString.java" />
         <option value="$PROJECT_DIR$/DERUTF8String.java" />
@@ -77,9 +152,7 @@
         <option value="$PROJECT_DIR$/ASN1ObjectIdentifier.java" />
         <option value="$PROJECT_DIR$/ASN1StreamParser.java" />
         <option value="$PROJECT_DIR$/LimitedInputStream.java" />
-        <option value="$PROJECT_DIR$/BERApplicationSpecificParser.java" />
         <option value="$PROJECT_DIR$/DefiniteLengthInputStream.java" />
-        <option value="$PROJECT_DIR$/BERTaggedObjectParser.java" />
         <option value="$PROJECT_DIR$/DLTaggedObject.java" />
         <option value="$PROJECT_DIR$/DLSet.java" />
         <option value="$PROJECT_DIR$/BERSet.java" />
@@ -90,7 +163,6 @@
         <option value="$PROJECT_DIR$/Polynomial.java" />
         <option value="$PROJECT_DIR$/PreCompInfo.java" />
         <option value="$PROJECT_DIR$/SECObjectIdentifiers.java" />
-        <option value="$PROJECT_DIR$/ASN1InputStream.java" />
         <option value="$PROJECT_DIR$/ASN1OctetString.java" />
         <option value="$PROJECT_DIR$/BEROctetString.java" />
         <option value="$PROJECT_DIR$/DLExternal.java" />
@@ -100,6 +172,17 @@
         <option value="$PROJECT_DIR$/X9ECParametersHolder.java" />
         <option value="$PROJECT_DIR$/DERSet.java" />
         <option value="$PROJECT_DIR$/DERTaggedObject.java" />
+        <option value="$PROJECT_DIR$/BERApplicationSpecificParser.java" />
+        <option value="$PROJECT_DIR$/FixedPointCombMultiplier.java" />
+        <option value="$PROJECT_DIR$/FixedPointPreCompInfo.java" />
+        <option value="$PROJECT_DIR$/HexEncoder.java" />
+        <option value="$PROJECT_DIR$/ASN1Sequence.java" />
+        <option value="$PROJECT_DIR$/ASN1Set.java" />
+        <option value="$PROJECT_DIR$/ASN1InputStream.java" />
+        <option value="$PROJECT_DIR$/BERTaggedObjectParser.java" />
+        <option value="$PROJECT_DIR$/SecP256K1Curve.java" />
+        <option value="$PROJECT_DIR$/LongArray.java" />
+        <option value="$PROJECT_DIR$/ECAlgorithms.java" />
       </list>
     </option>
   </component>
@@ -177,6 +260,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2497332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -193,7 +277,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="SonarLint" order="7" />
-      <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.49126637" />
+      <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.3875546" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
@@ -243,63 +327,77 @@
       </map>
     </option>
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/ECAlgorithms.java</url>
+          <line>103</line>
+          <properties class="ECAlgorithms" method="implCheckResult">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/ECAlgorithms.java</url>
+          <line>35</line>
+          <properties class="ECAlgorithms" method="montgomeryTrick">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/ECAlgorithms.java</url>
+          <line>25</line>
+          <properties class="ECAlgorithms" method="importPoint">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/ECAlgorithms.java</url>
+          <line>20</line>
+          <properties class="ECAlgorithms" method="isFpField">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/ECAlgorithms.java</url>
+          <line>77</line>
+          <properties class="ECAlgorithms" method="referenceMultiply">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/ECAlgorithms.java</url>
+          <line>15</line>
+          <properties class="ECAlgorithms" method="isFpCurve">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/ECAlgorithms.java</url>
+          <line>9</line>
+          <properties class="ECAlgorithms" method="isF2mField">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/ECAlgorithms.java</url>
+          <line>4</line>
+          <properties class="ECAlgorithms" method="isF2mCurve">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DERNull.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FixedPointUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="64" column="23" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/X9ECParameters.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="65" column="17" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ConstructedOctetStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GLVTypeBParameters.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LazyEncodedSequence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IndefiniteLengthInputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ECPoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="306" column="19" selection-start-line="306" selection-start-column="19" selection-end-line="306" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/X9FieldID.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="257">
@@ -360,13 +458,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Iterable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Polynomial.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -405,13 +496,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ASN1InputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ASN1OctetString.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="70">
@@ -419,28 +503,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BERApplicationSpecificParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BEROctetString.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BERTaggedObjectParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
-          <folding>
-            <element signature="e#488#489#0" expanded="true" />
-            <element signature="e#523#524#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -515,13 +581,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1404">
           <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASN1Set.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2319">
-          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -601,13 +660,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ECAlgorithms.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SECObjectIdentifiers.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -615,17 +667,135 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SecP256K1Curve.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-924">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SecP256K1Field.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-825">
           <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BERApplicationSpecificParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="27" lean-forward="true" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding>
+            <element signature="e#454#455#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FixedPointCombMultiplier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FixedPointPreCompInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HexEncoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1119">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IndefiniteLengthInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-969">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASN1Sequence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Iterable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Integers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASN1InputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="222" column="28" selection-start-line="222" selection-start-column="28" selection-end-line="222" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BERTaggedObjectParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+          <folding>
+            <element signature="e#449#450#0" expanded="true" />
+            <element signature="e#484#485#0" expanded="true" />
+            <element signature="e#736#737#0" expanded="true" />
+            <element signature="e#763#764#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASN1Set.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="186" selection-start-line="186" selection-end-line="186" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SecP256K1Curve.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LongArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="1394" column="1" selection-start-line="1394" selection-start-column="1" selection-end-line="1394" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ECAlgorithms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#103#104#0" expanded="true" />
+            <element signature="e#150#151#0" expanded="true" />
+            <element signature="method#isF2mField#0;class#ECAlgorithms#0" />
+            <element signature="e#429#430#0" expanded="true" />
+            <element signature="e#475#476#0" expanded="true" />
+            <element signature="e#538#539#0" expanded="true" />
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="docComment;method#referenceMultiply#0;class#ECAlgorithms#0" />
+          </folding>
         </state>
       </provider>
     </entry>

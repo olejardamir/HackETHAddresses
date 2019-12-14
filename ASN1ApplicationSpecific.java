@@ -6,9 +6,9 @@ import java.io.IOException;
 public abstract class ASN1ApplicationSpecific
         extends ASN1Primitive
 {
-    final boolean   isConstructed;
-    final int       tag;
-    final byte[]    octets;
+    private final boolean   isConstructed;
+    private final int       tag;
+    private final byte[]    octets;
 
     ASN1ApplicationSpecific(
             boolean isConstructed,

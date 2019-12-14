@@ -1,7 +1,7 @@
 /**
  * Class for describing an ECPoint as a DER object.
  */
-public class X9ECPoint {
+class X9ECPoint {
     private final ASN1OctetString encoding;
 
     private final ECCurve c;
@@ -29,7 +29,7 @@ public class X9ECPoint {
     }
 
 
-    public ASN1Primitive toASN1Primitive()
+    private ASN1Primitive toASN1Primitive()
     {
         return encoding;
     }

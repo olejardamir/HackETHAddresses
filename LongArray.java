@@ -49,7 +49,7 @@ class LongArray implements Cloneable
     // For toString(); must have length 64
     private static final String ZEROES = "0000000000000000000000000000000000000000000000000000000000000000";
 
-    final static byte[] bitLengths =
+    private final static byte[] bitLengths =
             {
                     0, 1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4,
                     5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
@@ -542,14 +542,14 @@ class LongArray implements Cloneable
         return m_ints.length > 0 && (m_ints[0] & 1L) != 0;
     }
 
-    private static boolean testBit(long[] buf, int off, int n)
+    private static boolean testBit(long[] buf, int n)
     {
         // theInt = n / 64
         int theInt = n >>> 6;
         // theBit = n % 64
         int theBit = n & 0x3F;
         long tester = 1L << theBit;
-        return (buf[off + theInt] & tester) != 0;
+        return (buf[0 + theInt] & tester) != 0;
     }
 
     private static void flipBit(long[] buf, int off, int n)
@@ -961,23 +961,23 @@ class LongArray implements Cloneable
     {
         while (--bitlength >= m)
         {
-            if (testBit(buf, 0, bitlength))
+            if (testBit(buf, bitlength))
             {
-                reduceBit(buf, 0, bitlength, m, ks);
+                reduceBit(buf, bitlength, m, ks);
             }
         }
     }
 
-    private static void reduceBit(long[] buf, int off, int bit, int m, int[] ks)
+    private static void reduceBit(long[] buf, int bit, int m, int[] ks)
     {
-        flipBit(buf, off, bit);
+        flipBit(buf, 0, bit);
         int n = bit - m;
         int j = ks.length;
         while (--j >= 0)
         {
-            flipBit(buf, off, ks[j] + n);
+            flipBit(buf, 0, ks[j] + n);
         }
-        flipBit(buf, off, n);
+        flipBit(buf, 0, n);
     }
 
     private static void reduceWordWise(long[] buf, int len, int toBit, int m, int[] ks)
@@ -990,7 +990,7 @@ class LongArray implements Cloneable
             if (word != 0)
             {
                 buf[0 + len] = 0;
-                reduceWord(buf, 0, (len << 6), word, m, ks);
+                reduceWord(buf, (len << 6), word, m, ks);
             }
         }
 
@@ -1000,20 +1000,20 @@ class LongArray implements Cloneable
             if (word != 0)
             {
                 buf[0 + toPos] ^= word << partial;
-                reduceWord(buf, 0, toBit, word, m, ks);
+                reduceWord(buf, toBit, word, m, ks);
             }
         }
     }
 
-    private static void reduceWord(long[] buf, int off, int bit, long word, int m, int[] ks)
+    private static void reduceWord(long[] buf, int bit, long word, int m, int[] ks)
     {
         int offset = bit - m;
         int j = ks.length;
         while (--j >= 0)
         {
-            flipWord(buf, off, offset + ks[j], word);
+            flipWord(buf, 0, offset + ks[j], word);
         }
-        flipWord(buf, off, offset, word);
+        flipWord(buf, 0, offset, word);
     }
 
     private static void reduceVectorWise(long[] buf, int len, int words, int m, int[] ks)
@@ -1241,7 +1241,7 @@ class LongArray implements Cloneable
 //        return t4.modMultiply(t1, m, ks);
 //    }
 
-    public LongArray modInverse(int m, int[] ks) throws CloneNotSupportedException {
+    public LongArray modInverse(int m, int[] ks) {
         /*
          * Fermat's Little Theorem
          */
@@ -1296,7 +1296,7 @@ class LongArray implements Cloneable
 
         // v(z) := f(z)
         LongArray vz = new LongArray(t);
-        reduceBit(vz.m_ints, 0, m, m, ks);
+        reduceBit(vz.m_ints, m, m, ks);
 
         // g1(z) := 1, g2(z) := 0
         LongArray g1z = new LongArray(t);
@@ -1391,7 +1391,7 @@ class LongArray implements Cloneable
         return hash;
     }
 
-    public Object clone() throws CloneNotSupportedException {
+    public Object clone() {
 
         return new LongArray(Arrays.clone(m_ints));
     }

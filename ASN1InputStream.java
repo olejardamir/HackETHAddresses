@@ -10,12 +10,12 @@ class ASN1InputStream
     public static final int OBJECT_IDENTIFIER   = 0x06;//
     public static final int EXTERNAL            = 0x08;//
      public static final int SEQUENCE            = 0x10; // decimal 16
-    public static final int SET                 = 0x11; // decimal 17
+    private static final int SET                 = 0x11; // decimal 17
 
 
     public static final int CONSTRUCTED         = 0x20; // decimal 32
-    public static final int APPLICATION         = 0x40; // decimal 64
-    public static final int TAGGED              = 0x80; // decimal 128
+    private static final int APPLICATION         = 0x40; // decimal 64
+    private static final int TAGGED              = 0x80; // decimal 128
     private final int limit;
     private final boolean lazyEvaluate;
 
@@ -215,31 +215,26 @@ class ASN1InputStream
 
             if ((tag & APPLICATION) != 0)
             {
-                return new BERApplicationSpecificParser().getLoadedObject();
+                return null;
             }
 
             if ((tag & TAGGED) != 0)
             {
-                return new BERTaggedObjectParser(true).getLoadedObject();
+                return null;
             }
 
 
         }
         else
         {
-            try
-            {
+
                 return buildObject(tag, tagNo, length);
-            }
-            catch (IllegalArgumentException e)
-            {
-              //  throw new ASN1Exception("corrupted stream detected", e);
-            }
+
         }
         return null;
     }
 
-    static int readTagNumber(InputStream s, int tag)
+    private static int readTagNumber(InputStream s, int tag)
             throws IOException
     {
         int tagNo = tag & 0x1f;
@@ -278,7 +273,7 @@ class ASN1InputStream
         return tagNo;
     }
 
-    static int readLength(InputStream s, int limit)
+    private static int readLength(InputStream s, int limit)
             throws IOException
     {
         int length = s.read();

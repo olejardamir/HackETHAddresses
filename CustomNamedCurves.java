@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -31,20 +30,20 @@ class CustomNamedCurves
     private static final Hashtable oidToName = new Hashtable();
     private static final Vector names = new Vector();
 
-    private static void defineCurveWithOID(String name, X9ECParametersHolder holder)
+    private static void defineCurveWithOID(String name)
     {
         names.addElement(name);
         oidToName.put(SECObjectIdentifiers.secp256k1, name);
-        oidToCurve.put(SECObjectIdentifiers.secp256k1, holder);
+        oidToCurve.put(SECObjectIdentifiers.secp256k1, CustomNamedCurves.secp256k1);
         name = Strings.toLowerCase(name);
         nameToOID.put(name, SECObjectIdentifiers.secp256k1);
-        nameToCurve.put(name, holder);
+        nameToCurve.put(name, CustomNamedCurves.secp256k1);
     }
 
     static
     {
 
-        defineCurveWithOID("secp256k1", secp256k1);
+        defineCurveWithOID("secp256k1");
 
     }
 

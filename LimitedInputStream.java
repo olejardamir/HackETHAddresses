@@ -19,7 +19,7 @@ abstract class LimitedInputStream
     {
         if (_in instanceof IndefiniteLengthInputStream)
         {
-            ((IndefiniteLengthInputStream)_in).setEofOn00(true);
+            ((IndefiniteLengthInputStream)_in).setEofOn00();
         }
     }
 }

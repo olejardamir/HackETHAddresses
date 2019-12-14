@@ -7,7 +7,7 @@ public abstract class ECFieldElement
     public abstract BigInteger     toBigInteger();
 
     public abstract int            getFieldSize();
-    public abstract ECFieldElement add(ECFieldElement b) throws CloneNotSupportedException;
+    public abstract ECFieldElement add(ECFieldElement b);
     public abstract ECFieldElement addOne();
     public abstract ECFieldElement subtract(ECFieldElement b) throws CloneNotSupportedException;
     public abstract ECFieldElement multiply(ECFieldElement b);
@@ -633,7 +633,7 @@ public abstract class ECFieldElement
             }
         }
 
-        public ECFieldElement add(final ECFieldElement b) throws CloneNotSupportedException {
+        public ECFieldElement add(final ECFieldElement b) {
             // No check performed here for performance reasons. Instead the
             // elements involved are checked in ECPoint.F2m
             // checkFieldElements(this, b);
@@ -669,7 +669,7 @@ public abstract class ECFieldElement
             return multiplyPlusProduct(b, x, y);
         }
 
-        public ECFieldElement multiplyPlusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y) throws CloneNotSupportedException {
+        public ECFieldElement multiplyPlusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y) {
             LongArray ax = this.x, bx = ((F2m)b).x, xx = ((F2m)x).x, yx = ((F2m)y).x;
 
             LongArray ab = ax.multiply(bx);
@@ -703,7 +703,7 @@ public abstract class ECFieldElement
             return new F2m(m, ks, x.modSquare(m, ks));
         }
 
-        public ECFieldElement squarePlusProduct(ECFieldElement x, ECFieldElement y) throws CloneNotSupportedException {
+        public ECFieldElement squarePlusProduct(ECFieldElement x, ECFieldElement y) {
             LongArray ax = this.x, xx = ((F2m)x).x, yx = ((F2m)y).x;
 
             LongArray aa = ax.square();

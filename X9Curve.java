@@ -6,13 +6,13 @@
 public class X9Curve
         extends ASN1Object {
     /** Base OID: 1.2.840.10045 */
-    public static final ASN1ObjectIdentifier ansi_X9_62 = new ASN1ObjectIdentifier("1.2.840.10045");
+    private static final ASN1ObjectIdentifier ansi_X9_62 = new ASN1ObjectIdentifier("1.2.840.10045");
     /** OID: 1.2.840.10045.1 */
-    public static final ASN1ObjectIdentifier id_fieldType = ansi_X9_62.branch("1");
+    private static final ASN1ObjectIdentifier id_fieldType = ansi_X9_62.branch("1");
     /** OID: 1.2.840.10045.1.1 */
-    public static final ASN1ObjectIdentifier prime_field = id_fieldType.branch("1");
+    private static final ASN1ObjectIdentifier prime_field = id_fieldType.branch("1");
     /** OID: 1.2.840.10045.1.2 */
-    public static final ASN1ObjectIdentifier characteristic_two_field = id_fieldType.branch("2");
+    private static final ASN1ObjectIdentifier characteristic_two_field = id_fieldType.branch("2");
     private final ECCurve     curve;
     private final byte[]      seed;
     private ASN1ObjectIdentifier fieldIdentifier = null;
@@ -35,10 +35,7 @@ public class X9Curve
         {
             fieldIdentifier = prime_field;
         }
-        else if (ECAlgorithms.isF2mCurve(curve))
-        {
-            fieldIdentifier = characteristic_two_field;
-        }
+
         else
         {
             throw new IllegalArgumentException("This type of ECCurve is not implemented");

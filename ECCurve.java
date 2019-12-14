@@ -98,7 +98,7 @@ public abstract class ECCurve
         return p;
     }
 
-    public ECPoint createPoint(BigInteger x, BigInteger y)
+    private ECPoint createPoint(BigInteger x, BigInteger y)
     {
         return createPoint(x, y, false);
     }
@@ -210,7 +210,7 @@ public abstract class ECCurve
      * @param iso
      *            The (optional) z-scaling factor - can be null
      */
-    public void normalizeAll(ECPoint[] points, int off, int len, ECFieldElement iso) throws CloneNotSupportedException {
+    private void normalizeAll(ECPoint[] points, int off, int len, ECFieldElement iso) throws CloneNotSupportedException {
         checkPoints(points, off, len);
 
         switch (this.getCoordinateSystem())

@@ -6,7 +6,7 @@ import java.util.Vector;
 
 public abstract class ASN1Sequence
         extends ASN1Primitive
-        implements  Iterable<ASN1Encodable>
+
 {
     Vector seq = new Vector();
 
@@ -30,7 +30,7 @@ public abstract class ASN1Sequence
         }
     }
 
-    public ASN1Encodable[] toArray()
+    private ASN1Encodable[] toArray()
     {
         ASN1Encodable[] values = new ASN1Encodable[this.size()];
 
@@ -42,7 +42,7 @@ public abstract class ASN1Sequence
         return values;
     }
 
-    public Enumeration getObjects()
+    Enumeration getObjects()
     {
         return seq.elements();
     }
@@ -64,7 +64,7 @@ public abstract class ASN1Sequence
      *
      * @return the number of objects in this sequence.
      */
-    public int size()
+    private int size()
     {
         return seq.size();
     }

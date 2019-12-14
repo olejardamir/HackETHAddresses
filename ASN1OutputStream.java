@@ -70,7 +70,7 @@ class ASN1OutputStream
         write(bytes);
     }
 
-    void writeTag(int flags, int tagNo)
+    private void writeTag(int flags, int tagNo)
             throws IOException
     {
         if (tagNo < 31)

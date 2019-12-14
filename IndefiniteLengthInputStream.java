@@ -29,10 +29,9 @@ class IndefiniteLengthInputStream
         checkForEof();
     }
 
-    void setEofOn00(
-            boolean eofOn00)
+    void setEofOn00()
     {
-        _eofOn00 = eofOn00;
+        _eofOn00 = true;
         checkForEof();
     }
 
