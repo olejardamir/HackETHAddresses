@@ -4,20 +4,7 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Vector;
 
-/**
- * ASN.1 OctetStrings, with indefinite length rules, and <i>constructed form</i> support.
- * <p>
- * The Basic Encoding Rules (BER) format allows encoding using so called "<i>constructed form</i>",
- * which DER and CER formats forbid allowing only "primitive form".
- * </p><p>
- * This class <b>always</b> produces the constructed form with underlying segments
- * in an indefinite length array.  If the input wasn't the same, then this output
- * is not faithful reproduction.
- * </p>
- * <p>
- * See {@link ASN1OctetString} for X.690 encoding rules of OCTET-STRING objects.
- * </p>
- */
+
 class BEROctetString
         extends ASN1OctetString
 {

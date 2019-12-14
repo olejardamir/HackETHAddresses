@@ -48,8 +48,8 @@ class CustomNamedCurves
 
     }
 
-    public static X9ECParameters getByName(String name) throws IOException {
-        X9ECParametersHolder holder = (X9ECParametersHolder)nameToCurve.get(Strings.toLowerCase(name));
+    public static X9ECParameters getByName() throws IOException {
+        X9ECParametersHolder holder = (X9ECParametersHolder)nameToCurve.get("secp256k1");
         return holder == null ? null : holder.getParameters();
     }
 

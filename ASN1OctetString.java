@@ -110,17 +110,7 @@ public abstract class ASN1OctetString
         this.string = string;
     }
 
-    /**
-     * Return the content of the OCTET STRING as an InputStream.
-     *
-     * @return an InputStream representing the OCTET STRING's content.
-     */
-    public InputStream getOctetStream()
-    {
-        return new ByteArrayInputStream(string);
-    }
-
-    /**
+     /**
      * Return the content of the OCTET STRING as a byte array.
      *
      * @return the byte[] representing the OCTET STRING's content.

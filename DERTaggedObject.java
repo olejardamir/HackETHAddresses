@@ -5,11 +5,6 @@ class DERTaggedObject
         extends ASN1TaggedObject
 {
 
-    /**
-     * @param explicit true if an explicitly tagged object.
-     * @param tagNo the tag number for this object.
-     * @param obj the tagged object.
-     */
     public DERTaggedObject(
             boolean       explicit,
             int           tagNo,
@@ -32,9 +27,7 @@ class DERTaggedObject
             }
             else
             {
-                // header length already in calculation
-                length = length - 1;
-
+                 length = length - 1;
                 return StreamUtil.calculateTagLength(tagNo) + length;
             }
         }
@@ -44,13 +37,11 @@ class DERTaggedObject
         }
     }
 
-    @Override
-    void encode(ASN1OutputStream out) {
+     void encode(ASN1OutputStream out) {
 
     }
 
-    @Override
-    boolean asn1Equals(ASN1Primitive o) {
+     boolean asn1Equals(ASN1Primitive o) {
         return false;
     }
 }

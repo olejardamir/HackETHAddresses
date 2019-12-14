@@ -26,21 +26,21 @@ class test {
              * order, but that could change in future versions.
              */
             if (privKey.bitLength() > new ECDomainParameters(
-                    CustomNamedCurves.getByName("secp256k1").getCurve(),
-                    CustomNamedCurves.getByName("secp256k1").getG(),
-                    CustomNamedCurves.getByName("secp256k1").getN(),
-                    CustomNamedCurves.getByName("secp256k1").getH()).getN().bitLength()) {
+                    CustomNamedCurves.getByName().getCurve(),
+                    CustomNamedCurves.getByName().getG(),
+                    CustomNamedCurves.getByName().getN(),
+                    CustomNamedCurves.getByName().getH()).getN().bitLength()) {
                 privKey = privKey.mod(new ECDomainParameters(
-                        CustomNamedCurves.getByName("secp256k1").getCurve(),
-                        CustomNamedCurves.getByName("secp256k1").getG(),
-                        CustomNamedCurves.getByName("secp256k1").getN(),
-                        CustomNamedCurves.getByName("secp256k1").getH()).getN());
+                        CustomNamedCurves.getByName().getCurve(),
+                        CustomNamedCurves.getByName().getG(),
+                        CustomNamedCurves.getByName().getN(),
+                        CustomNamedCurves.getByName().getH()).getN());
             }
             ECPoint point = new FixedPointCombMultiplier().multiply(new ECDomainParameters(
-                    CustomNamedCurves.getByName("secp256k1").getCurve(),
-                    CustomNamedCurves.getByName("secp256k1").getG(),
-                    CustomNamedCurves.getByName("secp256k1").getN(),
-                    CustomNamedCurves.getByName("secp256k1").getH()).getG(), privKey);
+                    CustomNamedCurves.getByName().getCurve(),
+                    CustomNamedCurves.getByName().getG(),
+                    CustomNamedCurves.getByName().getN(),
+                    CustomNamedCurves.getByName().getH()).getG(), privKey);
 
             byte[] encoded = point.getEncoded(false);
             int newLength = encoded.length - 1;

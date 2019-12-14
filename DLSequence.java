@@ -1,9 +1,7 @@
 import java.io.IOException;
 import java.util.Enumeration;
 
-/**
- * The DLSequence encodes a SEQUENCE using definite length form.
- */
+
 class DLSequence
         extends ASN1Sequence
 {
@@ -54,14 +52,7 @@ class DLSequence
         return 1 + StreamUtil.calculateBodyLength(length) + length;
     }
 
-    /**
-     * A note on the implementation:
-     * <p>
-     * As DL requires the constructed, definite-length model to
-     * be used for structured types, this varies slightly from the
-     * ASN.1 descriptions given. Rather than just outputting SEQUENCE,
-     * we also have to specify CONSTRUCTED, and the objects length.
-     */
+
     void encode(
             ASN1OutputStream out)
             throws IOException

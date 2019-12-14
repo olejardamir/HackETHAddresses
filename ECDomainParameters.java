@@ -8,20 +8,14 @@ class ECDomainParameters
     private BigInteger  n;
     private BigInteger  h;
 
-    public ECDomainParameters(
-            ECCurve     curve,
-            ECPoint     G,
-            BigInteger  n,
-            BigInteger  h) throws CloneNotSupportedException {
-        this(curve, G, n, h, null);
-    }
 
-    private ECDomainParameters(
+
+    public ECDomainParameters(
             ECCurve curve,
             ECPoint G,
             BigInteger n,
-            BigInteger h,
-            byte[] seed) throws CloneNotSupportedException {
+            BigInteger h
+    ) throws CloneNotSupportedException {
         if (curve == null)
         {
             throw new NullPointerException("curve");
