@@ -41,13 +41,12 @@ class BERSet
         return 2 + length + 2;
     }
 
-    @Override
+
     void encode(ASN1OutputStream out) {
 
     }
 
-    @Override
-    boolean asn1Equals(ASN1Primitive o) {
+     boolean asn1Equals(ASN1Primitive o) {
         return false;
     }
 }

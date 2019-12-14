@@ -77,11 +77,6 @@ public abstract class ASN1TaggedObject
         return null;
     }
 
-    public ASN1Primitive getLoadedObject()
-    {
-        return this.toASN1Primitive();
-    }
-
     ASN1Primitive toDLObject()
     {
         return new DLTaggedObject(explicit, tagNo, obj);

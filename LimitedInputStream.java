@@ -8,15 +8,11 @@ abstract class LimitedInputStream
         extends InputStream
 {
     InputStream _in;
-    private int _limit;
 
-    public LimitedInputStream() {
-    }
 
     int getRemaining()
     {
-        // TODO: maybe one day this can become more accurate
-        return _limit;
+         return 0;
     }
 
     void setParentEofDetect()

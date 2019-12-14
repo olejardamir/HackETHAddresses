@@ -14,6 +14,5 @@ public interface ASN1OctetStringParser
      */
     InputStream getOctetStream();
 
-    ASN1Primitive getLoadedObject() throws IOException;
 }
 

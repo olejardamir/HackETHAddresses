@@ -12,35 +12,6 @@ public abstract class ASN1Primitive
 
     }
 
-    /**
-     * Create a base ASN.1 object from a byte stream.
-     *
-     * @param data the byte stream to parse.
-     * @return the base ASN.1 object represented by the byte stream.
-     * @exception IOException if there is a problem parsing the data, or parsing the stream did not exhaust the available data.
-     */
-    static ASN1Primitive fromByteArray(byte[] data)
-            throws IOException
-    {
-        ASN1InputStream aIn = new ASN1InputStream(data);
-
-        try
-        {
-            ASN1Primitive o = aIn.readObject();
-
-            if (aIn.available() != 0)
-            {
-                throw new IOException("Extra data detected in stream");
-            }
-
-            return o;
-        }
-        catch (ClassCastException e)
-        {
-            throw new IOException("cannot recognise object in stream");
-        }
-    }
-
     public final boolean equals(Object o)
     {
         if (this == o)

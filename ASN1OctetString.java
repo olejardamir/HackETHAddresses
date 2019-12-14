@@ -149,11 +149,6 @@ public abstract class ASN1OctetString
         return Arrays.areEqual(string, other.string);
     }
 
-    public ASN1Primitive getLoadedObject()
-    {
-        return this.toASN1Primitive();
-    }
-
     ASN1Primitive toDERObject()
     {
         return new DEROctetString(string);

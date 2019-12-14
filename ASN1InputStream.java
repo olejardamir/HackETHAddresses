@@ -26,7 +26,6 @@ class ASN1InputStream
     private final int limit;
     private final boolean lazyEvaluate;
 
-    private final byte[][] tmpBuffers;
 
     private ASN1InputStream(
             InputStream is)
@@ -89,8 +88,7 @@ class ASN1InputStream
         super(input);
         this.limit = limit;
         this.lazyEvaluate = lazyEvaluate;
-        this.tmpBuffers = new byte[11][];
-    }
+     }
 
     int getLimit()
     {
@@ -120,7 +118,7 @@ class ASN1InputStream
     {
         boolean isConstructed = (tag & CONSTRUCTED) != 0;
 
-        DefiniteLengthInputStream defIn = new DefiniteLengthInputStream(this, length);
+        DefiniteLengthInputStream defIn = new DefiniteLengthInputStream(length);
 
         if ((tag & APPLICATION) != 0)
         {
@@ -221,8 +219,6 @@ class ASN1InputStream
                 throw new IOException("indefinite-length primitive encoding encountered");
             }
 
-            IndefiniteLengthInputStream indIn = new IndefiniteLengthInputStream(this);
-            ASN1StreamParser sp = new ASN1StreamParser();
 
             if ((tag & APPLICATION) != 0)
             {

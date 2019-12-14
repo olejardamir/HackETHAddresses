@@ -1,29 +1,12 @@
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 
 /**
  * Utility methods to assist with stream processing.
  */
 final class Streams
 {
-
-    /**
-     * Read stream fully, returning contents in a byte array.
-     *
-     * @param inStr stream to be read.
-     * @return a byte array representing the contents of inStr.
-     * @throws IOException in case of underlying IOException.
-     */
-    public static byte[] readAll(InputStream inStr)
-            throws IOException
-    {
-        ByteArrayOutputStream buf = new ByteArrayOutputStream();
-        pipeAll(inStr, buf);
-        return buf.toByteArray();
-    }
 
     /**
      * Fully read in buf's length in data, or up to EOF, whichever occurs first,
@@ -62,25 +45,6 @@ final class Streams
             totalRead += numRead;
         }
         return totalRead;
-    }
-
-    /**
-     * Write the full contents of inStr to the destination stream outStr.
-     *
-     * @param inStr source input stream.
-     * @param outStr destination output stream.
-     * @throws IOException in case of underlying IOException.
-     */
-    private static void pipeAll(InputStream inStr, OutputStream outStr)
-            throws IOException
-    {
-        int BUFFER_SIZE = 4096;
-        byte[] bs = new byte[BUFFER_SIZE];
-        int numRead;
-        while ((numRead = inStr.read(bs, 0, bs.length)) >= 0)
-        {
-            outStr.write(bs, 0, numRead);
-        }
     }
 
 }

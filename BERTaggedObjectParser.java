@@ -31,7 +31,7 @@ public class BERTaggedObjectParser
      * @throws IOException if there is an issue loading the data.
      */
     public ASN1Primitive getLoadedObject()
-            throws IOException
+
     {
         return null;
     }
@@ -43,14 +43,8 @@ public class BERTaggedObjectParser
      */
     public ASN1Primitive toASN1Primitive()
     {
-        try
-        {
+
             return this.getLoadedObject();
-        }
-        catch (IOException e)
-        {
-         //   throw new ASN1ParsingException(e.getMessage());
-        }
-        return null;
+
     }
 }

@@ -7,9 +7,6 @@ import java.io.IOException;
 public class BERApplicationSpecificParser
         implements ASN1Encodable {
 
-    BERApplicationSpecificParser()
-    {
-    }
 
     /**
      * Return an in-memory, encodable, representation of the application specific object.
@@ -18,7 +15,7 @@ public class BERApplicationSpecificParser
      * @throws IOException if there is an issue loading the data.
      */
     public ASN1Primitive getLoadedObject()
-            throws IOException
+
     {
         return  null;
     }
@@ -30,14 +27,9 @@ public class BERApplicationSpecificParser
      */
     public ASN1Primitive toASN1Primitive()
     {
-        try
-        {
+
             return getLoadedObject();
-        }
-        catch (IOException e)
-        {
-            //throw new ASN1ParsingException(e.getMessage(), e);
-        }
-        return null;
+
+
     }
 }

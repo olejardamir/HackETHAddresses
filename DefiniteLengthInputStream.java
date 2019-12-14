@@ -14,8 +14,7 @@ class DefiniteLengthInputStream
     private int _remaining;
 
     DefiniteLengthInputStream(
-            InputStream in,
-            int         length)
+            int length)
     {
         super();
 

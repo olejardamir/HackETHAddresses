@@ -6,13 +6,7 @@ import java.io.IOException;
  */
 class ASN1StreamParser
 {
-    private final byte[][] tmpBuffers;
 
-    public ASN1StreamParser()
-    {
-
-        this.tmpBuffers = new byte[11][];
-    }
 
 
     public ASN1Encodable readObject() {

@@ -764,14 +764,6 @@ public abstract class ECCurve
             return z;
         }
 
-        /**
-         * Returns true if this is a Koblitz curve (ABC curve).
-         * @return true if this is a Koblitz curve (ABC curve), false otherwise
-         */
-        public boolean isKoblitz()
-        {
-            return this.order != null && this.cofactor != null && this.b.isOne() && (this.a.isZero() || this.a.isOne());
-        }
     }
 
     /**

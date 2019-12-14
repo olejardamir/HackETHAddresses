@@ -14,85 +14,6 @@ public class ASN1ObjectIdentifier
 
     private byte[] body;
 
-    private static final long LONG_LIMIT = (Long.MAX_VALUE >> 7) - 0x7f;
-
-    private ASN1ObjectIdentifier(
-            byte[] bytes)
-    {
-        StringBuilder objId = new StringBuilder();
-        long value = 0;
-        BigInteger bigValue = null;
-        boolean first = true;
-
-        for (int i = 0; i != bytes.length; i++)
-        {
-            int b = bytes[i] & 0xff;
-
-            if (value <= LONG_LIMIT)
-            {
-                value += (b & 0x7f);
-                if ((b & 0x80) == 0)             // end of number reached
-                {
-                    if (first)
-                    {
-                        if (value < 40)
-                        {
-                            objId.append('0');
-                        }
-                        else if (value < 80)
-                        {
-                            objId.append('1');
-                            value -= 40;
-                        }
-                        else
-                        {
-                            objId.append('2');
-                            value -= 80;
-                        }
-                        first = false;
-                    }
-
-                    objId.append('.');
-                    objId.append(value);
-                    value = 0;
-                }
-                else
-                {
-                    value <<= 7;
-                }
-            }
-            else
-            {
-                if (bigValue == null)
-                {
-                    bigValue = BigInteger.valueOf(value);
-                }
-                bigValue = bigValue.or(BigInteger.valueOf(b & 0x7f));
-                if ((b & 0x80) == 0)
-                {
-                    if (first)
-                    {
-                        objId.append('2');
-                        bigValue = bigValue.subtract(BigInteger.valueOf(80));
-                        first = false;
-                    }
-
-                    objId.append('.');
-                    objId.append(bigValue);
-                    bigValue = null;
-                    value = 0;
-                }
-                else
-                {
-                    bigValue = bigValue.shiftLeft(7);
-                }
-            }
-        }
-
-        this.identifier = objId.toString();
-        this.body = Arrays.clone(bytes);
-    }
-
     /**
      * Create an OID based on the passed in String.
      *
@@ -323,33 +244,6 @@ public class ASN1ObjectIdentifier
         }
 
         return isValidBranchID(identifier, 2);
-    }
-
-    private static class OidHandle
-    {
-        private final int key;
-        private final byte[] enc;
-
-        OidHandle(byte[] enc)
-        {
-            this.key = Arrays.hashCode(enc);
-            this.enc = enc;
-        }
-
-        public int hashCode()
-        {
-            return key;
-        }
-
-        public boolean equals(Object o)
-        {
-            if (o instanceof OidHandle)
-            {
-                return Arrays.areEqual(enc, ((OidHandle)o).enc);
-            }
-
-            return false;
-        }
     }
 
 }

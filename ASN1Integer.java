@@ -32,26 +32,6 @@ public class ASN1Integer
         bytes = value.toByteArray();
     }
 
-    /**
-     * Apply the correct validation for an INTEGER primitive following the BER rules.
-     *
-     * @param bytes The raw encoding of the integer.
-     * @return true if the (in)put fails this validation.
-     */
-    private static boolean isMalformed(byte[] bytes)
-    {
-        if (bytes.length > 1)
-        {
-            if (bytes[0] == 0 && (bytes[1] & 0x80) == 0)
-            {
-                return true;
-            }
-            return bytes[0] == (byte) 0xff && (bytes[1] & 0x80) != 0;
-        }
-
-        return false;
-    }
-
     private BigInteger getValue()
     {
         return new BigInteger(bytes);

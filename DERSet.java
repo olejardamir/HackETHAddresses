@@ -18,9 +18,6 @@ class DERSet
     private int bodyLength = -1;
 
 
-    public DERSet() {
-
-    }
 
 
     private int getBodyLength()

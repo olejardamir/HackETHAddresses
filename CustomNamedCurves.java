@@ -6,10 +6,8 @@ import java.util.Vector;
 class CustomNamedCurves
 {
 
-    private static ECCurve configureCurveGLV(ECCurve c, GLVTypeBParameters p) throws IOException {
-        ECCurve curve = c;
-        GLVTypeBParameters parameters = p;
-        return c.configure().setEndomorphism().create();
+    private static ECCurve configureCurveGLV(ECCurve c) throws IOException {
+         return c.configure().setEndomorphism().create();
     }
 
     /*
@@ -18,7 +16,6 @@ class CustomNamedCurves
     private static final X9ECParametersHolder secp256k1 = new X9ECParametersHolder()
     {
         protected X9ECParameters createParameters() throws IOException {
-            byte[] S = null;
             GLVTypeBParameters glv = new GLVTypeBParameters(
                     new BigInteger("7ae96a2b657c07106e64479eac3434e99cf0497512f58995c1396c28719501ee", 16),
                     new BigInteger[]{
@@ -26,11 +23,9 @@ class CustomNamedCurves
                             new BigInteger("-e4437ed6010e88286f547fa90abfe4c3", 16) },
                     new BigInteger[]{
                             new BigInteger("114ca50f7a8e2f3f657c1108d9d44cfd8", 16),
-                            new BigInteger("3086d221a7d46bcde86c90e49284eb15", 16) },
-                    new BigInteger("3086d221a7d46bcde86c90e49284eb153dab", 16),
-                    new BigInteger("e4437ed6010e88286f547fa90abfe4c42212", 16),
-                    272);
-            ECCurve curve = configureCurveGLV(new SecP256K1Curve(), glv);
+                            new BigInteger("3086d221a7d46bcde86c90e49284eb15", 16) }
+            );
+            ECCurve curve = configureCurveGLV(new SecP256K1Curve());
             X9ECPoint G = new X9ECPoint(curve, Hex.decode("04"
                     + "79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798"
                     + "483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8"));

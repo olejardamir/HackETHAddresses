@@ -11,37 +11,15 @@ class GLVTypeBParameters
         }
     }
 
-    private final BigInteger beta;
-    private final BigInteger v1A;
-    private final BigInteger v1B;
-    private final BigInteger v2A;
-    private final BigInteger v2B;
-    private final BigInteger g1;
-    private final BigInteger g2;
-    private final int bits;
 
-    public GLVTypeBParameters(BigInteger beta, BigInteger[] v1, BigInteger[] v2, BigInteger g1,
-                              BigInteger g2, int bits)
+
+    public GLVTypeBParameters(BigInteger bigInteger, BigInteger[] v1, BigInteger[] v2)
     {
         checkVector(v1, "v1");
         checkVector(v2, "v2");
 
-        this.beta = beta;
-        this.v1A = v1[0];
-        this.v1B = v1[1];
-        this.v2A = v2[0];
-        this.v2B = v2[1];
-        this.g1 = g1;
-        this.g2 = g2;
-        this.bits = bits;
+
     }
-
-    public BigInteger getBeta()
-    {
-        return beta;
-    }
-
-
 
 
 }

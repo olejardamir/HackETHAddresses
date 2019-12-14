@@ -56,16 +56,6 @@ class BEROctetString
     }
 
     /**
-     * Create an OCTET-STRING object from a byte[]
-     * @param string the octets making up the octet string.
-     */
-    public BEROctetString(
-            byte[] string)
-    {
-        this(string, DEFAULT_LENGTH);
-    }
-
-    /**
      * Multiple {@link ASN1OctetString} data blocks are input,
      * the result is <i>constructed form</i>.
      *
@@ -75,18 +65,6 @@ class BEROctetString
             ASN1OctetString[] octs)
     {
         this(octs, DEFAULT_LENGTH);
-    }
-
-    /**
-     * Create an OCTET-STRING object from a byte[]
-     * @param string the octets making up the octet string.
-     * @param chunkSize the number of octets stored in each DER encoded component OCTET STRING.
-     */
-    private BEROctetString(
-            byte[] string,
-            int chunkSize)
-    {
-        this(string, null, chunkSize);
     }
 
     /**

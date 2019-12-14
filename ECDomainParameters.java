@@ -36,8 +36,7 @@ class ECDomainParameters
         this.G = validate(curve, G);
         this.n = n;
         this.h = h;
-        byte[] seed1 = Arrays.clone(seed);
-    }
+     }
 
     public ECPoint getG()
     {
