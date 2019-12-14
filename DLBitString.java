@@ -26,7 +26,7 @@ class DLBitString
 
     void encode(
             ASN1OutputStream out)
-            throws IOException
+            throws Exception
     {
         byte[] string = data;
         byte[] bytes = new byte[string.length + 1];

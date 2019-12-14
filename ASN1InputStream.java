@@ -31,18 +31,6 @@ class ASN1InputStream
      * the stream is automatically limited to the length of the input array.
      *
      * @param input array containing ASN.1 encoded data.
-     */
-    public ASN1InputStream(
-            byte[] input)
-    {
-        this(new ByteArrayInputStream(input), input.length);
-    }
-
-    /**
-     * Create an ASN1InputStream based on the input byte array. The length of DER objects in
-     * the stream is automatically limited to the length of the input array.
-     *
-     * @param input array containing ASN.1 encoded data.
      * @param lazyEvaluate true if parsing inside constructed objects can be delayed.
      */
     public ASN1InputStream(
@@ -89,9 +77,9 @@ class ASN1InputStream
     }
 
     private int readLength()
-            throws IOException
+            throws Exception
     {
-        return readLength(this, limit);
+        return readLength(this);
     }
 
     /**
@@ -107,7 +95,7 @@ class ASN1InputStream
             int tag,
             int tagNo,
             int length)
-            throws IOException
+            throws Exception
     {
         boolean isConstructed = (tag & CONSTRUCTED) != 0;
 
@@ -158,7 +146,7 @@ class ASN1InputStream
     }
 
     private ASN1EncodableVector buildEncodableVector()
-            throws IOException
+            throws Exception
     {
         ASN1EncodableVector v = new ASN1EncodableVector();
         ASN1Primitive o;
@@ -172,13 +160,13 @@ class ASN1InputStream
     }
 
     private ASN1EncodableVector buildDEREncodableVector(
-            DefiniteLengthInputStream dIn) throws IOException
+            DefiniteLengthInputStream dIn) throws Exception
     {
         return new ASN1InputStream(dIn).buildEncodableVector();
     }
 
     public ASN1Primitive readObject()
-            throws IOException
+            throws Exception
     {
         int tag = read();
         if (tag <= 0)
@@ -227,7 +215,7 @@ class ASN1InputStream
     }
 
     private static int readTagNumber(InputStream s, int tag)
-            throws IOException
+            throws Exception
     {
         int tagNo = tag & 0x1f;
 
@@ -257,8 +245,8 @@ class ASN1InputStream
         return tagNo;
     }
 
-    private static int readLength(InputStream s, int limit)
-            throws IOException
+    private static int readLength(InputStream s)
+            throws Exception
     {
         int length = s.read();
 

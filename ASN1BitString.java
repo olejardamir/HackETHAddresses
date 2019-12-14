@@ -43,7 +43,7 @@ public abstract class ASN1BitString
      *
      * @return a String representation.
      */
-    private String getString() throws IOException {
+    private String getString() throws Exception {
         StringBuilder buf = new StringBuilder("#");
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
         ASN1OutputStream aOut = new ASN1OutputStream(bOut);
@@ -76,7 +76,7 @@ public abstract class ASN1BitString
     {
         try {
             return getString();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -124,5 +124,5 @@ public abstract class ASN1BitString
     }
 
     abstract void encode(ASN1OutputStream out)
-            throws IOException;
+            throws Exception;
 }

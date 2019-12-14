@@ -25,7 +25,7 @@ class DEROctetString
 
     void encode(
             ASN1OutputStream out)
-            throws IOException
+            throws Exception
     {
         out.writeEncoded(ASN1InputStream.OCTET_STRING, string);
     }

@@ -9,7 +9,7 @@ public class Curve25519 extends ECCurve.AbstractFp
 
     private final Curve25519Point infinity;
 
-    private Curve25519() throws IOException {
+    private Curve25519() throws Exception {
         super(q);
 
         this.infinity = new Curve25519Point(this, null, null);
@@ -24,7 +24,7 @@ public class Curve25519 extends ECCurve.AbstractFp
         this.coord = Curve25519_DEFAULT_COORDS;
     }
 
-    protected ECCurve cloneCurve() throws IOException {
+    protected ECCurve cloneCurve() throws Exception {
         return new Curve25519();
     }
 

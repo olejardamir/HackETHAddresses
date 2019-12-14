@@ -12,7 +12,7 @@ class DERSet
 
 
     private int getBodyLength()
-            throws IOException
+            throws Exception
     {
         if (bodyLength < 0)
         {
@@ -32,7 +32,7 @@ class DERSet
     }
 
     int encodedLength()
-            throws IOException
+            throws Exception
     {
         int length = getBodyLength();
 

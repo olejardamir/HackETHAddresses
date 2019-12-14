@@ -16,7 +16,7 @@ public class DLOutputStream
 
     public void writeObject(
             ASN1Encodable obj)
-            throws IOException
+            throws Exception
     {
         if (obj != null)
         {

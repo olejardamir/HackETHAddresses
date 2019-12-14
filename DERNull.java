@@ -27,7 +27,7 @@ public class DERNull
 
     void encode(
             ASN1OutputStream out)
-            throws IOException
+            throws Exception
     {
         out.writeEncoded(ASN1InputStream.NULL, zeroBytes);
     }

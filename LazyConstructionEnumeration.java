@@ -34,7 +34,7 @@ class LazyConstructionEnumeration
         {
             return aIn.readObject();
         }
-        catch (IOException e)
+        catch (Exception e)
         {
           //  throw new ASN1ParsingException("malformed DER construction: " + e, e);
         }

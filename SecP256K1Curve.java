@@ -8,8 +8,8 @@ public class SecP256K1Curve extends ECCurve.AbstractFp
     static {
         try {
             q = new BigInteger(1,
-                        Hex.decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F"));
-        } catch (IOException e) {
+                    Hex.decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F"));
+        }catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -18,7 +18,7 @@ public class SecP256K1Curve extends ECCurve.AbstractFp
 
     private SecP256K1Point infinity;
 
-    public SecP256K1Curve() throws IOException {
+    public SecP256K1Curve() throws Exception {
         super(q);
 
         this.infinity = new SecP256K1Point(this, null, null);
@@ -30,7 +30,7 @@ public class SecP256K1Curve extends ECCurve.AbstractFp
         this.coord = SECP256K1_DEFAULT_COORDS;
     }
 
-    protected ECCurve cloneCurve() throws IOException {
+    protected ECCurve cloneCurve() throws Exception {
         return new SecP256K1Curve();
     }
 

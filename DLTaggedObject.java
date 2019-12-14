@@ -24,7 +24,7 @@ class DLTaggedObject
     }
 
     int encodedLength()
-            throws IOException
+            throws Exception
     {
         if (!empty)
         {

@@ -16,7 +16,7 @@ public class DEROutputStream
 
     public void writeObject(
             ASN1Encodable obj)
-            throws IOException
+            throws Exception
     {
 
             obj.toASN1Primitive().toDERObject().encode(this);

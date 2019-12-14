@@ -443,30 +443,6 @@ public abstract class ECFieldElement
         }
     }
 
-    public static abstract class AbstractF2m extends ECFieldElement
-    {
-
-        public int trace() throws CloneNotSupportedException {
-            int m = this.getFieldSize();
-            ECFieldElement fe = this;
-            ECFieldElement tr = fe;
-            for (int i = 1; i < m; ++i)
-            {
-                fe = fe.square();
-                tr = tr.add(fe);
-            }
-            if (tr.isZero())
-            {
-                return 0;
-            }
-            if (tr.isOne())
-            {
-                return 1;
-            }
-            throw new IllegalStateException("Internal error in trace calculation");
-        }
-    }
-
     /**
      * Class representing the Elements of the finite field
      * <code>F<sub>2<sup>m</sup></sub></code> in polynomial basis (PB)
@@ -474,8 +450,7 @@ public abstract class ECFieldElement
      * basis representations are supported. Gaussian normal basis (GNB)
      * representation is not supported.
      */
-    public static class F2m extends AbstractF2m
-    {
+    public static class F2m extends ECFieldElement {
 
         /**
          * Indicates trinomial basis representation (TPB). Number chosen

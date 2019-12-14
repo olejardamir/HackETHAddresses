@@ -24,12 +24,6 @@ class X9FieldID {
     }
 
 
-    public X9FieldID(int m, int k1)
-    {
-        this(m, k1, 0, 0);
-    }
-
-
     public X9FieldID(int m, int k1, int k2, int k3)
     {
         this.id = characteristic_two_field;

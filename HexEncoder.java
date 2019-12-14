@@ -51,7 +51,7 @@ public class HexEncoder
             int                    off,
             int                    length,
             OutputStream    out)
-            throws IOException
+            throws Exception
     {
         for (int i = off; i < (off + length); i++)
         {
@@ -77,7 +77,7 @@ public class HexEncoder
     public void decode(
             String          data,
             OutputStream    out)
-            throws IOException
+            throws Exception
     {
         byte    b1, b2;
         int     length = 0;

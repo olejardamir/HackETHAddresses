@@ -1,4 +1,0 @@
-interface ExtensionField extends FiniteField
-{
-
-}

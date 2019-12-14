@@ -231,7 +231,7 @@ public class SecP256K1Point extends ECPoint.AbstractFp
         return twice().add(b);
     }
 
-    public ECPoint threeTimes() throws CloneNotSupportedException {
+    private ECPoint threeTimes() throws CloneNotSupportedException {
         if (this.isInfinity() || this.y.isZero())
         {
             return this;

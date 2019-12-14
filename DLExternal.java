@@ -16,7 +16,7 @@ class DLExternal
     }
 
     void encode(ASN1OutputStream out)
-            throws IOException
+            throws Exception
     {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         if (directReference != null)

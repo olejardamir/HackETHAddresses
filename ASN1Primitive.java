@@ -52,11 +52,11 @@ public abstract class ASN1Primitive
     /**
      * Return the length of the encoding this object will produce.
      * @return the length of the object's encoding.
-     * @throws IOException if the encoding length cannot be calculated.
+     * @throws Exception if the encoding length cannot be calculated.
      */
-    abstract int encodedLength() throws IOException;
+    abstract int encodedLength() throws Exception;
 
-    abstract void encode(ASN1OutputStream out) throws IOException;
+    abstract void encode(ASN1OutputStream out) throws Exception;
 
     /**
      * Equality (similarity) comparison for two ASN1Primitive objects.

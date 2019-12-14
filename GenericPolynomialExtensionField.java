@@ -1,30 +1,11 @@
-
-import java.math.BigInteger;
-
-class GenericPolynomialExtensionField implements PolynomialExtensionField
-{
+class GenericPolynomialExtensionField {
     private final FiniteField subfield;
-    private final Polynomial minimalPolynomial;
+    private final GF2Polynomial minimalPolynomial;
 
-    GenericPolynomialExtensionField(Polynomial polynomial)
+    GenericPolynomialExtensionField(GF2Polynomial polynomial)
     {
         this.subfield = FiniteFields.GF_2;
         this.minimalPolynomial = polynomial;
-    }
-
-    public BigInteger getCharacteristic()
-    {
-        return subfield.getCharacteristic();
-    }
-
-    public int getDimension()
-    {
-        return subfield.getDimension() * minimalPolynomial.getDegree();
-    }
-
-    public Polynomial getMinimalPolynomial()
-    {
-        return minimalPolynomial;
     }
 
     public boolean equals(Object obj)

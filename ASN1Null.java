@@ -24,7 +24,7 @@ public abstract class ASN1Null
     }
 
     abstract void encode(ASN1OutputStream out)
-            throws IOException;
+            throws Exception;
 
     public String toString()
     {

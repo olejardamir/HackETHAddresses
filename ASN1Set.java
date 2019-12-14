@@ -39,18 +39,6 @@ public abstract class ASN1Set
     }
 
     /**
-     * return the object at the set position indicated by index.
-     *
-     * @param index the set number (starting at zero) of the object
-     * @return the object at the set position indicated by index.
-     */
-    private ASN1Encodable getObjectAt(
-            int index)
-    {
-        return (ASN1Encodable)set.elementAt(index);
-    }
-
-    /**
      * return the number of objects in this set.
      *
      * @return the number of objects in this set.
@@ -127,7 +115,7 @@ public abstract class ASN1Set
         {
             return obj.toASN1Primitive().getEncoded("DER");
         }
-        catch (IOException e)
+        catch (Exception e)
         {
             throw new IllegalArgumentException("cannot encode object added to SET");
         }

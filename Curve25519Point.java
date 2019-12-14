@@ -218,7 +218,7 @@ public class Curve25519Point extends ECPoint.AbstractFp
         return twiceJacobianModified(false).add(b);
     }
 
-    public ECPoint threeTimes() throws CloneNotSupportedException {
+    private ECPoint threeTimes() throws CloneNotSupportedException {
         if (this.isInfinity())
         {
             return this;

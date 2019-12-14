@@ -160,7 +160,7 @@ public class ASN1ObjectIdentifier
 
     void encode(
             ASN1OutputStream out)
-            throws IOException
+            throws Exception
     {
         byte[] enc = getBody();
 

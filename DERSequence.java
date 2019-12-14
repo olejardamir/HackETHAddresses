@@ -31,7 +31,7 @@ class DERSequence
     }
 
     private int getBodyLength()
-            throws IOException
+            throws Exception
     {
         if (bodyLength < 0)
         {
@@ -50,7 +50,7 @@ class DERSequence
     }
 
     int encodedLength()
-            throws IOException
+            throws Exception
     {
 
         return 1 + StreamUtil.calculateBodyLength(getBodyLength()) + getBodyLength();
@@ -66,7 +66,7 @@ class DERSequence
      */
     void encode(
             ASN1OutputStream out)
-            throws IOException
+            throws Exception
     {
 
         out.write(ASN1InputStream.SEQUENCE | ASN1InputStream.CONSTRUCTED);

@@ -1,5 +1,4 @@
-class GF2Polynomial implements Polynomial
-{
+class GF2Polynomial {
     private final int[] exponents;
 
     GF2Polynomial(int[] exponents)

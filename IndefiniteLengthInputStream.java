@@ -13,7 +13,7 @@ class IndefiniteLengthInputStream
 
     IndefiniteLengthInputStream(
             InputStream in)
-            throws IOException
+            throws Exception
     {
         super();
 
@@ -45,13 +45,15 @@ class IndefiniteLengthInputStream
         return _eofReached;
     }
 
-    public int read(byte[] b, int off, int len)
-            throws IOException
-    {
+    public int read(byte[] b, int off, int len) {
         // Only use this optimisation if we aren't checking for 00
         if (_eofOn00 || len < 3)
         {
-            return super.read(b, off, len);
+            try {
+                return super.read(b, off, len);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         if (_eofReached)
@@ -59,32 +61,33 @@ class IndefiniteLengthInputStream
             return -1;
         }
 
-        int numRead = _in.read(b, off + 2, len - 2);
-
-        if (numRead < 0)
-        {
-            // Corrupted stream
-            throw new EOFException();
+        int numRead = 0;
+        try {
+            numRead = _in.read(b, off + 2, len - 2);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
 
         b[off] = (byte)_b1;
         b[off + 1] = (byte)_b2;
 
-        _b1 = _in.read();
-        _b2 = _in.read();
-
-        if (_b2 < 0)
-        {
-            // Corrupted stream
-            throw new EOFException();
+        try {
+            _b1 = _in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        try {
+            _b2 = _in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         return numRead + 2;
     }
 
-    public int read()
-            throws IOException
-    {
+    public int read() throws IOException {
         if (checkForEof())
         {
             return -1;
@@ -92,11 +95,6 @@ class IndefiniteLengthInputStream
 
         int b = _in.read();
 
-        if (b < 0)
-        {
-            // Corrupted stream
-            throw new EOFException();
-        }
 
         int v = _b1;
 

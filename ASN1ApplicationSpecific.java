@@ -62,7 +62,7 @@ public abstract class ASN1ApplicationSpecific
             sb.append(" #");
             try {
                 sb.append(Hex.toHexString(this.octets));
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

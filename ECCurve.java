@@ -30,7 +30,7 @@ public abstract class ECCurve
              return this;
         }
 
-        public ECCurve create() throws IOException {
+        public ECCurve create() throws Exception {
             if (!supportsCoordinateSystem(coord))
             {
                 throw new IllegalStateException("unsupported coordinate system");
@@ -110,7 +110,7 @@ public abstract class ECCurve
         return createRawPoint(fromBigInteger(x), fromBigInteger(y), withCompression);
     }
 
-    protected abstract ECCurve cloneCurve() throws IOException;
+    protected abstract ECCurve cloneCurve() throws Exception;
 
     protected abstract ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, boolean withCompression);
 
@@ -635,32 +635,19 @@ public abstract class ECCurve
 
         private static FiniteField buildField(int m, int k1, int k2, int k3)
         {
-            if (k1 == 0)
-            {
-                throw new IllegalArgumentException("k1 must be > 0");
-            }
 
             if (k2 == 0)
             {
-                if (k3 != 0)
-                {
-                    throw new IllegalArgumentException("k3 must be 0 if k2 == 0");
-                }
 
-                return FiniteFields.getBinaryExtensionField(new int[]{ 0, k1, m });
+
+                return (FiniteField) FiniteFields.getBinaryExtensionField(new int[]{ 0, k1, m });
             }
 
-            if (k2 <= k1)
-            {
-                throw new IllegalArgumentException("k2 must be > k1");
-            }
 
-            if (k3 <= k2)
-            {
-                throw new IllegalArgumentException("k3 must be > k2");
-            }
 
-            return FiniteFields.getBinaryExtensionField(new int[]{ 0, k1, k2, k3, m });
+
+
+            return (FiniteField) FiniteFields.getBinaryExtensionField(new int[]{ 0, k1, k2, k3, m });
         }
 
         AbstractF2m(int m, int k1, int k2, int k3)

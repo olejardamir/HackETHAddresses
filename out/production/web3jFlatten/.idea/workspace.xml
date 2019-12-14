@@ -7,102 +7,117 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0773b1ca-6e4c-45cb-8a52-9d8d30635c36" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/web3jFlatten_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASN1Encodable.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1Encodable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASN1EncodableVector.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1EncodableVector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASN1External.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1External.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1ApplicationSpecific.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1ApplicationSpecific.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1BitString.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1BitString.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ASN1InputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1InputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1Integer.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1Integer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1Null.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1Null.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1ObjectIdentifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1ObjectIdentifier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ASN1OctetString.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1OctetString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1OutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1OutputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1Primitive.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1Primitive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1Sequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1Set.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Arrays.java" beforeDir="false" afterPath="$PROJECT_DIR$/Arrays.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BEROctetString.java" beforeDir="false" afterPath="$PROJECT_DIR$/BEROctetString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Curve25519.java" beforeDir="false" afterPath="$PROJECT_DIR$/Curve25519.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Curve25519Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/Curve25519Point.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CustomNamedCurves.java" beforeDir="false" afterPath="$PROJECT_DIR$/CustomNamedCurves.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DLApplicationSpecific.java" beforeDir="false" afterPath="$PROJECT_DIR$/DLApplicationSpecific.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DERBitString.java" beforeDir="false" afterPath="$PROJECT_DIR$/DERBitString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DERNull.java" beforeDir="false" afterPath="$PROJECT_DIR$/DERNull.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DEROctetString.java" beforeDir="false" afterPath="$PROJECT_DIR$/DEROctetString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DEROutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/DEROutputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DERSequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/DERSequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DERSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/DERSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DERTaggedObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/DERTaggedObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLBitString.java" beforeDir="false" afterPath="$PROJECT_DIR$/DLBitString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLExternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/DLExternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLOutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/DLOutputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLSequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/DLSequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/DLSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DLTaggedObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/DLTaggedObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DefiniteLengthInputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/DefiniteLengthInputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ECConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/ECConstants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ECCurve.java" beforeDir="false" afterPath="$PROJECT_DIR$/ECCurve.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ECFieldElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/ECFieldElement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ECPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/ECPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LongArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/LongArray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecP256K1Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecP256K1Field.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Encoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Encoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ExtensionField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FiniteFields.java" beforeDir="false" afterPath="$PROJECT_DIR$/FiniteFields.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GF2Polynomial.java" beforeDir="false" afterPath="$PROJECT_DIR$/GF2Polynomial.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GenericPolynomialExtensionField.java" beforeDir="false" afterPath="$PROJECT_DIR$/GenericPolynomialExtensionField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hex.java" beforeDir="false" afterPath="$PROJECT_DIR$/Hex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HexEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/HexEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IndefiniteLengthInputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/IndefiniteLengthInputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LazyConstructionEnumeration.java" beforeDir="false" afterPath="$PROJECT_DIR$/LazyConstructionEnumeration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LazyEncodedSequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/LazyEncodedSequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Polynomial.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PolynomialExtensionField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecP256K1Curve.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecP256K1Curve.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SecP256K1Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecP256K1Point.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StreamUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/StreamUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Streams.java" beforeDir="false" afterPath="$PROJECT_DIR$/Streams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Strings.java" beforeDir="false" afterPath="$PROJECT_DIR$/Strings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/X9ECParametersHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/X9ECParametersHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/X9FieldID.java" beforeDir="false" afterPath="$PROJECT_DIR$/X9FieldID.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1ApplicationSpecific.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1ApplicationSpecific.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1BitString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1BitString.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1EncodableVector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1EncodableVector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1External.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1External.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1InputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1InputStream.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Integer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Integer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Null.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Null.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Object.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Object.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1ObjectIdentifier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1ObjectIdentifier.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1OctetString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1OctetString.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1OutputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1OutputStream.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Primitive.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Primitive.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Sequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Sequence.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Set.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1Set.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/AbstractECMultiplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/AbstractECMultiplier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Arrays$Iterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Arrays$Iterator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Arrays.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Arrays.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/BEROctetString$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/BEROctetString$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/BEROctetString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/BEROctetString.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Curve25519$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Curve25519$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Curve25519.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Curve25519.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Curve25519FieldElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Curve25519FieldElement.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Curve25519Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Curve25519Point.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/CustomNamedCurves$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/CustomNamedCurves$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/CustomNamedCurves.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/CustomNamedCurves.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DERBitString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DERBitString.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DERNull.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DERNull.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DEROctetString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DEROctetString.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DEROutputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DEROutputStream.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DERSequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DERSequence.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DERSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DERSet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DERTaggedObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DERTaggedObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DLApplicationSpecific.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DLApplicationSpecific.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DLBitString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DLBitString.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DLExternal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DLExternal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DLOutputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DLOutputStream.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DLSequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DLSequence.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DLSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DLSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DLTaggedObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DLTaggedObject.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/DefiniteLengthInputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/DefiniteLengthInputStream.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECAlgorithms.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECAlgorithms.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$AbstractF2m.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$AbstractF2m.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$AbstractFp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$AbstractFp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$Config.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$F2m$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$F2m$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$F2m.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$F2m.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$Fp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$Fp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECDomainParameters.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECDomainParameters.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECFieldElement$AbstractF2m.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECFieldElement$AbstractF2m.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECFieldElement$F2m.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECFieldElement$F2m.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECFieldElement$Fp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECFieldElement$Fp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint$AbstractF2m.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint$AbstractF2m.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint$AbstractFp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint$AbstractFp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint$F2m.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint$F2m.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint$Fp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint$Fp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointCombMultiplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointCombMultiplier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointUtil$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointUtil$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Encoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Encoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ExtensionField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/FiniteFields.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/FiniteFields.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/GF2Polynomial.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/GF2Polynomial.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/GenericPolynomialExtensionField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/GenericPolynomialExtensionField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Hex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Hex.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/HexEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/HexEncoder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/IndefiniteLengthInputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/IndefiniteLengthInputStream.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/KeccakDigest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/KeccakDigest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/LazyConstructionEnumeration.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/LazyConstructionEnumeration.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/LazyEncodedSequence.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/LazyEncodedSequence.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/LongArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/LongArray.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Curve$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Curve$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Polynomial.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/PolynomialExtensionField.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Curve.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Curve.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Field.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Field.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1FieldElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1FieldElement.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Point.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/StreamUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/StreamUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Streams.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Streams.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Strings$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Strings.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Strings.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/X9Curve.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/X9Curve.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/X9ECParameters.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/X9ECParameters.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/X9ECParametersHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/X9ECParametersHolder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/X9FieldID.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/X9FieldID.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/test.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -116,73 +131,60 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ASN1EncodableVector.java">
+        <entry file="file://$PROJECT_DIR$/DLApplicationSpecific.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="42" lean-forward="true" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+            <state relative-caret-position="330">
+              <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
               <folding>
-                <element signature="e#200#215#0" expanded="true" />
-                <element signature="e#422#423#0" expanded="true" />
-                <element signature="e#455#456#0" expanded="true" />
+                <element signature="e#334#335#0" expanded="true" />
+                <element signature="e#358#359#0" expanded="true" />
+                <element signature="e#449#450#0" expanded="true" />
+                <element signature="e#477#478#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ASN1InputStream.java">
+        <entry file="file://$PROJECT_DIR$/DERTaggedObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="108" column="23" lean-forward="true" selection-start-line="108" selection-start-column="23" selection-end-line="108" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SecP256K1Field.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Streams.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="15" lean-forward="true" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/StreamUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="50" column="9" lean-forward="true" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Strings.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="32" column="22" lean-forward="true" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/X9ECParametersHolder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+            <state relative-caret-position="360">
+              <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
               <folding>
-                <element signature="e#129#130#0" expanded="true" />
-                <element signature="e#175#176#0" expanded="true" />
+                <element signature="e#1002#1003#0" expanded="true" />
+                <element signature="e#1030#1031#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DERSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+              <folding>
+                <element signature="e#861#862#0" expanded="true" />
+                <element signature="e#889#890#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DERFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DefiniteLengthInputStream.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="177">
+              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -190,32 +192,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BEROctetString.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="108" selection-start-line="108" selection-end-line="108" />
-              <folding>
-                <element signature="e#1207#1208#0" expanded="true" />
-                <element signature="e#1236#1237#0" expanded="true" />
-                <element signature="e#1606#1607#0" expanded="true" />
-                <element signature="e#1659#1660#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="105">
+              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ASN1External.java">
+        <entry file="file://$PROJECT_DIR$/ASN1Set.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="43">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="87">
+              <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ASN1Sequence.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="412">
+              <caret line="150" selection-start-line="150" selection-end-line="150" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ASN1InputStream.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="87">
+              <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Arrays.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="8" selection-start-line="1" selection-end-line="2" />
+            <state relative-caret-position="375">
+              <caret line="174" selection-start-line="174" selection-end-line="174" />
             </state>
           </provider>
         </entry>
@@ -230,7 +244,15 @@
       <find>twice</find>
       <find>MAX_MEMORY</find>
       <find>fromByteArray</find>
+      <find>throws IO</find>
+      <find>throws IOException</find>
+      <find>throws</find>
+      <find>catch (IOException e)</find>
     </findStrings>
+    <replaceStrings>
+      <replace>throws Exception</replace>
+      <replace>catch (Exception e)</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -238,57 +260,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/BERApplicationSpecific.java" />
-        <option value="$PROJECT_DIR$/DERExternalParser.java" />
-        <option value="$PROJECT_DIR$/BERTaggedObject.java" />
-        <option value="$PROJECT_DIR$/BERSequence.java" />
-        <option value="$PROJECT_DIR$/ASN1TaggedObject.java" />
-        <option value="$PROJECT_DIR$/ASN1Primitive.java" />
-        <option value="$PROJECT_DIR$/ASN1Integer.java" />
-        <option value="$PROJECT_DIR$/GLVTypeBParameters.java" />
-        <option value="$PROJECT_DIR$/ASN1ObjectIdentifier.java" />
-        <option value="$PROJECT_DIR$/ASN1StreamParser.java" />
-        <option value="$PROJECT_DIR$/LimitedInputStream.java" />
-        <option value="$PROJECT_DIR$/DefiniteLengthInputStream.java" />
-        <option value="$PROJECT_DIR$/DLTaggedObject.java" />
-        <option value="$PROJECT_DIR$/DLSet.java" />
-        <option value="$PROJECT_DIR$/BERSet.java" />
-        <option value="$PROJECT_DIR$/DLApplicationSpecific.java" />
-        <option value="$PROJECT_DIR$/ASN1OctetStringParser.java" />
-        <option value="$PROJECT_DIR$/ExtensionField.java" />
-        <option value="$PROJECT_DIR$/Iterable.java" />
-        <option value="$PROJECT_DIR$/Polynomial.java" />
-        <option value="$PROJECT_DIR$/PreCompInfo.java" />
-        <option value="$PROJECT_DIR$/SECObjectIdentifiers.java" />
-        <option value="$PROJECT_DIR$/ASN1OctetString.java" />
-        <option value="$PROJECT_DIR$/DLExternal.java" />
-        <option value="$PROJECT_DIR$/DLSequence.java" />
-        <option value="$PROJECT_DIR$/ECDomainParameters.java" />
-        <option value="$PROJECT_DIR$/DERSet.java" />
-        <option value="$PROJECT_DIR$/DERTaggedObject.java" />
-        <option value="$PROJECT_DIR$/BERApplicationSpecificParser.java" />
-        <option value="$PROJECT_DIR$/FixedPointCombMultiplier.java" />
-        <option value="$PROJECT_DIR$/FixedPointPreCompInfo.java" />
-        <option value="$PROJECT_DIR$/HexEncoder.java" />
-        <option value="$PROJECT_DIR$/ASN1Sequence.java" />
-        <option value="$PROJECT_DIR$/ASN1Set.java" />
-        <option value="$PROJECT_DIR$/BERTaggedObjectParser.java" />
-        <option value="$PROJECT_DIR$/SecP256K1Curve.java" />
-        <option value="$PROJECT_DIR$/LongArray.java" />
-        <option value="$PROJECT_DIR$/ECAlgorithms.java" />
-        <option value="$PROJECT_DIR$/Arrays.java" />
-        <option value="$PROJECT_DIR$/ASN1EncodableVector.java" />
-        <option value="$PROJECT_DIR$/CustomNamedCurves.java" />
-        <option value="$PROJECT_DIR$/ECCurve.java" />
-        <option value="$PROJECT_DIR$/Strings.java" />
-        <option value="$PROJECT_DIR$/BEROctetString.java" />
-        <option value="$PROJECT_DIR$/ASN1Encodable.java" />
         <option value="$PROJECT_DIR$/ASN1External.java" />
-        <option value="$PROJECT_DIR$/ASN1InputStream.java" />
         <option value="$PROJECT_DIR$/SecP256K1Field.java" />
-        <option value="$PROJECT_DIR$/Streams.java" />
-        <option value="$PROJECT_DIR$/StreamUtil.java" />
         <option value="$PROJECT_DIR$/X9ECParametersHolder.java" />
+        <option value="$PROJECT_DIR$/ASN1Primitive.java" />
+        <option value="$PROJECT_DIR$/DLOutputStream.java" />
+        <option value="$PROJECT_DIR$/LazyEncodedSequence.java" />
+        <option value="$PROJECT_DIR$/ASN1Integer.java" />
+        <option value="$PROJECT_DIR$/DERNull.java" />
+        <option value="$PROJECT_DIR$/ASN1OutputStream.java" />
+        <option value="$PROJECT_DIR$/DLBitString.java" />
+        <option value="$PROJECT_DIR$/DLExternal.java" />
+        <option value="$PROJECT_DIR$/Streams.java" />
+        <option value="$PROJECT_DIR$/DERSequence.java" />
+        <option value="$PROJECT_DIR$/CustomNamedCurves.java" />
+        <option value="$PROJECT_DIR$/DEROutputStream.java" />
+        <option value="$PROJECT_DIR$/ASN1Null.java" />
+        <option value="$PROJECT_DIR$/HexEncoder.java" />
+        <option value="$PROJECT_DIR$/ASN1Object.java" />
+        <option value="$PROJECT_DIR$/Curve25519.java" />
+        <option value="$PROJECT_DIR$/DERTaggedObject.java" />
+        <option value="$PROJECT_DIR$/Hex.java" />
+        <option value="$PROJECT_DIR$/DEROctetString.java" />
+        <option value="$PROJECT_DIR$/DLSequence.java" />
+        <option value="$PROJECT_DIR$/Encoder.java" />
+        <option value="$PROJECT_DIR$/ASN1ObjectIdentifier.java" />
+        <option value="$PROJECT_DIR$/DLTaggedObject.java" />
+        <option value="$PROJECT_DIR$/SecP256K1Curve.java" />
+        <option value="$PROJECT_DIR$/ASN1ApplicationSpecific.java" />
+        <option value="$PROJECT_DIR$/LazyConstructionEnumeration.java" />
+        <option value="$PROJECT_DIR$/ASN1OctetString.java" />
+        <option value="$PROJECT_DIR$/ASN1BitString.java" />
+        <option value="$PROJECT_DIR$/StreamUtil.java" />
+        <option value="$PROJECT_DIR$/DefiniteLengthInputStream.java" />
+        <option value="$PROJECT_DIR$/DLSet.java" />
+        <option value="$PROJECT_DIR$/IndefiniteLengthInputStream.java" />
+        <option value="$PROJECT_DIR$/DERSet.java" />
+        <option value="$PROJECT_DIR$/DERBitString.java" />
+        <option value="$PROJECT_DIR$/X9FieldID.java" />
+        <option value="$PROJECT_DIR$/PolynomialExtensionField.java" />
+        <option value="$PROJECT_DIR$/FiniteFields.java" />
+        <option value="$PROJECT_DIR$/Polynomial.java" />
+        <option value="$PROJECT_DIR$/GenericPolynomialExtensionField.java" />
+        <option value="$PROJECT_DIR$/ECPoint.java" />
+        <option value="$PROJECT_DIR$/ECCurve.java" />
+        <option value="$PROJECT_DIR$/ECFieldElement.java" />
+        <option value="$PROJECT_DIR$/ECConstants.java" />
+        <option value="$PROJECT_DIR$/BEROctetString.java" />
+        <option value="$PROJECT_DIR$/ASN1Set.java" />
+        <option value="$PROJECT_DIR$/ASN1Sequence.java" />
+        <option value="$PROJECT_DIR$/ASN1InputStream.java" />
+        <option value="$PROJECT_DIR$/Arrays.java" />
       </list>
     </option>
   </component>
@@ -387,13 +409,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32969433" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32969433" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32969433" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="SonarLint" order="7" />
-      <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.3875546" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" order="8" visible="true" weight="0.3875546" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
@@ -478,14 +500,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/ECAlgorithms.java</url>
-          <line>103</line>
-          <properties class="ECAlgorithms">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/ECAlgorithms.java</url>
           <line>35</line>
           <properties class="ECAlgorithms">
             <option name="EMULATED" value="true" />
@@ -507,14 +521,6 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/ECAlgorithms.java</url>
-          <line>77</line>
-          <properties class="ECAlgorithms">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/ECAlgorithms.java</url>
@@ -544,196 +550,172 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="33" column="48" selection-start-line="33" selection-start-column="48" selection-end-line="33" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jrt:///usr/lib/jvm/java-1.11.0-openjdk-amd64!/java.base/java/util/Hashtable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ASN1OutputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1404">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        <state relative-caret-position="158">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DERSet.java">
+    <entry file="file://$PROJECT_DIR$/DERSequence.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="45" column="1" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
-          <folding>
-            <element signature="e#891#892#0" expanded="true" />
-            <element signature="e#919#920#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="158">
+          <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DERTaggedObject.java">
+    <entry file="file://$PROJECT_DIR$/CustomNamedCurves.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="e#1251#1252#0" expanded="true" />
-            <element signature="e#1279#1280#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="18">
+          <caret line="7" column="74" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DLApplicationSpecific.java">
+    <entry file="file://$PROJECT_DIR$/DEROutputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#478#479#0" expanded="true" />
-            <element signature="e#506#507#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="270">
+          <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DLBitString.java">
+    <entry file="file://$PROJECT_DIR$/ASN1Null.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#1004#1005#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DLExternal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DLOutputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DLTaggedObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
-          <folding>
-            <element signature="e#1356#1357#0" expanded="true" />
-            <element signature="e#1384#1385#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ECConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SECObjectIdentifiers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BERApplicationSpecificParser.java" />
-    <entry file="file://$PROJECT_DIR$/Hex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FixedPointCombMultiplier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FixedPointPreCompInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="360">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/HexEncoder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1119">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="158">
+          <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/IndefiniteLengthInputStream.java">
+    <entry file="file://$PROJECT_DIR$/Curve25519.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-969">
-          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+        <state relative-caret-position="138">
+          <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Iterable.java" />
-    <entry file="file://$PROJECT_DIR$/Integers.java">
+    <entry file="file://$PROJECT_DIR$/ASN1Object.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        <state relative-caret-position="273">
+          <caret line="44" column="38" lean-forward="true" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BERTaggedObjectParser.java" />
-    <entry file="file://$PROJECT_DIR$/SecP256K1Curve.java">
+    <entry file="file://$PROJECT_DIR$/Hex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        <state relative-caret-position="278">
+          <caret line="55" column="46" selection-start-line="55" selection-start-column="46" selection-end-line="55" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LongArray.java">
+    <entry file="file://$PROJECT_DIR$/DEROctetString.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="1394" column="1" selection-start-line="1394" selection-start-column="1" selection-end-line="1394" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ECAlgorithms.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="368">
+          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
           <folding>
-            <element signature="e#103#104#0" expanded="true" />
-            <element signature="e#150#151#0" expanded="true" />
-            <element signature="method#isF2mField#0;class#ECAlgorithms#0" />
-            <element signature="e#429#430#0" expanded="true" />
-            <element signature="e#475#476#0" expanded="true" />
-            <element signature="e#538#539#0" expanded="true" />
-            <element signature="e#586#587#0" expanded="true" />
-            <element signature="docComment;method#referenceMultiply#0;class#ECAlgorithms#0" />
+            <element signature="e#369#370#0" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/X9ECParameters.java">
+    <entry file="file://$PROJECT_DIR$/Encoder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="65" column="17" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
+        <state relative-caret-position="180">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/X9ECPoint.java">
+    <entry file="file://$PROJECT_DIR$/ASN1ObjectIdentifier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="153">
+          <caret line="163" column="1" selection-start-line="163" selection-start-column="1" selection-end-line="163" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SecP256K1Curve.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding>
+            <element signature="e#1162#1163#0" expanded="true" />
+            <element signature="e#1235#1236#0" expanded="true" />
+            <element signature="e#1348#1349#0" expanded="true" />
+            <element signature="e#1794#1795#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASN1ApplicationSpecific.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="64" column="35" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LazyConstructionEnumeration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="37" column="1" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASN1OctetString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="155" column="31" selection-start-line="155" selection-start-column="31" selection-end-line="155" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASN1BitString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="78" column="31" selection-start-line="78" selection-start-column="31" selection-end-line="78" selection-end-column="31" />
+          <folding>
+            <element signature="e#1809#1810#0" expanded="true" />
+            <element signature="e#1854#1855#0" expanded="true" />
+            <element signature="e#1882#1883#0" expanded="true" />
+            <element signature="e#1912#1913#0" expanded="true" />
+            <element signature="e#2131#2132#0" expanded="true" />
+            <element signature="e#2196#2197#0" expanded="true" />
+            <element signature="e#2829#2830#0" expanded="true" />
+            <element signature="e#2883#2884#0" expanded="true" />
+            <element signature="e#2921#2922#0" expanded="true" />
+            <element signature="e#2974#2975#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StreamUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="44" column="1" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-ibm-x86_64-80/src.zip!/java/io/InputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="175" column="10" lean-forward="true" selection-start-line="175" selection-start-column="10" selection-end-line="177" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DERBitString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -744,237 +726,248 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FiniteFields.java">
+    <entry file="file://$PROJECT_DIR$/X9IntegerConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        <state relative-caret-position="90">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DEROctetString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="e#768#769#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASN1ApplicationSpecific.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ECPoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="1470" column="34" selection-start-line="1470" selection-start-column="34" selection-end-line="1470" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASN1Sequence.java">
+    <entry file="file://$PROJECT_DIR$/X9FieldID.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
-          <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DERBitString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-          <folding>
-            <element signature="e#1205#1206#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASN1Set.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="166" column="28" selection-start-line="166" selection-start-column="28" selection-end-line="166" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CustomNamedCurves.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
-          <folding>
-            <element signature="e#1061#1091#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LazyEncodedSequence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Curve25519.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="100" column="96" selection-start-line="100" selection-start-column="96" selection-end-line="100" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ECCurve.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="82" column="17" selection-start-line="82" selection-start-column="17" selection-end-line="82" selection-end-column="17" />
-          <folding>
-            <element signature="e#743#744#0" expanded="true" />
-            <element signature="e#779#780#0" expanded="true" />
-            <element signature="e#1677#1678#0" expanded="true" />
-            <element signature="e#1711#1712#0" expanded="true" />
-            <element signature="e#1868#1869#0" expanded="true" />
-            <element signature="e#1913#1914#0" expanded="true" />
-            <element signature="e#2776#2777#0" expanded="true" />
-            <element signature="e#2823#2824#0" expanded="true" />
-            <element signature="e#3550#3551#0" expanded="true" />
-            <element signature="e#3594#3595#0" expanded="true" />
-            <element signature="e#8345#8346#0" expanded="true" />
-            <element signature="e#8373#8374#0" expanded="true" />
-            <element signature="e#8413#8414#0" expanded="true" />
-            <element signature="e#8437#8438#0" expanded="true" />
-            <element signature="e#8477#8478#0" expanded="true" />
-            <element signature="e#8501#8502#0" expanded="true" />
-            <element signature="e#8541#8542#0" expanded="true" />
-            <element signature="e#8569#8570#0" expanded="true" />
-            <element signature="e#8612#8613#0" expanded="true" />
-            <element signature="e#8643#8644#0" expanded="true" />
-            <element signature="e#8687#8688#0" expanded="true" />
-            <element signature="e#8715#8716#0" expanded="true" />
-            <element signature="e#13067#13068#0" expanded="true" />
-            <element signature="e#13109#13110#0" expanded="true" />
-            <element signature="e#15094#15095#0" expanded="true" />
-            <element signature="e#15180#15181#0" expanded="true" />
-            <element signature="e#15521#15522#0" expanded="true" />
-            <element signature="e#15581#15582#0" expanded="true" />
-            <element signature="e#16764#16765#0" expanded="true" />
-            <element signature="e#16807#16808#0" expanded="true" />
-            <element signature="e#17447#17448#0" expanded="true" />
-            <element signature="e#17499#17500#0" expanded="true" />
-            <element signature="e#17987#17988#0" expanded="true" />
-            <element signature="e#18083#18084#0" expanded="true" />
-            <element signature="e#18545#18546#0" expanded="true" />
-            <element signature="e#18589#18590#0" expanded="true" />
-            <element signature="e#18659#18660#0" expanded="true" />
-            <element signature="e#18730#18731#0" expanded="true" />
-            <element signature="e#20112#20113#0" expanded="true" />
-            <element signature="e#20151#20152#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASN1Encodable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BEROctetString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="108" selection-start-line="108" selection-end-line="108" />
-          <folding>
-            <element signature="e#1207#1208#0" expanded="true" />
-            <element signature="e#1236#1237#0" expanded="true" />
-            <element signature="e#1606#1607#0" expanded="true" />
-            <element signature="e#1659#1660#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Arrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="8" selection-start-line="1" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASN1External.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASN1EncodableVector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="42" lean-forward="true" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
-          <folding>
-            <element signature="e#200#215#0" expanded="true" />
-            <element signature="e#422#423#0" expanded="true" />
-            <element signature="e#455#456#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-ibm-x86_64-80/src.zip!/java/io/InputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="76" column="49" selection-start-line="76" selection-start-column="38" selection-end-line="76" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASN1InputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="108" column="23" lean-forward="true" selection-start-line="108" selection-start-column="23" selection-end-line="108" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nat256.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="600" selection-start-line="600" selection-end-line="600" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SecP256K1Field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Streams.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" column="15" lean-forward="true" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StreamUtil.java">
+    <entry file="file://$PROJECT_DIR$/PolynomialExtensionField.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="50" column="9" lean-forward="true" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+        <state relative-caret-position="30">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Strings.java">
+    <entry file="file://$PROJECT_DIR$/FiniteFields.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="32" column="22" lean-forward="true" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
+        <state relative-caret-position="120">
+          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/X9ECParametersHolder.java">
+    <entry file="file://$PROJECT_DIR$/Polynomial.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="22" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GenericPolynomialExtensionField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LimitedInputStream.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LazyEncodedSequence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/IndefiniteLengthInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ECPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="478" column="4" selection-start-line="478" selection-start-column="4" selection-end-line="478" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ECCurve.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="637" column="9" selection-start-line="637" selection-start-column="9" selection-end-line="637" selection-end-column="9" />
           <folding>
-            <element signature="e#129#130#0" expanded="true" />
-            <element signature="e#175#176#0" expanded="true" />
+            <element signature="e#743#744#0" expanded="true" />
+            <element signature="e#779#780#0" expanded="true" />
+            <element signature="e#1553#1554#0" expanded="true" />
+            <element signature="e#1587#1588#0" expanded="true" />
+            <element signature="e#1744#1745#0" expanded="true" />
+            <element signature="e#1789#1790#0" expanded="true" />
+            <element signature="e#2652#2653#0" expanded="true" />
+            <element signature="e#2699#2700#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ECFieldElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="452" column="36" selection-start-line="452" selection-start-column="36" selection-end-line="452" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ECConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DLTaggedObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="54" column="12" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+          <folding>
+            <element signature="e#1354#1355#0" expanded="true" />
+            <element signature="e#1382#1383#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DLSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="104" column="12" selection-start-line="104" selection-start-column="12" selection-end-line="104" selection-end-column="12" />
+          <folding>
+            <element signature="e#3285#3286#0" expanded="true" />
+            <element signature="e#3313#3314#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DLSequence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DLExternal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+          <folding>
+            <element signature="e#227#228#0" expanded="true" />
+            <element signature="e#251#252#0" expanded="true" />
+            <element signature="e#1024#1025#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DLBitString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+          <folding>
+            <element signature="e#416#417#0" expanded="true" />
+            <element signature="e#508#509#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DLApplicationSpecific.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+          <folding>
+            <element signature="e#334#335#0" expanded="true" />
+            <element signature="e#358#359#0" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
+            <element signature="e#477#478#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DERTaggedObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="43" column="13" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+          <folding>
+            <element signature="e#1002#1003#0" expanded="true" />
+            <element signature="e#1030#1031#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DERSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+          <folding>
+            <element signature="e#861#862#0" expanded="true" />
+            <element signature="e#889#890#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DERFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DefiniteLengthInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BEROctetString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASN1Set.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASN1Sequence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="150" selection-start-line="150" selection-end-line="150" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASN1InputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="174" selection-start-line="174" selection-end-line="174" />
         </state>
       </provider>
     </entry>

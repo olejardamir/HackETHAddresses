@@ -6,7 +6,7 @@ abstract class FiniteFields
     static final FiniteField GF_2 = new PrimeField(BigInteger.valueOf(2));
     private static final FiniteField GF_3 = new PrimeField(BigInteger.valueOf(3));
 
-    public static PolynomialExtensionField getBinaryExtensionField(int[] exponents)
+    public static GenericPolynomialExtensionField getBinaryExtensionField(int[] exponents)
     {
         if (exponents[0] != 0)
         {

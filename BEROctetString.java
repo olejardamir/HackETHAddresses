@@ -8,7 +8,6 @@ import java.util.Vector;
 class BEROctetString
         extends ASN1OctetString
 {
-    final private static int DEFAULT_LENGTH = 1000;
     final private int chunkSize;
     final private ASN1OctetString[] octs;
 
@@ -32,7 +31,7 @@ class BEROctetString
             {
                 throw new IllegalArgumentException(octs[i].getClass().getName() + " found in input should only contain DEROctetString");
             }
-            catch (IOException e)
+            catch (Exception e)
             {
                 throw new IllegalArgumentException("exception converting octets " + e.toString());
             }
@@ -111,7 +110,7 @@ class BEROctetString
     }
 
     int encodedLength()
-            throws IOException
+            throws Exception
     {
         int length = 0;
         for (Enumeration e = getObjects(); e.hasMoreElements();)
@@ -122,7 +121,7 @@ class BEROctetString
         return 2 + length + 2;
     }
 
-    public void encode(ASN1OutputStream a) throws IOException {
+    public void encode(ASN1OutputStream a) throws Exception {
         a.write(36);
         a.write(128);
         Object a0 = this.getObjects();

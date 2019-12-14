@@ -14,7 +14,7 @@ public abstract class ASN1Object
      * @throws java.io.IOException on encoding error.
      */
     private byte[] getEncoded()
-            throws IOException
+            throws Exception
     {
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
         ASN1OutputStream      aOut = new ASN1OutputStream(bOut);
@@ -29,11 +29,11 @@ public abstract class ASN1Object
      *
      * @param encoding name of encoding to use.
      * @return byte encoded object.
-     * @throws IOException on encoding error.
+     * @throws Exception on encoding error.
      */
     byte[] getEncoded(
             String encoding)
-            throws IOException
+            throws Exception
     {
         if (encoding.equals("DER"))
         {

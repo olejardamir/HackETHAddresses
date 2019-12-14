@@ -41,7 +41,7 @@ class StreamUtil
                     return (int)size;
                 }
             }
-            catch (IOException e)
+            catch (Exception e)
             {
                 // ignore - they'll find out soon enough!
             }

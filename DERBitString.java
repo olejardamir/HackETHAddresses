@@ -32,7 +32,7 @@ class DERBitString
 
     void encode(
             ASN1OutputStream out)
-            throws IOException
+            throws Exception
     {
         byte[] string = derForm(data, padBits);
         byte[] bytes = new byte[string.length + 1];

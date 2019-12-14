@@ -25,7 +25,7 @@ class DLSequence
     }
 
     private int getBodyLength()
-            throws IOException
+            throws Exception
     {
         if (bodyLength < 0)
         {
@@ -45,7 +45,7 @@ class DLSequence
     }
 
     int encodedLength()
-            throws IOException
+            throws Exception
     {
         int length = getBodyLength();
 
@@ -55,7 +55,7 @@ class DLSequence
 
     void encode(
             ASN1OutputStream out)
-            throws IOException
+            throws Exception
     {
         ASN1OutputStream dOut = out.getDLSubStream();
         int length = getBodyLength();

@@ -90,18 +90,6 @@ public abstract class ECPoint
     }
 
     /**
-     * Returns the affine x-coordinate after checking that this point is normalized.
-     *
-     * @return The affine x-coordinate of this point
-     * @throws IllegalStateException if the point is not normalized
-     */
-    ECFieldElement getAffineXCoord()
-    {
-        checkNormalized();
-        return getXCoord();
-    }
-
-    /**
      * Returns the affine y-coordinate after checking that this point is normalized
      *
      * @return The affine y-coordinate of this point
@@ -304,18 +292,6 @@ public abstract class ECPoint
         return !validity.hasFailed();
     }
 
-    ECPoint scaleX(ECFieldElement scale) throws CloneNotSupportedException {
-        return isInfinity()
-                ?   this
-                :   getCurve().createRawPoint(getRawXCoord().multiply(scale), getRawYCoord(), getRawZCoords(), this.withCompression);
-    }
-
-    ECPoint scaleY(ECFieldElement scale) throws CloneNotSupportedException {
-        return isInfinity()
-                ?   this
-                :   getCurve().createRawPoint(getRawXCoord(), getRawYCoord().multiply(scale), getRawZCoords(), this.withCompression);
-    }
-
     public boolean equals(ECPoint other) throws CloneNotSupportedException {
         if (null == other)
         {
@@ -498,10 +474,6 @@ public abstract class ECPoint
 
     public ECPoint twicePlus(ECPoint b) throws CloneNotSupportedException {
         return twice().add(b);
-    }
-
-    public ECPoint threeTimes() throws CloneNotSupportedException {
-        return twicePlus(this);
     }
 
     public static abstract class AbstractFp extends ECPoint
@@ -1042,7 +1014,7 @@ public abstract class ECPoint
             }
         }
 
-        public ECPoint threeTimes() throws CloneNotSupportedException {
+        private ECPoint threeTimes() throws CloneNotSupportedException {
             if (this.isInfinity())
             {
                 return this;
@@ -1358,72 +1330,6 @@ public abstract class ECPoint
             return lhs.equals(rhs);
         }
 
-
-        public ECPoint scaleX(ECFieldElement scale) throws CloneNotSupportedException {
-            if (this.isInfinity())
-            {
-                return this;
-            }
-
-            int coord = this.getCurveCoordinateSystem();
-
-            switch (coord)
-            {
-                case ECCurve.COORD_LAMBDA_AFFINE:
-                {
-                    // Y is actually Lambda (X + Y/X) here
-                    ECFieldElement X = this.getRawXCoord(), L = this.getRawYCoord(); // earlier JDK
-
-                    ECFieldElement X2 = X.multiply(scale);
-                    ECFieldElement L2 = L.add(X).divide(scale).add(X2);
-
-                    return this.getCurve().createRawPoint(X, L2, this.getRawZCoords(), this.withCompression); // earlier JDK
-                }
-                case ECCurve.COORD_LAMBDA_PROJECTIVE:
-                {
-                    // Y is actually Lambda (X + Y/X) here
-                    ECFieldElement X = this.getRawXCoord(), L = this.getRawYCoord(), Z = this.getRawZCoords()[0]; // earlier JDK
-
-                    // We scale the Z coordinate also, to avoid an inversion
-                    ECFieldElement X2 = X.multiply(scale.square());
-                    ECFieldElement L2 = L.add(X).add(X2);
-                    ECFieldElement Z2 = Z.multiply(scale);
-
-                    return this.getCurve().createRawPoint(X2, L2, new ECFieldElement[]{ Z2 }, this.withCompression); // earlier JDK
-                }
-                default:
-                {
-                    return super.scaleX(scale);
-                }
-            }
-        }
-
-        public ECPoint scaleY(ECFieldElement scale) throws CloneNotSupportedException {
-            if (this.isInfinity())
-            {
-                return this;
-            }
-
-            int coord = this.getCurveCoordinateSystem();
-
-            switch (coord)
-            {
-                case ECCurve.COORD_LAMBDA_AFFINE:
-                case ECCurve.COORD_LAMBDA_PROJECTIVE:
-                {
-                    ECFieldElement X = this.getRawXCoord(), L = this.getRawYCoord(); // earlier JDK
-
-                    // Y is actually Lambda (X + Y/X) here
-                    ECFieldElement L2 = L.add(X).multiply(scale).add(X);
-
-                    return this.getCurve().createRawPoint(X, L2, this.getRawZCoords(), this.withCompression); // earlier JDK
-                }
-                default:
-                {
-                    return super.scaleY(scale);
-                }
-            }
-        }
 
         public ECPoint subtract(ECPoint b) throws CloneNotSupportedException {
             if (b.isInfinity())

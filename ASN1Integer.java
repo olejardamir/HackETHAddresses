@@ -44,7 +44,7 @@ public class ASN1Integer
 
     void encode(
             ASN1OutputStream out)
-            throws IOException
+            throws Exception
     {
         out.writeEncoded(ASN1InputStream.INTEGER, bytes);
     }

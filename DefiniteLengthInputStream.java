@@ -36,9 +36,7 @@ class DefiniteLengthInputStream
         return _remaining;
     }
 
-    public int read()
-            throws IOException
-    {
+    public int read() throws IOException {
         if (_remaining == 0)
         {
             return -1;
@@ -59,9 +57,7 @@ class DefiniteLengthInputStream
         return b;
     }
 
-    public int read(byte[] buf, int off, int len)
-            throws IOException
-    {
+    public int read(byte[] buf, int off, int len) throws IOException {
         if (_remaining == 0)
         {
             return -1;
@@ -70,10 +66,7 @@ class DefiniteLengthInputStream
         int toRead = Math.min(len, _remaining);
         int numRead = _in.read(buf, off, toRead);
 
-        if (numRead < 0)
-        {
-            throw new EOFException("DEF length " + _originalLength + " object truncated by " + _remaining);
-        }
+
 
         if ((_remaining -= numRead) == 0)
         {
@@ -84,7 +77,7 @@ class DefiniteLengthInputStream
     }
 
     byte[] toByteArray()
-            throws IOException
+            throws Exception
     {
         if (_remaining == 0)
         {

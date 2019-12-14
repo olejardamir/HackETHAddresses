@@ -17,7 +17,7 @@ class ASN1OutputStream
 
     void writeLength(
             int length)
-            throws IOException
+            throws Exception
     {
         if (length > 127)
         {
@@ -43,19 +43,19 @@ class ASN1OutputStream
     }
 
     void write(int b)
-            throws IOException
+            throws Exception
     {
         os.write(b);
     }
 
     void write(byte[] bytes)
-            throws IOException
+            throws Exception
     {
         os.write(bytes);
     }
 
     private void write(byte[] bytes, int off, int len)
-            throws IOException
+            throws Exception
     {
         os.write(bytes, off, len);
     }
@@ -63,7 +63,7 @@ class ASN1OutputStream
     void writeEncoded(
             int     tag,
             byte[]  bytes)
-            throws IOException
+            throws Exception
     {
         write(tag);
         writeLength(bytes.length);
@@ -71,7 +71,7 @@ class ASN1OutputStream
     }
 
     private void writeTag(int flags, int tagNo)
-            throws IOException
+            throws Exception
     {
         if (tagNo < 31)
         {
@@ -104,7 +104,7 @@ class ASN1OutputStream
     }
 
     void writeEncoded(int flags, int tagNo, byte[] bytes)
-            throws IOException
+            throws Exception
     {
         writeTag(flags, tagNo);
         writeLength(bytes.length);
@@ -113,7 +113,7 @@ class ASN1OutputStream
 
     public void writeObject(
             ASN1Encodable obj)
-            throws IOException
+            throws Exception
     {
         if (obj != null)
         {

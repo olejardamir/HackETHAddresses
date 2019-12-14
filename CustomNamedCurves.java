@@ -5,7 +5,7 @@ import java.util.Vector;
 class CustomNamedCurves
 {
 
-    private static ECCurve configureCurveGLV(ECCurve c) throws IOException {
+    private static ECCurve configureCurveGLV(ECCurve c) throws Exception {
          return c.configure().setEndomorphism().create();
     }
 

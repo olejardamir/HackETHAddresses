@@ -1,6 +1,4 @@
-import java.io.IOException;
 import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.Vector;
 
 
@@ -28,18 +26,6 @@ public abstract class ASN1Sequence
         {
             seq.addElement(v.get(i));
         }
-    }
-
-    private ASN1Encodable[] toArray()
-    {
-        ASN1Encodable[] values = new ASN1Encodable[this.size()];
-
-        for (int i = 0; i != this.size(); i++)
-        {
-            values[i] = this.getObjectAt(i);
-        }
-
-        return values;
     }
 
     Enumeration getObjects()
@@ -155,15 +141,11 @@ public abstract class ASN1Sequence
     }
 
     abstract void encode(ASN1OutputStream out)
-            throws IOException;
+            throws Exception;
 
     public String toString()
     {
         return seq.toString();
     }
 
-    public Iterator<ASN1Encodable> iterator()
-    {
-        return new Arrays.Iterator<ASN1Encodable>(toArray());
-    }
 }

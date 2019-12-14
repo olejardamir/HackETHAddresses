@@ -147,13 +147,13 @@ public abstract class ASN1OctetString
     }
 
     abstract void encode(ASN1OutputStream out)
-            throws IOException;
+            throws Exception;
 
     public String toString()
     {
         try {
             return "#" + Strings.fromByteArray(Hex.encode(string));
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;

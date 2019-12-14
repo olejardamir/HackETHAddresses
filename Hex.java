@@ -9,13 +9,13 @@ class Hex
     private static final Encoder encoder = new HexEncoder();
 
     public static String toHexString(
-            byte[] data) throws IOException {
+            byte[] data) throws Exception {
         return toHexString(data, data.length);
     }
 
     private static String toHexString(
             byte[] data,
-            int length) throws IOException {
+            int length) throws Exception {
         byte[] encoded = encode(data, length);
         return  Strings.fromByteArray(encoded);
     }
@@ -26,7 +26,7 @@ class Hex
      * @return a byte array containing the Hex encoded data.
      */
     public static byte[] encode(
-            byte[]    data) throws IOException {
+            byte[]    data) throws Exception {
         return encode(data, data.length);
     }
 
@@ -37,7 +37,7 @@ class Hex
      */
     private static byte[] encode(
             byte[] data,
-            int length) throws IOException {
+            int length) throws Exception {
         ByteArrayOutputStream    bOut = new ByteArrayOutputStream();
 
 
@@ -53,7 +53,7 @@ class Hex
      * @return a byte array representing the decoded data.
      */
     public static byte[] decode(
-            String    data) throws IOException {
+            String    data) throws Exception {
         ByteArrayOutputStream    bOut = new ByteArrayOutputStream();
 
 

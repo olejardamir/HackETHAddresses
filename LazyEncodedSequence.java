@@ -38,7 +38,7 @@ class LazyEncodedSequence
     }
 
     int encodedLength()
-            throws IOException
+            throws Exception
     {
         if (encoded != null)
         {
@@ -52,7 +52,7 @@ class LazyEncodedSequence
 
     void encode(
             ASN1OutputStream out)
-            throws IOException
+            throws Exception
     {
         if (encoded != null)
         {
