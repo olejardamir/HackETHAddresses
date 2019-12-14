@@ -1,7 +1,3 @@
-
-import java.security.AccessController;
-import java.security.PrivilegedAction;
-
 /**
  * String utilities.
  */

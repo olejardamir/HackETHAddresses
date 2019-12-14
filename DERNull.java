@@ -1,6 +1,3 @@
-
-import java.io.IOException;
-
 /**
  * An ASN.1 DER NULL object.
  * <p>

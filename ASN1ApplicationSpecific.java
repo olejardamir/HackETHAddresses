@@ -1,5 +1,3 @@
-import java.io.IOException;
-
 /**
  * Base class for an ASN.1 ApplicationSpecific object
  */

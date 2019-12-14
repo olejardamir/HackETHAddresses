@@ -1,5 +1,3 @@
-import java.io.IOException;
-
 /**
  * Abstract base for the ASN.1 OCTET STRING data type
  * <p>
@@ -107,6 +105,10 @@ public abstract class ASN1OctetString
         }
         this.string = string;
     }
+
+     public ASN1OctetString() {
+
+     }
 
      /**
      * Return the content of the OCTET STRING as a byte array.

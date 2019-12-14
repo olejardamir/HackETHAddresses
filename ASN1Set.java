@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -8,7 +7,6 @@ public abstract class ASN1Set
 
 {
     private Vector set = new Vector();
-    private boolean isSorted = false;
 
     ASN1Set()
     {
@@ -84,83 +82,6 @@ public abstract class ASN1Set
         }
 
         return encObj;
-    }
-
-    /**
-     * return true if a <= b (arrays are assumed padded with zeros).
-     */
-    private boolean lessThanOrEqual(
-            byte[] a,
-            byte[] b)
-    {
-        int len = Math.min(a.length, b.length);
-        for (int i = 0; i != len; ++i)
-        {
-            if (a[i] != b[i])
-            {
-                return (a[i] & 0xff) < (b[i] & 0xff);
-            }
-        }
-        return len == a.length;
-    }
-
-    private byte[] getDEREncoded(
-            ASN1Encodable obj)
-    {
-        try
-        {
-            return obj.toASN1Primitive().getEncoded("DER");
-        }
-        catch (Exception e)
-        {
-            throw new IllegalArgumentException("cannot encode object added to SET");
-        }
-    }
-
-    private void sort()
-    {
-        if (!isSorted)
-        {
-            isSorted = true;
-            if (set.size() > 1)
-            {
-                boolean    swapped = true;
-                int        lastSwap = set.size() - 1;
-
-                while (swapped)
-                {
-                    int    index = 0;
-                    int    swapIndex = 0;
-                    byte[] a = getDEREncoded((ASN1Encodable)set.elementAt(0));
-
-                    swapped = false;
-
-                    while (index != lastSwap)
-                    {
-                        byte[] b = getDEREncoded((ASN1Encodable)set.elementAt(index + 1));
-
-                        if (lessThanOrEqual(a, b))
-                        {
-                            a = b;
-                        }
-                        else
-                        {
-                            Object  o = set.elementAt(index);
-
-                            set.setElementAt(set.elementAt(index + 1), index);
-                            set.setElementAt(o, index + 1);
-
-                            swapped = true;
-                            swapIndex = index;
-                        }
-
-                        index++;
-                    }
-
-                    lastSwap = swapIndex;
-                }
-            }
-        }
     }
 
     public String toString()

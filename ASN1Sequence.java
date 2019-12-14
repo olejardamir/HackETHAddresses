@@ -34,18 +34,6 @@ public abstract class ASN1Sequence
     }
 
     /**
-     * Return the object at the sequence position indicated by index.
-     *
-     * @param index the sequence number (starting at zero) of the object
-     * @return the object at the sequence position indicated by index.
-     */
-    private ASN1Encodable getObjectAt(
-            int index)
-    {
-        return (ASN1Encodable)seq.elementAt(index);
-    }
-
-    /**
      * Return the number of objects in this sequence.
      *
      * @return the number of objects in this sequence.

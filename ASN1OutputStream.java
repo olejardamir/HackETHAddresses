@@ -103,10 +103,10 @@ class ASN1OutputStream
         }
     }
 
-    void writeEncoded(int flags, int tagNo, byte[] bytes)
+    void writeEncoded(byte[] bytes)
             throws Exception
     {
-        writeTag(flags, tagNo);
+        writeTag(ASN1InputStream.CONSTRUCTED, ASN1InputStream.EXTERNAL);
         writeLength(bytes.length);
         write(bytes);
     }

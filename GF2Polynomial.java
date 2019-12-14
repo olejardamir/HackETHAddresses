@@ -6,16 +6,6 @@ class GF2Polynomial {
         this.exponents = Arrays.clone(exponents);
     }
 
-    public int getDegree()
-    {
-        return exponents[exponents.length - 1];
-    }
-
-    public int[] getExponentsPresent()
-    {
-        return Arrays.clone(exponents);
-    }
-
     public boolean equals(Object obj)
     {
         if (this == obj)

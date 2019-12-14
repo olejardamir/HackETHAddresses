@@ -1,6 +1,3 @@
-
-import java.io.IOException;
-
 /**
  * A NULL object - use DERNull.INSTANCE for populating structures.
  */

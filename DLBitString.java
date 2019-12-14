@@ -1,6 +1,3 @@
-
-import java.io.IOException;
-
 /**
  * A Definite length BIT STRING
  */

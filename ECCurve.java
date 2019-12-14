@@ -15,6 +15,10 @@ public abstract class ECCurve
     public static final int COORD_LAMBDA_AFFINE = 5;
     public static final int COORD_LAMBDA_PROJECTIVE = 6;
 
+    public ECCurve() {
+
+    }
+
     public class Config
     {
         final int coord;
@@ -50,7 +54,7 @@ public abstract class ECCurve
         }
     }
 
-    private final GenericPolynomialExtensionField field;
+    private   GenericPolynomialExtensionField field;
     ECFieldElement a;
     ECFieldElement b;
     BigInteger order;
@@ -112,8 +116,6 @@ public abstract class ECCurve
     protected abstract ECCurve cloneCurve() throws Exception;
 
     protected abstract ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, boolean withCompression);
-
-    protected abstract ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, ECFieldElement[] zs, boolean withCompression);
 
     boolean supportsCoordinateSystem(int coord)
     {
@@ -187,30 +189,15 @@ public abstract class ECCurve
         normalizeAll(points, points.length);
     }
 
-    /**
-     * Normalization ensures that any projective coordinate is 1, and therefore that the x, y
-     * coordinates reflect those of the equivalent point in an affine coordinate system. Where more
-     * than one point is to be normalized, this method will generally be more efficient than
-     * normalizing each point separately. An (optional) z-scaling factor can be applied; effectively
-     * each z coordinate is scaled by this value prior to normalization (but only one
-     * actual multiplication is needed).
-     * @param points
-     *            An array of points that will be updated in place with their normalized versions,
-     *            where necessary
-     * @param len
-     */
+
     private void normalizeAll(ECPoint[] points, int len) throws CloneNotSupportedException {
-        checkPoints(points, 0, len);
+        checkPoints(points, len);
 
         switch (this.getCoordinateSystem())
         {
             case ECCurve.COORD_AFFINE:
             case ECCurve.COORD_LAMBDA_AFFINE:
             {
-                if (null != null)
-                {
-                    throw new IllegalArgumentException("'iso' not valid for affine coordinates");
-                }
                 return;
             }
         }
@@ -223,11 +210,11 @@ public abstract class ECCurve
         int count = 0;
         for (int i = 0; i < len; ++i)
         {
-            ECPoint p = points[0 + i];
-            if (null != p && (null != null || p.isNormalized()))
+            ECPoint p = points[i];
+            if (null != p && p.isNormalized())
             {
                 zs[count] = p.getZCoord(0);
-                indices[count++] = 0 + i;
+                indices[count++] = i;
             }
         }
 
@@ -428,20 +415,20 @@ public abstract class ECCurve
         }
     }
 
-    private void checkPoints(ECPoint[] points, int off, int len)
+    private void checkPoints(ECPoint[] points, int len)
     {
         if (points == null)
         {
             throw new IllegalArgumentException("'points' cannot be null");
         }
-        if (off < 0 || len < 0 || (off > (points.length - len)))
+        if (0 < 0 || len < 0 || (0 > (points.length - len)))
         {
             throw new IllegalArgumentException("invalid range specified for 'points'");
         }
 
         for (int i = 0; i < len; ++i)
         {
-            ECPoint point = points[off + i];
+            ECPoint point = points[0 + i];
             if (null != point && this != point.getCurve())
             {
                 throw new IllegalArgumentException("'points' entries must be null or on this curve");
@@ -477,6 +464,10 @@ public abstract class ECCurve
             super(FiniteFields.getPrimeField(q));
         }
 
+        public AbstractFp() {
+            super();
+        }
+
         protected ECPoint decompressPoint(int yTilde, BigInteger X1) throws CloneNotSupportedException {
             ECFieldElement x = this.fromBigInteger(X1);
             ECFieldElement rhs = x.square().add(this.a).multiply(x).add(this.b);
@@ -507,31 +498,17 @@ public abstract class ECCurve
     {
         private static final int FP_DEFAULT_COORDS = ECCurve.COORD_JACOBIAN_MODIFIED;
 
-        final BigInteger q;
-        final BigInteger r;
-        final ECPoint.Fp infinity;
+          BigInteger q;
+          BigInteger r;
+          ECPoint.Fp infinity;
 
         /**
          * @deprecated use constructor taking order/cofactor
          */
-        public Fp(BigInteger q, BigInteger a, BigInteger b)
+        public Fp()
         {
-            this(q, a, b, null);
-        }
+            super();
 
-        Fp(BigInteger q, BigInteger a, BigInteger b, BigInteger order)
-        {
-            super(q);
-
-            this.q = q;
-            this.r = ECFieldElement.Fp.calculateResidue(q);
-            this.infinity = new ECPoint.Fp(this, null, null, false);
-
-            this.a = fromBigInteger(a);
-            this.b = fromBigInteger(b);
-            this.order = order;
-            this.cofactor = null;
-            this.coord = FP_DEFAULT_COORDS;
         }
 
         /**
@@ -591,11 +568,6 @@ public abstract class ECCurve
             return new ECPoint.Fp(this, x, y, withCompression);
         }
 
-        protected ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, ECFieldElement[] zs, boolean withCompression)
-        {
-            return new ECPoint.Fp(this, x, y, zs, withCompression);
-        }
-
         public ECPoint importPoint(ECPoint p) throws CloneNotSupportedException {
             if (this != p.getCurve() && this.getCoordinateSystem() == ECCurve.COORD_JACOBIAN && !p.isInfinity())
             {
@@ -625,6 +597,10 @@ public abstract class ECCurve
 
     public static abstract class AbstractF2m extends ECCurve
     {
+
+        public AbstractF2m() {
+
+        }
 
         private static GenericPolynomialExtensionField buildField(int m, int k1, int k2, int k3)
         {
@@ -753,7 +729,7 @@ public abstract class ECCurve
         /**
          * The exponent <code>m</code> of <code>F<sub>2<sup>m</sup></sub></code>.
          */
-        private final int m;  // can't be final - JDK 1.1
+        private   int m;  // can't be final - JDK 1.1
 
         /**
          * TPB: The integer <code>k</code> where <code>x<sup>m</sup> +
@@ -763,7 +739,7 @@ public abstract class ECCurve
          * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
          * represents the reduction polynomial <code>f(z)</code>.<br>
          */
-        private final int k1;  // can't be final - JDK 1.1
+        private   int k1;  // can't be final - JDK 1.1
 
         /**
          * TPB: Always set to <code>0</code><br>
@@ -771,7 +747,7 @@ public abstract class ECCurve
          * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
          * represents the reduction polynomial <code>f(z)</code>.<br>
          */
-        private final int k2;  // can't be final - JDK 1.1
+        private   int k2;  // can't be final - JDK 1.1
 
         /**
          * TPB: Always set to <code>0</code><br>
@@ -779,12 +755,12 @@ public abstract class ECCurve
          * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
          * represents the reduction polynomial <code>f(z)</code>.<br>
          */
-        private final int k3;  // can't be final - JDK 1.1
+        private   int k3;  // can't be final - JDK 1.1
 
         /**
          * The point at infinity on this curve.
          */
-        private final ECPoint.F2m infinity;  // can't be final - JDK 1.1
+        private   ECPoint.F2m infinity;  // can't be final - JDK 1.1
 
         /**
          * Constructor for Trinomial Polynomial Basis (TPB).
@@ -801,14 +777,7 @@ public abstract class ECCurve
          * <code>F<sub>2<sup>m</sup></sub></code>.
          * @deprecated use constructor taking order/cofactor
          */
-        public F2m(
-                int m,
-                int k,
-                BigInteger a,
-                BigInteger b)
-        {
-            this(m, k, 0, 0, a, b, null);
-        }
+
 
         /**
          * Constructor for Pentanomial Polynomial Basis (PPB).
@@ -831,61 +800,7 @@ public abstract class ECCurve
          * <code>F<sub>2<sup>m</sup></sub></code>.
          * @deprecated use constructor taking order/cofactor
          */
-        public F2m(
-                int m,
-                int k1,
-                int k2,
-                int k3,
-                BigInteger a,
-                BigInteger b)
-        {
-            this(m, k1, k2, k3, a, b, null);
-        }
 
-        /**
-         * Constructor for Pentanomial Polynomial Basis (PPB).
-         * @param m  The exponent <code>m</code> of
-         * <code>F<sub>2<sup>m</sup></sub></code>.
-         * @param k1 The integer <code>k1</code> where <code>x<sup>m</sup> +
-         * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-         * represents the reduction polynomial <code>f(z)</code>.
-         * @param k2 The integer <code>k2</code> where <code>x<sup>m</sup> +
- * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
- * represents the reduction polynomial <code>f(z)</code>.
-         * @param k3 The integer <code>k3</code> where <code>x<sup>m</sup> +
-* x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-* represents the reduction polynomial <code>f(z)</code>.
-         * @param a The coefficient <code>a</code> in the Weierstrass equation
-* for non-supersingular elliptic curves over
-* <code>F<sub>2<sup>m</sup></sub></code>.
-         * @param b The coefficient <code>b</code> in the Weierstrass equation
-* for non-supersingular elliptic curves over
-* <code>F<sub>2<sup>m</sup></sub></code>.
-         * @param order The order of the main subgroup of the elliptic curve.
-         */
-        F2m(
-                int m,
-                int k1,
-                int k2,
-                int k3,
-                BigInteger a,
-                BigInteger b,
-                BigInteger order)
-        {
-            super(m, k1, k2, k3);
-
-            this.m = m;
-            this.k1 = k1;
-            this.k2 = k2;
-            this.k3 = k3;
-            this.order = order;
-            this.cofactor = null;
-
-            this.infinity = new ECPoint.F2m(this, null, null, false);
-            this.a = fromBigInteger(a);
-            this.b = fromBigInteger(b);
-            this.coord = F2M_DEFAULT_COORDS;
-        }
 
         F2m(int m, int k1, int k2, int k3, ECFieldElement a, ECFieldElement b, BigInteger order, BigInteger cofactor)
         {
@@ -903,6 +818,7 @@ public abstract class ECCurve
             this.b = b;
             this.coord = F2M_DEFAULT_COORDS;
         }
+
 
         protected ECCurve cloneCurve()
         {
@@ -935,11 +851,6 @@ public abstract class ECCurve
         protected ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, boolean withCompression)
         {
             return new ECPoint.F2m(this, x, y, withCompression);
-        }
-
-        protected ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, ECFieldElement[] zs, boolean withCompression)
-        {
-            return new ECPoint.F2m(this, x, y, zs, withCompression);
         }
 
         public ECPoint getInfinity()

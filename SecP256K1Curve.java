@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.math.BigInteger;
 
 public class SecP256K1Curve extends ECCurve.AbstractFp
@@ -52,11 +51,6 @@ public class SecP256K1Curve extends ECCurve.AbstractFp
     protected ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, boolean withCompression)
     {
         return new SecP256K1Point(this, x, y, withCompression);
-    }
-
-    protected ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, ECFieldElement[] zs, boolean withCompression)
-    {
-        return new SecP256K1Point(this, x, y, zs, withCompression);
     }
 
     public ECPoint getInfinity()

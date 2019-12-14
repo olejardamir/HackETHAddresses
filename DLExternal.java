@@ -1,6 +1,5 @@
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 class DLExternal
         extends ASN1External
@@ -21,19 +20,19 @@ class DLExternal
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         if (directReference != null)
         {
-            baos.write(directReference.getEncoded("DL"));
+            baos.write(directReference.getEncoded());
         }
         if (indirectReference != null)
         {
-            baos.write(indirectReference.getEncoded("DL"));
+            baos.write(indirectReference.getEncoded());
         }
         if (dataValueDescriptor != null)
         {
-            baos.write(dataValueDescriptor.getEncoded("DL"));
+            baos.write(dataValueDescriptor.getEncoded());
         }
         DERTaggedObject obj = new DERTaggedObject(true, encoding, externalContent);
-        baos.write(obj.getEncoded("DL"));
-        out.writeEncoded(ASN1InputStream.CONSTRUCTED, ASN1InputStream.EXTERNAL, baos.toByteArray());
+        baos.write(obj.getEncoded());
+        out.writeEncoded(ASN1InputStream.CONSTRUCTED, baos.toByteArray());
     }
 
     boolean asn1Equals(ASN1Primitive o) {

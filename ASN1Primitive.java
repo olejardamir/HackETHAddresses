@@ -1,6 +1,3 @@
-
-import java.io.IOException;
-
 /**
  * Base class for ASN.1 primitive objects. These are the actual objects used to generate byte encodings.
  */

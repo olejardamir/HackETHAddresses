@@ -1,6 +1,3 @@
-
-import java.io.IOException;
-
 /**
  * Definite Length TaggedObject - in ASN.1 notation this is any object preceded by
  * a [n] where n is some number - these are assumed to follow the construction

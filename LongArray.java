@@ -502,7 +502,7 @@ class LongArray implements Cloneable
 
     private static void flipWord(long[] buf, int bit, long word)
     {
-        int n = 0 + (bit >>> 6);
+        int n = (bit >>> 6);
         int shift = bit & 0x3F;
         if (shift == 0)
         {
@@ -557,7 +557,7 @@ class LongArray implements Cloneable
         // theBit = n % 64
         int theBit = n & 0x3F;
         long flipper = 1L << theBit;
-        buf[0 + theInt] ^= flipper;
+        buf[theInt] ^= flipper;
     }
 
 //    private static void setBit(long[] buf, int off, int n)

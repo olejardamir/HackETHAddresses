@@ -1,8 +1,4 @@
-import java.io.IOException;
-
 final class Streams {
-    Streams() {
-    }
 
     public static int readFully(java.io.InputStream a, byte[] a0) throws Exception {
         return Streams.readFully(a, a0, a0.length);

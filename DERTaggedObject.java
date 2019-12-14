@@ -1,6 +1,3 @@
-
-import java.io.IOException;
-
 class DERTaggedObject
         extends ASN1TaggedObject
 {

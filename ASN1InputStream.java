@@ -125,7 +125,7 @@ class ASN1InputStream
                         strings[i] = (ASN1OctetString)v.get(i);
                     }
 
-                    return new BEROctetString(strings);
+                    return new BEROctetString();
                 case SEQUENCE:
                     if (lazyEvaluate)
                     {

@@ -1,5 +1,4 @@
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 /**
  * Base class for BIT STRING objects

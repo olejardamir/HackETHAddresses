@@ -1,5 +1,4 @@
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 /**
  * Utility class for converting hex data to bytes and back again.

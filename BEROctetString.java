@@ -1,6 +1,5 @@
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Vector;
 
@@ -8,8 +7,8 @@ import java.util.Vector;
 class BEROctetString
         extends ASN1OctetString
 {
-    final private int chunkSize;
-    final private ASN1OctetString[] octs;
+      private int chunkSize;
+      private ASN1OctetString[] octs;
 
     /**
      * Convert a vector of octet strings into a single byte string
@@ -40,12 +39,9 @@ class BEROctetString
         return bOut.toByteArray();
     }
 
-    public BEROctetString(ASN1OctetString[] a) {
-        this(a, 1000);
-    }
+    public BEROctetString() {
+        super();
 
-    private BEROctetString(ASN1OctetString[] a, int i) {
-        this(BEROctetString.toBytes(a), a, i);
     }
 
     private BEROctetString(byte[] string, ASN1OctetString[] octs, int chunkSize)
