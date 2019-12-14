@@ -100,16 +100,16 @@ public class SecP256K1Point extends ECPoint.AbstractFp
 
         SecP256K1Field.subtract(S1, S2, t2);
 
-        // Check if b == this or b == -this
+        
         if (Nat256.isZero(H))
         {
             if (Nat256.isZero(t2))
             {
-                // this == b, i.e. this must be doubled
+                
                 return this.twice();
             }
 
-            // this == -b, i.e. the result is the point at infinity
+            
             return curve.getInfinity();
         }
 
@@ -150,7 +150,7 @@ public class SecP256K1Point extends ECPoint.AbstractFp
         return new SecP256K1Point(curve, X3, Y3, zs, this.withCompression);
     }
 
-    // B.3 pg 62
+    
     public ECPoint twice()
     {
         if (this.isInfinity())
@@ -237,7 +237,7 @@ public class SecP256K1Point extends ECPoint.AbstractFp
             return this;
         }
 
-        // NOTE: Be careful about recursions between twicePlus and threeTimes
+        
         return twice().add(this);
     }
 

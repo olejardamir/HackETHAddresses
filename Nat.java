@@ -69,7 +69,7 @@ abstract class Nat
 
     public static int decAt(int len, int[] z, int zPos)
     {
-        // assert zPos <= len;
+        
         for (int i = zPos; i < len; ++i)
         {
             if (--z[i] != -1)
@@ -135,7 +135,7 @@ abstract class Nat
 
     public static int incAt(int len, int[] z, int zPos)
     {
-        // assert zPos <= len;
+        
         for (int i = zPos; i < len; ++i)
         {
             if (++z[i] != 0)
@@ -148,7 +148,7 @@ abstract class Nat
 
     public static int incAt(int len, int[] z, int zOff, int zPos)
     {
-        // assert zPos <= len;
+        
         for (int i = zPos; i < len; ++i)
         {
             if (++z[zOff + i] != 0)
@@ -200,7 +200,7 @@ abstract class Nat
 
     public static void shiftDownBits(int len, int[] z, int bits, int c)
     {
-//        assert bits > 0 && bits < 32;
+
         int i = len;
         while (--i >= 0)
         {
@@ -244,7 +244,7 @@ abstract class Nat
 
     public static int shiftUpBits(int len, int[] z, int bits, int c)
     {
-//        assert bits > 0 && bits < 32;
+
         for (int i = 0; i < len; ++i)
         {
             int next = z[i];
@@ -256,7 +256,7 @@ abstract class Nat
 
     public static int shiftUpBits(int len, int[] x, int bits, int c, int[] z)
     {
-//        assert bits > 0 && bits < 32;
+
         for (int i = 0; i < len; ++i)
         {
             int next = x[i];

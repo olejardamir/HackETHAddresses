@@ -1,7 +1,5 @@
 
-/**
- * Class holding precomputation data for fixed-point multiplications.
- */
+
 public class FixedPointPreCompInfo implements PreCompInfo
 {
     private ECPoint offset = null;

@@ -37,7 +37,7 @@ class FixedPointUtil
                     pow2Table[i] = pow2Table[i - 1].timesPow2(d);
                 }
 
-                // This will be the 'offset' value
+                
                 pow2Table[minWidth] = pow2Table[0].subtract(pow2Table[1]);
 
                 c.normalizeAll(pow2Table);

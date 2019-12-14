@@ -1,29 +1,12 @@
 public class Curve25519Point extends ECPoint.AbstractFp
 {
-    /**
-     * Create a point which encodes with point compression.
-     *
-     * @param curve the curve to use
-     * @param x affine x co-ordinate
-     * @param y affine y co-ordinate
-     *
-     * @deprecated Use ECCurve.createPoint to construct points
-     */
+    
     public Curve25519Point(ECCurve curve, ECFieldElement x, ECFieldElement y)
     {
         this(curve, x, y, false);
     }
 
-    /**
-     * Create a point that encodes with or without point compresion.
-     *
-     * @param curve the curve to use
-     * @param x affine x co-ordinate
-     * @param y affine y co-ordinate
-     * @param withCompression if true encode with point compression
-     *
-     * @deprecated per-point compression property will be removed, refer {@link #getEncoded(boolean)}
-     */
+    
     public Curve25519Point(ECCurve curve, ECFieldElement x, ECFieldElement y, boolean withCompression)
     {
         super(curve, x, y);
@@ -123,16 +106,16 @@ public class Curve25519Point extends ECPoint.AbstractFp
 
         Curve25519Field.subtract(S1, S2, t2);
 
-        // Check if b == this or b == -this
+        
         if (Nat256.isZero(H))
         {
             if (Nat256.isZero(t2))
             {
-                // this == b, i.e. this must be doubled
+                
                 return this.twice();
             }
 
-            // this == -b, i.e. the result is the point at infinity
+            
             return curve.getInfinity();
         }
 
@@ -171,7 +154,7 @@ public class Curve25519Point extends ECPoint.AbstractFp
 
         int[] Z3Squared = (Z1IsOne && Z2IsOne) ? HSquared : null;
 
-        // TODO If the result will only be used in a subsequent addition, we don't need W3
+        
         Curve25519FieldElement W3 = calculateJacobianModifiedW(Z3, Z3Squared);
 
         ECFieldElement[] zs = new ECFieldElement[]{ Z3, W3 };
@@ -266,7 +249,7 @@ public class Curve25519Point extends ECPoint.AbstractFp
         Curve25519FieldElement W = (Curve25519FieldElement)this.zs[1];
         if (W == null)
         {
-            // NOTE: Rarely, twicePlus will result in the need for a lazy W1 calculation here
+            
             this.zs[1] = W = calculateJacobianModifiedW((Curve25519FieldElement)this.zs[0], null);
         }
         return W;

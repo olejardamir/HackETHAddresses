@@ -1,11 +1,11 @@
 import java.math.BigInteger;
 
 class X9FieldID {
-    /** Base OID: 1.2.840.10045 */
+    
     private static final ASN1ObjectIdentifier ansi_X9_62 = new ASN1ObjectIdentifier("1.2.840.10045");
-    /** OID: 1.2.840.10045.1 */
+    
     private static final ASN1ObjectIdentifier id_fieldType = ansi_X9_62.branch("1");
-    /** OID: 1.2.840.10045.1.1 */
+    
     private static final ASN1ObjectIdentifier prime_field = id_fieldType.branch("1");
     private final ASN1ObjectIdentifier     id;
     private ASN1Primitive parameters;
@@ -51,10 +51,7 @@ class X9FieldID {
         return this.toASN1Primitive().equals(other.toASN1Primitive());
     }
 
-    /**
-     * @deprecated use toASN1Primitive()
-     * @return the underlying primitive type.
-     */
+    
     public ASN1Primitive toASN1Object()
     {
         return this.toASN1Primitive();

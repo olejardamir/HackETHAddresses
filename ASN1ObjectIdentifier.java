@@ -3,9 +3,7 @@ import java.io.ByteArrayOutputStream;
 import java.math.BigInteger;
 
 
-/**
- * Class representing the ASN.1 OBJECT IDENTIFIER type.
- */
+
 public class ASN1ObjectIdentifier
         extends ASN1Primitive
 {
@@ -13,11 +11,7 @@ public class ASN1ObjectIdentifier
 
     private byte[] body;
 
-    /**
-     * Create an OID based on the passed in String.
-     *
-     * @param identifier a string representation of an OID.
-     */
+    
     public ASN1ObjectIdentifier(
             String identifier)
     {
@@ -33,12 +27,7 @@ public class ASN1ObjectIdentifier
         this.identifier = identifier;
     }
 
-    /**
-     * Create an OID that creates a branch under the current one.
-     *
-     * @param branchID node numbers for the new branch.
-     * @return the OID for the new created branch.
-     */
+    
     private ASN1ObjectIdentifier(ASN1ObjectIdentifier oid, String branchID)
     {
         if (!isValidBranchID(branchID, 0))
@@ -49,22 +38,13 @@ public class ASN1ObjectIdentifier
         this.identifier = oid.getId() + "." + branchID;
     }
 
-    /**
-     * Return the OID as a string.
-     *
-     * @return the string representation of the OID carried by this object.
-     */
+    
     private String getId()
     {
         return identifier;
     }
 
-    /**
-     * Return an OID that creates a branch under the current one.
-     *
-     * @param branchID node numbers for the new branch.
-     * @return the OID for the new created branch.
-     */
+    
     public ASN1ObjectIdentifier branch(String branchID)
     {
         return new ASN1ObjectIdentifier(this, branchID);
@@ -204,7 +184,7 @@ public class ASN1ObjectIdentifier
         {
             char ch = branchID.charAt(pos);
 
-            // TODO Leading zeroes?
+            
             if ('0' <= ch && ch <= '9')
             {
                 periodAllowed = true;

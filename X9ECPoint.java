@@ -1,6 +1,4 @@
-/**
- * Class for describing an ECPoint as a DER object.
- */
+
 class X9ECPoint {
     private final ASN1OctetString encoding;
 
@@ -57,10 +55,7 @@ class X9ECPoint {
         return this.toASN1Primitive().equals(other.toASN1Primitive());
     }
 
-    /**
-     * @deprecated use toASN1Primitive()
-     * @return the underlying primitive type.
-     */
+    
     public ASN1Primitive toASN1Object()
     {
         return this.toASN1Primitive();

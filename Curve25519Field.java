@@ -4,7 +4,7 @@ class Curve25519Field
 {
     private static final long M = 0xFFFFFFFFL;
 
-    // 2^255 - 2^4 - 2^1 - 1
+    
     static final int[] P = new int[]{ 0xFFFFFFED, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,
             0xFFFFFFFF, 0x7FFFFFFF };
     private static final int P7 = 0x7FFFFFFF;
@@ -71,7 +71,7 @@ class Curve25519Field
 
     public static void reduce(int[] xx, int[] z)
     {
-//        assert xx[15] >>> 30 == 0;
+
 
         int xx07 = xx[7];
         Nat.shiftUpBit(8, xx, 8, xx07, z, 0);
@@ -89,7 +89,7 @@ class Curve25519Field
 
     public static void reduce27(int x, int[] z)
     {
-//        assert x >>> 26 == 0;
+
 
         int z7 = z[7];
         int c = (x << 1 | z7 >>> 31);
@@ -111,7 +111,7 @@ class Curve25519Field
 
     public static void squareN(int[] x, int n, int[] z)
     {
-//        assert n > 0;
+
 
         int[] tt = Nat256.createExt();
         Nat256.square(x, tt);

@@ -77,7 +77,7 @@ public class SecP256K1FieldElement extends ECFieldElement.AbstractFp
 
     public ECFieldElement divide(ECFieldElement b)
     {
-//        return multiply(b.invert());
+
         int[] z = Nat256.create();
         Mod.invert(SecP256K1Field.P, ((SecP256K1FieldElement)b).x, z);
         SecP256K1Field.multiply(z, x, z);
@@ -100,28 +100,17 @@ public class SecP256K1FieldElement extends ECFieldElement.AbstractFp
 
     public ECFieldElement invert()
     {
-//        return new SecP256K1FieldElement(toBigInteger().modInverse(Q));
+
         int[] z = Nat256.create();
         Mod.invert(SecP256K1Field.P, x, z);
         return new SecP256K1FieldElement(z);
     }
 
-    // D.1.4 91
-    /**
-     * return a sqrt root - the routine verifies that the calculation returns the right value - if
-     * none exists it returns null.
-     */
+    
+    
     public ECFieldElement sqrt()
     {
-        /*
-         * Raise this element to the exponent 2^254 - 2^30 - 2^7 - 2^6 - 2^5 - 2^4 - 2^2
-         *
-         * Breaking up the exponent's binary representation into "repunits", we get:
-         * { 223 1s } { 1 0s } { 22 1s } { 4 0s } { 2 1s } { 2 0s}
-         *
-         * Therefore we need an addition chain containing 2, 22, 223 (the lengths of the repunits)
-         * We use: 1, [2], 3, 6, 9, 11, [22], 44, 88, 176, 220, [223]
-         */
+        
 
         int[] x1 = this.x;
         if (Nat256.isZero(x1) || Nat256.isOne(x1))

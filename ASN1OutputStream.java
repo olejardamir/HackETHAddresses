@@ -2,9 +2,7 @@
 import java.io.IOException;
 import java.io.OutputStream;
 
-/**
- * Stream that produces output based on the default encoding for the passed in objects.
- */
+
 class ASN1OutputStream
 {
     private final OutputStream os;

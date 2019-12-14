@@ -1,17 +1,10 @@
 import java.math.BigInteger;
 
-/**
- * BigInteger utilities.
- */
+
 final class BigIntegers
 {
 
-    /**
-     * Return the passed in value as an unsigned byte array.
-     *
-     * @param value value to be converted.
-     * @return a byte array without a leading zero byte if present in the signed encoding.
-     */
+    
     public static byte[] asUnsignedByteArray(int length, BigInteger value)
     {
         byte[] bytes = value.toByteArray();

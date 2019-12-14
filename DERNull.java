@@ -1,8 +1,4 @@
-/**
- * An ASN.1 DER NULL object.
- * <p>
- * Preferably use the constant:  DERNull.INSTANCE.
- */
+
 public class DERNull
         extends ASN1Null
 {
@@ -10,9 +6,7 @@ public class DERNull
 
     private static final byte[]  zeroBytes = new byte[0];
 
-    /**
-     * @deprecated use DERNull.INSTANCE
-     */
+    
     public DERNull()
     {
     }

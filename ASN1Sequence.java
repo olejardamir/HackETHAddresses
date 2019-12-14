@@ -8,17 +8,12 @@ public abstract class ASN1Sequence
 {
     Vector seq = new Vector();
 
-    /**
-     * Create an empty SEQUENCE
-     */
+    
     ASN1Sequence()
     {
     }
 
-    /**
-     * Create a SEQUENCE containing a vector of objects.
-     * @param v the vector of objects to be put in the SEQUENCE.
-     */
+    
     ASN1Sequence(
             ASN1EncodableVector v)
     {
@@ -33,11 +28,7 @@ public abstract class ASN1Sequence
         return seq.elements();
     }
 
-    /**
-     * Return the number of objects in this sequence.
-     *
-     * @return the number of objects in this sequence.
-     */
+    
     private int size()
     {
         return seq.size();
@@ -102,10 +93,7 @@ public abstract class ASN1Sequence
         return (ASN1Encodable)e.nextElement();
     }
 
-    /**
-     * Change current SEQUENCE object to be encoded as {@link DERSequence}.
-     * This is part of Distinguished Encoding Rules form serialization.
-     */
+    
     ASN1Primitive toDERObject()
     {
         ASN1Sequence derSeq = new DERSequence();
@@ -115,10 +103,7 @@ public abstract class ASN1Sequence
         return derSeq;
     }
 
-    /**
-     * Change current SEQUENCE object to be encoded as {@link DLSequence}.
-     * This is part of Direct Length form serialization.
-     */
+    
     ASN1Primitive toDLObject()
     {
         ASN1Sequence dlSeq = new DLSequence();

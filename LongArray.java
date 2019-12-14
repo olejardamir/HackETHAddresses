@@ -2,14 +2,9 @@ import java.math.BigInteger;
 
 class LongArray implements Cloneable
 {
-//    private static long DEINTERLEAVE_MASK = 0x5555555555555555L;
 
-    /*
-     * This expands 8 bit indices into 16 bit contents (high bit 14), by inserting 0s between bits.
-     * In a binary field, this operation is the same as squaring an 8 bit number.
-     *
-     * NOTE: All entries are positive so sign-extension is not an issue.
-     */
+
+    
     private static final short[] INTERLEAVE2_TABLE = new short[]
             {
                     0x0000, 0x0001, 0x0004, 0x0005, 0x0010, 0x0011, 0x0014, 0x0015,
@@ -46,7 +41,7 @@ class LongArray implements Cloneable
                     0x5540, 0x5541, 0x5544, 0x5545, 0x5550, 0x5551, 0x5554, 0x5555
             };
 
-    // For toString(); must have length 64
+    
     private static final String ZEROES = "0000000000000000000000000000000000000000000000000000000000000000";
 
     private final static byte[] bitLengths =
@@ -69,7 +64,7 @@ class LongArray implements Cloneable
                     8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8
             };
 
-    // TODO make m fixed for the LongArray, and hence compute T once and for all
+    
 
     private long[] m_ints;
 
@@ -114,8 +109,8 @@ class LongArray implements Cloneable
         int barrStart = 0;
         if (barr[0] == 0)
         {
-            // First byte is 0 to enforce highest (=sign) bit is zero.
-            // In this case ignore barr[0].
+            
+            
             barrLen--;
             barrStart = 1;
         }
@@ -198,7 +193,7 @@ class LongArray implements Cloneable
             return 0;
         }
 
-        // Check if first element will act as sentinel
+        
         if (a[0] != 0)
         {
 
@@ -251,29 +246,29 @@ class LongArray implements Cloneable
         return (i << 6) + bitLength(w);
     }
 
-//    private int lowestCoefficient()
-//    {
-//        for (int i = 0; i < m_ints.length; ++i)
-//        {
-//            long mi = m_ints[i];
-//            if (mi != 0)
-//            {
-//                int j = 0;
-//                while ((mi & 0xFFL) == 0)
-//                {
-//                    j += 8;
-//                    mi >>>= 8;
-//                }
-//                while ((mi & 1L) == 0)
-//                {
-//                    ++j;
-//                    mi >>>= 1;
-//                }
-//                return (i << 6) + j;
-//            }
-//        }
-//        return -1;
-//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private static int bitLength(long w)
     {
@@ -335,7 +330,7 @@ class LongArray implements Cloneable
         int barrLen = 8 * (usedLen - 1) + barrI;
         byte[] barr = new byte[barrLen];
         if (barrI >= 0) System.arraycopy(temp, 0, barr, 0, barrI);
-        // Highest value int is done now
+        
 
         for (int iarrJ = usedLen - 2; iarrJ >= 0; iarrJ--)
         {
@@ -348,17 +343,17 @@ class LongArray implements Cloneable
         return new BigInteger(1, barr);
     }
 
-//    private static long shiftUp(long[] x, int xOff, int count)
-//    {
-//        long prev = 0;
-//        for (int i = 0; i < count; ++i)
-//        {
-//            long next = x[xOff + i];
-//            x[xOff + i] = (next << 1) | prev;
-//            prev = next >>> 63;
-//        }
-//        return prev;
-//    }
+
+
+
+
+
+
+
+
+
+
+
 
     private static void shiftUp(long[] x, int xOff, long[] z, int zOff, int count, int shift)
     {
@@ -385,32 +380,32 @@ class LongArray implements Cloneable
         return new LongArray(ints);
     }
 
-//    private void addShiftedByBits(LongArray other, int bits)
-//    {
-//        int words = bits >>> 6;
-//        int shift = bits & 0x3F;
-//
-//        if (shift == 0)
-//        {
-//            addShiftedByWords(other, words);
-//            return;
-//        }
-//
-//        int otherUsedLen = other.getUsedLength();
-//        if (otherUsedLen == 0)
-//        {
-//            return;
-//        }
-//
-//        int minLen = otherUsedLen + words + 1;
-//        if (minLen > m_ints.length)
-//        {
-//            m_ints = resizedInts(minLen);
-//        }
-//
-//        long carry = addShiftedByBits(m_ints, words, other.m_ints, 0, otherUsedLen, shift);
-//        m_ints[otherUsedLen + words] ^= carry;
-//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private void addShiftedByBitsSafe(LongArray other, int otherDegree, int bits)
     {
@@ -519,21 +514,21 @@ class LongArray implements Cloneable
         }
     }
 
-//    private static long getWord(long[] buf, int off, int len, int bit)
-//    {
-//        int n = off + (bit >>> 6);
-//        int shift = bit & 0x3F;
-//        if (shift == 0)
-//        {
-//            return buf[n];
-//        }
-//        long result = buf[n] >>> shift;
-//        if (++n < len)
-//        {
-//            result |= buf[n] << (64 - shift);
-//        }
-//        return result;
-//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public boolean testBitZero()
     {
@@ -542,9 +537,9 @@ class LongArray implements Cloneable
 
     private static boolean testBit(long[] buf, int n)
     {
-        // theInt = n / 64
+        
         int theInt = n >>> 6;
-        // theBit = n % 64
+        
         int theBit = n & 0x3F;
         long tester = 1L << theBit;
         return (buf[theInt] & tester) != 0;
@@ -552,33 +547,33 @@ class LongArray implements Cloneable
 
     private static void flipBit(long[] buf, int n)
     {
-        // theInt = n / 64
+        
         int theInt = n >>> 6;
-        // theBit = n % 64
+        
         int theBit = n & 0x3F;
         long flipper = 1L << theBit;
         buf[theInt] ^= flipper;
     }
 
-//    private static void setBit(long[] buf, int off, int n)
-//    {
-//        // theInt = n / 64
-//        int theInt = n >>> 6;
-//        // theBit = n % 64
-//        int theBit = n & 0x3F;
-//        long setter = 1L << theBit;
-//        buf[off + theInt] |= setter;
-//    }
-//
-//    private static void clearBit(long[] buf, int off, int n)
-//    {
-//        // theInt = n / 64
-//        int theInt = n >>> 6;
-//        // theBit = n % 64
-//        int theBit = n & 0x3F;
-//        long setter = 1L << theBit;
-//        buf[off + theInt] &= ~setter;
-//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private static void multiplyWord(long a, long[] b, int bLen, long[] c)
     {
@@ -603,9 +598,7 @@ class LongArray implements Cloneable
 
     public LongArray modMultiply(LongArray other, int m, int[] ks)
     {
-        /*
-         * Find out the degree of each argument and handle the zero cases
-         */
+        
         int aDeg = degree();
         if (aDeg == 0)
         {
@@ -617,9 +610,7 @@ class LongArray implements Cloneable
             return other;
         }
 
-        /*
-         * Swap if necessary so that A is the smaller argument
-         */
+        
         LongArray A = this, B = other;
         if (aDeg > bDeg)
         {
@@ -627,9 +618,7 @@ class LongArray implements Cloneable
             int tmp = aDeg; aDeg = bDeg; bDeg = tmp;
         }
 
-        /*
-         * Establish the word lengths of the arguments and result
-         */
+        
         int aLen = (aDeg + 63) >>> 6;
         int bLen = (bDeg + 63) >>> 6;
         int cLen = (aDeg + bDeg + 62) >>> 6;
@@ -642,31 +631,21 @@ class LongArray implements Cloneable
                 return B;
             }
 
-            /*
-             * Fast path for small A, with performance dependent only on the number of set bits
-             */
+            
             long[] c0 = new long[cLen];
             multiplyWord(a0, B.m_ints, bLen, c0);
 
-            /*
-             * Reduce the raw answer against the reduction coefficients
-             */
+            
             return reduceResult(c0, cLen, m, ks);
         }
 
-        /*
-         * Determine if B will get bigger during shifting
-         */
+        
         int bMax = (bDeg + 7 + 63) >>> 6;
 
-        /*
-         * Lookup table for the offset of each B in the tables
-         */
+        
         int[] ti = new int[16];
 
-        /*
-         * Precompute table of all 4-bit products of B
-         */
+        
         long[] T0 = new long[bMax << 4];
         int tOff = bMax;
         ti[1] = tOff;
@@ -684,21 +663,17 @@ class LongArray implements Cloneable
             }
         }
 
-        /*
-         * Second table with all 4-bit products of B shifted 4 bits
-         */
+        
         long[] T1 = new long[T0.length];
         shiftUp(T0, 0, T1, 0, T0.length, 4);
-//        shiftUp(T0, bMax, T1, bMax, tOff, 4);
+
 
         long[] a = A.m_ints;
         long[] c = new long[cLen << 3];
 
         int MASK = 0xF;
 
-        /*
-         * Lopez-Dahab (Modified) algorithm
-         */
+        
 
         for (int aPos = 0; aPos < aLen; ++aPos)
         {
@@ -727,17 +702,13 @@ class LongArray implements Cloneable
             }
         }
 
-        /*
-         * Finally the raw answer is collected, reduce it against the reduction coefficients
-         */
+        
         return reduceResult(c, cLen, m, ks);
     }
 
     public LongArray multiply(LongArray other)
     {
-        /*
-         * Find out the degree of each argument and handle the zero cases
-         */
+        
         int aDeg = degree();
         if (aDeg == 0)
         {
@@ -749,9 +720,7 @@ class LongArray implements Cloneable
             return other;
         }
 
-        /*
-         * Swap if necessary so that A is the smaller argument
-         */
+        
         LongArray A = this, B = other;
         if (aDeg > bDeg)
         {
@@ -759,9 +728,7 @@ class LongArray implements Cloneable
             int tmp = aDeg; aDeg = bDeg; bDeg = tmp;
         }
 
-        /*
-         * Establish the word lengths of the arguments and result
-         */
+        
         int aLen = (aDeg + 63) >>> 6;
         int bLen = (bDeg + 63) >>> 6;
         int cLen = (aDeg + bDeg + 62) >>> 6;
@@ -774,32 +741,22 @@ class LongArray implements Cloneable
                 return B;
             }
 
-            /*
-             * Fast path for small A, with performance dependent only on the number of set bits
-             */
+            
             long[] c0 = new long[cLen];
             multiplyWord(a0, B.m_ints, bLen, c0);
 
-            /*
-             * Reduce the raw answer against the reduction coefficients
-             */
-//            return reduceResult(c0, 0, cLen, m, ks);
+            
+
             return new LongArray(c0, cLen);
         }
 
-        /*
-         * Determine if B will get bigger during shifting
-         */
+        
         int bMax = (bDeg + 7 + 63) >>> 6;
 
-        /*
-         * Lookup table for the offset of each B in the tables
-         */
+        
         int[] ti = new int[16];
 
-        /*
-         * Precompute table of all 4-bit products of B
-         */
+        
         long[] T0 = new long[bMax << 4];
         int tOff = bMax;
         ti[1] = tOff;
@@ -817,21 +774,17 @@ class LongArray implements Cloneable
             }
         }
 
-        /*
-         * Second table with all 4-bit products of B shifted 4 bits
-         */
+        
         long[] T1 = new long[T0.length];
         shiftUp(T0, 0, T1, 0, T0.length, 4);
-//        shiftUp(T0, bMax, T1, bMax, tOff, 4);
+
 
         long[] a = A.m_ints;
         long[] c = new long[cLen << 3];
 
         int MASK = 0xF;
 
-        /*
-         * Lopez-Dahab (Modified) algorithm
-         */
+        
 
         for (int aPos = 0; aPos < aLen; ++aPos)
         {
@@ -860,10 +813,8 @@ class LongArray implements Cloneable
             }
         }
 
-        /*
-         * Finally the raw answer is collected, reduce it against the reduction coefficients
-         */
-//        return reduceResult(c, 0, cLen, m, ks);
+        
+
         return new LongArray(c, cLen);
     }
 
@@ -884,32 +835,32 @@ class LongArray implements Cloneable
         return new LongArray(buf, rLen);
     }
 
-//    private static void deInterleave(long[] x, int xOff, long[] z, int zOff, int count, int rounds)
-//    {
-//        for (int i = 0; i < count; ++i)
-//        {
-//            z[zOff + i] = deInterleave(x[zOff + i], rounds);
-//        }
-//    }
-//
-//    private static long deInterleave(long x, int rounds)
-//    {
-//        while (--rounds >= 0)
-//        {
-//            x = deInterleave32(x & DEINTERLEAVE_MASK) | (deInterleave32((x >>> 1) & DEINTERLEAVE_MASK) << 32);
-//        }
-//        return x;
-//    }
-//
-//    private static long deInterleave32(long x)
-//    {
-//        x = (x | (x >>> 1)) & 0x3333333333333333L;
-//        x = (x | (x >>> 2)) & 0x0F0F0F0F0F0F0F0FL;
-//        x = (x | (x >>> 4)) & 0x00FF00FF00FF00FFL;
-//        x = (x | (x >>> 8)) & 0x0000FFFF0000FFFFL;
-//        x = (x | (x >>> 16)) & 0x00000000FFFFFFFFL;
-//        return x;
-//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private static int reduceInPlace(long[] buf, int len, int m, int[] ks)
     {
@@ -919,7 +870,7 @@ class LongArray implements Cloneable
             return len;
         }
 
-        int numBits = Math.min(len << 6, (m << 1) - 1); // TODO use actual degree?
+        int numBits = Math.min(len << 6, (m << 1) - 1); 
         int excessBits = (len << 6) - numBits;
         while (excessBits >= 64)
         {
@@ -1016,11 +967,7 @@ class LongArray implements Cloneable
 
     private static void reduceVectorWise(long[] buf, int len, int words, int m, int[] ks)
     {
-        /*
-         * NOTE: It's important we go from highest coefficient to lowest, because for the highest
-         * one (only) we allow the ranges to partially overlap, and therefore any changes must take
-         * effect for the subsequent lower coefficients.
-         */
+        
         int baseBit = (words << 6) - m;
         int j = ks.length;
         while (--j >= 0)
@@ -1130,154 +1077,145 @@ class LongArray implements Cloneable
         return (r32 & 0xFFFFFFFFL) << 32 | (r00 & 0xFFFFFFFFL);
     }
 
-//    private static LongArray expItohTsujii2(LongArray B, int n, int m, int[] ks)
-//    {
-//        LongArray t1 = B, t3 = new LongArray(new long[]{ 1L });
-//        int scale = 1;
-//
-//        int numTerms = n;
-//        while (numTerms > 1)
-//        {
-//            if ((numTerms & 1) != 0)
-//            {
-//                t3 = t3.modMultiply(t1, m, ks);
-//                t1 = t1.modSquareN(scale, m, ks);
-//            }
-//
-//            LongArray t2 = t1.modSquareN(scale, m, ks);
-//            t1 = t1.modMultiply(t2, m, ks);
-//            numTerms >>>= 1; scale <<= 1;
-//        }
-//
-//        return t3.modMultiply(t1, m, ks);
-//    }
-//
-//    private static LongArray expItohTsujii23(LongArray B, int n, int m, int[] ks)
-//    {
-//        LongArray t1 = B, t3 = new LongArray(new long[]{ 1L });
-//        int scale = 1;
-//
-//        int numTerms = n;
-//        while (numTerms > 1)
-//        {
-//            boolean m03 = numTerms % 3 == 0;
-//            boolean m14 = !m03 && (numTerms & 1) != 0;
-//
-//            if (m14)
-//            {
-//                t3 = t3.modMultiply(t1, m, ks);
-//                t1 = t1.modSquareN(scale, m, ks);
-//            }
-//
-//            LongArray t2 = t1.modSquareN(scale, m, ks);
-//            t1 = t1.modMultiply(t2, m, ks);
-//
-//            if (m03)
-//            {
-//                t2 = t2.modSquareN(scale, m, ks);
-//                t1 = t1.modMultiply(t2, m, ks);
-//                numTerms /= 3; scale *= 3;
-//            }
-//            else
-//            {
-//                numTerms >>>= 1; scale <<= 1;
-//            }
-//        }
-//
-//        return t3.modMultiply(t1, m, ks);
-//    }
-//
-//    private static LongArray expItohTsujii235(LongArray B, int n, int m, int[] ks)
-//    {
-//        LongArray t1 = B, t4 = new LongArray(new long[]{ 1L });
-//        int scale = 1;
-//
-//        int numTerms = n;
-//        while (numTerms > 1)
-//        {
-//            if (numTerms % 5 == 0)
-//            {
-////                t1 = expItohTsujii23(t1, 5, m, ks);
-//
-//                LongArray t3 = t1;
-//                t1 = t1.modSquareN(scale, m, ks);
-//
-//                LongArray t2 = t1.modSquareN(scale, m, ks);
-//                t1 = t1.modMultiply(t2, m, ks);
-//                t2 = t1.modSquareN(scale << 1, m, ks);
-//                t1 = t1.modMultiply(t2, m, ks);
-//
-//                t1 = t1.modMultiply(t3, m, ks);
-//
-//                numTerms /= 5; scale *= 5;
-//                continue;
-//            }
-//
-//            boolean m03 = numTerms % 3 == 0;
-//            boolean m14 = !m03 && (numTerms & 1) != 0;
-//
-//            if (m14)
-//            {
-//                t4 = t4.modMultiply(t1, m, ks);
-//                t1 = t1.modSquareN(scale, m, ks);
-//            }
-//
-//            LongArray t2 = t1.modSquareN(scale, m, ks);
-//            t1 = t1.modMultiply(t2, m, ks);
-//
-//            if (m03)
-//            {
-//                t2 = t2.modSquareN(scale, m, ks);
-//                t1 = t1.modMultiply(t2, m, ks);
-//                numTerms /= 3; scale *= 3;
-//            }
-//            else
-//            {
-//                numTerms >>>= 1; scale <<= 1;
-//            }
-//        }
-//
-//        return t4.modMultiply(t1, m, ks);
-//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public LongArray modInverse(int m, int[] ks) {
-        /*
-         * Fermat's Little Theorem
-         */
-//        LongArray A = this;
-//        LongArray B = A.modSquare(m, ks);
-//        LongArray R0 = B, R1 = B;
-//        for (int i = 2; i < m; ++i)
-//        {
-//            R1 = R1.modSquare(m, ks);
-//            R0 = R0.modMultiply(R1, m, ks);
-//        }
-//
-//        return R0;
+        
 
-        /*
-         * Itoh-Tsujii
-         */
-//        LongArray B = modSquare(m, ks);
-//        switch (m)
-//        {
-//        case 409:
-//            return expItohTsujii23(B, m - 1, m, ks);
-//        case 571:
-//            return expItohTsujii235(B, m - 1, m, ks);
-//        case 163:
-//        case 233:
-//        case 283:
-//        default:
-//            return expItohTsujii2(B, m - 1, m, ks);
-//        }
 
-        /*
-         * Inversion in F2m using the extended Euclidean algorithm
-         *
-         * Input: A nonzero polynomial a(z) of degree at most m-1
-         * Output: a(z)^(-1) mod f(z)
-         */
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         int uzDegree = degree();
         if (uzDegree == 0)
         {
@@ -1288,16 +1226,16 @@ class LongArray implements Cloneable
             return this;
         }
 
-        // u(z) := a(z)
+        
         LongArray uz = (LongArray)clone();
 
         int t = (m + 63) >>> 6;
 
-        // v(z) := f(z)
+        
         LongArray vz = new LongArray(t);
         reduceBit(vz.m_ints, m, m, ks);
 
-        // g1(z) := 1, g2(z) := 0
+        
         LongArray g1z = new LongArray(t);
         g1z.m_ints[0] = 1L;
         LongArray g2z = new LongArray(t);
@@ -1408,7 +1346,7 @@ class LongArray implements Cloneable
         {
             String s = Long.toBinaryString(m_ints[i]);
 
-            // Add leading zeroes, except for highest significant word
+            
             int len = s.length();
             if (len < 64)
             {

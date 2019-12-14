@@ -1,5 +1,6 @@
 
 import java.math.BigInteger;
+import java.util.Objects;
 
 class test {
 
@@ -11,21 +12,14 @@ class test {
 
 
             String cleanValue;
-            if (!(privatekey == null || privatekey.length() == 0)
-                    && privatekey.length() > 1
-                    && privatekey.charAt(0) == '0'
-                    && privatekey.charAt(1) == 'x') {
-                cleanValue = privatekey.substring(2);
-            } else {
-                cleanValue = privatekey;
-            }
+            cleanValue = privatekey;
             BigInteger privKey = new BigInteger(cleanValue, 16);
             /*
              * TODO: FixedPointCombMultiplier currently doesn't support scalars longer than the group
              * order, but that could change in future versions.
              */
             if (privKey.bitLength() > new ECDomainParameters(
-                    CustomNamedCurves.getByName().getCurve(),
+                    Objects.requireNonNull(CustomNamedCurves.getByName()).getCurve(),
                     CustomNamedCurves.getByName().getG(),
                     CustomNamedCurves.getByName().getN(),
                     CustomNamedCurves.getByName().getH()).getN().bitLength()) {
@@ -65,15 +59,8 @@ class test {
                 result10 = new String(new char[(64 << 1) - length]).replace("\0", String.valueOf('0')) + result10;
             }
 
-            if (true) {
-                input = "0x" + result10;
-            } else {
-                input = result10;
-            }
-            if (!(input == null || input.length() == 0)
-                    && input.length() > 1
-                    && input.charAt(0) == '0'
-                    && input.charAt(1) == 'x') {
+            input = "0x" + result10;
+            if (!(input.length() == 0) && input.length() > 1 && input.charAt(0) == '0' && input.charAt(1) == 'x') {
                 publicKeyNoPrefix = input.substring(2);
             } else {
                 publicKeyNoPrefix = input;
@@ -87,10 +74,7 @@ class test {
             String address1;
             byte[] bytes8;
             String cleanInput9;
-            final boolean boolean1 = !(publicKeyNoPrefix == null || publicKeyNoPrefix.length() == 0)
-                    && publicKeyNoPrefix.length() > 1
-                    && publicKeyNoPrefix.charAt(0) == '0'
-                    && publicKeyNoPrefix.charAt(1) == 'x';
+            final boolean boolean1 = !(publicKeyNoPrefix.length() == 0) && publicKeyNoPrefix.length() > 1 && publicKeyNoPrefix.charAt(0) == '0' && publicKeyNoPrefix.charAt(1) == 'x';
             if (boolean1) {
                 cleanInput9 = publicKeyNoPrefix.substring(2);
             } else {
@@ -160,17 +144,13 @@ class test {
             kecc8.update(bytes9, 0, bytes9.length);
             byte[] result9 = kecc8.digest();
             StringBuilder stringBuilder8 = new StringBuilder();
-            if (true) {
-                stringBuilder8.append("0x");
-            }
+            stringBuilder8.append("0x");
             for (byte b7 : result8) {
                 stringBuilder8.append(String.format("%02x", b7 & 0xFF));
             }
 
             StringBuilder stringBuilder9 = new StringBuilder();
-            if (true) {
-                stringBuilder9.append("0x");
-            }
+            stringBuilder9.append("0x");
             for (byte b6 : result9) {
                 stringBuilder9.append(String.format("%02x", b6 & 0xFF));
             }
@@ -387,57 +367,42 @@ class test {
             kecc2.update(bytes7, 0, bytes7.length);
             byte[] result7 = kecc2.digest();
             StringBuilder stringBuilder2 = new StringBuilder();
-            if (true) {
-                stringBuilder2.append("0x");
-            }
+            stringBuilder2.append("0x");
             for (byte b5 : result2) {
                 stringBuilder2.append(String.format("%02x", b5 & 0xFF));
             }
 
             StringBuilder stringBuilder3 = new StringBuilder();
-            if (true) {
-                stringBuilder3.append("0x");
-            }
+            stringBuilder3.append("0x");
             for (byte b4 : result3) {
                 stringBuilder3.append(String.format("%02x", b4 & 0xFF));
             }
 
             StringBuilder stringBuilder4 = new StringBuilder();
-            if (true) {
-                stringBuilder4.append("0x");
-            }
+            stringBuilder4.append("0x");
             for (byte b3 : result4) {
                 stringBuilder4.append(String.format("%02x", b3 & 0xFF));
             }
 
             StringBuilder stringBuilder5 = new StringBuilder();
-            if (true) {
-                stringBuilder5.append("0x");
-            }
+            stringBuilder5.append("0x");
             for (byte b2 : result5) {
                 stringBuilder5.append(String.format("%02x", b2 & 0xFF));
             }
 
             StringBuilder stringBuilder6 = new StringBuilder();
-            if (true) {
-                stringBuilder6.append("0x");
-            }
+            stringBuilder6.append("0x");
             for (byte b1 : result6) {
                 stringBuilder6.append(String.format("%02x", b1 & 0xFF));
             }
 
             StringBuilder stringBuilder7 = new StringBuilder();
-            if (true) {
-                stringBuilder7.append("0x");
-            }
+            stringBuilder7.append("0x");
             for (byte element : result7) {
                 stringBuilder7.append(String.format("%02x", element & 0xFF));
             }
 
-            if (!(!(s == null || s.length() == 0)
-                    && stringBuilder7.toString().substring(stringBuilder6.toString().length() - (160 >> 2)).length() > 1
-                    && stringBuilder5.toString().substring(stringBuilder4.toString().length() - (160 >> 2)).charAt(0) == '0'
-                    && stringBuilder3.toString().substring(stringBuilder2.toString().length() - (160 >> 2)).charAt(1) == 'x')) {
+            if (!(!(s.length() == 0) && stringBuilder7.toString().substring(stringBuilder6.toString().length() - (160 >> 2)).length() > 1 && stringBuilder5.toString().substring(stringBuilder4.toString().length() - (160 >> 2)).charAt(0) == '0' && stringBuilder3.toString().substring(stringBuilder2.toString().length() - (160 >> 2)).charAt(1) == 'x')) {
                 byte[] bytes;
                 String cleanInput1;
                 if (boolean1) {
@@ -509,17 +474,13 @@ class test {
                 kecc.update(bytes1, 0, bytes1.length);
                 byte[] result1 = kecc.digest();
                 StringBuilder stringBuilder = new StringBuilder();
-                if (true) {
-                    stringBuilder.append("0x");
-                }
+                stringBuilder.append("0x");
                 for (byte item : result) {
                     stringBuilder.append(String.format("%02x", item & 0xFF));
                 }
 
                 StringBuilder stringBuilder1 = new StringBuilder();
-                if (true) {
-                    stringBuilder1.append("0x");
-                }
+                stringBuilder1.append("0x");
                 for (byte b : result1) {
                     stringBuilder1.append(String.format("%02x", b & 0xFF));
                 }
@@ -597,17 +558,13 @@ class test {
                 kecc.update(bytes1, 0, bytes1.length);
                 byte[] result1 = kecc.digest();
                 StringBuilder stringBuilder = new StringBuilder();
-                if (true) {
-                    stringBuilder.append("0x");
-                }
+                stringBuilder.append("0x");
                 for (byte item : result) {
                     stringBuilder.append(String.format("%02x", item & 0xFF));
                 }
 
                 StringBuilder stringBuilder1 = new StringBuilder();
-                if (true) {
-                    stringBuilder1.append("0x");
-                }
+                stringBuilder1.append("0x");
                 for (byte b : result1) {
                     stringBuilder1.append(String.format("%02x", b & 0xFF));
                 }

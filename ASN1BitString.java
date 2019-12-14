@@ -1,8 +1,6 @@
 import java.io.ByteArrayOutputStream;
 
-/**
- * Base class for BIT STRING objects
- */
+
 public abstract class ASN1BitString
         extends ASN1Primitive {
     private static final char[]  table = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
@@ -10,12 +8,7 @@ public abstract class ASN1BitString
     final byte[]      data;
     final int         padBits;
 
-    /**
-     * Base constructor.
-     *
-     * @param data the octets making up the bit string.
-     * @param padBits the number of extra bits at the end of the string.
-     */
+    
     ASN1BitString(
             byte[] data,
             int padBits)
@@ -37,11 +30,7 @@ public abstract class ASN1BitString
         this.padBits = padBits;
     }
 
-    /**
-     * Return a String representation of this BIT STRING
-     *
-     * @return a String representation.
-     */
+    
     private String getString() throws Exception {
         StringBuilder buf = new StringBuilder("#");
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
@@ -103,7 +92,7 @@ public abstract class ASN1BitString
     static byte[] derForm(byte[] data, int padBits)
     {
         byte[] rv = Arrays.clone(data);
-        // DER requires pad bits be zero
+        
         if (padBits > 0)
         {
             rv[data.length - 1] &= 0xff << padBits;

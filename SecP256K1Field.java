@@ -115,7 +115,7 @@ class SecP256K1Field
         long cc = Nat256.mul33Add(PInv33, xx, 8, xx, 0, z, 0);
         int c = Nat256.mul33DWordAdd(PInv33, cc, z, 0);
 
-        // assert c == 0L || c == 1L;
+        
 
         if (c != 0 || (z[7] == P7 && Nat256.gte(z, P)))
         {

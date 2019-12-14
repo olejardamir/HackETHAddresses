@@ -1,10 +1,7 @@
 
 import java.math.BigInteger;
 
-/**
- * ASN.1 def for Elliptic-Curve ECParameters structure. See
- * X9.62, for further details.
- */
+
 public class X9ECParameters {
     private static final BigInteger   ONE = BigInteger.valueOf(1);
 
@@ -99,10 +96,7 @@ public class X9ECParameters {
         return this.toASN1Primitive().equals(other.toASN1Primitive());
     }
 
-    /**
-     * @deprecated use toASN1Primitive()
-     * @return the underlying primitive type.
-     */
+    
     public ASN1Primitive toASN1Object()
     {
         return this.toASN1Primitive();

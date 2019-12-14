@@ -2,9 +2,7 @@
 import java.io.IOException;
 import java.io.OutputStream;
 
-/**
- * A streaming Hex encoder.
- */
+
 public class HexEncoder
         implements Encoder
 {
@@ -42,10 +40,7 @@ public class HexEncoder
         initialiseDecodingTable();
     }
 
-    /**
-     * encode the input data producing a Hex output stream.
-     *
-     */
+    
     public void encode(
             byte[]                data,
             int                    off,
@@ -69,11 +64,7 @@ public class HexEncoder
         return c == '\n' || c =='\r' || c == '\t' || c == ' ';
     }
 
-    /**
-     * decode the Hex encoded String data writing it to the given output stream,
-     * whitespace characters will be ignored.
-     *
-     */
+    
     public void decode(
             String          data,
             OutputStream    out)

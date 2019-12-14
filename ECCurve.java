@@ -2,9 +2,7 @@ import java.math.BigInteger;
 import java.util.Hashtable;
 import java.util.Random;
 
-/**
- * base class for an elliptic curve
- */
+
 public abstract class ECCurve
 {
     public static final int COORD_AFFINE = 0;
@@ -86,10 +84,7 @@ public abstract class ECCurve
         return p;
     }
 
-    /**
-     * @deprecated per-point compression property will be removed, use {@link #validatePoint(BigInteger, BigInteger)}
-     * and refer {@link ECPoint#getEncoded(boolean)}
-     */
+    
     public ECPoint validatePoint(BigInteger x, BigInteger y, boolean withCompression) throws CloneNotSupportedException {
         ECPoint p = createPoint(x, y, withCompression);
         if (p.isValid())
@@ -104,10 +99,7 @@ public abstract class ECCurve
         return createPoint(x, y, false);
     }
 
-    /**
-     * @deprecated per-point compression property will be removed, use {@link #createPoint(BigInteger, BigInteger)}
-     * and refer {@link ECPoint#getEncoded(boolean)}
-     */
+    
     public ECPoint createPoint(BigInteger x, BigInteger y, boolean withCompression)
     {
         return createRawPoint(fromBigInteger(x), fromBigInteger(y), withCompression);
@@ -122,18 +114,7 @@ public abstract class ECCurve
         return coord == COORD_AFFINE;
     }
 
-    /**
-     * Compute a <code>PreCompInfo</code> for a point on this curve, under a given name. Used by
-     * <code>ECMultiplier</code>s to save the precomputation for this <code>ECPoint</code> for use
-     * by subsequent multiplication.
-     *
-     * @param point
-     *            The <code>ECPoint</code> to store precomputations for.
-     * @param name
-     *            A <code>String</code> used to index precomputations of different types.
-     * @param callback
-     *            Called to calculate the <code>PreCompInfo</code>.
-     */
+    
     public PreCompInfo precompute(ECPoint point, String name, PreCompCallback callback) throws CloneNotSupportedException {
         checkPoint(point);
 
@@ -169,22 +150,13 @@ public abstract class ECCurve
             return getInfinity();
         }
 
-        // TODO Default behaviour could be improved if the two curves have the same coordinate system by copying any Z coordinates.
+        
         p = p.normalize();
 
         return createPoint(p.getXCoord().toBigInteger(), p.getYCoord().toBigInteger(), p.withCompression);
     }
 
-    /**
-     * Normalization ensures that any projective coordinate is 1, and therefore that the x, y
-     * coordinates reflect those of the equivalent point in an affine coordinate system. Where more
-     * than one point is to be normalized, this method will generally be more efficient than
-     * normalizing each point separately.
-     *
-     * @param points
-     *            An array of points that will be updated in place with their normalized versions,
-     *            where necessary
-     */
+    
     public void normalizeAll(ECPoint[] points) throws CloneNotSupportedException {
         normalizeAll(points, points.length);
     }
@@ -202,9 +174,7 @@ public abstract class ECCurve
             }
         }
 
-        /*
-         * Figure out which of the points actually need to be normalized
-         */
+        
         ECFieldElement[] zs = new ECFieldElement[len];
         int[] indices = new int[len];
         int count = 0;
@@ -264,14 +234,9 @@ public abstract class ECCurve
         return coord;
     }
 
-    protected abstract ECPoint decompressPoint(int yTilde, BigInteger X1) throws CloneNotSupportedException;
+    protected abstract ECPoint decompressPoint(int yTilde, BigInteger X1);
 
-    /**
-     * Decode a point on this curve from its ASN.1 encoding. The different
-     * encodings are taken account of, including point compression for
-     * <code>F<sub>p</sub></code> (X9.62 s 4.2.1 pg 17).
-     * @return The decoded point.
-     */
+    
     public ECPoint decodePoint(byte[] encoded) throws CloneNotSupportedException {
         ECPoint p;
         int expectedLength = (getFieldSize() + 7) / 8;
@@ -279,7 +244,7 @@ public abstract class ECCurve
         byte type = encoded[0];
         switch (type)
         {
-            case 0x00: // infinity
+            case 0x00: 
             {
                 if (encoded.length != 1)
                 {
@@ -289,8 +254,8 @@ public abstract class ECCurve
                 p = getInfinity();
                 break;
             }
-            case 0x02: // compressed
-            case 0x03: // compressed
+            case 0x02: 
+            case 0x03: 
             {
                 if (encoded.length != (expectedLength + 1))
                 {
@@ -308,7 +273,7 @@ public abstract class ECCurve
 
                 break;
             }
-            case 0x04: // uncompressed
+            case 0x04: 
             {
                 if (encoded.length != (2 * expectedLength + 1))
                 {
@@ -321,8 +286,8 @@ public abstract class ECCurve
                 p = validatePoint(X, Y);
                 break;
             }
-            case 0x06: // hybrid
-            case 0x07: // hybrid
+            case 0x06: 
+            case 0x07: 
             {
                 if (encoded.length != (2 * expectedLength + 1))
                 {
@@ -352,10 +317,7 @@ public abstract class ECCurve
         return p;
     }
 
-    /**
-     * Create a cache-safe lookup table for the specified sequence of points. All the points MUST
-     * belong to this {@link ECCurve} instance, and MUST already be normalized.
-     */
+    
     public ECLookupTable createCacheSafeLookupTable(final ECPoint[] points, int off, final int len)
     {
         final int FE_BYTES = (getFieldSize() + 7) >>> 3;
@@ -428,7 +390,7 @@ public abstract class ECCurve
 
         for (int i = 0; i < len; ++i)
         {
-            ECPoint point = points[0 + i];
+            ECPoint point = points[i];
             if (null != point && this != point.getCurve())
             {
                 throw new IllegalArgumentException("'points' entries must be null or on this curve");
@@ -473,9 +435,7 @@ public abstract class ECCurve
             ECFieldElement rhs = x.square().add(this.a).multiply(x).add(this.b);
             ECFieldElement y = rhs.sqrt();
 
-            /*
-             * If y is not a square, then we haven't got a point on the curve
-             */
+            
             if (y == null)
             {
                 throw new IllegalArgumentException("Invalid point compression");
@@ -483,7 +443,7 @@ public abstract class ECCurve
 
             if (y.testBitZero() != (yTilde == 1))
             {
-                // Use the other root
+                
                 y = y.negate();
             }
 
@@ -491,9 +451,7 @@ public abstract class ECCurve
         }
     }
 
-    /**
-     * Elliptic curve over Fp
-     */
+    
     public static class Fp extends AbstractFp
     {
         private static final int FP_DEFAULT_COORDS = ECCurve.COORD_JACOBIAN_MODIFIED;
@@ -502,18 +460,14 @@ public abstract class ECCurve
           BigInteger r;
           ECPoint.Fp infinity;
 
-        /**
-         * @deprecated use constructor taking order/cofactor
-         */
+        
         public Fp()
         {
             super();
 
         }
 
-        /**
-         * @deprecated use constructor taking order/cofactor
-         */
+        
         protected Fp(BigInteger q, BigInteger r, ECFieldElement a, ECFieldElement b)
         {
             this(q, r, a, b, null, null);
@@ -624,16 +578,8 @@ public abstract class ECCurve
             super(buildField(m, k1, k2, k3));
         }
 
-        /**
-         * Decompresses a compressed point P = (xp, yp) (X9.62 s 4.2.2).
-         *
-         * @param yTilde
-         *            ~yp, an indication bit for the decompression of yp.
-         * @param X1
-         *            The field element xp.
-         * @return the decompressed point.
-         */
-        protected ECPoint decompressPoint(int yTilde, BigInteger X1) throws CloneNotSupportedException {
+        
+        protected ECPoint decompressPoint(int yTilde, BigInteger X1) {
             ECFieldElement x = this.fromBigInteger(X1), y = null;
             if (x.isZero())
             {
@@ -675,15 +621,7 @@ public abstract class ECCurve
             return this.createRawPoint(x, y, true);
         }
 
-        /**
-         * Solves a quadratic equation <code>z<sup>2</sup> + z = beta</code>(X9.62
-         * D.1.6) The other solution is <code>z + 1</code>.
-         *
-         * @param beta
-         *            The value to solve the quadratic equation for.
-         * @return the solution for <code>z<sup>2</sup> + z = beta</code> or
-         *         <code>null</code> if no solution exists.
-         */
+        
         ECFieldElement solveQuadraticEquation(ECFieldElement beta) {
             if (beta.isZero())
             {
@@ -718,88 +656,26 @@ public abstract class ECCurve
 
     }
 
-    /**
-     * Elliptic curves over F2m. The Weierstrass equation is given by
-     * <code>y<sup>2</sup> + xy = x<sup>3</sup> + ax<sup>2</sup> + b</code>.
-     */
+    
     public static class F2m extends AbstractF2m
     {
         private static final int F2M_DEFAULT_COORDS = ECCurve.COORD_LAMBDA_PROJECTIVE;
 
-        /**
-         * The exponent <code>m</code> of <code>F<sub>2<sup>m</sup></sub></code>.
-         */
-        private   int m;  // can't be final - JDK 1.1
+        
+        private   int m;  
 
-        /**
-         * TPB: The integer <code>k</code> where <code>x<sup>m</sup> +
-         * x<sup>k</sup> + 1</code> represents the reduction polynomial
-         * <code>f(z)</code>.<br>
-         * PPB: The integer <code>k1</code> where <code>x<sup>m</sup> +
-         * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-         * represents the reduction polynomial <code>f(z)</code>.<br>
-         */
-        private   int k1;  // can't be final - JDK 1.1
+        
+        private   int k1;  
 
-        /**
-         * TPB: Always set to <code>0</code><br>
-         * PPB: The integer <code>k2</code> where <code>x<sup>m</sup> +
-         * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-         * represents the reduction polynomial <code>f(z)</code>.<br>
-         */
-        private   int k2;  // can't be final - JDK 1.1
+        
+        private   int k2;  
 
-        /**
-         * TPB: Always set to <code>0</code><br>
-         * PPB: The integer <code>k3</code> where <code>x<sup>m</sup> +
-         * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-         * represents the reduction polynomial <code>f(z)</code>.<br>
-         */
-        private   int k3;  // can't be final - JDK 1.1
+        
+        private   int k3;  
 
-        /**
-         * The point at infinity on this curve.
-         */
-        private   ECPoint.F2m infinity;  // can't be final - JDK 1.1
+        
+        private   ECPoint.F2m infinity;  
 
-        /**
-         * Constructor for Trinomial Polynomial Basis (TPB).
-         * @param m  The exponent <code>m</code> of
-         * <code>F<sub>2<sup>m</sup></sub></code>.
-         * @param k The integer <code>k</code> where <code>x<sup>m</sup> +
-         * x<sup>k</sup> + 1</code> represents the reduction
-         * polynomial <code>f(z)</code>.
-         * @param a The coefficient <code>a</code> in the Weierstrass equation
-         * for non-supersingular elliptic curves over
-         * <code>F<sub>2<sup>m</sup></sub></code>.
-         * @param b The coefficient <code>b</code> in the Weierstrass equation
-         * for non-supersingular elliptic curves over
-         * <code>F<sub>2<sup>m</sup></sub></code>.
-         * @deprecated use constructor taking order/cofactor
-         */
-
-
-        /**
-         * Constructor for Pentanomial Polynomial Basis (PPB).
-         * @param m  The exponent <code>m</code> of
-         * <code>F<sub>2<sup>m</sup></sub></code>.
-         * @param k1 The integer <code>k1</code> where <code>x<sup>m</sup> +
-         * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-         * represents the reduction polynomial <code>f(z)</code>.
-         * @param k2 The integer <code>k2</code> where <code>x<sup>m</sup> +
-         * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-         * represents the reduction polynomial <code>f(z)</code>.
-         * @param k3 The integer <code>k3</code> where <code>x<sup>m</sup> +
-         * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-         * represents the reduction polynomial <code>f(z)</code>.
-         * @param a The coefficient <code>a</code> in the Weierstrass equation
-         * for non-supersingular elliptic curves over
-         * <code>F<sub>2<sup>m</sup></sub></code>.
-         * @param b The coefficient <code>b</code> in the Weierstrass equation
-         * for non-supersingular elliptic curves over
-         * <code>F<sub>2<sup>m</sup></sub></code>.
-         * @deprecated use constructor taking order/cofactor
-         */
 
 
         F2m(int m, int k1, int k2, int k3, ECFieldElement a, ECFieldElement b, BigInteger order, BigInteger cofactor)
@@ -858,11 +734,7 @@ public abstract class ECCurve
             return infinity;
         }
 
-        /**
-         * Return true if curve uses a Trinomial basis.
-         *
-         * @return true if curve Trinomial, false otherwise.
-         */
+        
         boolean isTrinomial()
         {
             return k2 == 0 && k3 == 0;

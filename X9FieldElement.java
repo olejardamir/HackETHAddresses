@@ -1,6 +1,4 @@
-/**
- * class for processing an FieldElement as a DER object.
- */
+
 class X9FieldElement {
     private final ECFieldElement  f;
 
@@ -43,10 +41,7 @@ class X9FieldElement {
         return this.toASN1Primitive().equals(other.toASN1Primitive());
     }
 
-    /**
-     * @deprecated use toASN1Primitive()
-     * @return the underlying primitive type.
-     */
+    
     public ASN1Primitive toASN1Object()
     {
         return this.toASN1Primitive();

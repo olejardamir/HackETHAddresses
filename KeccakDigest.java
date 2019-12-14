@@ -1,8 +1,4 @@
-/**
- * implementation of Keccak based on following KeccakNISTInterface.c from http://keccak.noekeon.org/
- * <p>
- * Following the naming conventions used in the C source code to enable easy review of the implementation.
- */
+
 public class KeccakDigest
         implements ExtendedDigest
 {
@@ -239,7 +235,7 @@ public class KeccakDigest
 
         for (int i = 0; i < 24; i++)
         {
-            // theta
+            
             long c0 = a00 ^ a05 ^ a10 ^ a15 ^ a20;
             long c1 = a01 ^ a06 ^ a11 ^ a16 ^ a21;
             long c2 = a02 ^ a07 ^ a12 ^ a17 ^ a22;
@@ -258,7 +254,7 @@ public class KeccakDigest
             a03 ^= d4; a08 ^= d4; a13 ^= d4; a18 ^= d4; a23 ^= d4;
             a04 ^= d0; a09 ^= d0; a14 ^= d0; a19 ^= d0; a24 ^= d0;
 
-            // rho/pi
+            
             c1  = a01 <<  1 | a01 >>> 63;
             a01 = a06 << 44 | a06 >>> 20;
             a06 = a09 << 20 | a09 >>> 44;
@@ -285,7 +281,7 @@ public class KeccakDigest
             a07 = a10 <<  3 | a10 >>> 61;
             a10 = c1;
 
-            // chi
+            
             c0 = a00 ^ (~a01 & a02);
             c1 = a01 ^ (~a02 & a03);
             a02 ^= ~a03 & a04;
@@ -326,7 +322,7 @@ public class KeccakDigest
             a20 = c0;
             a21 = c1;
 
-            // iota
+            
             a00 ^= KeccakRoundConstants[i];
         }
 

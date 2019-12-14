@@ -321,7 +321,7 @@ abstract class Nat256
 
     public static long mul33Add(int w, int[] x, int xOff, int[] y, int yOff, int[] z, int zOff)
     {
-        // assert w >>> 31 == 0;
+        
 
         long c = 0, wVal = w & M;
         long x0 = x[xOff] & M;
@@ -392,8 +392,8 @@ abstract class Nat256
 
     public static int mul33DWordAdd(int x, long y, int[] z, int zOff)
     {
-        // assert x >>> 31 == 0;
-        // assert zOff <= 4;
+        
+        
 
         long c = 0, xVal = x & M;
         long y00 = y & M;
@@ -415,8 +415,8 @@ abstract class Nat256
 
     public static int mul33WordAdd(int x, int y, int[] z, int zOff)
     {
-        // assert x >>> 31 == 0;
-        // assert zOff <= 5;
+        
+        
 
         long c = 0, xVal = x & M, yVal = y & M;
         c += yVal * xVal + (z[zOff] & M);

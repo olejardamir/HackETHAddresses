@@ -1,9 +1,7 @@
 
 import java.io.OutputStream;
 
-/**
- * Stream that outputs encoding based on distinguished encoding rules.
- */
+
 public class DEROutputStream
         extends ASN1OutputStream
 {

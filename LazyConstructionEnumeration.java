@@ -4,14 +4,8 @@ import java.util.Enumeration;
 class LazyConstructionEnumeration
         implements Enumeration
 {
-    private final ASN1InputStream aIn;
+    private  ASN1InputStream aIn;
     private Object          nextObj;
-
-    public LazyConstructionEnumeration(byte[] encoded)
-    {
-        aIn = new ASN1InputStream(encoded, true);
-        nextObj = readObject();
-    }
 
     public boolean hasMoreElements()
     {
@@ -35,7 +29,7 @@ class LazyConstructionEnumeration
         }
         catch (Exception e)
         {
-          //  throw new ASN1ParsingException("malformed DER construction: " + e, e);
+          
         }
         return null;
     }

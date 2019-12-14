@@ -2,16 +2,14 @@
 import java.math.BigInteger;
 import java.util.Hashtable;
 
-/**
- * base class for points on elliptic curves.
- */
+
 public abstract class ECPoint
 {
     private final static ECFieldElement[] EMPTY_ZS = new ECFieldElement[0];
 
     private static ECFieldElement[] getInitialZCoords(ECCurve curve)
     {
-        // Cope with null curve, most commonly used by implicitlyCa
+        
         int coord = null == curve ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
 
         switch (coord)
@@ -47,7 +45,7 @@ public abstract class ECPoint
 
     boolean withCompression;
 
-    // Hashtable is (String -> PreCompInfo)
+    
     Hashtable preCompTable = null;
 
     ECPoint(ECCurve curve, ECFieldElement x, ECFieldElement y)
@@ -63,20 +61,20 @@ public abstract class ECPoint
         this.zs = zs;
     }
 
-    protected abstract boolean satisfiesCurveEquation() throws CloneNotSupportedException;
+    protected abstract boolean satisfiesCurveEquation();
 
-//    boolean satisfiesOrder() throws CloneNotSupportedException {
-//        if (ECConstants.ONE.equals(curve.getCofactor()))
-//        {
-//            return false;
-//        }
-//
-//        BigInteger n = curve.getOrder();
-//
-//        // TODO Require order to be available for all curves
-//
-//        return n != null && !ECAlgorithms.referenceMultiply(this, n).isInfinity();
-//    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     public ECCurve getCurve()
     {
@@ -85,46 +83,23 @@ public abstract class ECPoint
 
     int getCurveCoordinateSystem()
     {
-        // Cope with null curve, most commonly used by implicitlyCa
+        
         return null == curve ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
     }
 
-    /**
-     * Returns the affine y-coordinate after checking that this point is normalized
-     *
-     * @return The affine y-coordinate of this point
-     * @throws IllegalStateException if the point is not normalized
-     */
+    
     ECFieldElement getAffineYCoord() throws CloneNotSupportedException {
         checkNormalized();
         return getYCoord();
     }
 
-    /**
-     * Returns the x-coordinate.
-     *
-     * Caution: depending on the curve's coordinate system, this may not be the same value as in an
-     * affine coordinate system; use normalize() to get a point where the coordinates have their
-     * affine values, or use getAffineXCoord() if you expect the point to already have been
-     * normalized.
-     *
-     * @return the x-coordinate of this point
-     */
+    
     public ECFieldElement getXCoord()
     {
         return x;
     }
 
-    /**
-     * Returns the y-coordinate.
-     *
-     * Caution: depending on the curve's coordinate system, this may not be the same value as in an
-     * affine coordinate system; use normalize() to get a point where the coordinates have their
-     * affine values, or use getAffineYCoord() if you expect the point to already have been
-     * normalized.
-     *
-     * @return the y-coordinate of this point
-     */
+    
     public ECFieldElement getYCoord() throws CloneNotSupportedException {
         return y;
     }
@@ -162,13 +137,8 @@ public abstract class ECPoint
                 && !zs[0].isOne();
     }
 
-    /**
-     * Normalization ensures that any projective coordinate is 1, and therefore that the x, y
-     * coordinates reflect those of the equivalent point in an affine coordinate system.
-     *
-     * @return a new ECPoint instance representing the same point, but with normalized coordinates
-     */
-    public ECPoint normalize() throws CloneNotSupportedException {
+    
+    public ECPoint normalize() {
         if (this.isInfinity())
         {
             return this;
@@ -227,9 +197,7 @@ public abstract class ECPoint
         return x == null || y == null || (zs.length > 0 && zs[0].isZero());
     }
 
-    /**
-     * @deprecated per-point compression property will be removed, refer {@link #getEncoded(boolean)}
-     */
+    
     public boolean isCompressed()
     {
         return this.withCompression;
@@ -273,11 +241,11 @@ public abstract class ECPoint
                 }
                 if (checkOrder && !info.hasOrderPassed())
                 {
-//                    if (satisfiesOrder())
-//                    {
-//                        info.reportFailed();
-//                        return info;
-//                    }
+
+
+
+
+
                     info.reportOrderPassed();
                 }
                 return info;
@@ -318,11 +286,11 @@ public abstract class ECPoint
         }
         else
         {
-            // TODO Consider just requiring already normalized, to avoid silent performance degradation
+            
 
             ECPoint[] points = new ECPoint[]{ this, c1.importPoint(p2) };
 
-            // TODO This is a little strong, really only requires coZNormalizeAll to get Zs equal
+            
             c1.normalizeAll(points);
 
             p1 = points[0];
@@ -359,14 +327,11 @@ public abstract class ECPoint
 
         if (!this.isInfinity())
         {
-            // TODO Consider just requiring already normalized, to avoid silent performance degradation
+            
 
             ECPoint p = null;
-            try {
-                p = normalize();
-            } catch (CloneNotSupportedException e) {
-                e.printStackTrace();
-            }
+                 p = normalize();
+
 
             assert p != null;
             hc ^= p.getXCoord().hashCode() * 17;
@@ -400,20 +365,12 @@ public abstract class ECPoint
         return sb.toString();
     }
 
-    /**
-     * @deprecated per-point compression property will be removed, refer {@link #getEncoded(boolean)}
-     * @return a byte encoding.
-     */
+    
     public byte[] getEncoded() throws CloneNotSupportedException {
         return getEncoded(this.withCompression);
     }
 
-    /**
-     * Get an encoding of the point value, optionally in compressed format.
-     *
-     * @param compressed whether to generate a compressed point encoding.
-     * @return the point encoding
-     */
+    
     public byte[] getEncoded(boolean compressed) throws CloneNotSupportedException {
         if (this.isInfinity())
         {
@@ -532,26 +489,15 @@ public abstract class ECPoint
                 return this;
             }
 
-            // Add -b
+            
             return this.add(b.negate());
         }
     }
 
-    /**
-     * Elliptic curve points over Fp
-     */
+    
     public static class Fp extends AbstractFp
     {
-        /**
-         * Create a point that encodes with or without point compression.
-         *
-         * @param curve the curve to use
-         * @param x affine x co-ordinate
-         * @param y affine y co-ordinate
-         * @param withCompression if true encode with point compression
-         *
-         * @deprecated per-point compression property will be removed, refer {@link #getEncoded(boolean)}
-         */
+        
         public Fp(ECCurve curve, ECFieldElement x, ECFieldElement y, boolean withCompression)
         {
             super(curve, x, y);
@@ -581,7 +527,7 @@ public abstract class ECPoint
             return super.getZCoord(index);
         }
 
-        // B.3 pg 62
+        
         public ECPoint add(ECPoint b) throws CloneNotSupportedException {
             if (this.isInfinity())
             {
@@ -612,11 +558,11 @@ public abstract class ECPoint
                     {
                         if (dy.isZero())
                         {
-                            // this == b, i.e. this must be doubled
+                            
                             return twice();
                         }
 
-                        // this == -b, i.e. the result is the point at infinity
+                        
                         return curve.getInfinity();
                     }
 
@@ -642,20 +588,20 @@ public abstract class ECPoint
                     ECFieldElement v2 = Z2IsOne ? X1 : X1.multiply(Z2);
                     ECFieldElement v = v1.subtract(v2);
 
-                    // Check if b == this or b == -this
+                    
                     if (v.isZero())
                     {
                         if (u.isZero())
                         {
-                            // this == b, i.e. this must be doubled
+                            
                             return this.twice();
                         }
 
-                        // this == -b, i.e. the result is the point at infinity
+                        
                         return curve.getInfinity();
                     }
 
-                    // TODO Optimize for when w == 1
+                    
                     ECFieldElement w = Z1IsOne ? Z2 : Z2IsOne ? Z1 : Z1.multiply(Z2);
                     ECFieldElement vSquared = v.square();
                     ECFieldElement vCubed = vSquared.multiply(v);
@@ -681,7 +627,7 @@ public abstract class ECPoint
 
                     if (!Z1IsOne && Z1.equals(Z2))
                     {
-                        // TODO Make this available as public method coZAdd?
+                        
 
                         ECFieldElement dx = X1.subtract(X2), dy = Y1.subtract(Y2);
                         if (dx.isZero())
@@ -735,16 +681,16 @@ public abstract class ECPoint
                         ECFieldElement H = U1.subtract(U2);
                         ECFieldElement R = S1.subtract(S2);
 
-                        // Check if b == this or b == -this
+                        
                         if (H.isZero())
                         {
                             if (R.isZero())
                             {
-                                // this == b, i.e. this must be doubled
+                                
                                 return this.twice();
                             }
 
-                            // this == -b, i.e. the result is the point at infinity
+                            
                             return curve.getInfinity();
                         }
 
@@ -765,10 +711,10 @@ public abstract class ECPoint
                             Z3 = Z3.multiply(Z2);
                         }
 
-                        // Alternative calculation of Z3 using fast square
-                        //                X3 = four(X3);
-                        //                Y3 = eight(Y3);
-                        //                Z3 = doubleProductFromSquares(Z1, Z2, Z1Squared, Z2Squared).multiply(H);
+                        
+                        
+                        
+                        
 
                         if (Z3 == H)
                         {
@@ -779,7 +725,7 @@ public abstract class ECPoint
                     ECFieldElement[] zs;
                     if (coord == ECCurve.COORD_JACOBIAN_MODIFIED)
                     {
-                        // TODO If the result will only be used in a subsequent addition, we don't need W3
+                        
                         ECFieldElement W3 = calculateJacobianModifiedW(Z3, Z3Squared);
 
                         zs = new ECFieldElement[]{ Z3, W3 };
@@ -799,7 +745,7 @@ public abstract class ECPoint
             }
         }
 
-        // B.3 pg 62
+        
         public ECPoint twice() throws CloneNotSupportedException {
             if (this.isInfinity())
             {
@@ -836,7 +782,7 @@ public abstract class ECPoint
 
                     boolean Z1IsOne = Z1.isOne();
 
-                    // TODO Optimize for small negative a4 and -3
+                    
                     ECFieldElement w = curve.getA();
                     if (!w.isZero() && !Z1IsOne)
                     {
@@ -900,7 +846,7 @@ public abstract class ECPoint
                                 M = M.add(Z1Pow4.multiply(a4));
                             }
                         }
-//                  S = two(doubleProductFromSquares(X1, Y1Squared, X1Squared, T));
+
                         S = four(X1.multiply(Y1Squared));
                     }
 
@@ -913,8 +859,8 @@ public abstract class ECPoint
                         Z3 = Z3.multiply(Z1);
                     }
 
-                    // Alternative calculation of Z3 using fast square
-//                ECFieldElement Z3 = doubleProductFromSquares(Y1, Z1, Y1Squared, Z1Squared);
+                    
+
 
                     return new ECPoint.Fp(curve, X3, Y3, new ECFieldElement[]{ Z3 }, this.withCompression);
                 }
@@ -967,18 +913,15 @@ public abstract class ECPoint
                     {
                         if (dy.isZero())
                         {
-                            // this == b i.e. the result is 3P
+                            
                             return threeTimes();
                         }
 
-                        // this == -b, i.e. the result is P
+                        
                         return this;
                     }
 
-                    /*
-                     * Optimized calculation of 2P + Q, as described in "Trading Inversions for
-                     * Multiplications in Elliptic Curve Cryptography", by Ciet, Joye, Lauter, Montgomery.
-                     */
+                    
 
                     ECFieldElement X = dx.square(), Y = dy.square();
                     ECFieldElement d = X.multiply(two(X1).add(X2)).subtract(Y);
@@ -1054,7 +997,7 @@ public abstract class ECPoint
                 }
                 default:
                 {
-                    // NOTE: Be careful about recursions between twicePlus and threeTimes
+                    
                     return twice().add(this);
                 }
             }
@@ -1159,11 +1102,11 @@ public abstract class ECPoint
             return x.add(x);
         }
 
-        ECFieldElement three(ECFieldElement x) throws CloneNotSupportedException {
+        ECFieldElement three(ECFieldElement x) {
             return two(x).add(x);
         }
 
-        ECFieldElement four(ECFieldElement x) throws CloneNotSupportedException {
+        ECFieldElement four(ECFieldElement x) {
             return two(two(x));
         }
 
@@ -1220,7 +1163,7 @@ public abstract class ECPoint
             ECFieldElement W = this.zs[1];
             if (W == null)
             {
-                // NOTE: Rarely, twicePlus will result in the need for a lazy W1 calculation here
+                
                 this.zs[1] = W = calculateJacobianModifiedW(this.zs[0], null);
             }
             return W;
@@ -1257,7 +1200,7 @@ public abstract class ECPoint
             super(curve, x, y, zs);
         }
 
-        protected boolean satisfiesCurveEquation() throws CloneNotSupportedException {
+        protected boolean satisfiesCurveEquation() {
             ECCurve curve = this.getCurve();
             ECFieldElement X = this.x, A = curve.getA(), B = curve.getB();
 
@@ -1269,7 +1212,7 @@ public abstract class ECPoint
 
                 if (X.isZero())
                 {
-                    // NOTE: For x == 0, we expect the affine-y instead of the lambda-y
+                    
                     ECFieldElement lhs = this.y.square(), rhs = B;
                     if (!ZIsOne)
                     {
@@ -1289,7 +1232,7 @@ public abstract class ECPoint
                 {
                     ECFieldElement Z2 = Z.square(), Z4 = Z2.square();
                     lhs = L.add(Z).multiplyPlusProduct(L, A, Z2);
-                    // TODO If sqrt(b) is precomputed this can be simplified to a single square
+                    
                     rhs = X2.squarePlusProduct(B, Z4);
                 }
                 lhs = lhs.multiply(X2);
@@ -1330,25 +1273,16 @@ public abstract class ECPoint
                 return this;
             }
 
-            // Add -b
+            
             return this.add(b.negate());
         }
 
     }
 
-    /**
-     * Elliptic curve points over F2m
-     */
+    
     public static class F2m extends AbstractF2m
     {
-        /**
-         * @param curve base curve
-         * @param x x point
-         * @param y y point
-         * @param withCompression true if encode with point compression.
-         *
-         * @deprecated per-point compression property will be removed, refer {@link #getEncoded(boolean)}
-         */
+        
         public F2m(ECCurve curve, ECFieldElement x, ECFieldElement y, boolean withCompression)
         {
             super(curve, x, y);
@@ -1360,10 +1294,10 @@ public abstract class ECPoint
 
             if (x != null)
             {
-                // Check if x and y are elements of the same field
+                
                 ECFieldElement.F2m.checkFieldElements(this.x, this.y);
 
-                // Check if x and a are elements of the same field
+                
                 if (curve != null)
                 {
                     ECFieldElement.F2m.checkFieldElements(this.x, this.curve.getA());
@@ -1372,7 +1306,7 @@ public abstract class ECPoint
 
             this.withCompression = withCompression;
 
-//            checkCurveEquation();
+
         }
 
         F2m(ECCurve curve, ECFieldElement x, ECFieldElement y, ECFieldElement[] zs, boolean withCompression)
@@ -1381,7 +1315,7 @@ public abstract class ECPoint
 
             this.withCompression = withCompression;
 
-//            checkCurveEquation();
+
         }
 
         public ECFieldElement getYCoord() throws CloneNotSupportedException {
@@ -1399,7 +1333,7 @@ public abstract class ECPoint
                         return L;
                     }
 
-                    // Y is actually Lambda (X + Y/X) here; convert to affine value on the fly
+                    
                     ECFieldElement Y = L.add(X).multiply(X);
                     if (ECCurve.COORD_LAMBDA_PROJECTIVE == coord)
                     {
@@ -1432,7 +1366,7 @@ public abstract class ECPoint
                 case ECCurve.COORD_LAMBDA_AFFINE:
                 case ECCurve.COORD_LAMBDA_PROJECTIVE:
                 {
-                    // Y is actually Lambda (X + Y/X) here
+                    
                     return Y.testBitZero() != X.testBitZero();
                 }
                 default:
@@ -1566,7 +1500,7 @@ public abstract class ECPoint
                     ECFieldElement X3, L3, Z3;
                     if (X2.isZero())
                     {
-                        // TODO This can probably be optimized quite a bit
+                        
                         ECPoint p = this.normalize();
                         X1 = p.getXCoord();
                         ECFieldElement Y1 = p.getYCoord();
@@ -1631,7 +1565,7 @@ public abstract class ECPoint
             ECFieldElement X1 = this.x;
             if (X1.isZero())
             {
-                // A point with X == 0 is it's own additive inverse
+                
                 return curve.getInfinity();
             }
 
@@ -1699,7 +1633,7 @@ public abstract class ECPoint
                         }
                         else
                         {
-                            // TODO Can be calculated with one square if we pre-compute sqrt(b)
+                            
                             t2 = aZ1Sq.squarePlusProduct(b, Z1Sq.square());
                         }
                         L3 = t1.add(T).add(Z1Sq).multiply(t1).add(t2).add(X3);
@@ -1742,13 +1676,13 @@ public abstract class ECPoint
             ECFieldElement X1 = this.x;
             if (X1.isZero())
             {
-                // A point with X == 0 is it's own additive inverse
+                
                 return b;
             }
 
             int coord = curve.getCoordinateSystem();
 
-            if (coord == ECCurve.COORD_LAMBDA_PROJECTIVE) {// NOTE: twicePlus() only optimized for lambda-affine argument
+            if (coord == ECCurve.COORD_LAMBDA_PROJECTIVE) {
                 ECFieldElement X2 = b.x, Z2 = b.zs[0];
                 if (X2.isZero() || !Z2.isOne()) {
                     return twice().add(b);
@@ -1817,7 +1751,7 @@ public abstract class ECPoint
                 }
                 case ECCurve.COORD_LAMBDA_PROJECTIVE:
                 {
-                    // L is actually Lambda (X + Y/X) here
+                    
                     ECFieldElement Z = this.zs[0];
                     return new ECPoint.F2m(curve, X, this.y.add(Z), new ECFieldElement[]{ Z }, this.withCompression);
                 }

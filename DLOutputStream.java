@@ -2,9 +2,7 @@
 import java.io.IOException;
 import java.io.OutputStream;
 
-/**
- * Stream that outputs encoding based on definite length.
- */
+
 public class DLOutputStream
         extends ASN1OutputStream
 {

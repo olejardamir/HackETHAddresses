@@ -1,19 +1,13 @@
 
 import java.math.BigInteger;
 
-/**
- * Class representing the ASN.1 INTEGER type.
- */
+
 public class ASN1Integer
         extends ASN1Primitive
 {
     private final byte[] bytes;
 
-    /**
-     * Construct an INTEGER from the passed in BigInteger value.
-     *
-     * @param value the BigInteger representing the value desired.
-     */
+    
     public ASN1Integer(
             BigInteger value)
     {

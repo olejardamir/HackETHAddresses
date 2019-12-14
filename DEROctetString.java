@@ -1,14 +1,8 @@
-/**
- * Carrier class for a DER encoding OCTET STRING
- */
+
 class DEROctetString
         extends ASN1OctetString
 {
-    /**
-     * Base constructor.
-     *
-     * @param string the octets making up the octet string.
-     */
+    
     public DEROctetString(
             byte[]  string)
     {

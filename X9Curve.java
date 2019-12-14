@@ -1,17 +1,14 @@
 
-/**
- * ASN.1 def for Elliptic-Curve Curve structure. See
- * X9.62, for further details.
- */
+
 public class X9Curve
         extends ASN1Object {
-    /** Base OID: 1.2.840.10045 */
+    
     private static final ASN1ObjectIdentifier ansi_X9_62 = new ASN1ObjectIdentifier("1.2.840.10045");
-    /** OID: 1.2.840.10045.1 */
+    
     private static final ASN1ObjectIdentifier id_fieldType = ansi_X9_62.branch("1");
-    /** OID: 1.2.840.10045.1.1 */
+    
     private static final ASN1ObjectIdentifier prime_field = id_fieldType.branch("1");
-    /** OID: 1.2.840.10045.1.2 */
+    
     private static final ASN1ObjectIdentifier characteristic_two_field = id_fieldType.branch("2");
     private final ECCurve     curve;
     private final byte[]      seed;

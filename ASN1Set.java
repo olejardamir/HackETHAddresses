@@ -12,11 +12,7 @@ public abstract class ASN1Set
     {
     }
 
-    /**
-     * Create a SET containing a vector of objects.
-     * @param v a vector of objects to make up the SET.
-     *
-     */
+    
     ASN1Set(
             ASN1EncodableVector v)
     {
@@ -32,11 +28,7 @@ public abstract class ASN1Set
         return set.elements();
     }
 
-    /**
-     * return the number of objects in this set.
-     *
-     * @return the number of objects in this set.
-     */
+    
     private int size()
     {
         return set.size();
@@ -58,10 +50,7 @@ public abstract class ASN1Set
         return hashCode;
     }
 
-    /**
-     * Change current SET object to be encoded as {@link DLSet}.
-     * This is part of Direct Length form serialization.
-     */
+    
     ASN1Primitive toDLObject()
     {
         ASN1Set derSet = new DLSet();
@@ -75,7 +64,7 @@ public abstract class ASN1Set
     {
         ASN1Encodable encObj = (ASN1Encodable)e.nextElement();
 
-        // unfortunately null was allowed as a substitute for DER null
+        
         if (encObj == null)
         {
             return DERNull.INSTANCE;

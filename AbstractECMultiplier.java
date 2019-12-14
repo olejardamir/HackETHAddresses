@@ -12,10 +12,7 @@ abstract class AbstractECMultiplier {
         ECPoint positive = multiplyPositive(p, k.abs());
         ECPoint result = sign > 0 ? positive : positive.negate();
 
-        /*
-         * Although the various multipliers ought not to produce invalid output under normal
-         * circumstances, a final check here is advised to guard against fault attacks.
-         */
+        
         return checkResult(result);
     }
 

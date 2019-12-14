@@ -46,7 +46,7 @@ abstract class Mod
             if (Nat.gte(uvLen, u, v))
             {
                 Nat.subFrom(uvLen, v, u);
-//              assert (u[0] & 1) == 0;
+
                 ac += Nat.subFrom(len, b, a) - bc;
                 ac = inversionStep(p, u, uvLen, a, ac);
                 if (Nat.isOne(uvLen, u))
@@ -58,7 +58,7 @@ abstract class Mod
             else
             {
                 Nat.subFrom(uvLen, u, v);
-//              assert (v[0] & 1) == 0;
+
                 bc += Nat.subFrom(len, a, b) - ac;
                 bc = inversionStep(p, v, uvLen, b, bc);
                 if (Nat.isOne(uvLen, v))
@@ -124,7 +124,7 @@ abstract class Mod
 
     private static int getTrailingZeroes(int x)
     {
-//        assert x != 0;
+
 
         int count = 0;
         while ((x & 1) == 0)

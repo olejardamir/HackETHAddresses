@@ -1,4 +1,4 @@
-//DONE DEBUG CLEAN
+
 
 class ECAlgorithms
 {
@@ -14,7 +14,7 @@ class ECAlgorithms
     }
 
 
-    public static void montgomeryTrick(ECFieldElement[] zs, int off, int len, ECFieldElement scale) throws CloneNotSupportedException {
+    public static void montgomeryTrick(ECFieldElement[] zs, int off, int len, ECFieldElement scale) {
 
 
         ECFieldElement[] c = new ECFieldElement[len];

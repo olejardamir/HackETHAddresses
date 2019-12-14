@@ -1,6 +1,4 @@
-/**
- * String utilities.
- */
+
 final class Strings
 {
 

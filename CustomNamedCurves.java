@@ -8,9 +8,7 @@ class CustomNamedCurves
          return c.configure().setEndomorphism().create();
     }
 
-    /*
-     * secp256k1
-     */
+    
     private static final X9ECParametersHolder secp256k1 = new X9ECParametersHolder()
     {
         protected X9ECParameters createParameters() throws Exception {

@@ -11,7 +11,7 @@ public abstract class ECFieldElement
     public abstract ECFieldElement addOne();
     public abstract ECFieldElement subtract(ECFieldElement b);
     public abstract ECFieldElement multiply(ECFieldElement b);
-    public abstract ECFieldElement divide(ECFieldElement b) throws CloneNotSupportedException;
+    public abstract ECFieldElement divide(ECFieldElement b);
     public abstract ECFieldElement negate();
     public abstract ECFieldElement square();
     public abstract ECFieldElement invert();
@@ -37,7 +37,7 @@ public abstract class ECFieldElement
         return 0 == toBigInteger().signum();
     }
 
-    public ECFieldElement multiplyMinusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y) throws CloneNotSupportedException {
+    public ECFieldElement multiplyMinusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y) {
         return multiply(b).subtract(x.multiply(y));
     }
 
@@ -86,9 +86,7 @@ public abstract class ECFieldElement
             return null;
         }
 
-        /**
-         * @deprecated Use ECCurve.fromBigInteger to construct field elements
-         */
+        
         public Fp(BigInteger q, BigInteger x)
         {
             this(q, calculateResidue(q), x);
@@ -182,18 +180,15 @@ public abstract class ECFieldElement
 
         public ECFieldElement invert()
         {
-            // TODO Modular inversion can be faster for a (Generalized) Mersenne Prime.
+            
             return new Fp(q, r, modInverse(x));
         }
 
-        // D.1.4 91
-        /**
-         * return a sqrt root - the routine verifies that the calculation
-         * returns the right value - if none exists it returns null.
-         */
+        
+        
         public ECFieldElement sqrt()
         {
-            if (this.isZero() || this.isOne()) // earlier JDK compatibility
+            if (this.isZero() || this.isOne()) 
             {
                 return this;
             }
@@ -203,16 +198,16 @@ public abstract class ECFieldElement
                 throw new RuntimeException("not done yet");
             }
 
-            // note: even though this class implements ECConstants don't be tempted to
-            // remove the explicit declaration, some J2ME environments don't cope.
+            
+            
 
-            if (q.testBit(1)) // q == 4m + 3
+            if (q.testBit(1)) 
             {
                 BigInteger e = q.shiftRight(2).add(ECConstants.ONE);
                 return checkSqrt(new Fp(q, r, x.modPow(e, q)));
             }
 
-            if (q.testBit(2)) // q == 8m + 5
+            if (q.testBit(2)) 
             {
                 BigInteger t1 = x.modPow(q.shiftRight(3), q);
                 BigInteger t2 = modMult(t1, x);
@@ -223,7 +218,7 @@ public abstract class ECFieldElement
                     return checkSqrt(new Fp(q, r, t2));
                 }
 
-                // TODO This is constant and could be precomputed
+                
                 BigInteger t4 = ECConstants.TWO.modPow(q.shiftRight(2), q);
 
                 BigInteger y = modMult(t2, t4);
@@ -231,7 +226,7 @@ public abstract class ECFieldElement
                 return checkSqrt(new Fp(q, r, y));
             }
 
-            // q == 8m + 1
+            
 
             BigInteger legendreExponent = q.shiftRight(1);
             if (!(x.modPow(legendreExponent, q).equals(ECConstants.ONE)))
@@ -280,12 +275,12 @@ public abstract class ECFieldElement
                 BigInteger  Q,
                 BigInteger  k)
         {
-            // TODO Research and apply "common-multiplicand multiplication here"
+            
 
             int n = k.bitLength();
             int s = k.getLowestSetBit();
 
-            // assert k.testBit(s);
+            
 
             BigInteger Uh = ECConstants.ONE;
             BigInteger Vl = ECConstants.TWO;
@@ -443,60 +438,27 @@ public abstract class ECFieldElement
         }
     }
 
-    /**
-     * Class representing the Elements of the finite field
-     * <code>F<sub>2<sup>m</sup></sub></code> in polynomial basis (PB)
-     * representation. Both trinomial (TPB) and pentanomial (PPB) polynomial
-     * basis representations are supported. Gaussian normal basis (GNB)
-     * representation is not supported.
-     */
+    
     public static class F2m extends ECFieldElement {
 
-        /**
-         * Indicates trinomial basis representation (TPB). Number chosen
-         * according to X9.62.
-         */
+        
         static final int TPB = 2;
 
-        /**
-         * Indicates pentanomial basis representation (PPB). Number chosen
-         * according to X9.62.
-         */
+        
         static final int PPB = 3;
 
-        /**
-         * TPB or PPB.
-         */
+        
         private int representation;
 
-        /**
-         * The exponent <code>m</code> of <code>F<sub>2<sup>m</sup></sub></code>.
-         */
+        
         private int m;
 
         private int[] ks;
 
-        /**
-         * The <code>LongArray</code> holding the bits.
-         */
+        
         LongArray x;
 
-        /**
-         * Constructor for PPB.
-         * @param m  The exponent <code>m</code> of
-         * <code>F<sub>2<sup>m</sup></sub></code>.
-         * @param k1 The integer <code>k1</code> where <code>x<sup>m</sup> +
-         * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-         * represents the reduction polynomial <code>f(z)</code>.
-         * @param k2 The integer <code>k2</code> where <code>x<sup>m</sup> +
-         * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-         * represents the reduction polynomial <code>f(z)</code>.
-         * @param k3 The integer <code>k3</code> where <code>x<sup>m</sup> +
-         * x<sup>k3</sup> + x<sup>k2</sup> + x<sup>k1</sup> + 1</code>
-         * represents the reduction polynomial <code>f(z)</code>.
-         * @param x The BigInteger representing the value of the field element.
-         * @deprecated Use ECCurve.fromBigInteger to construct field elements
-         */
+        
         public F2m(
                 int m,
                 int k1,
@@ -572,17 +534,7 @@ public abstract class ECFieldElement
             return m;
         }
 
-        /**
-         * Checks, if the ECFieldElements <code>a</code> and <code>b</code>
-         * are elements of the same field <code>F<sub>2<sup>m</sup></sub></code>
-         * (having the same representation).
-         * @param a field element.
-         * @param b field element to be compared.
-         * @throws IllegalArgumentException if <code>a</code> and <code>b</code>
-         * are not elements of the same field
-         * <code>F<sub>2<sup>m</sup></sub></code> (having the same
-         * representation).
-         */
+        
         public static void checkFieldElements(
                 ECFieldElement a,
                 ECFieldElement b)
@@ -598,7 +550,7 @@ public abstract class ECFieldElement
 
             if (aF2m.representation != bF2m.representation)
             {
-                // Should never occur
+                
                 throw new IllegalArgumentException("One of the F2m field elements has incorrect representation");
             }
 
@@ -609,9 +561,9 @@ public abstract class ECFieldElement
         }
 
         public ECFieldElement add(final ECFieldElement b) {
-            // No check performed here for performance reasons. Instead the
-            // elements involved are checked in ECPoint.F2m
-            // checkFieldElements(this, b);
+            
+            
+            
             LongArray iarrClone = (LongArray)this.x.clone();
             F2m bF2m = (F2m)b;
             iarrClone.addShiftedByWords(bF2m.x, 0);
@@ -624,19 +576,19 @@ public abstract class ECFieldElement
         }
 
         public ECFieldElement subtract(final ECFieldElement b) {
-            // Addition and subtraction are the same in F2m
+            
             return add(b);
         }
 
         public ECFieldElement multiply(final ECFieldElement b)
         {
-            // Right-to-left comb multiplication in the LongArray
-            // Input: Binary polynomials a(z) and b(z) of degree at most m-1
-            // Output: c(z) = a(z) * b(z) mod f(z)
+            
+            
+            
 
-            // No check performed here for performance reasons. Instead the
-            // elements involved are checked in ECPoint.F2m
-            // checkFieldElements(this, b);
+            
+            
+            
             return new F2m(m, ks, x.modMultiply(((F2m)b).x, m, ks));
         }
 
@@ -661,15 +613,15 @@ public abstract class ECFieldElement
             return new F2m(m, ks, ab);
         }
 
-        public ECFieldElement divide(final ECFieldElement b) throws CloneNotSupportedException {
-            // There may be more efficient implementations
+        public ECFieldElement divide(final ECFieldElement b) {
+            
             ECFieldElement bInv = b.invert();
             return multiply(bInv);
         }
 
         public ECFieldElement negate()
         {
-            // -x == x holds for all x in F2m
+            
             return this;
         }
 

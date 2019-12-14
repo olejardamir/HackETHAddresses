@@ -1,6 +1,4 @@
-/**
- * A NULL object - use DERNull.INSTANCE for populating structures.
- */
+
 public abstract class ASN1Null
         extends ASN1Primitive
 {
