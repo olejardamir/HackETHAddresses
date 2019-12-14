@@ -16,12 +16,12 @@ class ASN1InputStream
     public static final int CONSTRUCTED         = 0x20; // decimal 32
     private static final int APPLICATION         = 0x40; // decimal 64
     private static final int TAGGED              = 0x80; // decimal 128
-    private final int limit;
-    private final boolean lazyEvaluate;
+    private   int limit;
+    private   boolean lazyEvaluate;
 
 
     private ASN1InputStream(
-            InputStream is)
+            DefiniteLengthInputStream is)
     {
         this(is, StreamUtil.findLimit(is));
     }
@@ -180,8 +180,6 @@ class ASN1InputStream
         // calculate tag number
         //
         int tagNo = readTagNumber(this, tag);
-
-        boolean isConstructed = (tag & CONSTRUCTED) != 0;
 
         //
         // calculate length

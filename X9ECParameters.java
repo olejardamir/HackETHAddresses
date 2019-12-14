@@ -30,10 +30,9 @@ public class X9ECParameters {
         this.h = h;
         this.seed = Arrays.clone(seed);
 
-        if (ECAlgorithms.isFpCurve(curve))
-        {
+
             this.fieldID = new X9FieldID(curve.getField().getCharacteristic());
-        }
+
 
 
     }

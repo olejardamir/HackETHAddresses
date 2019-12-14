@@ -9,12 +9,12 @@ public abstract class ECFieldElement
     public abstract int            getFieldSize();
     public abstract ECFieldElement add(ECFieldElement b);
     public abstract ECFieldElement addOne();
-    public abstract ECFieldElement subtract(ECFieldElement b) throws CloneNotSupportedException;
+    public abstract ECFieldElement subtract(ECFieldElement b);
     public abstract ECFieldElement multiply(ECFieldElement b);
     public abstract ECFieldElement divide(ECFieldElement b) throws CloneNotSupportedException;
     public abstract ECFieldElement negate();
     public abstract ECFieldElement square();
-    public abstract ECFieldElement invert() throws CloneNotSupportedException;
+    public abstract ECFieldElement invert();
     public abstract ECFieldElement sqrt();
 
     ECFieldElement()
@@ -41,11 +41,11 @@ public abstract class ECFieldElement
         return multiply(b).subtract(x.multiply(y));
     }
 
-    public ECFieldElement multiplyPlusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y) throws CloneNotSupportedException {
+    public ECFieldElement multiplyPlusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y) {
         return multiply(b).add(x.multiply(y));
     }
 
-    public ECFieldElement squarePlusProduct(ECFieldElement x, ECFieldElement y) throws CloneNotSupportedException {
+    public ECFieldElement squarePlusProduct(ECFieldElement x, ECFieldElement y) {
         return square().add(x.multiply(y));
     }
 
@@ -623,7 +623,7 @@ public abstract class ECFieldElement
             return new F2m(m, ks, x.addOne());
         }
 
-        public ECFieldElement subtract(final ECFieldElement b) throws CloneNotSupportedException {
+        public ECFieldElement subtract(final ECFieldElement b) {
             // Addition and subtraction are the same in F2m
             return add(b);
         }
@@ -640,7 +640,7 @@ public abstract class ECFieldElement
             return new F2m(m, ks, x.modMultiply(((F2m)b).x, m, ks));
         }
 
-        public ECFieldElement multiplyMinusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y) throws CloneNotSupportedException {
+        public ECFieldElement multiplyMinusProduct(ECFieldElement b, ECFieldElement x, ECFieldElement y) {
             return multiplyPlusProduct(b, x, y);
         }
 
@@ -700,7 +700,7 @@ public abstract class ECFieldElement
             return pow < 1 ? this : new F2m(m, ks, x.modSquareN(pow, m, ks));
         }
 
-        public ECFieldElement invert() throws CloneNotSupportedException {
+        public ECFieldElement invert() {
             return new ECFieldElement.F2m(this.m, this.ks, this.x.modInverse(m, ks));
         }
 

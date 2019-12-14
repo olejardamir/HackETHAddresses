@@ -31,15 +31,9 @@ public class X9Curve
 
     private void setFieldIdentifier()
     {
-        if (ECAlgorithms.isFpCurve(curve))
-        {
-            fieldIdentifier = prime_field;
-        }
 
-        else
-        {
-            throw new IllegalArgumentException("This type of ECCurve is not implemented");
-        }
+            fieldIdentifier = prime_field;
+
     }
 
     public ASN1Primitive toASN1Primitive()

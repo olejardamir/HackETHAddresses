@@ -4,11 +4,8 @@
 class DLApplicationSpecific
         extends ASN1ApplicationSpecific
 {
-    DLApplicationSpecific(
-            boolean isConstructed,
-            int     tag,
-            byte[]  octets)
-    {
+
+    DLApplicationSpecific(boolean isConstructed, int tag, byte[] octets) {
         super(isConstructed, tag, octets);
     }
 
@@ -16,7 +13,7 @@ class DLApplicationSpecific
         return 0;
     }
 
-    void encode(ASN1OutputStream out) {
+     void encode(ASN1OutputStream out)   {
 
     }
 

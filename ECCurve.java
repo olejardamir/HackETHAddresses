@@ -421,7 +421,7 @@ public abstract class ECCurve
         {
             throw new IllegalArgumentException("'points' cannot be null");
         }
-        if (0 < 0 || len < 0 || (0 > (points.length - len)))
+        if (len < 0 || (0 > (points.length - len)))
         {
             throw new IllegalArgumentException("invalid range specified for 'points'");
         }
@@ -468,7 +468,7 @@ public abstract class ECCurve
             super();
         }
 
-        protected ECPoint decompressPoint(int yTilde, BigInteger X1) throws CloneNotSupportedException {
+        protected ECPoint decompressPoint(int yTilde, BigInteger X1) {
             ECFieldElement x = this.fromBigInteger(X1);
             ECFieldElement rhs = x.square().add(this.a).multiply(x).add(this.b);
             ECFieldElement y = rhs.sqrt();
@@ -684,7 +684,7 @@ public abstract class ECCurve
          * @return the solution for <code>z<sup>2</sup> + z = beta</code> or
          *         <code>null</code> if no solution exists.
          */
-        ECFieldElement solveQuadraticEquation(ECFieldElement beta) throws CloneNotSupportedException {
+        ECFieldElement solveQuadraticEquation(ECFieldElement beta) {
             if (beta.isZero())
             {
                 return beta;

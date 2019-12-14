@@ -16,22 +16,12 @@ class DLBitString
         super(data, padBits);
     }
 
-    int encodedLength()
-    {
-        return 1 + StreamUtil.calculateBodyLength(data.length + 1) + data.length + 1;
+     void encode(ASN1OutputStream out)   {
+
     }
 
-    void encode(
-            ASN1OutputStream out)
-            throws Exception
-    {
-        byte[] string = data;
-        byte[] bytes = new byte[string.length + 1];
-
-        bytes[0] = (byte)getPadBits();
-        System.arraycopy(string, 0, bytes, 1, bytes.length - 1);
-
-        out.writeEncoded(ASN1InputStream.BIT_STRING, bytes);
+    int encodedLength()  {
+        return 0;
     }
 
 }

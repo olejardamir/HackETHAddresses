@@ -16,11 +16,8 @@ class StreamUtil
      */
     static int findLimit(InputStream in)
     {
-        if (in instanceof LimitedInputStream)
-        {
-            return ((LimitedInputStream)in).getRemaining();
-        }
-        else if (in instanceof ASN1InputStream)
+
+          if (in instanceof ASN1InputStream)
         {
             return ((ASN1InputStream)in).getLimit();
         }

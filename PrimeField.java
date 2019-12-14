@@ -15,10 +15,7 @@ class PrimeField extends GenericPolynomialExtensionField {
         return characteristic;
     }
 
-    public int getDimension()
-    {
-        return 1;
-    }
+
 
     public boolean equals(Object obj)
     {

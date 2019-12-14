@@ -29,8 +29,9 @@ class CustomNamedCurves
     private static final Hashtable<ASN1ObjectIdentifier, String> oidToName = new Hashtable<>();
     private static final Vector<String> names = new Vector<>();
 
-    private static void defineCurveWithOID(String name)
+    private static void defineCurveWithOID()
     {
+        String name = "secp256k1";
         names.addElement(name);
         oidToName.put(SECObjectIdentifiers.secp256k1, name);
         oidToCurve.put(SECObjectIdentifiers.secp256k1, CustomNamedCurves.secp256k1);
@@ -42,7 +43,7 @@ class CustomNamedCurves
     static
     {
 
-        defineCurveWithOID("secp256k1");
+        defineCurveWithOID();
 
     }
 

@@ -6,13 +6,10 @@ class ECAlgorithms
 
     public static boolean isFpCurve(ECCurve c)
     {
-        return isFpField((PrimeField) c.getField());
+        return true;
     }
 
-    private static boolean isFpField(PrimeField field)
-    {
-        return field.getDimension() == 1;
-    }
+
 
     public static ECPoint importPoint(ECCurve c, ECPoint p) throws CloneNotSupportedException {
         ECCurve cp = p.getCurve();

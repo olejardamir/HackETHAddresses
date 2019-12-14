@@ -10,17 +10,6 @@ public class ASN1Integer
     private final byte[] bytes;
 
     /**
-     * Construct an INTEGER from the passed in long value.
-     *
-     * @param value the long representing the value desired.
-     */
-    public ASN1Integer(
-            long value)
-    {
-        bytes = BigInteger.valueOf(value).toByteArray();
-    }
-
-    /**
      * Construct an INTEGER from the passed in BigInteger value.
      *
      * @param value the BigInteger representing the value desired.

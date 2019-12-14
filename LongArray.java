@@ -1025,13 +1025,14 @@ class LongArray implements Cloneable
         int j = ks.length;
         while (--j >= 0)
         {
-            flipVector(buf, 0, buf, words, len - words, baseBit + ks[j]);
+            flipVector(buf,  buf, words, len - words, baseBit + ks[j]);
         }
-        flipVector(buf, 0, buf, words, len - words, baseBit);
+        flipVector(buf,  buf, words, len - words, baseBit);
     }
 
-    private static void flipVector(long[] x, int xOff, long[] y, int yOff, int yLen, int bits)
+    private static void flipVector(long[] x, long[] y, int yOff, int yLen, int bits)
     {
+        int xOff = 0;
         xOff += bits >>> 6;
         bits &= 0x3F;
 

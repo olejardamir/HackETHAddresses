@@ -1,16 +1,14 @@
 import java.io.EOFException;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Parse data stream of expected ASN.1 data expecting definite-length encoding..
  */
-class DefiniteLengthInputStream
-        extends LimitedInputStream
-{
+class DefiniteLengthInputStream extends InputStream {
     private static final byte[] EMPTY_BYTES = new byte[0];
 
-    private final int _originalLength;
-    private int _remaining;
+     private int _remaining;
 
     DefiniteLengthInputStream(
             int length)
@@ -22,62 +20,13 @@ class DefiniteLengthInputStream
             throw new IllegalArgumentException("negative lengths not allowed");
         }
 
-        this._originalLength = length;
-        this._remaining = length;
-
-        if (length == 0)
-        {
-            setParentEofDetect();
-        }
-    }
-
-    int getRemaining()
-    {
-        return _remaining;
-    }
-
-    public int read() throws IOException {
-        if (_remaining == 0)
-        {
-            return -1;
-        }
-
-        int b = _in.read();
-
-        if (b < 0)
-        {
-            throw new EOFException("DEF length " + _originalLength + " object truncated by " + _remaining);
-        }
-
-        if (--_remaining == 0)
-        {
-            setParentEofDetect();
-        }
-
-        return b;
-    }
-
-    public int read(byte[] buf, int off, int len) throws IOException {
-        if (_remaining == 0)
-        {
-            return -1;
-        }
-
-        int toRead = Math.min(len, _remaining);
-        int numRead = _in.read(buf, off, toRead);
+         this._remaining = length;
 
 
-
-        if ((_remaining -= numRead) == 0)
-        {
-            setParentEofDetect();
-        }
-
-        return numRead;
     }
 
     byte[] toByteArray()
-            throws Exception
+
     {
         if (_remaining == 0)
         {
@@ -85,11 +34,11 @@ class DefiniteLengthInputStream
         }
 
         byte[] bytes = new byte[_remaining];
-        if ((_remaining -= Streams.readFully(_in, bytes)) != 0)
-        {
-            throw new EOFException("DEF length " + _originalLength + " object truncated by " + _remaining);
-        }
-        setParentEofDetect();
-        return bytes;
+
+         return bytes;
+    }
+
+     public int read()     {
+        return 0;
     }
 }

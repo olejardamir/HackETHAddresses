@@ -445,7 +445,7 @@ public abstract class ECPoint
 
     public abstract ECPoint add(ECPoint b) throws CloneNotSupportedException;
 
-    public abstract ECPoint negate() throws CloneNotSupportedException;
+    public abstract ECPoint negate();
 
     public abstract ECPoint subtract(ECPoint b) throws CloneNotSupportedException;
 
@@ -485,7 +485,7 @@ public abstract class ECPoint
             return this.getAffineYCoord().testBitZero();
         }
 
-        protected boolean satisfiesCurveEquation() throws CloneNotSupportedException {
+        protected boolean satisfiesCurveEquation() {
             ECFieldElement X = this.x, A = curve.getA(), B = curve.getB();
             ECFieldElement lhs = this.y.square();
 
@@ -1155,7 +1155,7 @@ public abstract class ECPoint
             }
         }
 
-        ECFieldElement two(ECFieldElement x) throws CloneNotSupportedException {
+        ECFieldElement two(ECFieldElement x) {
             return x.add(x);
         }
 
@@ -1788,7 +1788,7 @@ public abstract class ECPoint
             return twice().add(b);
         }
 
-        public ECPoint negate() throws CloneNotSupportedException {
+        public ECPoint negate() {
             if (this.isInfinity())
             {
                 return this;

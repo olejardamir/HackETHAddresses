@@ -54,59 +54,12 @@ class ASN1OutputStream
         os.write(bytes);
     }
 
-    private void write(byte[] bytes, int off, int len)
-            throws Exception
-    {
-        os.write(bytes, off, len);
-    }
-
     void writeEncoded(
             int     tag,
             byte[]  bytes)
             throws Exception
     {
         write(tag);
-        writeLength(bytes.length);
-        write(bytes);
-    }
-
-    private void writeTag(int flags, int tagNo)
-            throws Exception
-    {
-        if (tagNo < 31)
-        {
-            write(flags | tagNo);
-        }
-        else
-        {
-            write(flags | 0x1f);
-            if (tagNo < 128)
-            {
-                write(tagNo);
-            }
-            else
-            {
-                byte[] stack = new byte[5];
-                int pos = stack.length;
-
-                stack[--pos] = (byte)(tagNo & 0x7F);
-
-                do
-                {
-                    tagNo >>= 7;
-                    stack[--pos] = (byte)(tagNo & 0x7F | 0x80);
-                }
-                while (tagNo > 127);
-
-                write(stack, pos, stack.length - pos);
-            }
-        }
-    }
-
-    void writeEncoded(byte[] bytes)
-            throws Exception
-    {
-        writeTag(ASN1InputStream.CONSTRUCTED, ASN1InputStream.EXTERNAL);
         writeLength(bytes.length);
         write(bytes);
     }

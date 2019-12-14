@@ -10,31 +10,11 @@ class DERTaggedObject
         super(explicit, tagNo, obj);
     }
 
-    int encodedLength()
-            throws Exception
-    {
-        if (!empty)
-        {
-            ASN1Primitive primitive = obj.toASN1Primitive().toDERObject();
-            int length = primitive.encodedLength();
-
-            if (explicit)
-            {
-                return StreamUtil.calculateTagLength(tagNo) + StreamUtil.calculateBodyLength(length) + length;
-            }
-            else
-            {
-                 length = length - 1;
-                return StreamUtil.calculateTagLength(tagNo) + length;
-            }
-        }
-        else
-        {
-            return StreamUtil.calculateTagLength(tagNo) + 1;
-        }
+     int encodedLength()  {
+        return 0;
     }
 
-     void encode(ASN1OutputStream out) {
+    void encode(ASN1OutputStream out) {
 
     }
 

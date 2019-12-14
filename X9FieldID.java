@@ -7,12 +7,6 @@ class X9FieldID {
     private static final ASN1ObjectIdentifier id_fieldType = ansi_X9_62.branch("1");
     /** OID: 1.2.840.10045.1.1 */
     private static final ASN1ObjectIdentifier prime_field = id_fieldType.branch("1");
-    /** OID: 1.2.840.10045.1.2 */
-    private static final ASN1ObjectIdentifier characteristic_two_field = id_fieldType.branch("2");
-    /** OID: 1.2.840.10045.1.2.3.2 */
-    private static final ASN1ObjectIdentifier tpBasis = characteristic_two_field.branch("3.2");
-    /** OID: 1.2.840.10045.1.2.3.3 */
-    private static final ASN1ObjectIdentifier ppBasis = characteristic_two_field.branch("3.3");
     private final ASN1ObjectIdentifier     id;
     private ASN1Primitive parameters;
 
