@@ -1,6 +1,5 @@
 import java.math.BigInteger;
 import java.util.Hashtable;
-import java.util.Random;
 
 
 public abstract class ECCurve
@@ -153,7 +152,7 @@ public abstract class ECCurve
     }
 
 
-    private void normalizeAll(ECPoint[] points, int len) throws CloneNotSupportedException {
+    private void normalizeAll(ECPoint[] points, int len) {
         checkPoints(points, len);
 
         switch (this.getCoordinateSystem())
@@ -442,110 +441,5 @@ public abstract class ECCurve
         }
     }
 
-
-    public static abstract class AbstractF2m extends ECCurve
-    {
-
-        private static GenericPolynomialExtensionField buildField(int m, int k1, int k2, int k3)
-        {
-
-            if (k2 == 0)
-            {
-
-
-                return   FiniteFields.getBinaryExtensionField(new int[]{ 0, k1, m });
-            }
-
-
-
-
-
-            return   FiniteFields.getBinaryExtensionField(new int[]{ 0, k1, k2, k3, m });
-        }
-
-        AbstractF2m(int m, int k1, int k2, int k3)
-        {
-            super(buildField(m, k1, k2, k3));
-        }
-
-        
-        protected ECPoint decompressPoint(int yTilde, BigInteger X1) {
-            ECFieldElement x = this.fromBigInteger(X1), y = null;
-            if (x.isZero())
-            {
-                y = this.getB().sqrt();
-            }
-            else
-            {
-                ECFieldElement beta = x.square().invert().multiply(this.getB()).add(this.getA()).add(x);
-                ECFieldElement z = solveQuadraticEquation(beta);
-                if (z != null)
-                {
-                    if (z.testBitZero() != (yTilde == 1))
-                    {
-                        z = z.addOne();
-                    }
-
-                    switch (this.getCoordinateSystem())
-                    {
-                        case ECCurve.COORD_LAMBDA_AFFINE:
-                        case ECCurve.COORD_LAMBDA_PROJECTIVE:
-                        {
-                            y = z.add(x);
-                            break;
-                        }
-                        default:
-                        {
-                            y = z.multiply(x);
-                            break;
-                        }
-                    }
-                }
-            }
-
-            if (y == null)
-            {
-                throw new IllegalArgumentException("Invalid point compression");
-            }
-
-            return this.createRawPoint(x, y, true);
-        }
-
-        
-        ECFieldElement solveQuadraticEquation(ECFieldElement beta) {
-            if (beta.isZero())
-            {
-                return beta;
-            }
-
-            ECFieldElement gamma, z, zeroElement = this.fromBigInteger(ECConstants.ZERO);
-
-            int m = this.getFieldSize();
-            Random rand = new Random();
-            do
-            {
-                ECFieldElement t = this.fromBigInteger(new BigInteger(m, rand));
-                z = zeroElement;
-                ECFieldElement w = beta;
-                for (int i = 1; i < m; i++)
-                {
-                    ECFieldElement w2 = w.square();
-                    z = z.square().add(w2.multiply(t));
-                    w = w2.add(beta);
-                }
-                if (!w.isZero())
-                {
-                    return null;
-                }
-                gamma = z.square().add(z);
-            }
-            while (gamma.isZero());
-
-            return z;
-        }
-
-    }
-
-    
 
 }

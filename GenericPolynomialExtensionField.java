@@ -4,11 +4,7 @@ class GenericPolynomialExtensionField {
     private   PrimeField subfield;
     private   GF2Polynomial minimalPolynomial;
 
-    GenericPolynomialExtensionField(GF2Polynomial polynomial)
-    {
-        this.subfield = FiniteFields.GF_2;
-        this.minimalPolynomial = polynomial;
-    }
+
 
     public GenericPolynomialExtensionField() {
 

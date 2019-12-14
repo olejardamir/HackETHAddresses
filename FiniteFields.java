@@ -6,22 +6,6 @@ abstract class FiniteFields
     static final PrimeField GF_2 = new PrimeField(BigInteger.valueOf(2));
     private static final PrimeField GF_3 = new PrimeField(BigInteger.valueOf(3));
 
-    public static GenericPolynomialExtensionField getBinaryExtensionField(int[] exponents)
-    {
-        if (exponents[0] != 0)
-        {
-            throw new IllegalArgumentException("Irreducible polynomials in GF(2) must have constant term");
-        }
-        for (int i = 1; i < exponents.length; ++i)
-        {
-            if (exponents[i] <= exponents[i - 1])
-            {
-                throw new IllegalArgumentException("Polynomial exponents must be montonically increasing");
-            }
-        }
-
-        return new GenericPolynomialExtensionField(new GF2Polynomial(exponents));
-    }
 
 
 

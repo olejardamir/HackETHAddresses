@@ -62,11 +62,6 @@ abstract class Nat
         return new int[len];
     }
 
-    public static long[] create64(int len)
-    {
-        return new long[len];
-    }
-
     public static int decAt(int len, int[] z, int zPos)
     {
         

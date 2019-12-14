@@ -12,8 +12,7 @@ class ASN1InputStream
 
 
     public static final int CONSTRUCTED         = 0x20; 
-    private static final int APPLICATION         = 0x40; 
-    private static final int TAGGED              = 0x80;
+
 
 
     protected ASN1InputStream(InputStream in) {
@@ -21,81 +20,8 @@ class ASN1InputStream
     }
 
 
-    private int readLength()
-            throws Exception
-    {
-        return readLength(this);
-    }
 
 
-    public ASN1Primitive readObject()
-            throws Exception
-    {
-        int tag = read();
-        if (tag <= 0)
-        {
-
-
-            return null;
-        }
-
-        
-        int length = readLength();
-
-        if (length < 0) 
-        {
-
-
-
-            if ((tag & APPLICATION) != 0)
-            {
-                return null;
-            }
-
-            if ((tag & TAGGED) != 0)
-            {
-                return null;
-            }
-
-
-        }
-
-        return null;
-    }
-
-    private static int readLength(InputStream s)
-            throws Exception
-    {
-        int length = s.read();
-
-        if (length == 0x80)
-        {
-            return -1;      
-        }
-
-        if (length > 127)
-        {
-            int size = length & 0x7f;
-
-
-
-            length = 0;
-            for (int i = 0; i < size; i++)
-            {
-                int next = s.read();
-
-
-
-                length = (length << 8) + next;
-            }
-
-
-
-
-        }
-
-        return length;
-    }
 
 
 }

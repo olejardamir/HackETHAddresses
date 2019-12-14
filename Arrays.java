@@ -154,18 +154,5 @@ final class Arrays
         return copy;
     }
 
-    public static long[] clone(long[] data)
-    {
-        if (data == null)
-        {
-            return null;
-        }
-        long[] copy = new long[data.length];
-
-        System.arraycopy(data, 0, copy, 0, data.length);
-
-        return copy;
-    }
-
 
 }
