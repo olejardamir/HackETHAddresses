@@ -201,9 +201,7 @@ class LongArray implements Cloneable
         // Check if first element will act as sentinel
         if (a[0] != 0)
         {
-            while (a[--from] == 0)
-            {
-            }
+
             return from + 1;
         }
 
@@ -502,9 +500,9 @@ class LongArray implements Cloneable
         }
     }
 
-    private static void flipWord(long[] buf, int off, int bit, long word)
+    private static void flipWord(long[] buf, int bit, long word)
     {
-        int n = off + (bit >>> 6);
+        int n = 0 + (bit >>> 6);
         int shift = bit & 0x3F;
         if (shift == 0)
         {
@@ -552,14 +550,14 @@ class LongArray implements Cloneable
         return (buf[theInt] & tester) != 0;
     }
 
-    private static void flipBit(long[] buf, int off, int n)
+    private static void flipBit(long[] buf, int n)
     {
         // theInt = n / 64
         int theInt = n >>> 6;
         // theBit = n % 64
         int theBit = n & 0x3F;
         long flipper = 1L << theBit;
-        buf[off + theInt] ^= flipper;
+        buf[0 + theInt] ^= flipper;
     }
 
 //    private static void setBit(long[] buf, int off, int n)
@@ -970,14 +968,14 @@ class LongArray implements Cloneable
 
     private static void reduceBit(long[] buf, int bit, int m, int[] ks)
     {
-        flipBit(buf, 0, bit);
+        flipBit(buf, bit);
         int n = bit - m;
         int j = ks.length;
         while (--j >= 0)
         {
-            flipBit(buf, 0, ks[j] + n);
+            flipBit(buf, ks[j] + n);
         }
-        flipBit(buf, 0, n);
+        flipBit(buf, n);
     }
 
     private static void reduceWordWise(long[] buf, int len, int toBit, int m, int[] ks)
@@ -1011,9 +1009,9 @@ class LongArray implements Cloneable
         int j = ks.length;
         while (--j >= 0)
         {
-            flipWord(buf, 0, offset + ks[j], word);
+            flipWord(buf, offset + ks[j], word);
         }
-        flipWord(buf, 0, offset, word);
+        flipWord(buf, offset, word);
     }
 
     private static void reduceVectorWise(long[] buf, int len, int words, int m, int[] ks)

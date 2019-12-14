@@ -56,7 +56,7 @@ class StreamUtil
     }
 
     static int calculateBodyLength(int i) {
-        int i0 = 0;
+        int i0;
         if (i <= 127) {
             i0 = 1;
         } else {

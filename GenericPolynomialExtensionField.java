@@ -1,11 +1,17 @@
+import java.math.BigInteger;
+
 class GenericPolynomialExtensionField {
-    private final FiniteField subfield;
-    private final GF2Polynomial minimalPolynomial;
+    private   PrimeField subfield;
+    private   GF2Polynomial minimalPolynomial;
 
     GenericPolynomialExtensionField(GF2Polynomial polynomial)
     {
         this.subfield = FiniteFields.GF_2;
         this.minimalPolynomial = polynomial;
+    }
+
+    public GenericPolynomialExtensionField() {
+
     }
 
     public boolean equals(Object obj)
@@ -26,5 +32,9 @@ class GenericPolynomialExtensionField {
     {
         return subfield.hashCode()
                 ^ Integers.rotateLeft(minimalPolynomial.hashCode(), 16);
+    }
+
+    public BigInteger getCharacteristic() {
+        return null;
     }
 }

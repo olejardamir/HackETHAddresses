@@ -3,8 +3,8 @@ import java.math.BigInteger;
 
 abstract class FiniteFields
 {
-    static final FiniteField GF_2 = new PrimeField(BigInteger.valueOf(2));
-    private static final FiniteField GF_3 = new PrimeField(BigInteger.valueOf(3));
+    static final PrimeField GF_2 = new PrimeField(BigInteger.valueOf(2));
+    private static final PrimeField GF_3 = new PrimeField(BigInteger.valueOf(3));
 
     public static GenericPolynomialExtensionField getBinaryExtensionField(int[] exponents)
     {
@@ -25,7 +25,7 @@ abstract class FiniteFields
 
 
 
-    public static FiniteField getPrimeField(java.math.BigInteger a) {
+    public static GenericPolynomialExtensionField getPrimeField(BigInteger a) {
         int i = a.bitLength();
         if (a.signum() > 0 && i >= 2) {
             if (i < 3) {
@@ -38,7 +38,7 @@ abstract class FiniteFields
                     }
                 }
             }
-            return (FiniteField)(Object)new PrimeField(a);
+            return new PrimeField(a);
         }
         return null;
     }

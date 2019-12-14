@@ -308,11 +308,8 @@ public abstract class ECPoint
         }
 
         ECPoint p1 = this, p2 = other;
-        if (n1 && n2)
-        {
-            // Points with null curve are in affine form, so already normalized
-        }
-        else if (n1)
+
+          if (n1)
         {
             p2 = p2.normalize();
         }
@@ -376,6 +373,7 @@ public abstract class ECPoint
                 e.printStackTrace();
             }
 
+            assert p != null;
             hc ^= p.getXCoord().hashCode() * 17;
             try {
                 hc ^= p.getYCoord().hashCode() * 257;

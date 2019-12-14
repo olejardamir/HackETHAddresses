@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.math.BigInteger;
 import java.util.Hashtable;
 import java.util.Random;
@@ -51,7 +50,7 @@ public abstract class ECCurve
         }
     }
 
-    private final FiniteField field;
+    private final GenericPolynomialExtensionField field;
     ECFieldElement a;
     ECFieldElement b;
     BigInteger order;
@@ -60,7 +59,7 @@ public abstract class ECCurve
     int coord = COORD_AFFINE;
      private AbstractECMultiplier multiplier = null;
 
-    ECCurve(FiniteField field)
+    ECCurve(GenericPolynomialExtensionField field)
     {
         this.field = field;
     }
@@ -185,7 +184,7 @@ public abstract class ECCurve
      *            where necessary
      */
     public void normalizeAll(ECPoint[] points) throws CloneNotSupportedException {
-        normalizeAll(points, 0, points.length, null);
+        normalizeAll(points, points.length);
     }
 
     /**
@@ -195,26 +194,20 @@ public abstract class ECCurve
      * normalizing each point separately. An (optional) z-scaling factor can be applied; effectively
      * each z coordinate is scaled by this value prior to normalization (but only one
      * actual multiplication is needed).
-     *
      * @param points
      *            An array of points that will be updated in place with their normalized versions,
      *            where necessary
-     * @param off
-     *            The start of the range of points to normalize
      * @param len
-     *            The length of the range of points to normalize
-     * @param iso
-     *            The (optional) z-scaling factor - can be null
      */
-    private void normalizeAll(ECPoint[] points, int off, int len, ECFieldElement iso) throws CloneNotSupportedException {
-        checkPoints(points, off, len);
+    private void normalizeAll(ECPoint[] points, int len) throws CloneNotSupportedException {
+        checkPoints(points, 0, len);
 
         switch (this.getCoordinateSystem())
         {
             case ECCurve.COORD_AFFINE:
             case ECCurve.COORD_LAMBDA_AFFINE:
             {
-                if (iso != null)
+                if (null != null)
                 {
                     throw new IllegalArgumentException("'iso' not valid for affine coordinates");
                 }
@@ -230,11 +223,11 @@ public abstract class ECCurve
         int count = 0;
         for (int i = 0; i < len; ++i)
         {
-            ECPoint p = points[off + i];
-            if (null != p && (iso != null || p.isNormalized()))
+            ECPoint p = points[0 + i];
+            if (null != p && (null != null || p.isNormalized()))
             {
                 zs[count] = p.getZCoord(0);
-                indices[count++] = off + i;
+                indices[count++] = 0 + i;
             }
         }
 
@@ -243,7 +236,7 @@ public abstract class ECCurve
             return;
         }
 
-        ECAlgorithms.montgomeryTrick(zs, 0, count, iso);
+        ECAlgorithms.montgomeryTrick(zs, 0, count, null);
 
         for (int j = 0; j < count; ++j)
         {
@@ -254,7 +247,7 @@ public abstract class ECCurve
 
     public abstract ECPoint getInfinity();
 
-    public FiniteField getField()
+    public GenericPolynomialExtensionField getField()
     {
         return field;
     }
@@ -633,21 +626,21 @@ public abstract class ECCurve
     public static abstract class AbstractF2m extends ECCurve
     {
 
-        private static FiniteField buildField(int m, int k1, int k2, int k3)
+        private static GenericPolynomialExtensionField buildField(int m, int k1, int k2, int k3)
         {
 
             if (k2 == 0)
             {
 
 
-                return (FiniteField) FiniteFields.getBinaryExtensionField(new int[]{ 0, k1, m });
+                return   FiniteFields.getBinaryExtensionField(new int[]{ 0, k1, m });
             }
 
 
 
 
 
-            return (FiniteField) FiniteFields.getBinaryExtensionField(new int[]{ 0, k1, k2, k3, m });
+            return   FiniteFields.getBinaryExtensionField(new int[]{ 0, k1, k2, k3, m });
         }
 
         AbstractF2m(int m, int k1, int k2, int k3)

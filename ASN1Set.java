@@ -27,10 +27,6 @@ public abstract class ASN1Set
             set.addElement(v.get(i));
         }
 
-        if (false)
-        {
-            this.sort();
-        }
     }
 
     Enumeration getObjects()

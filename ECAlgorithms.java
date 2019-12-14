@@ -6,10 +6,10 @@ class ECAlgorithms
 
     public static boolean isFpCurve(ECCurve c)
     {
-        return isFpField(c.getField());
+        return isFpField((PrimeField) c.getField());
     }
 
-    private static boolean isFpField(FiniteField field)
+    private static boolean isFpField(PrimeField field)
     {
         return field.getDimension() == 1;
     }

@@ -1,12 +1,12 @@
 
 import java.math.BigInteger;
 
-class PrimeField implements FiniteField
-{
+class PrimeField extends GenericPolynomialExtensionField {
     private final BigInteger characteristic;
 
     PrimeField(BigInteger characteristic)
     {
+        super();
         this.characteristic = characteristic;
     }
 
