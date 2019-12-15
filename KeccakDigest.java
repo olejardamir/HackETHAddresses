@@ -19,15 +19,7 @@ public class KeccakDigest {
         init(bitLength);
     }
 
-    public KeccakDigest(KeccakDigest source)
-    {
-        System.arraycopy(source.state, 0, this.state, 0, source.state.length);
-        System.arraycopy(source.dataQueue, 0, this.dataQueue, 0, source.dataQueue.length);
-        this.rate = source.rate;
-        this.bitsInQueue = source.bitsInQueue;
-        this.fixedOutputLength = source.fixedOutputLength;
-        this.squeezing = source.squeezing;
-    }
+
 
     public String getAlgorithmName()
     {
@@ -106,7 +98,7 @@ public class KeccakDigest {
             {
                 do
                 {
-                    KeccakAbsorb(data, off + count);
+                    
                     count += rateBytes;
                 }
                 while (count <= (len - rateBytes));
@@ -121,7 +113,7 @@ public class KeccakDigest {
 
                 if (bytesInQueue == rateBytes)
                 {
-                    KeccakAbsorb(dataQueue, 0);
+                   
                     bytesInQueue = 0;
                 }
             }
@@ -136,7 +128,7 @@ public class KeccakDigest {
 
         if (++bitsInQueue == rate)
         {
-            KeccakAbsorb(dataQueue, 0);
+           
             bitsInQueue = 0;
         }
 
@@ -187,17 +179,17 @@ public class KeccakDigest {
         }
     }
 
-    private void KeccakAbsorb(byte[] data, int off)
-    {
-        int count = rate >> 6;
-        for (int i = 0; i < count; ++i)
-        {
-            state[i] ^= Pack.littleEndianToLong(data, off);
-            off += 8;
-        }
 
-        KeccakPermutation();
-    }
+
+
+
+
+
+
+
+
+
+
 
     private void KeccakExtract()
     {

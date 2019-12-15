@@ -1,15 +1,11 @@
-
 public class SecP256K1Point extends ECPoint {
 
-    public SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y)
-    {
+    public SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y) {
         this(curve, x, y, false);
     }
 
 
-
-    public SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y, boolean withCompression)
-    {
+    public SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y, boolean withCompression) {
         super(curve, x, y);
 
 
@@ -17,34 +13,30 @@ public class SecP256K1Point extends ECPoint {
     }
 
     SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y, ECFieldElement[] zs,
-                   boolean withCompression)
-    {
+                   boolean withCompression) {
         super(curve, x, y, zs);
 
         this.withCompression = withCompression;
     }
 
-     public ECPoint add(ECPoint b) {
-        if (this.isInfinity())
-        {
+    public ECPoint add(ECPoint b) {
+        if (this.isInfinity()) {
             return b;
         }
-        if (b.isInfinity())
-        {
+        if (b.isInfinity()) {
             return this;
         }
-        if (this == b)
-        {
+        if (this == b) {
             return twice();
         }
 
         ECCurve curve = this.getCurve();
 
-        SecP256K1FieldElement X1 = (SecP256K1FieldElement)this.x, Y1 = (SecP256K1FieldElement)this.y;
-        SecP256K1FieldElement X2 = (SecP256K1FieldElement)b.getXCoord(), Y2 = (SecP256K1FieldElement)b.getYCoord();
+        SecP256K1FieldElement X1 = (SecP256K1FieldElement) this.x, Y1 = (SecP256K1FieldElement) this.y;
+        SecP256K1FieldElement X2 = (SecP256K1FieldElement) b.getXCoord(), Y2 = (SecP256K1FieldElement) b.getYCoord();
 
-        SecP256K1FieldElement Z1 = (SecP256K1FieldElement)this.zs[0];
-        SecP256K1FieldElement Z2 = (SecP256K1FieldElement)b.getZCoord(0);
+        SecP256K1FieldElement Z1 = (SecP256K1FieldElement) this.zs[0];
+        SecP256K1FieldElement Z2 = (SecP256K1FieldElement) b.getZCoord(0);
 
         int c;
         int[] tt1 = Nat256.createExt();
@@ -54,13 +46,10 @@ public class SecP256K1Point extends ECPoint {
 
         boolean Z1IsOne = Z1.isOne();
         int[] U2, S2;
-        if (Z1IsOne)
-        {
+        if (Z1IsOne) {
             U2 = X2.x;
             S2 = Y2.x;
-        }
-        else
-        {
+        } else {
             S2 = t3;
             SecP256K1Field.square(Z1.x, S2);
 
@@ -73,13 +62,10 @@ public class SecP256K1Point extends ECPoint {
 
         boolean Z2IsOne = Z2.isOne();
         int[] U1, S1;
-        if (Z2IsOne)
-        {
+        if (Z2IsOne) {
             U1 = X1.x;
             S1 = Y1.x;
-        }
-        else
-        {
+        } else {
             S1 = t4;
             SecP256K1Field.square(Z2.x, S1);
 
@@ -96,10 +82,8 @@ public class SecP256K1Point extends ECPoint {
         SecP256K1Field.subtract(S1, S2, t2);
 
 
-        if (Nat256.isZero(H))
-        {
-            if (Nat256.isZero(t2))
-            {
+        if (Nat256.isZero(H)) {
+            if (Nat256.isZero(t2)) {
 
                 return this.twice();
             }
@@ -131,37 +115,32 @@ public class SecP256K1Point extends ECPoint {
         SecP256K1Field.reduce(tt1, Y3.x);
 
         SecP256K1FieldElement Z3 = new SecP256K1FieldElement(H);
-        if (!Z1IsOne)
-        {
+        if (!Z1IsOne) {
             SecP256K1Field.multiply(Z3.x, Z1.x, Z3.x);
         }
-        if (!Z2IsOne)
-        {
+        if (!Z2IsOne) {
             SecP256K1Field.multiply(Z3.x, Z2.x, Z3.x);
         }
 
-        ECFieldElement[] zs = new ECFieldElement[] { Z3 };
+        ECFieldElement[] zs = new ECFieldElement[]{Z3};
 
         return new SecP256K1Point(curve, X3, Y3, zs, this.withCompression);
     }
 
 
-    public ECPoint twice()
-    {
-        if (this.isInfinity())
-        {
+    public ECPoint twice() {
+        if (this.isInfinity()) {
             return this;
         }
 
         ECCurve curve = this.getCurve();
 
-        SecP256K1FieldElement Y1 = (SecP256K1FieldElement)this.y;
-        if (Y1.isZero())
-        {
+        SecP256K1FieldElement Y1 = (SecP256K1FieldElement) this.y;
+        if (Y1.isZero()) {
             return curve.getInfinity();
         }
 
-        SecP256K1FieldElement X1 = (SecP256K1FieldElement)this.x, Z1 = (SecP256K1FieldElement)this.zs[0];
+        SecP256K1FieldElement X1 = (SecP256K1FieldElement) this.x, Z1 = (SecP256K1FieldElement) this.zs[0];
 
         int c;
 
@@ -196,27 +175,23 @@ public class SecP256K1Point extends ECPoint {
 
         SecP256K1FieldElement Z3 = new SecP256K1FieldElement(M);
         SecP256K1Field.twice(Y1.x, Z3.x);
-        if (!Z1.isOne())
-        {
+        if (!Z1.isOne()) {
             SecP256K1Field.multiply(Z3.x, Z1.x, Z3.x);
         }
 
-        return new SecP256K1Point(curve, X3, Y3, new ECFieldElement[] { Z3 }, this.withCompression);
+        return new SecP256K1Point(curve, X3, Y3, new ECFieldElement[]{Z3}, this.withCompression);
     }
 
     public ECPoint twicePlus(ECPoint b) {
 
-        if (this.isInfinity())
-        {
+        if (this.isInfinity()) {
             return b;
         }
-        if (b.isInfinity())
-        {
+        if (b.isInfinity()) {
             return twice();
         }
 
-        if (this.y.isZero())
-        {
+        if (this.y.isZero()) {
             return b;
         }
 
@@ -224,11 +199,8 @@ public class SecP256K1Point extends ECPoint {
     }
 
 
-
-    public ECPoint negate()
-    {
-        if (this.isInfinity())
-        {
+    public ECPoint negate() {
+        if (this.isInfinity()) {
             return this;
         }
 
@@ -236,12 +208,11 @@ public class SecP256K1Point extends ECPoint {
     }
 
     protected boolean getCompressionYTilde() {
-        return this.getAffineYCoord().testBitZero();
+        return false;
     }
 
     public ECPoint subtract(ECPoint b) {
-        if (b.isInfinity())
-        {
+        if (b.isInfinity()) {
             return this;
         }
 

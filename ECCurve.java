@@ -44,7 +44,7 @@ public abstract class ECCurve
         }
     }
 
-    private   GenericPolynomialExtensionField field;
+    private PrimeField field;
     ECFieldElement a;
     ECFieldElement b;
     BigInteger order;
@@ -53,7 +53,7 @@ public abstract class ECCurve
     int coord = COORD_AFFINE;
      private FixedPointCombMultiplier multiplier = null;
 
-    ECCurve(GenericPolynomialExtensionField field)
+    ECCurve(PrimeField field)
     {
         this.field = field;
     }
@@ -178,7 +178,7 @@ public abstract class ECCurve
 
     public abstract ECPoint getInfinity();
 
-    public GenericPolynomialExtensionField getField()
+    public PrimeField getField()
     {
         return field;
     }
@@ -330,8 +330,8 @@ public abstract class ECCurve
     public int hashCode()
     {
         return getField().hashCode()
-                ^ Integers.rotateLeft(getA().toBigInteger().hashCode(), 8)
-                ^ Integers.rotateLeft(getB().toBigInteger().hashCode(), 16);
+                ^ Integer.rotateLeft(getA().toBigInteger().hashCode(), 8)
+                ^ Integer.rotateLeft(getB().toBigInteger().hashCode(), 16);
     }
 
 

@@ -9,7 +9,7 @@ public class FiniteFields
 
 
 
-    public static GenericPolynomialExtensionField getPrimeField(BigInteger a) {
+    public static PrimeField getPrimeField(BigInteger a) {
         int i = a.bitLength();
         if (a.signum() > 0 && i >= 2) {
             if (i < 3) {
