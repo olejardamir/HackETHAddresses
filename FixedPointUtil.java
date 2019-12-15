@@ -16,7 +16,7 @@ class FixedPointUtil
 
         return (FixedPointPreCompInfo)c.precompute(p, PRECOMP_NAME, new PreCompCallback()
         {
-            public PreCompInfo precompute(PreCompInfo existing) {
+            public FixedPointPreCompInfo precompute(FixedPointPreCompInfo existing) {
                 FixedPointPreCompInfo existingFP = (existing instanceof FixedPointPreCompInfo) ? (FixedPointPreCompInfo)existing : null;
 
                 int bits = getCombSize(c);

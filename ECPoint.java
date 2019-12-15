@@ -8,7 +8,7 @@ public abstract class ECPoint
 
     private static ECFieldElement[] getInitialZCoords(ECCurve curve)
     {
-        
+
         int coord = null == curve ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
 
         switch (coord)
@@ -44,7 +44,7 @@ public abstract class ECPoint
 
     boolean withCompression;
 
-    
+
     Hashtable preCompTable = null;
 
     ECPoint(ECCurve curve, ECFieldElement x, ECFieldElement y)
@@ -61,10 +61,6 @@ public abstract class ECPoint
     }
 
 
-
-
-
-
     public ECCurve getCurve()
     {
         return curve;
@@ -72,22 +68,21 @@ public abstract class ECPoint
 
     int getCurveCoordinateSystem()
     {
-        
+
         return null == curve ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
     }
 
-    
     ECFieldElement getAffineYCoord() {
          return getYCoord();
     }
 
-    
+
     public ECFieldElement getXCoord()
     {
         return x;
     }
 
-    
+
     public ECFieldElement getYCoord() {
         return y;
     }
@@ -118,7 +113,7 @@ public abstract class ECPoint
                 && !zs[0].isOne();
     }
 
-    
+
     public ECPoint normalize() {
         if (this.isInfinity())
         {
@@ -214,11 +209,11 @@ public abstract class ECPoint
         }
         else
         {
-            
+
 
             ECPoint[] points = new ECPoint[]{ this, c1.importPoint(p2) };
 
-            
+
             c1.normalizeAll(points);
 
             p1 = points[0];
@@ -252,7 +247,7 @@ public abstract class ECPoint
 
         if (!this.isInfinity())
         {
-            
+
 
             ECPoint p;
                  p = normalize();
@@ -288,9 +283,9 @@ public abstract class ECPoint
         return sb.toString();
     }
 
-    
 
-    
+
+
     public byte[] getEncoded(boolean compressed) {
         if (this.isInfinity())
         {

@@ -3,7 +3,7 @@ import java.io.ByteArrayOutputStream;
 
 class Hex
 {
-    private static final Encoder encoder = new HexEncoder();
+    private static final HexEncoder encoder = new HexEncoder();
 
 
 

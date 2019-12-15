@@ -78,7 +78,7 @@ public abstract class ECCurve
         return createPoint(x, y, false);
     }
 
-    
+
     public ECPoint createPoint(BigInteger x, BigInteger y, boolean withCompression)
     {
         return createRawPoint(fromBigInteger(x), fromBigInteger(y), withCompression);
@@ -89,8 +89,8 @@ public abstract class ECCurve
     protected abstract ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, boolean withCompression);
 
 
-    
-    public PreCompInfo precompute(ECPoint point, String name, PreCompCallback callback) {
+
+    public FixedPointPreCompInfo precompute(ECPoint point, String name, PreCompCallback callback) {
 
 
         Hashtable table;
@@ -103,8 +103,8 @@ public abstract class ECCurve
 
 
 
-            PreCompInfo existing = (PreCompInfo)table.get(name);
-            PreCompInfo result = callback.precompute(existing);
+            FixedPointPreCompInfo existing = (FixedPointPreCompInfo)table.get(name);
+            FixedPointPreCompInfo result = callback.precompute(existing);
 
             if (result != existing)
             {
@@ -125,13 +125,13 @@ public abstract class ECCurve
             return getInfinity();
         }
 
-        
+
         p = p.normalize();
 
         return createPoint(p.getXCoord().toBigInteger(), p.getYCoord().toBigInteger(), p.withCompression);
     }
 
-    
+
     public void normalizeAll(ECPoint[] points) {
         normalizeAll(points, points.length);
     }
@@ -148,7 +148,7 @@ public abstract class ECCurve
             }
         }
 
-        
+
         ECFieldElement[] zs = new ECFieldElement[len];
         int[] indices = new int[len];
         int count = 0;
@@ -210,7 +210,7 @@ public abstract class ECCurve
 
     protected abstract ECPoint decompressPoint(int yTilde, BigInteger X1);
 
-    
+
     public ECPoint decodePoint(byte[] encoded) {
         ECPoint p;
         int expectedLength = (getFieldSize() + 7) / 8;
@@ -218,14 +218,14 @@ public abstract class ECCurve
         byte type = encoded[0];
         switch (type)
         {
-            case 0x00: 
+            case 0x00:
             {
 
                 p = getInfinity();
                 break;
             }
-            case 0x02: 
-            case 0x03: 
+            case 0x02:
+            case 0x03:
             {
 
 
@@ -257,7 +257,7 @@ public abstract class ECCurve
         return p;
     }
 
-    
+
     public ECLookupTable createCacheSafeLookupTable(final ECPoint[] points, int off, final int len)
     {
         final int FE_BYTES = (getFieldSize() + 7) >>> 3;

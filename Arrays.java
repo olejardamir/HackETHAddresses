@@ -1,7 +1,6 @@
 final class Arrays
 {
 
-
     public static void fill(
             byte[] array,
             byte value)
@@ -11,10 +10,6 @@ final class Arrays
             array[i] = value;
         }
     }
-
-
-
-      
 
     public static int hashCode(int[] data, int off, int len)
     {

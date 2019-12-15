@@ -1,6 +1,6 @@
 
 
-abstract class Pack
+public class Pack
 {
 
     public static void intToBigEndian(int n, byte[] bs, int off)

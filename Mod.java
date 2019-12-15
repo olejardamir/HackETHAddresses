@@ -1,4 +1,4 @@
-abstract class Mod
+public class Mod
 {
 
 

@@ -1,8 +1,6 @@
 public class ASN1ObjectIdentifier {
     private final String identifier;
 
-
-    
     public ASN1ObjectIdentifier(
             String identifier)
     {
@@ -42,29 +40,6 @@ public class ASN1ObjectIdentifier {
 
 
 
-    public ASN1OctetString toASN1Primitive()
-    {
-        return null;
-    }
-
-
-    public boolean equals(
-            Object  o)
-    {
-        if (this == o)
-        {
-            return true;
-        }
-
-        if (!(o instanceof ASN1ObjectIdentifier))
-        {
-            return false;
-        }
-
-        ASN1ObjectIdentifier other = (ASN1ObjectIdentifier)o;
-
-        return this.toASN1Primitive().equals(other.toASN1Primitive());
-    }
 
 
 }

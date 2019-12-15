@@ -1,7 +1,6 @@
 
 
-public class FixedPointPreCompInfo implements PreCompInfo
-{
+public class FixedPointPreCompInfo {
     private ECPoint offset = null;
 
 

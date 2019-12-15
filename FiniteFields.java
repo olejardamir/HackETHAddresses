@@ -1,7 +1,7 @@
 
 import java.math.BigInteger;
 
-abstract class FiniteFields
+public class FiniteFields
 {
     static final PrimeField GF_2 = new PrimeField(BigInteger.valueOf(2));
     private static final PrimeField GF_3 = new PrimeField(BigInteger.valueOf(3));
