@@ -51,7 +51,7 @@ public abstract class ECCurve
     BigInteger cofactor;
 
     int coord = COORD_AFFINE;
-     private AbstractECMultiplier multiplier = null;
+     private FixedPointCombMultiplier multiplier = null;
 
     ECCurve(GenericPolynomialExtensionField field)
     {

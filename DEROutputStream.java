@@ -12,7 +12,7 @@ public class DEROutputStream
     }
 
     public void writeObject(
-            ASN1Encodable obj)
+            ASN1Object obj)
             throws Exception
     {
 

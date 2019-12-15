@@ -5,9 +5,9 @@ import java.math.BigInteger;
 public class X9ECParameters {
     private static final BigInteger   ONE = BigInteger.valueOf(1);
 
-    private X9FieldID           fieldID;
+    private ASN1Object fieldID;
     private final ECCurve             curve;
-    private final X9ECPoint           g;
+    private final ASN1Object g;
     private final BigInteger          n;
     private final BigInteger          h;
     private final byte[]              seed;
@@ -16,7 +16,7 @@ public class X9ECParameters {
 
     public X9ECParameters(
             ECCurve     curve,
-            X9ECPoint   g,
+            ASN1Object g,
             BigInteger  n,
             BigInteger  h,
             byte[]      seed)
@@ -28,7 +28,12 @@ public class X9ECParameters {
         this.seed = Arrays.clone(seed);
 
 
-            this.fieldID = new X9FieldID(curve.getField().getCharacteristic());
+            this.fieldID = new ASN1Object(curve.getField().getCharacteristic()) {
+                @Override
+                public ASN1Primitive toASN1Primitive() {
+                    return null;
+                }
+            };
 
 
 
@@ -60,9 +65,9 @@ public class X9ECParameters {
         ASN1EncodableVector v = new ASN1EncodableVector();
 
         v.add(new ASN1Integer(ONE));
-        v.add((ASN1Encodable) fieldID);
+        v.add( fieldID);
         v.add(new X9Curve(seed));
-        v.add((ASN1Encodable) g);
+        v.add( g);
         v.add(new ASN1Integer(n));
 
         if (h != null)

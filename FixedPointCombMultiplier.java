@@ -1,7 +1,6 @@
 import java.math.BigInteger;
 
-public class FixedPointCombMultiplier extends AbstractECMultiplier
-{
+public class FixedPointCombMultiplier {
      protected ECPoint multiplyPositive(ECPoint p, BigInteger k) {
 
         ECCurve c = p.getCurve();
@@ -42,4 +41,21 @@ public class FixedPointCombMultiplier extends AbstractECMultiplier
     }
 
 
+    public ECPoint multiply(ECPoint p, BigInteger k) {
+        int sign = k.signum();
+        if (sign == 0 || p.isInfinity())
+        {
+            return p.getCurve().getInfinity();
+        }
+
+        ECPoint positive = multiplyPositive(p, k.abs());
+        ECPoint result = sign > 0 ? positive : positive.negate();
+
+
+        return checkResult(result);
+    }
+
+    private ECPoint checkResult(ECPoint p) {
+        return ECAlgorithms.implCheckResult(p);
+    }
 }

@@ -4,7 +4,7 @@ import java.util.Vector;
 
 class ASN1EncodableVector
 {
-    private final Vector<ASN1Encodable> v = new Vector<>();
+    private final Vector<ASN1Object> v = new Vector<>();
 
     
     public ASN1EncodableVector()
@@ -12,13 +12,13 @@ class ASN1EncodableVector
     }
 
     
-    public void add(ASN1Encodable obj)
+    public void add(ASN1Object obj)
     {
         v.addElement(obj);
     }
 
     
-    public ASN1Encodable get(int i)
+    public ASN1Object get(int i)
     {
         return v.elementAt(i);
     }

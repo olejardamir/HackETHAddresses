@@ -1,9 +1,15 @@
 
+public abstract class ASN1Object {
 
 
-public abstract class ASN1Object
-        implements ASN1Encodable {
 
+    public ASN1Object() {
+
+    }
+
+    public ASN1Object(Object characteristic) {
+
+    }
 
     public int hashCode()
     {
@@ -18,12 +24,12 @@ public abstract class ASN1Object
             return true;
         }
 
-        if (!(o instanceof ASN1Encodable))
+        if (!(o instanceof ASN1Object))
         {
             return false;
         }
 
-        ASN1Encodable other = (ASN1Encodable)o;
+        ASN1Object other = (ASN1Object)o;
 
         return this.toASN1Primitive().equals(other.toASN1Primitive());
     }
@@ -32,4 +38,8 @@ public abstract class ASN1Object
 
     
     public abstract ASN1Primitive toASN1Primitive();
+
+    public ECPoint getPoint() {
+        return null;
+    }
 }

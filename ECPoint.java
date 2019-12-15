@@ -20,7 +20,7 @@ public abstract class ECPoint
                 break;
         }
 
-        ECFieldElement one = curve.fromBigInteger(ECConstants.ONE);
+        ECFieldElement one = curve.fromBigInteger(ECFieldElement.ONE);
 
         switch (coord)
         {

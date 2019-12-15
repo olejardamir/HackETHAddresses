@@ -22,7 +22,7 @@ public class SecP256K1Curve extends ECCurve.AbstractFp
 
         this.infinity = new SecP256K1Point(this, null, null);
 
-        this.a = fromBigInteger(ECConstants.ZERO);
+        this.a = fromBigInteger(ECFieldElement.ZERO);
         this.b = fromBigInteger(BigInteger.valueOf(7));
         this.order = new BigInteger(1, Hex.decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141"));
         this.cofactor = BigInteger.valueOf(1);

@@ -62,7 +62,7 @@ class ASN1OutputStream
     }
 
     public void writeObject(
-            ASN1Encodable obj)
+            ASN1Object obj)
             throws Exception
     {
         if (obj != null)

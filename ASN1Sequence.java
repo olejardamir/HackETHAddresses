@@ -70,8 +70,8 @@ public abstract class ASN1Sequence
 
         while (s1.hasMoreElements())
         {
-            ASN1Encodable obj1 = getNext(s1);
-            ASN1Encodable obj2 = getNext(s2);
+            ASN1Object obj1 = getNext(s1);
+            ASN1Object obj2 = getNext(s2);
 
             ASN1Primitive o1 = obj1.toASN1Primitive();
             ASN1Primitive o2 = obj2.toASN1Primitive();
@@ -87,10 +87,10 @@ public abstract class ASN1Sequence
         return true;
     }
 
-    private ASN1Encodable getNext(Enumeration e)
+    private ASN1Object getNext(Enumeration e)
     {
 
-        return (ASN1Encodable)e.nextElement();
+        return (ASN1Object)e.nextElement();
     }
 
     

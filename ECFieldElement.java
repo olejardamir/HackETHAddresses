@@ -1,7 +1,9 @@
 import java.math.BigInteger;
 
-public abstract class ECFieldElement
-        implements ECConstants {
+public abstract class ECFieldElement {
+    public static final BigInteger ZERO = BigInteger.valueOf(0);
+    public static final BigInteger ONE = BigInteger.valueOf(1);
+
     ECFieldElement() {
 
     }

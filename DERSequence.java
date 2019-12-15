@@ -29,7 +29,7 @@ class DERSequence
             for (Enumeration e = this.getObjects(); e.hasMoreElements();)
             {
 
-                length += ((ASN1Encodable) e.nextElement()).toASN1Primitive().toDERObject().encodedLength();
+                length += ((ASN1Object) e.nextElement()).toASN1Primitive().toDERObject().encodedLength();
             }
 
             bodyLength = length;
@@ -57,7 +57,7 @@ class DERSequence
         for (Enumeration e = this.getObjects(); e.hasMoreElements();)
         {
 
-            out.getDERSubStream().writeObject((ASN1Encodable) e.nextElement());
+            out.getDERSubStream().writeObject((ASN1Object) e.nextElement());
         }
     }
 }

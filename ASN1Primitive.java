@@ -4,6 +4,7 @@ public abstract class ASN1Primitive
 {
     ASN1Primitive()
     {
+        super();
 
     }
 
@@ -14,7 +15,7 @@ public abstract class ASN1Primitive
             return true;
         }
 
-        return (o instanceof ASN1Encodable) && asn1Equals(((ASN1Encodable)o).toASN1Primitive());
+        return (o instanceof ASN1Object) && asn1Equals(((ASN1Object)o).toASN1Primitive());
     }
 
     public ASN1Primitive toASN1Primitive()

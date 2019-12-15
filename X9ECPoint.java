@@ -1,5 +1,5 @@
 
-class X9ECPoint {
+class X9ECPoint extends ASN1Object {
     private final ASN1OctetString encoding;
 
     private final ECCurve c;
@@ -27,7 +27,7 @@ class X9ECPoint {
     }
 
 
-    private ASN1Primitive toASN1Primitive()
+    public ASN1Primitive toASN1Primitive()
     {
         return encoding;
     }
