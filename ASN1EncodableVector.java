@@ -4,7 +4,7 @@ import java.util.Vector;
 
 class ASN1EncodableVector
 {
-    private final Vector<ASN1Encodable> v = new Vector<ASN1Encodable>();
+    private final Vector<ASN1Encodable> v = new Vector<>();
 
     
     public ASN1EncodableVector()

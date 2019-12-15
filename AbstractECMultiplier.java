@@ -16,7 +16,7 @@ abstract class AbstractECMultiplier {
         return checkResult(result);
     }
 
-    protected abstract ECPoint multiplyPositive(ECPoint p, BigInteger k) throws CloneNotSupportedException;
+    protected abstract ECPoint multiplyPositive(ECPoint p, BigInteger k);
 
     private ECPoint checkResult(ECPoint p) {
         return ECAlgorithms.implCheckResult(p);

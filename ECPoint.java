@@ -359,46 +359,6 @@ public abstract class ECPoint
             return this.getAffineYCoord().testBitZero();
         }
 
-        protected boolean satisfiesCurveEquation() {
-            ECFieldElement X = this.x, A = curve.getA(), B = curve.getB();
-            ECFieldElement lhs = this.y.square();
-
-            switch (this.getCurveCoordinateSystem())
-            {
-                case ECCurve.COORD_AFFINE:
-                    break;
-                case ECCurve.COORD_HOMOGENEOUS:
-                {
-                    ECFieldElement Z = this.zs[0];
-                    if (!Z.isOne())
-                    {
-                        ECFieldElement Z2 = Z.square(), Z3 = Z.multiply(Z2);
-                        lhs = lhs.multiply(Z);
-                        A = A.multiply(Z2);
-                        B = B.multiply(Z3);
-                    }
-                    break;
-                }
-                case ECCurve.COORD_JACOBIAN:
-                case ECCurve.COORD_JACOBIAN_CHUDNOVSKY:
-                case ECCurve.COORD_JACOBIAN_MODIFIED:
-                {
-                    ECFieldElement Z = this.zs[0];
-                    if (!Z.isOne())
-                    {
-                        ECFieldElement Z2 = Z.square(), Z4 = Z2.square(), Z6 = Z2.multiply(Z4);
-                        A = A.multiply(Z4);
-                        B = B.multiply(Z6);
-                    }
-                    break;
-                }
-                default:
-                    throw new IllegalStateException("unsupported coordinate system");
-            }
-
-            ECFieldElement rhs = X.square().add(A).multiply(X).add(B);
-            return lhs.equals(rhs);
-        }
 
         public ECPoint subtract(ECPoint b) {
             if (b.isInfinity())

@@ -22,7 +22,7 @@ class CustomNamedCurves
 
 
     private static final Hashtable<String, X9ECParametersHolder> nameToCurve = new Hashtable<>();
-    private static final Hashtable<String, ASN1ObjectIdentifier> nameToOID = new Hashtable<String, ASN1ObjectIdentifier>();
+    private static final Hashtable<String, ASN1ObjectIdentifier> nameToOID = new Hashtable<>();
     private static final Hashtable<ASN1ObjectIdentifier, X9ECParametersHolder> oidToCurve = new Hashtable<>();
     private static final Hashtable<ASN1ObjectIdentifier, String> oidToName = new Hashtable<>();
     private static final Vector<String> names = new Vector<>();

@@ -11,7 +11,7 @@ class FixedPointUtil
         return order == null ? c.getFieldSize() + 1 : order.bitLength();
     }
 
-    public static FixedPointPreCompInfo precompute(final ECPoint p) throws CloneNotSupportedException {
+    public static FixedPointPreCompInfo precompute(final ECPoint p) {
         final ECCurve c = p.getCurve();
 
         return (FixedPointPreCompInfo)c.precompute(p, PRECOMP_NAME, new PreCompCallback()

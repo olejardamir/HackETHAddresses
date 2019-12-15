@@ -7,64 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0773b1ca-6e4c-45cb-8a52-9d8d30635c36" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASN1BitString.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1BitString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASN1ObjectIdentifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1ObjectIdentifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASN1OctetString.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1OctetString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1EncodableVector.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1EncodableVector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASN1InputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1InputStream.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ASN1OutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1OutputStream.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AbstractECMultiplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/AbstractECMultiplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BigIntegers.java" beforeDir="false" afterPath="$PROJECT_DIR$/BigIntegers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Curve25519.java" beforeDir="false" afterPath="$PROJECT_DIR$/Curve25519.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Curve25519FieldElement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ECAlgorithms.java" beforeDir="false" afterPath="$PROJECT_DIR$/ECAlgorithms.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ECCurve.java" beforeDir="false" afterPath="$PROJECT_DIR$/ECCurve.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ECDomainParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/ECDomainParameters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Curve25519Field.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomNamedCurves.java" beforeDir="false" afterPath="$PROJECT_DIR$/CustomNamedCurves.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ECPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/ECPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FixedPointCombMultiplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/FixedPointCombMultiplier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FixedPointUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/FixedPointUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HexEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/HexEncoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KeccakDigest.java" beforeDir="false" afterPath="$PROJECT_DIR$/KeccakDigest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mod.java" beforeDir="false" afterPath="$PROJECT_DIR$/Mod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nat256.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nat256.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PreCompCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/PreCompCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecP256K1Curve.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecP256K1Curve.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecP256K1FieldElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecP256K1FieldElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SecP256K1Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecP256K1Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ValidityPrecompInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1BitString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1BitString.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1ObjectIdentifier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1ObjectIdentifier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1OctetString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1OctetString.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1OutputStream.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1OutputStream.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/AbstractECMultiplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/AbstractECMultiplier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/BigIntegers.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/BigIntegers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Curve25519.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Curve25519.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Curve25519FieldElement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECAlgorithms.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECAlgorithms.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$AbstractFp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$AbstractFp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$Config.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECDomainParameters.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECDomainParameters.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint$AbstractFp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint$AbstractFp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointCombMultiplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointCombMultiplier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointUtil$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointUtil$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/HexEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/HexEncoder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/KeccakDigest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/KeccakDigest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Mod.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Mod.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Nat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Nat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Nat256.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Nat256.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/PreCompCallback.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/PreCompCallback.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Curve$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Curve$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Curve.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Curve.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1FieldElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1FieldElement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Point.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ValidityPrecompInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/X9ECPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/X9ECPoint.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,35 +29,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Curve25519.java">
+        <entry file="file://$PROJECT_DIR$/ECPoint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="92" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="92" />
-              <folding>
-                <element signature="e#732#733#0" expanded="true" />
-                <element signature="e#756#757#0" expanded="true" />
-                <element signature="e#815#816#0" expanded="true" />
-                <element signature="e#842#843#0" expanded="true" />
-                <element signature="e#882#883#0" expanded="true" />
-                <element signature="e#909#910#0" expanded="true" />
-                <element signature="e#1011#1012#0" expanded="true" />
-                <element signature="e#1038#1039#0" expanded="true" />
-                <element signature="e#1075#1076#0" expanded="true" />
-                <element signature="e#1102#1103#0" expanded="true" />
-                <element signature="e#1753#1754#0" expanded="true" />
-                <element signature="e#1793#1794#0" expanded="true" />
-                <element signature="e#1842#1843#0" expanded="true" />
-                <element signature="e#1885#1886#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="208">
+              <caret line="361" selection-start-line="361" selection-end-line="361" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ASN1InputStream.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test.java">
+        <entry file="file://$PROJECT_DIR$/CustomNamedCurves.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="9" column="97" selection-start-line="9" selection-start-column="97" selection-end-line="9" selection-end-column="97" />
+            <state relative-caret-position="297">
+              <caret line="32" column="31" lean-forward="true" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -140,7 +84,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/KeccakDigest.java" />
         <option value="$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/Mod.java" />
         <option value="$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/Nat.java" />
         <option value="$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/Nat256.java" />
@@ -163,7 +106,6 @@
         <option value="$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9FieldID.java" />
         <option value="$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9IntegerConverter.java" />
         <option value="$PROJECT_DIR$/X9FieldID.java" />
-        <option value="$PROJECT_DIR$/CustomNamedCurves.java" />
         <option value="$PROJECT_DIR$/X9ECParametersHolder.java" />
         <option value="$PROJECT_DIR$/X9FieldElement.java" />
         <option value="$PROJECT_DIR$/Curve25519Field.java" />
@@ -188,9 +130,11 @@
         <option value="$PROJECT_DIR$/ECAlgorithms.java" />
         <option value="$PROJECT_DIR$/Curve25519FieldElement.java" />
         <option value="$PROJECT_DIR$/ASN1ObjectIdentifier.java" />
-        <option value="$PROJECT_DIR$/ECPoint.java" />
         <option value="$PROJECT_DIR$/Curve25519.java" />
         <option value="$PROJECT_DIR$/test.java" />
+        <option value="$PROJECT_DIR$/ECPoint.java" />
+        <option value="$PROJECT_DIR$/ASN1InputStream.java" />
+        <option value="$PROJECT_DIR$/CustomNamedCurves.java" />
       </list>
     </option>
   </component>
@@ -279,9 +223,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -290,13 +233,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32969433" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.30458516" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30458516" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="SonarLint" order="7" />
-      <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.3875546" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" order="8" visible="true" weight="0.3875546" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
@@ -379,139 +322,21 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/SecP256K1Curve.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2673">
-          <caret line="182" selection-start-line="182" selection-end-line="182" />
-          <folding>
-            <element signature="e#442#443#0" expanded="true" />
-            <element signature="e#485#486#0" expanded="true" />
-            <element signature="e#734#735#0" expanded="true" />
-            <element signature="e#770#771#0" expanded="true" />
-            <element signature="e#842#843#0" expanded="true" />
-            <element signature="e#893#894#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/SecP256K1Field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4773">
-          <caret line="322" selection-start-line="322" selection-end-line="322" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/SecP256K1FieldElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7578">
-          <caret line="509" selection-start-line="509" selection-end-line="509" />
-          <folding>
-            <element signature="e#1473#1474#0" expanded="true" />
-            <element signature="e#1509#1510#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/SecP256K1Point.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3303">
-          <caret line="226" selection-start-line="226" selection-end-line="226" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/StreamUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/Strings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="948">
-          <caret line="67" selection-start-line="67" selection-end-line="67" />
-          <folding>
-            <element signature="e#306#307#0" expanded="true" />
-            <element signature="e#363#364#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/ValidityPrecompInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3588">
-          <caret line="243" selection-start-line="243" selection-end-line="243" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9Curve.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1713">
-          <caret line="118" selection-start-line="118" selection-end-line="118" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9ECParameters.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3708">
-          <caret line="251" selection-start-line="251" selection-end-line="251" />
-          <folding>
-            <element signature="e#1696#1697#0" expanded="true" />
-            <element signature="e#1752#1753#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9ECParametersHolder.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9ECPoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1983">
-          <caret line="136" selection-start-line="136" selection-end-line="136" />
-          <folding>
-            <element signature="e#796#797#0" expanded="true" />
-            <element signature="e#852#853#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9FieldElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1593">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
-          <folding>
-            <element signature="e#592#593#0" expanded="true" />
-            <element signature="e#648#649#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9FieldID.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1668">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
-          <folding>
-            <element signature="e#756#757#0" expanded="true" />
-            <element signature="e#812#813#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9IntegerConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/SecP256K1Curve.java" />
+    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/SecP256K1Field.java" />
+    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/SecP256K1FieldElement.java" />
+    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/SecP256K1Point.java" />
+    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/StreamUtil.java" />
+    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/Strings.java" />
+    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/test.java" />
+    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/ValidityPrecompInfo.java" />
+    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9Curve.java" />
+    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9ECParameters.java" />
+    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9ECParametersHolder.java" />
+    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9ECPoint.java" />
+    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9FieldElement.java" />
+    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9FieldID.java" />
+    <entry file="file://$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/werwer/X9IntegerConverter.java" />
     <entry file="file://$PROJECT_DIR$/SecP256K1Field.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -530,31 +355,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CustomNamedCurves.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/X9IntegerConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/X9FieldElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="11" lean-forward="true" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
-          <folding>
-            <element signature="e#193#194#0" expanded="true" />
-            <element signature="e#219#220#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/X9IntegerConverter.java" />
+    <entry file="file://$PROJECT_DIR$/X9FieldElement.java" />
     <entry file="file://$PROJECT_DIR$/X9ECParametersHolder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -562,27 +364,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Curve25519Field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASN1Set.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASN1TaggedObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="30" lean-forward="true" selection-start-column="30" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ASN1Set.java" />
+    <entry file="file://$PROJECT_DIR$/ASN1TaggedObject.java" />
     <entry file="file://$PROJECT_DIR$/X9ECParameters.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="263">
@@ -590,19 +373,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DERNull.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-          <folding>
-            <element signature="e#240#241#0" expanded="true" />
-            <element signature="e#264#265#0" expanded="true" />
-            <element signature="e#357#358#0" expanded="true" />
-            <element signature="e#385#386#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/DERNull.java" />
     <entry file="file://$PROJECT_DIR$/X9Curve.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
@@ -701,13 +472,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ValidityPrecompInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ValidityPrecompInfo.java" />
     <entry file="file://$PROJECT_DIR$/SecP256K1Curve.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -739,42 +504,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ECPoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-          <folding>
-            <element signature="e#1975#1976#0" expanded="true" />
-            <element signature="e#2010#2011#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Curve25519FieldElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding>
-            <element signature="e#283#284#0" expanded="true" />
-            <element signature="e#310#311#0" expanded="true" />
-            <element signature="e#344#345#0" expanded="true" />
-            <element signature="e#368#369#0" expanded="true" />
-            <element signature="e#420#421#0" expanded="true" />
-            <element signature="e#447#448#0" expanded="true" />
-            <element signature="e#504#505#0" expanded="true" />
-            <element signature="e#531#532#0" expanded="true" />
-            <element signature="e#570#571#0" expanded="true" />
-            <element signature="e#597#598#0" expanded="true" />
-            <element signature="e#636#637#0" expanded="true" />
-            <element signature="e#663#664#0" expanded="true" />
-            <element signature="e#702#703#0" expanded="true" />
-            <element signature="e#729#730#0" expanded="true" />
-            <element signature="e#766#767#0" expanded="true" />
-            <element signature="e#793#794#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Curve25519FieldElement.java" />
     <entry file="file://$PROJECT_DIR$/ECAlgorithms.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -782,44 +512,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ASN1InputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-          <folding>
-            <element signature="e#470#471#0" expanded="true" />
-            <element signature="e#495#496#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Curve25519.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="92" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="92" />
-          <folding>
-            <element signature="e#732#733#0" expanded="true" />
-            <element signature="e#756#757#0" expanded="true" />
-            <element signature="e#815#816#0" expanded="true" />
-            <element signature="e#842#843#0" expanded="true" />
-            <element signature="e#882#883#0" expanded="true" />
-            <element signature="e#909#910#0" expanded="true" />
-            <element signature="e#1011#1012#0" expanded="true" />
-            <element signature="e#1038#1039#0" expanded="true" />
-            <element signature="e#1075#1076#0" expanded="true" />
-            <element signature="e#1102#1103#0" expanded="true" />
-            <element signature="e#1753#1754#0" expanded="true" />
-            <element signature="e#1793#1794#0" expanded="true" />
-            <element signature="e#1842#1843#0" expanded="true" />
-            <element signature="e#1885#1886#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Curve25519.java" />
     <entry file="file://$PROJECT_DIR$/test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="9" column="97" selection-start-line="9" selection-start-column="97" selection-end-line="9" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Curve25519Field.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ECPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="361" selection-start-line="361" selection-end-line="361" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASN1InputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CustomNamedCurves.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="32" column="31" lean-forward="true" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
         </state>
       </provider>
     </entry>

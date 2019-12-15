@@ -17,7 +17,7 @@ class X9ECPoint {
 
 
 
-    public synchronized ECPoint getPoint() throws CloneNotSupportedException {
+    public synchronized ECPoint getPoint() {
         if (p == null)
         {
             p = c.decodePoint(encoding.getOctets()).normalize();

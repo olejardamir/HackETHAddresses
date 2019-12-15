@@ -68,9 +68,8 @@ public abstract class ECCurve
     }
 
     private ECPoint validatePoint(BigInteger x, BigInteger y) {
-        ECPoint p = createPoint(x, y);
 
-        return p;
+        return createPoint(x, y);
     }
 
 

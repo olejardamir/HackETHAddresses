@@ -1,8 +1,5 @@
-import java.io.*;
-
-
 class ASN1InputStream
-        extends FilterInputStream {
+         {
      public static final int INTEGER             = 0x02;
     public static final int BIT_STRING          = 0x03;
     public static final int OCTET_STRING        = 0x04;
@@ -14,7 +11,4 @@ class ASN1InputStream
 
 
 
-    protected ASN1InputStream(InputStream in) {
-        super(in);
-    }
 }
