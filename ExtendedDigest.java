@@ -7,7 +7,6 @@ interface ExtendedDigest {
     int getDigestSize();
 
     
-    void update(byte in);
 
     
     void update(byte[] in, int inOff, int len);
@@ -15,6 +14,5 @@ interface ExtendedDigest {
     
     void doFinal(byte[] out, int outOff);
 
-    
-    void reset();
+
 }

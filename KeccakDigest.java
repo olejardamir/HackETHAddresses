@@ -41,10 +41,7 @@ public class KeccakDigest
         return fixedOutputLength / 8;
     }
 
-    public void update(byte in)
-    {
-        absorb(new byte[]{ in }, 0, 1);
-    }
+
 
     public void update(byte[] in, int inOff, int len)
     {

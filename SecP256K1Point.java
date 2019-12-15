@@ -206,10 +206,10 @@ public class SecP256K1Point extends ECPoint.AbstractFp
     }
 
     public ECPoint twicePlus(ECPoint b) {
-        if (this == b)
-        {
-            return threeTimes();
-        }
+//        if (this == b)
+//        {
+//            return threeTimes();
+//        }
         if (this.isInfinity())
         {
             return b;
@@ -227,15 +227,15 @@ public class SecP256K1Point extends ECPoint.AbstractFp
         return twice().add(b);
     }
 
-    private ECPoint threeTimes() {
-        if (this.isInfinity() || this.y.isZero())
-        {
-            return this;
-        }
-
-        
-        return twice().add(this);
-    }
+//    private ECPoint threeTimes() {
+//        if (this.isInfinity() || this.y.isZero())
+//        {
+//            return this;
+//        }
+//
+//
+//        return twice().add(this);
+//    }
 
     public ECPoint negate()
     {

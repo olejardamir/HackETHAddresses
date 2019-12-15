@@ -35,9 +35,7 @@ class ECDomainParameters {
         return G;
     }
 
-    public BigInteger getN() {
-        return n;
-    }
+
 
     public boolean equals(
             Object obj) {

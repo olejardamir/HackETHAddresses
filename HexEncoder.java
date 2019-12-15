@@ -40,22 +40,6 @@ public class HexEncoder
     }
 
     
-    public void encode(
-            byte[]                data,
-            int                    off,
-            int                    length,
-            OutputStream    out)
-            throws Exception
-    {
-        for (int i = off; i < (off + length); i++)
-        {
-            int    v = data[i] & 0xff;
-
-            out.write(encodingTable[(v >>> 4)]);
-            out.write(encodingTable[v & 0xf]);
-        }
-
-    }
 
     private static boolean ignore(
             char    c)
