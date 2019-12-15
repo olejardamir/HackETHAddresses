@@ -84,10 +84,7 @@ public class KeccakDigest
 
     private void initSponge(int rate)
     {
-        if ((rate <= 0) || (rate >= 1600) || ((rate % 64) != 0))
-        {
-            throw new IllegalStateException("invalid rate value");
-        }
+
 
         this.rate = rate;
         for (int i = 0; i < state.length; ++i)
@@ -102,14 +99,7 @@ public class KeccakDigest
 
     private void absorb(byte[] data, int off, int len)
     {
-        if ((bitsInQueue % 8) != 0)
-        {
-            throw new IllegalStateException("attempt to absorb with odd length queue");
-        }
-        if (squeezing)
-        {
-            throw new IllegalStateException("attempt to absorb while squeezing");
-        }
+
 
         int bytesInQueue = bitsInQueue >> 3;
         int rateBytes = rate >> 3;
@@ -184,10 +174,6 @@ public class KeccakDigest
         if (!squeezing)
         {
             padAndSwitchToSqueezingPhase();
-        }
-        if ((outputLength % 8) != 0)
-        {
-            throw new IllegalStateException("outputLength not a multiple of 8");
         }
 
         long i = 0;

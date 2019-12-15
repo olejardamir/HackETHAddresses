@@ -5,10 +5,7 @@ abstract class Mod
     public static void invert(int[] p, int[] x, int[] z)
     {
         int len = p.length;
-        if (Nat.isZero(len, x))
-        {
-            throw new IllegalArgumentException("'x' cannot be 0");
-        }
+
         if (Nat.isOne(len, x))
         {
             System.arraycopy(x, 0, z, 0, len);

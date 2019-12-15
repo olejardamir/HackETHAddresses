@@ -70,10 +70,7 @@ class ASN1OutputStream
         {
             obj.toASN1Primitive().encode(this);
         }
-        else
-        {
-            throw new IOException("null object detected");
-        }
+
     }
 
     ASN1OutputStream getDERSubStream()

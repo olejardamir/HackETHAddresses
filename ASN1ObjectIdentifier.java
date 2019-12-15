@@ -15,14 +15,7 @@ public class ASN1ObjectIdentifier
     public ASN1ObjectIdentifier(
             String identifier)
     {
-        if (identifier == null)
-        {
-            throw new IllegalArgumentException("'identifier' cannot be null");
-        }
-        if (!isValidIdentifier(identifier))
-        {
-            throw new IllegalArgumentException("string " + identifier + " not an OID");
-        }
+
 
         this.identifier = identifier;
     }
@@ -30,10 +23,6 @@ public class ASN1ObjectIdentifier
     
     private ASN1ObjectIdentifier(ASN1ObjectIdentifier oid, String branchID)
     {
-        if (!isValidBranchID(branchID, 0))
-        {
-            throw new IllegalArgumentException("string " + branchID + " not a valid OID branch");
-        }
 
         this.identifier = oid.getId() + "." + branchID;
     }
@@ -174,55 +163,9 @@ public class ASN1ObjectIdentifier
         return getId();
     }
 
-    private static boolean isValidBranchID(
-            String branchID, int start)
-    {
-        boolean periodAllowed = false;
 
-        int pos = branchID.length();
-        while (--pos >= start)
-        {
-            char ch = branchID.charAt(pos);
 
-            
-            if ('0' <= ch && ch <= '9')
-            {
-                periodAllowed = true;
-                continue;
-            }
 
-            if (ch == '.')
-            {
-                if (!periodAllowed)
-                {
-                    return false;
-                }
 
-                periodAllowed = false;
-                continue;
-            }
-
-            return false;
-        }
-
-        return periodAllowed;
-    }
-
-    private static boolean isValidIdentifier(
-            String identifier)
-    {
-        if (identifier.length() < 3 || identifier.charAt(1) != '.')
-        {
-            return false;
-        }
-
-        char first = identifier.charAt(0);
-        if (first < '0' || first > '2')
-        {
-            return false;
-        }
-
-        return isValidBranchID(identifier, 2);
-    }
 
 }

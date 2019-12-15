@@ -16,10 +16,7 @@ final class BigIntegers
         int start = bytes[0] == 0 ? 1 : 0;
         int count = bytes.length - start;
 
-        if (count > length)
-        {
-            throw new IllegalArgumentException("standard length exceeded for value");
-        }
+
 
         byte[] tmp = new byte[length];
         System.arraycopy(bytes, start, tmp, tmp.length - count, count);

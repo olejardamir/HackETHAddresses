@@ -37,8 +37,7 @@ class test {
 
             byte[] encoded = point.getEncoded(false);
             int newLength = encoded.length - 1;
-            if (newLength < 0)
-                throw new IllegalArgumentException(1 + " > " + encoded.length);
+
             byte[] copy = new byte[newLength];
             System.arraycopy(encoded, 1, copy, 0,
                     Math.min(encoded.length - 1, newLength));
@@ -48,12 +47,7 @@ class test {
             String result10 = value.toString(16);
 
             int length = result10.length();
-            if (length > 64 << 1) {
-                throw new UnsupportedOperationException(
-                        "Value " + result10 + "is larger then length " + (64 << 1));
-            } else if (value.signum() < 0) {
-                throw new UnsupportedOperationException("Value cannot be negative");
-            }
+
 
             if (length < 64 << 1) {
                 result10 = new String(new char[(64 << 1) - length]).replace("\0", String.valueOf('0')) + result10;

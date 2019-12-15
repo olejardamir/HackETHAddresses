@@ -1,13 +1,11 @@
 import java.math.BigInteger;
 
 class ECDomainParameters
-        implements ECConstants
-{
-    private ECCurve     curve;
-    private ECPoint     G;
-    private BigInteger  n;
-    private BigInteger  h;
-
+        implements ECConstants {
+    private ECCurve curve;
+    private ECPoint G;
+    private BigInteger n;
+    private BigInteger h;
 
 
     public ECDomainParameters(
@@ -15,55 +13,51 @@ class ECDomainParameters
             ECPoint G,
             BigInteger n,
             BigInteger h
-    ) throws CloneNotSupportedException {
-        if (curve == null)
-        {
-            throw new NullPointerException("curve");
-        }
-        if (n == null)
-        {
-            throw new NullPointerException("n");
-        }
-        
+    ) {
+
+
 
         this.curve = curve;
         this.G = validate(curve, G);
         this.n = n;
         this.h = h;
-     }
+    }
 
-    public ECPoint getG()
-    {
+    private static ECPoint validate(ECCurve c, ECPoint q) {
+
+        q = ECAlgorithms.importPoint(c, q).normalize();
+
+
+
+        return q;
+    }
+
+    public ECPoint getG() {
         return G;
     }
 
-    public BigInteger getN()
-    {
+    public BigInteger getN() {
         return n;
     }
 
     public boolean equals(
-            Object  obj)
-    {
-        if (this == obj)
-        {
+            Object obj) {
+        if (this == obj) {
             return true;
         }
 
-        if ((obj instanceof ECDomainParameters))
-        {
-            ECDomainParameters other = (ECDomainParameters)obj;
+        if ((obj instanceof ECDomainParameters)) {
+            ECDomainParameters other = (ECDomainParameters) obj;
 
 
-                return this.curve.equals(other.curve) && this.G.equals(other.G) && this.n.equals(other.n) && this.h.equals(other.h);
+            return this.curve.equals(other.curve) && this.G.equals(other.G) && this.n.equals(other.n) && this.h.equals(other.h);
 
         }
 
         return false;
     }
 
-    public int hashCode()
-    {
+    public int hashCode() {
         int hc = curve.hashCode();
         hc *= 37;
         hc ^= G.hashCode();
@@ -72,26 +66,5 @@ class ECDomainParameters
         hc *= 37;
         hc ^= h.hashCode();
         return hc;
-    }
-
-    private static ECPoint validate(ECCurve c, ECPoint q) throws CloneNotSupportedException {
-        if (q == null)
-        {
-            throw new IllegalArgumentException("Point has null value");
-        }
-
-        q = ECAlgorithms.importPoint(c, q).normalize();
-
-        if (q.isInfinity())
-        {
-            throw new IllegalArgumentException("Point at infinity");
-        }
-
-        if (q.isValid())
-        {
-            throw new IllegalArgumentException("Point not on curve");
-        }
-
-        return q;
     }
 }

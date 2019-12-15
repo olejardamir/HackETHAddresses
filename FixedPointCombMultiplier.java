@@ -7,11 +7,7 @@ public class FixedPointCombMultiplier extends AbstractECMultiplier
         ECCurve c = p.getCurve();
         int size = FixedPointUtil.getCombSize(c);
 
-        if (k.bitLength() > size)
-        {
-            
-            throw new IllegalStateException("fixed-point comb doesn't support scalars larger than the curve order");
-        }
+
 
         FixedPointPreCompInfo info = FixedPointUtil.precompute(p);
         ECLookupTable lookupTable = info.getLookupTable();

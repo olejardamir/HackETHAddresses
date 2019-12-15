@@ -5,11 +5,7 @@ class ECAlgorithms
 
 
     public static ECPoint importPoint(ECCurve c, ECPoint p) {
-        ECCurve cp = p.getCurve();
-        if (!c.equals(cp))
-        {
-            throw new IllegalArgumentException("Point must be on the same curve");
-        }
+
         return c.importPoint(p);
     }
 
@@ -48,11 +44,8 @@ class ECAlgorithms
 
 
 
-    static ECPoint implCheckResult(ECPoint p) throws CloneNotSupportedException {
-        if (!p.isValidPartial())
-        {
-            throw new IllegalStateException("Invalid result");
-        }
+    static ECPoint implCheckResult(ECPoint p) {
+
 
         return p;
     }

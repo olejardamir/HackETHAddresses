@@ -9,10 +9,7 @@ public class SecP256K1FieldElement extends ECFieldElement.AbstractFp
 
     public SecP256K1FieldElement(BigInteger x)
     {
-        if (x == null || x.signum() < 0 || x.compareTo(Q) >= 0)
-        {
-            throw new IllegalArgumentException("x value invalid for SecP256K1FieldElement");
-        }
+
 
         this.x = SecP256K1Field.fromBigInteger(x);
     }

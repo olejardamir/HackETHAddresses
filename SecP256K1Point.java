@@ -13,10 +13,6 @@ public class SecP256K1Point extends ECPoint.AbstractFp
     {
         super(curve, x, y);
 
-        if ((x == null) != (y == null))
-        {
-            throw new IllegalArgumentException("Exactly one of the field elements is null");
-        }
 
         this.withCompression = withCompression;
     }

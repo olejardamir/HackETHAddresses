@@ -99,16 +99,11 @@ public abstract class ASN1OctetString
     ASN1OctetString(
             byte[] string)
     {
-        if (string == null)
-        {
-            throw new NullPointerException("string cannot be null");
-        }
+
         this.string = string;
     }
 
-     public ASN1OctetString() {
 
-     }
 
      /**
      * Return the content of the OCTET STRING as a byte array.

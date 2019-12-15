@@ -102,10 +102,7 @@ public class HexEncoder
 
             b2 = decodingTable[data.charAt(i++)];
 
-            if ((b1 | b2) < 0)
-            {
-                throw new IOException("invalid characters encountered in Hex string");
-            }
+
 
             out.write((b1 << 4) | b2);
 

@@ -60,16 +60,6 @@ public abstract class ECPoint
         this.zs = zs;
     }
 
-    protected abstract boolean satisfiesCurveEquation();
-
-
-
-
-
-
-
-
-
 
 
 
@@ -88,8 +78,7 @@ public abstract class ECPoint
 
     
     ECFieldElement getAffineYCoord() {
-        checkNormalized();
-        return getYCoord();
+         return getYCoord();
     }
 
     
@@ -118,13 +107,6 @@ public abstract class ECPoint
         return y;
     }
 
-    private void checkNormalized()
-    {
-        if (isNormalized())
-        {
-            throw new IllegalStateException("point not in normal form");
-        }
-    }
 
     public boolean isNormalized()
     {
@@ -198,57 +180,8 @@ public abstract class ECPoint
 
 
 
-    public boolean isValid() throws CloneNotSupportedException {
-        return !implIsValid(false, true);
-    }
-
-    boolean isValidPartial() throws CloneNotSupportedException {
-        return implIsValid(false, false);
-    }
-
-    boolean implIsValid(final boolean decompressed, final boolean checkOrder) throws CloneNotSupportedException {
-        if (isInfinity())
-        {
-            return true;
-        }
-
-        ValidityPrecompInfo validity = (ValidityPrecompInfo)getCurve().precompute(this, ValidityPrecompInfo.PRECOMP_NAME, new PreCompCallback()
-        {
-            public PreCompInfo precompute(PreCompInfo existing) {
-                ValidityPrecompInfo info = (existing instanceof ValidityPrecompInfo) ? (ValidityPrecompInfo)existing : null;
-                if (info == null)
-                {
-                    info = new ValidityPrecompInfo();
-                }
-
-                if (info.hasFailed())
-                {
-                    return info;
-                }
-                if (!info.hasCurveEquationPassed())
-                {
-                    if (!decompressed && !satisfiesCurveEquation())
-                    {
-                        info.reportFailed();
-                        return info;
-                    }
-                    info.reportCurveEquationPassed();
-                }
-                if (checkOrder && !info.hasOrderPassed())
-                {
 
 
-
-
-
-                    info.reportOrderPassed();
-                }
-                return info;
-            }
-        });
-
-        return !validity.hasFailed();
-    }
 
     public boolean equals(ECPoint other) {
         if (null == other)
@@ -394,10 +327,7 @@ public abstract class ECPoint
     public abstract ECPoint subtract(ECPoint b);
 
     public ECPoint timesPow2(int e) {
-        if (e < 0)
-        {
-            throw new IllegalArgumentException("'e' cannot be negative");
-        }
+
 
         ECPoint p = this;
         while (--e >= 0)

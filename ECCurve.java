@@ -31,16 +31,9 @@ public abstract class ECCurve
         }
 
         public ECCurve create() throws Exception {
-            if (!supportsCoordinateSystem(coord))
-            {
-                throw new IllegalStateException("unsupported coordinate system");
-            }
+
 
             ECCurve c = cloneCurve();
-            if (c == ECCurve.this)
-            {
-                throw new IllegalStateException("implementation returned current curve");
-            }
 
 
                 c.coord = coord;
@@ -74,12 +67,9 @@ public abstract class ECCurve
         return new Config(this.coord);
     }
 
-    private ECPoint validatePoint(BigInteger x, BigInteger y) throws CloneNotSupportedException {
+    private ECPoint validatePoint(BigInteger x, BigInteger y) {
         ECPoint p = createPoint(x, y);
-        if (p.isValid())
-        {
-            throw new IllegalArgumentException("Invalid point coordinates");
-        }
+
         return p;
     }
 
@@ -99,14 +89,10 @@ public abstract class ECCurve
 
     protected abstract ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, boolean withCompression);
 
-    boolean supportsCoordinateSystem(int coord)
-    {
-        return coord == COORD_AFFINE;
-    }
 
     
-    public PreCompInfo precompute(ECPoint point, String name, PreCompCallback callback) throws CloneNotSupportedException {
-        checkPoint(point);
+    public PreCompInfo precompute(ECPoint point, String name, PreCompCallback callback) {
+
 
         Hashtable table;
 
@@ -153,7 +139,6 @@ public abstract class ECCurve
 
 
     private void normalizeAll(ECPoint[] points, int len) {
-        checkPoints(points, len);
 
         switch (this.getCoordinateSystem())
         {
@@ -227,7 +212,7 @@ public abstract class ECCurve
     protected abstract ECPoint decompressPoint(int yTilde, BigInteger X1);
 
     
-    public ECPoint decodePoint(byte[] encoded) throws CloneNotSupportedException {
+    public ECPoint decodePoint(byte[] encoded) {
         ECPoint p;
         int expectedLength = (getFieldSize() + 7) / 8;
 
@@ -236,10 +221,6 @@ public abstract class ECCurve
         {
             case 0x00: 
             {
-                if (encoded.length != 1)
-                {
-                    throw new IllegalArgumentException("Incorrect length for infinity encoding");
-                }
 
                 p = getInfinity();
                 break;
@@ -247,50 +228,23 @@ public abstract class ECCurve
             case 0x02: 
             case 0x03: 
             {
-                if (encoded.length != (expectedLength + 1))
-                {
-                    throw new IllegalArgumentException("Incorrect length for compressed encoding");
-                }
+
 
                 int yTilde = type & 1;
                 BigInteger X = BigIntegers.fromUnsignedByteArray(encoded, 1, expectedLength);
 
                 p = decompressPoint(yTilde, X);
-                if (!p.implIsValid(true, true))
-                {
-                    throw new IllegalArgumentException("Invalid point");
-                }
+
 
                 break;
             }
-            case 0x04: 
-            {
-                if (encoded.length != (2 * expectedLength + 1))
-                {
-                    throw new IllegalArgumentException("Incorrect length for uncompressed encoding");
-                }
+            case 0x04:
+            case 0x06:
+            case 0x07: {
+
 
                 BigInteger X = BigIntegers.fromUnsignedByteArray(encoded, 1, expectedLength);
                 BigInteger Y = BigIntegers.fromUnsignedByteArray(encoded, 1 + expectedLength, expectedLength);
-
-                p = validatePoint(X, Y);
-                break;
-            }
-            case 0x06: 
-            case 0x07: 
-            {
-                if (encoded.length != (2 * expectedLength + 1))
-                {
-                    throw new IllegalArgumentException("Incorrect length for hybrid encoding");
-                }
-
-                BigInteger X = BigIntegers.fromUnsignedByteArray(encoded, 1, expectedLength);
-                BigInteger Y = BigIntegers.fromUnsignedByteArray(encoded, 1 + expectedLength, expectedLength);
-
-                if (Y.testBit(0) != (type == 0x07))
-                {
-                    throw new IllegalArgumentException("Inconsistent Y coordinate in hybrid encoding");
-                }
 
                 p = validatePoint(X, Y);
                 break;
@@ -299,10 +253,7 @@ public abstract class ECCurve
                 throw new IllegalArgumentException("Invalid point encoding 0x" + Integer.toString(type, 16));
         }
 
-        if (type != 0x00 && p.isInfinity())
-        {
-            throw new IllegalArgumentException("Invalid infinity encoding");
-        }
+
 
         return p;
     }
@@ -359,34 +310,9 @@ public abstract class ECCurve
         };
     }
 
-    private void checkPoint(ECPoint point)
-    {
-        if (null == point || (this != point.getCurve()))
-        {
-            throw new IllegalArgumentException("'point' must be non-null and on this curve");
-        }
-    }
 
-    private void checkPoints(ECPoint[] points, int len)
-    {
-        if (points == null)
-        {
-            throw new IllegalArgumentException("'points' cannot be null");
-        }
-        if (len < 0 || (0 > (points.length - len)))
-        {
-            throw new IllegalArgumentException("invalid range specified for 'points'");
-        }
 
-        for (int i = 0; i < len; ++i)
-        {
-            ECPoint point = points[i];
-            if (null != point && this != point.getCurve())
-            {
-                throw new IllegalArgumentException("'points' entries must be null or on this curve");
-            }
-        }
-    }
+
 
     public boolean equals(ECCurve other)
     {
@@ -416,9 +342,6 @@ public abstract class ECCurve
             super(FiniteFields.getPrimeField(q));
         }
 
-        public AbstractFp() {
-            super();
-        }
 
         protected ECPoint decompressPoint(int yTilde, BigInteger X1) {
             ECFieldElement x = this.fromBigInteger(X1);
@@ -426,10 +349,7 @@ public abstract class ECCurve
             ECFieldElement y = rhs.sqrt();
 
             
-            if (y == null)
-            {
-                throw new IllegalArgumentException("Invalid point compression");
-            }
+
 
             if (y.testBitZero() != (yTilde == 1))
             {

@@ -33,10 +33,7 @@ public class SecP256K1Curve extends ECCurve.AbstractFp
         return new SecP256K1Curve();
     }
 
-    public boolean supportsCoordinateSystem(int coord)
-    {
-        return coord == COORD_JACOBIAN;
-    }
+
 
     public int getFieldSize()
     {

@@ -100,10 +100,7 @@ abstract class Nat256
 
     public static int[] fromBigInteger(BigInteger x)
     {
-        if (x.signum() < 0 || x.bitLength() > 256)
-        {
-            throw new IllegalArgumentException();
-        }
+
 
         int[] z = create();
         int i = 0;

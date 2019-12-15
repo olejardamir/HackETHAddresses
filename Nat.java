@@ -70,10 +70,7 @@ abstract class Nat
 
     public static int[] fromBigInteger(int bits, BigInteger x)
     {
-        if (x.signum() < 0 || x.bitLength() > bits)
-        {
-            throw new IllegalArgumentException();
-        }
+
 
         int len = (bits + 31) >> 5;
         int[] z = create(len);
@@ -143,17 +140,7 @@ abstract class Nat
         return true;
     }
 
-    public static boolean isZero(int len, int[] x)
-    {
-        for (int i = 0; i < len; ++i)
-        {
-            if (x[i] != 0)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
+
 
     public static void shiftDownBit(int len, int[] z, int c)
     {
