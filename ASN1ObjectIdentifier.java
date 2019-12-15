@@ -1,5 +1,4 @@
-public class ASN1ObjectIdentifier
-        extends ASN1Object {
+public class ASN1ObjectIdentifier {
     private final String identifier;
 
 
@@ -7,7 +6,6 @@ public class ASN1ObjectIdentifier
     public ASN1ObjectIdentifier(
             String identifier)
     {
-        super();
 
 
         this.identifier = identifier;
@@ -16,7 +14,6 @@ public class ASN1ObjectIdentifier
     
     private ASN1ObjectIdentifier(ASN1ObjectIdentifier oid, String branchID)
     {
-        super();
 
         this.identifier = oid.getId() + "." + branchID;
     }
@@ -45,9 +42,28 @@ public class ASN1ObjectIdentifier
 
 
 
-    public ASN1Primitive toASN1Primitive()
+    public ASN1OctetString toASN1Primitive()
     {
         return null;
+    }
+
+
+    public boolean equals(
+            Object  o)
+    {
+        if (this == o)
+        {
+            return true;
+        }
+
+        if (!(o instanceof ASN1ObjectIdentifier))
+        {
+            return false;
+        }
+
+        ASN1ObjectIdentifier other = (ASN1ObjectIdentifier)o;
+
+        return this.toASN1Primitive().equals(other.toASN1Primitive());
     }
 
 

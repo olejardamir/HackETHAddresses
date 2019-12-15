@@ -5,7 +5,7 @@ import java.math.BigInteger;
 public class X9ECParameters {
 
      private final ECCurve             curve;
-    private final ASN1Object g;
+    private final X9ECPoint g;
     private final BigInteger          n;
     private final BigInteger          h;
 
@@ -13,7 +13,7 @@ public class X9ECParameters {
 
     public X9ECParameters(
             ECCurve curve,
-            ASN1Object g,
+            X9ECPoint g,
             BigInteger n,
             BigInteger h)
     {

@@ -54,7 +54,6 @@ public class HexEncoder
             throws Exception
     {
         byte    b1, b2;
-        int     length = 0;
 
         int     end = data.length();
 
@@ -89,7 +88,6 @@ public class HexEncoder
 
             out.write((b1 << 4) | b2);
 
-            length++;
         }
 
     }

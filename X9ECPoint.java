@@ -1,5 +1,5 @@
 
-class X9ECPoint extends ASN1Object {
+class X9ECPoint {
     private final ASN1OctetString encoding;
 
     private final ECCurve c;
@@ -11,6 +11,7 @@ class X9ECPoint extends ASN1Object {
             ECCurve          c,
             byte[]           encoding)
     {
+
         this.c = c;
         this.encoding = new ASN1OctetString(Arrays.clone(encoding));
     }
@@ -27,17 +28,32 @@ class X9ECPoint extends ASN1Object {
     }
 
 
-    public ASN1Primitive toASN1Primitive()
+    public ASN1OctetString toASN1Primitive()
     {
         return encoding;
     }
 
     public int hashCode()
     {
-        return this.toASN1Primitive().hashCode();
+        return (  this.toASN1Primitive()).toASN1Primitive().hashCode();
     }
 
 
+    public boolean equals(
+            Object  o)
+    {
+        if (this == o)
+        {
+            return true;
+        }
 
+        if (!(o instanceof X9ECPoint))
+        {
+            return false;
+        }
 
+        X9ECPoint other = (X9ECPoint)o;
+
+        return this.toASN1Primitive().equals(other.toASN1Primitive());
+    }
 }
