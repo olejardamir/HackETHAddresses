@@ -5,11 +5,9 @@ class Keccak
 
     }
 
-    static public class DigestKeccak
-            extends BCMessageDigest
-            implements Cloneable
-    {
-        DigestKeccak()
+    static public class Digest256
+            extends BCMessageDigest implements Cloneable {
+        public Digest256()
         {
             super(new KeccakDigest(256));
         }
@@ -21,15 +19,6 @@ class Keccak
             d.digest = new KeccakDigest((KeccakDigest)digest);
 
             return d;
-        }
-    }
-
-    static public class Digest256
-            extends DigestKeccak
-    {
-        public Digest256()
-        {
-            super();
         }
     }
 

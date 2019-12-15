@@ -12,22 +12,6 @@ class PrimeField extends GenericPolynomialExtensionField {
 
 
 
-
-
-    public boolean equals(Object obj)
-    {
-        if (this == obj)
-        {
-            return true;
-        }
-        if (!(obj instanceof PrimeField))
-        {
-            return false;
-        }
-        PrimeField other = (PrimeField)obj;
-        return characteristic.equals(other.characteristic);
-    }
-
     public int hashCode()
     {
         return characteristic.hashCode();

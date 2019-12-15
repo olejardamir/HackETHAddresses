@@ -1,6 +1,5 @@
 
-public class SecP256K1Point extends ECPoint.AbstractFp
-{
+public class SecP256K1Point extends ECPoint {
 
     public SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y)
     {
@@ -96,16 +95,16 @@ public class SecP256K1Point extends ECPoint.AbstractFp
 
         SecP256K1Field.subtract(S1, S2, t2);
 
-        
+
         if (Nat256.isZero(H))
         {
             if (Nat256.isZero(t2))
             {
-                
+
                 return this.twice();
             }
 
-            
+
             return curve.getInfinity();
         }
 
@@ -146,7 +145,7 @@ public class SecP256K1Point extends ECPoint.AbstractFp
         return new SecP256K1Point(curve, X3, Y3, zs, this.withCompression);
     }
 
-    
+
     public ECPoint twice()
     {
         if (this.isInfinity())
@@ -206,10 +205,7 @@ public class SecP256K1Point extends ECPoint.AbstractFp
     }
 
     public ECPoint twicePlus(ECPoint b) {
-//        if (this == b)
-//        {
-//            return threeTimes();
-//        }
+
         if (this.isInfinity())
         {
             return b;
@@ -227,15 +223,7 @@ public class SecP256K1Point extends ECPoint.AbstractFp
         return twice().add(b);
     }
 
-//    private ECPoint threeTimes() {
-//        if (this.isInfinity() || this.y.isZero())
-//        {
-//            return this;
-//        }
-//
-//
-//        return twice().add(this);
-//    }
+
 
     public ECPoint negate()
     {
@@ -245,5 +233,19 @@ public class SecP256K1Point extends ECPoint.AbstractFp
         }
 
         return new SecP256K1Point(curve, this.x, this.y.negate(), this.zs, this.withCompression);
+    }
+
+    protected boolean getCompressionYTilde() {
+        return this.getAffineYCoord().testBitZero();
+    }
+
+    public ECPoint subtract(ECPoint b) {
+        if (b.isInfinity())
+        {
+            return this;
+        }
+
+
+        return this.add(b.negate());
     }
 }

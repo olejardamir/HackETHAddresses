@@ -53,20 +53,6 @@ class SecP256K1Field
         PExtInv = a1;
     }
 
-
-
-
-    public static void add(int[] x, int[] y, int[] z)
-    {
-        int c = Nat256.add(x, y, z);
-        if (c != 0 || (z[7] == P7 && Nat256.gte(z, P)))
-        {
-            Nat.add33To(8, PInv33, z);
-        }
-    }
-
-
-
     public static int[] fromBigInteger(BigInteger x)
     {
         int[] z = Nat256.fromBigInteger(x);
@@ -108,7 +94,7 @@ class SecP256K1Field
         long cc = Nat256.mul33Add(PInv33, xx, 8, xx, 0, z, 0);
         int c = Nat256.mul33DWordAdd(PInv33, cc, z, 0);
 
-        
+
 
         if (c != 0 || (z[7] == P7 && Nat256.gte(z, P)))
         {
@@ -131,20 +117,6 @@ class SecP256K1Field
         SecP256K1Field.reduce(a1, a0);
     }
 
-    public static void squareN(int[] a, int i, int[] a0) {
-        int[] a1 = Nat256.createExt();
-        Nat256.square(a, a1);
-        SecP256K1Field.reduce(a1, a0);
-        while(true) {
-            int i0 = i + -1;
-            if (i0 <= 0) {
-                return;
-            }
-            Nat256.square(a0, a1);
-            SecP256K1Field.reduce(a1, a0);
-            i = i0;
-        }
-    }
 
     public static void subtract(int[] a, int[] a0, int[] a1) {
         if (Nat256.sub(a, a0, a1) != 0) {

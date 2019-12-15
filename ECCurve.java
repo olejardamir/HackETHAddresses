@@ -334,31 +334,5 @@ public abstract class ECCurve
                 ^ Integers.rotateLeft(getB().toBigInteger().hashCode(), 16);
     }
 
-    protected static abstract class AbstractFp extends ECCurve
-    {
-        AbstractFp(BigInteger q)
-        {
-            super(FiniteFields.getPrimeField(q));
-        }
-
-
-        protected ECPoint decompressPoint(int yTilde, BigInteger X1) {
-            ECFieldElement x = this.fromBigInteger(X1);
-            ECFieldElement rhs = x.square().add(this.a).multiply(x).add(this.b);
-            ECFieldElement y = rhs.sqrt();
-
-            
-
-
-            if (y.testBitZero() != (yTilde == 1))
-            {
-                
-                y = y.negate();
-            }
-
-            return this.createRawPoint(x, y, true);
-        }
-    }
-
 
 }

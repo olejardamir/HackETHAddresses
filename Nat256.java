@@ -4,36 +4,6 @@ public class Nat256
 {
     private static final long M = 0xFFFFFFFFL;
 
-    public static int add(int[] x, int[] y, int[] z)
-    {
-        long c = 0;
-        c += (x[0] & M) + (y[0] & M);
-        z[0] = (int)c;
-        c >>>= 32;
-        c += (x[1] & M) + (y[1] & M);
-        z[1] = (int)c;
-        c >>>= 32;
-        c += (x[2] & M) + (y[2] & M);
-        z[2] = (int)c;
-        c >>>= 32;
-        c += (x[3] & M) + (y[3] & M);
-        z[3] = (int)c;
-        c >>>= 32;
-        c += (x[4] & M) + (y[4] & M);
-        z[4] = (int)c;
-        c >>>= 32;
-        c += (x[5] & M) + (y[5] & M);
-        z[5] = (int)c;
-        c >>>= 32;
-        c += (x[6] & M) + (y[6] & M);
-        z[6] = (int)c;
-        c >>>= 32;
-        c += (x[7] & M) + (y[7] & M);
-        z[7] = (int)c;
-        c >>>= 32;
-        return (int)c;
-    }
-
     public static int addBothTo(int[] x, int[] y, int[] z)
     {
         long c = 0;

@@ -24,11 +24,6 @@ class ECAlgorithms
 
         --i;
 
-        if (scale != null)
-        {
-            c[i] = c[i].multiply(scale);
-        }
-
         ECFieldElement u = c[i].invert();
 
         while (i > 0)

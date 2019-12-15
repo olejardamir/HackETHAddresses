@@ -338,33 +338,5 @@ public abstract class ECPoint
         return twice().add(b);
     }
 
-    public static abstract class AbstractFp extends ECPoint
-    {
-        AbstractFp(ECCurve curve, ECFieldElement x, ECFieldElement y)
-        {
-            super(curve, x, y);
-        }
-
-        AbstractFp(ECCurve curve, ECFieldElement x, ECFieldElement y, ECFieldElement[] zs)
-        {
-            super(curve, x, y, zs);
-        }
-
-        protected boolean getCompressionYTilde() {
-            return this.getAffineYCoord().testBitZero();
-        }
-
-
-        public ECPoint subtract(ECPoint b) {
-            if (b.isInfinity())
-            {
-                return this;
-            }
-
-            
-            return this.add(b.negate());
-        }
-    }
-
 
 }

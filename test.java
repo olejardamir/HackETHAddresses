@@ -45,7 +45,7 @@ class test {
             bytes7 = data2;
 
 
-            Keccak.DigestKeccak kecc2 = new Keccak.Digest256();
+            Keccak.Digest256 kecc2 = new Keccak.Digest256();
             kecc2.update(bytes7, 0, bytes7.length);
             byte[] result7 = kecc2.digest();
 

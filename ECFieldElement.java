@@ -10,8 +10,6 @@ public abstract class ECFieldElement {
 
     public abstract BigInteger toBigInteger();
 
-    public abstract int getFieldSize();
-
     public abstract ECFieldElement add(ECFieldElement b);
 
     public abstract ECFieldElement multiply(ECFieldElement b);
@@ -46,10 +44,7 @@ public abstract class ECFieldElement {
     }
 
     public byte[] getEncoded() {
-        return BigIntegers.asUnsignedByteArray((getFieldSize() + 7) / 8, toBigInteger());
-    }
-
-    static abstract class AbstractFp extends ECFieldElement {
+        return BigIntegers.asUnsignedByteArray(toBigInteger());
     }
 
 
