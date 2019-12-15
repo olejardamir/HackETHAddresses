@@ -29,7 +29,7 @@ public class SecP256K1Point extends ECPoint.AbstractFp
         this.withCompression = withCompression;
     }
 
-     public ECPoint add(ECPoint b) throws CloneNotSupportedException {
+     public ECPoint add(ECPoint b) {
         if (this.isInfinity())
         {
             return b;
@@ -209,7 +209,7 @@ public class SecP256K1Point extends ECPoint.AbstractFp
         return new SecP256K1Point(curve, X3, Y3, new ECFieldElement[] { Z3 }, this.withCompression);
     }
 
-    public ECPoint twicePlus(ECPoint b) throws CloneNotSupportedException {
+    public ECPoint twicePlus(ECPoint b) {
         if (this == b)
         {
             return threeTimes();
@@ -231,7 +231,7 @@ public class SecP256K1Point extends ECPoint.AbstractFp
         return twice().add(b);
     }
 
-    private ECPoint threeTimes() throws CloneNotSupportedException {
+    private ECPoint threeTimes() {
         if (this.isInfinity() || this.y.isZero())
         {
             return this;

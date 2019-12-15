@@ -2,19 +2,13 @@ import java.math.BigInteger;
 
 class X9FieldID {
     
-    private static final ASN1ObjectIdentifier ansi_X9_62 = new ASN1ObjectIdentifier("1.2.840.10045");
-    
-    private static final ASN1ObjectIdentifier id_fieldType = ansi_X9_62.branch("1");
-    
-    private static final ASN1ObjectIdentifier prime_field = id_fieldType.branch("1");
-    private final ASN1ObjectIdentifier     id;
-    private ASN1Primitive parameters;
+
+     private ASN1Primitive parameters;
 
 
     public X9FieldID(BigInteger primeP)
     {
-        this.id = prime_field;
-        this.parameters = new ASN1Integer(primeP);
+         this.parameters = new ASN1Integer(primeP);
     }
 
 
@@ -22,8 +16,7 @@ class X9FieldID {
     {
         ASN1EncodableVector v = new ASN1EncodableVector();
 
-        v.add(this.id);
-        v.add(this.parameters);
+         v.add(this.parameters);
 
         return new DERSequence(v);
     }

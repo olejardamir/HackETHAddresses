@@ -64,36 +64,6 @@ abstract class Nat256
         return (int)c;
     }
 
-    public static int addTo(int[] x, int[] z)
-    {
-        long c = 0;
-        c += (x[0] & M) + (z[0] & M);
-        z[0] = (int)c;
-        c >>>= 32;
-        c += (x[1] & M) + (z[1] & M);
-        z[1] = (int)c;
-        c >>>= 32;
-        c += (x[2] & M) + (z[2] & M);
-        z[2] = (int)c;
-        c >>>= 32;
-        c += (x[3] & M) + (z[3] & M);
-        z[3] = (int)c;
-        c >>>= 32;
-        c += (x[4] & M) + (z[4] & M);
-        z[4] = (int)c;
-        c >>>= 32;
-        c += (x[5] & M) + (z[5] & M);
-        z[5] = (int)c;
-        c >>>= 32;
-        c += (x[6] & M) + (z[6] & M);
-        z[6] = (int)c;
-        c >>>= 32;
-        c += (x[7] & M) + (z[7] & M);
-        z[7] = (int)c;
-        c >>>= 32;
-        return (int)c;
-    }
-
     public static void copy(int[] x, int xOff, int[] z, int zOff)
     {
         z[zOff] = x[xOff];
@@ -360,41 +330,8 @@ abstract class Nat256
         return c;
     }
 
-    public static int mulByWordAddTo(int x, int[] y, int[] z)
-    {
-        long c = 0, xVal = x & M;
-        c += xVal * (z[0] & M) + (y[0] & M);
-        z[0] = (int)c;
-        c >>>= 32;
-        c += xVal * (z[1] & M) + (y[1] & M);
-        z[1] = (int)c;
-        c >>>= 32;
-        c += xVal * (z[2] & M) + (y[2] & M);
-        z[2] = (int)c;
-        c >>>= 32;
-        c += xVal * (z[3] & M) + (y[3] & M);
-        z[3] = (int)c;
-        c >>>= 32;
-        c += xVal * (z[4] & M) + (y[4] & M);
-        z[4] = (int)c;
-        c >>>= 32;
-        c += xVal * (z[5] & M) + (y[5] & M);
-        z[5] = (int)c;
-        c >>>= 32;
-        c += xVal * (z[6] & M) + (y[6] & M);
-        z[6] = (int)c;
-        c >>>= 32;
-        c += xVal * (z[7] & M) + (y[7] & M);
-        z[7] = (int)c;
-        c >>>= 32;
-        return (int)c;
-    }
-
     public static int mul33DWordAdd(int x, long y, int[] z, int zOff)
     {
-        
-        
-
         long c = 0, xVal = x & M;
         long y00 = y & M;
         c += xVal * y00 + (z[zOff] & M);

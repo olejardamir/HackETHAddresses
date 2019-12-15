@@ -54,11 +54,9 @@ class ECDomainParameters
         {
             ECDomainParameters other = (ECDomainParameters)obj;
 
-            try {
+
                 return this.curve.equals(other.curve) && this.G.equals(other.G) && this.n.equals(other.n) && this.h.equals(other.h);
-            } catch (CloneNotSupportedException e) {
-                e.printStackTrace();
-            }
+
         }
 
         return false;

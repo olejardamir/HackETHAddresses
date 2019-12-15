@@ -4,7 +4,7 @@ class ECAlgorithms
 {
 
 
-    public static ECPoint importPoint(ECCurve c, ECPoint p) throws CloneNotSupportedException {
+    public static ECPoint importPoint(ECCurve c, ECPoint p) {
         ECCurve cp = p.getCurve();
         if (!c.equals(cp))
         {

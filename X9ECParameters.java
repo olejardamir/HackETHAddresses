@@ -61,7 +61,7 @@ public class X9ECParameters {
 
         v.add(new ASN1Integer(ONE));
         v.add((ASN1Encodable) fieldID);
-        v.add(new X9Curve(curve, seed));
+        v.add(new X9Curve(seed));
         v.add((ASN1Encodable) g);
         v.add(new ASN1Integer(n));
 

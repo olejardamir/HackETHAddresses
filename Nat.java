@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 abstract class Nat
 {
-    private static final long M = 0xFFFFFFFFL;
+    private static final long M = 4294967295L;
 
     public static void add(int len, int[] x, int[] y, int[] z)
     {
@@ -42,13 +42,7 @@ abstract class Nat
         return (int)c;
     }
 
-    public static int addWordTo(int len, int x, int[] z)
-    {
-        long c = (x & M) + (z[0] & M);
-        z[0] = (int)c;
-        c >>>= 32;
-        return c == 0 ? 0 : incAt(len, z, 1);
-    }
+
 
     public static int[] copy(int len, int[] x)
     {
@@ -62,17 +56,16 @@ abstract class Nat
         return new int[len];
     }
 
-    public static int decAt(int len, int[] z, int zPos)
+    public static void decAt(int len, int[] z, int zPos)
     {
         
         for (int i = zPos; i < len; ++i)
         {
             if (--z[i] != -1)
             {
-                return 0;
+                return;
             }
         }
-        return -1;
     }
 
     public static int[] fromBigInteger(int bits, BigInteger x)
@@ -107,38 +100,18 @@ abstract class Nat
         return true;
     }
 
-    public static int inc(int len, int[] x, int[] z)
-    {
-        int i = 0;
-        while (i < len)
-        {
-            int c = x[i] + 1;
-            z[i] = c;
-            ++i;
-            if (c != 0)
-            {
-                while (i < len)
-                {
-                    z[i] = x[i];
-                    ++i;
-                }
-                return 0;
-            }
-        }
-        return 1;
-    }
 
-    public static int incAt(int len, int[] z, int zPos)
+
+    public static void incAt(int len, int[] z, int zPos)
     {
         
         for (int i = zPos; i < len; ++i)
         {
             if (++z[i] != 0)
             {
-                return 0;
+                return;
             }
         }
-        return 1;
     }
 
     public static int incAt(int len, int[] z, int zOff, int zPos)
@@ -227,15 +200,7 @@ abstract class Nat
         return c >>> 31;
     }
 
-    public static void shiftUpBit(int len, int[] x, int xOff, int c, int[] z, int zOff)
-    {
-        for (int i = 0; i < len; ++i)
-        {
-            int next = x[xOff + i];
-            z[zOff + i] = (next << 1) | (c >>> 31);
-            c = next;
-        }
-    }
+
 
     public static int shiftUpBits(int len, int[] z, int bits, int c)
     {

@@ -1,3 +1,0 @@
-class GF2Polynomial {
-
-}

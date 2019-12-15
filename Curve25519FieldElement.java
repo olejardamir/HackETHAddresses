@@ -10,10 +10,11 @@ public class Curve25519FieldElement extends ECFieldElement.AbstractFp
 
 
 
-    public Curve25519FieldElement()
+    Curve25519FieldElement(int[] x)
     {
-        this.x = Nat256.create();
+        this.x = x;
     }
+
 
      public BigInteger toBigInteger() {
         return null;
@@ -46,13 +47,6 @@ public class Curve25519FieldElement extends ECFieldElement.AbstractFp
      public ECFieldElement sqrt() {
         return null;
     }
-
-    Curve25519FieldElement(int[] x)
-    {
-        this.x = x;
-    }
-
-
 
     public boolean isOne()
     {

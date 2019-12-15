@@ -130,7 +130,7 @@ public abstract class ECCurve
 
     }
 
-    public ECPoint importPoint(ECPoint p) throws CloneNotSupportedException {
+    public ECPoint importPoint(ECPoint p) {
         if (this == p.getCurve())
         {
             return p;
@@ -147,7 +147,7 @@ public abstract class ECCurve
     }
 
     
-    public void normalizeAll(ECPoint[] points) throws CloneNotSupportedException {
+    public void normalizeAll(ECPoint[] points) {
         normalizeAll(points, points.length);
     }
 

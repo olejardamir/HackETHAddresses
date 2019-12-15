@@ -1,5 +1,4 @@
 
-import java.math.BigInteger;
 import java.util.Hashtable;
 
 
@@ -88,7 +87,7 @@ public abstract class ECPoint
     }
 
     
-    ECFieldElement getAffineYCoord() throws CloneNotSupportedException {
+    ECFieldElement getAffineYCoord() {
         checkNormalized();
         return getYCoord();
     }
@@ -251,7 +250,7 @@ public abstract class ECPoint
         return !validity.hasFailed();
     }
 
-    public boolean equals(ECPoint other) throws CloneNotSupportedException {
+    public boolean equals(ECPoint other) {
         if (null == other)
         {
             return false;
@@ -308,13 +307,10 @@ public abstract class ECPoint
             return false;
         }
 
-        try {
+
             return equals((ECPoint)other);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+
+     }
 
     public int hashCode()
     {
@@ -325,7 +321,7 @@ public abstract class ECPoint
         {
             
 
-            ECPoint p = null;
+            ECPoint p;
                  p = normalize();
 
 
@@ -362,7 +358,7 @@ public abstract class ECPoint
     
 
     
-    public byte[] getEncoded(boolean compressed) throws CloneNotSupportedException {
+    public byte[] getEncoded(boolean compressed) {
         if (this.isInfinity())
         {
             return new byte[1];
@@ -389,15 +385,15 @@ public abstract class ECPoint
         return PO;
     }
 
-    protected abstract boolean getCompressionYTilde() throws CloneNotSupportedException;
+    protected abstract boolean getCompressionYTilde();
 
-    public abstract ECPoint add(ECPoint b) throws CloneNotSupportedException;
+    public abstract ECPoint add(ECPoint b);
 
     public abstract ECPoint negate();
 
-    public abstract ECPoint subtract(ECPoint b) throws CloneNotSupportedException;
+    public abstract ECPoint subtract(ECPoint b);
 
-    public ECPoint timesPow2(int e) throws CloneNotSupportedException {
+    public ECPoint timesPow2(int e) {
         if (e < 0)
         {
             throw new IllegalArgumentException("'e' cannot be negative");
@@ -411,9 +407,9 @@ public abstract class ECPoint
         return p;
     }
 
-    public abstract ECPoint twice() throws CloneNotSupportedException;
+    public abstract ECPoint twice();
 
-    public ECPoint twicePlus(ECPoint b) throws CloneNotSupportedException {
+    public ECPoint twicePlus(ECPoint b) {
         return twice().add(b);
     }
 
@@ -429,7 +425,7 @@ public abstract class ECPoint
             super(curve, x, y, zs);
         }
 
-        protected boolean getCompressionYTilde() throws CloneNotSupportedException {
+        protected boolean getCompressionYTilde() {
             return this.getAffineYCoord().testBitZero();
         }
 
@@ -474,7 +470,7 @@ public abstract class ECPoint
             return lhs.equals(rhs);
         }
 
-        public ECPoint subtract(ECPoint b) throws CloneNotSupportedException {
+        public ECPoint subtract(ECPoint b) {
             if (b.isInfinity())
             {
                 return this;
