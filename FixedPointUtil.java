@@ -6,8 +6,7 @@ import java.math.BigInteger;
 
 class FixedPointUtil
 {
-    private static final String PRECOMP_NAME = "bc_fixed_point";
-    
+
     public static int getCombSize(final ECCurve c) {
         final BigInteger order = c.getOrder();
         return (order == null) ? (c.getFieldSize() + 1) : order.bitLength();

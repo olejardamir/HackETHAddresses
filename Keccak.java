@@ -12,10 +12,6 @@ class Keccak
         public Digest256() {
             super(new KeccakDigest(256));
         }
-        
-        @Override
-        public Object clone() throws CloneNotSupportedException {
-            return super.clone();
-        }
+
     }
 }
