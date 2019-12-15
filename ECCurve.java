@@ -7,9 +7,7 @@ import java.math.BigInteger;
 
 public abstract class ECCurve
 {
-
     public static final int COORD_JACOBIAN = 2;
-
     private PrimeField field;
     ECFieldElement a;
     ECFieldElement b;
@@ -55,9 +53,11 @@ public abstract class ECCurve
     public FixedPointPreCompInfo precompute(final ECPoint point, final String name, final PreCompCallback callback) {
         Hashtable table = point.preCompTable;
         if (null == table) {
-            table = (point.preCompTable = new Hashtable(4));
+            final Hashtable preCompTable = new Hashtable(4);
+            point.preCompTable = preCompTable;
+            table = preCompTable;
         }
-        final FixedPointPreCompInfo existing = (FixedPointPreCompInfo) table.get(name);
+        final FixedPointPreCompInfo existing = table.get(name);
         final FixedPointPreCompInfo result = callback.precompute(existing);
         if (result != existing) {
             table.put(name, result);
@@ -82,8 +82,6 @@ public abstract class ECCurve
     
     private void normalizeAll(final ECPoint[] points, final int len) {
         switch (this.getCoordinateSystem()) {
-            case 0:
-            case 5: {}
             default: {
                 final ECFieldElement[] zs = new ECFieldElement[len];
                 final int[] indices = new int[len];
@@ -190,8 +188,12 @@ public abstract class ECCurve
                 for (int i = 0; i < len; ++i) {
                     final int MASK = (i ^ index) - 1 >> 31;
                     for (int j = 0; j < FE_BYTES; ++j) {
-                        x[j] ^= (byte)(table[pos + j] & MASK);
-                        y[j] ^= (byte)(table[pos + FE_BYTES + j] & MASK);
+                        final byte[] array = x;
+                        final int n = j;
+                        array[n] ^= (byte)(table[pos + j] & MASK);
+                        final byte[] array2 = y;
+                        final int n2 = j;
+                        array2[n2] ^= (byte)(table[pos + FE_BYTES + j] & MASK);
                     }
                     pos += FE_BYTES * 2;
                 }

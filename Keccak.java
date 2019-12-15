@@ -12,6 +12,5 @@ class Keccak
         public Digest256() {
             super(new KeccakDigest(256));
         }
-
     }
 }

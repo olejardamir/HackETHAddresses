@@ -6,7 +6,6 @@ import java.math.BigInteger;
 
 class FixedPointUtil
 {
-
     public static int getCombSize(final ECCurve c) {
         final BigInteger order = c.getOrder();
         return (order == null) ? (c.getFieldSize() + 1) : order.bitLength();
@@ -36,8 +35,8 @@ class FixedPointUtil
                 lookupTable[0] = pow2Table[0];
                 for (int bit = minWidth - 1; bit >= 0; --bit) {
                     final ECPoint pow2 = pow2Table[bit];
-                    int j;
-                    for (int step = j = 1 << bit; j < n; j += step << 1) {
+                    int step;
+                    for (int j = step = 1 << bit; j < n; j += step << 1) {
                         lookupTable[j] = lookupTable[j - step].add(pow2);
                     }
                 }
