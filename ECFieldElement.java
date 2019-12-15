@@ -10,8 +10,6 @@ public abstract class ECFieldElement {
 
     public abstract BigInteger toBigInteger();
 
-    public abstract ECFieldElement add(ECFieldElement b);
-
     public abstract ECFieldElement multiply(ECFieldElement b);
 
     public abstract ECFieldElement negate();

@@ -19,18 +19,6 @@ public class ASN1OctetString {
     }
 
 
-    public final boolean equals(Object o)
-    {
-        return this == o;
-    }
 
-    public ASN1OctetString toASN1Primitive()
-    {
-        return this;
-    }
 
-    public int hashCode()
-    {
-        return this.toASN1Primitive().hashCode();
-    }
 }

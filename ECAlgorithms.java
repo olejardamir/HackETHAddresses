@@ -10,7 +10,7 @@ class ECAlgorithms
     }
 
 
-    public static void montgomeryTrick(ECFieldElement[] zs, int off, int len, ECFieldElement scale) {
+    public static void montgomeryTrick(ECFieldElement[] zs, int off, int len) {
 
 
         ECFieldElement[] c = new ECFieldElement[len];

@@ -23,24 +23,26 @@ class CustomNamedCurves
         oidToCurve.put(new ASN1ObjectIdentifier("1.3.132.0").branch("10"), new X9ECParametersHolder()
         {
             protected X9ECParameters createParameters() throws Exception {
-                ECCurve curve = configureCurveGLV(new SecP256K1Curve());
-                X9ECPoint G = new X9ECPoint(curve, Hex.decode("04"
-                        + "79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798"
-                        + "483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8"));
-                return new X9ECParameters(curve, G, curve.getOrder(), curve.getCofactor());
+                return getX9ECParameters();
             }
         });
+
          nameToOID.put(name, new ASN1ObjectIdentifier("1.3.132.0").branch("10"));
+
         nameToCurve.put(name, new X9ECParametersHolder()
         {
             protected X9ECParameters createParameters() throws Exception {
-                ECCurve curve = configureCurveGLV(new SecP256K1Curve());
-                X9ECPoint G = new X9ECPoint(curve, Hex.decode("04"
-                        + "79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798"
-                        + "483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8"));
-                return new X9ECParameters(curve, G, curve.getOrder(), curve.getCofactor());
+                return getX9ECParameters();
             }
         });
+    }
+
+    private static X9ECParameters getX9ECParameters() throws Exception {
+        ECCurve curve = configureCurveGLV(new SecP256K1Curve());
+        X9ECPoint G = new X9ECPoint(curve, Hex.decode("04"
+                + "79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798"
+                + "483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8"));
+        return new X9ECParameters(curve, G);
     }
 
     static

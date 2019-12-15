@@ -48,7 +48,6 @@ public abstract class ECCurve
     ECFieldElement a;
     ECFieldElement b;
     BigInteger order;
-    BigInteger cofactor;
 
     int coord = COORD_AFFINE;
      private FixedPointCombMultiplier multiplier = null;
@@ -167,7 +166,7 @@ public abstract class ECCurve
             return;
         }
 
-        ECAlgorithms.montgomeryTrick(zs, 0, count, null);
+        ECAlgorithms.montgomeryTrick(zs, 0, count);
 
         for (int j = 0; j < count; ++j)
         {
@@ -198,10 +197,7 @@ public abstract class ECCurve
         return order;
     }
 
-    public BigInteger getCofactor()
-    {
-        return cofactor;
-    }
+
 
     public int getCoordinateSystem()
     {

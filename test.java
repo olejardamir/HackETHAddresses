@@ -16,9 +16,8 @@ class test {
 
             ECPoint point = new FixedPointCombMultiplier().multiply(new ECDomainParameters(
                     Objects.requireNonNull(CustomNamedCurves.getByName()).getCurve(),
-                    CustomNamedCurves.getByName().getG(),
-                    CustomNamedCurves.getByName().getN(),
-                    CustomNamedCurves.getByName().getH()).getG(), privKey);
+                    CustomNamedCurves.getByName().getG()
+            ).getG(), privKey);
 
             byte[] encoded = point.getEncoded(false);
             int newLength = encoded.length - 1;

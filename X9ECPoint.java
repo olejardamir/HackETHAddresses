@@ -27,7 +27,7 @@ class X9ECPoint {
     }
 
     public int hashCode() {
-        return (this.toASN1Primitive()).toASN1Primitive().hashCode();
+        return (this.toASN1Primitive()).hashCode();
     }
 
 

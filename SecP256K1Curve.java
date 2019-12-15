@@ -24,7 +24,6 @@ public class SecP256K1Curve extends ECCurve {
         this.a = fromBigInteger(ECFieldElement.ZERO);
         this.b = fromBigInteger(BigInteger.valueOf(7));
         this.order = new BigInteger(1, Hex.decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141"));
-        this.cofactor = BigInteger.valueOf(1);
         this.coord = SECP256K1_DEFAULT_COORDS;
     }
 
@@ -101,7 +100,7 @@ public class SecP256K1Curve extends ECCurve {
 
     protected ECPoint decompressPoint(int yTilde, BigInteger X1) {
         ECFieldElement x = this.fromBigInteger(X1);
-        ECFieldElement rhs = x.square().add(this.a).multiply(x).add(this.b);
+        ECFieldElement rhs = x.square().multiply(x);
         ECFieldElement y = rhs.sqrt();
 
 

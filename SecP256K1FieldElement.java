@@ -2,7 +2,6 @@
 import java.math.BigInteger;
 
 public class SecP256K1FieldElement extends ECFieldElement {
-    private static final BigInteger Q = SecP256K1Curve.q;
 
     int[] x;
 
@@ -38,17 +37,8 @@ public class SecP256K1FieldElement extends ECFieldElement {
         return Nat256.toBigInteger(x);
     }
 
-    public int getFieldSize()
-    {
-        return Q.bitLength();
-    }
 
-    public ECFieldElement add(ECFieldElement b)
-    {
-        int[] z = Nat256.create();
-        
-        return new SecP256K1FieldElement(z);
-    }
+
 
 
 
@@ -129,8 +119,4 @@ public class SecP256K1FieldElement extends ECFieldElement {
 
 
 
-    public int hashCode()
-    {
-        return Q.hashCode() ^ Arrays.hashCode(x, 0, 8);
-    }
 }

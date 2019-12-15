@@ -245,7 +245,7 @@ public abstract class ECPoint {
 
         if (compressed) {
             byte[] PO = new byte[X.length + 1];
-            PO[0] = (byte) (normed.getCompressionYTilde() ? 0x03 : 0x02);
+            PO[0] = (byte) (0x02);
             System.arraycopy(X, 0, PO, 1, X.length);
             return PO;
         }
@@ -259,7 +259,6 @@ public abstract class ECPoint {
         return PO;
     }
 
-    protected abstract boolean getCompressionYTilde();
 
     public abstract ECPoint add(ECPoint b);
 

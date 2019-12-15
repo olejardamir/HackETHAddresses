@@ -15,10 +15,9 @@ class Keccak
         public Object clone()
                 throws CloneNotSupportedException
         {
-            BCMessageDigest d = (BCMessageDigest)super.clone();
-           
 
-            return d;
+
+            return (BCMessageDigest)super.clone();
         }
     }
 

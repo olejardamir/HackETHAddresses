@@ -207,9 +207,7 @@ public class SecP256K1Point extends ECPoint {
         return new SecP256K1Point(curve, this.x, this.y.negate(), this.zs, this.withCompression);
     }
 
-    protected boolean getCompressionYTilde() {
-        return false;
-    }
+
 
     public ECPoint subtract(ECPoint b) {
         if (b.isInfinity()) {

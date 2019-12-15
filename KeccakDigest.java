@@ -78,7 +78,6 @@ public class KeccakDigest {
         {
             state[i] = 0L;
         }
-        Arrays.fill(this.dataQueue, (byte)0);
         this.bitsInQueue = 0;
         this.squeezing = false;
         this.fixedOutputLength = (1600 - rate) / 2;
