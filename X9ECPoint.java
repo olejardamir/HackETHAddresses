@@ -37,23 +37,7 @@ class X9ECPoint extends ASN1Object {
         return this.toASN1Primitive().hashCode();
     }
 
-    public boolean equals(
-            Object  o)
-    {
-        if (this == o)
-        {
-            return true;
-        }
 
-        if (!(o instanceof X9ECPoint))
-        {
-            return false;
-        }
-
-        X9ECPoint other = (X9ECPoint)o;
-
-        return this.toASN1Primitive().equals(other.toASN1Primitive());
-    }
 
 
 }

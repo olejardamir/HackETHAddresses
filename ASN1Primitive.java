@@ -10,12 +10,7 @@ public abstract class ASN1Primitive
 
     public final boolean equals(Object o)
     {
-        if (this == o)
-        {
-            return true;
-        }
-
-       return false;
+        return this == o;
     }
 
     public ASN1Primitive toASN1Primitive()
@@ -27,7 +22,6 @@ public abstract class ASN1Primitive
 
 
 
-    public abstract int hashCode();
 
 
 

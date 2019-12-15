@@ -50,18 +50,5 @@ public class X9ECParameters {
 
 
 
-    public boolean equals(
-            Object  o)
-    {
-        if (this == o)
-        {
-            return true;
-        }
-
-
-            return false;
-
-    }
-
 
 }

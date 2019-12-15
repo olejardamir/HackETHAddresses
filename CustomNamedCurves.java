@@ -33,8 +33,7 @@ class CustomNamedCurves
         names.addElement(name);
         oidToName.put(SECObjectIdentifiers.secp256k1, name);
         oidToCurve.put(SECObjectIdentifiers.secp256k1, CustomNamedCurves.secp256k1);
-        name = Strings.toLowerCase(name);
-        nameToOID.put(name, SECObjectIdentifiers.secp256k1);
+         nameToOID.put(name, SECObjectIdentifiers.secp256k1);
         nameToCurve.put(name, CustomNamedCurves.secp256k1);
     }
 

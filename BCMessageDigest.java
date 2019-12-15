@@ -1,40 +1,35 @@
 import java.security.MessageDigest;
 
 class BCMessageDigest
-        extends MessageDigest
-{
+        extends MessageDigest {
     ExtendedDigest digest;
 
+
     BCMessageDigest(
-            ExtendedDigest digest)
-    {
+            ExtendedDigest digest) {
         super(digest.getAlgorithmName());
 
         this.digest = digest;
     }
 
-    public void engineReset()
-    {
-        digest.reset();
+    public void engineReset() {
+
     }
 
     public void engineUpdate(
-            byte    input)
-    {
-        digest.update(input);
+            byte input) {
+
     }
 
     public void engineUpdate(
-            byte[]  input,
-            int     offset,
-            int     len)
-    {
+            byte[] input,
+            int offset,
+            int len) {
         digest.update(input, offset, len);
     }
 
-    public byte[] engineDigest()
-    {
-        byte[]  digestBytes = new byte[digest.getDigestSize()];
+    public byte[] engineDigest() {
+        byte[] digestBytes = new byte[digest.getDigestSize()];
 
         digest.doFinal(digestBytes, 0);
 

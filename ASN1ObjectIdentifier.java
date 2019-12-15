@@ -1,14 +1,7 @@
-
-import java.io.ByteArrayOutputStream;
-import java.math.BigInteger;
-
-
-
 public class ASN1ObjectIdentifier
         extends ASN1Object {
     private final String identifier;
 
-    private byte[] body;
 
     
     public ASN1ObjectIdentifier(
@@ -43,8 +36,6 @@ public class ASN1ObjectIdentifier
 
 
 
-
-
     public int hashCode()
     {
         return identifier.hashCode();
@@ -52,21 +43,7 @@ public class ASN1ObjectIdentifier
 
 
 
-    public String toString()
-    {
-        return getId();
-    }
 
-
-    public final boolean equals(Object o)
-    {
-        if (this == o)
-        {
-            return true;
-        }
-
-        return false;
-    }
 
     public ASN1Primitive toASN1Primitive()
     {
