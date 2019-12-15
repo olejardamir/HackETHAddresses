@@ -6,8 +6,7 @@ import java.math.BigInteger;
 
 public class Nat
 {
-    private static final long M = 4294967295L;
-    
+
     public static void add(final int len, final int[] x, final int[] y, final int[] z) {
         long c = 0L;
         for (int i = 0; i < len; ++i) {
@@ -51,8 +50,7 @@ public class Nat
     
     public static void decAt(final int len, final int[] z, final int zPos) {
         for (int i = zPos; i < len; ++i) {
-            final int n = i;
-            if (--z[n] != -1) {
+            if (--z[i] != -1) {
                 return;
             }
         }

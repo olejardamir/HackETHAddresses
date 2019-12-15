@@ -35,13 +35,13 @@ public class HexEncoder
     }
     
     public void decode(final String data, final OutputStream out) throws Exception {
-        int end = data.length();
+        final int end = data.length();
         int i = 0;
         while (i < end) {
             while (i < end && ignore(data.charAt(i))) {
                 ++i;
             }
-            byte b1 = this.decodingTable[data.charAt(i++)];
+            final byte b1 = this.decodingTable[data.charAt(i++)];
             final byte b2 = this.decodingTable[data.charAt(i++)];
             out.write(b1 << 4 | b2);
         }

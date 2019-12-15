@@ -37,7 +37,6 @@ public class Mod
                     inversionResult(p, ac, a, z);
                     return;
                 }
-                continue;
             }
             else {
                 Nat.subFrom(uvLen, u, v);
@@ -47,7 +46,6 @@ public class Mod
                     inversionResult(p, bc, b, z);
                     return;
                 }
-                continue;
             }
         }
     }

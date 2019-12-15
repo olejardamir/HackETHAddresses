@@ -6,8 +6,7 @@ import java.math.BigInteger;
 
 public class Nat256
 {
-    private static final long M = 4294967295L;
-    
+
     public static int addBothTo(final int[] x, final int[] y, final int[] z) {
         long c = 0L;
         c += ((long)x[0] & 0xFFFFFFFFL) + ((long)y[0] & 0xFFFFFFFFL) + ((long)z[0] & 0xFFFFFFFFL);

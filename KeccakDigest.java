@@ -100,19 +100,15 @@ public class KeccakDigest
         int off = 0;
         for (int i = 0; i < full; ++i) {
             final long[] state = this.state;
-            final int n2 = i;
-            state[n2] ^= Pack.littleEndianToLong(this.dataQueue, off);
+            state[i] ^= Pack.littleEndianToLong(this.dataQueue, off);
             off += 8;
         }
         if (partial > 0) {
             final long mask = (1L << partial) - 1L;
-            final long[] state2 = this.state;
-            final int n3 = full;
-            state2[n3] ^= (Pack.littleEndianToLong(this.dataQueue, off) & mask);
+            this.state[full] ^= (Pack.littleEndianToLong(this.dataQueue, off) & mask);
         }
-        final long[] state3 = this.state;
         final int n4 = this.rate - 1 >> 6;
-        state3[n4] ^= Long.MIN_VALUE;
+        this.state[n4] ^= Long.MIN_VALUE;
         this.KeccakPermutation();
         this.KeccakExtract();
         this.bitsInQueue = this.rate;

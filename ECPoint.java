@@ -51,7 +51,6 @@ public abstract class ECPoint
                         return null;
                     }
                 }
-                break;
             }
         }
     }

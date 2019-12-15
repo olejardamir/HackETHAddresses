@@ -7,7 +7,6 @@ import java.math.BigInteger;
 public class SecP256K1Curve extends ECCurve
 {
     public static BigInteger q;
-    private static final int SECP256K1_DEFAULT_COORDS = 2;
     private SecP256K1Point infinity;
     
     public SecP256K1Curve() throws Exception {
@@ -46,7 +45,6 @@ public class SecP256K1Curve extends ECCurve
     
     @Override
     public ECLookupTable createCacheSafeLookupTable(final ECPoint[] points, final int off, final int len) {
-        final int FE_INTS = 8;
         final int[] table = new int[len * 8 * 2];
         int pos = 0;
         for (int i = 0; i < len; ++i) {
@@ -70,12 +68,8 @@ public class SecP256K1Curve extends ECCurve
                 for (int i = 0; i < len; ++i) {
                     final int MASK = (i ^ index) - 1 >> 31;
                     for (int j = 0; j < 8; ++j) {
-                        final int[] array = x;
-                        final int n = j;
-                        array[n] ^= (table[pos + j] & MASK);
-                        final int[] array2 = y;
-                        final int n2 = j;
-                        array2[n2] ^= (table[pos + 8 + j] & MASK);
+                        x[j] ^= (table[pos + j] & MASK);
+                        y[j] ^= (table[pos + 8 + j] & MASK);
                     }
                     pos += 16;
                 }

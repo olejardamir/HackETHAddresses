@@ -9,10 +9,7 @@ class SecP256K1Field
     static final int[] P;
     private static final int[] PExt;
     private static final int[] PExtInv;
-    private static final int P7 = -1;
-    private static final int PExt15 = -1;
-    private static final int PInv33 = 977;
-    
+
     public static int[] fromBigInteger(final BigInteger x) {
         final int[] z = Nat256.fromBigInteger(x);
         if (z[7] == -1 && Nat256.gte(z, SecP256K1Field.P)) {
@@ -77,8 +74,8 @@ class SecP256K1Field
     }
     
     static {
-        final int[] a = P = new int[] { -977, -2, -1, -1, -1, -1, -1, -1 };
-        final int[] a2 = PExt = new int[] { 954529, 1954, 1, 0, 0, 0, 0, 0, -1954, -3, -1, -1, -1, -1, -1, -1 };
-        final int[] a3 = PExtInv = new int[] { -954529, -1955, -2, -1, -1, -1, -1, -1, 1953, 2 };
+        P = new int[]{-977, -2, -1, -1, -1, -1, -1, -1};
+        PExt = new int[]{954529, 1954, 1, 0, 0, 0, 0, 0, -1954, -3, -1, -1, -1, -1, -1, -1};
+        PExtInv = new int[]{-954529, -1955, -2, -1, -1, -1, -1, -1, 1953, 2};
     }
 }
