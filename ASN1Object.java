@@ -7,9 +7,7 @@ public abstract class ASN1Object {
 
     }
 
-    public ASN1Object(Object characteristic) {
 
-    }
 
     public int hashCode()
     {

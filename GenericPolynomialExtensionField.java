@@ -1,4 +1,3 @@
-import java.math.BigInteger;
 
 class GenericPolynomialExtensionField {
 
@@ -20,7 +19,4 @@ class GenericPolynomialExtensionField {
         return 0;
     }
 
-    public BigInteger getCharacteristic() {
-        return null;
-    }
 }

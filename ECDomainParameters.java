@@ -1,7 +1,6 @@
 import java.math.BigInteger;
 
-class ECDomainParameters
-        implements ECConstants {
+class ECDomainParameters {
     private ECCurve curve;
     private ECPoint G;
     private BigInteger n;

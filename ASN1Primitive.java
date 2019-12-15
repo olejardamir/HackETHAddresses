@@ -15,7 +15,7 @@ public abstract class ASN1Primitive
             return true;
         }
 
-        return (o instanceof ASN1Object) && asn1Equals(((ASN1Object)o).toASN1Primitive());
+       return false;
     }
 
     public ASN1Primitive toASN1Primitive()
@@ -24,20 +24,12 @@ public abstract class ASN1Primitive
     }
 
     
-    ASN1Primitive toDERObject()
-    {
-        return this;
-    }
 
 
 
     public abstract int hashCode();
 
-    
-    abstract int encodedLength() throws Exception;
 
-    abstract void encode(ASN1OutputStream out) throws Exception;
 
     
-    abstract boolean asn1Equals(ASN1Primitive o);
-}
+ }

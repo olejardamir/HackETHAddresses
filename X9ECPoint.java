@@ -12,7 +12,7 @@ class X9ECPoint extends ASN1Object {
             byte[]           encoding)
     {
         this.c = c;
-        this.encoding = new DEROctetString(Arrays.clone(encoding));
+        this.encoding = new ASN1OctetString(Arrays.clone(encoding));
     }
 
 
