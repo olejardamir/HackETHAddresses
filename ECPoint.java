@@ -39,8 +39,7 @@ public abstract class ECPoint {
             return new ECFieldElement[]{one, one, one};
          case 4:
             return new ECFieldElement[]{one, curve.getA()};
-         case 5:
-         default:
+            default:
             return null;
          }
       }

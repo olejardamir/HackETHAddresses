@@ -66,21 +66,12 @@ class KeccakDigest {
 
 
          while(count < len) {
-            if (bytesInQueue == 0 && count <= len - rateBytes) {
-               do {
-                  count += rateBytes;
-               } while (count <= len - rateBytes);
-            } else {
                int partialBlock = Math.min(rateBytes - bytesInQueue, len - count);
                System.arraycopy(data, off + count, this.dataQueue, bytesInQueue, partialBlock);
                bytesInQueue += partialBlock;
-               count += partialBlock;
                if (bytesInQueue == rateBytes) {
                   bytesInQueue = 0;
                }
-            }
-
-
          this.bitsInQueue = bytesInQueue << 3;
          return;
       }

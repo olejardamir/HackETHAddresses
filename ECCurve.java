@@ -138,11 +138,9 @@ public abstract class ECCurve {
       case 2:
       case 3:
          int yTilde = type & 1;
-         byte[] mag2 = encoded;
-         if (true) {
-            mag2 = new byte[expectedLength];
-            System.arraycopy(encoded, 1, mag2, 0, expectedLength);
-         }
+         byte[] mag2;
+         mag2 = new byte[expectedLength];
+         System.arraycopy(encoded, 1, mag2, 0, expectedLength);
 
          Y = new BigInteger(1, mag2);
          p = this.decompressPoint(yTilde, Y);
@@ -150,18 +148,14 @@ public abstract class ECCurve {
       case 4:
       case 6:
       case 7:
-         byte[] mag1 = encoded;
-         if (true) {
-            mag1 = new byte[expectedLength];
-            System.arraycopy(encoded, 1, mag1, 0, expectedLength);
-         }
+         byte[] mag1;
+         mag1 = new byte[expectedLength];
+         System.arraycopy(encoded, 1, mag1, 0, expectedLength);
 
          BigInteger X2 = new BigInteger(1, mag1);
-         byte[] mag = encoded;
-         if (1 + expectedLength != 0 || expectedLength != encoded.length) {
-            mag = new byte[expectedLength];
-            System.arraycopy(encoded, 1 + expectedLength, mag, 0, expectedLength);
-         }
+         byte[] mag;
+         mag = new byte[expectedLength];
+         System.arraycopy(encoded, 1 + expectedLength, mag, 0, expectedLength);
 
          Y = new BigInteger(1, mag);
          p = this.validatePoint(X2, Y);
