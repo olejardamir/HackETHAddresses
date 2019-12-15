@@ -1,6 +1,7 @@
 import java.math.BigInteger;
 
-public class Nat {
+class Nat {
+
 
    public static void add(int len, int[] x, int[] y, int[] z) {
       long c = 0L;
@@ -48,14 +49,6 @@ public class Nat {
       return new int[len];
    }
 
-   public static void decAt(int len, int[] z, int zPos) {
-      for(int i = zPos; i < len; ++i) {
-         if (--z[i] != -1) {
-            return;
-         }
-      }
-
-   }
 
    public static int[] fromBigInteger(int bits, BigInteger x) {
       int len = bits + 31 >> 5;
@@ -192,17 +185,12 @@ public class Nat {
       return c >>> -bits;
    }
 
-   public static void sub33From(int len, int x, int[] z) {
+   public static void sub33From( int x, int[] z) {
       long c = ((long)z[0] & 4294967295L) - ((long)x & 4294967295L);
       z[0] = (int)c;
       c >>= 32;
       c += ((long)z[1] & 4294967295L) - 1L;
       z[1] = (int)c;
-      c >>= 32;
-      if (c != 0L) {
-         decAt(len, z, 2);
-      }
-
    }
 
    public static int subFrom(int len, int[] x, int[] z) {

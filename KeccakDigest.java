@@ -1,4 +1,4 @@
-public class KeccakDigest {
+class KeccakDigest {
    private static final long[] KeccakRoundConstants = new long[]{1L, 32898L, -9223372036854742902L, -9223372034707259392L, 32907L, 2147483649L, -9223372034707259263L, -9223372036854743031L, 138L, 136L, 2147516425L, 2147483658L, 2147516555L, -9223372036854775669L, -9223372036854742903L, -9223372036854743037L, -9223372036854743038L, -9223372036854775680L, 32778L, -9223372034707292150L, -9223372034707259263L, -9223372036854742912L, 2147483649L, -9223372034707259384L};
    private final long[] state = new long[25];
    private final byte[] dataQueue = new byte[192];
@@ -30,7 +30,7 @@ public class KeccakDigest {
       this.getDigestSize();
    }
 
-   public void reset() {
+   private void reset() {
       this.init(this.fixedOutputLength);
    }
 
@@ -79,10 +79,11 @@ public class KeccakDigest {
                   bytesInQueue = 0;
                }
             }
-         }
+
 
          this.bitsInQueue = bytesInQueue << 3;
-
+         return;
+      }
    }
 
    private void padAndSwitchToSqueezingPhase() {
@@ -98,13 +99,13 @@ public class KeccakDigest {
       int off = 0;
 
       int n4;
+      long[] var10000;
       for(n4 = 0; n4 < full; ++n4) {
-         long[] state = this.state;
-         state[n4] ^= Pack.littleEndianToLong(this.dataQueue, off);
+         var10000 = this.state;
+         var10000[n4] ^= Pack.littleEndianToLong(this.dataQueue, off);
          off += 8;
       }
 
-      long[] var10000;
       if (partial > 0) {
          long mask = (1L << partial) - 1L;
          var10000 = this.state;

@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="web3jFlatten:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/web3jFlatten_jar</output-path>
-    <root id="archive" name="web3jFlatten.jar">
-      <element id="module-output" name="web3jFlatten" />
-    </root>
-  </artifact>
-</component>

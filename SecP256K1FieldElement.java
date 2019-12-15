@@ -1,7 +1,7 @@
 import java.math.BigInteger;
 
 public class SecP256K1FieldElement extends ECFieldElement {
-   int[] x;
+   final int[] x;
 
    public SecP256K1FieldElement(BigInteger x) {
       super();

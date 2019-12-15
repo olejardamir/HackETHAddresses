@@ -1,5 +1,5 @@
 public class ASN1OctetString {
-   byte[] string;
+   private final byte[] string;
 
    ASN1OctetString(byte[] string) {
       super();

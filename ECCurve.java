@@ -9,7 +9,7 @@ public abstract class ECCurve {
    int coord = 0;
    private FixedPointCombMultiplier multiplier = null;
 
-   public ECCurve() {
+   ECCurve() {
       super();
    }
 
@@ -34,7 +34,7 @@ public abstract class ECCurve {
       return this.createPoint(x, y, false);
    }
 
-   public ECPoint createPoint(BigInteger x, BigInteger y, boolean withCompression) {
+   private ECPoint createPoint(BigInteger x, BigInteger y, boolean withCompression) {
       return this.createRawPoint(this.fromBigInteger(x), this.fromBigInteger(y), withCompression);
    }
 
@@ -75,33 +75,33 @@ public abstract class ECCurve {
    }
 
    private void normalizeAll(ECPoint[] points, int len) {
-       ECFieldElement[] zs = new ECFieldElement[len];
-       int[] indices = new int[len];
-       int count = 0;
-       int j = 0;
+      ECFieldElement[] zs = new ECFieldElement[len];
+      int[] indices = new int[len];
+      int count = 0;
 
-       for (; j < len; ++j) {
-           ECPoint p = points[j];
-           if (null != p && p.isNormalized()) {
-               zs[count] = p.getZCoord(0);
-               indices[count++] = j;
-           }
-       }
+      int j;
+      for(j = 0; j < len; ++j) {
+         ECPoint p = points[j];
+         if (null != p && p.isNormalized()) {
+            zs[count] = p.getZCoord(0);
+            indices[count++] = j;
+         }
+      }
 
-       if (count != 0) {
-           ECAlgorithms.montgomeryTrick(zs, 0, count);
+      if (count != 0) {
+         ECAlgorithms.montgomeryTrick(zs, 0, count);
 
-           for (j = 0; j < count; ++j) {
-               int index = indices[j];
-               points[index] = points[index].normalize(zs[j]);
-           }
+         for(j = 0; j < count; ++j) {
+            int index = indices[j];
+            points[index] = points[index].normalize(zs[j]);
+         }
+      }
 
-       }
    }
 
    public abstract ECPoint getInfinity();
 
-   public PrimeField getField() {
+   private PrimeField getField() {
       return this.field;
    }
 
@@ -109,7 +109,7 @@ public abstract class ECCurve {
       return this.a;
    }
 
-   public ECFieldElement getB() {
+   private ECFieldElement getB() {
       return this.b;
    }
 
@@ -138,14 +138,32 @@ public abstract class ECCurve {
       case 2:
       case 3:
          int yTilde = type & 1;
-         Y = BigIntegers.fromUnsignedByteArray(encoded, 1, expectedLength);
+         byte[] mag2 = encoded;
+         if (true) {
+            mag2 = new byte[expectedLength];
+            System.arraycopy(encoded, 1, mag2, 0, expectedLength);
+         }
+
+         Y = new BigInteger(1, mag2);
          p = this.decompressPoint(yTilde, Y);
          break;
       case 4:
       case 6:
       case 7:
-         BigInteger X2 = BigIntegers.fromUnsignedByteArray(encoded, 1, expectedLength);
-         Y = BigIntegers.fromUnsignedByteArray(encoded, 1 + expectedLength, expectedLength);
+         byte[] mag1 = encoded;
+         if (true) {
+            mag1 = new byte[expectedLength];
+            System.arraycopy(encoded, 1, mag1, 0, expectedLength);
+         }
+
+         BigInteger X2 = new BigInteger(1, mag1);
+         byte[] mag = encoded;
+         if (1 + expectedLength != 0 || expectedLength != encoded.length) {
+            mag = new byte[expectedLength];
+            System.arraycopy(encoded, 1 + expectedLength, mag, 0, expectedLength);
+         }
+
+         Y = new BigInteger(1, mag);
          p = this.validatePoint(X2, Y);
       }
 

@@ -1,8 +1,8 @@
 import java.math.BigInteger;
 
 public class SecP256K1Curve extends ECCurve {
-   public static BigInteger q;
-   private SecP256K1Point infinity = new SecP256K1Point(this, null, null);
+   private static BigInteger q;
+   private final SecP256K1Point infinity = new SecP256K1Point(this, null, null);
 
    public SecP256K1Curve() throws Exception {
       super(FiniteFields.getPrimeField(q));

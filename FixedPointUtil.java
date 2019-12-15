@@ -35,8 +35,8 @@ class FixedPointUtil {
                for(int bit = minWidth - 1; bit >= 0; --bit) {
                   ECPoint pow2 = pow2Table[bit];
 
-                  int j;
-                  for(int step = j = 1 << bit; j < n; j += step << 1) {
+                  int step;
+                  for(int j = step = 1 << bit; j < n; j += step << 1) {
                      lookupTable[j] = lookupTable[j - step].add(pow2);
                   }
                }

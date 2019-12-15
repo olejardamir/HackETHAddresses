@@ -20,7 +20,7 @@ public abstract class ECFieldElement {
 
    public abstract ECFieldElement sqrt();
 
-   public int bitLength() {
+   private int bitLength() {
       return this.toBigInteger().bitLength();
    }
 
@@ -41,6 +41,6 @@ public abstract class ECFieldElement {
    }
 
    public byte[] getEncoded() {
-      return BigIntegers.asUnsignedByteArray(this.toBigInteger());
+      return this.toBigInteger().toByteArray();
    }
 }

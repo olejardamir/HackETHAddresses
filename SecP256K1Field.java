@@ -62,7 +62,7 @@ class SecP256K1Field {
 
    public static void subtract(int[] a, int[] a0, int[] a1) {
       if (Nat256.sub(a, a0, a1) != 0) {
-         Nat.sub33From(8, 977, a1);
+         Nat.sub33From(977, a1);
       }
 
    }

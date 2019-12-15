@@ -1,4 +1,5 @@
-public class Mod {
+class Mod {
+
 
    public static void invert(int[] p, int[] x, int[] z) {
       int len = p.length;
@@ -13,9 +14,7 @@ public class Mod {
             ac = inversionStep(p, u, len, a, ac);
          }
 
-         if (Nat.isOne(len, u)) {
-            inversionResult(p, ac, a, z);
-         } else {
+         if (!Nat.isOne(len, u)) {
             int[] v = Nat.copy(len, p);
             int[] b = Nat.create(len);
             int bc = 0;
@@ -45,7 +44,10 @@ public class Mod {
                --uvLen;
             }
          }
+
+         inversionResult(p, ac, a, z);
       }
+
    }
 
    private static void inversionResult(int[] p, int ac, int[] a, int[] z) {

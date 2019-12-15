@@ -1,7 +1,7 @@
 import java.security.MessageDigest;
 
 class BCMessageDigest extends MessageDigest {
-   KeccakDigest digest;
+   private final KeccakDigest digest;
 
    BCMessageDigest(KeccakDigest digest) {
       super(digest.getAlgorithmName());

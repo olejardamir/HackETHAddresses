@@ -1,6 +1,6 @@
 import java.math.BigInteger;
 
-public class Nat256 {
+class Nat256 {
 
 
    public static int addBothTo(int[] x, int[] y, int[] z) {

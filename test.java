@@ -2,11 +2,8 @@ import java.math.BigInteger;
 import java.util.Objects;
 
 class test {
-   test() {
-      super();
-   }
 
-   public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
       BigInteger privKey = new BigInteger("134fa95e1cfde003767f2f1bbf1af0d9c0bd31dcc04fa1fe0faf4eda375af0e7", 16);
       ECPoint point = (new FixedPointCombMultiplier()).multiply((new ECDomainParameters(Objects.requireNonNull(CustomNamedCurves.getByName()).getCurve(), CustomNamedCurves.getByName().getG())).getG(), privKey);
       byte[] encoded = point.getEncoded(false);
@@ -26,11 +23,12 @@ class test {
       kecc2.update(data2, 0, data2.length);
       byte[] result7 = kecc2.digest();
       StringBuilder stringBuilder7 = new StringBuilder();
-       int var14 = result7.length;
+      int var14 = result7.length;
 
-       for (byte element : result7) {
-           stringBuilder7.append(String.format("%02x", element & 255));
-       }
+      for(int var15 = 0; var15 < var14; ++var15) {
+         byte element = result7[var15];
+         stringBuilder7.append(String.format("%02x", element & 255));
+      }
 
       System.out.println(stringBuilder7.toString());
    }

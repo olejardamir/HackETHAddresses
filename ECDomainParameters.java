@@ -1,5 +1,5 @@
 class ECDomainParameters {
-   private ECPoint G;
+   private final ECPoint G;
 
    public ECDomainParameters(ECCurve curve, ECPoint G) {
       super();

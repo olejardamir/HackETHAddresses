@@ -50,7 +50,7 @@ public abstract class ECPoint {
       return this.curve;
    }
 
-   int getCurveCoordinateSystem() {
+   private int getCurveCoordinateSystem() {
       return null == this.curve ? 0 : this.curve.getCoordinateSystem();
    }
 
@@ -119,7 +119,7 @@ public abstract class ECPoint {
       return this.x == null || this.y == null || this.zs.length > 0 && this.zs[0].isZero();
    }
 
-   public boolean equals(ECPoint other) {
+   private boolean equals(ECPoint other) {
       if (null == other) {
          return false;
       } else {
@@ -183,12 +183,13 @@ public abstract class ECPoint {
          sb.append(',');
          sb.append(this.getRawYCoord());
          ECFieldElement[] var2 = this.zs;
-         int var3 = var2.length;
+         int var4 = var2.length;
 
-          for (ECFieldElement z : var2) {
-              sb.append(',');
-              sb.append(z);
-          }
+         for(int var5 = 0; var5 < var4; ++var5) {
+            ECFieldElement z = var2[var5];
+            sb.append(',');
+            sb.append(z);
+         }
 
          sb.append(')');
          return sb.toString();
@@ -237,7 +238,7 @@ public abstract class ECPoint {
       }
    }
 
-   public abstract ECPoint twice();
+   protected abstract ECPoint twice();
 
    public ECPoint twicePlus(ECPoint b) {
       return this.twice().add(b);
