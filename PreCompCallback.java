@@ -1,5 +1,8 @@
+// 
+// Decompiled by Procyon v0.5.36
+// 
 
 interface PreCompCallback
 {
-    FixedPointPreCompInfo precompute(FixedPointPreCompInfo existing);
+    FixedPointPreCompInfo precompute(final FixedPointPreCompInfo p0);
 }

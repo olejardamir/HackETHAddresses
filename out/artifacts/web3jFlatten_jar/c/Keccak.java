@@ -1,4 +1,0 @@
-class Keccak {
-    private Keccak() {
-    }
-}

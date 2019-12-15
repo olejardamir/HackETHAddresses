@@ -1,19 +1,19 @@
-
 import java.math.BigInteger;
 
-class PrimeField {
+// 
+// Decompiled by Procyon v0.5.36
+// 
+
+class PrimeField
+{
     private final BigInteger characteristic;
-
-    PrimeField(BigInteger characteristic)
-    {
-
+    
+    PrimeField(final BigInteger characteristic) {
         this.characteristic = characteristic;
     }
-
-
-
-    public int hashCode()
-    {
-        return characteristic.hashCode();
+    
+    @Override
+    public int hashCode() {
+        return this.characteristic.hashCode();
     }
 }

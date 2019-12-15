@@ -1,307 +1,298 @@
+// 
+// Decompiled by Procyon v0.5.36
+// 
 
-public class KeccakDigest {
-    private static final long[] KeccakRoundConstants = new long[]{ 0x0000000000000001L, 0x0000000000008082L,
-            0x800000000000808aL, 0x8000000080008000L, 0x000000000000808bL, 0x0000000080000001L, 0x8000000080008081L,
-            0x8000000000008009L, 0x000000000000008aL, 0x0000000000000088L, 0x0000000080008009L, 0x000000008000000aL,
-            0x000000008000808bL, 0x800000000000008bL, 0x8000000000008089L, 0x8000000000008003L, 0x8000000000008002L,
-            0x8000000000000080L, 0x000000000000800aL, 0x800000008000000aL, 0x8000000080008081L, 0x8000000000008080L,
-            0x0000000080000001L, 0x8000000080008008L };
-
-    private final long[] state = new long[25];
-    private final byte[] dataQueue = new byte[192];
+public class KeccakDigest
+{
+    private static final long[] KeccakRoundConstants;
+    private final long[] state;
+    private final byte[] dataQueue;
     private int rate;
     private int bitsInQueue;
     private int fixedOutputLength;
     private boolean squeezing;
-
-    public KeccakDigest(int bitLength)
-    {
-        init(bitLength);
+    
+    public KeccakDigest(final int bitLength) {
+        this.state = new long[25];
+        this.dataQueue = new byte[192];
+        this.init(bitLength);
     }
-
-
-
-    public String getAlgorithmName()
-    {
-        return "Keccak-" + fixedOutputLength;
+    
+    public String getAlgorithmName() {
+        return "Keccak-" + this.fixedOutputLength;
     }
-
-    public int getDigestSize()
-    {
-        return fixedOutputLength / 8;
+    
+    public int getDigestSize() {
+        return this.fixedOutputLength / 8;
     }
-
-
-
-    public void update(byte[] in, int inOff, int len)
-    {
-        absorb(in, inOff, len);
+    
+    public void update(final byte[] in, final int inOff, final int len) {
+        this.absorb(in, inOff, len);
     }
-
-    public void doFinal(byte[] out, int outOff)
-    {
-        squeeze(out, outOff, fixedOutputLength);
-
-        reset();
-
-        getDigestSize();
+    
+    public void doFinal(final byte[] out, final int outOff) {
+        this.squeeze(out, outOff, this.fixedOutputLength);
+        this.reset();
+        this.getDigestSize();
     }
-
-    public void reset()
-    {
-        init(fixedOutputLength);
+    
+    public void reset() {
+        this.init(this.fixedOutputLength);
     }
-
-    private void init(int bitLength)
-    {
-        switch (bitLength)
-        {
+    
+    private void init(final int bitLength) {
+        switch (bitLength) {
             case 128:
             case 224:
             case 256:
             case 288:
             case 384:
-            case 512:
-                initSponge(1600 - (bitLength << 1));
+            case 512: {
+                this.initSponge(1600 - (bitLength << 1));
                 break;
-            default:
-                throw new IllegalArgumentException("bitLength must be one of 128, 224, 256, 288, 384, or 512.");
+            }
         }
     }
-
-    private void initSponge(int rate)
-    {
-
-
+    
+    private void initSponge(final int rate) {
         this.rate = rate;
-        for (int i = 0; i < state.length; ++i)
-        {
-            state[i] = 0L;
+        for (int i = 0; i < this.state.length; ++i) {
+            this.state[i] = 0L;
         }
         this.bitsInQueue = 0;
         this.squeezing = false;
         this.fixedOutputLength = (1600 - rate) / 2;
     }
-
-    private void absorb(byte[] data, int off, int len)
-    {
-
-
-        int bytesInQueue = bitsInQueue >> 3;
-        int rateBytes = rate >> 3;
-
+    
+    private void absorb(final byte[] data, final int off, final int len) {
+        int bytesInQueue = this.bitsInQueue >> 3;
+        final int rateBytes = this.rate >> 3;
         int count = 0;
-        while (count < len)
-        {
-            if (bytesInQueue == 0 && count <= (len - rateBytes))
-            {
-                do
-                {
-                    
+        while (count < len) {
+            if (bytesInQueue == 0 && count <= len - rateBytes) {
+                do {
                     count += rateBytes;
-                }
-                while (count <= (len - rateBytes));
+                } while (count <= len - rateBytes);
             }
-            else
-            {
-                int partialBlock = Math.min(rateBytes - bytesInQueue, len - count);
-                System.arraycopy(data, off + count, dataQueue, bytesInQueue, partialBlock);
-
+            else {
+                final int partialBlock = Math.min(rateBytes - bytesInQueue, len - count);
+                System.arraycopy(data, off + count, this.dataQueue, bytesInQueue, partialBlock);
                 bytesInQueue += partialBlock;
                 count += partialBlock;
-
-                if (bytesInQueue == rateBytes)
-                {
-                   
-                    bytesInQueue = 0;
+                if (bytesInQueue != rateBytes) {
+                    continue;
                 }
+                bytesInQueue = 0;
             }
         }
-
-        bitsInQueue = bytesInQueue << 3;
+        this.bitsInQueue = bytesInQueue << 3;
     }
-
-    private void padAndSwitchToSqueezingPhase()
-    {
-        dataQueue[bitsInQueue >> 3] |= (byte)(1L << (bitsInQueue & 7));
-
-        if (++bitsInQueue == rate)
-        {
-           
-            bitsInQueue = 0;
+    
+    private void padAndSwitchToSqueezingPhase() {
+        final byte[] dataQueue = this.dataQueue;
+        final int n = this.bitsInQueue >> 3;
+        dataQueue[n] |= (byte)(1L << (this.bitsInQueue & 0x7));
+        if (++this.bitsInQueue == this.rate) {
+            this.bitsInQueue = 0;
         }
-
-        {
-            int full = bitsInQueue >> 6, partial = bitsInQueue & 63;
-            int off = 0;
-            for (int i = 0; i < full; ++i)
-            {
-                state[i] ^= Pack.littleEndianToLong(dataQueue, off);
-                off += 8;
+        final int full = this.bitsInQueue >> 6;
+        final int partial = this.bitsInQueue & 0x3F;
+        int off = 0;
+        for (int i = 0; i < full; ++i) {
+            final long[] state = this.state;
+            final int n2 = i;
+            state[n2] ^= Pack.littleEndianToLong(this.dataQueue, off);
+            off += 8;
+        }
+        if (partial > 0) {
+            final long mask = (1L << partial) - 1L;
+            final long[] state2 = this.state;
+            final int n3 = full;
+            state2[n3] ^= (Pack.littleEndianToLong(this.dataQueue, off) & mask);
+        }
+        final long[] state3 = this.state;
+        final int n4 = this.rate - 1 >> 6;
+        state3[n4] ^= Long.MIN_VALUE;
+        this.KeccakPermutation();
+        this.KeccakExtract();
+        this.bitsInQueue = this.rate;
+        this.squeezing = true;
+    }
+    
+    private void squeeze(final byte[] output, final int offset, final long outputLength) {
+        if (!this.squeezing) {
+            this.padAndSwitchToSqueezingPhase();
+        }
+        int partialBlock;
+        for (long i = 0L; i < outputLength; i += partialBlock) {
+            if (this.bitsInQueue == 0) {
+                this.KeccakPermutation();
+                this.KeccakExtract();
+                this.bitsInQueue = this.rate;
             }
-            if (partial > 0)
-            {
-                long mask = (1L << partial) - 1L;
-                state[full] ^= Pack.littleEndianToLong(dataQueue, off) & mask;
-            }
-            state[(rate - 1) >> 6] ^= (1L << 63);
-        }
-
-        KeccakPermutation();
-
-        KeccakExtract();
-        bitsInQueue = rate;
-
-        squeezing = true;
-    }
-
-    private void squeeze(byte[] output, int offset, long outputLength)
-    {
-        if (!squeezing)
-        {
-            padAndSwitchToSqueezingPhase();
-        }
-
-        long i = 0;
-        while (i < outputLength)
-        {
-            if (bitsInQueue == 0)
-            {
-                KeccakPermutation();
-                KeccakExtract();
-                bitsInQueue = rate;
-            }
-            int partialBlock = (int)Math.min((long)bitsInQueue, outputLength - i);
-            System.arraycopy(dataQueue, (rate - bitsInQueue) / 8, output, offset + (int)(i / 8), partialBlock / 8);
-            bitsInQueue -= partialBlock;
-            i += partialBlock;
+            partialBlock = (int)Math.min(this.bitsInQueue, outputLength - i);
+            System.arraycopy(this.dataQueue, (this.rate - this.bitsInQueue) / 8, output, offset + (int)(i / 8L), partialBlock / 8);
+            this.bitsInQueue -= partialBlock;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private void KeccakExtract()
-    {
-        Pack.longToLittleEndian(state, 0, rate >> 6, dataQueue, 0);
+    
+    private void KeccakExtract() {
+        Pack.longToLittleEndian(this.state, 0, this.rate >> 6, this.dataQueue, 0);
     }
-
-    private void KeccakPermutation()
-    {
-        long[] A = state;
-
-        long a00 = A[ 0], a01 = A[ 1], a02 = A[ 2], a03 = A[ 3], a04 = A[ 4];
-        long a05 = A[ 5], a06 = A[ 6], a07 = A[ 7], a08 = A[ 8], a09 = A[ 9];
-        long a10 = A[10], a11 = A[11], a12 = A[12], a13 = A[13], a14 = A[14];
-        long a15 = A[15], a16 = A[16], a17 = A[17], a18 = A[18], a19 = A[19];
-        long a20 = A[20], a21 = A[21], a22 = A[22], a23 = A[23], a24 = A[24];
-
-        for (int i = 0; i < 24; i++)
-        {
-            
-            long c0 = a00 ^ a05 ^ a10 ^ a15 ^ a20;
-            long c1 = a01 ^ a06 ^ a11 ^ a16 ^ a21;
-            long c2 = a02 ^ a07 ^ a12 ^ a17 ^ a22;
-            long c3 = a03 ^ a08 ^ a13 ^ a18 ^ a23;
-            long c4 = a04 ^ a09 ^ a14 ^ a19 ^ a24;
-
-            long d1 = (c1 << 1 | c1 >>> 63) ^ c4;
-            long d2 = (c2 << 1 | c2 >>> 63) ^ c0;
-            long d3 = (c3 << 1 | c3 >>> 63) ^ c1;
-            long d4 = (c4 << 1 | c4 >>> 63) ^ c2;
-            long d0 = (c0 << 1 | c0 >>> 63) ^ c3;
-
-            a00 ^= d1; a05 ^= d1; a10 ^= d1; a15 ^= d1; a20 ^= d1;
-            a01 ^= d2; a06 ^= d2; a11 ^= d2; a16 ^= d2; a21 ^= d2;
-            a02 ^= d3; a07 ^= d3; a12 ^= d3; a17 ^= d3; a22 ^= d3;
-            a03 ^= d4; a08 ^= d4; a13 ^= d4; a18 ^= d4; a23 ^= d4;
-            a04 ^= d0; a09 ^= d0; a14 ^= d0; a19 ^= d0; a24 ^= d0;
-
-            
-            c1  = a01 <<  1 | a01 >>> 63;
-            a01 = a06 << 44 | a06 >>> 20;
-            a06 = a09 << 20 | a09 >>> 44;
-            a09 = a22 << 61 | a22 >>>  3;
-            a22 = a14 << 39 | a14 >>> 25;
-            a14 = a20 << 18 | a20 >>> 46;
-            a20 = a02 << 62 | a02 >>>  2;
-            a02 = a12 << 43 | a12 >>> 21;
-            a12 = a13 << 25 | a13 >>> 39;
-            a13 = a19 <<  8 | a19 >>> 56;
-            a19 = a23 << 56 | a23 >>>  8;
-            a23 = a15 << 41 | a15 >>> 23;
-            a15 = a04 << 27 | a04 >>> 37;
-            a04 = a24 << 14 | a24 >>> 50;
-            a24 = a21 <<  2 | a21 >>> 62;
-            a21 = a08 << 55 | a08 >>>  9;
-            a08 = a16 << 45 | a16 >>> 19;
-            a16 = a05 << 36 | a05 >>> 28;
-            a05 = a03 << 28 | a03 >>> 36;
-            a03 = a18 << 21 | a18 >>> 43;
-            a18 = a17 << 15 | a17 >>> 49;
-            a17 = a11 << 10 | a11 >>> 54;
-            a11 = a07 <<  6 | a07 >>> 58;
-            a07 = a10 <<  3 | a10 >>> 61;
-            a10 = c1;
-
-            
-            c0 = a00 ^ (~a01 & a02);
-            c1 = a01 ^ (~a02 & a03);
-            a02 ^= ~a03 & a04;
-            a03 ^= ~a04 & a00;
-            a04 ^= ~a00 & a01;
+    
+    private void KeccakPermutation() {
+        final long[] A = this.state;
+        long a00 = A[0];
+        long a2 = A[1];
+        long a3 = A[2];
+        long a4 = A[3];
+        long a5 = A[4];
+        long a6 = A[5];
+        long a7 = A[6];
+        long a8 = A[7];
+        long a9 = A[8];
+        long a10 = A[9];
+        long a11 = A[10];
+        long a12 = A[11];
+        long a13 = A[12];
+        long a14 = A[13];
+        long a15 = A[14];
+        long a16 = A[15];
+        long a17 = A[16];
+        long a18 = A[17];
+        long a19 = A[18];
+        long a20 = A[19];
+        long a21 = A[20];
+        long a22 = A[21];
+        long a23 = A[22];
+        long a24 = A[23];
+        long a25 = A[24];
+        for (int i = 0; i < 24; ++i) {
+            long c0 = a00 ^ a6 ^ a11 ^ a16 ^ a21;
+            long c2 = a2 ^ a7 ^ a12 ^ a17 ^ a22;
+            final long c3 = a3 ^ a8 ^ a13 ^ a18 ^ a23;
+            final long c4 = a4 ^ a9 ^ a14 ^ a19 ^ a24;
+            final long c5 = a5 ^ a10 ^ a15 ^ a20 ^ a25;
+            final long d1 = (c2 << 1 | c2 >>> 63) ^ c5;
+            final long d2 = (c3 << 1 | c3 >>> 63) ^ c0;
+            final long d3 = (c4 << 1 | c4 >>> 63) ^ c2;
+            final long d4 = (c5 << 1 | c5 >>> 63) ^ c3;
+            final long d5 = (c0 << 1 | c0 >>> 63) ^ c4;
+            a00 ^= d1;
+            a6 ^= d1;
+            a11 ^= d1;
+            a16 ^= d1;
+            a21 ^= d1;
+            a2 ^= d2;
+            a7 ^= d2;
+            a12 ^= d2;
+            a17 ^= d2;
+            a22 ^= d2;
+            a3 ^= d3;
+            a8 ^= d3;
+            a13 ^= d3;
+            a18 ^= d3;
+            a23 ^= d3;
+            a4 ^= d4;
+            a9 ^= d4;
+            a14 ^= d4;
+            a19 ^= d4;
+            a24 ^= d4;
+            a5 ^= d5;
+            a10 ^= d5;
+            a15 ^= d5;
+            a20 ^= d5;
+            a25 ^= d5;
+            c2 = (a2 << 1 | a2 >>> 63);
+            a2 = (a7 << 44 | a7 >>> 20);
+            a7 = (a10 << 20 | a10 >>> 44);
+            a10 = (a23 << 61 | a23 >>> 3);
+            a23 = (a15 << 39 | a15 >>> 25);
+            a15 = (a21 << 18 | a21 >>> 46);
+            a21 = (a3 << 62 | a3 >>> 2);
+            a3 = (a13 << 43 | a13 >>> 21);
+            a13 = (a14 << 25 | a14 >>> 39);
+            a14 = (a20 << 8 | a20 >>> 56);
+            a20 = (a24 << 56 | a24 >>> 8);
+            a24 = (a16 << 41 | a16 >>> 23);
+            a16 = (a5 << 27 | a5 >>> 37);
+            a5 = (a25 << 14 | a25 >>> 50);
+            a25 = (a22 << 2 | a22 >>> 62);
+            a22 = (a9 << 55 | a9 >>> 9);
+            a9 = (a17 << 45 | a17 >>> 19);
+            a17 = (a6 << 36 | a6 >>> 28);
+            a6 = (a4 << 28 | a4 >>> 36);
+            a4 = (a19 << 21 | a19 >>> 43);
+            a19 = (a18 << 15 | a18 >>> 49);
+            a18 = (a12 << 10 | a12 >>> 54);
+            a12 = (a8 << 6 | a8 >>> 58);
+            a8 = (a11 << 3 | a11 >>> 61);
+            a11 = c2;
+            c0 = (a00 ^ (~a2 & a3));
+            c2 = (a2 ^ (~a3 & a4));
+            a3 ^= (~a4 & a5);
+            a4 ^= (~a5 & a00);
+            a5 ^= (~a00 & a2);
             a00 = c0;
-            a01 = c1;
-
-            c0 = a05 ^ (~a06 & a07);
-            c1 = a06 ^ (~a07 & a08);
-            a07 ^= ~a08 & a09;
-            a08 ^= ~a09 & a05;
-            a09 ^= ~a05 & a06;
-            a05 = c0;
-            a06 = c1;
-
-            c0 = a10 ^ (~a11 & a12);
-            c1 = a11 ^ (~a12 & a13);
-            a12 ^= ~a13 & a14;
-            a13 ^= ~a14 & a10;
-            a14 ^= ~a10 & a11;
-            a10 = c0;
-            a11 = c1;
-
-            c0 = a15 ^ (~a16 & a17);
-            c1 = a16 ^ (~a17 & a18);
-            a17 ^= ~a18 & a19;
-            a18 ^= ~a19 & a15;
-            a19 ^= ~a15 & a16;
-            a15 = c0;
-            a16 = c1;
-
-            c0 = a20 ^ (~a21 & a22);
-            c1 = a21 ^ (~a22 & a23);
-            a22 ^= ~a23 & a24;
-            a23 ^= ~a24 & a20;
-            a24 ^= ~a20 & a21;
-            a20 = c0;
-            a21 = c1;
-
-            
-            a00 ^= KeccakRoundConstants[i];
+            a2 = c2;
+            c0 = (a6 ^ (~a7 & a8));
+            c2 = (a7 ^ (~a8 & a9));
+            a8 ^= (~a9 & a10);
+            a9 ^= (~a10 & a6);
+            a10 ^= (~a6 & a7);
+            a6 = c0;
+            a7 = c2;
+            c0 = (a11 ^ (~a12 & a13));
+            c2 = (a12 ^ (~a13 & a14));
+            a13 ^= (~a14 & a15);
+            a14 ^= (~a15 & a11);
+            a15 ^= (~a11 & a12);
+            a11 = c0;
+            a12 = c2;
+            c0 = (a16 ^ (~a17 & a18));
+            c2 = (a17 ^ (~a18 & a19));
+            a18 ^= (~a19 & a20);
+            a19 ^= (~a20 & a16);
+            a20 ^= (~a16 & a17);
+            a16 = c0;
+            a17 = c2;
+            c0 = (a21 ^ (~a22 & a23));
+            c2 = (a22 ^ (~a23 & a24));
+            a23 ^= (~a24 & a25);
+            a24 ^= (~a25 & a21);
+            a25 ^= (~a21 & a22);
+            a21 = c0;
+            a22 = c2;
+            a00 ^= KeccakDigest.KeccakRoundConstants[i];
         }
-
-        A[ 0] = a00; A[ 1] = a01; A[ 2] = a02; A[ 3] = a03; A[ 4] = a04;
-        A[ 5] = a05; A[ 6] = a06; A[ 7] = a07; A[ 8] = a08; A[ 9] = a09;
-        A[10] = a10; A[11] = a11; A[12] = a12; A[13] = a13; A[14] = a14;
-        A[15] = a15; A[16] = a16; A[17] = a17; A[18] = a18; A[19] = a19;
-        A[20] = a20; A[21] = a21; A[22] = a22; A[23] = a23; A[24] = a24;
+        A[0] = a00;
+        A[1] = a2;
+        A[2] = a3;
+        A[3] = a4;
+        A[4] = a5;
+        A[5] = a6;
+        A[6] = a7;
+        A[7] = a8;
+        A[8] = a9;
+        A[9] = a10;
+        A[10] = a11;
+        A[11] = a12;
+        A[12] = a13;
+        A[13] = a14;
+        A[14] = a15;
+        A[15] = a16;
+        A[16] = a17;
+        A[17] = a18;
+        A[18] = a19;
+        A[19] = a20;
+        A[20] = a21;
+        A[21] = a22;
+        A[22] = a23;
+        A[23] = a24;
+        A[24] = a25;
+    }
+    
+    static {
+        KeccakRoundConstants = new long[] { 1L, 32898L, -9223372036854742902L, -9223372034707259392L, 32907L, 2147483649L, -9223372034707259263L, -9223372036854743031L, 138L, 136L, 2147516425L, 2147483658L, 2147516555L, -9223372036854775669L, -9223372036854742903L, -9223372036854743037L, -9223372036854743038L, -9223372036854775680L, 32778L, -9223372034707292150L, -9223372034707259263L, -9223372036854742912L, 2147483649L, -9223372034707259384L };
     }
 }

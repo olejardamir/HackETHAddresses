@@ -1,25 +1,21 @@
+// 
+// Decompiled by Procyon v0.5.36
+// 
+
 class Keccak
 {
-    private Keccak()
-    {
-
+    private Keccak() {
     }
-
-    static public class Digest256
-            extends BCMessageDigest implements Cloneable {
-        public Digest256()
-        {
+    
+    public static class Digest256 extends BCMessageDigest
+    {
+        public Digest256() {
             super(new KeccakDigest(256));
         }
-
-        public Object clone()
-                throws CloneNotSupportedException
-        {
-
-
-            return (BCMessageDigest)super.clone();
+        
+        @Override
+        public Object clone() throws CloneNotSupportedException {
+            return super.clone();
         }
     }
-
-
 }

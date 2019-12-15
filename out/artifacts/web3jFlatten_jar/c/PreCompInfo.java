@@ -1,2 +1,0 @@
-abstract public interface PreCompInfo {
-}
