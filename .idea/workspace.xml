@@ -7,22 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0773b1ca-6e4c-45cb-8a52-9d8d30635c36" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASN1ObjectIdentifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/ASN1ObjectIdentifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Arrays.java" beforeDir="false" afterPath="$PROJECT_DIR$/Arrays.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ECFieldElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/ECFieldElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FiniteFields.java" beforeDir="false" afterPath="$PROJECT_DIR$/FiniteFields.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mod.java" beforeDir="false" afterPath="$PROJECT_DIR$/Mod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nat256.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nat256.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pack.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1ObjectIdentifier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ASN1ObjectIdentifier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/FiniteFields.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/FiniteFields.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Mod.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Mod.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Nat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Nat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Nat256.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Nat256.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Pack.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Pack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointPreCompInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointPreCompInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointUtil$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointUtil$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/PreCompCallback.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/PreCompCallback.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/PreCompInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/test.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,10 +29,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Arrays.java">
+        <entry file="file://$PROJECT_DIR$/test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="145">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
             </state>
           </provider>
         </entry>
@@ -67,6 +60,8 @@
       <find>else</find>
       <find>GenericPolynomialExtensionField</find>
       <find>ECFieldElement</find>
+      <find>Keccak</find>
+      <find>kecc2</find>
     </findStrings>
     <replaceStrings>
       <replace>throws Exception</replace>
@@ -104,7 +99,6 @@
         <option value="$PROJECT_DIR$/ASN1Sequence.java" />
         <option value="$PROJECT_DIR$/DEROctetString.java" />
         <option value="$PROJECT_DIR$/PrimeField.java" />
-        <option value="$PROJECT_DIR$/PreCompCallback.java" />
         <option value="$PROJECT_DIR$/ASN1Object.java" />
         <option value="$PROJECT_DIR$/X9ECParameters.java" />
         <option value="$PROJECT_DIR$/ASN1OctetString.java" />
@@ -115,7 +109,6 @@
         <option value="$PROJECT_DIR$/ECDomainParameters.java" />
         <option value="$PROJECT_DIR$/KeccakDigest.java" />
         <option value="$PROJECT_DIR$/Hex.java" />
-        <option value="$PROJECT_DIR$/test.java" />
         <option value="$PROJECT_DIR$/Encoder.java" />
         <option value="$PROJECT_DIR$/HexEncoder.java" />
         <option value="$PROJECT_DIR$/X9ECPoint.java" />
@@ -127,10 +120,12 @@
         <option value="$PROJECT_DIR$/Mod.java" />
         <option value="$PROJECT_DIR$/FiniteFields.java" />
         <option value="$PROJECT_DIR$/ECFieldElement.java" />
-        <option value="$PROJECT_DIR$/ECPoint.java" />
         <option value="$PROJECT_DIR$/ECCurve.java" />
         <option value="$PROJECT_DIR$/ASN1ObjectIdentifier.java" />
         <option value="$PROJECT_DIR$/Arrays.java" />
+        <option value="$PROJECT_DIR$/ECPoint.java" />
+        <option value="$PROJECT_DIR$/PreCompCallback.java" />
+        <option value="$PROJECT_DIR$/test.java" />
       </list>
     </option>
   </component>
@@ -221,7 +216,7 @@
     <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -230,13 +225,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32969433" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30458516" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30458516" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3995633" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="SonarLint" order="7" />
-      <window_info anchor="bottom" id="Inspection Results" order="8" visible="true" weight="0.20196506" />
+      <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.20196506" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
@@ -329,6 +324,12 @@
           </properties>
           <option name="timeStamp" value="80" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/test.java</url>
+          <line>63</line>
+          <properties />
+          <option name="timeStamp" value="294" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -337,7 +338,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/X9FieldID.java" />
     <entry file="file://$PROJECT_DIR$/ASN1EncodableVector.java" />
     <entry file="file://$PROJECT_DIR$/X9Curve.java" />
     <entry file="file://$PROJECT_DIR$/ASN1Integer.java" />
@@ -361,34 +361,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ASN1InputStream.java" />
-    <entry file="file://$PROJECT_DIR$/PreCompInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" selection-start-column="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SECObjectIdentifiers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PreCompCallback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ECLookupTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/X9ECParameters.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
@@ -402,17 +374,6 @@
             <element signature="e#650#651#0" expanded="true" />
             <element signature="e#686#687#0" expanded="true" />
             <element signature="e#710#711#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ASN1OctetString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-          <folding>
-            <element signature="e#214#215#0" expanded="true" />
-            <element signature="e#243#244#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -471,13 +432,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ExtendedDigest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ECDomainParameters.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -496,13 +450,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
         </state>
       </provider>
     </entry>
@@ -582,10 +529,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ECFieldElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="15" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ECCurve.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="15" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4351#4352#0" expanded="true" />
+            <element signature="e#4382#4383#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASN1ObjectIdentifier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/X9ECPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ASN1OctetString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BigIntegers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ECPoint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="6" column="39" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="39" />
+        <state relative-caret-position="60">
+          <caret line="4" column="26" lean-forward="true" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
           <folding>
             <element signature="e#1411#1412#0" expanded="true" />
             <element signature="e#1470#1471#0" expanded="true" />
@@ -615,57 +616,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ECFieldElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="15" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ECCurve.java">
+    <entry file="file://$PROJECT_DIR$/Encoder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="15" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4351#4352#0" expanded="true" />
-            <element signature="e#4382#4383#0" expanded="true" />
-          </folding>
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BigIntegers.java">
+    <entry file="file://$PROJECT_DIR$/ExtendedDigest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="15">
+          <caret line="1" column="17" lean-forward="true" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ASN1ObjectIdentifier.java">
+    <entry file="file://$PROJECT_DIR$/ECLookupTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="15">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/X9ECPoint.java">
+    <entry file="file://$PROJECT_DIR$/PreCompInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Encoder.java">
+    <entry file="file://$PROJECT_DIR$/PreCompCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SECObjectIdentifiers.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Arrays.java">
+    <entry file="file://$PROJECT_DIR$/Keccak.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
