@@ -45,22 +45,6 @@ public class ASN1ObjectIdentifier
 
 
 
-    private synchronized byte[] getBody()
-    {
-        if (body == null)
-        {
-            ByteArrayOutputStream bOut = new ByteArrayOutputStream();
-
- 
-            body = bOut.toByteArray();
-        }
-
-        return body;
-    }
-
-
-
-
     public int hashCode()
     {
         return identifier.hashCode();

@@ -10,10 +10,7 @@ class PrimeField extends GenericPolynomialExtensionField {
         this.characteristic = characteristic;
     }
 
-    public BigInteger getCharacteristic()
-    {
-        return characteristic;
-    }
+
 
 
 

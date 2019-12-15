@@ -15,7 +15,7 @@ public class X9ECParameters {
             ECCurve curve,
             ASN1Object g,
             BigInteger n,
-            BigInteger h, Object o)
+            BigInteger h)
     {
         this.curve = curve;
         this.g = g;
