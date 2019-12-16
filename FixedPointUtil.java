@@ -14,10 +14,10 @@ class FixedPointUtil
     public static FixedPointPreCompInfo precompute(final ECPoint p) {
         final ECCurve c = p.getCurve();
 
-        return (FixedPointPreCompInfo)c.precompute(p, PRECOMP_NAME, new PreCompCallback()
+        return c.precompute(p, PRECOMP_NAME, new PreCompCallback()
         {
             public FixedPointPreCompInfo precompute(FixedPointPreCompInfo existing) {
-                FixedPointPreCompInfo existingFP = (existing instanceof FixedPointPreCompInfo) ? (FixedPointPreCompInfo)existing : null;
+                FixedPointPreCompInfo existingFP = (existing != null) ? existing : null;
 
                 int bits = getCombSize(c);
                 int minWidth = bits > 250 ? 6 : 5;

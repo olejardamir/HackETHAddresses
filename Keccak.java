@@ -18,7 +18,7 @@ class Keccak
                 throws CloneNotSupportedException
         {
             BCMessageDigest d = (BCMessageDigest)super.clone();
-            d.digest = new KeccakDigest((KeccakDigest)digest);
+            d.digest = new KeccakDigest(digest);
 
             return d;
         }

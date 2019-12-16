@@ -29,11 +29,6 @@ public class KeccakDigest {
         this.squeezing = source.squeezing;
     }
 
-    public String getAlgorithmName()
-    {
-        return "Keccak-" + fixedOutputLength;
-    }
-
     public int getDigestSize()
     {
         return fixedOutputLength / 8;
