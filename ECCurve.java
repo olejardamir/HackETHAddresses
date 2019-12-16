@@ -45,10 +45,12 @@ public abstract class ECCurve {
     protected abstract ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, boolean withCompression);
 
     public ECPoint importPoint(ECPoint p) {
-        if (p.getCurve() == this)
-            return p;
-        if (p.isInfinity())
-            return getInfinity();
+        if (p.getCurve() == this) {
+			return p;
+		}
+        if (p.isInfinity()) {
+			return getInfinity();
+		}
 
 
         p = p.normalize();

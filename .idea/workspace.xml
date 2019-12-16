@@ -8,24 +8,38 @@
   <component name="ChangeListManager">
     <list default="true" id="0773b1ca-6e4c-45cb-8a52-9d8d30635c36" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomNamedCurves.java" beforeDir="false" afterPath="$PROJECT_DIR$/CustomNamedCurves.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Digest256.java" beforeDir="false" afterPath="$PROJECT_DIR$/Digest256.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ECCurve.java" beforeDir="false" afterPath="$PROJECT_DIR$/ECCurve.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecP256K1Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecP256K1Field.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SecP256K1FieldElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/SecP256K1FieldElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/CustomNamedCurves$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/CustomNamedCurves$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/CustomNamedCurves.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/CustomNamedCurves.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Digest256.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Digest256.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve$Config.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECCurve.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECDomainParameters.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECDomainParameters.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECFieldElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECFieldElement.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/ECPoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointCombMultiplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointCombMultiplier.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointUtil$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointUtil$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/FixedPointUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/HexEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/HexEncoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/KeccakDigest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/KeccakDigest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Mod.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Mod.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Nat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Nat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Nat256.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Nat256.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/Pack.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/Pack.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/PublicFromPrivate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/PublicFromPrivate.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Curve$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Curve$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Curve.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Curve.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Field.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Field.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1FieldElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1FieldElement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/SecP256K1Point.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/X9ECParameters.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/X9ECParameters.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/X9ECPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/X9ECPoint.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/testAll.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/web3jFlatten/testAll.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -116,6 +130,7 @@
       <workItem from="1576272349949" duration="1501000" />
       <workItem from="1576517621552" duration="1719000" />
       <workItem from="1576520747673" duration="5168000" />
+      <workItem from="1576529771759" duration="2398000" />
     </task>
     <servers />
   </component>
@@ -148,6 +163,22 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/SecP256K1FieldElement.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/SecP256K1FieldElement.java</url>
+          <line>162</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
