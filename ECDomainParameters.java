@@ -18,7 +18,7 @@ class ECDomainParameters {
 
     private static ECPoint validate(ECCurve c, ECPoint q) {
 
-        q = ECAlgorithms.importPoint(c, q).normalize();
+        q = c.importPoint(q).normalize();
 
 
 

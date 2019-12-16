@@ -24,7 +24,6 @@ public class SecP256K1Curve extends ECCurve {
         this.a = fromBigInteger(ECFieldElement.ZERO);
         this.b = fromBigInteger(BigInteger.valueOf(7));
         this.order = new BigInteger(1, Hex.decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141"));
-        this.cofactor = BigInteger.valueOf(1);
         this.coord = SECP256K1_DEFAULT_COORDS;
     }
 
@@ -78,7 +77,7 @@ public class SecP256K1Curve extends ECCurve {
 
             public ECPoint lookup(int index)
             {
-                int[] x = Nat256.create(), y = Nat256.create();
+                int[] x = new int[8], y = new int[8];
                 int pos = 0;
 
                 for (int i = 0; i < len; ++i)

@@ -52,6 +52,8 @@ public class FixedPointCombMultiplier {
     }
 
     private ECPoint checkResult(ECPoint p) {
-        return ECAlgorithms.implCheckResult(p);
+
+
+        return p;
     }
 }

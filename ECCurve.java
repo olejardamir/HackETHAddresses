@@ -162,7 +162,34 @@ public abstract class ECCurve
             return;
         }
 
-        ECAlgorithms.montgomeryTrick(zs, 0, count, null);
+
+        ECFieldElement[] c = new ECFieldElement[count];
+        c[0] = zs[0];
+
+        int i = 0;
+        while (++i < count)
+        {
+            c[i] = c[i - 1].multiply(zs[0 + i]);
+        }
+
+        --i;
+
+        if (null != null)
+        {
+            c[i] = c[i].multiply(null);
+        }
+
+        ECFieldElement u = c[i].invert();
+
+        while (i > 0)
+        {
+            int j1 = 0 + i--;
+            ECFieldElement tmp = zs[j1];
+            zs[j1] = c[i].multiply(u);
+            u = u.multiply(tmp);
+        }
+
+        zs[0] = u;
 
         for (int j = 0; j < count; ++j)
         {
