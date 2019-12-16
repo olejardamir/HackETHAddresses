@@ -62,8 +62,5 @@ public abstract class ECFieldElement {
         return tmp;
     }
 
-    static abstract class AbstractFp extends ECFieldElement {
-    }
-
 
 }

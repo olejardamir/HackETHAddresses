@@ -1,7 +1,6 @@
 import java.math.BigInteger;
 
-public class SecP256K1Curve extends ECCurve.AbstractFp
-{
+public class SecP256K1Curve extends ECCurve {
     public static BigInteger q;
 
     static {
@@ -18,7 +17,7 @@ public class SecP256K1Curve extends ECCurve.AbstractFp
     private SecP256K1Point infinity;
 
     public SecP256K1Curve() throws Exception {
-        super(q);
+        super(FiniteFields.getPrimeField(q));
 
         this.infinity = new SecP256K1Point(this, null, null);
 
@@ -98,5 +97,22 @@ public class SecP256K1Curve extends ECCurve.AbstractFp
                 return createRawPoint(new SecP256K1FieldElement(x), new SecP256K1FieldElement(y), false);
             }
         };
+    }
+
+    protected ECPoint decompressPoint(int yTilde, BigInteger X1) {
+        ECFieldElement x = this.fromBigInteger(X1);
+        ECFieldElement rhs = x.square().add(this.a).multiply(x).add(this.b);
+        ECFieldElement y = rhs.sqrt();
+
+
+
+
+        if (y.testBitZero() != (yTilde == 1))
+        {
+
+            y = y.negate();
+        }
+
+        return this.createRawPoint(x, y, true);
     }
 }

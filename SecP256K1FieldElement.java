@@ -1,8 +1,7 @@
 
 import java.math.BigInteger;
 
-public class SecP256K1FieldElement extends ECFieldElement.AbstractFp
-{
+public class SecP256K1FieldElement extends ECFieldElement {
     private static final BigInteger Q = SecP256K1Curve.q;
 
     int[] x;

@@ -14,10 +14,7 @@ public class PublicFromPrivate {
             cleanValue = privatekey;
         }
         BigInteger privKey = new BigInteger(cleanValue, 16);
-        /*
-         * TODO: FixedPointCombMultiplier currently doesn't support scalars longer than the group
-         * order, but that could change in future versions.
-         */
+
 
         ECPoint point = new FixedPointCombMultiplier().multiply(new ECDomainParameters(
                 CustomNamedCurves.getByName().getCurve(),
@@ -38,22 +35,15 @@ public class PublicFromPrivate {
         String result10 = value.toString(16);
 
         int length = result10.length();
-        if (length > 64 << 1) {
-            throw new UnsupportedOperationException(
-                    "Value " + result10 + "is larger then length " + (64 << 1));
-        } else if (value.signum() < 0) {
-            throw new UnsupportedOperationException("Value cannot be negative");
-        }
+
 
         if (length < 64 << 1) {
             result10 = new String(new char[(64 << 1) - length]).replace("\0", String.valueOf('0')) + result10;
         }
 
-        if (true) {
+
             input = "0x" + result10;
-        } else {
-            input = result10;
-        }
+
         if (!(input == null || input.length() == 0)
                 && input.length() > 1
                 && input.charAt(0) == '0'
@@ -105,7 +95,7 @@ public class PublicFromPrivate {
             bytes8 = data9;
         }
 
-        Keccak.DigestKeccak kecc9 = new Keccak.Digest256();
+        Keccak.Digest256 kecc9 = new Keccak.Digest256();
         kecc9.update(bytes8, 0, bytes8.length);
         byte[] result8 = kecc9.digest();
         byte[] bytes9;
@@ -140,7 +130,7 @@ public class PublicFromPrivate {
             bytes9 = data8;
         }
 
-        Keccak.DigestKeccak kecc8 = new Keccak.Digest256();
+        Keccak.Digest256 kecc8 = new Keccak.Digest256();
         kecc8.update(bytes9, 0, bytes9.length);
         byte[] result9 = kecc8.digest();
         StringBuilder stringBuilder8 = new StringBuilder();
@@ -192,7 +182,7 @@ public class PublicFromPrivate {
             bytes2 = data7;
         }
 
-        Keccak.DigestKeccak kecc7 = new Keccak.Digest256();
+        Keccak.Digest256 kecc7 = new Keccak.Digest256();
         kecc7.update(bytes2, 0, bytes2.length);
         byte[] result2 = kecc7.digest();
         byte[] bytes3;
@@ -227,7 +217,7 @@ public class PublicFromPrivate {
             bytes3 = data6;
         }
 
-        Keccak.DigestKeccak kecc6 = new Keccak.Digest256();
+        Keccak.Digest256 kecc6 = new Keccak.Digest256();
         kecc6.update(bytes3, 0, bytes3.length);
         byte[] result3 = kecc6.digest();
         byte[] bytes4;
@@ -262,7 +252,7 @@ public class PublicFromPrivate {
             bytes4 = data5;
         }
 
-        Keccak.DigestKeccak kecc5 = new Keccak.Digest256();
+        Keccak.Digest256 kecc5 = new Keccak.Digest256();
         kecc5.update(bytes4, 0, bytes4.length);
         byte[] result4 = kecc5.digest();
         byte[] bytes5;
@@ -297,7 +287,7 @@ public class PublicFromPrivate {
             bytes5 = data4;
         }
 
-        Keccak.DigestKeccak kecc4 = new Keccak.Digest256();
+        Keccak.Digest256 kecc4 = new Keccak.Digest256();
         kecc4.update(bytes5, 0, bytes5.length);
         byte[] result5 = kecc4.digest();
         byte[] bytes6;
@@ -332,7 +322,7 @@ public class PublicFromPrivate {
             bytes6 = data3;
         }
 
-        Keccak.DigestKeccak kecc3 = new Keccak.Digest256();
+        Keccak.Digest256 kecc3 = new Keccak.Digest256();
         kecc3.update(bytes6, 0, bytes6.length);
         byte[] result6 = kecc3.digest();
         byte[] bytes7;
@@ -367,7 +357,7 @@ public class PublicFromPrivate {
             bytes7 = data2;
         }
 
-        Keccak.DigestKeccak kecc2 = new Keccak.Digest256();
+        Keccak.Digest256 kecc2 = new Keccak.Digest256();
         kecc2.update(bytes7, 0, bytes7.length);
         byte[] result7 = kecc2.digest();
         StringBuilder stringBuilder2 = new StringBuilder();
@@ -454,7 +444,7 @@ public class PublicFromPrivate {
                 bytes = data1;
             }
 
-            Keccak.DigestKeccak kecc1 = new Keccak.Digest256();
+            Keccak.Digest256 kecc1 = new Keccak.Digest256();
             kecc1.update(bytes, 0, bytes.length);
             byte[] result = kecc1.digest();
             byte[] bytes1;
@@ -489,7 +479,7 @@ public class PublicFromPrivate {
                 bytes1 = data;
             }
 
-            Keccak.DigestKeccak kecc = new Keccak.Digest256();
+            Keccak.Digest256 kecc = new Keccak.Digest256();
             kecc.update(bytes1, 0, bytes1.length);
             byte[] result1 = kecc.digest();
             StringBuilder stringBuilder = new StringBuilder();
@@ -542,7 +532,7 @@ public class PublicFromPrivate {
                 bytes = data1;
             }
 
-            Keccak.DigestKeccak kecc1 = new Keccak.Digest256();
+            Keccak.Digest256 kecc1 = new Keccak.Digest256();
             kecc1.update(bytes, 0, bytes.length);
             byte[] result = kecc1.digest();
             byte[] bytes1;
@@ -577,7 +567,7 @@ public class PublicFromPrivate {
                 bytes1 = data;
             }
 
-            Keccak.DigestKeccak kecc = new Keccak.Digest256();
+            Keccak.Digest256 kecc = new Keccak.Digest256();
             kecc.update(bytes1, 0, bytes1.length);
             byte[] result1 = kecc.digest();
             StringBuilder stringBuilder = new StringBuilder();
@@ -599,9 +589,6 @@ public class PublicFromPrivate {
             address1 = stringBuilder1.toString();
         }
 
-
-        //0xef678007d18427e6022059dbc264f27507cd1ffc
-        //System.out.println(address1);
         return address1;
 
 

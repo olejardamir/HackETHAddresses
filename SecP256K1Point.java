@@ -1,6 +1,5 @@
 
-public class SecP256K1Point extends ECPoint.AbstractFp
-{
+public class SecP256K1Point extends ECPoint {
 
     public SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y)
     {
@@ -245,5 +244,19 @@ public class SecP256K1Point extends ECPoint.AbstractFp
         }
 
         return new SecP256K1Point(curve, this.x, this.y.negate(), this.zs, this.withCompression);
+    }
+
+    protected boolean getCompressionYTilde() {
+        return this.getAffineYCoord().testBitZero();
+    }
+
+    public ECPoint subtract(ECPoint b) {
+        if (b.isInfinity())
+        {
+            return this;
+        }
+
+
+        return this.add(b.negate());
     }
 }

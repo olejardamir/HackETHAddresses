@@ -43,10 +43,6 @@ public class FixedPointCombMultiplier {
 
     public ECPoint multiply(ECPoint p, BigInteger k) {
         int sign = k.signum();
-        if (sign == 0 || p.isInfinity())
-        {
-            return p.getCurve().getInfinity();
-        }
 
         ECPoint positive = multiplyPositive(p, k.abs());
         ECPoint result = sign > 0 ? positive : positive.negate();
