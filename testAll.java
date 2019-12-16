@@ -5,7 +5,7 @@ public class testAll {
 
     public static void main(String[] args) throws Exception {
 
-        BufferedReader reader = new BufferedReader(new FileReader("/home/cocka/Desktop/workspace/hackETH/data/out3_big.csv"));
+        BufferedReader reader = new BufferedReader(new FileReader("data/big.csv"));
         String line;
         int t=0;
         while((line=reader.readLine())!=null)
@@ -13,7 +13,8 @@ public class testAll {
 				String[] sp = line.split(",");
 				PublicFromPrivate publicFromPrivate = new PublicFromPrivate();
 				String stringBuilder7 = publicFromPrivate.getPublicFromPrivate(sp[1]);
-				if (("0x" + sp[0].substring(24)).equals(stringBuilder7)) {
+				System.out.println(stringBuilder7+"\t"+sp[0]);
+				if (stringBuilder7.equals(sp[0])) {
 					System.out.println(line + "\t" + stringBuilder7);
 					t++;
 				}

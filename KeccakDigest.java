@@ -77,10 +77,6 @@ public class KeccakDigest {
 
 
         this.rate = rate;
-        for (int i = 0; i < state.length; ++i)
-			state[i] = 0L;
-        for (int i = 0; i < this.dataQueue.length; ++i)
-			this.dataQueue[i] = (byte) 0;
         this.bitsInQueue = 0;
         this.squeezing = false;
         this.fixedOutputLength = (1600 - rate) / 2;
@@ -143,7 +139,7 @@ public class KeccakDigest {
 				KeccakExtract();
 				bitsInQueue = rate;
 			}
-			int partialBlock = (int) Math.min(1L * bitsInQueue, outputLength - i);
+			int partialBlock = (int) Math.min(bitsInQueue, outputLength - i);
 			System.arraycopy(dataQueue, (rate - bitsInQueue) / 8, output, offset + (int) (i / 8), partialBlock / 8);
 			bitsInQueue -= partialBlock;
 			i += partialBlock;

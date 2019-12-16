@@ -1,5 +1,6 @@
 
 import java.io.OutputStream;
+import java.util.Arrays;
 
 
 public class HexEncoder {
@@ -14,8 +15,7 @@ public class HexEncoder {
 
     private void initialiseDecodingTable()
     {
-        for (int i = 0; i < decodingTable.length; ++i)
-			decodingTable[i] = (byte) 0xff;
+        Arrays.fill(decodingTable, (byte) 0xff);
 
         for (int i = 0; i < encodingTable.length; ++i)
 			decodingTable[encodingTable[i]] = (byte) i;

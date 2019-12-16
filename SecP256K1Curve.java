@@ -1,3 +1,4 @@
+import java.io.ByteArrayOutputStream;
 import java.math.BigInteger;
 
 public class SecP256K1Curve extends ECCurve {
@@ -5,8 +6,11 @@ public class SecP256K1Curve extends ECCurve {
 
     static {
         try {
+            HexEncoder encoder = new HexEncoder();
+            ByteArrayOutputStream    bOut = new ByteArrayOutputStream();
+            encoder.decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F", bOut);
             q = new BigInteger(1,
-                    Hex.decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F"));
+                    bOut.toByteArray());
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -23,7 +27,10 @@ public class SecP256K1Curve extends ECCurve {
 
         this.a = fromBigInteger(ECFieldElement.ZERO);
         this.b = fromBigInteger(BigInteger.valueOf(7));
-        this.order = new BigInteger(1, Hex.decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141"));
+        HexEncoder encoder = new HexEncoder();
+        ByteArrayOutputStream bOut = new ByteArrayOutputStream();
+        encoder.decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141", bOut);
+        this.order = new BigInteger(1, bOut.toByteArray());
         this.coord = SECP256K1_DEFAULT_COORDS;
     }
 

@@ -1,16 +1,20 @@
 import java.math.BigInteger;
 import java.util.Objects;
 
+@SuppressWarnings("MismatchedQueryAndUpdateOfStringBuilder")
 class test {
 
     public static void main(String[] args) throws Exception {
-		String privatekey = "134fa95e1cfde003767f2f1bbf1af0d9c0bd31dcc04fa1fe0faf4eda375af0e7";
+    	//63FaC9201494f0bd17B9892B9fae4d52fe3BD377
+		String privatekey = "8da4ef21b864d2cc526dbdb2a120bd2874c36c9d0a1fb7f8c63d7f7a8b41de8f";
 		String cleanValue;
 		cleanValue = privatekey;
 		BigInteger privKey = new BigInteger(cleanValue, 16);
+		X9ECParametersHolder holder = CustomNamedCurves.nameToCurve.get("secp256k1");
+		X9ECParametersHolder holder1 = CustomNamedCurves.nameToCurve.get("secp256k1");
 		ECPoint point = new FixedPointCombMultiplier()
-				.multiply(new ECDomainParameters(Objects.requireNonNull(CustomNamedCurves.getByName()).getCurve(),
-						CustomNamedCurves.getByName().getG()).getG(), privKey);
+				.multiply(new ECDomainParameters(Objects.requireNonNull(holder1 == null ? null : holder1.getParameters()).getCurve(),
+						(holder == null ? null : holder.getParameters()).getG()).G, privKey);
 		byte[] encoded = point.getEncoded(false);
 		int newLength = encoded.length - 1;
 		byte[] copy = new byte[newLength];
@@ -36,11 +40,11 @@ class test {
 					+ Character.digit(cleanInput9.charAt(i10 + 1), 16));
 		}
 		bytes8 = data9;
-		Keccak.Digest256 kecc9 = new Keccak.Digest256();
+		Digest256 kecc9 = new Digest256();
 		kecc9.update(bytes8, 0, bytes8.length);
 		byte[] result8 = kecc9.digest();
 		byte[] bytes9 = new byte[0];
-		Keccak.Digest256 kecc8 = new Keccak.Digest256();
+		Digest256 kecc8 = new Digest256();
 		kecc8.update(bytes9, 0, bytes9.length);
 		byte[] result9 = kecc8.digest();
 		StringBuilder stringBuilder8 = new StringBuilder();
@@ -66,7 +70,7 @@ class test {
 					+ Character.digit(cleanInput7.charAt(i8 + 1), 16));
 		}
 		bytes2 = data7;
-		Keccak.Digest256 kecc7 = new Keccak.Digest256();
+		Digest256 kecc7 = new Digest256();
 		kecc7.update(bytes2, 0, bytes2.length);
 		byte[] result2 = kecc7.digest();
 		byte[] bytes3;
@@ -82,19 +86,19 @@ class test {
 					+ Character.digit(cleanInput6.charAt(i7 + 1), 16));
 		}
 		bytes3 = data6;
-		Keccak.Digest256 kecc6 = new Keccak.Digest256();
+		Digest256 kecc6 = new Digest256();
 		kecc6.update(bytes3, 0, bytes3.length);
 		byte[] result3 = kecc6.digest();
 		byte[] bytes4 = new byte[0];
-		Keccak.Digest256 kecc5 = new Keccak.Digest256();
+		Digest256 kecc5 = new Digest256();
 		kecc5.update(bytes4, 0, bytes4.length);
 		byte[] result4 = kecc5.digest();
 		byte[] bytes5 = new byte[0];
-		Keccak.Digest256 kecc4 = new Keccak.Digest256();
+		Digest256 kecc4 = new Digest256();
 		kecc4.update(bytes5, 0, bytes5.length);
 		byte[] result5 = kecc4.digest();
 		byte[] bytes6 = new byte[0];
-		Keccak.Digest256 kecc3 = new Keccak.Digest256();
+		Digest256 kecc3 = new Digest256();
 		kecc3.update(bytes6, 0, bytes6.length);
 		byte[] result6 = kecc3.digest();
 		byte[] bytes7;
@@ -110,7 +114,7 @@ class test {
 					+ Character.digit(cleanInput2.charAt(i3 + 1), 16));
 		}
 		bytes7 = data2;
-		Keccak.Digest256 kecc2 = new Keccak.Digest256();
+		Digest256 kecc2 = new Digest256();
 		kecc2.update(bytes7, 0, bytes7.length);
 		byte[] result7 = kecc2.digest();
 		StringBuilder stringBuilder2 = new StringBuilder();

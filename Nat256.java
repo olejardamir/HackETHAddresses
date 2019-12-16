@@ -2,7 +2,6 @@ import java.math.BigInteger;
 
 abstract class Nat256
 {
-    private static final long M = 0xFFFFFFFFL;
 
     public static int add(int[] x, int[] y, int[] z)
     {
@@ -240,152 +239,11 @@ abstract class Nat256
          return 0;
     }
 
-    public static void square(int[] x, int[] zz)
-    {
-		long x_0 = x[0] & 0xFFFFFFFFL;
-		long zz_1;
-		int c = 0, w;
-		int i = 7, j = 16;
-		do {
-			long xVal = (x[i--] & 0xFFFFFFFFL);
-			long p = xVal * xVal;
-			zz[--j] = (c << 31) | (int) (p >>> 33);
-			zz[--j] = (int) (p >>> 1);
-			c = (int) p;
-		} while (i > 0);
-		long p = x_0 * x_0;
-		zz_1 = ((c << 31) & 0xFFFFFFFFL) | (p >>> 33);
-		zz[0] = (int) p;
-		c = (int) (p >>> 32) & 1;
-		long x_1 = x[1] & 0xFFFFFFFFL;
-		long zz_2 = zz[2] & 0xFFFFFFFFL;
-		zz_1 += x_1 * x_0;
-		w = (int) zz_1;
-		zz[1] = (w << 1) | c;
-		c = w >>> 31;
-		zz_2 += zz_1 >>> 32;
-		long x_2 = x[2] & 0xFFFFFFFFL;
-		long zz_3 = zz[3] & 0xFFFFFFFFL;
-		long zz_4 = zz[4] & 0xFFFFFFFFL;
-		zz_2 += x_2 * x_0;
-		w = (int) zz_2;
-		zz[2] = (w << 1) | c;
-		c = w >>> 31;
-		zz_3 += (zz_2 >>> 32) + x_2 * x_1;
-		zz_4 += zz_3 >>> 32;
-		zz_3 &= 0xFFFFFFFFL;
-		long x_3 = x[3] & 0xFFFFFFFFL;
-		long zz_5 = (zz[5] & 0xFFFFFFFFL) + (zz_4 >>> 32);
-		zz_4 &= 0xFFFFFFFFL;
-		long zz_6 = (zz[6] & 0xFFFFFFFFL) + (zz_5 >>> 32);
-		zz_5 &= 0xFFFFFFFFL;
-		zz_3 += x_3 * x_0;
-		w = (int) zz_3;
-		zz[3] = (w << 1) | c;
-		c = w >>> 31;
-		zz_4 += (zz_3 >>> 32) + x_3 * x_1;
-		zz_5 += (zz_4 >>> 32) + x_3 * x_2;
-		zz_4 &= 0xFFFFFFFFL;
-		zz_6 += zz_5 >>> 32;
-		zz_5 &= 0xFFFFFFFFL;
-		long x_4 = x[4] & 0xFFFFFFFFL;
-		long zz_7 = (zz[7] & 0xFFFFFFFFL) + (zz_6 >>> 32);
-		zz_6 &= 0xFFFFFFFFL;
-		long zz_8 = (zz[8] & 0xFFFFFFFFL) + (zz_7 >>> 32);
-		zz_7 &= 0xFFFFFFFFL;
-		zz_4 += x_4 * x_0;
-		w = (int) zz_4;
-		zz[4] = (w << 1) | c;
-		c = w >>> 31;
-		zz_5 += (zz_4 >>> 32) + x_4 * x_1;
-		zz_6 += (zz_5 >>> 32) + x_4 * x_2;
-		zz_5 &= 0xFFFFFFFFL;
-		zz_7 += (zz_6 >>> 32) + x_4 * x_3;
-		zz_6 &= 0xFFFFFFFFL;
-		zz_8 += zz_7 >>> 32;
-		zz_7 &= 0xFFFFFFFFL;
-		long x_5 = x[5] & 0xFFFFFFFFL;
-		long zz_9 = (zz[9] & 0xFFFFFFFFL) + (zz_8 >>> 32);
-		zz_8 &= 0xFFFFFFFFL;
-		long zz_10 = (zz[10] & 0xFFFFFFFFL) + (zz_9 >>> 32);
-		zz_9 &= 0xFFFFFFFFL;
-		zz_5 += x_5 * x_0;
-		w = (int) zz_5;
-		zz[5] = (w << 1) | c;
-		c = w >>> 31;
-		zz_6 += (zz_5 >>> 32) + x_5 * x_1;
-		zz_7 += (zz_6 >>> 32) + x_5 * x_2;
-		zz_6 &= 0xFFFFFFFFL;
-		zz_8 += (zz_7 >>> 32) + x_5 * x_3;
-		zz_7 &= 0xFFFFFFFFL;
-		zz_9 += (zz_8 >>> 32) + x_5 * x_4;
-		zz_8 &= 0xFFFFFFFFL;
-		zz_10 += zz_9 >>> 32;
-		zz_9 &= 0xFFFFFFFFL;
-		long x_6 = x[6] & 0xFFFFFFFFL;
-		long zz_11 = (zz[11] & 0xFFFFFFFFL) + (zz_10 >>> 32);
-		zz_10 &= 0xFFFFFFFFL;
-		long zz_12 = (zz[12] & 0xFFFFFFFFL) + (zz_11 >>> 32);
-		zz_11 &= 0xFFFFFFFFL;
-		zz_6 += x_6 * x_0;
-		w = (int) zz_6;
-		zz[6] = (w << 1) | c;
-		c = w >>> 31;
-		zz_7 += (zz_6 >>> 32) + x_6 * x_1;
-		zz_8 += (zz_7 >>> 32) + x_6 * x_2;
-		zz_7 &= 0xFFFFFFFFL;
-		zz_9 += (zz_8 >>> 32) + x_6 * x_3;
-		zz_8 &= 0xFFFFFFFFL;
-		zz_10 += (zz_9 >>> 32) + x_6 * x_4;
-		zz_9 &= 0xFFFFFFFFL;
-		zz_11 += (zz_10 >>> 32) + x_6 * x_5;
-		zz_10 &= 0xFFFFFFFFL;
-		zz_12 += zz_11 >>> 32;
-		zz_11 &= 0xFFFFFFFFL;
-		long x_7 = x[7] & 0xFFFFFFFFL;
-		long zz_13 = (zz[13] & 0xFFFFFFFFL) + (zz_12 >>> 32);
-		zz_12 &= 0xFFFFFFFFL;
-		long zz_14 = (zz[14] & 0xFFFFFFFFL) + (zz_13 >>> 32);
-		zz_13 &= 0xFFFFFFFFL;
-		zz_7 += x_7 * x_0;
-		w = (int) zz_7;
-		zz[7] = (w << 1) | c;
-		c = w >>> 31;
-		zz_8 += (zz_7 >>> 32) + x_7 * x_1;
-		zz_9 += (zz_8 >>> 32) + x_7 * x_2;
-		zz_10 += (zz_9 >>> 32) + x_7 * x_3;
-		zz_11 += (zz_10 >>> 32) + x_7 * x_4;
-		zz_12 += (zz_11 >>> 32) + x_7 * x_5;
-		zz_13 += (zz_12 >>> 32) + x_7 * x_6;
-		zz_14 += zz_13 >>> 32;
-		w = (int) zz_8;
-		zz[8] = (w << 1) | c;
-		c = w >>> 31;
-		w = (int) zz_9;
-		zz[9] = (w << 1) | c;
-		c = w >>> 31;
-		w = (int) zz_10;
-		zz[10] = (w << 1) | c;
-		c = w >>> 31;
-		w = (int) zz_11;
-		zz[11] = (w << 1) | c;
-		c = w >>> 31;
-		w = (int) zz_12;
-		zz[12] = (w << 1) | c;
-		c = w >>> 31;
-		w = (int) zz_13;
-		zz[13] = (w << 1) | c;
-		c = w >>> 31;
-		w = (int) zz_14;
-		zz[14] = (w << 1) | c;
-		c = w >>> 31;
-		w = zz[15] + (int) (zz_14 >>> 32);
-		zz[15] = (w << 1) | c;
-	}
+
 
     public static int sub(int[] x, int[] y, int[] z)
     {
-        long c = 0 + (x[0] & 0xFFFFFFFFL) - (y[0] & 0xFFFFFFFFL);
+        long c = (x[0] & 0xFFFFFFFFL) - (y[0] & 0xFFFFFFFFL);
         z[0] = (int)c;
         c >>= 32;
         c += (x[1] & 0xFFFFFFFFL) - (y[1] & 0xFFFFFFFFL);

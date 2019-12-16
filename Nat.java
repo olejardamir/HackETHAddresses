@@ -42,14 +42,6 @@ abstract class Nat
     }
 
 
-
-    public static int[] copy(int len, int[] x)
-    {
-        int[] z = new int[len];
-        System.arraycopy(x, 0, z, 0, len);
-        return z;
-    }
-
     public static int[] create(int len)
     {
         return new int[len];
@@ -98,19 +90,6 @@ abstract class Nat
 			if (++z[i] != 0)
 				return;
     }
-
-
-
-    public static boolean isOne(int len, int[] x)
-    {
-        if (x[0] != 1)
-			return false;
-        for (int i = 1; i < len; ++i)
-			if (x[i] != 0)
-				return false;
-        return true;
-    }
-
 
 
     public static void shiftDownBit(int len, int[] z, int c)

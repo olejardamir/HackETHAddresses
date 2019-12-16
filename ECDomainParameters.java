@@ -1,27 +1,14 @@
 class ECDomainParameters {
 
-    private ECPoint G;
-
-
+    public ECPoint G;
 
     public ECDomainParameters(
             ECCurve curve,
             ECPoint G
     ) {
-        this.G = validate(curve, G);
+
+        this.G = curve.importPoint(G).normalize();
     }
-
-    private static ECPoint validate(ECCurve c, ECPoint q) {
-
-        return c.importPoint(q).normalize();
-    }
-
-    public ECPoint getG() {
-        return G;
-    }
-
-
-
 
 
 }

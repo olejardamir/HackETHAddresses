@@ -1,41 +1,29 @@
-
-
-
 public class X9ECParameters {
 
-     private final ECCurve             curve;
+    private final ECCurve curve;
     private final X9ECPoint g;
-
-
 
 
     public X9ECParameters(
             ECCurve curve,
-            X9ECPoint g )
-    {
+            X9ECPoint g) {
         this.curve = curve;
         this.g = g;
-
-
-
-
-
-
     }
 
-    public ECCurve getCurve()
-    {
+    public ECCurve getCurve() {
         return curve;
     }
 
     public ECPoint getG() {
-        return g.getPoint();
+
+        synchronized (g) {
+            if (g.p == null) {
+                g.p = g.c.decodePoint(g.string).normalize();
+            }
+            return g.p;
+        }
     }
-
-
-
-
-
 
 
 }
