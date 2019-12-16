@@ -44,7 +44,7 @@ public abstract class ECCurve
         }
     }
 
-    private PrimeField field;
+    private Object field;
     ECFieldElement a;
     ECFieldElement b;
     BigInteger order;
@@ -53,7 +53,7 @@ public abstract class ECCurve
     int coord = COORD_AFFINE;
      private FixedPointCombMultiplier multiplier = null;
 
-    ECCurve(PrimeField field)
+    ECCurve(Object field)
     {
         this.field = field;
     }
@@ -178,7 +178,7 @@ public abstract class ECCurve
 
     public abstract ECPoint getInfinity();
 
-    public PrimeField getField()
+    public Object getField()
     {
         return field;
     }
