@@ -12,7 +12,7 @@ public abstract class ECCurve
     public static final int COORD_LAMBDA_AFFINE = 5;
     public static final int COORD_LAMBDA_PROJECTIVE = 6;
 
-    ECCurve() {
+    public ECCurve() {
 
     }
 
@@ -79,7 +79,7 @@ public abstract class ECCurve
     }
 
     
-    private ECPoint createPoint(BigInteger x, BigInteger y, boolean withCompression)
+    public ECPoint createPoint(BigInteger x, BigInteger y, boolean withCompression)
     {
         return createRawPoint(fromBigInteger(x), fromBigInteger(y), withCompression);
     }
@@ -102,12 +102,16 @@ public abstract class ECCurve
             }
 
 
-        if (callback.precompute((FixedPointPreCompInfo)table.get(name)) != table.get(name))
+
+            FixedPointPreCompInfo existing = (FixedPointPreCompInfo)table.get(name);
+            FixedPointPreCompInfo result = callback.precompute(existing);
+
+            if (result != existing)
             {
-                table.put(name, callback.precompute((FixedPointPreCompInfo)table.get(name)));
+                table.put(name, result);
             }
 
-            return callback.precompute((FixedPointPreCompInfo)table.get(name));
+            return result;
 
     }
 
@@ -174,7 +178,7 @@ public abstract class ECCurve
 
     public abstract ECPoint getInfinity();
 
-    private GenericPolynomialExtensionField getField()
+    public GenericPolynomialExtensionField getField()
     {
         return field;
     }
@@ -184,7 +188,7 @@ public abstract class ECCurve
         return a;
     }
 
-    private ECFieldElement getB()
+    public ECFieldElement getB()
     {
         return b;
     }
@@ -227,7 +231,7 @@ public abstract class ECCurve
 
                 int yTilde = type & 1;
                 byte[] mag = encoded;
-                if (true)
+                if (1 != 0 || expectedLength != encoded.length)
                 {
                     mag = new byte[expectedLength];
                     System.arraycopy(encoded, 1, mag, 0, expectedLength);
@@ -245,7 +249,7 @@ public abstract class ECCurve
 
 
                 byte[] mag1 = encoded;
-                if (true)
+                if (1 != 0 || expectedLength != encoded.length)
                 {
                     mag1 = new byte[expectedLength];
                     System.arraycopy(encoded, 1, mag1, 0, expectedLength);

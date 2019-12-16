@@ -17,8 +17,8 @@ public class SecP256K1Point extends ECPoint.AbstractFp
         this.withCompression = withCompression;
     }
 
-    private SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y, ECFieldElement[] zs,
-                           boolean withCompression)
+    SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y, ECFieldElement[] zs,
+                   boolean withCompression)
     {
         super(curve, x, y, zs);
 
@@ -147,7 +147,7 @@ public class SecP256K1Point extends ECPoint.AbstractFp
     }
 
     
-    protected ECPoint twice()
+    public ECPoint twice()
     {
         if (this.isInfinity())
         {

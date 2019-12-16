@@ -3,7 +3,7 @@ import java.math.BigInteger;
 
 abstract class FiniteFields
 {
-    private static final PrimeField GF_2 = new PrimeField(BigInteger.valueOf(2));
+    static final PrimeField GF_2 = new PrimeField(BigInteger.valueOf(2));
     private static final PrimeField GF_3 = new PrimeField(BigInteger.valueOf(3));
 
 

@@ -70,7 +70,7 @@ public abstract class ECPoint
         return curve;
     }
 
-    private int getCurveCoordinateSystem()
+    int getCurveCoordinateSystem()
     {
         
         return null == curve ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
@@ -337,7 +337,7 @@ public abstract class ECPoint
         return p;
     }
 
-    protected abstract ECPoint twice();
+    public abstract ECPoint twice();
 
     public ECPoint twicePlus(ECPoint b) {
         return twice().add(b);

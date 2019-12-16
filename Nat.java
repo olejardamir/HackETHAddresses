@@ -56,10 +56,10 @@ abstract class Nat
         return new int[len];
     }
 
-    private static void decAt(int len, int[] z)
+    public static void decAt(int len, int[] z, int zPos)
     {
-        
-        for (int i = 2; i < len; ++i)
+
+        for (int i = zPos; i < len; ++i)
         {
             if (--z[i] != -1)
             {
@@ -101,7 +101,7 @@ abstract class Nat
 
     public static void incAt(int len, int[] z, int zPos)
     {
-        
+
         for (int i = zPos; i < len; ++i)
         {
             if (++z[i] != 0)
@@ -111,18 +111,7 @@ abstract class Nat
         }
     }
 
-    public static int incAt(int len, int[] z, int zOff, int zPos)
-    {
-        
-        for (int i = zPos; i < len; ++i)
-        {
-            if (++z[zOff + i] != 0)
-            {
-                return 0;
-            }
-        }
-        return 1;
-    }
+
 
     public static boolean isOne(int len, int[] x)
     {
@@ -165,16 +154,7 @@ abstract class Nat
         }
     }
 
-    public static void shiftDownWord(int len, int[] z, int c)
-    {
-        int i = len;
-        while (--i >= 0)
-        {
-            int next = z[i];
-            z[i] = c;
-            c = next;
-        }
-    }
+
 
     public static int shiftUpBit(int len, int[] x, int c, int[] z)
     {
@@ -222,7 +202,7 @@ abstract class Nat
         z[1] = (int)c;
         c >>= 32;
         if (c != 0) {
-            decAt(len, z);
+            decAt(len, z, 2);
         }
     }
 

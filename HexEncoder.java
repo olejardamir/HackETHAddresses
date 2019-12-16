@@ -2,7 +2,7 @@
 import java.io.OutputStream;
 
 
-class HexEncoder {
+public class HexEncoder {
     private final byte[] encodingTable =
             {
                     (byte)'0', (byte)'1', (byte)'2', (byte)'3', (byte)'4', (byte)'5', (byte)'6', (byte)'7',

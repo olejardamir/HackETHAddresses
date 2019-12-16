@@ -1,10 +1,10 @@
 import java.math.BigInteger;
 
 class ECDomainParameters {
-    private final ECCurve curve;
-    private final ECPoint G;
-    private final BigInteger n;
-    private final BigInteger h;
+    private ECCurve curve;
+    private ECPoint G;
+    private BigInteger n;
+    private BigInteger h;
 
 
     public ECDomainParameters(

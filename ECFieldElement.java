@@ -10,7 +10,7 @@ public abstract class ECFieldElement {
 
     public abstract BigInteger toBigInteger();
 
-    protected abstract int getFieldSize();
+    public abstract int getFieldSize();
 
     public abstract ECFieldElement add(ECFieldElement b);
 
@@ -24,7 +24,7 @@ public abstract class ECFieldElement {
 
     public abstract ECFieldElement sqrt();
 
-    private int bitLength() {
+    public int bitLength() {
         return toBigInteger().bitLength();
     }
 

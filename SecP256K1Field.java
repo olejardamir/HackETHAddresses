@@ -106,14 +106,7 @@ class SecP256K1Field
     public static void reduce(int[] xx, int[] z)
     {
         long cc = Nat256.mul33Add(PInv33, xx, 8, xx, 0, z, 0);
-        int c = Nat256.mul33DWordAdd(PInv33, cc, z, 0);
-
-        
-
-        if (c != 0 || (z[7] == P7 && Nat256.gte(z, P)))
-        {
-            Nat.add33To(8, PInv33, z);
-        }
+         Nat256.mul33DWordAdd(PInv33, cc, z, 0);
     }
 
     public static void reduce32(int x, int[] z)

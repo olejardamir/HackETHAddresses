@@ -63,13 +63,13 @@ class test {
             bytes8 = data9;
 
 
-            DigestKeccak kecc9 = new DigestKeccak();
+            Keccak.DigestKeccak kecc9 = new Keccak.Digest256();
             kecc9.update(bytes8, 0, bytes8.length);
             byte[] result8 = kecc9.digest();
             byte[] bytes9 = new byte[0];
 
 
-            DigestKeccak kecc8 = new DigestKeccak();
+            Keccak.DigestKeccak kecc8 = new Keccak.Digest256();
             kecc8.update(bytes9, 0, bytes9.length);
             byte[] result9 = kecc8.digest();
             StringBuilder stringBuilder8 = new StringBuilder();
@@ -108,7 +108,7 @@ class test {
             bytes2 = data7;
 
 
-            DigestKeccak kecc7 = new DigestKeccak();
+            Keccak.DigestKeccak kecc7 = new Keccak.Digest256();
             kecc7.update(bytes2, 0, bytes2.length);
             byte[] result2 = kecc7.digest();
             byte[] bytes3;
@@ -135,25 +135,25 @@ class test {
             bytes3 = data6;
 
 
-            DigestKeccak kecc6 = new DigestKeccak();
+            Keccak.DigestKeccak kecc6 = new Keccak.Digest256();
             kecc6.update(bytes3, 0, bytes3.length);
             byte[] result3 = kecc6.digest();
             byte[] bytes4 = new byte[0];
 
 
-            DigestKeccak kecc5 = new DigestKeccak();
+            Keccak.DigestKeccak kecc5 = new Keccak.Digest256();
             kecc5.update(bytes4, 0, bytes4.length);
             byte[] result4 = kecc5.digest();
             byte[] bytes5 = new byte[0];
 
 
-            DigestKeccak kecc4 = new DigestKeccak();
+            Keccak.DigestKeccak kecc4 = new Keccak.Digest256();
             kecc4.update(bytes5, 0, bytes5.length);
             byte[] result5 = kecc4.digest();
             byte[] bytes6 = new byte[0];
 
 
-            DigestKeccak kecc3 = new DigestKeccak();
+            Keccak.DigestKeccak kecc3 = new Keccak.Digest256();
             kecc3.update(bytes6, 0, bytes6.length);
             byte[] result6 = kecc3.digest();
             byte[] bytes7;
@@ -180,7 +180,7 @@ class test {
             bytes7 = data2;
 
 
-            DigestKeccak kecc2 = new DigestKeccak();
+            Keccak.DigestKeccak kecc2 = new Keccak.Digest256();
             kecc2.update(bytes7, 0, bytes7.length);
             byte[] result7 = kecc2.digest();
             StringBuilder stringBuilder2 = new StringBuilder();

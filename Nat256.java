@@ -327,7 +327,7 @@ abstract class Nat256
         return c;
     }
 
-    public static int mul33DWordAdd(int x, long y, int[] z, int zOff)
+    public static void mul33DWordAdd(int x, long y, int[] z, int zOff)
     {
         long c = 0, xVal = x & M;
         long y00 = y & M;
@@ -343,15 +343,10 @@ abstract class Nat256
         c >>>= 32;
         c += (z[zOff + 3] & M);
         z[zOff + 3] = (int)c;
-        c >>>= 32;
-        return c == 0 ? 0 : Nat.incAt(8, z, zOff, 4);
     }
 
     public static int mul33WordAdd(int x, int y, int[] z, int zOff)
     {
-        
-        
-
         long c = 0, xVal = x & M, yVal = y & M;
         c += yVal * xVal + (z[zOff] & M);
         z[zOff] = (int)c;
@@ -361,8 +356,7 @@ abstract class Nat256
         c >>>= 32;
         c += (z[zOff + 2] & M);
         z[zOff + 2] = (int)c;
-        c >>>= 32;
-        return c == 0 ? 0 : Nat.incAt(8, z, zOff, 3);
+         return 0;
     }
 
     public static void square(int[] x, int[] zz)
