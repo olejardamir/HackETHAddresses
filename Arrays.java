@@ -2,20 +2,6 @@ final class Arrays
 {
 
 
-    public static void fill(
-            byte[] array,
-            byte value)
-    {
-        for (int i = 0; i < array.length; i++)
-        {
-            array[i] = value;
-        }
-    }
-
-
-
-      
-
     public static int hashCode(int[] data, int off, int len)
     {
         if (data == null)

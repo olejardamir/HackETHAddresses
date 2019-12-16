@@ -1,8 +1,6 @@
 public class ASN1ObjectIdentifier {
     private final String identifier;
 
-
-    
     public ASN1ObjectIdentifier(
             String identifier)
     {
@@ -43,17 +41,6 @@ public class ASN1ObjectIdentifier {
 
 
 
-    public boolean equals(
-            Object  o)
-    {
-        if (this == o)
-        {
-            return true;
-        }
-
-            return false;
-
-    }
 
 
 }
