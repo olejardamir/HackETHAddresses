@@ -1,46 +1,56 @@
 import java.math.BigInteger;
 
 public abstract class ECFieldElement {
-   public static final BigInteger ZERO = BigInteger.valueOf(0L);
-   public static final BigInteger ONE = BigInteger.valueOf(1L);
+    public static final BigInteger ZERO = BigInteger.valueOf(0);
+    public static final BigInteger ONE = BigInteger.valueOf(1);
 
-   ECFieldElement() {
-      super();
-   }
+    ECFieldElement() {
 
-   public abstract BigInteger toBigInteger();
+    }
 
-   public abstract ECFieldElement multiply(ECFieldElement var1);
+    public abstract BigInteger toBigInteger();
 
-   public abstract ECFieldElement negate();
+    public abstract int getFieldSize();
 
-   public abstract ECFieldElement square();
+    public abstract ECFieldElement add(ECFieldElement b);
 
-   public abstract ECFieldElement invert();
+    public abstract ECFieldElement multiply(ECFieldElement b);
 
-   public abstract ECFieldElement sqrt();
+    public abstract ECFieldElement negate();
 
-   private int bitLength() {
-      return this.toBigInteger().bitLength();
-   }
+    public abstract ECFieldElement square();
 
-   public boolean isOne() {
-      return this.bitLength() == 1;
-   }
+    public abstract ECFieldElement invert();
 
-   public boolean isZero() {
-      return 0 == this.toBigInteger().signum();
-   }
+    public abstract ECFieldElement sqrt();
 
-   public boolean testBitZero() {
-      return this.toBigInteger().testBit(0);
-   }
+    public int bitLength() {
+        return toBigInteger().bitLength();
+    }
 
-   public String toString() {
-      return this.toBigInteger().toString(16);
-   }
+    public boolean isOne() {
+        return bitLength() == 1;
+    }
 
-   public byte[] getEncoded() {
-      return this.toBigInteger().toByteArray();
-   }
+    public boolean isZero() {
+        return 0 == toBigInteger().signum();
+    }
+
+
+    public boolean testBitZero() {
+        return toBigInteger().testBit(0);
+    }
+
+    public String toString() {
+        return this.toBigInteger().toString(16);
+    }
+
+    public byte[] getEncoded() {
+        return BigIntegers.asUnsignedByteArray((getFieldSize() + 7) / 8, toBigInteger());
+    }
+
+    static abstract class AbstractFp extends ECFieldElement {
+    }
+
+
 }

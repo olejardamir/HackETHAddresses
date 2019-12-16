@@ -1,5 +1,6 @@
-public interface ECLookupTable {
-   int getSize();
 
-   ECPoint lookup(int var1);
+public interface ECLookupTable
+{
+    int getSize();
+    ECPoint lookup(int index);
 }

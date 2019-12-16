@@ -1,37 +1,54 @@
-class ECAlgorithms {
 
 
-   public static ECPoint importPoint(ECCurve c, ECPoint p) {
-      return c.importPoint(p);
-   }
+class ECAlgorithms
+{
 
-   public static void montgomeryTrick(ECFieldElement[] zs, int off, int len) {
-      ECFieldElement[] c = new ECFieldElement[len];
-      c[0] = zs[off];
-      int i = 0;
 
-      while(true) {
-         ++i;
-         if (i >= len) {
-            --i;
+    public static ECPoint importPoint(ECCurve c, ECPoint p) {
 
-            ECFieldElement u;
-            ECFieldElement tmp;
-            for(u = c[i].invert(); i > 0; u = u.multiply(tmp)) {
-               int j = off + i--;
-               tmp = zs[j];
-               zs[j] = c[i].multiply(u);
-            }
+        return c.importPoint(p);
+    }
 
-            zs[off] = u;
-            return;
-         }
 
-         c[i] = c[i - 1].multiply(zs[off + i]);
-      }
-   }
+    public static void montgomeryTrick(ECFieldElement[] zs, int off, int len, ECFieldElement scale) {
 
-   static ECPoint implCheckResult(ECPoint p) {
-      return p;
-   }
+
+        ECFieldElement[] c = new ECFieldElement[len];
+        c[0] = zs[off];
+
+        int i = 0;
+        while (++i < len)
+        {
+            c[i] = c[i - 1].multiply(zs[off + i]);
+        }
+
+        --i;
+
+        if (scale != null)
+        {
+            c[i] = c[i].multiply(scale);
+        }
+
+        ECFieldElement u = c[i].invert();
+
+        while (i > 0)
+        {
+            int j = off + i--;
+            ECFieldElement tmp = zs[j];
+            zs[j] = c[i].multiply(u);
+            u = u.multiply(tmp);
+        }
+
+        zs[off] = u;
+    }
+
+
+
+    static ECPoint implCheckResult(ECPoint p) {
+
+
+        return p;
+    }
+
+
 }

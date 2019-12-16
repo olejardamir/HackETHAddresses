@@ -1,14 +1,35 @@
+
 import java.math.BigInteger;
 
-class PrimeField {
-   private final BigInteger characteristic;
+class PrimeField extends GenericPolynomialExtensionField {
+    private final BigInteger characteristic;
 
-   PrimeField(BigInteger characteristic) {
-      super();
-      this.characteristic = characteristic;
-   }
+    PrimeField(BigInteger characteristic)
+    {
+        super();
+        this.characteristic = characteristic;
+    }
 
-   public int hashCode() {
-      return this.characteristic.hashCode();
-   }
+
+
+
+
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+        {
+            return true;
+        }
+        if (!(obj instanceof PrimeField))
+        {
+            return false;
+        }
+        PrimeField other = (PrimeField)obj;
+        return characteristic.equals(other.characteristic);
+    }
+
+    public int hashCode()
+    {
+        return characteristic.hashCode();
+    }
 }

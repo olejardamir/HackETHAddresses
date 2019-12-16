@@ -1,33 +1,41 @@
+
+
 public class FixedPointPreCompInfo {
-   private ECPoint offset = null;
-   private ECLookupTable lookupTable = null;
-   private int width = -1;
+    private ECPoint offset = null;
 
-   public FixedPointPreCompInfo() {
-      super();
-   }
 
-   public ECLookupTable getLookupTable() {
-      return this.lookupTable;
-   }
+    private ECLookupTable lookupTable = null;
 
-   public void setLookupTable(ECLookupTable lookupTable) {
-      this.lookupTable = lookupTable;
-   }
 
-   public ECPoint getOffset() {
-      return this.offset;
-   }
+    private int width = -1;
 
-   public void setOffset(ECPoint offset) {
-      this.offset = offset;
-   }
+    public ECLookupTable getLookupTable()
+    {
+        return lookupTable;
+    }
 
-   public int getWidth() {
-      return this.width;
-   }
+    public void setLookupTable(ECLookupTable lookupTable)
+    {
+        this.lookupTable = lookupTable;
+    }
 
-   public void setWidth(int width) {
-      this.width = width;
-   }
+    public ECPoint getOffset()
+    {
+        return offset;
+    }
+
+    public void setOffset(ECPoint offset)
+    {
+        this.offset = offset;
+    }
+
+    public int getWidth()
+    {
+        return width;
+    }
+
+    public void setWidth(int width)
+    {
+        this.width = width;
+    }
 }

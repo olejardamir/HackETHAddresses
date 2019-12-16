@@ -1,3 +1,5 @@
-interface PreCompCallback {
-   FixedPointPreCompInfo precompute(FixedPointPreCompInfo var1);
+
+interface PreCompCallback
+{
+    FixedPointPreCompInfo precompute(FixedPointPreCompInfo existing);
 }
