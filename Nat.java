@@ -56,10 +56,10 @@ abstract class Nat
         return new int[len];
     }
 
-    private static void decAt(int len, int[] z, int zPos)
+    private static void decAt(int len, int[] z)
     {
         
-        for (int i = zPos; i < len; ++i)
+        for (int i = 2; i < len; ++i)
         {
             if (--z[i] != -1)
             {
@@ -222,7 +222,7 @@ abstract class Nat
         z[1] = (int)c;
         c >>= 32;
         if (c != 0) {
-            decAt(len, z, 2);
+            decAt(len, z);
         }
     }
 

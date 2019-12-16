@@ -102,16 +102,12 @@ public abstract class ECCurve
             }
 
 
-
-            FixedPointPreCompInfo existing = (FixedPointPreCompInfo)table.get(name);
-            FixedPointPreCompInfo result = callback.precompute(existing);
-
-            if (result != existing)
+        if (callback.precompute((FixedPointPreCompInfo)table.get(name)) != table.get(name))
             {
-                table.put(name, result);
+                table.put(name, callback.precompute((FixedPointPreCompInfo)table.get(name)));
             }
 
-            return result;
+            return callback.precompute((FixedPointPreCompInfo)table.get(name));
 
     }
 
@@ -230,7 +226,13 @@ public abstract class ECCurve
 
 
                 int yTilde = type & 1;
-                BigInteger X = BigIntegers.fromUnsignedByteArray(encoded, 1, expectedLength);
+                byte[] mag = encoded;
+                if (true)
+                {
+                    mag = new byte[expectedLength];
+                    System.arraycopy(encoded, 1, mag, 0, expectedLength);
+                }
+                BigInteger X = new BigInteger(1, mag);
 
                 p = decompressPoint(yTilde, X);
 
@@ -242,8 +244,20 @@ public abstract class ECCurve
             case 0x07: {
 
 
-                BigInteger X = BigIntegers.fromUnsignedByteArray(encoded, 1, expectedLength);
-                BigInteger Y = BigIntegers.fromUnsignedByteArray(encoded, 1 + expectedLength, expectedLength);
+                byte[] mag1 = encoded;
+                if (true)
+                {
+                    mag1 = new byte[expectedLength];
+                    System.arraycopy(encoded, 1, mag1, 0, expectedLength);
+                }
+                BigInteger X = new BigInteger(1, mag1);
+                byte[] mag = encoded;
+                if (1 + expectedLength != 0 || expectedLength != encoded.length)
+                {
+                    mag = new byte[expectedLength];
+                    System.arraycopy(encoded, 1 + expectedLength, mag, 0, expectedLength);
+                }
+                BigInteger Y = new BigInteger(1, mag);
 
                 p = validatePoint(X, Y);
                 break;

@@ -147,7 +147,7 @@ public class SecP256K1Point extends ECPoint.AbstractFp
     }
 
     
-    public ECPoint twice()
+    protected ECPoint twice()
     {
         if (this.isInfinity())
         {

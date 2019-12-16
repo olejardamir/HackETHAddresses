@@ -46,7 +46,20 @@ public abstract class ECFieldElement {
     }
 
     public byte[] getEncoded() {
-        return BigIntegers.asUnsignedByteArray((getFieldSize() + 7) / 8, toBigInteger());
+        int length = (getFieldSize() + 7) / 8;
+        byte[] bytes = toBigInteger().toByteArray();
+        if (bytes.length == length)
+        {
+            return bytes;
+        }
+
+        int start = bytes[0] == 0 ? 1 : 0;
+        int count = bytes.length - start;
+
+
+        byte[] tmp = new byte[length];
+        System.arraycopy(bytes, start, tmp, tmp.length - count, count);
+        return tmp;
     }
 
     static abstract class AbstractFp extends ECFieldElement {

@@ -105,7 +105,7 @@ class PublicFromPrivate {
             bytes8 = data9;
         }
 
-        Keccak.DigestKeccak kecc9 = new Keccak.Digest256();
+        DigestKeccak kecc9 = new DigestKeccak();
         kecc9.update(bytes8, 0, bytes8.length);
         byte[] result8 = kecc9.digest();
         byte[] bytes9;
@@ -140,7 +140,7 @@ class PublicFromPrivate {
             bytes9 = data8;
         }
 
-        Keccak.DigestKeccak kecc8 = new Keccak.Digest256();
+        DigestKeccak kecc8 = new DigestKeccak();
         kecc8.update(bytes9, 0, bytes9.length);
         byte[] result9 = kecc8.digest();
         StringBuilder stringBuilder8 = new StringBuilder();
@@ -192,7 +192,7 @@ class PublicFromPrivate {
             bytes2 = data7;
         }
 
-        Keccak.DigestKeccak kecc7 = new Keccak.Digest256();
+        DigestKeccak kecc7 = new DigestKeccak();
         kecc7.update(bytes2, 0, bytes2.length);
         byte[] result2 = kecc7.digest();
         byte[] bytes3;
@@ -227,7 +227,7 @@ class PublicFromPrivate {
             bytes3 = data6;
         }
 
-        Keccak.DigestKeccak kecc6 = new Keccak.Digest256();
+        DigestKeccak kecc6 = new DigestKeccak();
         kecc6.update(bytes3, 0, bytes3.length);
         byte[] result3 = kecc6.digest();
         byte[] bytes4;
@@ -262,7 +262,7 @@ class PublicFromPrivate {
             bytes4 = data5;
         }
 
-        Keccak.DigestKeccak kecc5 = new Keccak.Digest256();
+        DigestKeccak kecc5 = new DigestKeccak();
         kecc5.update(bytes4, 0, bytes4.length);
         byte[] result4 = kecc5.digest();
         byte[] bytes5;
@@ -297,7 +297,7 @@ class PublicFromPrivate {
             bytes5 = data4;
         }
 
-        Keccak.DigestKeccak kecc4 = new Keccak.Digest256();
+        DigestKeccak kecc4 = new DigestKeccak();
         kecc4.update(bytes5, 0, bytes5.length);
         byte[] result5 = kecc4.digest();
         byte[] bytes6;
@@ -332,7 +332,7 @@ class PublicFromPrivate {
             bytes6 = data3;
         }
 
-        Keccak.DigestKeccak kecc3 = new Keccak.Digest256();
+        DigestKeccak kecc3 = new DigestKeccak();
         kecc3.update(bytes6, 0, bytes6.length);
         byte[] result6 = kecc3.digest();
         byte[] bytes7;
@@ -367,7 +367,7 @@ class PublicFromPrivate {
             bytes7 = data2;
         }
 
-        Keccak.DigestKeccak kecc2 = new Keccak.Digest256();
+        DigestKeccak kecc2 = new DigestKeccak();
         kecc2.update(bytes7, 0, bytes7.length);
         byte[] result7 = kecc2.digest();
         StringBuilder stringBuilder2 = new StringBuilder();
@@ -454,7 +454,7 @@ class PublicFromPrivate {
                 bytes = data1;
             }
 
-            Keccak.DigestKeccak kecc1 = new Keccak.Digest256();
+            DigestKeccak kecc1 = new DigestKeccak();
             kecc1.update(bytes, 0, bytes.length);
             byte[] result = kecc1.digest();
             byte[] bytes1;
@@ -489,7 +489,7 @@ class PublicFromPrivate {
                 bytes1 = data;
             }
 
-            Keccak.DigestKeccak kecc = new Keccak.Digest256();
+            DigestKeccak kecc = new DigestKeccak();
             kecc.update(bytes1, 0, bytes1.length);
             byte[] result1 = kecc.digest();
             StringBuilder stringBuilder = new StringBuilder();
@@ -542,7 +542,7 @@ class PublicFromPrivate {
                 bytes = data1;
             }
 
-            Keccak.DigestKeccak kecc1 = new Keccak.Digest256();
+            DigestKeccak kecc1 = new DigestKeccak();
             kecc1.update(bytes, 0, bytes.length);
             byte[] result = kecc1.digest();
             byte[] bytes1;
@@ -577,7 +577,7 @@ class PublicFromPrivate {
                 bytes1 = data;
             }
 
-            Keccak.DigestKeccak kecc = new Keccak.Digest256();
+            DigestKeccak kecc = new DigestKeccak();
             kecc.update(bytes1, 0, bytes1.length);
             byte[] result1 = kecc.digest();
             StringBuilder stringBuilder = new StringBuilder();

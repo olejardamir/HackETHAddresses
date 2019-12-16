@@ -17,15 +17,14 @@ class FixedPointUtil
         return c.precompute(p, PRECOMP_NAME, new PreCompCallback()
         {
             public FixedPointPreCompInfo precompute(FixedPointPreCompInfo existing) {
-                FixedPointPreCompInfo existingFP = existing;
 
                 int bits = getCombSize(c);
                 int minWidth = bits > 250 ? 6 : 5;
                 int n = 1 << minWidth;
 
-                if (checkExisting(existingFP, n))
+                if (checkExisting(existing, n))
                 {
-                    return existingFP;
+                    return existing;
                 }
 
                 int d = (bits + minWidth - 1) / minWidth;
@@ -58,11 +57,10 @@ class FixedPointUtil
 
                 c.normalizeAll(lookupTable);
 
-                FixedPointPreCompInfo result = new FixedPointPreCompInfo();
-                result.setLookupTable(c.createCacheSafeLookupTable(lookupTable, 0, lookupTable.length));
-                result.setOffset(pow2Table[minWidth]);
-                result.setWidth(minWidth);
-                return result;
+                new FixedPointPreCompInfo().setLookupTable(c.createCacheSafeLookupTable(lookupTable, 0, lookupTable.length));
+                new FixedPointPreCompInfo().setOffset(pow2Table[minWidth]);
+                new FixedPointPreCompInfo().setWidth(minWidth);
+                return new FixedPointPreCompInfo();
             }
 
             private boolean checkExisting(FixedPointPreCompInfo existingFP, int n)
