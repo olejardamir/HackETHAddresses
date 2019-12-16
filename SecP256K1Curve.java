@@ -17,7 +17,7 @@ public class SecP256K1Curve extends ECCurve {
     private SecP256K1Point infinity;
 
     public SecP256K1Curve() throws Exception {
-        super(FiniteFields.getPrimeField(q));
+
 
         this.infinity = new SecP256K1Point(this, null, null);
 

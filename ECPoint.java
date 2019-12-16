@@ -33,8 +33,8 @@ public abstract class ECPoint
             case ECCurve.COORD_JACOBIAN_MODIFIED:
                 return new ECFieldElement[]{ one, curve.getA() };
             default:
-                throw new IllegalArgumentException("unknown coordinate system");
         }
+        return null;
     }
 
     final ECCurve curve;
@@ -163,9 +163,10 @@ public abstract class ECPoint
             }
             default:
             {
-                throw new IllegalStateException("not a projective coordinate system");
+
             }
         }
+        return null;
     }
 
     private ECPoint createScaledPoint(ECFieldElement sx, ECFieldElement sy)
@@ -179,114 +180,6 @@ public abstract class ECPoint
     }
 
 
-
-
-
-
-    public boolean equals(ECPoint other) {
-        if (null == other)
-        {
-            return false;
-        }
-
-        ECCurve c1 = this.getCurve(), c2 = other.getCurve();
-        boolean n1 = (null == c1), n2 = (null == c2);
-        boolean i1 = isInfinity(), i2 = other.isInfinity();
-
-        if (i1 || i2)
-        {
-            return (i1 && i2) && (n1 || n2 || c1.equals(c2));
-        }
-
-        ECPoint p1 = this, p2 = other;
-
-          if (n1)
-        {
-            p2 = p2.normalize();
-        }
-        else if (n2)
-        {
-            p1 = p1.normalize();
-        }
-        else if (!c1.equals(c2))
-        {
-            return false;
-        }
-        else
-        {
-            
-
-            ECPoint[] points = new ECPoint[]{ this, c1.importPoint(p2) };
-
-            
-            c1.normalizeAll(points);
-
-            p1 = points[0];
-            p2 = points[1];
-        }
-
-        return p1.getXCoord().equals(p2.getXCoord()) && p1.getYCoord().equals(p2.getYCoord());
-    }
-
-    public boolean equals(Object other)
-    {
-        if (other == this)
-        {
-            return true;
-        }
-
-        if (!(other instanceof ECPoint))
-        {
-            return false;
-        }
-
-
-            return equals((ECPoint)other);
-
-     }
-
-    public int hashCode()
-    {
-        ECCurve c = this.getCurve();
-        int hc = (null == c) ? 0 : ~c.hashCode();
-
-        if (!this.isInfinity())
-        {
-            
-
-            ECPoint p;
-                 p = normalize();
-
-
-            assert p != null;
-            hc ^= p.getXCoord().hashCode() * 17;
-
-                hc ^= p.getYCoord().hashCode() * 257;
-
-        }
-
-        return hc;
-    }
-
-    public String toString()
-    {
-        if (this.isInfinity())
-        {
-            return "INF";
-        }
-
-        StringBuilder sb = new StringBuilder();
-        sb.append('(');
-        sb.append(getRawXCoord());
-        sb.append(',');
-        sb.append(getRawYCoord());
-        for (ECFieldElement z : zs) {
-            sb.append(',');
-            sb.append(z);
-        }
-        sb.append(')');
-        return sb.toString();
-    }
 
     
 

@@ -68,7 +68,7 @@ public class KeccakDigest {
                 initSponge(1600 - (bitLength << 1));
                 break;
             default:
-                throw new IllegalArgumentException("bitLength must be one of 128, 224, 256, 288, 384, or 512.");
+
         }
     }
 

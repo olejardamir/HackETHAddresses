@@ -134,24 +134,7 @@ public class SecP256K1FieldElement extends ECFieldElement {
         return Nat256.eq(x1, x2) ? new SecP256K1FieldElement(x6) : null;
     }
 
-    public boolean equals(Object other)
-    {
-        if (other == this)
-        {
-            return true;
-        }
 
-        if (!(other instanceof SecP256K1FieldElement))
-        {
-            return false;
-        }
 
-        SecP256K1FieldElement o = (SecP256K1FieldElement)other;
-        return Nat256.eq(x, o.x);
-    }
 
-    public int hashCode()
-    {
-        return Q.hashCode() ^ Arrays.hashCode(x, 0, 8);
-    }
 }

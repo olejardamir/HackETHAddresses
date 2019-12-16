@@ -41,9 +41,7 @@ public abstract class ECFieldElement {
         return toBigInteger().testBit(0);
     }
 
-    public String toString() {
-        return this.toBigInteger().toString(16);
-    }
+
 
     public byte[] getEncoded() {
         int length = (getFieldSize() + 7) / 8;

@@ -17,15 +17,14 @@ class FixedPointUtil
         return c.precompute(p, PRECOMP_NAME, new PreCompCallback()
         {
             public FixedPointPreCompInfo precompute(FixedPointPreCompInfo existing) {
-                FixedPointPreCompInfo existingFP = existing;
 
                 int bits = getCombSize(c);
                 int minWidth = bits > 250 ? 6 : 5;
                 int n = 1 << minWidth;
 
-                if (checkExisting(existingFP, n))
+                if (checkExisting(existing, n))
                 {
-                    return existingFP;
+                    return existing;
                 }
 
                 int d = (bits + minWidth - 1) / minWidth;

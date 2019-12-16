@@ -44,19 +44,14 @@ public abstract class ECCurve
         }
     }
 
-    private Object field;
-    ECFieldElement a;
+     ECFieldElement a;
     ECFieldElement b;
     BigInteger order;
-    BigInteger cofactor;
 
     int coord = COORD_AFFINE;
      private FixedPointCombMultiplier multiplier = null;
 
-    ECCurve(Object field)
-    {
-        this.field = field;
-    }
+
 
     public abstract int getFieldSize();
 
@@ -178,30 +173,20 @@ public abstract class ECCurve
 
     public abstract ECPoint getInfinity();
 
-    public Object getField()
-    {
-        return field;
-    }
 
     public ECFieldElement getA()
     {
         return a;
     }
 
-    public ECFieldElement getB()
-    {
-        return b;
-    }
+
 
     public BigInteger getOrder()
     {
         return order;
     }
 
-    public BigInteger getCofactor()
-    {
-        return cofactor;
-    }
+
 
     public int getCoordinateSystem()
     {
@@ -212,7 +197,7 @@ public abstract class ECCurve
 
     
     public ECPoint decodePoint(byte[] encoded) {
-        ECPoint p;
+        ECPoint p = null;
         int expectedLength = (getFieldSize() + 7) / 8;
 
         byte type = encoded[0];
@@ -230,12 +215,9 @@ public abstract class ECCurve
 
 
                 int yTilde = type & 1;
-                byte[] mag = encoded;
-                if (1 != 0 || expectedLength != encoded.length)
-                {
-                    mag = new byte[expectedLength];
-                    System.arraycopy(encoded, 1, mag, 0, expectedLength);
-                }
+                byte[] mag;
+                mag = new byte[expectedLength];
+                System.arraycopy(encoded, 1, mag, 0, expectedLength);
                 BigInteger X = new BigInteger(1, mag);
 
                 p = decompressPoint(yTilde, X);
@@ -248,27 +230,20 @@ public abstract class ECCurve
             case 0x07: {
 
 
-                byte[] mag1 = encoded;
-                if (1 != 0 || expectedLength != encoded.length)
-                {
-                    mag1 = new byte[expectedLength];
-                    System.arraycopy(encoded, 1, mag1, 0, expectedLength);
-                }
+                byte[] mag1;
+                mag1 = new byte[expectedLength];
+                System.arraycopy(encoded, 1, mag1, 0, expectedLength);
                 BigInteger X = new BigInteger(1, mag1);
-                byte[] mag = encoded;
-                if (1 + expectedLength != 0 || expectedLength != encoded.length)
-                {
-                    mag = new byte[expectedLength];
-                    System.arraycopy(encoded, 1 + expectedLength, mag, 0, expectedLength);
-                }
+                byte[] mag;
+                mag = new byte[expectedLength];
+                System.arraycopy(encoded, 1 + expectedLength, mag, 0, expectedLength);
                 BigInteger Y = new BigInteger(1, mag);
 
                 p = validatePoint(X, Y);
                 break;
             }
             default:
-                throw new IllegalArgumentException("Invalid point encoding 0x" + Integer.toString(type, 16));
-        }
+         }
 
 
 
@@ -331,26 +306,9 @@ public abstract class ECCurve
 
 
 
-    public boolean equals(ECCurve other)
-    {
-        return this == other
-                || (null != other
-                && getField().equals(other.getField())
-                && getA().toBigInteger().equals(other.getA().toBigInteger())
-                && getB().toBigInteger().equals(other.getB().toBigInteger()));
-    }
 
-    public boolean equals(Object obj)
-    {
-        return this == obj || (obj instanceof ECCurve && equals((ECCurve)obj));
-    }
 
-    public int hashCode()
-    {
-        return getField().hashCode()
-                ^ Integers.rotateLeft(getA().toBigInteger().hashCode(), 8)
-                ^ Integers.rotateLeft(getB().toBigInteger().hashCode(), 16);
-    }
+
 
 
 }

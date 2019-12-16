@@ -1,5 +1,6 @@
 import java.math.BigInteger;
 
+@SuppressWarnings("ALL")
 abstract class Nat256
 {
     private static final long M = 0xFFFFFFFFL;

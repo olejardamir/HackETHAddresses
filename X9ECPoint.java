@@ -21,39 +21,16 @@ class X9ECPoint {
     public synchronized ECPoint getPoint() {
         if (p == null)
         {
-            p = c.decodePoint(encoding.getOctets()).normalize();
+            p = c.decodePoint(encoding.string).normalize();
         }
 
         return p;
     }
 
 
-    public ASN1OctetString toASN1Primitive()
-    {
-        return encoding;
-    }
-
-    public int hashCode()
-    {
-        return (  this.toASN1Primitive()).toASN1Primitive().hashCode();
-    }
 
 
-    public boolean equals(
-            Object  o)
-    {
-        if (this == o)
-        {
-            return true;
-        }
 
-        if (!(o instanceof X9ECPoint))
-        {
-            return false;
-        }
 
-        X9ECPoint other = (X9ECPoint)o;
 
-        return this.toASN1Primitive().equals(other.toASN1Primitive());
-    }
 }
