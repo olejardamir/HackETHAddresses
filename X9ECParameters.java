@@ -16,13 +16,10 @@ public class X9ECParameters {
     }
 
     public ECPoint getG() {
-
-        synchronized (g) {
             if (g.p == null) {
                 g.p = g.c.decodePoint(g.string).normalize();
             }
             return g.p;
-        }
     }
 
 

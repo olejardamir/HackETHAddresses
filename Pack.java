@@ -22,7 +22,7 @@ abstract class Pack
 
     private static int littleEndianToInt(byte[] bs, int off)
     {
-        return bs[off] & 0xff | (bs[++off] & 0xff) << 8 | (bs[++off] & 0xff) << 16 | bs[++off] << 24;
+        return (((bs[off] & 0xff) | ((bs[++off] & 0xff) << 8)) | ((bs[++off] & 0xff) << 16)) | (bs[++off] << 24);
     }
 
     private static void intToLittleEndian(int n, byte[] bs, int off)

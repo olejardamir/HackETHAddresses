@@ -44,14 +44,25 @@ public abstract class ECFieldElement {
 
 
     public byte[] getEncoded() {
-        int length = (getFieldSize() + 7) / 8;
-        byte[] bytes = toBigInteger().toByteArray();
-        if (bytes.length == length)
+        int length;
+		length = (getFieldSize() + 7) / 8;
+		byte[] bytes;
+		bytes = toBigInteger().toByteArray();
+		if (bytes.length == length) {
 			return bytes;
+		}
 
-        int start = bytes[0] == 0 ? 1 : 0, count = bytes.length - start;
-        byte[] tmp = new byte[length];
-        System.arraycopy(bytes, start, tmp, tmp.length - count, count);
+        int start;
+		if (bytes[0] == 0) {
+			start = 1;
+		} else {
+			start = 0;
+		}
+		int count;
+		count = bytes.length - start;
+		byte[] tmp;
+		tmp = new byte[length];
+		System.arraycopy(bytes, start, tmp, tmp.length - count, count);
         return tmp;
     }
 

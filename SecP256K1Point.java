@@ -11,8 +11,6 @@ public class SecP256K1Point extends ECPoint {
     public SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y, boolean withCompression)
     {
         super(curve, x, y);
-
-
         this.withCompression = withCompression;
     }
 
@@ -20,7 +18,6 @@ public class SecP256K1Point extends ECPoint {
                    boolean withCompression)
     {
         super(curve, x, y, zs);
-
         this.withCompression = withCompression;
     }
 
@@ -38,19 +35,28 @@ public class SecP256K1Point extends ECPoint {
             return twice();
         }
 
-        ECCurve curve = this.getCurve();
-
-        SecP256K1FieldElement X1 = (SecP256K1FieldElement)this.x, Y1 = (SecP256K1FieldElement)this.y;
-        SecP256K1FieldElement X2 = (SecP256K1FieldElement)b.getXCoord(), Y2 = (SecP256K1FieldElement)b.getYCoord();
-
-        SecP256K1FieldElement Z1 = (SecP256K1FieldElement)this.zs[0];
-        SecP256K1FieldElement Z2 = (SecP256K1FieldElement)b.getZCoord(0);
-
-        int c;
-         int[] tt1 = new int[16];
-         int[] t2 = new int[8];
-         int[] t3 = new int[8];
-         int[] t4 = new int[8];
+        ECCurve curve;
+		curve = this.getCurve();
+		SecP256K1FieldElement X1;
+		X1 = (SecP256K1FieldElement) this.x;
+		SecP256K1FieldElement Y1;
+		Y1 = (SecP256K1FieldElement) this.y;
+		SecP256K1FieldElement X2;
+		X2 = (SecP256K1FieldElement) b.getXCoord();
+		SecP256K1FieldElement Y2;
+		Y2 = (SecP256K1FieldElement) b.getYCoord();
+		SecP256K1FieldElement Z1;
+		Z1 = (SecP256K1FieldElement) this.zs[0];
+		SecP256K1FieldElement Z2;
+		Z2 = (SecP256K1FieldElement) b.getZCoord(0);
+		int c;
+         int[] tt1;
+		tt1 = new int[16];
+		int[] t2;
+		t2 = new int[8];
+		int[] t3;
+		t3 = new int[8];
+		int[] t4 = new int[8];
 
         boolean Z1IsOne = Z1.isOne();
         int[] U2, S2;

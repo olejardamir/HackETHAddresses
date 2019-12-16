@@ -5,8 +5,9 @@ abstract class Nat256
 
     public static int add(int[] x, int[] y, int[] z)
     {
-        long c = (x[0] & 0xFFFFFFFFL) + (y[0] & 0xFFFFFFFFL);
-        z[0] = (int)c;
+        long c;
+		c = (x[0] & 0xFFFFFFFFL) + (y[0] & 0xFFFFFFFFL);
+		z[0] = (int)c;
         c >>>= 32;
         c += (x[1] & 0xFFFFFFFFL) + (y[1] & 0xFFFFFFFFL);
         z[1] = (int)c;
@@ -34,8 +35,9 @@ abstract class Nat256
 
     public static int addBothTo(int[] x, int[] y, int[] z)
     {
-        long c = (x[0] & 0xFFFFFFFFL) + (y[0] & 0xFFFFFFFFL) + (z[0] & 0xFFFFFFFFL);
-        z[0] = (int)c;
+        long c;
+		c = (x[0] & 0xFFFFFFFFL) + (y[0] & 0xFFFFFFFFL) + (z[0] & 0xFFFFFFFFL);
+		z[0] = (int)c;
         c >>>= 32;
         c += (x[1] & 0xFFFFFFFFL) + (y[1] & 0xFFFFFFFFL) + (z[1] & 0xFFFFFFFFL);
         z[1] = (int)c;
@@ -75,9 +77,11 @@ abstract class Nat256
 
     public static boolean eq(int[] x, int[] y)
     {
-        for (int i = 7; i >= 0; --i)
-			if (x[i] != y[i])
+        for (int i = 7; i >= 0; i -= 1) {
+			if (x[i] != y[i]) {
 				return false;
+			}
+		}
         return true;
     }
 
@@ -85,25 +89,24 @@ abstract class Nat256
     {
 
 
-        int[] z = new int[8];
-        for (int i = 0; x.signum() != 0;) {
-			z[i++] = x.intValue();
+        int[] z;
+		z = new int[8];
+		for (int i = 0; x.signum() != 0;) {
+			z[i] = x.intValue();
+			i++;
 			x = x.shiftRight(32);
 		}
         return z;
     }
 
-    public static int getBit(int[] x, int bit)
-    {
-		return bit == 0 ? x[0] & 1 : (bit & 255) != bit ? 0 : (x[(bit >>> 5)] >>> (bit & 31)) & 1;
-	}
-
     public static boolean gte(int[] x, int[] y)
     {
-        for (int i = 7; i >= 0; --i)
+        for (int i = 7; i >= 0; i -= 1)
         {
-            int x_i = x[i] ^ Integer.MIN_VALUE, y_i = y[i] ^ Integer.MIN_VALUE;
-            if (x_i < y_i)
+            int x_i;
+			x_i = x[i] ^ Integer.MIN_VALUE;
+			int y_i = y[i] ^ Integer.MIN_VALUE;
+			if (x_i < y_i)
                 return false;
             if (x_i > y_i)
                 return true;

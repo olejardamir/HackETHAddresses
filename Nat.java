@@ -8,8 +8,9 @@ abstract class Nat
 
     public static void add(int len, int[] x, int[] y, int[] z)
     {
-        long c = 0;
-        for (int i = 0; i < len; ++i)
+        long c;
+		c = 0;
+		for (int i = 0; i < len; i += 1)
         {
             c += (x[i] & M) + (y[i] & M);
             z[i] = (int)c;
@@ -19,20 +20,23 @@ abstract class Nat
 
     public static void add33To(int len, int x, int[] z)
     {
-        long c = (x & M) + (z[0] & M);
-        z[0] = (int)c;
+        long c;
+		c = (x & M) + (z[0] & M);
+		z[0] = (int)c;
         c >>>= 32;
         c += (z[1] & M) + 1L;
         z[1] = (int)c;
         c >>>= 32;
-        if (c != 0)
+        if (c != 0) {
 			incAt(len, z, 2);
+		}
     }
 
     public static int addTo(int len, int[] x, int[] z)
     {
-        long c = 0;
-        for (int i = 0; i < len; ++i)
+        long c;
+		c = 0;
+		for (int i = 0; i < len; i += 1)
         {
             c += (x[i] & M) + (z[i] & M);
             z[i] = (int)c;
@@ -50,7 +54,7 @@ abstract class Nat
     public static void decAt(int len, int[] z, int zPos)
     {
 
-        for (int i = zPos; i < len; ++i)
+        for (int i = zPos; i < len; i += 1)
 			if (--z[i] != -1) {
 				return;
 			}
@@ -60,9 +64,11 @@ abstract class Nat
     {
 
 
-        int[] z = create((bits + 31) >> 5);
-        for (int i = 0; x.signum() != 0;) {
-			z[i++] = x.intValue();
+        int[] z;
+		z = create((bits + 31) >> 5);
+		for (int i = 0; x.signum() != 0;) {
+			z[i] = x.intValue();
+			i++;
 			x = x.shiftRight(32);
 		}
         return z;
@@ -70,11 +76,15 @@ abstract class Nat
 
     public static boolean gte(int len, int[] x, int[] y)
     {
-        for (int i = len - 1; i >= 0; --i)
+        for (int i = len - 1; i >= 0; i -= 1)
         {
-            int x_i = x[i] ^ Integer.MIN_VALUE, y_i = y[i] ^ Integer.MIN_VALUE;
-            if (x_i < y_i)
-                return false;
+            int x_i;
+			x_i = x[i] ^ Integer.MIN_VALUE;
+			int y_i;
+			y_i = y[i] ^ Integer.MIN_VALUE;
+			if (x_i < y_i) {
+				return false;
+			}
             if (x_i > y_i)
                 return true;
         }

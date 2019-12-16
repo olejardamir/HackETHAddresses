@@ -9,9 +9,18 @@ public class Digest256 {
     }
 
     public Object clone() throws CloneNotSupportedException {
-        Digest256 d = (Digest256) (!(this instanceof Cloneable) ? null : super.clone());
-        Objects.requireNonNull(d).digest = new KeccakDigest(digest);
-        return d;
+        Digest256 d;
+		Object o1;
+		if (!(this instanceof Cloneable)) {
+			o1 = null;
+		} else {
+			o1 = super.clone();
+		}
+		d = (Digest256) (o1);
+		Digest256 d1;
+		d1 = Objects.requireNonNull(d);
+		d1.digest = new KeccakDigest(digest);
+		return d;
     }
 
     public void engineUpdate(byte[] input, int offset, int len) {
@@ -19,8 +28,11 @@ public class Digest256 {
     }
 
     public byte[] engineDigest() {
-        byte[] digestBytes = new byte[digest.getDigestSize()];
-        digest.doFinal(digestBytes, 0);
+        byte[] digestBytes;
+		int i1;
+		i1 = digest.getDigestSize();
+		digestBytes = new byte[i1];
+		digest.doFinal(digestBytes, 0);
         return digestBytes;
     }
 
@@ -29,7 +41,9 @@ public class Digest256 {
     }
 
     public byte[] digest() {
-        return engineDigest();
+        byte[] bs1;
+		bs1 = engineDigest();
+		return bs1;
     }
 
 

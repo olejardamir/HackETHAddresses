@@ -9,10 +9,12 @@ class X9ECPoint {
             byte[] encoding) {
 
         this.c = c;
-        byte[] result = null;
-        if (encoding != null) {
-            byte[] copy = new byte[encoding.length];
-            System.arraycopy(encoding, 0, copy, 0, encoding.length);
+        byte[] result;
+		result = null;
+		if (encoding != null) {
+            byte[] copy;
+			copy = new byte[encoding.length];
+			System.arraycopy(encoding, 0, copy, 0, encoding.length);
             result = copy;
         }
         string = result;

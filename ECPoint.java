@@ -24,9 +24,13 @@ public abstract class ECPoint {
 
     private static ECFieldElement[] getInitialZCoords(ECCurve curve) {
 
-        int coord = curve == null ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
-
-        switch (coord) {
+        int coord;
+		if (curve == null) {
+			coord = ECCurve.COORD_AFFINE;
+		} else {
+			coord = curve.getCoordinateSystem();
+		}
+		switch (coord) {
             case ECCurve.COORD_AFFINE:
             case ECCurve.COORD_LAMBDA_AFFINE:
                 return EMPTY_ZS;

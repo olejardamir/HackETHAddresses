@@ -212,15 +212,10 @@ public abstract class ECCurve {
         }
 
         public ECCurve create() throws Exception {
-
-
-            ECCurve c = cloneCurve();
-
-
-            c.coord = coord;
+            ECCurve c;
+			c = cloneCurve();
+			c.coord = coord;
             c.multiplier = multiplier;
-
-
             return c;
         }
     }

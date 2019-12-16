@@ -17,8 +17,9 @@ public class HexEncoder {
     {
         Arrays.fill(decodingTable, (byte) 0xff);
 
-        for (int i = 0; i < encodingTable.length; ++i)
+        for (int i = 0; i < encodingTable.length; i += 1) {
 			decodingTable[encodingTable[i]] = (byte) i;
+		}
 
         decodingTable['A'] = decodingTable['a'];
         decodingTable['B'] = decodingTable['b'];
@@ -38,7 +39,7 @@ public class HexEncoder {
     private static boolean ignore(
             char    c)
     {
-        return c == '\n' || c =='\r' || c == '\t' || c == ' ';
+        return (((c == '\n') || (c == '\r')) || (c == '\t')) || c == ' ';
     }
 
     
