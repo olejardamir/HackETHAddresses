@@ -56,7 +56,7 @@ abstract class Nat
         return new int[len];
     }
 
-    public static void decAt(int len, int[] z, int zPos)
+    private static void decAt(int len, int[] z, int zPos)
     {
         
         for (int i = zPos; i < len; ++i)

@@ -5,7 +5,7 @@ public class SecP256K1FieldElement extends ECFieldElement.AbstractFp
 {
     private static final BigInteger Q = SecP256K1Curve.q;
 
-    int[] x;
+    final int[] x;
 
     public SecP256K1FieldElement(BigInteger x)
     {

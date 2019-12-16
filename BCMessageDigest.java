@@ -17,14 +17,14 @@ class BCMessageDigest {
 
 
 
-    public void engineUpdate(
+    private void engineUpdate(
             byte[] input,
             int offset,
             int len) {
         digest.update(input, offset, len);
     }
 
-    public byte[] engineDigest() {
+    private byte[] engineDigest() {
         byte[] digestBytes = new byte[digest.getDigestSize()];
 
         digest.doFinal(digestBytes, 0);

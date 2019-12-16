@@ -2,7 +2,7 @@ import java.math.BigInteger;
 
 public class SecP256K1Curve extends ECCurve.AbstractFp
 {
-    public static BigInteger q;
+    public static   BigInteger q;
 
     static {
         try {

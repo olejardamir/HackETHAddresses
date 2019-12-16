@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class testAll {
+class testAll {
 
     public static void main(String[] args) throws Exception {
 

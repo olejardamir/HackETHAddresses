@@ -1,7 +1,7 @@
 import java.math.BigInteger;
 
-public class FixedPointCombMultiplier {
-     protected ECPoint multiplyPositive(ECPoint p, BigInteger k) {
+class FixedPointCombMultiplier {
+     private ECPoint multiplyPositive(ECPoint p, BigInteger k) {
 
         ECCurve c = p.getCurve();
         int size = FixedPointUtil.getCombSize(c);

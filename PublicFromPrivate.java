@@ -1,6 +1,6 @@
 import java.math.BigInteger;
 
-public class PublicFromPrivate {
+class PublicFromPrivate {
     public String getPublicFromPrivate(String privatekey) throws Exception {
 
 

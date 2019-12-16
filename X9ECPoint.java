@@ -28,7 +28,7 @@ class X9ECPoint {
     }
 
 
-    public ASN1OctetString toASN1Primitive()
+    private ASN1OctetString toASN1Primitive()
     {
         return encoding;
     }

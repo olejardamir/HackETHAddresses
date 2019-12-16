@@ -12,7 +12,7 @@ public abstract class ECCurve
     public static final int COORD_LAMBDA_AFFINE = 5;
     public static final int COORD_LAMBDA_PROJECTIVE = 6;
 
-    public ECCurve() {
+    ECCurve() {
 
     }
 
@@ -79,7 +79,7 @@ public abstract class ECCurve
     }
 
     
-    public ECPoint createPoint(BigInteger x, BigInteger y, boolean withCompression)
+    private ECPoint createPoint(BigInteger x, BigInteger y, boolean withCompression)
     {
         return createRawPoint(fromBigInteger(x), fromBigInteger(y), withCompression);
     }
@@ -178,7 +178,7 @@ public abstract class ECCurve
 
     public abstract ECPoint getInfinity();
 
-    public GenericPolynomialExtensionField getField()
+    private GenericPolynomialExtensionField getField()
     {
         return field;
     }
@@ -188,7 +188,7 @@ public abstract class ECCurve
         return a;
     }
 
-    public ECFieldElement getB()
+    private ECFieldElement getB()
     {
         return b;
     }
