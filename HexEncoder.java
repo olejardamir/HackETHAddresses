@@ -14,15 +14,11 @@ public class HexEncoder {
 
     private void initialiseDecodingTable()
     {
-        for (int i = 0; i < decodingTable.length; i++)
-        {
-            decodingTable[i] = (byte)0xff;
-        }
+        for (int i = 0; i < decodingTable.length; ++i)
+			decodingTable[i] = (byte) 0xff;
 
-        for (int i = 0; i < encodingTable.length; i++)
-        {
-            decodingTable[encodingTable[i]] = (byte)i;
-        }
+        for (int i = 0; i < encodingTable.length; ++i)
+			decodingTable[encodingTable[i]] = (byte) i;
 
         decodingTable['A'] = decodingTable['a'];
         decodingTable['B'] = decodingTable['b'];
@@ -55,38 +51,19 @@ public class HexEncoder {
 
         int     end = data.length();
 
-        while (end > 0)
-        {
-            if (!ignore(data.charAt(end - 1)))
-            {
-                break;
-            }
+        for (; end > 0; --end)
+			if (!ignore(data.charAt(end - 1)))
+				break;
 
-            end--;
-        }
-
-        int i = 0;
-        while (i < end)
-        {
-            while (i < end && ignore(data.charAt(i)))
-            {
-                i++;
-            }
-
-            b1 = decodingTable[data.charAt(i++)];
-
-            while (i < end && ignore(data.charAt(i)))
-            {
-                i++;
-            }
-
-            b2 = decodingTable[data.charAt(i++)];
-
-
-
-            out.write((b1 << 4) | b2);
-
-        }
+        for (int i = 0; i < end;) {
+			while (i < end && ignore(data.charAt(i)))
+				++i;
+			b1 = decodingTable[data.charAt(i++)];
+			while (i < end && ignore(data.charAt(i)))
+				++i;
+			b2 = decodingTable[data.charAt(i++)];
+			out.write(b2 | b1 << 4);
+		}
 
     }
 }

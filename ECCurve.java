@@ -49,7 +49,7 @@ public abstract class ECCurve
     BigInteger order;
 
     int coord = COORD_AFFINE;
-     private FixedPointCombMultiplier multiplier = null;
+     private FixedPointCombMultiplier multiplier;
 
 
 
@@ -88,37 +88,26 @@ public abstract class ECCurve
     public FixedPointPreCompInfo precompute(ECPoint point, String name, PreCompCallback callback) {
 
 
-        Hashtable table;
-
-            table = point.preCompTable;
-            if (null == table)
-            {
-                point.preCompTable = table = new Hashtable(4);
-            }
+        Hashtable table = point.preCompTable;
+            if (table == null)
+				point.preCompTable = table = new Hashtable(4);
 
 
 
-            FixedPointPreCompInfo existing = (FixedPointPreCompInfo)table.get(name);
-            FixedPointPreCompInfo result = callback.precompute(existing);
-
+            FixedPointPreCompInfo existing = (FixedPointPreCompInfo) table.get(name),
+					result = callback.precompute(existing);
             if (result != existing)
-            {
-                table.put(name, result);
-            }
+				table.put(name, result);
 
             return result;
 
     }
 
     public ECPoint importPoint(ECPoint p) {
-        if (this == p.getCurve())
-        {
-            return p;
-        }
+        if (p.getCurve() == this)
+			return p;
         if (p.isInfinity())
-        {
-            return getInfinity();
-        }
+			return getInfinity();
 
         
         p = p.normalize();
@@ -138,9 +127,7 @@ public abstract class ECCurve
         {
             case ECCurve.COORD_AFFINE:
             case ECCurve.COORD_LAMBDA_AFFINE:
-            {
-                return;
-            }
+            return;
         }
 
         
@@ -148,19 +135,13 @@ public abstract class ECCurve
         int[] indices = new int[len];
         int count = 0;
         for (int i = 0; i < len; ++i)
-        {
-            ECPoint p = points[i];
-            if (null != p && p.isNormalized())
-            {
-                zs[count] = p.getZCoord(0);
-                indices[count++] = i;
-            }
-        }
+			if (null != points[i] && points[i].isNormalized()) {
+				zs[count] = points[i].getZCoord(0);
+				indices[count++] = i;
+			}
 
         if (count == 0)
-        {
-            return;
-        }
+			return;
 
 
         ECFieldElement[] c = new ECFieldElement[count];
@@ -168,22 +149,18 @@ public abstract class ECCurve
 
         int i = 0;
         while (++i < count)
-        {
-            c[i] = c[i - 1].multiply(zs[0 + i]);
-        }
+			c[i] = c[i - 1].multiply(zs[i]);
 
         --i;
 
         if (null != null)
-        {
-            c[i] = c[i].multiply(null);
-        }
+			c[i] = c[i].multiply(null);
 
         ECFieldElement u = c[i].invert();
 
         while (i > 0)
         {
-            int j1 = 0 + i--;
+            int j1 = i--;
             ECFieldElement tmp = zs[j1];
             zs[j1] = c[i].multiply(u);
             u = u.multiply(tmp);
@@ -192,10 +169,7 @@ public abstract class ECCurve
         zs[0] = u;
 
         for (int j = 0; j < count; ++j)
-        {
-            int index = indices[j];
-            points[index] = points[index].normalize(zs[j]);
-        }
+			points[indices[j]] = points[indices[j]].normalize(zs[j]);
     }
 
     public abstract ECPoint getInfinity();
@@ -242,12 +216,9 @@ public abstract class ECCurve
 
 
                 int yTilde = type & 1;
-                byte[] mag;
-                mag = new byte[expectedLength];
+                byte[] mag = new byte[expectedLength];
                 System.arraycopy(encoded, 1, mag, 0, expectedLength);
-                BigInteger X = new BigInteger(1, mag);
-
-                p = decompressPoint(yTilde, X);
+                p = decompressPoint(yTilde, new BigInteger(1, mag));
 
 
                 break;
@@ -257,16 +228,12 @@ public abstract class ECCurve
             case 0x07: {
 
 
-                byte[] mag1;
-                mag1 = new byte[expectedLength];
+                byte[] mag1 = new byte[expectedLength];
                 System.arraycopy(encoded, 1, mag1, 0, expectedLength);
                 BigInteger X = new BigInteger(1, mag1);
-                byte[] mag;
-                mag = new byte[expectedLength];
-                System.arraycopy(encoded, 1 + expectedLength, mag, 0, expectedLength);
-                BigInteger Y = new BigInteger(1, mag);
-
-                p = validatePoint(X, Y);
+                byte[] mag = new byte[expectedLength];
+                System.arraycopy(encoded, expectedLength + 1, mag, 0, expectedLength);
+                p = validatePoint(X, new BigInteger(1, mag));
                 break;
             }
             default:
@@ -280,54 +247,39 @@ public abstract class ECCurve
     
     public ECLookupTable createCacheSafeLookupTable(final ECPoint[] points, int off, final int len)
     {
-        final int FE_BYTES = (getFieldSize() + 7) >>> 3;
+		final int FE_BYTES = (getFieldSize() + 7) >>> 3;
+		final byte[] table = new byte[2 * FE_BYTES * len];
+		for (int pos = 0, i = 0; i < len; ++i) {
+			ECPoint p = points[off + i];
+			byte[] px = p.getRawXCoord().toBigInteger().toByteArray();
+			byte[] py = p.getRawYCoord().toBigInteger().toByteArray();
+			int pxStart = px.length > FE_BYTES ? 1 : 0, pxLen = px.length - pxStart;
+			int pyStart = py.length > FE_BYTES ? 1 : 0, pyLen = py.length - pyStart;
+			System.arraycopy(px, pxStart, table, pos + FE_BYTES - pxLen, pxLen);
+			pos += FE_BYTES;
+			System.arraycopy(py, pyStart, table, pos + FE_BYTES - pyLen, pyLen);
+			pos += FE_BYTES;
+		}
+		return new ECLookupTable() {
+			public int getSize() {
+				return len;
+			}
 
-        final byte[] table = new byte[len * FE_BYTES * 2];
-        {
-            int pos = 0;
-            for (int i = 0; i < len; ++i)
-            {
-                ECPoint p = points[off + i];
-                byte[] px = p.getRawXCoord().toBigInteger().toByteArray();
-                byte[] py = p.getRawYCoord().toBigInteger().toByteArray();
-
-                int pxStart = px.length > FE_BYTES ? 1 : 0, pxLen = px.length - pxStart;
-                int pyStart = py.length > FE_BYTES ? 1 : 0, pyLen = py.length - pyStart;
-
-                System.arraycopy(px, pxStart, table, pos + FE_BYTES - pxLen, pxLen); pos += FE_BYTES;
-                System.arraycopy(py, pyStart, table, pos + FE_BYTES - pyLen, pyLen); pos += FE_BYTES;
-            }
-        }
-
-        return new ECLookupTable()
-        {
-            public int getSize()
-            {
-                return len;
-            }
-
-            public ECPoint lookup(int index)
-            {
-                byte[] x = new byte[FE_BYTES], y = new byte[FE_BYTES];
-                int pos = 0;
-
-                for (int i = 0; i < len; ++i)
-                {
-                    int MASK = ((i ^ index) - 1) >> 31;
-
-                    for (int j = 0; j < FE_BYTES; ++j)
-                    {
-                        x[j] ^= table[pos + j] & MASK;
-                        y[j] ^= table[pos + FE_BYTES + j] & MASK;
-                    }
-
-                    pos += (FE_BYTES * 2);
-                }
-
-                return createRawPoint(fromBigInteger(new BigInteger(1, x)), fromBigInteger(new BigInteger(1, y)), false);
-            }
-        };
-    }
+			public ECPoint lookup(int index) {
+				byte[] x = new byte[FE_BYTES], y = new byte[FE_BYTES];
+				for (int pos = 0, i = 0; i < len; ++i) {
+					int MASK = ((i ^ index) - 1) >> 31;
+					for (int j = 0; j < FE_BYTES; ++j) {
+						x[j] ^= table[pos + j] & MASK;
+						y[j] ^= table[pos + FE_BYTES + j] & MASK;
+					}
+					pos += (FE_BYTES * 2);
+				}
+				return createRawPoint(fromBigInteger(new BigInteger(1, x)), fromBigInteger(new BigInteger(1, y)),
+						false);
+			}
+		};
+	}
 
 
 

@@ -33,7 +33,7 @@ public abstract class ECFieldElement {
     }
 
     public boolean isZero() {
-        return 0 == toBigInteger().signum();
+        return toBigInteger().signum() == 0;
     }
 
 
@@ -47,14 +47,9 @@ public abstract class ECFieldElement {
         int length = (getFieldSize() + 7) / 8;
         byte[] bytes = toBigInteger().toByteArray();
         if (bytes.length == length)
-        {
-            return bytes;
-        }
+			return bytes;
 
-        int start = bytes[0] == 0 ? 1 : 0;
-        int count = bytes.length - start;
-
-
+        int start = bytes[0] == 0 ? 1 : 0, count = bytes.length - start;
         byte[] tmp = new byte[length];
         System.arraycopy(bytes, start, tmp, tmp.length - count, count);
         return tmp;

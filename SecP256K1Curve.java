@@ -55,62 +55,43 @@ public class SecP256K1Curve extends ECCurve {
 
     public ECLookupTable createCacheSafeLookupTable(ECPoint[] points, int off, final int len)
     {
-        final int FE_INTS = 8;
+		final int FE_INTS = 8;
+		final int[] table = new int[2 * FE_INTS * len];
+		for (int pos = 0, i = 0; i < len; ++i) {
+			ECPoint p = points[i + off];
+			Nat256.copy(((SecP256K1FieldElement) p.getRawXCoord()).x, 0, table, pos);
+			pos += FE_INTS;
+			Nat256.copy(((SecP256K1FieldElement) p.getRawYCoord()).x, 0, table, pos);
+			pos += FE_INTS;
+		}
+		return new ECLookupTable() {
+			public int getSize() {
+				return len;
+			}
 
-        final int[] table = new int[len * FE_INTS * 2];
-        {
-            int pos = 0;
-            for (int i = 0; i < len; ++i)
-            {
-                ECPoint p = points[off + i];
-                Nat256.copy(((SecP256K1FieldElement)p.getRawXCoord()).x, 0, table, pos); pos += FE_INTS;
-                Nat256.copy(((SecP256K1FieldElement)p.getRawYCoord()).x, 0, table, pos); pos += FE_INTS;
-            }
-        }
-
-        return new ECLookupTable()
-        {
-            public int getSize()
-            {
-                return len;
-            }
-
-            public ECPoint lookup(int index)
-            {
-                int[] x = new int[8], y = new int[8];
-                int pos = 0;
-
-                for (int i = 0; i < len; ++i)
-                {
-                    int MASK = ((i ^ index) - 1) >> 31;
-
-                    for (int j = 0; j < FE_INTS; ++j)
-                    {
-                        x[j] ^= table[pos + j] & MASK;
-                        y[j] ^= table[pos + FE_INTS + j] & MASK;
-                    }
-
-                    pos += (FE_INTS * 2);
-                }
-
-                return createRawPoint(new SecP256K1FieldElement(x), new SecP256K1FieldElement(y), false);
-            }
-        };
-    }
+			public ECPoint lookup(int index) {
+				int[] x = new int[8], y = new int[8];
+				for (int pos = 0, i = 0; i < len; ++i) {
+					for (int MASK = ((i ^ index) - 1) >> 31, j = 0; j < FE_INTS; ++j) {
+						x[j] ^= table[j + pos] & MASK;
+						y[j] ^= table[j + pos + FE_INTS] & MASK;
+					}
+					pos += (2 * FE_INTS);
+				}
+				return createRawPoint(new SecP256K1FieldElement(x), new SecP256K1FieldElement(y), false);
+			}
+		};
+	}
 
     protected ECPoint decompressPoint(int yTilde, BigInteger X1) {
-        ECFieldElement x = this.fromBigInteger(X1);
-        ECFieldElement rhs = x.square().add(this.a).multiply(x).add(this.b);
+        ECFieldElement x = this.fromBigInteger(X1), rhs = x.square().add(this.a).multiply(x).add(this.b);
         ECFieldElement y = rhs.sqrt();
 
 
 
 
         if (y.testBitZero() != (yTilde == 1))
-        {
-
-            y = y.negate();
-        }
+			y = y.negate();
 
         return this.createRawPoint(x, y, true);
     }

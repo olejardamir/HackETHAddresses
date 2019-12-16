@@ -8,7 +8,7 @@ class FixedPointUtil
     public static int getCombSize(ECCurve c)
     {
         BigInteger order = c.getOrder();
-        return order == null ? c.getFieldSize() + 1 : order.bitLength();
+        return order != null ? order.bitLength() : c.getFieldSize() + 1;
     }
 
     public static FixedPointPreCompInfo precompute(final ECPoint p) {
@@ -18,23 +18,16 @@ class FixedPointUtil
         {
             public FixedPointPreCompInfo precompute(FixedPointPreCompInfo existing) {
 
-                int bits = getCombSize(c);
-                int minWidth = bits > 250 ? 6 : 5;
-                int n = 1 << minWidth;
-
+                int bits = getCombSize(c), minWidth = bits > 250 ? 6 : 5, n = 1 << minWidth;
                 if (checkExisting(existing, n))
-                {
-                    return existing;
-                }
+					return existing;
 
                 int d = (bits + minWidth - 1) / minWidth;
 
                 ECPoint[] pow2Table = new ECPoint[minWidth + 1];
                 pow2Table[0] = p;
                 for (int i = 1; i < minWidth; ++i)
-                {
-                    pow2Table[i] = pow2Table[i - 1].timesPow2(d);
-                }
+					pow2Table[i] = pow2Table[i - 1].timesPow2(d);
 
                 
                 pow2Table[minWidth] = pow2Table[0].subtract(pow2Table[1]);
@@ -48,11 +41,8 @@ class FixedPointUtil
                 {
                     ECPoint pow2 = pow2Table[bit];
 
-                    int step = 1 << bit;
-                    for (int i = step; i < n; i += (step << 1))
-                    {
-                        lookupTable[i] = lookupTable[i - step].add(pow2);
-                    }
+                    for (int i = 1 << bit; i < n; i += ((1 << bit) << 1))
+						lookupTable[i] = lookupTable[i - (1 << bit)].add(pow2);
                 }
 
                 c.normalizeAll(lookupTable);

@@ -1,10 +1,10 @@
 
 
 public class FixedPointPreCompInfo {
-    private ECPoint offset = null;
+    private ECPoint offset;
 
 
-    private ECLookupTable lookupTable = null;
+    private ECLookupTable lookupTable;
 
 
     private int width = -1;

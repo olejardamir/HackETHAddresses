@@ -4,12 +4,12 @@ import java.util.Hashtable;
 
 public abstract class ECPoint
 {
-    private final static ECFieldElement[] EMPTY_ZS = new ECFieldElement[0];
+    private static final ECFieldElement[] EMPTY_ZS = new ECFieldElement[0];
 
     private static ECFieldElement[] getInitialZCoords(ECCurve curve)
     {
         
-        int coord = null == curve ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
+        int coord = curve == null ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
 
         switch (coord)
         {
@@ -45,7 +45,7 @@ public abstract class ECPoint
     boolean withCompression;
 
     
-    Hashtable preCompTable = null;
+    Hashtable preCompTable;
 
     ECPoint(ECCurve curve, ECFieldElement x, ECFieldElement y)
     {
@@ -73,7 +73,7 @@ public abstract class ECPoint
     int getCurveCoordinateSystem()
     {
         
-        return null == curve ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
+        return curve == null ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
     }
 
     
@@ -121,27 +121,18 @@ public abstract class ECPoint
     
     public ECPoint normalize() {
         if (this.isInfinity())
-        {
-            return this;
-        }
+			return this;
 
         switch (this.getCurveCoordinateSystem())
         {
             case ECCurve.COORD_AFFINE:
             case ECCurve.COORD_LAMBDA_AFFINE:
-            {
-                return this;
-            }
+            return this;
             default:
             {
-                ECFieldElement Z1 = getZCoord(0);
-                if (Z1.isOne())
-                {
-                    return this;
-                }
-
-                return normalize(Z1.invert());
-            }
+				ECFieldElement Z1 = getZCoord(0);
+				return Z1.isOne() ? this : normalize(Z1.invert());
+			}
         }
     }
 
@@ -151,15 +142,13 @@ public abstract class ECPoint
         {
             case ECCurve.COORD_HOMOGENEOUS:
             case ECCurve.COORD_LAMBDA_PROJECTIVE:
-            {
-                return createScaledPoint(zInv, zInv);
-            }
+            return createScaledPoint(zInv, zInv);
             case ECCurve.COORD_JACOBIAN:
             case ECCurve.COORD_JACOBIAN_CHUDNOVSKY:
             case ECCurve.COORD_JACOBIAN_MODIFIED:
             {
-                ECFieldElement zInv2 = zInv.square(), zInv3 = zInv2.multiply(zInv);
-                return createScaledPoint(zInv2, zInv3);
+                ECFieldElement zInv2 = zInv.square();
+                return createScaledPoint(zInv2, zInv2.multiply(zInv));
             }
             default:
             {
@@ -186,9 +175,7 @@ public abstract class ECPoint
     
     public byte[] getEncoded(boolean compressed) {
         if (this.isInfinity())
-        {
-            return new byte[1];
-        }
+			return new byte[1];
 
         ECPoint normed = normalize();
 
@@ -202,9 +189,8 @@ public abstract class ECPoint
             return PO;
         }
 
-        byte[] Y = normed.getYCoord().getEncoded();
+        byte[] Y = normed.getYCoord().getEncoded(), PO = new byte[X.length + Y.length + 1];
 
-        byte[] PO = new byte[X.length + Y.length + 1];
         PO[0] = 0x04;
         System.arraycopy(X, 0, PO, 1, X.length);
         System.arraycopy(Y, 0, PO, X.length + 1, Y.length);
@@ -224,9 +210,7 @@ public abstract class ECPoint
 
         ECPoint p = this;
         while (--e >= 0)
-        {
-            p = p.twice();
-        }
+			p = p.twice();
         return p;
     }
 

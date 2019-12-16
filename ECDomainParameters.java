@@ -8,21 +8,12 @@ class ECDomainParameters {
             ECCurve curve,
             ECPoint G
     ) {
-
-
-
-
         this.G = validate(curve, G);
-
     }
 
     private static ECPoint validate(ECCurve c, ECPoint q) {
 
-        q = c.importPoint(q).normalize();
-
-
-
-        return q;
+        return c.importPoint(q).normalize();
     }
 
     public ECPoint getG() {

@@ -78,13 +78,9 @@ public class KeccakDigest {
 
         this.rate = rate;
         for (int i = 0; i < state.length; ++i)
-        {
-            state[i] = 0L;
-        }
-        for (int i = 0; i < this.dataQueue.length; i++)
-        {
-            this.dataQueue[i] = (byte)0;
-        }
+			state[i] = 0L;
+        for (int i = 0; i < this.dataQueue.length; ++i)
+			this.dataQueue[i] = (byte) 0;
         this.bitsInQueue = 0;
         this.squeezing = false;
         this.fixedOutputLength = (1600 - rate) / 2;
@@ -94,95 +90,64 @@ public class KeccakDigest {
     {
 
 
-        int bytesInQueue = bitsInQueue >> 3;
-        int rateBytes = rate >> 3;
-
-        int count = 0;
-        while (count < len)
-        {
-            if (bytesInQueue == 0 && count <= (len - rateBytes))
-            {
-                do
-                {
-                    KeccakAbsorb(data, off + count);
-                    count += rateBytes;
-                }
-                while (count <= (len - rateBytes));
-            }
-            else
-            {
-                int partialBlock = Math.min(rateBytes - bytesInQueue, len - count);
-                System.arraycopy(data, off + count, dataQueue, bytesInQueue, partialBlock);
-
-                bytesInQueue += partialBlock;
-                count += partialBlock;
-
-                if (bytesInQueue == rateBytes)
-                {
-                    KeccakAbsorb(dataQueue, 0);
-                    bytesInQueue = 0;
-                }
-            }
-        }
+        int bytesInQueue = bitsInQueue >> 3, rateBytes = rate >> 3;
+        for (int count = 0; count < len;)
+			if (bytesInQueue == 0 && count <= (len - rateBytes))
+				do {
+					KeccakAbsorb(data, off + count);
+					count += rateBytes;
+				} while (count <= (len - rateBytes));
+			else {
+				int partialBlock = Math.min(rateBytes - bytesInQueue, len - count);
+				System.arraycopy(data, off + count, dataQueue, bytesInQueue, partialBlock);
+				bytesInQueue += partialBlock;
+				count += partialBlock;
+				if (bytesInQueue == rateBytes) {
+					KeccakAbsorb(dataQueue, 0);
+					bytesInQueue = 0;
+				}
+			}
 
         bitsInQueue = bytesInQueue << 3;
     }
 
     private void padAndSwitchToSqueezingPhase()
     {
-        dataQueue[bitsInQueue >> 3] |= (byte)(1L << (bitsInQueue & 7));
-
-        if (++bitsInQueue == rate)
-        {
-            KeccakAbsorb(dataQueue, 0);
-            bitsInQueue = 0;
-        }
-
-        {
-            int full = bitsInQueue >> 6, partial = bitsInQueue & 63;
-            int off = 0;
-            for (int i = 0; i < full; ++i)
-            {
-                state[i] ^= Pack.littleEndianToLong(dataQueue, off);
-                off += 8;
-            }
-            if (partial > 0)
-            {
-                long mask = (1L << partial) - 1L;
-                state[full] ^= Pack.littleEndianToLong(dataQueue, off) & mask;
-            }
-            state[(rate - 1) >> 6] ^= (1L << 63);
-        }
-
-        KeccakPermutation();
-
-        KeccakExtract();
-        bitsInQueue = rate;
-
-        squeezing = true;
-    }
+		dataQueue[bitsInQueue >> 3] |= (byte) (1L << (bitsInQueue & 7));
+		if (++bitsInQueue == rate) {
+			KeccakAbsorb(dataQueue, 0);
+			bitsInQueue = 0;
+		}
+		int full = bitsInQueue >> 6, partial = bitsInQueue & 63, off = 0;
+		for (int i = 0; i < full; ++i) {
+			state[i] ^= Pack.littleEndianToLong(dataQueue, off);
+			off += 8;
+		}
+		if (partial > 0)
+			state[full] ^= Pack.littleEndianToLong(dataQueue, off) & (1L << partial) - 1L;
+		state[(rate - 1) >> 6] ^= (1L << 63);
+		KeccakPermutation();
+		KeccakExtract();
+		bitsInQueue = rate;
+		squeezing = true;
+	}
 
     private void squeeze(byte[] output, int offset, long outputLength)
     {
         if (!squeezing)
-        {
-            padAndSwitchToSqueezingPhase();
-        }
+			padAndSwitchToSqueezingPhase();
 
-        long i = 0;
-        while (i < outputLength)
-        {
-            if (bitsInQueue == 0)
-            {
-                KeccakPermutation();
-                KeccakExtract();
-                bitsInQueue = rate;
-            }
-            int partialBlock = (int)Math.min((long)bitsInQueue, outputLength - i);
-            System.arraycopy(dataQueue, (rate - bitsInQueue) / 8, output, offset + (int)(i / 8), partialBlock / 8);
-            bitsInQueue -= partialBlock;
-            i += partialBlock;
-        }
+        for (long i = 0; i < outputLength;) {
+			if (bitsInQueue == 0) {
+				KeccakPermutation();
+				KeccakExtract();
+				bitsInQueue = rate;
+			}
+			int partialBlock = (int) Math.min(1L * bitsInQueue, outputLength - i);
+			System.arraycopy(dataQueue, (rate - bitsInQueue) / 8, output, offset + (int) (i / 8), partialBlock / 8);
+			bitsInQueue -= partialBlock;
+			i += partialBlock;
+		}
     }
 
     private void KeccakAbsorb(byte[] data, int off)
@@ -206,27 +171,16 @@ public class KeccakDigest {
     {
         long[] A = state;
 
-        long a00 = A[ 0], a01 = A[ 1], a02 = A[ 2], a03 = A[ 3], a04 = A[ 4];
-        long a05 = A[ 5], a06 = A[ 6], a07 = A[ 7], a08 = A[ 8], a09 = A[ 9];
-        long a10 = A[10], a11 = A[11], a12 = A[12], a13 = A[13], a14 = A[14];
-        long a15 = A[15], a16 = A[16], a17 = A[17], a18 = A[18], a19 = A[19];
-        long a20 = A[20], a21 = A[21], a22 = A[22], a23 = A[23], a24 = A[24];
-
-        for (int i = 0; i < 24; i++)
+        long a00 = A[0], a01 = A[1], a02 = A[2], a03 = A[3], a04 = A[4], a05 = A[5], a06 = A[6], a07 = A[7], a08 = A[8],
+				a09 = A[9], a10 = A[10], a11 = A[11], a12 = A[12], a13 = A[13], a14 = A[14], a15 = A[15], a16 = A[16],
+				a17 = A[17], a18 = A[18], a19 = A[19], a20 = A[20], a21 = A[21], a22 = A[22], a23 = A[23], a24 = A[24];
+        for (int i = 0; i < 24; ++i)
         {
             
-            long c0 = a00 ^ a05 ^ a10 ^ a15 ^ a20;
-            long c1 = a01 ^ a06 ^ a11 ^ a16 ^ a21;
-            long c2 = a02 ^ a07 ^ a12 ^ a17 ^ a22;
-            long c3 = a03 ^ a08 ^ a13 ^ a18 ^ a23;
-            long c4 = a04 ^ a09 ^ a14 ^ a19 ^ a24;
-
-            long d1 = (c1 << 1 | c1 >>> 63) ^ c4;
-            long d2 = (c2 << 1 | c2 >>> 63) ^ c0;
-            long d3 = (c3 << 1 | c3 >>> 63) ^ c1;
-            long d4 = (c4 << 1 | c4 >>> 63) ^ c2;
-            long d0 = (c0 << 1 | c0 >>> 63) ^ c3;
-
+            long c0 = a00 ^ a05 ^ a10 ^ a15 ^ a20, c1 = a01 ^ a06 ^ a11 ^ a16 ^ a21, c2 = a02 ^ a07 ^ a12 ^ a17 ^ a22,
+					c3 = a03 ^ a08 ^ a13 ^ a18 ^ a23, c4 = a04 ^ a09 ^ a14 ^ a19 ^ a24, d1 = c4 ^ (c1 << 1 | c1 >>> 63),
+					d2 = c0 ^ (c2 << 1 | c2 >>> 63), d3 = c1 ^ (c3 << 1 | c3 >>> 63), d4 = c2 ^ (c4 << 1 | c4 >>> 63),
+					d0 = c3 ^ (c0 << 1 | c0 >>> 63);
             a00 ^= d1; a05 ^= d1; a10 ^= d1; a15 ^= d1; a20 ^= d1;
             a01 ^= d2; a06 ^= d2; a11 ^= d2; a16 ^= d2; a21 ^= d2;
             a02 ^= d3; a07 ^= d3; a12 ^= d3; a17 ^= d3; a22 ^= d3;
@@ -261,43 +215,43 @@ public class KeccakDigest {
             a10 = c1;
 
             
-            c0 = a00 ^ (~a01 & a02);
-            c1 = a01 ^ (~a02 & a03);
-            a02 ^= ~a03 & a04;
-            a03 ^= ~a04 & a00;
-            a04 ^= ~a00 & a01;
+            c0 = a00 ^ (a02 & ~a01);
+            c1 = a01 ^ (a03 & ~a02);
+            a02 ^= a04 & ~a03;
+            a03 ^= a00 & ~a04;
+            a04 ^= a01 & ~a00;
             a00 = c0;
             a01 = c1;
 
-            c0 = a05 ^ (~a06 & a07);
-            c1 = a06 ^ (~a07 & a08);
-            a07 ^= ~a08 & a09;
-            a08 ^= ~a09 & a05;
-            a09 ^= ~a05 & a06;
+            c0 = a05 ^ (a07 & ~a06);
+            c1 = a06 ^ (a08 & ~a07);
+            a07 ^= a09 & ~a08;
+            a08 ^= a05 & ~a09;
+            a09 ^= a06 & ~a05;
             a05 = c0;
             a06 = c1;
 
-            c0 = a10 ^ (~a11 & a12);
-            c1 = a11 ^ (~a12 & a13);
-            a12 ^= ~a13 & a14;
-            a13 ^= ~a14 & a10;
-            a14 ^= ~a10 & a11;
+            c0 = a10 ^ (a12 & ~a11);
+            c1 = a11 ^ (a13 & ~a12);
+            a12 ^= a14 & ~a13;
+            a13 ^= a10 & ~a14;
+            a14 ^= a11 & ~a10;
             a10 = c0;
             a11 = c1;
 
-            c0 = a15 ^ (~a16 & a17);
-            c1 = a16 ^ (~a17 & a18);
-            a17 ^= ~a18 & a19;
-            a18 ^= ~a19 & a15;
-            a19 ^= ~a15 & a16;
+            c0 = a15 ^ (a17 & ~a16);
+            c1 = a16 ^ (a18 & ~a17);
+            a17 ^= a19 & ~a18;
+            a18 ^= a15 & ~a19;
+            a19 ^= a16 & ~a15;
             a15 = c0;
             a16 = c1;
 
-            c0 = a20 ^ (~a21 & a22);
-            c1 = a21 ^ (~a22 & a23);
-            a22 ^= ~a23 & a24;
-            a23 ^= ~a24 & a20;
-            a24 ^= ~a20 & a21;
+            c0 = a20 ^ (a22 & ~a21);
+            c1 = a21 ^ (a23 & ~a22);
+            a22 ^= a24 & ~a23;
+            a23 ^= a20 & ~a24;
+            a24 ^= a21 & ~a20;
             a20 = c0;
             a21 = c1;
 

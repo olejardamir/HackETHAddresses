@@ -19,15 +19,14 @@ abstract class Nat
 
     public static void add33To(int len, int x, int[] z)
     {
-        long c = (z[0] & M) + (x & M);
+        long c = (x & M) + (z[0] & M);
         z[0] = (int)c;
         c >>>= 32;
         c += (z[1] & M) + 1L;
         z[1] = (int)c;
         c >>>= 32;
-        if (c != 0) {
-            incAt(len, z, 2);
-        }
+        if (c != 0)
+			incAt(len, z, 2);
     }
 
     public static int addTo(int len, int[] x, int[] z)
@@ -60,26 +59,20 @@ abstract class Nat
     {
 
         for (int i = zPos; i < len; ++i)
-        {
-            if (--z[i] != -1)
-            {
-                return;
-            }
-        }
+			if (--z[i] != -1) {
+				return;
+			}
     }
 
     public static int[] fromBigInteger(int bits, BigInteger x)
     {
 
 
-        int len = (bits + 31) >> 5;
-        int[] z = create(len);
-        int i = 0;
-        while (x.signum() != 0)
-        {
-            z[i++] = x.intValue();
-            x = x.shiftRight(32);
-        }
+        int[] z = create((bits + 31) >> 5);
+        for (int i = 0; x.signum() != 0;) {
+			z[i++] = x.intValue();
+			x = x.shiftRight(32);
+		}
         return z;
     }
 
@@ -87,8 +80,7 @@ abstract class Nat
     {
         for (int i = len - 1; i >= 0; --i)
         {
-            int x_i = x[i] ^ Integer.MIN_VALUE;
-            int y_i = y[i] ^ Integer.MIN_VALUE;
+            int x_i = x[i] ^ Integer.MIN_VALUE, y_i = y[i] ^ Integer.MIN_VALUE;
             if (x_i < y_i)
                 return false;
             if (x_i > y_i)
@@ -103,12 +95,8 @@ abstract class Nat
     {
 
         for (int i = zPos; i < len; ++i)
-        {
-            if (++z[i] != 0)
-            {
-                return;
-            }
-        }
+			if (++z[i] != 0)
+				return;
     }
 
 
@@ -116,16 +104,10 @@ abstract class Nat
     public static boolean isOne(int len, int[] x)
     {
         if (x[0] != 1)
-        {
-            return false;
-        }
+			return false;
         for (int i = 1; i < len; ++i)
-        {
-            if (x[i] != 0)
-            {
-                return false;
-            }
-        }
+			if (x[i] != 0)
+				return false;
         return true;
     }
 
@@ -133,25 +115,21 @@ abstract class Nat
 
     public static void shiftDownBit(int len, int[] z, int c)
     {
-        int i = len;
-        while (--i >= 0)
-        {
-            int next = z[i];
-            z[i] = (next >>> 1) | (c << 31);
-            c = next;
-        }
+        for (int i = len; --i >= 0;) {
+			int next = z[i];
+			z[i] = c << 31 | next >>> 1;
+			c = next;
+		}
     }
 
     public static void shiftDownBits(int len, int[] z, int bits, int c)
     {
 
-        int i = len;
-        while (--i >= 0)
-        {
-            int next = z[i];
-            z[i] = (next >>> bits) | (c << -bits);
-            c = next;
-        }
+        for (int i = len; --i >= 0;) {
+			int next = z[i];
+			z[i] = c << -bits | next >>> bits;
+			c = next;
+		}
     }
 
 
@@ -161,7 +139,7 @@ abstract class Nat
         for (int i = 0; i < len; ++i)
         {
             int next = x[i];
-            z[i] = (next << 1) | (c >>> 31);
+            z[i] = c >>> 31 | next << 1;
             c = next;
         }
         return c >>> 31;
@@ -175,7 +153,7 @@ abstract class Nat
         for (int i = 0; i < len; ++i)
         {
             int next = z[i];
-            z[i] = (next << bits) | (c >>> -bits);
+            z[i] = c >>> -bits | next << bits;
             c = next;
         }
         return c >>> -bits;
@@ -187,7 +165,7 @@ abstract class Nat
         for (int i = 0; i < len; ++i)
         {
             int next = x[i];
-            z[i] = (next << bits) | (c >>> -bits);
+            z[i] = c >>> -bits | next << bits;
             c = next;
         }
         return c >>> -bits;
@@ -201,9 +179,8 @@ abstract class Nat
         c += (z[1] & M) - 1;
         z[1] = (int)c;
         c >>= 32;
-        if (c != 0) {
-            decAt(len, z, 2);
-        }
+        if (c != 0)
+			decAt(len, z, 2);
     }
 
     public static int subFrom(int len, int[] x, int[] z)
