@@ -144,7 +144,7 @@ public class KeccakDigest {
 				KeccakExtract();
 				bitsInQueue = rate;
 			}
-			int partialBlock = (int) Math.min(1L * bitsInQueue, outputLength - i);
+			int partialBlock = (int) Math.min((long) bitsInQueue, outputLength - i);
 			System.arraycopy(dataQueue, (rate - bitsInQueue) / 8, output, offset + (int) (i / 8), partialBlock / 8);
 			bitsInQueue -= partialBlock;
 			i += partialBlock;

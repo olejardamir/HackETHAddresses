@@ -1,0 +1,14 @@
+
+Gsquid:S1068")Remove this unused "qGram" private field.(•™È8°úø‹÷-
+nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¨Ïûûÿÿÿÿ8ï øö-
+|squid:S3973$"YUse curly braces or indentation to denote the code conditionally executed by this "else".(„¶áìøÿÿÿÿ8şŸ¯›÷-
+Nsquid:S1068"0Remove this unused "sorensenDice" private field.(øŸû 8Ş¨ù‹÷-
+]squid:S1068":Remove this unused "optimalStringAlignment" private field.(œÔÃ¶ÿÿÿÿÿ8Ş¨ù‹÷-
+Msquid:S1068"/Remove this unused "jaroWinkler" private field.(Ñêü®8†î°›÷-
+Isquid:S1068"+Remove this unused "damerau" private field.(å£ªÓ8ÿı©›÷-
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(áÎÍÛüÿÿÿÿ
+Lsquid:S1068")Remove this unused "nGram" private field.(œ¿¿‚ıÿÿÿÿ8°úø‹÷-
+zsquid:S3973""WUse curly braces or indentation to denote the code conditionally executed by this "if".(ïæ¶Äúÿÿÿÿ8´÷­›÷-
+Hsquid:S1068"*Remove this unused "cosine" private field.(ù¦ÕÈ8°úø‹÷-
+nsquid:CommentedOutCodeLine'"<This block of commented-out lines of code should be removed.(ÅùÉ‡ûÿÿÿÿ8Ş¨ù‹÷-
+Ksquid:S1068	"-Remove this unused "metricLCS" private field.(­—¬Ä8Ş¨ù‹÷-

@@ -1,0 +1,5 @@
+
+Hsquid:S1068"+Remove this unused "hamming" private field.(©íƒG8†úÿËö-
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(áÎÍÛüÿÿÿÿ
+Ssquid:S1068"5Remove this unused "publicFromPrivate" private field.(—ï‹Â8†úÿËö-
+?squid:S1643+"Use a StringBuilder instead.(ŸõÏ×úÿÿÿÿ8†úÿËö-

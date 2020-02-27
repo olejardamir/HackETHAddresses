@@ -66,11 +66,14 @@ public class SecP256K1Curve extends ECCurve {
 			pos += FE_INTS;
 		}
 		return new ECLookupTable() {
-			public int getSize() {
-				return len;
-			}
 
-			public ECPoint lookup(int index) {
+
+            @Override
+            public int getSize() {
+                return 0;
+            }
+
+            public ECPoint lookup(int index) {
 				int[] x = new int[8], y = new int[8];
 				for (int pos = 0, i = 0; i < len; ++i) {
 					for (int MASK = ((i ^ index) - 1) >> 31, j = 0; j < FE_INTS; ++j) {
@@ -84,16 +87,4 @@ public class SecP256K1Curve extends ECCurve {
 		};
 	}
 
-    protected ECPoint decompressPoint(int yTilde, BigInteger X1) {
-        ECFieldElement x = this.fromBigInteger(X1), rhs = x.square().add(this.a).multiply(x).add(this.b);
-        ECFieldElement y = rhs.sqrt();
-
-
-
-
-        if (y.testBitZero() != (yTilde == 1))
-			y = y.negate();
-
-        return this.createRawPoint(x, y, true);
-    }
 }

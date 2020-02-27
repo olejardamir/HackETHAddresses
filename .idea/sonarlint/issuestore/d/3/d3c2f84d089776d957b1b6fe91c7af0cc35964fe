@@ -1,0 +1,11 @@
+
+bsquid:S3027"FPut single-quotes around '.' to use the faster "indexOf(char)" method.(âã±øÿÿÿÿÿ
+`squid:S3027"JPut single-quotes around ',' to use the faster "lastIndexOf(char)" method.(æÒ™p
+Xsquid:S1075"ARefactor your code to get this URI from a customizable parameter.(œ÷ÈÙ
+csquid:S2095"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(ñÓãÑ
+T
+squid:S106"9Replace this use of System.out or System.err by a logger.(…ØœÌûÿÿÿÿ
+T
+squid:S106"9Replace this use of System.out or System.err by a logger.(ñ—¸½úÿÿÿÿ
+Osquid:S1854"8Remove this useless assignment to local variable "line".(§¯ ½
+csquid:UselessImportCheck":Remove this unused import 'java.io.FileNotFoundException'.(·î™ùÿÿÿÿ

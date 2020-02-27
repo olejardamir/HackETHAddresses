@@ -1,6 +1,7 @@
 package Keys;
 import java.math.BigInteger;
 
+//done checkpoint clean
 public abstract class ECFieldElement {
     public static final BigInteger ZERO = BigInteger.valueOf(0);
     public static final BigInteger ONE = BigInteger.valueOf(1);
@@ -23,8 +24,6 @@ public abstract class ECFieldElement {
 
     public abstract ECFieldElement invert();
 
-    public abstract ECFieldElement sqrt();
-
     public int bitLength() {
         return toBigInteger().bitLength();
     }
@@ -36,12 +35,6 @@ public abstract class ECFieldElement {
     public boolean isZero() {
         return toBigInteger().signum() == 0;
     }
-
-
-    public boolean testBitZero() {
-        return toBigInteger().testBit(0);
-    }
-
 
 
     public byte[] getEncoded() {

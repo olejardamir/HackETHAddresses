@@ -1,0 +1,9 @@
+
+usquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(ÙØ¤Þýÿÿÿÿ8Ÿ“Žœ÷-
+isquid:CommentedOutCodeLine/"<This block of commented-out lines of code should be removed.(¯É…‘8Úë‚œ÷-
+isquid:CommentedOutCodeLineJ"<This block of commented-out lines of code should be removed.(¯É…‘8Ö«‹ ÷-
+jsquid:CommentedOutCodeLine„"<This block of commented-out lines of code should be removed.(¯É…‘8§Ð ÷-
+isquid:CommentedOutCodeLineh"<This block of commented-out lines of code should be removed.(¯É…‘8Ÿ“Žœ÷-
+jsquid:S00101
+"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(…èÆÊÿÿÿÿÿ
+]squid:UselessImportCheck"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ8’ù•Ôô-

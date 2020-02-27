@@ -2,6 +2,7 @@ package Keys;
 
 import java.math.BigInteger;
 
+//checkpoint clean
 class FixedPointUtil
 {
     private static final String PRECOMP_NAME = "bc_fixed_point";
@@ -15,55 +16,40 @@ class FixedPointUtil
     public static FixedPointPreCompInfo precompute(final ECPoint p) {
         final ECCurve c = p.getCurve();
 
-        return c.precompute(p, PRECOMP_NAME, new PreCompCallback()
-        {
-            public FixedPointPreCompInfo precompute(FixedPointPreCompInfo existing) {
+        return c.precompute(p, PRECOMP_NAME, existing -> {
 
-                int bits = getCombSize(c), minWidth = bits > 250 ? 6 : 5, n = 1 << minWidth;
-                if (checkExisting(existing, n))
-					return existing;
+            int bits = getCombSize(c), minWidth = bits > 250 ? 6 : 5, n = 1 << minWidth;
 
-                int d = (bits + minWidth - 1) / minWidth;
+            int d = (bits + minWidth - 1) / minWidth;
 
-                ECPoint[] pow2Table = new ECPoint[minWidth + 1];
-                pow2Table[0] = p;
-                for (int i = 1; i < minWidth; ++i)
-					pow2Table[i] = pow2Table[i - 1].timesPow2(d);
+            ECPoint[] pow2Table = new ECPoint[minWidth + 1];
+            pow2Table[0] = p;
+            for (int i = 1; i < minWidth; ++i)
+                pow2Table[i] = pow2Table[i - 1].timesPow2(d);
 
-                
-                pow2Table[minWidth] = pow2Table[0].subtract(pow2Table[1]);
 
-                c.normalizeAll(pow2Table);
+            pow2Table[minWidth] = pow2Table[0].subtract(pow2Table[1]);
 
-                ECPoint[] lookupTable = new ECPoint[n];
-                lookupTable[0] = pow2Table[0];
+            c.normalizeAll(pow2Table);
 
-                for (int bit = minWidth - 1; bit >= 0; --bit)
-                {
-                    ECPoint pow2 = pow2Table[bit];
+            ECPoint[] lookupTable = new ECPoint[n];
+            lookupTable[0] = pow2Table[0];
 
-                    for (int i = 1 << bit; i < n; i += ((1 << bit) << 1))
-						lookupTable[i] = lookupTable[i - (1 << bit)].add(pow2);
-                }
-
-                c.normalizeAll(lookupTable);
-
-                FixedPointPreCompInfo result = new FixedPointPreCompInfo();
-                result.setLookupTable(c.createCacheSafeLookupTable(lookupTable, 0, lookupTable.length));
-                result.setOffset(pow2Table[minWidth]);
-                result.setWidth(minWidth);
-                return result;
-            }
-
-            private boolean checkExisting(FixedPointPreCompInfo existingFP, int n)
+            for (int bit = minWidth - 1; bit >= 0; --bit)
             {
-                return existingFP != null && checkTable(existingFP.getLookupTable(), n);
+                ECPoint pow2 = pow2Table[bit];
+
+                for (int i = 1 << bit; i < n; i += ((1 << bit) << 1))
+                    lookupTable[i] = lookupTable[i - (1 << bit)].add(pow2);
             }
 
-            private boolean checkTable(ECLookupTable table, int n)
-            {
-                return table != null && table.getSize() >= n;
-            }
+            c.normalizeAll(lookupTable);
+
+            FixedPointPreCompInfo result = new FixedPointPreCompInfo();
+            result.setLookupTable(c.createCacheSafeLookupTable(lookupTable, 0, lookupTable.length));
+            result.setOffset(pow2Table[minWidth]);
+            result.setWidth(minWidth);
+            return result;
         });
     }
 }

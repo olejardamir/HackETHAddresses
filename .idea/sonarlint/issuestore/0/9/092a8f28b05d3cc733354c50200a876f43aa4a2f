@@ -1,0 +1,20 @@
+
+jsquid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(—…ØÃ
+osquid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(’À‹µýÿÿÿÿ
+osquid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(‰’ñ´ûÿÿÿÿ
+nsquid:S3973a"WUse curly braces or indentation to denote the code conditionally executed by this "if".(Æ€ß¥
+nsquid:S3973T"WUse curly braces or indentation to denote the code conditionally executed by this "if".(ê’˜Š
+ssquid:S3973N"WUse curly braces or indentation to denote the code conditionally executed by this "if".(åïûêýÿÿÿÿ
+jsquid:ModifiersOrderCheck
+"EReorder the modifiers to comply with the Java Language Specification.(³—æ¨
+tsquid:S3973ó"WUse curly braces or indentation to denote the code conditionally executed by this "if".(œ·åªøÿÿÿÿ
+rsquid:S00115
+"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(³—æ¨
+osquid:ModifiersOrderCheck	"EReorder the modifiers to comply with the Java Language Specification.(Ž…Óÿÿÿÿÿ
+osquid:S3973ù"WUse curly braces or indentation to denote the code conditionally executed by this "if".(„§‘à
+jsquid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(ÉäŸÈ
+wsquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(‰’ñ´ûÿÿÿÿ
+nsquid:S3973>"WUse curly braces or indentation to denote the code conditionally executed by this "if".(–Ç£÷
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¥­ÌÖ
+Qsquid:S1118":Add a private constructor to hide the implicit public one.(„‹ÖÒ
+nsquid:S3973G"WUse curly braces or indentation to denote the code conditionally executed by this "if".(ÿŸŸƒ

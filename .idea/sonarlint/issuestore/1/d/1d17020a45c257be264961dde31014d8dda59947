@@ -1,0 +1,8 @@
+
+Vsquid:S1118":Add a private constructor to hide the implicit public one.(ðÚÎ…þÿÿÿÿ
+ssquid:S3973'"WUse curly braces or indentation to denote the code conditionally executed by this "if".(ÇÌ†ìýÿÿÿÿ
+„ squid:ForLoopCounterChangedCheck"XRefactor the code in order to not assign to this loop counter from within the loop body.(¬¶ƒì
+‚ squid:ForLoopCounterChangedCheck"XRefactor the code in order to not assign to this loop counter from within the loop body.(ò§
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¥­ÌÖ
+‰ squid:ForLoopCounterChangedCheck"XRefactor the code in order to not assign to this loop counter from within the loop body.(²žÖµýÿÿÿÿ
+osquid:S3973?"XUse curly braces or indentation to denote the code conditionally executed by this "for".(Óÿöã

@@ -10,8 +10,7 @@ class Hex
 
 
     
-    public static byte[] decode(
-            String    data) throws Exception {
+    public static byte[] decode( String    data) throws Exception {
         ByteArrayOutputStream    bOut = new ByteArrayOutputStream();
 
 

@@ -1,8 +1,8 @@
 package Keys;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 
-
+//checkpoint clean
 public abstract class ECPoint
 {
     private static final ECFieldElement[] EMPTY_ZS = new ECFieldElement[0];
@@ -29,10 +29,7 @@ public abstract class ECPoint
             case ECCurve.COORD_JACOBIAN:
             case ECCurve.COORD_LAMBDA_PROJECTIVE:
                 return new ECFieldElement[]{ one };
-            case ECCurve.COORD_JACOBIAN_CHUDNOVSKY:
-                return new ECFieldElement[]{ one, one, one };
-            case ECCurve.COORD_JACOBIAN_MODIFIED:
-                return new ECFieldElement[]{ one, curve.getA() };
+
             default:
         }
         return null;
@@ -46,7 +43,7 @@ public abstract class ECPoint
     boolean withCompression;
 
     
-    Hashtable preCompTable;
+    HashMap preCompTable;
 
     ECPoint(ECCurve curve, ECFieldElement x, ECFieldElement y)
     {
@@ -77,10 +74,7 @@ public abstract class ECPoint
         return curve == null ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
     }
 
-    
-    ECFieldElement getAffineYCoord() {
-         return getYCoord();
-    }
+
 
     
     public ECFieldElement getXCoord()
@@ -121,14 +115,12 @@ public abstract class ECPoint
 
     
     public ECPoint normalize() {
-        if (this.isInfinity())
-			return this;
+
 
         switch (this.getCurveCoordinateSystem())
         {
             case ECCurve.COORD_AFFINE:
-            case ECCurve.COORD_LAMBDA_AFFINE:
-            return this;
+
             default:
             {
 				ECFieldElement Z1 = getZCoord(0);
@@ -142,8 +134,6 @@ public abstract class ECPoint
         switch (this.getCurveCoordinateSystem())
         {
             case ECCurve.COORD_HOMOGENEOUS:
-            case ECCurve.COORD_LAMBDA_PROJECTIVE:
-            return createScaledPoint(zInv, zInv);
             case ECCurve.COORD_JACOBIAN:
             case ECCurve.COORD_JACOBIAN_CHUDNOVSKY:
             case ECCurve.COORD_JACOBIAN_MODIFIED:
@@ -164,7 +154,7 @@ public abstract class ECPoint
         return this.getCurve().createRawPoint(getRawXCoord().multiply(sx), getRawYCoord().multiply(sy), this.withCompression);
     }
 
-    public boolean isInfinity()
+    boolean isInfinity()
     {
         return x == null || y == null || (zs.length > 0 && zs[0].isZero());
     }
@@ -174,21 +164,14 @@ public abstract class ECPoint
     
 
     
-    public byte[] getEncoded(boolean compressed) {
-        if (this.isInfinity())
-			return new byte[1];
+    public byte[] getEncoded() {
+
 
         ECPoint normed = normalize();
 
         byte[] X = normed.getXCoord().getEncoded();
 
-        if (compressed)
-        {
-            byte[] PO = new byte[X.length + 1];
-            PO[0] = (byte)(normed.getCompressionYTilde() ? 0x03 : 0x02);
-            System.arraycopy(X, 0, PO, 1, X.length);
-            return PO;
-        }
+
 
         byte[] Y = normed.getYCoord().getEncoded(), PO = new byte[X.length + Y.length + 1];
 
@@ -198,7 +181,6 @@ public abstract class ECPoint
         return PO;
     }
 
-    protected abstract boolean getCompressionYTilde();
 
     public abstract ECPoint add(ECPoint b);
 
@@ -207,8 +189,6 @@ public abstract class ECPoint
     public abstract ECPoint subtract(ECPoint b);
 
     public ECPoint timesPow2(int e) {
-
-
         ECPoint p = this;
         while (--e >= 0)
 			p = p.twice();
@@ -218,7 +198,7 @@ public abstract class ECPoint
     public abstract ECPoint twice();
 
     public ECPoint twicePlus(ECPoint b) {
-        return twice().add(b);
+        return null;
     }
 
 

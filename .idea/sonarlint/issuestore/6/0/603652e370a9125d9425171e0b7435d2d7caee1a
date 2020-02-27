@@ -1,0 +1,9 @@
+
+wsquid:S3973„"ZUse curly braces or indentation to denote the code conditionally executed by this "while".(şó€Şÿÿÿÿÿ
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¥­ÌÖ
+Esquid:S1172Ğ"&Remove these unused method parameters.(àÖø“8Ó’Ï¥ö-
+nsquid:S3973d"WUse curly braces or indentation to denote the code conditionally executed by this "if".(òÒÿ‚
+osquid:S3973x"XUse curly braces or indentation to denote the code conditionally executed by this "for".(ùÓ—
+`squid:UselessImportCheck"0Remove this unused import 'java.util.Hashtable'.(Œ»ÏÊüÿÿÿÿ8ú•…¥ö-
+ssquid:S3973^"WUse curly braces or indentation to denote the code conditionally executed by this "if".(Ç–›¯øÿÿÿÿ
+psquid:S3973•"XUse curly braces or indentation to denote the code conditionally executed by this "for".(Õ£óí

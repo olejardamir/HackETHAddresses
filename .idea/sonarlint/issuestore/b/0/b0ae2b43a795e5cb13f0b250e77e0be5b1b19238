@@ -1,0 +1,11 @@
+
+tsquid:S3973"XUse curly braces or indentation to denote the code conditionally executed by this "for".(¥ÓéÀÿÿÿÿÿ
+‰ squid:ForLoopCounterChangedCheckA"XRefactor the code in order to not assign to this loop counter from within the loop body.(×Áîÿÿÿÿÿ
+tsquid:S39737"XUse curly braces or indentation to denote the code conditionally executed by this "for".(£Íêùÿÿÿÿ
+‰ squid:ForLoopCounterChangedCheck@"XRefactor the code in order to not assign to this loop counter from within the loop body.(°ñÆõþÿÿÿÿ
+rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¥­ÌÖ
+7squid:S1170"!Make this final field static too.(Ì¾ûi
+osquid:S3973"XUse curly braces or indentation to denote the code conditionally executed by this "for".(Ž‹ö÷
+Zsquid:S3034B">Prevent "int" promotion by adding "& 0xff" to this expression.(¶÷ÿ™þÿÿÿÿ
+‰ squid:ForLoopCounterChangedCheck="XRefactor the code in order to not assign to this loop counter from within the loop body.(°ñÆõþÿÿÿÿ
+„ squid:ForLoopCounterChangedCheck>"XRefactor the code in order to not assign to this loop counter from within the loop body.(ïÄ–Ï

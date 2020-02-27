@@ -9,13 +9,15 @@ public class testAll {
         BufferedReader reader = new BufferedReader(new FileReader("data/out3_big.csv"));
         String line;
         int t=0;
-        while((line=reader.readLine())!=null)
+		String decodeString = "04"+"79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798"+"483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8";
+
+		while((line=reader.readLine())!=null)
 			try {
 				String[] sp = line.split(",");
 				PublicFromPrivate publicFromPrivate = new PublicFromPrivate();
-				String stringBuilder7 = publicFromPrivate.getPublicFromPrivate(sp[1]);
-				if (("0x" + sp[0].substring(24)).equals(stringBuilder7)) {
-					System.out.println(line + "\t" + stringBuilder7);
+				String stringBuilder7 = publicFromPrivate.getPublicNonFormat(sp[1],decodeString);
+				if (sp[0].equals(stringBuilder7)) {
+					System.out.println(line + "\t" + stringBuilder7+"\t"+sp[0]);
 					t++;
 				}
 			} catch (Exception ignored) {

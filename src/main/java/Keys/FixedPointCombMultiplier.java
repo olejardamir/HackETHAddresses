@@ -1,6 +1,7 @@
 package Keys;
 import java.math.BigInteger;
 
+//checkpoint clean
 public class FixedPointCombMultiplier {
      protected ECPoint multiplyPositive(ECPoint p, BigInteger k) {
 

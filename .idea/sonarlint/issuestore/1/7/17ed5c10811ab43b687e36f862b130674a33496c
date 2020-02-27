@@ -1,0 +1,13 @@
+
+Hsquid:S00108@")Either remove or fill this block of code.(”ı¾8éøçÉ÷-
+Usquid:S11350"2Complete the task associated to this TODO comment.(ä³€Åøÿÿÿÿ8•ëçÉ÷-
+isquid:CommentedOutCodeLine_"<This block of commented-out lines of code should be removed.(¯É…‘8éøçÉ÷-
+osquid:S2095K"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(õéµ¨ûÿÿÿÿ8éøçÉ÷-
+V
+squid:S106%"9Replace this use of System.out or System.err by a logger.(‚ÒÑÑ8Ôê–Â÷-
+Vsquid:S1854L"8Remove this useless assignment to local variable "line".(î€8éøçÉ÷-
+jsquid:S00101
+"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ĞÑÓˆùÿÿÿÿ
+hsquid:CommentedOutCodeLine("<This block of commented-out lines of code should be removed.(³‘p8’´’Ã÷-
+[
+squid:S106:"9Replace this use of System.out or System.err by a logger.(ô˜»Éûÿÿÿÿ8Ï²…Â÷-
