@@ -1,7 +1,7 @@
 # HackETHAddresses
 Flattened version of key to address
 
-This program is made as a fast and optimized converted of the private key to public. 
+This program is made as a fast and optimized converter of the private keys to public. 
 With parallel processing, you can check for one billion private keys per day.
 
 However, even with one billion combinations per day, it would take at least 500-1000 years for the whole human population in the world 
