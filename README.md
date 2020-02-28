@@ -5,7 +5,7 @@ This program is made as a fast and optimized converter of the private keys to pu
 With parallel processing, you can check for one billion private keys per day.
 
 However, even with one billion combinations per day, it would take at least 500-1000 years for the whole human population in the world 
-to get one existing key from all the existing keys.
+to get one existing key from all the active addresses.
 
 Do not waste electricity on this!
 
