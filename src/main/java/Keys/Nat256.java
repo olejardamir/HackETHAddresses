@@ -70,11 +70,11 @@ package Keys;
     }
 //------------------------------------------------------------------
 
-      static long mul33Add(int w, int[] x, int[] y, int[] z)
+      static long mul33Add(int[] x, int[] y, int[] z)
     {
         
 
-        long c = 0, wVal = w & M, x0 = x[8] & M;
+        long c = 0, wVal = 977 & M, x0 = x[8] & M;
         c += x0 * wVal + (y[0] & M);
         z[0] = (int)c;
         c >>>= 32;
@@ -109,9 +109,9 @@ package Keys;
         return c + x7;
     }
 
-      static void mul33DWordAdd(int x, long y, int[] z)
+      static void mul33DWordAdd(long y, int[] z)
     {
-        long c = 0, xVal = x & M, y00 = y & M;
+        long c = 0, xVal = 977 & M, y00 = y & M;
         c += y00 * xVal + (z[0] & M);
         z[0] = (int)c;
         c >>>= 32;
@@ -126,9 +126,9 @@ package Keys;
         z[3] = (int)c;
     }
 
-      static int mul33WordAdd(int x, int y, int[] z)
+      static int mul33WordAdd(int y, int[] z)
     {
-        long c = 0, xVal = x & M, yVal = y & M;
+        long c = 0, xVal = 977 & M, yVal = y & M;
         c += yVal * xVal + (z[0] & M);
         z[0] = (int)c;
         c >>>= 32;

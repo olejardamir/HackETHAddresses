@@ -6,7 +6,7 @@ import java.math.BigInteger;
 public class SecP256K1Curve extends ECCurve {
     private static final int SECP256K1_DEFAULT_COORDS = COORD_JACOBIAN;
     private static final HexEncoder encoder = new HexEncoder();
-    static BigInteger q;
+    private static BigInteger q;
 
     static {
         try {
@@ -26,7 +26,7 @@ public class SecP256K1Curve extends ECCurve {
         this.coord = SECP256K1_DEFAULT_COORDS;
     }
 
-    static byte[] decode(String data) throws Exception {
+    private static byte[] decode(String data) throws Exception {
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
 
         encoder.decode(data, bOut);

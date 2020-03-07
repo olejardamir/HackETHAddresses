@@ -17,7 +17,7 @@ public class PublicFromPrivate implements Serializable {
         kecc = new KeccakDigest();
     }
 
-    static byte[] decode(String data) throws Exception {
+    private static byte[] decode(String data) throws Exception {
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
 
 
