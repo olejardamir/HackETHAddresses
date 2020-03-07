@@ -107,7 +107,6 @@ public class PublicFromPrivate implements Serializable {
     }
 
 
-
     private StringBuilder duplicate2(String publicKeyNoPrefix) {
 
         byte[] data = new byte[publicKeyNoPrefix.length() / 2];

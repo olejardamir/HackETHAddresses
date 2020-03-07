@@ -2,7 +2,9 @@ package Keys;
 
 import java.math.BigInteger;
 
-/** Done checkpoint clean. */
+/**
+ * Done checkpoint clean.
+ */
 public abstract class ECCurve {
     static final int COORD_AFFINE = 0;
     static final int COORD_HOMOGENEOUS = 1;

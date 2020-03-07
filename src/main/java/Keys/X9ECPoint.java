@@ -3,17 +3,15 @@ package Keys;
 import java.math.BigInteger;
 
 class X9ECPoint {
-    private final byte[]  string;
+    private final byte[] string;
 
     private final ECCurve c;
     private ECPoint p;
 
 
-
     X9ECPoint(
             ECCurve c,
-            byte[] encoding)
-    {
+            byte[] encoding) {
 
         this.c = c;
         byte[] copy = new byte[encoding.length];
@@ -24,10 +22,8 @@ class X9ECPoint {
     }
 
 
-
     synchronized ECPoint getPoint() {
-        if (p == null)
-        {
+        if (p == null) {
             ECPoint p1 = null;
             int expectedLength = (c.getFieldSize() + 7) / 8;
 
@@ -63,11 +59,6 @@ class X9ECPoint {
 
         return p;
     }
-
-
-
-
-
 
 
 }

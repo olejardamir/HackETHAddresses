@@ -2,7 +2,9 @@ package Keys;
 
 import java.io.OutputStream;
 
-/** Checkpoint clean. */
+/**
+ * Checkpoint clean.
+ */
 class HexEncoder {
     private final byte[] encodingTable =
             {
@@ -18,12 +20,12 @@ class HexEncoder {
 
     private void initialiseDecodingTable() {
         for (int i = 0; i < decodingTable.length; ++i) {
-			decodingTable[i] = (byte) 0xff;
-		}
+            decodingTable[i] = (byte) 0xff;
+        }
 
         for (int i = 0; i < encodingTable.length; ++i) {
-			decodingTable[encodingTable[i]] = (byte) i;
-		}
+            decodingTable[encodingTable[i]] = (byte) i;
+        }
 
         decodingTable['A'] = decodingTable['a'];
         decodingTable['B'] = decodingTable['b'];
@@ -43,20 +45,20 @@ class HexEncoder {
 
         char c = data.charAt(end - 1);
         for (; end > 0; --end) {
-			if (c != '\n' && c != '\r' && c != '\t' && c != ' ') {
-				break;
-			}
-		}
+            if (c != '\n' && c != '\r' && c != '\t' && c != ' ') {
+                break;
+            }
+        }
 
         for (int i = 0; i < end; ) {
-            for (char c1 = data.charAt(i); i < end && (c1 == '\n' || c1 == '\r' || c1 == '\t' || c1 == ' ');) {
-				++i;
-			}
+            for (char c1 = data.charAt(i); i < end && (c1 == '\n' || c1 == '\r' || c1 == '\t' || c1 == ' '); ) {
+                ++i;
+            }
             b1 = decodingTable[data.charAt(i++)];
             c = data.charAt(i);
             while (i < end && (c == '\n' || c == '\r' || c == '\t' || c == ' ')) {
-				++i;
-			}
+                ++i;
+            }
             b2 = decodingTable[data.charAt(i++)];
             out.write(b2 | (b1 << 4));
         }

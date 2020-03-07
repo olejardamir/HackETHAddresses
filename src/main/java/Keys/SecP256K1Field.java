@@ -78,7 +78,7 @@ class SecP256K1Field {
     static void reduce32(int x, int[] z) {
         if ((x != 0 && Nat256.mul33WordAdd(x, z) != 0)
                 || (z[7] == -1 && Nat256.gte(z))) {
-            Nat.add33To(977, z);
+            Nat.add33To(z);
         }
     }
 
@@ -90,6 +90,6 @@ class SecP256K1Field {
             c = next;
         }
         if (c >>> 31 != 0 || (z[7] == -1 && Nat256.gte(z)))
-            Nat.add33To(977, z);
+            Nat.add33To(z);
     }
 }

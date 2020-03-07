@@ -2,7 +2,9 @@ package Keys;
 
 import java.util.HashMap;
 
-/** Checkpoint clean. */
+/**
+ * Checkpoint clean.
+ */
 public abstract class ECPoint {
     private static final ECFieldElement[] EMPTY_ZS = new ECFieldElement[0];
     final ECCurve curve;
@@ -10,7 +12,7 @@ public abstract class ECPoint {
     final ECFieldElement y;
     final ECFieldElement[] zs;
     boolean withCompression;
-    HashMap preCompTable;
+    HashMap<?, ?> preCompTable;
 
     ECPoint(ECCurve curve, ECFieldElement x, ECFieldElement y) {
         this(curve, x, y, getInitialZCoords(curve));
@@ -82,7 +84,7 @@ public abstract class ECPoint {
     ECPoint timesPow2(int e) {
         ECPoint p = this;
         while (--e >= 0)
-			p = p.twice();
+            p = p.twice();
         return p;
     }
 

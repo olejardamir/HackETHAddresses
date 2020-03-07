@@ -1,6 +1,5 @@
 package Keys;
 
-public interface ECLookupTable
-{
+public interface ECLookupTable {
     ECPoint lookup(int index);
 }

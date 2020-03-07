@@ -2,7 +2,9 @@ package Keys;
 
 import java.math.BigInteger;
 
-/** Done checkpoint clean. */
+/**
+ * Done checkpoint clean.
+ */
 public abstract class ECFieldElement {
     static final BigInteger ONE = BigInteger.ONE;
 
@@ -20,8 +22,8 @@ public abstract class ECFieldElement {
         int length = 32;
         byte[] bytes = toBigInteger().toByteArray();
         if (bytes.length == length) {
-			return bytes;
-		}
+            return bytes;
+        }
 
         int start = bytes[0] == 0 ? 1 : 0, count = bytes.length - start;
         byte[] tmp = new byte[length];
