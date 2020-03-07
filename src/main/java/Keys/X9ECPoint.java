@@ -1,7 +1,7 @@
 package Keys;
 
 class X9ECPoint {
-    byte[]  string;
+    private byte[]  string;
 
     private final ECCurve c;
     private ECPoint p;
@@ -9,8 +9,8 @@ class X9ECPoint {
 
 
     public X9ECPoint(
-            ECCurve          c,
-            byte[]           encoding)
+            ECCurve c,
+            byte[] encoding)
     {
 
         this.c = c;

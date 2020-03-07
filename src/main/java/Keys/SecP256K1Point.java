@@ -2194,10 +2194,10 @@ public class SecP256K1Point extends ECPoint {
         for (int i2 = 0; i2 < 8; ++i2)
         {
             int next = Y1Squared[i2];
-            Y1Squared[i2] = c8 >>> -2 | next << 2;
+            Y1Squared[i2] = c8 >>> 30 | next << 2;
             c8 = next;
         }
-        c = c8 >>> -2;
+        c = c8 >>> 30;
         SecP256K1Field.reduce32(c, Y1Squared);
 
         int[] t1 = new int[8];
@@ -2206,10 +2206,10 @@ public class SecP256K1Point extends ECPoint {
         for (int i2 = 0; i2 < 8; ++i2)
         {
             int next = T[i2];
-            t1[i2] = c9 >>> -3 | next << 3;
+            t1[i2] = c9 >>> 29 | next << 3;
             c9 = next;
         }
-        c = c9 >>> -3;
+        c = c9 >>> 29;
         SecP256K1Field.reduce32(c, t1);
 
         SecP256K1FieldElement X3 = new SecP256K1FieldElement(T);

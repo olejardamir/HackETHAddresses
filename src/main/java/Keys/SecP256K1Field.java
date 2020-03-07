@@ -61,10 +61,9 @@ class SecP256K1Field {
             z1[i++] = x.intValue();
             x = x.shiftRight(32);
         }
-        int[] z = z1;
-        if (z[7] == P7 && Nat256.gte(z, P))
-            Nat256.subFrom(P, z);
-        return z;
+        if (z1[7] == P7 && Nat256.gte(z1, P))
+            Nat256.subFrom(P, z1);
+        return z1;
     }
 
     public static void multiplyAddToExt(int[] x, int[] y, int[] zz) {

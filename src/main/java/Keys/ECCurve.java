@@ -37,7 +37,6 @@ public abstract class ECCurve
 
 
                 c.coord = coord;
-                 c.multiplier = multiplier;
 
 
             return c;
@@ -48,7 +47,6 @@ public abstract class ECCurve
     BigInteger order;
 
     int coord = COORD_AFFINE;
-     private FixedPointCombMultiplier multiplier;
 
 
 

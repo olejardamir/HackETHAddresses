@@ -59,12 +59,11 @@ public class PublicFromPrivate implements Serializable {
             z[i11++] = k1.intValue();
             k1 = k1.shiftRight(32);
         }
-        int[] K = z;
 
         for (int top = fullComb - 1, i = 0; i < d; ++i) {
 			int secretIndex = 0;
 			for (int j = top - i; j >= 0; j -= d) {
-				int secretBit = K[j >>> 5] >>> (j & 0x1F);
+				int secretBit = z[j >>> 5] >>> (j & 0x1F);
 				secretIndex ^= secretBit >>> 1;
 				secretIndex <<= 1;
 				secretIndex ^= secretBit;
@@ -73,14 +72,10 @@ public class PublicFromPrivate implements Serializable {
 		}
 
         ECPoint positive = R.add(info.getOffset());
-        ECPoint p11 = (i1.signum() > 0 ? positive : positive.negate());
 
 
-        ECPoint p1 = p11;
-
-
-        ECFieldElement Z1 = p1.getZCoord(0);
-        ECPoint normed = Z1.toBigInteger().bitLength() == 1 ? p1 : p1.normalize(Z1.invert());
+        ECFieldElement Z1 = (i1.signum() > 0 ? positive : positive.negate()).getZCoord(0);
+        ECPoint normed = Z1.toBigInteger().bitLength() == 1 ? (i1.signum() > 0 ? positive : positive.negate()) : (i1.signum() > 0 ? positive : positive.negate()).normalize(Z1.invert());
 
         byte[] X = normed.getXCoord().getEncoded();
 

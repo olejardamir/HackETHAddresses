@@ -3,7 +3,6 @@ package Keys;
 import java.math.BigInteger;
 import java.util.HashMap;
 
-//checkpoint clean
 class FixedPointUtil {
     private static final String PRECOMP_NAME = "bc_fixed_point";
 
@@ -113,11 +112,10 @@ class FixedPointUtil {
         result.setLookupTable(c.createCacheSafeLookupTable(lookupTable, 0, lookupTable.length));
         result.setOffset(pow2Table[minWidth]);
         result.setWidth(minWidth);
-        FixedPointPreCompInfo result1 = result;
-        if (result1 != table.get(PRECOMP_NAME))
-            table.put(PRECOMP_NAME, result1);
+        if (result != table.get(PRECOMP_NAME))
+            table.put(PRECOMP_NAME, result);
 
-        return result1;
+        return result;
 
     }
 }

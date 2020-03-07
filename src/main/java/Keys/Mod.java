@@ -8,21 +8,21 @@ abstract class Mod {
 
 		int[] z2 = new int[len];
 		System.arraycopy(x, 0, z2, 0, len);
-		int[] u = z2, a = new int[len];
+		int[] a = new int[len];
         a[0] = 1;
-        int ac = (u[0] & 1) != 0 ? 0 : inversionStep(p, u, len, a, 0);
+        int ac = (z2[0] & 1) != 0 ? 0 : inversionStep(p, z2, len, a, 0);
 
 		int[] z1 = new int[len];
 		System.arraycopy(p, 0, z1, 0, len);
-		int[] v = z1, b = new int[len];
+		int[] b = new int[len];
         for (int bc = 0, uvLen = len;;) {
-			while (u[uvLen - 1] == 0 && v[uvLen - 1] == 0)
+			while (z2[uvLen - 1] == 0 && z1[uvLen - 1] == 0)
 				--uvLen;
-			if (Nat.gte(uvLen, u, v)) {
-				Nat.subFrom(uvLen, v, u);
+			if (Nat.gte(uvLen, z2, z1)) {
+				Nat.subFrom(uvLen, z1, z2);
 				ac += Nat.subFrom(len, b, a) - bc;
-				ac = inversionStep(p, u, uvLen, a, ac);
-				if (Nat.isOne(uvLen, u)) {
+				ac = inversionStep(p, z2, uvLen, a, ac);
+				if (Nat.isOne(uvLen, z2)) {
 					if (ac < 0)
 						Nat.add(p.length, a, p, z);
 					else
@@ -30,10 +30,10 @@ abstract class Mod {
 					return;
 				}
 			} else {
-				Nat.subFrom(uvLen, u, v);
+				Nat.subFrom(uvLen, z2, z1);
 				bc += Nat.subFrom(len, a, b) - ac;
-				bc = inversionStep(p, v, uvLen, b, bc);
-				if (Nat.isOne(uvLen, v)) {
+				bc = inversionStep(p, z1, uvLen, b, bc);
+				if (Nat.isOne(uvLen, z1)) {
 					if (bc < 0)
 						Nat.add(p.length, b, p, z);
 					else
