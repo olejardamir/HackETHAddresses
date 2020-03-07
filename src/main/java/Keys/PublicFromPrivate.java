@@ -61,9 +61,11 @@ public class PublicFromPrivate implements Serializable {
         StringBuilder stringBuilder1 = new StringBuilder();
 
         Keccak.Digest256 kecc = new Keccak.Digest256();
-        kecc.update(data, 0, data.length);
+        kecc.digest.update(data, 0, data.length);
 
-        for (byte b : kecc.digest())
+        byte[] digestBytes = new byte[kecc.digest.getDigestSize()];
+        kecc.digest.doFinal(digestBytes, 0);
+        for (byte b : digestBytes)
             stringBuilder1.append(String.format("%02x", b & 0xFF));
 
         return stringBuilder1;

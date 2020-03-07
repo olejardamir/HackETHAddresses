@@ -21,23 +21,6 @@ class Keccak
 			return d;
 		}
 
-		void engineUpdate(byte[] input, int offset, int len) {
-			digest.update(input, offset, len);
-		}
-
-		byte[] engineDigest() {
-			byte[] digestBytes = new byte[digest.getDigestSize()];
-			digest.doFinal(digestBytes, 0);
-			return digestBytes;
-		}
-
-		public void update(byte[] input, int offset, int len) {
-			engineUpdate(input, offset, len);
-		}
-
-		public byte[] digest() {
-			return engineDigest();
-		}
 	}
 
 
