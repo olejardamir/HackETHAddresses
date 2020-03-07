@@ -17,7 +17,14 @@ class FixedPointCombMultiplier {
         ECPoint R = c.getInfinity();
 
         int fullComb = d * width;
-        int[] K = Nat.fromBigInteger(fullComb, k);
+
+
+         int[] z = new int[(fullComb + 31) >> 5];
+         for (int i1 = 0; k.signum() != 0;) {
+             z[i1++] = k.intValue();
+             k = k.shiftRight(32);
+         }
+         int[] K = z;
 
         for (int top = fullComb - 1, i = 0; i < d; ++i) {
 			int secretIndex = 0;

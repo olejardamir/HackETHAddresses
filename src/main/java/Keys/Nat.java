@@ -1,7 +1,5 @@
 package Keys;
 
-import java.math.BigInteger;
-
 
 abstract class Nat
 {
@@ -27,7 +25,9 @@ abstract class Nat
         z[1] = (int)c;
         c >>>= 32;
         if (c != 0)
-			incAt(len, z, 2);
+            for (int i = 2; i < len; ++i)
+                if (++z[i] != 0)
+                    return;
     }
 
     public static int addTo(int len, int[] x, int[] z)
@@ -43,40 +43,6 @@ abstract class Nat
     }
 
 
-
-    public static int[] copy(int len, int[] x)
-    {
-        int[] z = new int[len];
-        System.arraycopy(x, 0, z, 0, len);
-        return z;
-    }
-
-    public static int[] create(int len)
-    {
-        return new int[len];
-    }
-
-    private static void decAt(int len, int[] z, int zPos)
-    {
-
-        for (int i = zPos; i < len; ++i)
-			if (--z[i] != -1) {
-				return;
-			}
-    }
-
-    public static int[] fromBigInteger(int bits, BigInteger x)
-    {
-
-
-        int[] z = create((bits + 31) >> 5);
-        for (int i = 0; x.signum() != 0;) {
-			z[i++] = x.intValue();
-			x = x.shiftRight(32);
-		}
-        return z;
-    }
-
     public static boolean gte(int len, int[] x, int[] y)
     {
         for (int i = len - 1; i >= 0; --i)
@@ -91,17 +57,6 @@ abstract class Nat
     }
 
 
-
-    public static void incAt(int len, int[] z, int zPos)
-    {
-
-        for (int i = zPos; i < len; ++i)
-			if (++z[i] != 0)
-				return;
-    }
-
-
-
     public static boolean isOne(int len, int[] x)
     {
         if (x[0] != 1)
@@ -113,65 +68,6 @@ abstract class Nat
     }
 
 
-
-    public static void shiftDownBit(int len, int[] z, int c)
-    {
-        for (int i = len; --i >= 0;) {
-			int next = z[i];
-			z[i] = c << 31 | next >>> 1;
-			c = next;
-		}
-    }
-
-    public static void shiftDownBits(int len, int[] z, int bits, int c)
-    {
-
-        for (int i = len; --i >= 0;) {
-			int next = z[i];
-			z[i] = c << -bits | next >>> bits;
-			c = next;
-		}
-    }
-
-
-
-    public static int shiftUpBit(int len, int[] x, int c, int[] z)
-    {
-        for (int i = 0; i < len; ++i)
-        {
-            int next = x[i];
-            z[i] = c >>> 31 | next << 1;
-            c = next;
-        }
-        return c >>> 31;
-    }
-
-
-
-    public static int shiftUpBits(int len, int[] z, int bits, int c)
-    {
-
-        for (int i = 0; i < len; ++i)
-        {
-            int next = z[i];
-            z[i] = c >>> -bits | next << bits;
-            c = next;
-        }
-        return c >>> -bits;
-    }
-
-    public static int shiftUpBits(int len, int[] x, int bits, int c, int[] z)
-    {
-
-        for (int i = 0; i < len; ++i)
-        {
-            int next = x[i];
-            z[i] = c >>> -bits | next << bits;
-            c = next;
-        }
-        return c >>> -bits;
-    }
-
     public static void sub33From(int len, int x, int[] z)
     {
         long c = (z[0] & M) - (x & M);
@@ -181,7 +77,10 @@ abstract class Nat
         z[1] = (int)c;
         c >>= 32;
         if (c != 0)
-			decAt(len, z, 2);
+            for (int i = 2; i < len; ++i)
+                if (--z[i] != -1) {
+                    return;
+                }
     }
 
     public static int subFrom(int len, int[] x, int[] z)

@@ -67,7 +67,12 @@ class SecP256K1Field
 
     public static int[] fromBigInteger(BigInteger x)
     {
-        int[] z = Nat256.fromBigInteger(x);
+        int[] z1 = new int[8];
+        for (int i = 0; x.signum() != 0;) {
+			z1[i++] = x.intValue();
+			x = x.shiftRight(32);
+		}
+        int[] z = z1;
         if (z[7] == P7 && Nat256.gte(z, P))
 			Nat256.subFrom(P, z);
         return z;
@@ -77,12 +82,14 @@ class SecP256K1Field
     {
         if ((Nat256.mulAddTo(x, y, zz) != 0 || (zz[15] == PExt15 && Nat.gte(16, zz, PExt)))
 				&& Nat.addTo(PExtInv.length, PExtInv, zz) != 0)
-			Nat.incAt(16, zz, PExtInv.length);
+            for (int i = PExtInv.length; i < 16; ++i)
+                if (++zz[i] != 0)
+                    return;
     }
 
     public static void negate(int[] a, int[] a0) {
         if (Nat256.isZero(a))
-			Nat256.zero(a0);
+            a0[7] = a0[6] = 0;
 		else
 			Nat256.sub(P, a, a0);
     }
@@ -106,7 +113,14 @@ class SecP256K1Field
 
     public static void twice(int[] x, int[] z)
     {
-        if (Nat.shiftUpBit(8, x, 0, z) != 0 || (z[7] == P7 && Nat256.gte(z, P)))
+        int c = 0;
+        for (int i = 0; i < 8; ++i)
+        {
+            int next = x[i];
+            z[i] = c >>> 31 | next << 1;
+            c = next;
+        }
+        if (c >>> 31 != 0 || (z[7] == P7 && Nat256.gte(z, P)))
 			Nat.add33To(8, PInv33, z);
     }
 }

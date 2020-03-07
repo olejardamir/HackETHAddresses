@@ -30,29 +30,6 @@ abstract class Nat256
     }
 //------------------------------------------------------------------
 
-
-    public static void copy(int[] x, int xOff, int[] z, int zOff)
-    {
-        System.arraycopy(x, xOff, z, zOff, 8);
-
-    }
-//------------------------------------------------------------------
-
-    //------------------------------------------------------------------
-
-    public static int[] fromBigInteger(BigInteger x)
-    {
-        int[] z = new int[8];
-        for (int i = 0; x.signum() != 0;) {
-			z[i++] = x.intValue();
-			x = x.shiftRight(32);
-		}
-        return z;
-    }
-//------------------------------------------------------------------
-
-    //------------------------------------------------------------------
-
     public static boolean gte(int[] x, int[] y)
     {
         for (int i = 7; i >= 0; --i)
@@ -232,17 +209,4 @@ abstract class Nat256
         z[7] = (int)c;
     }
 
-    public static BigInteger toBigInteger(int[] x)
-    {
-        byte[] bs = new byte[32];
-        for (int i = 0; i < 8; ++i)
-			if (x[i] != 0)
-				Pack.intToBigEndian(x[i], bs, (7 - i) << 2);
-        return new BigInteger(1, bs);
-    }
-
-    public static void zero(int[] z)
-    {
-        z[7] = z[6] = 0;
-    }
 }

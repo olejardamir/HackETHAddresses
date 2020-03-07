@@ -62,10 +62,12 @@ public class SecP256K1Curve extends ECCurve {
 		final int[] table = new int[2 * FE_INTS * len];
 		for (int pos = 0, i = 0; i < len; ++i) {
 			ECPoint p = points[i + off];
-			Nat256.copy(((SecP256K1FieldElement) p.getRawXCoord()).x, 0, table, pos);
-			pos += FE_INTS;
-			Nat256.copy(((SecP256K1FieldElement) p.getRawYCoord()).x, 0, table, pos);
-			pos += FE_INTS;
+            System.arraycopy(((SecP256K1FieldElement) p.getRawXCoord()).x, 0, table, pos, 8);
+
+            pos += FE_INTS;
+            System.arraycopy(((SecP256K1FieldElement) p.getRawYCoord()).x, 0, table, pos, 8);
+
+            pos += FE_INTS;
 		}
 		return new ECLookupTable() {
 

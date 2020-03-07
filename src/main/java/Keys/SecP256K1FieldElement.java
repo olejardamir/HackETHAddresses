@@ -31,7 +31,11 @@ public class SecP256K1FieldElement extends ECFieldElement {
 
     public BigInteger toBigInteger()
     {
-        return Nat256.toBigInteger(x);
+        byte[] bs = new byte[32];
+        for (int i = 0; i < 8; ++i)
+			if (x[i] != 0)
+				Pack.intToBigEndian(x[i], bs, (7 - i) << 2);
+        return new BigInteger(1, bs);
     }
 
     public int getFieldSize()

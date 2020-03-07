@@ -2184,11 +2184,27 @@ public class SecP256K1Point extends ECPoint {
             a22[i2 + 8] = (int) c7;
         }
         SecP256K1Field.reduce(a22, Y1Squared);
-        c = Nat.shiftUpBits(8, Y1Squared, 2, 0);
+        int c8 = 0;
+
+        for (int i2 = 0; i2 < 8; ++i2)
+        {
+            int next = Y1Squared[i2];
+            Y1Squared[i2] = c8 >>> -2 | next << 2;
+            c8 = next;
+        }
+        c = c8 >>> -2;
         SecP256K1Field.reduce32(c, Y1Squared);
 
         int[] t1 = new int[8];
-        c = Nat.shiftUpBits(8, T, 3, 0, t1);
+        int c9 = 0;
+
+        for (int i2 = 0; i2 < 8; ++i2)
+        {
+            int next = T[i2];
+            t1[i2] = c9 >>> -3 | next << 3;
+            c9 = next;
+        }
+        c = c9 >>> -3;
         SecP256K1Field.reduce32(c, t1);
 
         SecP256K1FieldElement X3 = new SecP256K1FieldElement(T);
