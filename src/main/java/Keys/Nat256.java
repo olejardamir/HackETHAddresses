@@ -5,18 +5,6 @@ abstract class Nat256
     private static final long M = 0xFFFFFFFFL;
 
     //------------------------------------------------------------------
-    public static int add(int[] x, int[] y, int[] z)
-    {
-        long c = 0;
-        for(int t=0;t<8;t++){
-            c += (x[t] & M) + (y[t] & M);
-            z[t] = (int)c;
-            c >>>= 32;
-        }
-        return (int)c;
-    }
-
-//------------------------------------------------------------------
     public static int addBothTo(int[] x, int[] y, int[] z)
     {
         long c = 0;

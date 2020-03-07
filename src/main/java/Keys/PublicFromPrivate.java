@@ -32,7 +32,6 @@ public class PublicFromPrivate implements Serializable {
 
 
     private byte[] extracted1(String privatekey, String decodeString) throws Exception {
-        FixedPointCombMultiplier m1 = new FixedPointCombMultiplier();
         BigInteger i1 = new BigInteger(privatekey, 16);
 
         ECCurve curve = new SecP256K1Curve().configure().setEndomorphism().create();

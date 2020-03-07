@@ -124,7 +124,10 @@ public class SecP256K1FieldElement extends ECFieldElement {
     public ECFieldElement negate()
     {
         int[] z = new int[8];
-        SecP256K1Field.negate(x, z);
+        if (Nat256.isZero(x))
+            z[7] = z[6] = 0;
+		else
+			Nat256.sub(SecP256K1Field.P, x, z);
         return new SecP256K1FieldElement(z);
     }
 

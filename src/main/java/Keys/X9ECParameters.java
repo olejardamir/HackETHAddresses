@@ -2,7 +2,7 @@ package Keys;
 
 
 
-public class X9ECParameters {
+class X9ECParameters {
 
     private final X9ECPoint g;
 

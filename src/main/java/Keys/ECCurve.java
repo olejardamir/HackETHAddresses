@@ -118,14 +118,4 @@ public abstract class ECCurve
     {
         return null;
 	}
-
-
-
-
-
-
-
-
-
-
 }

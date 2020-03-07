@@ -3,7 +3,6 @@ import java.math.BigInteger;
 
 //done checkpoint clean
 public abstract class ECFieldElement {
-    public static final BigInteger ZERO = BigInteger.valueOf(0);
     public static final BigInteger ONE = BigInteger.valueOf(1);
 
     ECFieldElement() {

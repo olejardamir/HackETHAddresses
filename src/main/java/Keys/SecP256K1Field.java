@@ -77,13 +77,6 @@ class SecP256K1Field
                     return;
     }
 
-    public static void negate(int[] a, int[] a0) {
-        if (Nat256.isZero(a))
-            a0[7] = a0[6] = 0;
-		else
-			Nat256.sub(P, a, a0);
-    }
-
     public static void reduce(int[] xx, int[] z)
     {
         Nat256.mul33DWordAdd(PInv33, Nat256.mul33Add(PInv33, xx, 8, xx, 0, z, 0), z, 0);
@@ -94,11 +87,6 @@ class SecP256K1Field
         if ((x != 0 && Nat256.mul33WordAdd(PInv33, x, z, 0) != 0)
                 || (z[7] == P7 && Nat256.gte(z, P)))
 			Nat.add33To(8, PInv33, z);
-    }
-
-	public static void subtract(int[] a, int[] a0, int[] a1) {
-        if (Nat256.sub(a, a0, a1) != 0)
-			Nat.sub33From(8, 977, a1);
     }
 
     public static void twice(int[] x, int[] z)
