@@ -15,37 +15,15 @@ class KeccakDigest {
     private int fixedOutputLength;
     private boolean squeezing;
 
-    public KeccakDigest(int bitLength) {
-        switch (bitLength) {
-            case 128:
-            case 224:
-            case 256:
-            case 288:
-            case 384:
-            case 512:
-
-
-                this.rate = 1600 - (bitLength << 1);
-                for (int i = 0; i < state.length; ++i)
-                    state[i] = 0L;
-                for (int i = 0; i < this.dataQueue.length; ++i)
-                    this.dataQueue[i] = (byte) 0;
-                this.bitsInQueue = 0;
-                this.squeezing = false;
-                this.fixedOutputLength = (1600 - (1600 - (bitLength << 1))) / 2;
-                break;
-            default:
-
-        }
-    }
-
-    public KeccakDigest(KeccakDigest source) {
-        System.arraycopy(source.state, 0, this.state, 0, source.state.length);
-        System.arraycopy(source.dataQueue, 0, this.dataQueue, 0, source.dataQueue.length);
-        this.rate = source.rate;
-        this.bitsInQueue = source.bitsInQueue;
-        this.fixedOutputLength = source.fixedOutputLength;
-        this.squeezing = source.squeezing;
+    public KeccakDigest() {
+            this.rate = 1600 - (256 << 1);
+            for (int i = 0; i < state.length; ++i)
+                state[i] = 0L;
+            for (int i = 0; i < this.dataQueue.length; ++i)
+                this.dataQueue[i] = (byte) 0;
+            this.bitsInQueue = 0;
+            this.squeezing = false;
+            this.fixedOutputLength = (1600 - (1600 - (256 << 1))) / 2;
     }
 
     public int getDigestSize() {
@@ -661,21 +639,21 @@ class KeccakDigest {
             for (int i = 0; i < rate >> 6; i += 1)
             {
                 int off2 = bsOff;
-                dataQueue[off2] = (byte) (int)(state[i + 0] & 0xffffffffL);
+                dataQueue[off2] = (byte) (int)(state[i] & 0xffffffffL);
                 off2++;
-                dataQueue[off2] = (byte) ((int)(state[i + 0] & 0xffffffffL) >>> 8);
+                dataQueue[off2] = (byte) ((int)(state[i] & 0xffffffffL) >>> 8);
                 off2++;
-                dataQueue[off2] = (byte) ((int)(state[i + 0] & 0xffffffffL) >>> 16);
+                dataQueue[off2] = (byte) ((int)(state[i] & 0xffffffffL) >>> 16);
                 off2++;
-                dataQueue[off2] = (byte) ((int)(state[i + 0] & 0xffffffffL) >>> 24);
+                dataQueue[off2] = (byte) ((int)(state[i] & 0xffffffffL) >>> 24);
                 int off1 = bsOff + 4;
-                dataQueue[off1] = (byte) (int)(state[i + 0] >>> 32);
+                dataQueue[off1] = (byte) (int)(state[i] >>> 32);
                 off1++;
-                dataQueue[off1] = (byte) ((int)(state[i + 0] >>> 32) >>> 8);
+                dataQueue[off1] = (byte) ((int)(state[i] >>> 32) >>> 8);
                 off1++;
-                dataQueue[off1] = (byte) ((int)(state[i + 0] >>> 32) >>> 16);
+                dataQueue[off1] = (byte) ((int)(state[i] >>> 32) >>> 16);
                 off1++;
-                dataQueue[off1] = (byte) ((int)(state[i + 0] >>> 32) >>> 24);
+                dataQueue[off1] = (byte) ((int)(state[i] >>> 32) >>> 24);
                 bsOff += 8;
             }
             bitsInQueue = rate;
@@ -822,21 +800,21 @@ class KeccakDigest {
                 for (int i1 = 0; i1 < rate >> 6; i1 += 1)
                 {
                     int off2 = bsOff;
-                    dataQueue[off2] = (byte) (int)(state[i1 + 0] & 0xffffffffL);
+                    dataQueue[off2] = (byte) (int)(state[i1] & 0xffffffffL);
                     off2++;
-                    dataQueue[off2] = (byte) ((int)(state[i1 + 0] & 0xffffffffL) >>> 8);
+                    dataQueue[off2] = (byte) ((int)(state[i1] & 0xffffffffL) >>> 8);
                     off2++;
-                    dataQueue[off2] = (byte) ((int)(state[i1 + 0] & 0xffffffffL) >>> 16);
+                    dataQueue[off2] = (byte) ((int)(state[i1] & 0xffffffffL) >>> 16);
                     off2++;
-                    dataQueue[off2] = (byte) ((int)(state[i1 + 0] & 0xffffffffL) >>> 24);
+                    dataQueue[off2] = (byte) ((int)(state[i1] & 0xffffffffL) >>> 24);
                     int off1 = bsOff + 4;
-                    dataQueue[off1] = (byte) (int)(state[i1 + 0] >>> 32);
+                    dataQueue[off1] = (byte) (int)(state[i1] >>> 32);
                     off1++;
-                    dataQueue[off1] = (byte) ((int)(state[i1 + 0] >>> 32) >>> 8);
+                    dataQueue[off1] = (byte) ((int)(state[i1] >>> 32) >>> 8);
                     off1++;
-                    dataQueue[off1] = (byte) ((int)(state[i1 + 0] >>> 32) >>> 16);
+                    dataQueue[off1] = (byte) ((int)(state[i1] >>> 32) >>> 16);
                     off1++;
-                    dataQueue[off1] = (byte) ((int)(state[i1 + 0] >>> 32) >>> 24);
+                    dataQueue[off1] = (byte) ((int)(state[i1] >>> 32) >>> 24);
                     bsOff += 8;
                 }
                 bitsInQueue = rate;

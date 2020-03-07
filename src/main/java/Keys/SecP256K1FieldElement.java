@@ -5,7 +5,7 @@ import java.math.BigInteger;
 public class SecP256K1FieldElement extends ECFieldElement {
     private static final BigInteger Q = SecP256K1Curve.q;
 
-    int[] x;
+    final int[] x;
 
     public SecP256K1FieldElement(BigInteger x)
     {
@@ -22,11 +22,6 @@ public class SecP256K1FieldElement extends ECFieldElement {
     public boolean isZero()
     {
         return Nat256.isZero(x);
-    }
-
-    public boolean isOne()
-    {
-        return Nat256.isOne(x);
     }
 
     public BigInteger toBigInteger()

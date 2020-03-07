@@ -46,7 +46,7 @@ public class SecP256K1Point extends ECPoint {
          int[] t3 = new int[8];
          int[] t4 = new int[8];
 
-        boolean Z1IsOne = Z1.isOne();
+         boolean Z1IsOne = Nat256.isOne(Z1.x);
         int[] U2, S2;
         if (Z1IsOne)
         {
@@ -443,7 +443,7 @@ public class SecP256K1Point extends ECPoint {
             SecP256K1Field.reduce(a2, S2);
         }
 
-        boolean Z2IsOne = Z2.isOne();
+         boolean Z2IsOne = Nat256.isOne(Z2.x);
         int[] U1, S1;
         if (Z2IsOne)
         {
@@ -2468,7 +2468,7 @@ public class SecP256K1Point extends ECPoint {
 
         SecP256K1FieldElement Z3 = new SecP256K1FieldElement(M);
         SecP256K1Field.twice(Y1.x, Z3.x);
-        if (!Z1.isOne())
+        if (!Nat256.isOne(Z1.x))
         {
             int[] a2 = new int[16];
             long y_0 = Z1.x[0] & 0xFFFFFFFFL;

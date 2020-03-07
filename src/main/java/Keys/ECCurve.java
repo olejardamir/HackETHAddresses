@@ -1,9 +1,9 @@
 package Keys;
+
 import java.math.BigInteger;
 
 //Done checkpoint clean
-public abstract class ECCurve
-{
+public abstract class ECCurve {
     public static final int COORD_AFFINE = 0;
     public static final int COORD_HOMOGENEOUS = 1;
     public static final int COORD_JACOBIAN = 2;
@@ -11,63 +11,27 @@ public abstract class ECCurve
     public static final int COORD_JACOBIAN_MODIFIED = 4;
     public static final int COORD_LAMBDA_AFFINE = 5;
     public static final int COORD_LAMBDA_PROJECTIVE = 6;
+    BigInteger order;
+    int coord = COORD_AFFINE;
+
 
     ECCurve() {
 
     }
 
-    public class Config
-    {
-        final int coord;
-
-        Config(int coord)
-        {
-            this.coord = coord;
-         }
-
-        public Config setEndomorphism()
-        {
-             return this;
-        }
-
-        public ECCurve create() throws Exception {
-
-
-            ECCurve c = cloneCurve();
-
-
-                c.coord = coord;
-
-
-            return c;
-        }
-    }
-
-
-    BigInteger order;
-
-    int coord = COORD_AFFINE;
-
-
-
     public abstract int getFieldSize();
 
     public abstract ECFieldElement fromBigInteger(BigInteger x);
 
-    public synchronized Config configure()
-    {
+    public synchronized Config configure() {
         return new Config(this.coord);
     }
 
-
-    private ECPoint createPoint(BigInteger x, BigInteger y)
-    {
+    private ECPoint createPoint(BigInteger x, BigInteger y) {
         return createPoint(x, y, false);
     }
 
-    
-    private ECPoint createPoint(BigInteger x, BigInteger y, boolean withCompression)
-    {
+    private ECPoint createPoint(BigInteger x, BigInteger y, boolean withCompression) {
         return createRawPoint(fromBigInteger(x), fromBigInteger(y), withCompression);
     }
 
@@ -75,17 +39,14 @@ public abstract class ECCurve
 
     protected abstract ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, boolean withCompression);
 
-
     public abstract ECPoint getInfinity();
-
 
     public ECPoint decodePoint(byte[] encoded) {
         ECPoint p = null;
         int expectedLength = (getFieldSize() + 7) / 8;
 
         byte type = encoded[0];
-        switch (type)
-        {
+        switch (type) {
             case 0x00:
             case 0x02:
             case 0x03:
@@ -104,16 +65,27 @@ public abstract class ECCurve
                 break;
             }
             default:
-         }
-
+        }
 
 
         return p;
     }
 
-
-    public ECLookupTable createCacheSafeLookupTable(final ECPoint[] points, int off, final int len)
-    {
+    public ECLookupTable createCacheSafeLookupTable(final ECPoint[] points, int off, final int len) {
         return null;
-	}
+    }
+
+    public class Config {
+        final int coord;
+
+        Config(int coord) {
+            this.coord = coord;
+        }
+
+        public ECCurve create() throws Exception {
+            ECCurve c = cloneCurve();
+            c.coord = coord;
+            return c;
+        }
+    }
 }

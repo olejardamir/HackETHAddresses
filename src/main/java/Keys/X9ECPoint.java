@@ -1,7 +1,7 @@
 package Keys;
 
 class X9ECPoint {
-    private byte[]  string;
+    private final byte[]  string;
 
     private final ECCurve c;
     private ECPoint p;

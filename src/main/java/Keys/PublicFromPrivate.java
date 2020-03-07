@@ -34,7 +34,7 @@ public class PublicFromPrivate implements Serializable {
     private byte[] extracted1(String privatekey, String decodeString) throws Exception {
         BigInteger i1 = new BigInteger(privatekey, 16);
 
-        ECCurve curve = new SecP256K1Curve().configure().setEndomorphism().create();
+        ECCurve curve = new SecP256K1Curve().configure().create();
         X9ECPoint G = new X9ECPoint(curve, Hex.decode(decodeString));
         X9ECParameters p7 = new X9ECParameters(G);
         ECPoint p6 = p7.getG();
@@ -100,17 +100,13 @@ public class PublicFromPrivate implements Serializable {
             data[(i1 + 1) / 2] = (byte) ((Character.digit(publicKeyNoPrefix.charAt(i1), 16) << 4)
                     + Character.digit(publicKeyNoPrefix.charAt(i1 + 1), 16));
 
-        return duplicate4(data);
-    }
-
-    private StringBuilder duplicate4(byte[] data) {
         StringBuilder stringBuilder1 = new StringBuilder();
 
-        Keccak.Digest256 kecc = new Keccak.Digest256();
-        kecc.digest.update(data, 0, data.length);
+        KeccakDigest kecc = new KeccakDigest();
+        kecc.update(data, 0, data.length);
 
-        byte[] digestBytes = new byte[kecc.digest.getDigestSize()];
-        kecc.digest.doFinal(digestBytes, 0);
+        byte[] digestBytes = new byte[kecc.getDigestSize()];
+        kecc.doFinal(digestBytes, 0);
         for (byte b : digestBytes)
             stringBuilder1.append(String.format("%02x", b & 0xFF));
 

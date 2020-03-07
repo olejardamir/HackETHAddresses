@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 public class SecP256K1Curve extends ECCurve {
     private static final int SECP256K1_DEFAULT_COORDS = COORD_JACOBIAN;
-    public static BigInteger q;
+    public static  BigInteger q;
 
     static {
         try {
