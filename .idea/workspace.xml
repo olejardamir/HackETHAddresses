@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0773b1ca-6e4c-45cb-8a52-9d8d30635c36" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/ECCurve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/ECCurve.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/FixedPointCombMultiplier.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/FixedPointUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/FixedPointUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/Mod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/Mod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/X9ECPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/X9ECPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/ASN1OctetString.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/ECCurve$Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/ECCurve$Config.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/ECCurve.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/ECCurve.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/FixedPointUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/FixedPointUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/Mod.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/Mod.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/PublicFromPrivate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/PublicFromPrivate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Field.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Field.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Point.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/X9ECPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/X9ECPoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/KeccakDigest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/KeccakDigest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/Pack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/Pack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1FieldElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1FieldElement.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -34,107 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECCurve.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="49" selection-start-line="49" selection-end-line="49" />
-              <folding>
-                <element signature="method#decodePoint#0;class#ECCurve#0" />
-                <element signature="e#2686#2687#0" expanded="true" />
-                <element signature="e#2710#2711#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Nat256.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="128" column="29" lean-forward="true" selection-start-line="128" selection-start-column="29" selection-end-line="128" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1Curve.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
-              <folding>
-                <element signature="initializer##0;class#SecP256K1Curve#0" />
-                <element signature="method#SecP256K1Curve#0;class#SecP256K1Curve#0" />
-                <element signature="method#cloneCurve#0;class#SecP256K1Curve#0" />
-                <element signature="method#createRawPoint#0;class#SecP256K1Curve#0" />
-                <element signature="method#createCacheSafeLookupTable#0;class#SecP256K1Curve#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Mod.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
-              <folding>
-                <element signature="method#invert#0;class#Mod#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/FixedPointUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="114" column="8" selection-start-line="114" selection-start-column="8" selection-end-line="114" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1Field.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1Point.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="2196" column="31" selection-start-line="2196" selection-start-column="31" selection-end-line="2196" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECFieldElement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECLookupTable.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Pack.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="70" column="40" selection-start-line="70" selection-start-column="40" selection-end-line="70" selection-end-column="40" />
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -164,22 +53,22 @@
         <option value="$PROJECT_DIR$/src/main/java/Keys/CustomNamedCurves.java" />
         <option value="$PROJECT_DIR$/src/main/java/Keys/ECLookupTable.java" />
         <option value="$PROJECT_DIR$/src/main/java/Keys/Nat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/Pack.java" />
         <option value="$PROJECT_DIR$/src/main/java/Keys/ECPoint.java" />
         <option value="$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java" />
         <option value="$PROJECT_DIR$/src/main/java/Keys/Nat256.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/ECFieldElement.java" />
         <option value="$PROJECT_DIR$/src/main/java/Keys/KeccakDigest.java" />
         <option value="$PROJECT_DIR$/src/main/java/Keys/Keccak.java" />
         <option value="$PROJECT_DIR$/src/main/java/Keys/HexEncoder.java" />
         <option value="$PROJECT_DIR$/src/main/java/Keys/Hex.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Curve.java" />
         <option value="$PROJECT_DIR$/src/main/java/Keys/Mod.java" />
         <option value="$PROJECT_DIR$/src/main/java/Keys/X9ECPoint.java" />
         <option value="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Point.java" />
         <option value="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Field.java" />
         <option value="$PROJECT_DIR$/src/main/java/Keys/FixedPointUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/Keys/ECCurve.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Curve.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/ECFieldElement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/Pack.java" />
       </list>
     </option>
   </component>
@@ -326,7 +215,7 @@
       <window_info id="Image Layers" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32969433" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32969433" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32969433" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3995633" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -337,7 +226,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="ANTLR Preview" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.32969433" />
+      <window_info anchor="bottom" id="Messages" order="13" visible="true" weight="0.32969433" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -418,13 +307,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Arrays.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Pack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Keys/testAll.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -502,34 +384,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECFieldElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="70" column="40" selection-start-line="70" selection-start-column="40" selection-end-line="70" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECLookupTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1Point.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="2196" column="31" selection-start-line="2196" selection-start-column="31" selection-end-line="2196" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Mod.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -540,29 +394,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1Field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Keys/FixedPointUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
           <caret line="114" column="8" selection-start-line="114" selection-start-column="8" selection-end-line="114" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECCurve.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-          <folding>
-            <element signature="method#decodePoint#0;class#ECCurve#0" />
-            <element signature="e#2686#2687#0" expanded="true" />
-            <element signature="e#2710#2711#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -576,21 +411,71 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Nat256.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="128" column="29" lean-forward="true" selection-start-line="128" selection-start-column="29" selection-end-line="128" selection-end-column="29" />
+          <caret line="128" column="29" selection-start-line="128" selection-start-column="29" selection-end-line="128" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECCurve.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+          <folding>
+            <element signature="method#decodePoint#0;class#ECCurve#0" />
+            <element signature="e#2592#2593#0" expanded="true" />
+            <element signature="e#2616#2617#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1Curve.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="292">
+          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
           <folding>
-            <element signature="initializer##0;class#SecP256K1Curve#0" />
-            <element signature="method#SecP256K1Curve#0;class#SecP256K1Curve#0" />
-            <element signature="method#cloneCurve#0;class#SecP256K1Curve#0" />
-            <element signature="method#createRawPoint#0;class#SecP256K1Curve#0" />
             <element signature="method#createCacheSafeLookupTable#0;class#SecP256K1Curve#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECLookupTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECFieldElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1Point.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="2193" column="38" selection-start-line="2193" selection-start-column="38" selection-end-line="2193" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1Field.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Pack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>

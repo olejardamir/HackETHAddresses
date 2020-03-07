@@ -63,7 +63,9 @@ class KeccakDigest {
                     int off1 = inOff + count;
                     int count1 = rate >> 6;
                     for (int i = 0; i < count1; ++i) {
-                        state[i] ^= Pack.littleEndianToLong(in, off1);
+                        int off11 = off1 + 4;
+                        int off2 = off1;
+                        state[i] ^= (in[off2] & 0xff | (in[++off2] & 0xff) << 8 | (in[++off2] & 0xff) << 16 | in[++off2] << 24) & 0xffffffffL | ((in[off11] & 0xff | (in[++off11] & 0xff) << 8 | (in[++off11] & 0xff) << 16 | in[++off11] << 24) & 0xffffffffL) << 32;
                         off1 += 8;
                     }
 
@@ -212,7 +214,9 @@ class KeccakDigest {
                     int off1 = 0;
                     int count1 = rate >> 6;
                     for (int i = 0; i < count1; ++i) {
-                        state[i] ^= Pack.littleEndianToLong(dataQueue, off1);
+                        int off11 = off1 + 4;
+                        int off2 = off1;
+                        state[i] ^= (dataQueue[off2] & 0xff | (dataQueue[++off2] & 0xff) << 8 | (dataQueue[++off2] & 0xff) << 16 | dataQueue[++off2] << 24) & 0xffffffffL | ((dataQueue[off11] & 0xff | (dataQueue[++off11] & 0xff) << 8 | (dataQueue[++off11] & 0xff) << 16 | dataQueue[++off11] << 24) & 0xffffffffL) << 32;
                         off1 += 8;
                     }
 
@@ -364,7 +368,9 @@ class KeccakDigest {
                 int off = 0;
                 int count = rate >> 6;
                 for (int i = 0; i < count; ++i) {
-                    state[i] ^= Pack.littleEndianToLong(dataQueue, off);
+                    int off1 = off + 4;
+                    int off2 = off;
+                    state[i] ^= (dataQueue[off2] & 0xff | (dataQueue[++off2] & 0xff) << 8 | (dataQueue[++off2] & 0xff) << 16 | dataQueue[++off2] << 24) & 0xffffffffL | ((dataQueue[off1] & 0xff | (dataQueue[++off1] & 0xff) << 8 | (dataQueue[++off1] & 0xff) << 16 | dataQueue[++off1] << 24) & 0xffffffffL) << 32;
                     off += 8;
                 }
 
@@ -506,11 +512,16 @@ class KeccakDigest {
             }
             int full = bitsInQueue >> 6, partial = bitsInQueue & 63, off = 0;
             for (int i = 0; i < full; ++i) {
-                state[i] ^= Pack.littleEndianToLong(dataQueue, off);
+                int off1 = off + 4;
+                int off2 = off;
+                state[i] ^= (dataQueue[off2] & 0xff | (dataQueue[++off2] & 0xff) << 8 | (dataQueue[++off2] & 0xff) << 16 | dataQueue[++off2] << 24) & 0xffffffffL | ((dataQueue[off1] & 0xff | (dataQueue[++off1] & 0xff) << 8 | (dataQueue[++off1] & 0xff) << 16 | dataQueue[++off1] << 24) & 0xffffffffL) << 32;
                 off += 8;
             }
-            if (partial > 0)
-                state[full] ^= Pack.littleEndianToLong(dataQueue, off) & (1L << partial) - 1L;
+            if (partial > 0) {
+                int off1 = off + 4;
+                int off2 = off;
+                state[full] ^= ((dataQueue[off2] & 0xff | (dataQueue[++off2] & 0xff) << 8 | (dataQueue[++off2] & 0xff) << 16 | dataQueue[++off2] << 24) & 0xffffffffL | ((dataQueue[off1] & 0xff | (dataQueue[++off1] & 0xff) << 8 | (dataQueue[++off1] & 0xff) << 16 | dataQueue[++off1] << 24) & 0xffffffffL) << 32) & (1L << partial) - 1L;
+            }
             state[(rate - 1) >> 6] ^= (1L << 63);
             long[] A = state;
 
@@ -646,7 +657,27 @@ class KeccakDigest {
             A[22] = a22;
             A[23] = a23;
             A[24] = a24;
-            Pack.longToLittleEndian(state, 0, rate >> 6, dataQueue, 0);
+            int bsOff = 0;
+            for (int i = 0; i < rate >> 6; i += 1)
+            {
+                int off2 = bsOff;
+                dataQueue[off2] = (byte) (int)(state[i + 0] & 0xffffffffL);
+                off2++;
+                dataQueue[off2] = (byte) ((int)(state[i + 0] & 0xffffffffL) >>> 8);
+                off2++;
+                dataQueue[off2] = (byte) ((int)(state[i + 0] & 0xffffffffL) >>> 16);
+                off2++;
+                dataQueue[off2] = (byte) ((int)(state[i + 0] & 0xffffffffL) >>> 24);
+                int off1 = bsOff + 4;
+                dataQueue[off1] = (byte) (int)(state[i + 0] >>> 32);
+                off1++;
+                dataQueue[off1] = (byte) ((int)(state[i + 0] >>> 32) >>> 8);
+                off1++;
+                dataQueue[off1] = (byte) ((int)(state[i + 0] >>> 32) >>> 16);
+                off1++;
+                dataQueue[off1] = (byte) ((int)(state[i + 0] >>> 32) >>> 24);
+                bsOff += 8;
+            }
             bitsInQueue = rate;
             squeezing = true;
         }
@@ -787,7 +818,27 @@ class KeccakDigest {
                 A[22] = a22;
                 A[23] = a23;
                 A[24] = a24;
-                Pack.longToLittleEndian(state, 0, rate >> 6, dataQueue, 0);
+                int bsOff = 0;
+                for (int i1 = 0; i1 < rate >> 6; i1 += 1)
+                {
+                    int off2 = bsOff;
+                    dataQueue[off2] = (byte) (int)(state[i1 + 0] & 0xffffffffL);
+                    off2++;
+                    dataQueue[off2] = (byte) ((int)(state[i1 + 0] & 0xffffffffL) >>> 8);
+                    off2++;
+                    dataQueue[off2] = (byte) ((int)(state[i1 + 0] & 0xffffffffL) >>> 16);
+                    off2++;
+                    dataQueue[off2] = (byte) ((int)(state[i1 + 0] & 0xffffffffL) >>> 24);
+                    int off1 = bsOff + 4;
+                    dataQueue[off1] = (byte) (int)(state[i1 + 0] >>> 32);
+                    off1++;
+                    dataQueue[off1] = (byte) ((int)(state[i1 + 0] >>> 32) >>> 8);
+                    off1++;
+                    dataQueue[off1] = (byte) ((int)(state[i1 + 0] >>> 32) >>> 16);
+                    off1++;
+                    dataQueue[off1] = (byte) ((int)(state[i1 + 0] >>> 32) >>> 24);
+                    bsOff += 8;
+                }
                 bitsInQueue = rate;
             }
             int partialBlock = (int) Math.min((long) bitsInQueue, (long) fixedOutputLength - i);

@@ -33,8 +33,16 @@ public class SecP256K1FieldElement extends ECFieldElement {
     {
         byte[] bs = new byte[32];
         for (int i = 0; i < 8; ++i)
-			if (x[i] != 0)
-				Pack.intToBigEndian(x[i], bs, (7 - i) << 2);
+			if (x[i] != 0) {
+                int off = (7 - i) << 2;
+                bs[off] = (byte) (x[i] >>> 24);
+                off++;
+                bs[off] = (byte) (x[i] >>> 16);
+                off++;
+                bs[off] = (byte) (x[i] >>> 8);
+                off++;
+                bs[off] = (byte) x[i];
+            }
         return new BigInteger(1, bs);
     }
 
