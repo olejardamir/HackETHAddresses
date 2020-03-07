@@ -5,10 +5,10 @@ package Keys;
 {
     private static final long M = 4294967295L;
 
-      static void add(int len, int[] x, int[] z)
+      static void add(int[] x, int[] z)
     {
         long c = 0;
-        for (int i = 0; i < len; ++i)
+        for (int i = 0; i < 8; ++i)
         {
             c += (x[i] & M) + (SecP256K1Field.P[i] & M);
             z[i] = (int)c;

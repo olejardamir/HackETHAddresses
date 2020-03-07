@@ -3,7 +3,6 @@ package Keys;
 import java.math.BigInteger;
 
 public class SecP256K1FieldElement extends ECFieldElement {
-    private static final BigInteger Q = SecP256K1Curve.q;
 
     final int[] x;
 
@@ -39,11 +38,6 @@ public class SecP256K1FieldElement extends ECFieldElement {
                 bs[off] = (byte) x[i];
             }
         return new BigInteger(1, bs);
-    }
-
-    public int getFieldSize()
-    {
-        return Q.bitLength();
     }
 
 

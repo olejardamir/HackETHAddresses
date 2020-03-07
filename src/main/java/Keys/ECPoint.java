@@ -2,7 +2,7 @@ package Keys;
 
 import java.util.HashMap;
 
-//checkpoint clean
+/** Checkpoint clean. */
 public abstract class ECPoint {
     private static final ECFieldElement[] EMPTY_ZS = new ECFieldElement[0];
     final ECCurve curve;
@@ -11,7 +11,6 @@ public abstract class ECPoint {
     final ECFieldElement[] zs;
     boolean withCompression;
     HashMap preCompTable;
-
 
     ECPoint(ECCurve curve, ECFieldElement x, ECFieldElement y) {
         this(curve, x, y, getInitialZCoords(curve));
@@ -25,8 +24,7 @@ public abstract class ECPoint {
     }
 
     private static ECFieldElement[] getInitialZCoords(ECCurve curve) {
-
-        int coord = curve == null ? ECCurve.COORD_AFFINE : curve.coord;
+        int coord = curve != null ? curve.coord : ECCurve.COORD_AFFINE;
 
         switch (coord) {
             case ECCurve.COORD_AFFINE:
@@ -36,13 +34,11 @@ public abstract class ECPoint {
                 break;
         }
 
-        ECFieldElement one = curve.fromBigInteger(ECFieldElement.ONE);
-
         switch (coord) {
             case ECCurve.COORD_HOMOGENEOUS:
             case ECCurve.COORD_JACOBIAN:
             case ECCurve.COORD_LAMBDA_PROJECTIVE:
-                return new ECFieldElement[]{one};
+                return new ECFieldElement[]{curve.fromBigInteger(ECFieldElement.ONE)};
 
             default:
         }
@@ -50,19 +46,16 @@ public abstract class ECPoint {
     }
 
     boolean isNormalized() {
-
-        int coord = curve == null ? ECCurve.COORD_AFFINE : curve.coord;
+        int coord = curve != null ? curve.coord : ECCurve.COORD_AFFINE;
 
         return coord != ECCurve.COORD_AFFINE
                 && coord != ECCurve.COORD_LAMBDA_AFFINE
-                && !(x == null || y == null || (zs.length > 0 && zs[0].toBigInteger().signum() == 0))
-                && !(zs[0].toBigInteger().bitLength() == 1);
+                && x != null && y != null && (zs.length <= 0 || zs[0].toBigInteger().signum() != 0)
+                && zs[0].toBigInteger().bitLength() != 1;
     }
 
-
     ECPoint normalize(ECFieldElement zInv) {
-
-        switch (curve == null ? ECCurve.COORD_AFFINE : curve.coord) {
+        switch (curve != null ? curve.coord : ECCurve.COORD_AFFINE) {
             case ECCurve.COORD_HOMOGENEOUS:
             case ECCurve.COORD_JACOBIAN:
             case ECCurve.COORD_JACOBIAN_CHUDNOVSKY:
@@ -71,7 +64,6 @@ public abstract class ECPoint {
                 return createScaledPoint(zInv2, zInv2.multiply(zInv));
             }
             default: {
-
             }
         }
         return null;
@@ -80,7 +72,6 @@ public abstract class ECPoint {
     private ECPoint createScaledPoint(ECFieldElement sx, ECFieldElement sy) {
         return curve.createRawPoint(x.multiply(sx), y.multiply(sy), this.withCompression);
     }
-
 
     public abstract ECPoint add(ECPoint b);
 
@@ -91,7 +82,7 @@ public abstract class ECPoint {
     ECPoint timesPow2(int e) {
         ECPoint p = this;
         while (--e >= 0)
-            p = p.twice();
+			p = p.twice();
         return p;
     }
 
@@ -100,6 +91,4 @@ public abstract class ECPoint {
     public ECPoint twicePlus(ECPoint b) {
         return null;
     }
-
-
 }

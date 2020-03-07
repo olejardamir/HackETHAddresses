@@ -2,7 +2,7 @@ package Keys;
 
 import java.math.BigInteger;
 
-//Done checkpoint clean
+/** Done checkpoint clean. */
 public abstract class ECCurve {
     static final int COORD_AFFINE = 0;
     static final int COORD_HOMOGENEOUS = 1;
@@ -13,8 +13,6 @@ public abstract class ECCurve {
     static final int COORD_LAMBDA_PROJECTIVE = 6;
     BigInteger order;
     int coord = COORD_AFFINE;
-
-
 
     public abstract int getFieldSize();
 
