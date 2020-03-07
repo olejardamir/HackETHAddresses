@@ -1,9 +1,12 @@
 package Keys;
 
+
 class FixedPointPreCompInfo {
     private ECPoint offset;
 
+
     private ECLookupTable lookupTable;
+
 
     private int width = -1;
 

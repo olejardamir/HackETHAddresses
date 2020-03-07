@@ -5,9 +5,11 @@ import java.io.Serializable;
 import java.math.BigInteger;
 
 public class PublicFromPrivate implements Serializable {
+
     private static final HexEncoder encoder = new HexEncoder();
     private X9ECPoint G;
     private KeccakDigest kecc;
+
 
     public PublicFromPrivate(String decodeString) throws Exception {
         ECCurve curve = new SecP256K1Curve().configure().create();
@@ -18,7 +20,9 @@ public class PublicFromPrivate implements Serializable {
     static byte[] decode(String data) throws Exception {
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
 
+
         encoder.decode(data, bOut);
+
 
         return bOut.toByteArray();
     }
@@ -26,22 +30,28 @@ public class PublicFromPrivate implements Serializable {
     public String getPublicFromPrivate(String privatekey) {
         String ret = getPublicNonFormat(privatekey);
         ret = ret.substring(ret.length() - 40);
-        return "0x" + ret;
+        return ("0x") + ret;
     }
 
     public String getPublicNonFormat(String privatekey) {
-        byte[] encoded = extracted1(privatekey), copy = new byte[64];
+        byte[] encoded = extracted1(privatekey);
+        byte[] copy = new byte[64];
+
         System.arraycopy(encoded, 1, copy, 0, 64);
         String result10 = new BigInteger(1, copy).toString(16);
 
-        if (result10.length() >= 64 << 1)
-			return duplicate2(result10).toString();
-		result10 = String.valueOf(new char[(64 << 1) - result10.length()]).replace("\0", "0") + result10;
-		return duplicate2(result10).toString();
+        if (result10.length() < 64 << 1) {
+            String qq = String.valueOf(new char[(64 << 1) - result10.length()]).replace("\0", "0");
+            result10 = qq + result10;
+        }
+
+        return duplicate2(result10).toString();
     }
+
 
     private byte[] extracted1(String privatekey) {
         BigInteger i1 = new BigInteger(privatekey, 16);
+
 
         ECPoint p6 = G.getPoint();
         BigInteger k1 = i1.abs();
@@ -49,6 +59,7 @@ public class PublicFromPrivate implements Serializable {
         ECCurve c = p6.curve;
         BigInteger order = c.order;
         int size = order != null ? order.bitLength() : c.getFieldSize() + 1;
+
 
         FixedPointPreCompInfo info = FixedPointUtil.precompute(p6);
         ECLookupTable lookupTable = info.getLookupTable();
@@ -58,7 +69,8 @@ public class PublicFromPrivate implements Serializable {
 
         int fullComb = d * width;
 
-        int[] z = new int[fullComb + 31 >> 5];
+
+        int[] z = new int[(fullComb + 31) >> 5];
         for (int i11 = 0; k1.signum() != 0; ) {
             z[i11++] = k1.intValue();
             k1 = k1.shiftRight(32);
@@ -75,14 +87,18 @@ public class PublicFromPrivate implements Serializable {
             R = R.twicePlus(lookupTable.lookup(secretIndex));
         }
 
-        ECPoint positive = R.add(info.getOffset()), ecPoint = i1.signum() > 0 ? positive : positive.negate();
+        ECPoint positive = R.add(info.getOffset());
 
-        ECFieldElement Z1 = (ecPoint.zs.length <= 0) ? null : ecPoint.zs[0];
-        ECPoint normed = (Z1 == null ? 0 : Z1.toBigInteger().bitLength()) != 1
-				? (i1.signum() > 0 ? positive : positive.negate()).normalize(Z1 == null ? null : Z1.invert())
-				: i1.signum() <= 0 ? positive.negate() : positive;
 
-        byte[] X = normed.x.getEncoded(), Y = normed.y.getEncoded(), PO = new byte[X.length + Y.length + 1];
+        ECPoint ecPoint = (i1.signum() > 0 ? positive : positive.negate());
+        ECFieldElement Z1 = (0 >= ecPoint.zs.length) ? null : ecPoint.zs[0];
+        ECPoint normed = (Z1 != null ? Z1.toBigInteger().bitLength() : 0) == 1 ? (i1.signum() > 0 ? positive : positive.negate())
+                : (i1.signum() > 0 ? positive : positive.negate()).normalize(Z1 != null ? Z1.invert() : null);
+
+        byte[] X = normed.x.getEncoded();
+
+
+        byte[] Y = normed.y.getEncoded(), PO = new byte[X.length + Y.length + 1];
 
         PO[0] = 0x04;
         System.arraycopy(X, 0, PO, 1, X.length);
@@ -90,22 +106,28 @@ public class PublicFromPrivate implements Serializable {
         return PO;
     }
 
+
+
     private StringBuilder duplicate2(String publicKeyNoPrefix) {
+
         byte[] data = new byte[publicKeyNoPrefix.length() / 2];
 
         for (int i1 = 0; i1 < publicKeyNoPrefix.length(); i1 += 2)
-			data[(i1 + 1) / 2] = (byte) ((Character.digit(publicKeyNoPrefix.charAt(i1), 16) << 4)
-					+ Character.digit(publicKeyNoPrefix.charAt(i1 + 1), 16));
+            data[(i1 + 1) / 2] = (byte) ((Character.digit(publicKeyNoPrefix.charAt(i1), 16) << 4)
+                    + Character.digit(publicKeyNoPrefix.charAt(i1 + 1), 16));
 
         StringBuilder stringBuilder1 = new StringBuilder();
+
 
         kecc.update(data, data.length);
 
         byte[] digestBytes = new byte[kecc.getDigestSize()];
         kecc.doFinal(digestBytes);
         for (byte b : digestBytes)
-			stringBuilder1.append(String.format("%02x", b & 0xFF));
+            stringBuilder1.append(String.format("%02x", b & 0xFF));
 
         return stringBuilder1;
     }
+
+
 }
