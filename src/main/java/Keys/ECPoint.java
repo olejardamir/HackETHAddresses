@@ -3,17 +3,32 @@ package Keys;
 import java.util.HashMap;
 
 //checkpoint clean
-public abstract class ECPoint
-{
+public abstract class ECPoint {
     private static final ECFieldElement[] EMPTY_ZS = new ECFieldElement[0];
+    final ECCurve curve;
+    final ECFieldElement x;
+    final ECFieldElement y;
+    final ECFieldElement[] zs;
+    boolean withCompression;
+    HashMap preCompTable;
 
-    private static ECFieldElement[] getInitialZCoords(ECCurve curve)
-    {
+
+    ECPoint(ECCurve curve, ECFieldElement x, ECFieldElement y) {
+        this(curve, x, y, getInitialZCoords(curve));
+    }
+
+    ECPoint(ECCurve curve, ECFieldElement x, ECFieldElement y, ECFieldElement[] zs) {
+        this.curve = curve;
+        this.x = x;
+        this.y = y;
+        this.zs = zs;
+    }
+
+    private static ECFieldElement[] getInitialZCoords(ECCurve curve) {
 
         int coord = curve == null ? ECCurve.COORD_AFFINE : curve.coord;
 
-        switch (coord)
-        {
+        switch (coord) {
             case ECCurve.COORD_AFFINE:
             case ECCurve.COORD_LAMBDA_AFFINE:
                 return EMPTY_ZS;
@@ -23,80 +38,45 @@ public abstract class ECPoint
 
         ECFieldElement one = curve.fromBigInteger(ECFieldElement.ONE);
 
-        switch (coord)
-        {
+        switch (coord) {
             case ECCurve.COORD_HOMOGENEOUS:
             case ECCurve.COORD_JACOBIAN:
             case ECCurve.COORD_LAMBDA_PROJECTIVE:
-                return new ECFieldElement[]{ one };
+                return new ECFieldElement[]{one};
 
             default:
         }
         return null;
     }
 
-    final ECCurve curve;
-    final ECFieldElement x;
-    final ECFieldElement y;
-    final ECFieldElement[] zs;
-
-    boolean withCompression;
-
-    
-    HashMap preCompTable;
-
-    ECPoint(ECCurve curve, ECFieldElement x, ECFieldElement y)
-    {
-        this(curve, x, y, getInitialZCoords(curve));
-    }
-
-    ECPoint(ECCurve curve, ECFieldElement x, ECFieldElement y, ECFieldElement[] zs)
-    {
-        this.curve = curve;
-        this.x = x;
-        this.y = y;
-        this.zs = zs;
-    }
-
-
-
-
-
-
-    public ECCurve getCurve()
-    {
+    public ECCurve getCurve() {
         return curve;
     }
 
 
-    ECFieldElement getXCoord()
-    {
+    ECFieldElement getXCoord() {
         return x;
     }
 
-    
+
     ECFieldElement getYCoord() {
         return y;
     }
 
-    public ECFieldElement getZCoord(int index)
-    {
+    public ECFieldElement getZCoord(int index) {
         return (index < 0 || index >= zs.length) ? null : zs[index];
     }
 
-    public final ECFieldElement getRawXCoord()
-    {
+    public final ECFieldElement getRawXCoord() {
         return x;
     }
 
-    public final ECFieldElement getRawYCoord()
-    {
+    public final ECFieldElement getRawYCoord() {
         return y;
     }
 
 
-    public boolean isNormalized()
-    {
+    public boolean isNormalized() {
 
         int coord = curve == null ? ECCurve.COORD_AFFINE : curve.coord;
 
@@ -107,34 +87,28 @@ public abstract class ECPoint
     }
 
 
-    ECPoint normalize(ECFieldElement zInv)
-    {
+    ECPoint normalize(ECFieldElement zInv) {
 
-        switch (curve == null ? ECCurve.COORD_AFFINE : curve.coord)
-        {
+        switch (curve == null ? ECCurve.COORD_AFFINE : curve.coord) {
             case ECCurve.COORD_HOMOGENEOUS:
             case ECCurve.COORD_JACOBIAN:
             case ECCurve.COORD_JACOBIAN_CHUDNOVSKY:
-            case ECCurve.COORD_JACOBIAN_MODIFIED:
-            {
+            case ECCurve.COORD_JACOBIAN_MODIFIED: {
                 ECFieldElement zInv2 = zInv.square();
                 return createScaledPoint(zInv2, zInv2.multiply(zInv));
             }
-            default:
-            {
+            default: {
 
             }
         }
         return null;
     }
 
-    private ECPoint createScaledPoint(ECFieldElement sx, ECFieldElement sy)
-    {
+    private ECPoint createScaledPoint(ECFieldElement sx, ECFieldElement sy) {
         return this.getCurve().createRawPoint(getRawXCoord().multiply(sx), getRawYCoord().multiply(sy), this.withCompression);
     }
 
-    boolean isInfinity()
-    {
+    boolean isInfinity() {
         return x == null || y == null || (zs.length > 0 && zs[0].toBigInteger().signum() == 0);
     }
 
@@ -148,7 +122,7 @@ public abstract class ECPoint
     public ECPoint timesPow2(int e) {
         ECPoint p = this;
         while (--e >= 0)
-			p = p.twice();
+            p = p.twice();
         return p;
     }
 

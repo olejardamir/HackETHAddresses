@@ -55,7 +55,7 @@ class SecP256K1Field {
     }
 
 
-    public static int[] fromBigInteger(BigInteger x) {
+    static int[] fromBigInteger(BigInteger x) {
         int[] z1 = new int[8];
         for (int i = 0; x.signum() != 0; ) {
             z1[i++] = x.intValue();
@@ -66,7 +66,7 @@ class SecP256K1Field {
         return z1;
     }
 
-    public static void multiplyAddToExt(int[] x, int[] y, int[] zz) {
+    static void multiplyAddToExt(int[] x, int[] y, int[] zz) {
         if ((Nat256.mulAddTo(x, y, zz) != 0 || (zz[15] == PExt15 && Nat.gte(16, zz, PExt)))
                 && Nat.addTo(PExtInv.length, PExtInv, zz) != 0)
             for (int i = PExtInv.length; i < 16; ++i)
@@ -74,17 +74,17 @@ class SecP256K1Field {
                     return;
     }
 
-    public static void reduce(int[] xx, int[] z) {
+    static void reduce(int[] xx, int[] z) {
         Nat256.mul33DWordAdd(PInv33, Nat256.mul33Add(PInv33, xx, 8, xx, 0, z, 0), z, 0);
     }
 
-    public static void reduce32(int x, int[] z) {
+    static void reduce32(int x, int[] z) {
         if ((x != 0 && Nat256.mul33WordAdd(PInv33, x, z, 0) != 0)
                 || (z[7] == P7 && Nat256.gte(z, P)))
             Nat.add33To(8, PInv33, z);
     }
 
-    public static void twice(int[] x, int[] z) {
+    static void twice(int[] x, int[] z) {
         int c = 0;
         for (int i = 0; i < 8; ++i) {
             int next = x[i];

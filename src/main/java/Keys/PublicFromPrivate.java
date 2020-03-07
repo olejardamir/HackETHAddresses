@@ -4,28 +4,37 @@ import java.io.Serializable;
 import java.math.BigInteger;
 
 public class PublicFromPrivate implements Serializable {
+
+
+    ECCurve curve;
+    X9ECPoint G;
+    String decodeString;
+    KeccakDigest kecc;
+
+    public PublicFromPrivate(String decodeString) throws Exception {
+        this.decodeString = decodeString;
+        curve = new SecP256K1Curve().configure().create();
+        G = new X9ECPoint(curve, Hex.decode(decodeString));
+        kecc = new KeccakDigest();
+    }
+
     public String getPublicFromPrivate(String privatekey, String decodeString) throws Exception {
-
         String ret = getPublicNonFormat(privatekey, decodeString);
-        ret = ret.substring(ret.length()-40);
-
-        return ("0x")+ret;
+        ret = ret.substring(ret.length() - 40);
+        return ("0x") + ret;
     }
 
     public String getPublicNonFormat(String privatekey, String decodeString) throws Exception {
-        byte[] encoded = extracted1(privatekey,  decodeString);
+        byte[] encoded = extracted1(privatekey, decodeString);
         byte[] copy = new byte[64];
 
-        System.arraycopy(encoded, 1, copy, 0,64);
+        System.arraycopy(encoded, 1, copy, 0, 64);
         String result10 = new BigInteger(1, copy).toString(16);
 
-
-
         if (result10.length() < 64 << 1) {
-            String qq = String.valueOf(new char[(64 << 1) - result10.length()]).replace("\0","0");
+            String qq = String.valueOf(new char[(64 << 1) - result10.length()]).replace("\0", "0");
             result10 = qq + result10;
         }
-
 
         return duplicate2(result10).toString();
     }
@@ -34,10 +43,8 @@ public class PublicFromPrivate implements Serializable {
     private byte[] extracted1(String privatekey, String decodeString) throws Exception {
         BigInteger i1 = new BigInteger(privatekey, 16);
 
-        ECCurve curve = new SecP256K1Curve().configure().create();
-        X9ECPoint G = new X9ECPoint(curve, Hex.decode(decodeString));
-        X9ECParameters p7 = new X9ECParameters(G);
-        ECPoint p6 = p7.getG();
+
+        ECPoint p6 = G.getPoint();
         BigInteger k1 = i1.abs();
 
         ECCurve c = p6.getCurve();
@@ -55,21 +62,21 @@ public class PublicFromPrivate implements Serializable {
 
 
         int[] z = new int[(fullComb + 31) >> 5];
-        for (int i11 = 0; k1.signum() != 0;) {
+        for (int i11 = 0; k1.signum() != 0; ) {
             z[i11++] = k1.intValue();
             k1 = k1.shiftRight(32);
         }
 
         for (int top = fullComb - 1, i = 0; i < d; ++i) {
-			int secretIndex = 0;
-			for (int j = top - i; j >= 0; j -= d) {
-				int secretBit = z[j >>> 5] >>> (j & 0x1F);
-				secretIndex ^= secretBit >>> 1;
-				secretIndex <<= 1;
-				secretIndex ^= secretBit;
-			}
-			R = R.twicePlus(lookupTable.lookup(secretIndex));
-		}
+            int secretIndex = 0;
+            for (int j = top - i; j >= 0; j -= d) {
+                int secretBit = z[j >>> 5] >>> (j & 0x1F);
+                secretIndex ^= secretBit >>> 1;
+                secretIndex <<= 1;
+                secretIndex ^= secretBit;
+            }
+            R = R.twicePlus(lookupTable.lookup(secretIndex));
+        }
 
         ECPoint positive = R.add(info.getOffset());
 
@@ -89,9 +96,6 @@ public class PublicFromPrivate implements Serializable {
     }
 
 
-
-
-
     private StringBuilder duplicate2(String publicKeyNoPrefix) {
 
         byte[] data = new byte[publicKeyNoPrefix.length() / 2];
@@ -102,7 +106,7 @@ public class PublicFromPrivate implements Serializable {
 
         StringBuilder stringBuilder1 = new StringBuilder();
 
-        KeccakDigest kecc = new KeccakDigest();
+
         kecc.update(data, 0, data.length);
 
         byte[] digestBytes = new byte[kecc.getDigestSize()];

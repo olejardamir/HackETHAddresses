@@ -10,7 +10,7 @@ public class testAll {
 		String line;
 		int t=0;
 		String decodeString = "04"+"79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798"+"483ADA7726A3C4655DA4FBFC0E1108A8FD17B448A68554199C47D08FFB10D4B8";
-		PublicFromPrivate publicFromPrivate = new PublicFromPrivate();
+		PublicFromPrivate publicFromPrivate = new PublicFromPrivate(decodeString);
 		while((line=reader.readLine())!=null)
 			try {
 				String[] sp = line.split(",");
