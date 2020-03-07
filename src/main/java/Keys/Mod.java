@@ -5,7 +5,7 @@ package Keys;
 
 
 	  static void invert(int[] x, int[] z) {
-        int len = SecP256K1Field.P.length;
+        int len = 8;
 
 
 		int[] z2 = new int[len];
@@ -26,9 +26,9 @@ package Keys;
 				ac = inversionStep(z2, uvLen, a, ac);
 				if (Nat.isOne(uvLen, z2)) {
 					if (ac < 0)
-						Nat.add(SecP256K1Field.P.length, a, z);
+						Nat.add(8, a, z);
 					else
-						System.arraycopy(a, 0, z, 0, SecP256K1Field.P.length);
+						System.arraycopy(a, 0, z, 0, 8);
 					return;
 				}
 			} else {
@@ -37,9 +37,9 @@ package Keys;
 				bc = inversionStep(z1, uvLen, b, bc);
 				if (Nat.isOne(uvLen, z1)) {
 					if (bc < 0)
-						Nat.add(SecP256K1Field.P.length, b, z);
+						Nat.add(8, b, z);
 					else
-						System.arraycopy(b, 0, z, 0, SecP256K1Field.P.length);
+						System.arraycopy(b, 0, z, 0, 8);
 					return;
 				}
 			}
@@ -54,7 +54,7 @@ package Keys;
 		int count1 = 0;
 		for (; (x1 & 1) == 0; ++count1)
 			x1 >>>= 1;
-		int len = SecP256K1Field.P.length, count = 0, zeroes = count1;
+		int len = 8, count = 0, zeroes = count1;
 		if (zeroes > 0) {
 			int c = 0;
 

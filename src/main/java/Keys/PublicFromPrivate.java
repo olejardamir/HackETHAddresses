@@ -1,17 +1,30 @@
 package Keys;
 
+import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 import java.math.BigInteger;
 
 public class PublicFromPrivate implements Serializable {
 
+    private static final HexEncoder encoder = new HexEncoder();
     private X9ECPoint G;
     private KeccakDigest kecc;
 
+
     public PublicFromPrivate(String decodeString) throws Exception {
         ECCurve curve = new SecP256K1Curve().configure().create();
-        G = new X9ECPoint(curve, Hex.decode(decodeString));
+        G = new X9ECPoint(curve, decode(decodeString));
         kecc = new KeccakDigest();
+    }
+
+    static byte[] decode(String data) throws Exception {
+        ByteArrayOutputStream bOut = new ByteArrayOutputStream();
+
+
+        encoder.decode(data, bOut);
+
+
+        return bOut.toByteArray();
     }
 
     public String getPublicFromPrivate(String privatekey) {
@@ -92,6 +105,7 @@ public class PublicFromPrivate implements Serializable {
         System.arraycopy(Y, 0, PO, X.length + 1, Y.length);
         return PO;
     }
+
 
 
     private StringBuilder duplicate2(String publicKeyNoPrefix) {

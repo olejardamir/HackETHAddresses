@@ -15,9 +15,6 @@ public abstract class ECCurve {
     int coord = COORD_AFFINE;
 
 
-    ECCurve() {
-
-    }
 
     public abstract int getFieldSize();
 

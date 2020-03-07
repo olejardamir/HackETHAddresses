@@ -1,15 +1,17 @@
 package Keys;
 
+import java.io.ByteArrayOutputStream;
 import java.math.BigInteger;
 
 public class SecP256K1Curve extends ECCurve {
     private static final int SECP256K1_DEFAULT_COORDS = COORD_JACOBIAN;
-    static  BigInteger q;
+    private static final HexEncoder encoder = new HexEncoder();
+    static BigInteger q;
 
     static {
         try {
             q = new BigInteger(1,
-                    Hex.decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F"));
+                    decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -17,13 +19,23 @@ public class SecP256K1Curve extends ECCurve {
 
     private SecP256K1Point infinity;
 
-     SecP256K1Curve() throws Exception {
+    SecP256K1Curve() throws Exception {
 
 
         this.infinity = new SecP256K1Point(this, null, null);
 
-        this.order = new BigInteger(1, Hex.decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141"));
+        this.order = new BigInteger(1, decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141"));
         this.coord = SECP256K1_DEFAULT_COORDS;
+    }
+
+    static byte[] decode(String data) throws Exception {
+        ByteArrayOutputStream bOut = new ByteArrayOutputStream();
+
+
+        encoder.decode(data, bOut);
+
+
+        return bOut.toByteArray();
     }
 
     protected ECCurve cloneCurve() throws Exception {
