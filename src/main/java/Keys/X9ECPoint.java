@@ -1,7 +1,7 @@
 package Keys;
 
 class X9ECPoint {
-    private final ASN1OctetString encoding;
+    byte[]  string;
 
     private final ECCurve c;
     private ECPoint p;
@@ -18,7 +18,7 @@ class X9ECPoint {
 
         System.arraycopy(encoding, 0, copy, 0, encoding.length);
 
-        this.encoding = new ASN1OctetString(copy);
+        this.string = copy;
     }
 
 
@@ -26,7 +26,7 @@ class X9ECPoint {
     public synchronized ECPoint getPoint() {
         if (p == null)
         {
-            ECPoint ecPoint = c.decodePoint(encoding.string);
+            ECPoint ecPoint = c.decodePoint(string);
 
 
             ECFieldElement Z1 = ecPoint.getZCoord(0);

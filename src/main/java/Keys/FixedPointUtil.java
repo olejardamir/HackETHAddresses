@@ -4,8 +4,7 @@ import java.math.BigInteger;
 import java.util.HashMap;
 
 //checkpoint clean
-class FixedPointUtil
-{
+class FixedPointUtil {
     private static final String PRECOMP_NAME = "bc_fixed_point";
 
     public static FixedPointPreCompInfo precompute(final ECPoint p) {
