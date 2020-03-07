@@ -13,7 +13,7 @@ class HexEncoder {
 
     private final byte[] decodingTable = new byte[128];
 
-    public HexEncoder() {
+    HexEncoder() {
         initialiseDecodingTable();
     }
 
@@ -32,7 +32,7 @@ class HexEncoder {
         decodingTable['F'] = decodingTable['f'];
     }
 
-    public void decode(
+    void decode(
             String data,
             OutputStream out)
             throws Exception {

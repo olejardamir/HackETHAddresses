@@ -19,7 +19,7 @@ public class Hack {
             String privateKey = pkGenerator.generateRandomPK();
 
             //turn private into public, the full length, no 0x ! 64 chars
-            String publicKey = publicFromPrivate.getPublicNonFormat(privateKey, decodeString);
+            String publicKey = publicFromPrivate.getPublicNonFormat(privateKey);
         }
         long end = System.nanoTime();
         System.out.println("It took: "+(end-start)+" nanoseconds for "+f+" keys");

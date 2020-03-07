@@ -5,27 +5,23 @@ import java.math.BigInteger;
 
 public class PublicFromPrivate implements Serializable {
 
-
-    ECCurve curve;
-    X9ECPoint G;
-    String decodeString;
-    KeccakDigest kecc;
+    private X9ECPoint G;
+    private KeccakDigest kecc;
 
     public PublicFromPrivate(String decodeString) throws Exception {
-        this.decodeString = decodeString;
-        curve = new SecP256K1Curve().configure().create();
+        ECCurve curve = new SecP256K1Curve().configure().create();
         G = new X9ECPoint(curve, Hex.decode(decodeString));
         kecc = new KeccakDigest();
     }
 
-    public String getPublicFromPrivate(String privatekey, String decodeString) throws Exception {
-        String ret = getPublicNonFormat(privatekey, decodeString);
+    public String getPublicFromPrivate(String privatekey) {
+        String ret = getPublicNonFormat(privatekey);
         ret = ret.substring(ret.length() - 40);
         return ("0x") + ret;
     }
 
-    public String getPublicNonFormat(String privatekey, String decodeString) throws Exception {
-        byte[] encoded = extracted1(privatekey, decodeString);
+    public String getPublicNonFormat(String privatekey) {
+        byte[] encoded = extracted1(privatekey);
         byte[] copy = new byte[64];
 
         System.arraycopy(encoded, 1, copy, 0, 64);
@@ -40,14 +36,14 @@ public class PublicFromPrivate implements Serializable {
     }
 
 
-    private byte[] extracted1(String privatekey, String decodeString) throws Exception {
+    private byte[] extracted1(String privatekey) {
         BigInteger i1 = new BigInteger(privatekey, 16);
 
 
         ECPoint p6 = G.getPoint();
         BigInteger k1 = i1.abs();
 
-        ECCurve c = p6.getCurve();
+        ECCurve c = p6.curve;
         BigInteger order = c.order;
         int size = order != null ? order.bitLength() : c.getFieldSize() + 1;
 
@@ -81,13 +77,15 @@ public class PublicFromPrivate implements Serializable {
         ECPoint positive = R.add(info.getOffset());
 
 
-        ECFieldElement Z1 = (i1.signum() > 0 ? positive : positive.negate()).getZCoord(0);
-        ECPoint normed = Z1.toBigInteger().bitLength() == 1 ? (i1.signum() > 0 ? positive : positive.negate()) : (i1.signum() > 0 ? positive : positive.negate()).normalize(Z1.invert());
+        ECPoint ecPoint = (i1.signum() > 0 ? positive : positive.negate());
+        ECFieldElement Z1 = (0 >= ecPoint.zs.length) ? null : ecPoint.zs[0];
+        ECPoint normed = (Z1 != null ? Z1.toBigInteger().bitLength() : 0) == 1 ? (i1.signum() > 0 ? positive : positive.negate())
+                : (i1.signum() > 0 ? positive : positive.negate()).normalize(Z1 != null ? Z1.invert() : null);
 
-        byte[] X = normed.getXCoord().getEncoded();
+        byte[] X = normed.x.getEncoded();
 
 
-        byte[] Y = normed.getYCoord().getEncoded(), PO = new byte[X.length + Y.length + 1];
+        byte[] Y = normed.y.getEncoded(), PO = new byte[X.length + Y.length + 1];
 
         PO[0] = 0x04;
         System.arraycopy(X, 0, PO, 1, X.length);
@@ -107,10 +105,10 @@ public class PublicFromPrivate implements Serializable {
         StringBuilder stringBuilder1 = new StringBuilder();
 
 
-        kecc.update(data, 0, data.length);
+        kecc.update(data, data.length);
 
         byte[] digestBytes = new byte[kecc.getDigestSize()];
-        kecc.doFinal(digestBytes, 0);
+        kecc.doFinal(digestBytes);
         for (byte b : digestBytes)
             stringBuilder1.append(String.format("%02x", b & 0xFF));
 

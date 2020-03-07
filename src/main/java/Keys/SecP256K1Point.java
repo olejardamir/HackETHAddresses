@@ -2,14 +2,14 @@ package Keys;
 
 public class SecP256K1Point extends ECPoint {
 
-    public SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y)
+     SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y)
     {
         this(curve, x, y, false);
     }
 
 
 
-    public SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y, boolean withCompression)
+     SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y, boolean withCompression)
     {
         super(curve, x, y);
 
@@ -32,13 +32,13 @@ public class SecP256K1Point extends ECPoint {
             return twice();
         }
 
-        ECCurve curve = this.getCurve();
+         ECCurve curve = this.curve;
 
         SecP256K1FieldElement X1 = (SecP256K1FieldElement)this.x, Y1 = (SecP256K1FieldElement)this.y;
-        SecP256K1FieldElement X2 = (SecP256K1FieldElement)b.getXCoord(), Y2 = (SecP256K1FieldElement)b.getYCoord();
+         SecP256K1FieldElement X2 = (SecP256K1FieldElement) b.x, Y2 = (SecP256K1FieldElement) b.y;
 
         SecP256K1FieldElement Z1 = (SecP256K1FieldElement)this.zs[0];
-        SecP256K1FieldElement Z2 = (SecP256K1FieldElement)b.getZCoord(0);
+         SecP256K1FieldElement Z2 = (SecP256K1FieldElement) ((0 >= b.zs.length) ? null : b.zs[0]);
 
         int c;
          int[] tt1 = new int[16];
@@ -443,7 +443,7 @@ public class SecP256K1Point extends ECPoint {
             SecP256K1Field.reduce(a2, S2);
         }
 
-         boolean Z2IsOne = Nat256.isOne(Z2.x);
+         boolean Z2IsOne = Nat256.isOne(Z2 != null ? Z2.x : new int[0]);
         int[] U1, S1;
         if (Z2IsOne)
         {
@@ -842,10 +842,10 @@ public class SecP256K1Point extends ECPoint {
 
          int[] H = new int[8];
          if (Nat256.sub(U1, U2, H) != 0)
-             Nat.sub33From(8, 977, H);
+             Nat.sub33From(H);
 
          if (Nat256.sub(S1, S2, t2) != 0)
-             Nat.sub33From(8, 977, t2);
+             Nat.sub33From(t2);
 
 
          int[] a11 = new int[16];
@@ -1414,11 +1414,11 @@ public class SecP256K1Point extends ECPoint {
          a1[15] = (w << 1) | c1;
          SecP256K1Field.reduce(a1, X3.x);
          if (Nat256.sub(X3.x, G, X3.x) != 0)
-             Nat.sub33From(8, 977, X3.x);
+             Nat.sub33From(X3.x);
 
          SecP256K1FieldElement Y3 = new SecP256K1FieldElement(G);
          if (Nat256.sub(t3, X3.x, Y3.x) != 0)
-             Nat.sub33From(8, 977, Y3.x);
+             Nat.sub33From(Y3.x);
          SecP256K1Field.multiplyAddToExt(Y3.x, t2, tt1);
         SecP256K1Field.reduce(tt1, Y3.x);
 
@@ -1578,12 +1578,12 @@ public class SecP256K1Point extends ECPoint {
     //TODO, CONTINUE REFACTORING !
     protected ECPoint twice()
     {
-        if (this.isInfinity())
+        if (x == null || y == null || (zs.length > 0 && zs[0].toBigInteger().signum() == 0))
         {
             return this;
         }
 
-        ECCurve curve = this.getCurve();
+        ECCurve curve = this.curve;
 
         SecP256K1FieldElement Y1 = (SecP256K1FieldElement)this.y;
         if (Y1.isZero())
@@ -2386,13 +2386,13 @@ public class SecP256K1Point extends ECPoint {
         a1[15] = (w << 1) | c1;
         SecP256K1Field.reduce(a1, X3.x);
         if (Nat256.sub(X3.x, Y1Squared, X3.x) != 0)
-			Nat.sub33From(8, 977, X3.x);
+			Nat.sub33From(X3.x);
         if (Nat256.sub(X3.x, Y1Squared, X3.x) != 0)
-			Nat.sub33From(8, 977, X3.x);
+			Nat.sub33From(X3.x);
 
         SecP256K1FieldElement Y3 = new SecP256K1FieldElement(Y1Squared);
         if (Nat256.sub(Y1Squared, X3.x, Y3.x) != 0)
-			Nat.sub33From(8, 977, Y3.x);
+			Nat.sub33From(Y3.x);
         int[] a21 = new int[16];
         long y_01 = M[0] & 0xFFFFFFFFL;
         long y_11 = M[1] & 0xFFFFFFFFL;
@@ -2464,7 +2464,7 @@ public class SecP256K1Point extends ECPoint {
         }
         SecP256K1Field.reduce(a21, Y3.x);
         if (Nat256.sub(Y3.x, t1, Y3.x) != 0)
-			Nat.sub33From(8, 977, Y3.x);
+			Nat.sub33From(Y3.x);
 
         SecP256K1FieldElement Z3 = new SecP256K1FieldElement(M);
         SecP256K1Field.twice(Y1.x, Z3.x);
@@ -2546,7 +2546,7 @@ public class SecP256K1Point extends ECPoint {
 
     public ECPoint twicePlus(ECPoint b) {
 
-        if (this.isInfinity())
+        if (x == null || y == null || (zs.length > 0 && zs[0].toBigInteger().signum() == 0))
         {
             return b;
         }

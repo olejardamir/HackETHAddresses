@@ -1,13 +1,11 @@
 package Keys;
+
 import java.math.BigInteger;
 
 //done checkpoint clean
 public abstract class ECFieldElement {
-    public static final BigInteger ONE = BigInteger.valueOf(1);
+    static final BigInteger ONE = BigInteger.valueOf(1);
 
-    ECFieldElement() {
-
-    }
 
     public abstract BigInteger toBigInteger();
 
@@ -22,11 +20,11 @@ public abstract class ECFieldElement {
     public abstract ECFieldElement invert();
 
 
-    public byte[] getEncoded() {
+    byte[] getEncoded() {
         int length = (getFieldSize() + 7) / 8;
         byte[] bytes = toBigInteger().toByteArray();
         if (bytes.length == length)
-			return bytes;
+            return bytes;
 
         int start = bytes[0] == 0 ? 1 : 0, count = bytes.length - start;
         byte[] tmp = new byte[length];

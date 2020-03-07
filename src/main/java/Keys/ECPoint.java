@@ -49,40 +49,13 @@ public abstract class ECPoint {
         return null;
     }
 
-    public ECCurve getCurve() {
-        return curve;
-    }
-
-
-    ECFieldElement getXCoord() {
-        return x;
-    }
-
-
-    ECFieldElement getYCoord() {
-        return y;
-    }
-
-    public ECFieldElement getZCoord(int index) {
-        return (index < 0 || index >= zs.length) ? null : zs[index];
-    }
-
-    public final ECFieldElement getRawXCoord() {
-        return x;
-    }
-
-    public final ECFieldElement getRawYCoord() {
-        return y;
-    }
-
-
-    public boolean isNormalized() {
+    boolean isNormalized() {
 
         int coord = curve == null ? ECCurve.COORD_AFFINE : curve.coord;
 
         return coord != ECCurve.COORD_AFFINE
                 && coord != ECCurve.COORD_LAMBDA_AFFINE
-                && !isInfinity()
+                && !(x == null || y == null || (zs.length > 0 && zs[0].toBigInteger().signum() == 0))
                 && !(zs[0].toBigInteger().bitLength() == 1);
     }
 
@@ -105,11 +78,7 @@ public abstract class ECPoint {
     }
 
     private ECPoint createScaledPoint(ECFieldElement sx, ECFieldElement sy) {
-        return this.getCurve().createRawPoint(getRawXCoord().multiply(sx), getRawYCoord().multiply(sy), this.withCompression);
-    }
-
-    boolean isInfinity() {
-        return x == null || y == null || (zs.length > 0 && zs[0].toBigInteger().signum() == 0);
+        return curve.createRawPoint(x.multiply(sx), y.multiply(sy), this.withCompression);
     }
 
 
@@ -119,7 +88,7 @@ public abstract class ECPoint {
 
     public abstract ECPoint subtract(ECPoint b);
 
-    public ECPoint timesPow2(int e) {
+    ECPoint timesPow2(int e) {
         ECPoint p = this;
         while (--e >= 0)
             p = p.twice();

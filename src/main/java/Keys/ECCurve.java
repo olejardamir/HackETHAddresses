@@ -4,13 +4,13 @@ import java.math.BigInteger;
 
 //Done checkpoint clean
 public abstract class ECCurve {
-    public static final int COORD_AFFINE = 0;
-    public static final int COORD_HOMOGENEOUS = 1;
-    public static final int COORD_JACOBIAN = 2;
-    public static final int COORD_JACOBIAN_CHUDNOVSKY = 3;
-    public static final int COORD_JACOBIAN_MODIFIED = 4;
-    public static final int COORD_LAMBDA_AFFINE = 5;
-    public static final int COORD_LAMBDA_PROJECTIVE = 6;
+    static final int COORD_AFFINE = 0;
+    static final int COORD_HOMOGENEOUS = 1;
+    static final int COORD_JACOBIAN = 2;
+    static final int COORD_JACOBIAN_CHUDNOVSKY = 3;
+    static final int COORD_JACOBIAN_MODIFIED = 4;
+    static final int COORD_LAMBDA_AFFINE = 5;
+    static final int COORD_LAMBDA_PROJECTIVE = 6;
     BigInteger order;
     int coord = COORD_AFFINE;
 
@@ -23,7 +23,7 @@ public abstract class ECCurve {
 
     public abstract ECFieldElement fromBigInteger(BigInteger x);
 
-    public synchronized Config configure() {
+    synchronized Config configure() {
         return new Config(this.coord);
     }
 
@@ -44,7 +44,7 @@ public abstract class ECCurve {
             this.coord = coord;
         }
 
-        public ECCurve create() throws Exception {
+        ECCurve create() throws Exception {
             ECCurve c = cloneCurve();
             c.coord = coord;
             return c;

@@ -14,7 +14,7 @@ public class testAll {
 		while((line=reader.readLine())!=null)
 			try {
 				String[] sp = line.split(",");
-				String stringBuilder7 = publicFromPrivate.getPublicNonFormat(sp[0],decodeString);
+				String stringBuilder7 = publicFromPrivate.getPublicNonFormat(sp[0]);
 				System.out.println(stringBuilder7);
 
 				if (!sp[1].equals(stringBuilder7)) {

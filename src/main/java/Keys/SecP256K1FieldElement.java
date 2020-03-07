@@ -7,7 +7,7 @@ public class SecP256K1FieldElement extends ECFieldElement {
 
     final int[] x;
 
-    public SecP256K1FieldElement(BigInteger x)
+     SecP256K1FieldElement(BigInteger x)
     {
 
 
@@ -19,7 +19,7 @@ public class SecP256K1FieldElement extends ECFieldElement {
         this.x = x;
     }
 
-    public boolean isZero()
+     boolean isZero()
     {
         return Nat256.isZero(x);
     }
@@ -316,7 +316,7 @@ public class SecP256K1FieldElement extends ECFieldElement {
     {
 
         int[] z = new int[8];
-        Mod.invert(SecP256K1Field.P, x, z);
+        Mod.invert(x, z);
         return new SecP256K1FieldElement(z);
     }
 

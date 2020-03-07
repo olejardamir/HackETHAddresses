@@ -10,7 +10,7 @@ class X9ECPoint {
 
 
 
-    public X9ECPoint(
+    X9ECPoint(
             ECCurve c,
             byte[] encoding)
     {
@@ -25,7 +25,7 @@ class X9ECPoint {
 
 
 
-    public synchronized ECPoint getPoint() {
+    synchronized ECPoint getPoint() {
         if (p == null)
         {
             ECPoint p1 = null;
@@ -57,8 +57,8 @@ class X9ECPoint {
             ECPoint ecPoint = p1;
 
 
-            ECFieldElement Z1 = ecPoint.getZCoord(0);
-            p = Z1.toBigInteger().bitLength() == 1 ? ecPoint : ecPoint.normalize(Z1.invert());
+            ECFieldElement Z1 = (0 >= (ecPoint != null ? ecPoint.zs.length : 0)) ? null : ecPoint.zs[0];
+            p = (Z1 != null ? Z1.toBigInteger().bitLength() : 0) == 1 ? ecPoint : ecPoint != null ? ecPoint.normalize(Z1 != null ? Z1.invert() : null) : null;
         }
 
         return p;

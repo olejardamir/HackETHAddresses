@@ -1,11 +1,11 @@
 package Keys;
 
-abstract class Nat256
+  class Nat256
 {
     private static final long M = 0xFFFFFFFFL;
 
     //------------------------------------------------------------------
-    public static int addBothTo(int[] x, int[] y, int[] z)
+      static int addBothTo(int[] x, int[] y, int[] z)
     {
         long c = 0;
         for(int t=0;t<8;t++) {
@@ -17,11 +17,11 @@ abstract class Nat256
     }
 //------------------------------------------------------------------
 
-    public static boolean gte(int[] x, int[] y)
+      static boolean gte(int[] x)
     {
         for (int i = 7; i >= 0; --i)
         {
-            int x_i = x[i] ^ Integer.MIN_VALUE, y_i = y[i] ^ Integer.MIN_VALUE;
+            int x_i = x[i] ^ Integer.MIN_VALUE, y_i = SecP256K1Field.P[i] ^ Integer.MIN_VALUE;
             if (x_i < y_i)
                 return false;
             if (x_i > y_i)
@@ -30,7 +30,7 @@ abstract class Nat256
         return true;
     }
 
-    public static boolean isOne(int[] x)
+      static boolean isOne(int[] x)
     {
         if (x[0] != 1)
 			return false;
@@ -40,7 +40,7 @@ abstract class Nat256
         return true;
     }
 
-    public static boolean isZero(int[] x)
+      static boolean isZero(int[] x)
     {
         for (int i = 0; i < 8; ++i) {
             if (x[i] != 0) {
@@ -50,7 +50,7 @@ abstract class Nat256
         return true;
     }
 //------------------------------------------------------------------
-    public static int mulAddTo(int[] x, int[] y, int[] zz)
+      static int mulAddTo(int[] x, int[] y, int[] zz)
     {
         long zc = 0;
         for (int i = 0; i < 8; ++i)
@@ -70,77 +70,77 @@ abstract class Nat256
     }
 //------------------------------------------------------------------
 
-    public static long mul33Add(int w, int[] x, int xOff, int[] y, int yOff, int[] z, int zOff)
+      static long mul33Add(int w, int[] x, int[] y, int[] z)
     {
         
 
-        long c = 0, wVal = w & M, x0 = x[xOff] & M;
-        c += x0 * wVal + (y[yOff] & M);
-        z[zOff] = (int)c;
+        long c = 0, wVal = w & M, x0 = x[8] & M;
+        c += x0 * wVal + (y[0] & M);
+        z[0] = (int)c;
         c >>>= 32;
-        long x1 = x[xOff + 1] & M;
-        c += x0 + x1 * wVal + (y[yOff + 1] & M);
-        z[zOff + 1] = (int)c;
+        long x1 = x[8 + 1] & M;
+        c += x0 + x1 * wVal + (y[1] & M);
+        z[1] = (int)c;
         c >>>= 32;
-        long x2 = x[xOff + 2] & M;
-        c += x1 + x2 * wVal + (y[yOff + 2] & M);
-        z[zOff + 2] = (int)c;
+        long x2 = x[8 + 2] & M;
+        c += x1 + x2 * wVal + (y[2] & M);
+        z[2] = (int)c;
         c >>>= 32;
-        long x3 = x[xOff + 3] & M;
-        c += x2 + x3 * wVal + (y[yOff + 3] & M);
-        z[zOff + 3] = (int)c;
+        long x3 = x[8 + 3] & M;
+        c += x2 + x3 * wVal + (y[3] & M);
+        z[3] = (int)c;
         c >>>= 32;
-        long x4 = x[xOff + 4] & M;
-        c += x3 + x4 * wVal + (y[yOff + 4] & M);
-        z[zOff + 4] = (int)c;
+        long x4 = x[8 + 4] & M;
+        c += x3 + x4 * wVal + (y[4] & M);
+        z[4] = (int)c;
         c >>>= 32;
-        long x5 = x[xOff + 5] & M;
-        c += x4 + x5 * wVal + (y[yOff + 5] & M);
-        z[zOff + 5] = (int)c;
+        long x5 = x[8 + 5] & M;
+        c += x4 + x5 * wVal + (y[5] & M);
+        z[5] = (int)c;
         c >>>= 32;
-        long x6 = x[xOff + 6] & M;
-        c += x5 + x6 * wVal + (y[yOff + 6] & M);
-        z[zOff + 6] = (int)c;
+        long x6 = x[8 + 6] & M;
+        c += x5 + x6 * wVal + (y[6] & M);
+        z[6] = (int)c;
         c >>>= 32;
-        long x7 = x[xOff + 7] & M;
-        c += x6 + x7 * wVal + (y[yOff + 7] & M);
-        z[zOff + 7] = (int)c;
+        long x7 = x[8 + 7] & M;
+        c += x6 + x7 * wVal + (y[7] & M);
+        z[7] = (int)c;
         c >>>= 32;
         return c + x7;
     }
 
-    public static void mul33DWordAdd(int x, long y, int[] z, int zOff)
+      static void mul33DWordAdd(int x, long y, int[] z)
     {
         long c = 0, xVal = x & M, y00 = y & M;
-        c += y00 * xVal + (z[zOff] & M);
-        z[zOff] = (int)c;
+        c += y00 * xVal + (z[0] & M);
+        z[0] = (int)c;
         c >>>= 32;
         long y01 = y >>> 32;
-        c += y00 + y01 * xVal + (z[zOff + 1] & M);
-        z[zOff + 1] = (int)c;
+        c += y00 + y01 * xVal + (z[1] & M);
+        z[1] = (int)c;
         c >>>= 32;
-        c += y01 + (z[zOff + 2] & M);
-        z[zOff + 2] = (int)c;
+        c += y01 + (z[2] & M);
+        z[2] = (int)c;
         c >>>= 32;
-        c += (z[zOff + 3] & M);
-        z[zOff + 3] = (int)c;
+        c += (z[3] & M);
+        z[3] = (int)c;
     }
 
-    public static int mul33WordAdd(int x, int y, int[] z, int zOff)
+      static int mul33WordAdd(int x, int y, int[] z)
     {
         long c = 0, xVal = x & M, yVal = y & M;
-        c += yVal * xVal + (z[zOff] & M);
-        z[zOff] = (int)c;
+        c += yVal * xVal + (z[0] & M);
+        z[0] = (int)c;
         c >>>= 32;
-        c += yVal + (z[zOff + 1] & M);
-        z[zOff + 1] = (int)c;
+        c += yVal + (z[1] & M);
+        z[1] = (int)c;
         c >>>= 32;
-        c += (z[zOff + 2] & M);
-        z[zOff + 2] = (int)c;
+        c += (z[2] & M);
+        z[2] = (int)c;
          return 0;
     }
 
-    public static int sub(int[] x, int[] y, int[] z)
+      static int sub(int[] x, int[] y, int[] z)
     {
         long c = (x[0] & M) - (y[0] & M);
         z[0] = (int)c;
@@ -169,30 +169,30 @@ abstract class Nat256
         return (int)c;
     }
 
-    public static void subFrom(int[] x, int[] z)
+      static void subFrom(int[] z)
     {
-        long c = (z[0] & M) - (x[0] & M);
+        long c = (z[0] & M) - (SecP256K1Field.P[0] & M);
         z[0] = (int)c;
         c >>= 32;
-        c += (z[1] & M) - (x[1] & M);
+        c += (z[1] & M) - (SecP256K1Field.P[1] & M);
         z[1] = (int)c;
         c >>= 32;
-        c += (z[2] & M) - (x[2] & M);
+        c += (z[2] & M) - (SecP256K1Field.P[2] & M);
         z[2] = (int)c;
         c >>= 32;
-        c += (z[3] & M) - (x[3] & M);
+        c += (z[3] & M) - (SecP256K1Field.P[3] & M);
         z[3] = (int)c;
         c >>= 32;
-        c += (z[4] & M) - (x[4] & M);
+        c += (z[4] & M) - (SecP256K1Field.P[4] & M);
         z[4] = (int)c;
         c >>= 32;
-        c += (z[5] & M) - (x[5] & M);
+        c += (z[5] & M) - (SecP256K1Field.P[5] & M);
         z[5] = (int)c;
         c >>= 32;
-        c += (z[6] & M) - (x[6] & M);
+        c += (z[6] & M) - (SecP256K1Field.P[6] & M);
         z[6] = (int)c;
         c >>= 32;
-        c += (z[7] & M) - (x[7] & M);
+        c += (z[7] & M) - (SecP256K1Field.P[7] & M);
         z[7] = (int)c;
     }
 

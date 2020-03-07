@@ -14,10 +14,10 @@ public class Usage {
         String privateKey = pkGenerator.generateRandomPK();
 
         //turn private into public, the full length, no 0x ! 64 chars
-        String publicKey = publicFromPrivate.getPublicNonFormat(privateKey, decodeString);
+        String publicKey = publicFromPrivate.getPublicNonFormat(privateKey);
 
         //turn private into public 0x key 40 chars
-        String publicKey_0x = publicFromPrivate.getPublicFromPrivate(privateKey, decodeString);
+        String publicKey_0x = publicFromPrivate.getPublicFromPrivate(privateKey);
 
         System.out.println(publicKey);
         System.out.println(publicKey_0x);

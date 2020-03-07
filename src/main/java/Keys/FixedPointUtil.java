@@ -6,11 +6,11 @@ import java.util.HashMap;
 class FixedPointUtil {
     private static final String PRECOMP_NAME = "bc_fixed_point";
 
-    public static FixedPointPreCompInfo precompute(final ECPoint p) {
-        final ECCurve c = p.getCurve();
+      static FixedPointPreCompInfo precompute(final ECPoint p) {
+        final ECCurve c = p.curve;
 
 
-        HashMap<String, FixedPointPreCompInfo> table = p.preCompTable;
+        HashMap table = p.preCompTable;
         if (table == null)
             p.preCompTable = table = new HashMap(4);
 
@@ -36,7 +36,7 @@ class FixedPointUtil {
         int count1 = 0;
         for (int i1 = 0; i1 < pow2Table.length; ++i1)
             if (null != pow2Table[i1] && pow2Table[i1].isNormalized()) {
-                zs1[count1] = pow2Table[i1].getZCoord(0);
+                zs1[count1] = (0 >= pow2Table[i1].zs.length) ? null : pow2Table[i1].zs[0];
                 indices1[count1++] = i1;
             }
 
@@ -80,7 +80,7 @@ class FixedPointUtil {
         int count = 0;
         for (int i = 0; i < lookupTable.length; ++i)
             if (null != lookupTable[i] && lookupTable[i].isNormalized()) {
-                zs[count] = lookupTable[i].getZCoord(0);
+                zs[count] = (0 >= lookupTable[i].zs.length) ? null : lookupTable[i].zs[0];
                 indices[count++] = i;
             }
 

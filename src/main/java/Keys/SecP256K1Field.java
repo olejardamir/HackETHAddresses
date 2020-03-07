@@ -61,8 +61,8 @@ class SecP256K1Field {
             z1[i++] = x.intValue();
             x = x.shiftRight(32);
         }
-        if (z1[7] == P7 && Nat256.gte(z1, P))
-            Nat256.subFrom(P, z1);
+        if (z1[7] == P7 && Nat256.gte(z1))
+            Nat256.subFrom(z1);
         return z1;
     }
 
@@ -75,13 +75,14 @@ class SecP256K1Field {
     }
 
     static void reduce(int[] xx, int[] z) {
-        Nat256.mul33DWordAdd(PInv33, Nat256.mul33Add(PInv33, xx, 8, xx, 0, z, 0), z, 0);
+        Nat256.mul33DWordAdd(PInv33, Nat256.mul33Add(PInv33, xx, xx, z), z);
     }
 
     static void reduce32(int x, int[] z) {
-        if ((x != 0 && Nat256.mul33WordAdd(PInv33, x, z, 0) != 0)
-                || (z[7] == P7 && Nat256.gte(z, P)))
-            Nat.add33To(8, PInv33, z);
+        if ((x != 0 && Nat256.mul33WordAdd(PInv33, x, z) != 0)
+                || (z[7] == P7 && Nat256.gte(z))) {
+            Nat.add33To(PInv33, z);
+        }
     }
 
     static void twice(int[] x, int[] z) {
@@ -91,7 +92,7 @@ class SecP256K1Field {
             z[i] = c >>> 31 | next << 1;
             c = next;
         }
-        if (c >>> 31 != 0 || (z[7] == P7 && Nat256.gte(z, P)))
-            Nat.add33To(8, PInv33, z);
+        if (c >>> 31 != 0 || (z[7] == P7 && Nat256.gte(z)))
+            Nat.add33To(PInv33, z);
     }
 }

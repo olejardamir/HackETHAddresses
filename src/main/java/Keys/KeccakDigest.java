@@ -15,7 +15,7 @@ class KeccakDigest {
     private int fixedOutputLength;
     private boolean squeezing;
 
-    public KeccakDigest() {
+      KeccakDigest() {
             this.rate = 1600 - (256 << 1);
             for (int i = 0; i < state.length; ++i)
                 state[i] = 0L;
@@ -26,19 +26,19 @@ class KeccakDigest {
             this.fixedOutputLength = (1600 - (1600 - (256 << 1))) / 2;
     }
 
-    public int getDigestSize() {
+      int getDigestSize() {
         return fixedOutputLength / 8;
     }
 
 
-    public void update(byte[] in, int inOff, int len) {
+      void update(byte[] in, int len) {
 
 
         int bytesInQueue = bitsInQueue >> 3, rateBytes = rate >> 3;
         for (int count = 0; count < len; )
             if (bytesInQueue == 0 && count <= (len - rateBytes))
                 do {
-                    int off1 = inOff + count;
+                    int off1 = count;
                     int count1 = rate >> 6;
                     for (int i = 0; i < count1; ++i) {
                         int off11 = off1 + 4;
@@ -185,7 +185,7 @@ class KeccakDigest {
                 } while (count <= (len - rateBytes));
             else {
                 int partialBlock = Math.min(rateBytes - bytesInQueue, len - count);
-                System.arraycopy(in, inOff + count, dataQueue, bytesInQueue, partialBlock);
+                System.arraycopy(in, count, dataQueue, bytesInQueue, partialBlock);
                 bytesInQueue += partialBlock;
                 count += partialBlock;
                 if (bytesInQueue == rateBytes) {
@@ -339,7 +339,7 @@ class KeccakDigest {
         bitsInQueue = bytesInQueue << 3;
     }
 
-    public void doFinal(byte[] out, int outOff) {
+      void doFinal(byte[] out) {
         if (!squeezing) {
             dataQueue[bitsInQueue >> 3] |= (byte) (1L << (bitsInQueue & 7));
             if (++bitsInQueue == rate) {
@@ -820,7 +820,7 @@ class KeccakDigest {
                 bitsInQueue = rate;
             }
             int partialBlock = (int) Math.min((long) bitsInQueue, (long) fixedOutputLength - i);
-            System.arraycopy(dataQueue, (rate - bitsInQueue) / 8, out, outOff + (int) (i / 8), partialBlock / 8);
+            System.arraycopy(dataQueue, (rate - bitsInQueue) / 8, out, (int) (i / 8), partialBlock / 8);
             bitsInQueue -= partialBlock;
             i += partialBlock;
         }

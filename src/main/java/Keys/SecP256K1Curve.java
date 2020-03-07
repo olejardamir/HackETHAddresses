@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 public class SecP256K1Curve extends ECCurve {
     private static final int SECP256K1_DEFAULT_COORDS = COORD_JACOBIAN;
-    public static  BigInteger q;
+    static  BigInteger q;
 
     static {
         try {
@@ -17,7 +17,7 @@ public class SecP256K1Curve extends ECCurve {
 
     private SecP256K1Point infinity;
 
-    public SecP256K1Curve() throws Exception {
+     SecP256K1Curve() throws Exception {
 
 
         this.infinity = new SecP256K1Point(this, null, null);
@@ -52,10 +52,10 @@ public class SecP256K1Curve extends ECCurve {
         final int[] table = new int[2 * FE_INTS * len];
         for (int pos = 0, i = 0; i < len; ++i) {
             ECPoint p = points[i + off];
-            System.arraycopy(((SecP256K1FieldElement) p.getRawXCoord()).x, 0, table, pos, 8);
+            System.arraycopy(((SecP256K1FieldElement) p.x).x, 0, table, pos, 8);
 
             pos += FE_INTS;
-            System.arraycopy(((SecP256K1FieldElement) p.getRawYCoord()).x, 0, table, pos, 8);
+            System.arraycopy(((SecP256K1FieldElement) p.y).x, 0, table, pos, 8);
 
             pos += FE_INTS;
         }
