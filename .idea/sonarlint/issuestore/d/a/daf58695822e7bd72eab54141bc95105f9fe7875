@@ -1,9 +1,0 @@
-
-Msquid:UselessImportCheck	")Remove this unused import 'java.io.File'.(†Ð¥Å
-dsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(”Òå
-8squid:S1643="Use a StringBuilder instead.(ø­¿µÿÿÿÿÿ
-8squid:S16437"Use a StringBuilder instead.(ßøãèüÿÿÿÿ
-`squid:UselessImportCheck"<Remove this unused import 'org.apache.commons.io.FileUtils'.(À¿Ù´
-3squid:S1643:"Use a StringBuilder instead.(¤öçâ
-Psquid:S1068"4Remove this unused "linearRegression" private field.(ƒò€¡üÿÿÿÿ
-bsquid:CommentedOutCodeLine,"<This block of commented-out lines of code should be removed.(¯É…‘

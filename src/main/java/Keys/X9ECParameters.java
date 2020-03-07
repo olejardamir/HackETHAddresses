@@ -2,12 +2,12 @@ package Keys;
 
 
 
-public class X9ECParameters {
+class X9ECParameters {
 
     private final X9ECPoint g;
 
 
-    public X9ECParameters(
+    X9ECParameters(
             X9ECPoint g)
     {
         this.g = g;

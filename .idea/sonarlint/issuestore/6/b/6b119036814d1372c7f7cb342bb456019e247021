@@ -1,11 +1,0 @@
-
-:squid:S16432"Use a StringBuilder instead.(Å¯æ¦8Ç£ªÍô-
-nsquid:CommentedOutCodeLineC"<This block of commented-out lines of code should be removed.(—Ûóäûÿÿÿÿ8Ùè»ô-
-nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(®¢õõøÿÿÿÿ8ÖÎÛÒô-
-nsquid:CommentedOutCodeLine7"<This block of commented-out lines of code should be removed.(…ö§…ûÿÿÿÿ8Ùè»ô-
-isquid:CommentedOutCodeLine<"<This block of commented-out lines of code should be removed.(¬öÛ™8Ùè»ô-
-?squid:S16439"Use a StringBuilder instead.(à×Õ­ûÿÿÿÿ8Ç£ªÍô-
-:squid:S1643>"Use a StringBuilder instead.(Ø‚Ú¸8úÊ«Íô-
-]squid:UselessImportCheck	"-Remove this unused import 'java.util.Random'.(èøÉ›ùÿÿÿÿ8õ¡ÙÒô-
-isquid:CommentedOutCodeLine0"<This block of commented-out lines of code should be removed.(´¹¢İ8Ùè»ô-
-`squid:UselessImportCheck"5Remove this unused import 'Numberator.ConfirmNumber'.(„Îæê8õ¡ÙÒô-

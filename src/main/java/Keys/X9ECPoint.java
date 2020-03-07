@@ -8,18 +8,22 @@ class X9ECPoint {
 
 
 
-    public X9ECPoint(
-            ECCurve          c,
-            byte[]           encoding)
+    X9ECPoint(
+            ECCurve c,
+            byte[] encoding)
     {
 
         this.c = c;
-        this.encoding = new ASN1OctetString(Arrays.clone(encoding));
+        byte[] copy = new byte[encoding.length];
+
+        System.arraycopy(encoding, 0, copy, 0, encoding.length);
+
+        this.encoding = new ASN1OctetString(copy);
     }
 
 
 
-    public synchronized ECPoint getPoint() {
+    synchronized ECPoint getPoint() {
         if (p == null)
         {
             p = c.decodePoint(encoding.string).normalize();

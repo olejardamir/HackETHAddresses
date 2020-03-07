@@ -1,46 +1,0 @@
-
-Ÿsquid:S2681Ç"{This statement will not be executed conditionally; only the first statement will be. The rest will execute unconditionally.(Ì“Ê½ûÿÿÿÿ8²‰ÕÚó-
-Zsquid:UnusedPrivateMethodÓ"(Remove this unused private "min" method.(ÁÎºÎüÿÿÿÿ8Î•õíó-
-[squid:UnusedPrivateMethodÖ")Remove this unused private "atan" method.(¡ıªÛúÿÿÿÿ8£¬öó-
-nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ô½Ÿ°şÿÿÿÿ8¡®®ğó-
-™squid:S2681È"{This statement will not be executed conditionally; only the first statement will be. The rest will execute unconditionally.(é¬™N8“…ÊÚó-
-šsquid:S2681É"{This statement will not be executed conditionally; only the first statement will be. The rest will execute unconditionally.(û¿ÛÄ8Î•õíó-
-jsquid:CommentedOutCodeLineƒ"<This block of commented-out lines of code should be removed.(é‡şÁ8¡®®ğó-
-squid:S4165)"dRemove this useless assignment; "pubarr" already holds the assigned value along all execution paths.(›Õü8ÑîÖğó-
-squid:S4165%"dRemove this useless assignment; "pubarr" already holds the assigned value along all execution paths.(›Õü8ÑîÖğó-
-[
-squid:S106F"9Replace this use of System.out or System.err by a logger.(¾ó½¾şÿÿÿÿ8Ê Úó-
-jsquid:CommentedOutCodeLine "<This block of commented-out lines of code should be removed.(ŸúÜÓ8Î•õíó-
-[
-squid:S106B"9Replace this use of System.out or System.err by a logger.(¼û™æşÿÿÿÿ8Ê Úó-
-nsquid:S00100É"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(û¿ÛÄ8Î•õíó-
-…squid:S1221Ş"aEither override Object.equals(Object obj), or totally rename the method to prevent any confusion.(¾¹Õıÿÿÿÿ8Î•õíó-
-squid:S4165."dRemove this useless assignment; "pubarr" already holds the assigned value along all execution paths.(›Õü8ÑîÖğó-
-[
-squid:S106_"9Replace this use of System.out or System.err by a logger.(¾ó½¾şÿÿÿÿ8›¶ëúó-
-msquid:S00100È"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é¬™N8ÌÈÊÚó-
-Vsquid:UnusedPrivateMethodö")Remove this unused private "step" method.(¸â»”8£¬öó-
-[
-squid:S106c"9Replace this use of System.out or System.err by a logger.(¾ó½¾şÿÿÿÿ8½«–ıó-
-Ÿsquid:S2681Æ"{This statement will not be executed conditionally; only the first statement will be. The rest will execute unconditionally.(°©´ ıÿÿÿÿ8ÃˆÂÚó-
-Zsquid:UnusedPrivateMethodã"(Remove this unused private "sgn" method.(‰§²Úÿÿÿÿÿ8£¬öó-
-\squid:UnusedPrivateMethodŞ"*Remove this unused private "equal" method.(¾¹Õıÿÿÿÿ8£¬öó-
-Ysquid:UnusedPrivateMethodí"'Remove this unused private "or" method.(’‚×Êúÿÿÿÿ8ûô…ñó-
-osquid:CommentedOutCodeLine‰"<This block of commented-out lines of code should be removed.(‚îƒšÿÿÿÿÿ8İÏÈúó-
-Zsquid:UnusedPrivateMethod@".Remove this unused private "writeArrs" method.(‘Ã Œ8Ö²†Üó-
-[squid:UnusedPrivateMethodé")Remove this unused private "cosh" method.(³•Íüÿÿÿÿ8İÏÈúó-
-[
-squid:S106["9Replace this use of System.out or System.err by a logger.(¾ó½¾şÿÿÿÿ8™ Òúó-
-[
-squid:S106P"9Replace this use of System.out or System.err by a logger.(¼û™æşÿÿÿÿ8ç™†Üó-
-[
-squid:S106W"9Replace this use of System.out or System.err by a logger.(¾ó½¾şÿÿÿÿ8à‘Ñúó-
-[
-squid:S106l"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ8ç™†Üó-
-[squid:UnusedPrivateMethodÚ")Remove this unused private "asin" method.(óÚ¶½úÿÿÿÿ8Î•õíó-
-osquid:CommentedOutCodeLineŒ"<This block of commented-out lines of code should be removed.(œ«­¹ıÿÿÿÿ8Õ…şíó-
-[
-squid:S106I"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ8Ê Úó-
-[
-squid:S106h"9Replace this use of System.out or System.err by a logger.(¾ó½¾şÿÿÿÿ8ç™†Üó-
-Zsquid:UnusedPrivateMethodò"(Remove this unused private "abs" method.(­˜€ûÿÿÿÿ8£¬öó-

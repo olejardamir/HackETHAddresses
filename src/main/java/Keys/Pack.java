@@ -12,11 +12,6 @@ abstract class Pack
 		bs[off] = (byte)n;
     }
 
-    private static int littleEndianToInt(byte[] bs, int off)
-    {
-        return bs[off] & 0xff | (bs[++off] & 0xff) << 8 | (bs[++off] & 0xff) << 16 | bs[++off] << 24;
-    }
-
     private static void intToLittleEndian(int n, byte[] bs, int off)
     {
         bs[off] = (byte)n; off++;
@@ -25,9 +20,11 @@ abstract class Pack
 		bs[off] = (byte) (n >>> 24);
     }
 
-    public static long littleEndianToLong(byte[] bs, int off)
+    static long littleEndianToLong(byte[] bs, int off)
     {
-		return littleEndianToInt(bs, off) & 0xffffffffL | (littleEndianToInt(bs, off + 4) & 0xffffffffL) << 32;
+        int off1 = off + 4;
+        int off2 = off;
+        return (bs[off2] & 0xff | (bs[++off2] & 0xff) << 8 | (bs[++off2] & 0xff) << 16 | bs[++off2] << 24) & 0xffffffffL | ((bs[off1] & 0xff | (bs[++off1] & 0xff) << 8 | (bs[++off1] & 0xff) << 16 | bs[++off1] << 24) & 0xffffffffL) << 32;
     }
 
     private static void longToLittleEndian(long n, byte[] bs, int off)
@@ -36,11 +33,11 @@ abstract class Pack
         intToLittleEndian((int)(n >>> 32), bs, off + 4);
     }
 
-    public static void longToLittleEndian(long[] ns, int nsOff, int nsLen, byte[] bs, int bsOff)
+    static void longToLittleEndian(long[] ns, int nsOff, int nsLen, byte[] bs, int bsOff)
     {
         for (int i = 0; i < nsLen; i += 1)
         {
-            longToLittleEndian(ns[i + nsOff], bs, bsOff);
+            longToLittleEndian(ns[i], bs, bsOff);
             bsOff += 8;
         }
     }

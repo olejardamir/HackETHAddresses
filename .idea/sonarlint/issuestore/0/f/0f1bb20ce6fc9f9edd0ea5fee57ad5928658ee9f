@@ -1,8 +1,0 @@
-
-2squid:S3626B"Remove this redundant jump.(ûÁÝ…
-isquid:S2095€"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(õéµ¨ûÿÿÿÿ
-gsquid:CommentedOutCodeLineF"<This block of commented-out lines of code should be removed.(¸žû™úÿÿÿÿ
-O
-squid:S106@"9Replace this use of System.out or System.err by a logger.(›öÆ¹
-Psquid:S1854"8Remove this useless assignment to local variable "line".(îž€
-wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¾»Üôþÿÿÿÿ

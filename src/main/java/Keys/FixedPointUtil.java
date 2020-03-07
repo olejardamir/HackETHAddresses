@@ -24,8 +24,12 @@ class FixedPointUtil
 
             ECPoint[] pow2Table = new ECPoint[minWidth + 1];
             pow2Table[0] = p;
-            for (int i = 1; i < minWidth; ++i)
-                pow2Table[i] = pow2Table[i - 1].timesPow2(d);
+            for (int i = 1; i < minWidth; ++i) {
+                ECPoint p1 = pow2Table[i - 1];
+                while (--d >= 0)
+                    p1 = p1.twice();
+                pow2Table[i] = p1;
+            }
 
 
             pow2Table[minWidth] = pow2Table[0].subtract(pow2Table[1]);

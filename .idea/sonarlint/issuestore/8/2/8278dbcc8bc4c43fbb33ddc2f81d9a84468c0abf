@@ -1,18 +1,0 @@
-
-£squid:S1862_"„This branch can not be reached because the condition duplicates a previous condition in the same sequence of "if/else if" statements(¥Æâ–8¤óõ’ö-
-vsquid:S1450"SRemove the "best" field and declare it as a local variable in the relevant methods.(Ä¨¦ üÿÿÿÿ8Ä„ù’ö-
-zsquid:S3973]"WUse curly braces or indentation to denote the code conditionally executed by this "if".(µ¥Òœúÿÿÿÿ8¤óõ’ö-
-:squid:S1643"Use a StringBuilder instead.(´®ø²8¤óõ’ö-
-V
-squid:S106Y"9Replace this use of System.out or System.err by a logger.(µ¡¼Ó8¤óõ’ö-
-usquid:S3776 "RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.(ÙØ¤Þýÿÿÿÿ8¤óõ’ö-
-?squid:S1643|"Use a StringBuilder instead.(Ö¿ÕÕûÿÿÿÿ8¤óõ’ö-
-©%squid:RedundantThrowsDeclarationCheck "lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ÙØ¤Þýÿÿÿÿ8Þ‚¬Çö-
-isquid:CommentedOutCodeLineN"<This block of commented-out lines of code should be removed.(€»ú‚8¤óõ’ö-
-isquid:CommentedOutCodeLineq"<This block of commented-out lines of code should be removed.(Ÿâ¦û8¤óõ’ö-
-nsquid:CommentedOutCodeLine|"<This block of commented-out lines of code should be removed.(Ö¿ÕÕûÿÿÿÿ8¤óõ’ö-
-_squid:S1075H"ARefactor your code to get this URI from a customizable parameter.(»ù±»8¤óõ’ö-
-nsquid:CommentedOutCodeLine."<This block of commented-out lines of code should be removed.(§Ž¢†úÿÿÿÿ8¤óõ’ö-
-V
-squid:S106J"9Replace this use of System.out or System.err by a logger.(Ã€ö8¤óõ’ö-
-Msquid:S2200V"/Only the sign of the result should be examined.(¦ü¡„8Ð³û’ö-

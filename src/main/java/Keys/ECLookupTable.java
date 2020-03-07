@@ -2,6 +2,5 @@ package Keys;
 
 public interface ECLookupTable
 {
-    int getSize();
-    ECPoint lookup(int index);
+    void lookup(int index);
 }

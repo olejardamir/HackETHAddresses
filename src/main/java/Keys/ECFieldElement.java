@@ -10,11 +10,9 @@ public abstract class ECFieldElement {
 
     }
 
-    public abstract BigInteger toBigInteger();
+    protected abstract BigInteger toBigInteger();
 
-    public abstract int getFieldSize();
-
-    public abstract ECFieldElement add(ECFieldElement b);
+    protected abstract int getFieldSize();
 
     public abstract ECFieldElement multiply(ECFieldElement b);
 
@@ -24,7 +22,7 @@ public abstract class ECFieldElement {
 
     public abstract ECFieldElement invert();
 
-    public int bitLength() {
+    private int bitLength() {
         return toBigInteger().bitLength();
     }
 
@@ -37,7 +35,7 @@ public abstract class ECFieldElement {
     }
 
 
-    public byte[] getEncoded() {
+    byte[] getEncoded() {
         int length = (getFieldSize() + 7) / 8;
         byte[] bytes = toBigInteger().toByteArray();
         if (bytes.length == length)

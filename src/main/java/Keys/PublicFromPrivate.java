@@ -4,13 +4,6 @@ import java.io.Serializable;
 import java.math.BigInteger;
 
 public class PublicFromPrivate implements Serializable {
-    public String getPublicFromPrivate(String privatekey, String decodeString) throws Exception {
-
-        String ret = getPublicNonFormat(privatekey, decodeString);
-        ret = ret.substring(ret.length()-40);
-
-        return ("0x")+ret;
-    }
 
     public String getPublicNonFormat(String privatekey, String decodeString) throws Exception {
         byte[] encoded = extracted1(privatekey,  decodeString);
@@ -39,7 +32,18 @@ public class PublicFromPrivate implements Serializable {
         ECPoint p6 = p7.getG();
         ECPoint p1 = m1.multiply(p6, i1);
 
-        return p1.getEncoded();
+
+        ECPoint normed = p1.normalize();
+
+        byte[] X = normed.getXCoord().getEncoded();
+
+
+        byte[] Y = normed.getYCoord().getEncoded(), PO = new byte[X.length + Y.length + 1];
+
+        PO[0] = 0x04;
+        System.arraycopy(X, 0, PO, 1, X.length);
+        System.arraycopy(Y, 0, PO, X.length + 1, Y.length);
+        return PO;
     }
 
 

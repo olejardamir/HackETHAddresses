@@ -63,12 +63,12 @@ public abstract class ECPoint
 
 
 
-    public ECCurve getCurve()
+    ECCurve getCurve()
     {
         return curve;
     }
 
-    int getCurveCoordinateSystem()
+    private int getCurveCoordinateSystem()
     {
         
         return curve == null ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
@@ -77,33 +77,33 @@ public abstract class ECPoint
 
 
     
-    public ECFieldElement getXCoord()
+    ECFieldElement getXCoord()
     {
         return x;
     }
 
     
-    public ECFieldElement getYCoord() {
+    ECFieldElement getYCoord() {
         return y;
     }
 
-    public ECFieldElement getZCoord(int index)
+    ECFieldElement getZCoord(int index)
     {
-        return (index < 0 || index >= zs.length) ? null : zs[index];
+        return (0 >= zs.length) ? null : zs[index];
     }
 
-    public final ECFieldElement getRawXCoord()
+    final ECFieldElement getRawXCoord()
     {
         return x;
     }
 
-    public final ECFieldElement getRawYCoord()
+    final ECFieldElement getRawYCoord()
     {
         return y;
     }
 
 
-    public boolean isNormalized()
+    boolean isNormalized()
     {
         int coord = this.getCurveCoordinateSystem();
 
@@ -114,19 +114,11 @@ public abstract class ECPoint
     }
 
     
-    public ECPoint normalize() {
+    ECPoint normalize() {
 
 
-        switch (this.getCurveCoordinateSystem())
-        {
-            case ECCurve.COORD_AFFINE:
-
-            default:
-            {
-				ECFieldElement Z1 = getZCoord(0);
-				return Z1.isOne() ? this : normalize(Z1.invert());
-			}
-        }
+        ECFieldElement Z1 = getZCoord(0);
+        return Z1.isOne() ? this : normalize(Z1.invert());
     }
 
     ECPoint normalize(ECFieldElement zInv)
@@ -160,46 +152,13 @@ public abstract class ECPoint
     }
 
 
-
-    
-
-    
-    public byte[] getEncoded() {
-
-
-        ECPoint normed = normalize();
-
-        byte[] X = normed.getXCoord().getEncoded();
-
-
-
-        byte[] Y = normed.getYCoord().getEncoded(), PO = new byte[X.length + Y.length + 1];
-
-        PO[0] = 0x04;
-        System.arraycopy(X, 0, PO, 1, X.length);
-        System.arraycopy(Y, 0, PO, X.length + 1, Y.length);
-        return PO;
-    }
-
-
     public abstract ECPoint add(ECPoint b);
 
     public abstract ECPoint negate();
 
     public abstract ECPoint subtract(ECPoint b);
 
-    public ECPoint timesPow2(int e) {
-        ECPoint p = this;
-        while (--e >= 0)
-			p = p.twice();
-        return p;
-    }
-
-    public abstract ECPoint twice();
-
-    public ECPoint twicePlus(ECPoint b) {
-        return null;
-    }
+    protected abstract ECPoint twice();
 
 
 }

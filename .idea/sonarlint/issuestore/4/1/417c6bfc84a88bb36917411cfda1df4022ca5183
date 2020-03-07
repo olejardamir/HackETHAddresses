@@ -1,41 +1,0 @@
-
-asquid:S1155?">Use isEmpty() to check whether the collection is empty or not.(¹Éº„øÿÿÿÿ8äÇŠ‰÷-
-;squid:S1643‘"Use a StringBuilder instead.(Ë¬’™8‰è¹‹÷-
-@squid:S1643”"Use a StringBuilder instead.(Óğıÿÿÿÿ8‰è¹‹÷-
-isquid:CommentedOutCodeLine("<This block of commented-out lines of code should be removed.(ìÁ›8ãŸ¬‰÷-
-;squid:S1643ô"Use a StringBuilder instead.(´®ø²8‰è¹‹÷-
-\squid:S1068"9Remove this unused "decodeStringGenerator" private field.(øƒ­êùÿÿÿÿ8›§Ôöö-
-Ksquid:S1068"-Remove this unused "smartFlip" private field.(ÈÑÿÆ8¦‚ö†÷-
-nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¥÷Òùÿÿÿÿÿ8Ú§Âõö-
-Esquid:S1068"'Remove this unused "max" private field.(—ˆ8·Ñ’‡÷-
-~squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(öÂÎÛıÿÿÿÿ8ø€Şóö-
-jsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(“ªÙïøÿÿÿÿ
-@squid:S1643Â"Use a StringBuilder instead.(Óğıÿÿÿÿ8‰è¹‹÷-
-lsquid:S20953"NUse try-with-resources or close this "JavaSparkContext" in a "finally" clause.(ø©ÊÇ8®¿üöö-
-;squid:S1643Ù"Use a StringBuilder instead.(´®ø²8‰è¹‹÷-
-;squid:S1643¿"Use a StringBuilder instead.(Ë¬’™8‰è¹‹÷-
-©%squid:RedundantThrowsDeclarationCheck$"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ÙØ¤Şıÿÿÿÿ8³„‡‰÷-
-;squid:S1643"Use a StringBuilder instead.(´®ø²8‰è¹‹÷-
-]squid:UnusedPrivateMethod£"0Remove this unused private "generatePub" method.(İ—Ğ8¤ÅÛ‹÷-
-^squid:UnusedPrivateMethod­",Remove this unused private "shiftIt" method.(šíéÎûÿÿÿÿ8¤ÅÛ‹÷-
-@squid:S1643"Use a StringBuilder instead.(Ê•Ùüÿÿÿÿ8¤ÅÛ‹÷-
-@squid:S1643"Use a StringBuilder instead.(Ê•Ùüÿÿÿÿ8¤ÅÛ‹÷-
-@squid:S1643¦"Use a StringBuilder instead.(å»Ñıÿÿÿÿ8¤ÅÛ‹÷-
-@squid:S1643¼"Use a StringBuilder instead.(Ê•Ùüÿÿÿÿ8¤ÅÛ‹÷-
-@squid:S1643Ö"Use a StringBuilder instead.(Ö¿ÕÕûÿÿÿÿ8¤ÅÛ‹÷-
-@squid:S1643ñ"Use a StringBuilder instead.(Ö¿ÕÕûÿÿÿÿ8¤ÅÛ‹÷-
-@squid:S1643Œ"Use a StringBuilder instead.(Ö¿ÕÕûÿÿÿÿ8¤ÅÛ‹÷-
-Wsquid:S2864p"4Iterate over the "entrySet" instead of the "keySet".(¿ª«ôşÿÿÿÿ8¤ÅÛ‹÷-
-Rsquid:S2864x"4Iterate over the "entrySet" instead of the "keySet".(‰…Óõ8¤ÅÛ‹÷-
-¤squid:S1862"„This branch can not be reached because the condition duplicates a previous condition in the same sequence of "if/else if" statements(Ï©Ï8¤ÅÛ‹÷-
-osquid:CommentedOutCodeLineÖ"<This block of commented-out lines of code should be removed.(Ö¿ÕÕûÿÿÿÿ8¤ÅÛ‹÷-
-jsquid:CommentedOutCodeLineæ"<This block of commented-out lines of code should be removed.(Ÿâ¦û8¤ÅÛ‹÷-
-osquid:CommentedOutCodeLineñ"<This block of commented-out lines of code should be removed.(Ö¿ÕÕûÿÿÿÿ8¤ÅÛ‹÷-
-osquid:CommentedOutCodeLineŒ"<This block of commented-out lines of code should be removed.(Ö¿ÕÕûÿÿÿÿ8¤ÅÛ‹÷-
-osquid:CommentedOutCodeLine—"<This block of commented-out lines of code should be removed.(³°˜ıÿÿÿÿ8¤ÅÛ‹÷-
-jsquid:CommentedOutCodeLine "<This block of commented-out lines of code should be removed.(´øíö8¤ÅÛ‹÷-
-jsquid:CommentedOutCodeLine¢"<This block of commented-out lines of code should be removed.(Ïƒš×8¤ÅÛ‹÷-
-jsquid:CommentedOutCodeLine¬"<This block of commented-out lines of code should be removed.(˜é¤8¤ÅÛ‹÷-
-[
-squid:S106["9Replace this use of System.out or System.err by a logger.(¦¾Ø„ùÿÿÿÿ8¤ÅÛ‹÷-
-Nsquid:S00108ƒ")Either remove or fill this block of code.(¬Àáªøÿÿÿÿ8¤ÅÛ‹÷-

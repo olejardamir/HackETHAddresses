@@ -1,87 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0773b1ca-6e4c-45cb-8a52-9d8d30635c36" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Generator/PKGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Usage.java" afterDir="false" />
+    <list default="true" id="9d5f8008-12b7-443d-80b7-0ddfd71bc8fa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/0/00c2c419e3f432bec1dcdcd779fbbc8e7953c0ce" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/3/03fe2ba8d90bbf45f76573df7e835953dfbbeedd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/5/059725b6c4f502f64e0f09fac4d0f72a7df81cdd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/9/092a8f28b05d3cc733354c50200a876f43aa4a2f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/f/0f1bb20ce6fc9f9edd0ea5fee57ad5928658ee9f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/7/17ed5c10811ab43b687e36f862b130674a33496c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1acc0fbd368563d1bd7b0fcd0f0d8e9c44e1e2e9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1b66da835c57553644ed2a2e74374aec16c874ec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/b/1b8a0b30cba1b90ab934af2e6c28c5c15037e7a0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/d/1d17020a45c257be264961dde31014d8dda59947" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/d/1d6e0b2c07efccaf7cb57a4a3236177d1f4ba98b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1fff0599a7e8bb70d5995baeef7470645b547501" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/8/2872d4c4ac947d6b52a311e897eff36d31fcbe8c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/f/2f535b7c7a21770c28e81da30c3a999b485ead3e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/8/38d48d83d6e70dd9a7fbcd28be3940fa8e942f83" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/0/40e99feddd6fc918d06b0dac2a0b0d8a9e319858" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/1/417c6bfc84a88bb36917411cfda1df4022ca5183" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/a/4a62acb13dec98a30956f2d0eb46e741510d89c9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4bb78f5965598be039ac3784e098d03674fcd76f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/9/594107cae7f80ec58d2ed77cd8ddc42eb0ed5e86" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/0/603652e370a9125d9425171e0b7435d2d7caee1a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/0/6069cc3bdc8fdec12a45fa1dd9f02e62c7a8387c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/5/6517b2729e4fb432327bf3a34caa6f36c4e3187c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/9/69ad7147a2e3546662c74eeb8bf6bc6f4aa3d0c2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/b/6b119036814d1372c7f7cb342bb456019e247021" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/0/80ab3926590001e49ce284a3013191f4ca2e41e3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8278dbcc8bc4c43fbb33ddc2f81d9a84468c0abf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/82b27a0e2d24b44d363dc71c6b535f49de41f867" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/3/8367d4d1d3451aea173f7ed31f5a41bdcdbb10d1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/3/93128280c1a870869c20d9bb695d0301d2072bd1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/3/93b941995a7dd2e1f54e70932f542091ec294d4f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/c/9c31b0d83016629b22dafe48d6309d88b583a8b8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/c/9c3aef4c767f7cc5638aaef90eb165c037119bbb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/c/9cbf7dc86a73b2c5db3f15f8945ec1e78ec24b29" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9f79a92973a8122a7997bca77873adc599fb4937" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/4/a45a9fa5e74db50b5a573fd98a2aee8500b1a9fd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/0/b0ae2b43a795e5cb13f0b250e77e0be5b1b19238" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b7131b2600dd057d5d5fa7726c90495b15406ff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/7/b7ea38a707a097b6b39dc5cf138f1f076449e1f8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/9/b9d1bef1dcc9cbea33ee142c0dd5d8c937d5d183" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/d/bdd514e83cce37e6760cb2f24b73a4b8c71f88c6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c3f851a44c0d34da886470589149ed8da988c310" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/4/c40eb43dc70a10521d0634d09592aeb71db65fe4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/0/d03ea28188b67a3e61dfe77780515a9880417402" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/0/d097955348ed41a94bdce82953b09aa2dfa19893" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/2/d296991f765ceb14d3a2612c689a9aac6e93d40f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/3/d3c2f84d089776d957b1b6fe91c7af0cc35964fe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d6d823099003ea4c70b1613c00821754867eddb6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/a/daf58695822e7bd72eab54141bc95105f9fe7875" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/c/dc266fad263c76d637237513348c34d52161a035" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/0/e0a85cf3364ca701882b2c7b31d06e186be50e23" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/0/f00794806b96ef0015d98277d92d4561c67ac6ec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/2/f245fd06201dc7a3d194b278b155e2026e3c7204" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/9/f936fb68b8896fb6ec9f34d0d4554f272947557e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/out3_big.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/web3jFlatten_jar/web3jFlatten.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/web3jFlatten/META-INF/web3jFlatten.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Distance/Hamming.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Distance/NeedleHaystack.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/ASN1ObjectIdentifier.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/ASN1OctetString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/ASN1OctetString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/Arrays.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/Arrays.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/Arrays.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/CustomNamedCurves.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/CustomNamedCurves.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/ECCurve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/ECCurve.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/ECDomainParameters.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/ECFieldElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/ECFieldElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/ECLookupTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/ECLookupTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/ECPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/ECPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/Eureqa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/Eureqa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/Eureqa.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/FixedPointCombMultiplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/FixedPointCombMultiplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/FixedPointPreCompInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/FixedPointPreCompInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/FixedPointUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/FixedPointUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/Hex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/Hex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/HexEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/HexEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/Keccak.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/Keccak.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/KeccakDigest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/KeccakDigest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/Nat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/Nat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/Nat256.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/Nat256.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/Pack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/Pack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/PreCompCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/PreCompCallback.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Curve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Curve.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Field.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1FieldElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1FieldElement.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Point.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/X9ECParameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/X9ECParameters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/X9ECParametersHolder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/X9ECPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/X9ECPoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/testAll.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/testAll.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/haystackTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Distance/Hamming.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Distance/NeedleHaystack.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/ASN1ObjectIdentifier.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Usage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Usage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Generator/PKGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Generator/PKGenerator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/ASN1OctetString.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/ASN1OctetString.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/Arrays.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/Arrays.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/CustomNamedCurves$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/CustomNamedCurves$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/CustomNamedCurves.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/CustomNamedCurves.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/ECCurve$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/ECCurve$Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/ECCurve$Config.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/ECCurve.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/ECCurve.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/ECDomainParameters.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/ECFieldElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/ECFieldElement.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/ECLookupTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/ECLookupTable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/ECPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/ECPoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/Eureqa.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/Eureqa.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Keys/Eureqa.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/FixedPointCombMultiplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/FixedPointCombMultiplier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/FixedPointPreCompInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/FixedPointPreCompInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/FixedPointUtil$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/FixedPointUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/FixedPointUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/Hex.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/Hex.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/HexEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/HexEncoder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/Keccak$Digest256.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/Keccak$Digest256.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/Keccak.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/Keccak.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/KeccakDigest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/KeccakDigest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/Mod.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/Mod.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/Nat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/Nat.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/Nat256.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/Nat256.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/Pack.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/Pack.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/PreCompCallback.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/PreCompCallback.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/PublicFromPrivate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/PublicFromPrivate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Curve$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Curve$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Curve$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Curve.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Curve.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Field.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Field.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/SecP256K1FieldElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/SecP256K1FieldElement.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Point.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/X9ECParameters.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/X9ECParameters.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/X9ECParametersHolder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/X9ECPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/X9ECPoint.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/test.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/testAll.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/testAll.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/haystackTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Usage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Usage.class" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,93 +129,100 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Usage.java">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/HexEncoder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="79" selection-start-line="21" selection-start-column="79" selection-end-line="21" selection-end-column="79" />
+            <state relative-caret-position="30">
+              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECCurve.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="262">
+              <caret line="80" column="62" lean-forward="true" selection-start-line="80" selection-start-column="62" selection-end-line="80" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECPoint.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="90" column="5" lean-forward="true" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1854#1855#0" expanded="true" />
+                <element signature="e#3185#3186#0" expanded="true" />
+                <element signature="e#3267#3268#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Pack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="10" lean-forward="true" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+            <state relative-caret-position="382">
+              <caret line="39" column="47" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="47" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Generator/PKGenerator.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1Curve.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECLookupTable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Nat256.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="164" column="28" lean-forward="true" selection-start-line="164" selection-start-column="28" selection-end-line="164" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1Field.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-              <folding>
-                <element signature="e#262#263#0" expanded="true" />
-                <element signature="e#294#295#0" expanded="true" />
-              </folding>
+              <caret line="96" column="24" selection-start-line="96" selection-start-column="24" selection-end-line="96" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/FixedPointUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="63" lean-forward="true" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pkarr</find>
-      <find>evaluate</find>
-      <find>newTrain</find>
-      <find>FileUtils.write(file, &quot;c&quot; + t + &quot;,&quot;, true);</find>
-      <find>arrp</find>
-      <find>fileSize</find>
-      <find>buildmode</find>
-      <find>RandomForest</find>
-      <find>train</find>
-      <find>&quot;-num-decimal-places 5&quot;</find>
-      <find>buildModel</find>
-      <find>row</find>
-      <find>load</find>
-      <find>reader</find>
-      <find>REPTree</find>
-      <find>read</find>
-      <find>test</find>
-      <find>eval</find>
-      <find>sort</find>
-      <find>classify</find>
-      <find>sort()</find>
-      <find>data</find>
-      <find>SimpleLinearRegression</find>
-      <find>RandomTree</find>
-      <find>num</find>
-      <find>SecondaryKeyExtractor</find>
-      <find>db</find>
-      <find>pk</find>
-      <find>gPoint</find>
-      <find>pkGenerator</find>
+      <find>SecP256K1Curve</find>
+      <find>createPoint</find>
     </findStrings>
-    <replaceStrings>
-      <replace>(a[35])*(a[35])*(a[35])*(a[35])</replace>
-      <replace>(a[0])*(a[0])</replace>
-      <replace>(a[56])*(a[56])*(a[56])*(a[56])*(a[56])</replace>
-      <replace>M5P</replace>
-      <replace>REPTree</replace>
-      <replace>SimpleLinearRegression</replace>
-      <replace>LinearRegression</replace>
-      <replace>RandomTree</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -187,57 +230,29 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Keys/Eureqa.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/X9ECPoint.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/Arrays.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/ASN1OctetString.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/ECFieldElement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/ECPoint.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/FixedPointCombMultiplier.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/FixedPointUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/HexEncoder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Point.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/Pack.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/SecP256K1FieldElement.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Curve.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/ECCurve.java" />
-        <option value="$PROJECT_DIR$/data/heatmapKeys.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/Hex.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/CustomNamedCurves.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/TestNumberator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/PubkPredict.java" />
-        <option value="$PROJECT_DIR$/src/main/java/RDDforEach.java" />
-        <option value="$PROJECT_DIR$/src/main/java/RDDforEachHeatMap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Keys/testAll.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Distance/NeedleHaystack.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Generator/decodeStringGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Generator/DecodeStringGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Distance/BigIntegerDistance.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Generator/Xorshift128PlusRandom.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Generator/SmartFlip.java" />
-        <option value="$PROJECT_DIR$/src/main/java/findBestDecodeString.java" />
-        <option value="$PROJECT_DIR$/src/main/java/findBestDecodeStringArrFind.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Generator/MiscStringDistance.java" />
-        <option value="$PROJECT_DIR$/data/point_test.csv" />
-        <option value="$PROJECT_DIR$/src/main/java/Ai/CanopyWork.java" />
-        <option value="$PROJECT_DIR$/src/main/java/musicTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Ai/SVM.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Ai/LinearRegression.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GenerateClassForSplitter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/testSplitter.java" />
-        <option value="$PROJECT_DIR$/data/splitter/0/99.csv" />
-        <option value="$PROJECT_DIR$/data/splitter/99.csv" />
-        <option value="$PROJECT_DIR$/src/main/java/TestCommonSense.java" />
-        <option value="$PROJECT_DIR$/src/main/java/GenerateSplitterFilesets.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Ai/DataSplitter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Ai/Regression.java" />
-        <option value="$PROJECT_DIR$/src/main/java/generateTrainingSet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/JustDumpIt.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Generator/PKGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/izbr.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Usage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/testAll.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/Nat.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Curve.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/Arrays.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/X9ECPoint.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/CustomNamedCurves.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/ECFieldElement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/X9ECParameters.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Point.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/SecP256K1FieldElement.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/FixedPointUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/FixedPointPreCompInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/FixedPointCombMultiplier.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/HexEncoder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/ECCurve.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/ECPoint.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/Pack.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/ECLookupTable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/Nat256.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Field.java" />
       </list>
     </option>
   </component>
@@ -248,62 +263,50 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="web3jFlatten" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-      </expand>
-      <select />
-    </treeState>
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="306" />
-    <option name="y" value="247" />
-    <option name="width" value="1390" />
-    <option name="height" value="846" />
-  </component>
-  <component name="ProjectId" id="1V7vHZbRNIjhfz62hnplacaN43C" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
+    <option name="x" value="227" />
+    <option name="y" value="155" />
+    <option name="width" value="1400" />
+    <option name="height" value="848" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="web3jFlatten" type="b2602c69:ProjectViewProjectNode" />
-              <item name="web3jFlatten" type="462c0819:PsiDirectoryNode" />
+              <item name="HackETHAddresses" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web3jFlatten" type="b2602c69:ProjectViewProjectNode" />
-              <item name="web3jFlatten" type="462c0819:PsiDirectoryNode" />
+              <item name="HackETHAddresses" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="web3jFlatten" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HackETHAddresses" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web3jFlatten" type="b2602c69:ProjectViewProjectNode" />
-              <item name="web3jFlatten" type="462c0819:PsiDirectoryNode" />
+              <item name="HackETHAddresses" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web3jFlatten" type="b2602c69:ProjectViewProjectNode" />
-              <item name="web3jFlatten" type="462c0819:PsiDirectoryNode" />
+              <item name="HackETHAddresses" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="web3jFlatten" type="b2602c69:ProjectViewProjectNode" />
-              <item name="web3jFlatten" type="462c0819:PsiDirectoryNode" />
+              <item name="HackETHAddresses" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -311,7 +314,7 @@
             </path>
             <path>
               <item name="web3jFlatten" type="b2602c69:ProjectViewProjectNode" />
-              <item name="web3jFlatten" type="462c0819:PsiDirectoryNode" />
+              <item name="HackETHAddresses" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -321,32 +324,16 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="" />
-      <recent name="Ai" />
-      <recent name="Transformer" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java" />
-      <recent name="$PROJECT_DIR$/data/splitter" />
-      <recent name="$PROJECT_DIR$/data/splitter/trainDir" />
-      <recent name="$PROJECT_DIR$/data/splitter/0" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -360,28 +347,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Usage">
-    <configuration name="GenerateSplitterFilesets" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GenerateSplitterFilesets" />
-      <module name="web3jFlatten" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JustDumpIt" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="JustDumpIt" />
-      <module name="web3jFlatten" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestCommonSense" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TestCommonSense" />
-      <module name="web3jFlatten" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.testAll">
     <configuration name="Usage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Usage" />
       <module name="web3jFlatten" />
@@ -389,20 +355,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="generateTrainingSet" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="generateTrainingSet" />
+    <configuration name="testAll" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Keys.testAll" />
       <module name="web3jFlatten" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Keys.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.testAll" />
         <item itemvalue="Application.Usage" />
-        <item itemvalue="Application.JustDumpIt" />
-        <item itemvalue="Application.generateTrainingSet" />
-        <item itemvalue="Application.GenerateSplitterFilesets" />
-        <item itemvalue="Application.TestCommonSense" />
       </list>
     </recent_temporary>
   </component>
@@ -411,431 +380,277 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0773b1ca-6e4c-45cb-8a52-9d8d30635c36" name="Default Changelist" comment="" />
-      <created>1576616860727</created>
+      <changelist id="9d5f8008-12b7-443d-80b7-0ddfd71bc8fa" name="Default Changelist" comment="" />
+      <created>1583541677417</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1576616860727</updated>
-      <workItem from="1576616862318" duration="698000" />
+      <updated>1583541677417</updated>
     </task>
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33724654" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2497332" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Designer" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" visible="true" weight="0.32969433" />
+      <window_info anchor="bottom" id="Tool Output" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="ANTLR Preview" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32969433" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" weight="0.32969433" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32969433" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4334061" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32969433" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3995633" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32969433" />
-      <window_info anchor="bottom" id="SonarLint" order="7" />
-      <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.25436682" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32969433" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32969433" />
-      <window_info anchor="bottom" id="Dependency Viewer" order="13" weight="0.32969433" />
-      <window_info anchor="bottom" id="Tool Output" order="14" />
-      <window_info anchor="bottom" id="ANTLR Preview" order="15" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Maven" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Palette&#9;" order="5" />
-      <window_info anchor="right" id="Maven" order="6" weight="0.32977587" />
-      <window_info anchor="right" id="Ant Build" order="7" weight="0.2497332" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list />
-          </value>
-        </entry>
-        <entry key="User">
-          <value>
-            <list />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1Point.java</url>
-          <line>1572</line>
-          <properties />
-          <option name="timeStamp" value="451" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Ai/DataSplitter.java</url>
-          <line>68</line>
-          <properties />
-          <option name="timeStamp" value="455" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/Generator/SmartFlip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/FixedPointCombMultiplier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Generator/DecodeStringGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/findBestDecodeString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="89" selection-start-line="89" selection-end-line="89" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/findBestDecodeStringArrFind.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="18" column="81" selection-start-line="18" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/point_test.csv" />
-    <entry file="file://$PROJECT_DIR$/data/point_train.csv" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Generator/Xorshift128PlusRandom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="34" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="34" />
-          <folding>
-            <element signature="e#657#658#0" expanded="true" />
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#739#740#0" expanded="true" />
-            <element signature="e#796#797#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Generator/MiscStringDistance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Ai/CanopyWork.java" />
-    <entry file="file://$PROJECT_DIR$/data/bigtest_binary_true.csv" />
-    <entry file="file://$PROJECT_DIR$/data/point_test_resample.arff" />
-    <entry file="file://$PROJECT_DIR$/data/dataGather_train.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/dataGather_tmp.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/splitter/testDir0.csv" />
-    <entry file="file://$PROJECT_DIR$/data/splitter/tmpDir/0.csv" />
-    <entry file="file://$PROJECT_DIR$/data/splitter/testDir/0.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/dataGather_test.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/splitter/0/0.csv" />
-    <entry file="file://$PROJECT_DIR$/data/splitter/0/13.csv" />
-    <entry file="file://$PROJECT_DIR$/data/splitter/0/99.csv" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/GenerateClassForSplitter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/musicTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Transformer/Transformer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/splitter/99.csv" />
-    <entry file="file://$PROJECT_DIR$/data/splitter/history.txt" />
-    <entry file="file://$PROJECT_DIR$/data/splitter/trainDir/0.csv" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/generateTrainingSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="81" column="37" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Ai/DataSplitter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="24" column="36" selection-start-line="24" selection-end-line="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/GenerateSplitterFilesets.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="53" selection-start-line="53" selection-end-line="61" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdbm/btree/BPage.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdbm/PrimaryStoreMap.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdbm/helper/PrimaryStoreMapImpl.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdbm/PrimaryMap.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdbm/helper/TupleBrowser.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/testAll.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-180">
-          <folding>
-            <element signature="e#0#5671#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/jdbm/RecordManager.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Ai/Regression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-43">
-          <caret line="159" column="25" selection-start-line="159" selection-start-column="25" selection-end-line="159" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#577#578#0" expanded="true" />
-            <element signature="e#610#611#0" expanded="true" />
-            <element signature="e#752#753#0" expanded="true" />
-            <element signature="e#784#785#0" expanded="true" />
-            <element signature="e#976#977#0" expanded="true" />
-            <element signature="e#1008#1009#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/TestNumberator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-568">
-          <caret line="19" column="22" selection-start-line="19" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/TestCommonSense.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-859">
-          <caret line="114" column="6" selection-start-line="114" selection-start-column="6" selection-end-line="114" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/gr.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/JustDumpIt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="54" column="38" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/RDDforEachHeatMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1905">
-          <caret line="141" column="42" selection-start-line="137" selection-end-line="1839" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Numberator/ConfirmNumber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="32" column="50" selection-start-line="32" selection-start-column="50" selection-end-line="32" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/JustDumpIt2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="16" selection-start-column="16" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/PubkPredict.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="89" column="47" selection-start-line="89" selection-start-column="47" selection-end-line="89" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Generator/PKGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-          <folding>
-            <element signature="e#262#263#0" expanded="true" />
-            <element signature="e#294#295#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="10" lean-forward="true" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+        <state relative-caret-position="360">
+          <caret line="24" selection-start-line="24" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-36270" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/testAll.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Usage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="79" selection-start-line="21" selection-start-column="79" selection-end-line="21" selection-end-column="79" />
+        <state relative-caret-position="60">
+          <caret line="8" column="59" lean-forward="true" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/CustomNamedCurves.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECFieldElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/X9ECParameters.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+          <folding>
+            <element signature="e#193#194#0" expanded="true" />
+            <element signature="e#228#229#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1FieldElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding>
+            <element signature="e#228#229#0" expanded="true" />
+            <element signature="e#285#286#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1Point.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="1237" column="23" selection-start-line="1237" selection-start-column="23" selection-end-line="1237" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/PreCompCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Nat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Mod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="39" column="16" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/KeccakDigest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="123" column="29" selection-start-line="123" selection-start-column="29" selection-end-line="123" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Keccak.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Hex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/FixedPointPreCompInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/FixedPointCombMultiplier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ASN1OctetString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/X9ECPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/HexEncoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/FixedPointUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="63" lean-forward="true" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECCurve.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="80" column="62" lean-forward="true" selection-start-line="80" selection-start-column="62" selection-end-line="80" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECPoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="90" column="5" lean-forward="true" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+          <folding>
+            <element signature="e#1854#1855#0" expanded="true" />
+            <element signature="e#3185#3186#0" expanded="true" />
+            <element signature="e#3267#3268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Pack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="39" column="47" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1Curve.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECLookupTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Nat256.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="164" column="28" lean-forward="true" selection-start-line="164" selection-start-column="28" selection-end-line="164" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1Field.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="96" column="24" selection-start-line="96" selection-start-column="24" selection-end-line="96" selection-end-column="24" />
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
     <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
           <splitter-proportions>
@@ -858,14 +673,13 @@
           </splitter-proportions>
         </settings>
       </state>
-      <state key="ModuleStructureConfigurable.UI">
+      <state key="ProjectJDKs.UI">
         <settings>
-          <last-edited>web3jFlatten</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

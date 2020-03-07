@@ -2,8 +2,8 @@ package Keys;
 import java.math.BigInteger;
 
 //checkpoint clean
-public class FixedPointCombMultiplier {
-     protected ECPoint multiplyPositive(ECPoint p, BigInteger k) {
+class FixedPointCombMultiplier {
+     private ECPoint multiplyPositive(ECPoint p, BigInteger k) {
 
         ECCurve c = p.getCurve();
         int size = FixedPointUtil.getCombSize(c);
@@ -27,14 +27,15 @@ public class FixedPointCombMultiplier {
 				secretIndex <<= 1;
 				secretIndex ^= secretBit;
 			}
-			R = R.twicePlus(lookupTable.lookup(secretIndex));
+            lookupTable.lookup(secretIndex);
+            R = null;
 		}
 
         return R.add(info.getOffset());
     }
 
 
-    public ECPoint multiply(ECPoint p, BigInteger k) {
+    ECPoint multiply(ECPoint p, BigInteger k) {
         ECPoint positive = multiplyPositive(p, k.abs());
         return checkResult((k.signum() > 0 ? positive : positive.negate()));
     }

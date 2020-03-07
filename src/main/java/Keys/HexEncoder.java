@@ -3,7 +3,7 @@ package Keys;
 import java.io.OutputStream;
 
 //checkpoint clean
-public class HexEncoder {
+class HexEncoder {
     private final byte[] encodingTable =
             {
                     (byte)'0', (byte)'1', (byte)'2', (byte)'3', (byte)'4', (byte)'5', (byte)'6', (byte)'7',
@@ -13,7 +13,7 @@ public class HexEncoder {
 
     private final byte[] decodingTable = new byte[128];
 
-    private void initialiseDecodingTable()
+    public HexEncoder()
     {
         for (int i = 0; i < decodingTable.length; ++i)
 			decodingTable[i] = (byte) 0xff;
@@ -29,12 +29,7 @@ public class HexEncoder {
         decodingTable['F'] = decodingTable['f'];
     }
 
-    public HexEncoder()
-    {
-        initialiseDecodingTable();
-    }
 
-    
 
     private static boolean ignore(
             char    c)
@@ -42,7 +37,7 @@ public class HexEncoder {
         return c == '\n' || c =='\r' || c == '\t' || c == ' ';
     }
 
-    
+
     public void decode(
             String          data,
             OutputStream    out)

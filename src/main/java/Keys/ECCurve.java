@@ -1,20 +1,19 @@
 package Keys;
 import java.math.BigInteger;
 import java.util.HashMap;
-import java.util.Hashtable;
 
 //Done checkpoint clean
 public abstract class ECCurve
 {
-    public static final int COORD_AFFINE = 0;
-    public static final int COORD_HOMOGENEOUS = 1;
-    public static final int COORD_JACOBIAN = 2;
-    public static final int COORD_JACOBIAN_CHUDNOVSKY = 3;
-    public static final int COORD_JACOBIAN_MODIFIED = 4;
-    public static final int COORD_LAMBDA_AFFINE = 5;
-    public static final int COORD_LAMBDA_PROJECTIVE = 6;
+    static final int COORD_AFFINE = 0;
+    static final int COORD_HOMOGENEOUS = 1;
+    static final int COORD_JACOBIAN = 2;
+    static final int COORD_JACOBIAN_CHUDNOVSKY = 3;
+    static final int COORD_JACOBIAN_MODIFIED = 4;
+    static final int COORD_LAMBDA_AFFINE = 5;
+    static final int COORD_LAMBDA_PROJECTIVE = 6;
 
-    public ECCurve() {
+    ECCurve() {
 
     }
 
@@ -27,12 +26,12 @@ public abstract class ECCurve
             this.coord = coord;
          }
 
-        public Config setEndomorphism()
+        Config setEndomorphism()
         {
              return this;
         }
 
-        public ECCurve create() throws Exception {
+        ECCurve create() throws Exception {
 
 
             ECCurve c = cloneCurve();
@@ -46,8 +45,6 @@ public abstract class ECCurve
         }
     }
 
-     ECFieldElement a;
-    ECFieldElement b;
     BigInteger order;
 
     int coord = COORD_AFFINE;
@@ -59,45 +56,35 @@ public abstract class ECCurve
 
     public abstract ECFieldElement fromBigInteger(BigInteger x);
 
-    public synchronized Config configure()
+    synchronized Config configure()
     {
         return new Config(this.coord);
     }
 
     private ECPoint validatePoint(BigInteger x, BigInteger y) {
 
-        return createPoint(x, y);
+        return createRawPoint(fromBigInteger(x), fromBigInteger(y), false);
     }
 
-
-    private ECPoint createPoint(BigInteger x, BigInteger y)
-    {
-        return createPoint(x, y, false);
-    }
-
-    
-    public ECPoint createPoint(BigInteger x, BigInteger y, boolean withCompression)
-    {
-        return createRawPoint(fromBigInteger(x), fromBigInteger(y), withCompression);
-    }
 
     protected abstract ECCurve cloneCurve() throws Exception;
 
     protected abstract ECPoint createRawPoint(ECFieldElement x, ECFieldElement y, boolean withCompression);
 
 
-    
-    public FixedPointPreCompInfo precompute(ECPoint point, String name, PreCompCallback callback) {
+
+    FixedPointPreCompInfo precompute(ECPoint point, String name, PreCompCallback callback) {
 
 
         HashMap<String, FixedPointPreCompInfo> table = point.preCompTable;
-            if (table == null)
-				point.preCompTable = table = new HashMap(4);
+            if (table == null) {
+                point.preCompTable = table = new HashMap<>(4);
+            }
 
 
 
-            FixedPointPreCompInfo result = callback.precompute(table.get(name));
-            if (result != table.get(name))
+            FixedPointPreCompInfo result = callback.precompute("bc_fixed_point");
+            if (result != table.get("bc_fixed_point"))
 				table.put(name, result);
 
             return result;
@@ -105,7 +92,7 @@ public abstract class ECCurve
     }
 
 
-    public void normalizeAll(ECPoint[] points) {
+    void normalizeAll(ECPoint[] points) {
         normalizeAll(points, points.length);
     }
 
@@ -153,27 +140,20 @@ public abstract class ECCurve
     public abstract ECPoint getInfinity();
 
 
-    public ECFieldElement getA()
-    {
-        return a;
-    }
-
-
-
-    public BigInteger getOrder()
+    BigInteger getOrder()
     {
         return order;
     }
 
 
 
-    public int getCoordinateSystem()
+    int getCoordinateSystem()
     {
         return coord;
     }
 
 
-    public ECPoint decodePoint(byte[] encoded) {
+    ECPoint decodePoint(byte[] encoded) {
         ECPoint p = null;
         int expectedLength = (getFieldSize() + 7) / 8;
 

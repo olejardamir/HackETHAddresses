@@ -1,7 +1,7 @@
 package Keys;
 import java.math.BigInteger;
 
-abstract class Nat256 extends Eureqa
+abstract class Nat256
 {
     private static final long M = 0xFFFFFFFFL;
 
@@ -38,14 +38,7 @@ abstract class Nat256 extends Eureqa
     }
 //------------------------------------------------------------------
 
-    public static boolean eq(int[] x, int[] y)
-    {
-        for (int i = 7; i >= 0; --i)
-			if (x[i] != y[i])
-				return false;
-        return true;
-    }
-//------------------------------------------------------------------
+    //------------------------------------------------------------------
 
     public static int[] fromBigInteger(BigInteger x)
     {
@@ -58,11 +51,7 @@ abstract class Nat256 extends Eureqa
     }
 //------------------------------------------------------------------
 
-    public static int getBit(int[] x, int bit)
-    {
-		return bit == 0 ? x[0] & 1 : (bit & 255) != bit ? 0 : (x[(bit >>> 5)] >>> (bit & 31)) & 1;
-	}
-//------------------------------------------------------------------
+    //------------------------------------------------------------------
 
     public static boolean gte(int[] x, int[] y)
     {

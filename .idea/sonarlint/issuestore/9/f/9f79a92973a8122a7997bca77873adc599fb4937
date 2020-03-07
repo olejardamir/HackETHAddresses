@@ -1,8 +1,0 @@
-
-Zsquid:S3358?"DExtract this nested ternary operation into an independent statement.(µ`
-osquid:S3973+"XUse curly braces or indentation to denote the code conditionally executed by this "for".(ÌğŞ
-psquid:S3973ù"XUse curly braces or indentation to denote the code conditionally executed by this "for".(õøó×
-ssquid:S3973R"WUse curly braces or indentation to denote the code conditionally executed by this "if".(ìÙ¡Çùÿÿÿÿ
-rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¥­ÌÖ
-„ squid:ForLoopCounterChangedCheck6"XRefactor the code in order to not assign to this loop counter from within the loop body.(­Íã
-tsquid:S3973T"XUse curly braces or indentation to denote the code conditionally executed by this "for".(˜¼Èşÿÿÿÿ

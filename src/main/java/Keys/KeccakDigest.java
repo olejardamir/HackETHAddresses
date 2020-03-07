@@ -1,6 +1,6 @@
 package Keys;
 
-public class KeccakDigest {
+class KeccakDigest {
     private static final long[] KeccakRoundConstants = new long[]{ 0x0000000000000001L, 0x0000000000008082L,
             0x800000000000808aL, 0x8000000080008000L, 0x000000000000808bL, 0x0000000080000001L, 0x8000000080008081L,
             0x8000000000008009L, 0x000000000000008aL, 0x0000000000000088L, 0x0000000080008009L, 0x000000008000000aL,
@@ -51,7 +51,7 @@ public class KeccakDigest {
         getDigestSize();
     }
 
-    public void reset()
+    private void reset()
     {
         init(fixedOutputLength);
     }
