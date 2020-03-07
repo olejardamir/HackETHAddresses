@@ -26,7 +26,11 @@ class X9ECPoint {
     public synchronized ECPoint getPoint() {
         if (p == null)
         {
-            p = c.decodePoint(encoding.string).normalize();
+            ECPoint ecPoint = c.decodePoint(encoding.string);
+
+
+            ECFieldElement Z1 = ecPoint.getZCoord(0);
+            p = Z1.toBigInteger().bitLength() == 1 ? ecPoint : ecPoint.normalize(Z1.invert());
         }
 
         return p;

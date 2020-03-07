@@ -35,11 +35,63 @@ public class PublicFromPrivate implements Serializable {
         FixedPointCombMultiplier m1 = new FixedPointCombMultiplier();
         BigInteger i1 = new BigInteger(privatekey, 16);
 
-        X9ECParameters p7 = CustomNamedCurves.getByName(decodeString);
+        ECCurve curve = new SecP256K1Curve().configure().setEndomorphism().create();
+        X9ECPoint G = new X9ECPoint(curve, Hex.decode(decodeString));
+        X9ECParameters p7 = new X9ECParameters(G);
         ECPoint p6 = p7.getG();
-        ECPoint p1 = m1.multiply(p6, i1);
+        BigInteger k1 = i1.abs();
 
-        return p1.getEncoded();
+        ECCurve c = p6.getCurve();
+        BigInteger order = c.order;
+        int size = order != null ? order.bitLength() : c.getFieldSize() + 1;
+
+
+        FixedPointPreCompInfo info = FixedPointUtil.precompute(p6);
+        ECLookupTable lookupTable = info.getLookupTable();
+        int width = info.getWidth(), d = (size + width - 1) / width;
+
+        ECPoint R = c.getInfinity();
+
+        int fullComb = d * width;
+
+
+        int[] z = new int[(fullComb + 31) >> 5];
+        for (int i11 = 0; k1.signum() != 0;) {
+            z[i11++] = k1.intValue();
+            k1 = k1.shiftRight(32);
+        }
+        int[] K = z;
+
+        for (int top = fullComb - 1, i = 0; i < d; ++i) {
+			int secretIndex = 0;
+			for (int j = top - i; j >= 0; j -= d) {
+				int secretBit = K[j >>> 5] >>> (j & 0x1F);
+				secretIndex ^= secretBit >>> 1;
+				secretIndex <<= 1;
+				secretIndex ^= secretBit;
+			}
+			R = R.twicePlus(lookupTable.lookup(secretIndex));
+		}
+
+        ECPoint positive = R.add(info.getOffset());
+        ECPoint p11 = (i1.signum() > 0 ? positive : positive.negate());
+
+
+        ECPoint p1 = p11;
+
+
+        ECFieldElement Z1 = p1.getZCoord(0);
+        ECPoint normed = Z1.toBigInteger().bitLength() == 1 ? p1 : p1.normalize(Z1.invert());
+
+        byte[] X = normed.getXCoord().getEncoded();
+
+
+        byte[] Y = normed.getYCoord().getEncoded(), PO = new byte[X.length + Y.length + 1];
+
+        PO[0] = 0x04;
+        System.arraycopy(X, 0, PO, 1, X.length);
+        System.arraycopy(Y, 0, PO, X.length + 1, Y.length);
+        return PO;
     }
 
 

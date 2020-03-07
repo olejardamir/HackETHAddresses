@@ -8,12 +8,6 @@ class FixedPointUtil
 {
     private static final String PRECOMP_NAME = "bc_fixed_point";
 
-    public static int getCombSize(ECCurve c)
-    {
-        BigInteger order = c.order;
-        return order != null ? order.bitLength() : c.getFieldSize() + 1;
-    }
-
     public static FixedPointPreCompInfo precompute(final ECPoint p) {
         final ECCurve c = p.getCurve();
 
@@ -25,7 +19,8 @@ class FixedPointUtil
 
         table.get(PRECOMP_NAME);
 
-        int bits = getCombSize(c), minWidth = bits > 250 ? 6 : 5, n = 1 << minWidth;
+        BigInteger order = c.order;
+        int bits = order != null ? order.bitLength() : c.getFieldSize() + 1, minWidth = bits > 250 ? 6 : 5, n = 1 << minWidth;
 
         int d = (bits + minWidth - 1) / minWidth;
 

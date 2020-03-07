@@ -34,15 +34,7 @@ class HexEncoder {
         initialiseDecodingTable();
     }
 
-    
 
-    private static boolean ignore(
-            char    c)
-    {
-        return c == '\n' || c =='\r' || c == '\t' || c == ' ';
-    }
-
-    
     public void decode(
             String          data,
             OutputStream    out)
@@ -52,15 +44,18 @@ class HexEncoder {
 
         int     end = data.length();
 
+        char c = data.charAt(end - 1);
         for (; end > 0; --end)
-			if (!ignore(data.charAt(end - 1)))
+			if (!(c == '\n' || c == '\r' || c == '\t' || c == ' '))
 				break;
 
         for (int i = 0; i < end;) {
-			while (i < end && ignore(data.charAt(i)))
+            char c1 = data.charAt(i);
+            while (i < end && (c1 == '\n' || c1 == '\r' || c1 == '\t' || c1 == ' '))
 				++i;
 			b1 = decodingTable[data.charAt(i++)];
-			while (i < end && ignore(data.charAt(i)))
+              c = data.charAt(i);
+            while (i < end && (c == '\n' || c == '\r' || c == '\t' || c == ' '))
 				++i;
 			b2 = decodingTable[data.charAt(i++)];
 			out.write(b2 | b1 << 4);

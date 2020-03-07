@@ -55,16 +55,6 @@ class SecP256K1Field
     }
 
 
-
-
-    public static void add(int[] x, int[] y, int[] z)
-    {
-        if (Nat256.add(x, y, z) != 0 || (z[7] == P7 && Nat256.gte(z, P)))
-			Nat.add33To(8, PInv33, z);
-    }
-
-
-
     public static int[] fromBigInteger(BigInteger x)
     {
         int[] z1 = new int[8];

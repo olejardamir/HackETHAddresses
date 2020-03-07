@@ -68,15 +68,7 @@ public abstract class ECPoint
         return curve;
     }
 
-    private int getCurveCoordinateSystem()
-    {
 
-        return curve == null ? ECCurve.COORD_AFFINE : curve.coord;
-    }
-
-
-
-    
     ECFieldElement getXCoord()
     {
         return x;
@@ -105,7 +97,8 @@ public abstract class ECPoint
 
     public boolean isNormalized()
     {
-        int coord = this.getCurveCoordinateSystem();
+
+        int coord = curve == null ? ECCurve.COORD_AFFINE : curve.coord;
 
         return coord != ECCurve.COORD_AFFINE
                 && coord != ECCurve.COORD_LAMBDA_AFFINE
@@ -113,17 +106,11 @@ public abstract class ECPoint
                 && !(zs[0].toBigInteger().bitLength() == 1);
     }
 
-    
-    public ECPoint normalize() {
-
-
-        ECFieldElement Z1 = getZCoord(0);
-        return Z1.toBigInteger().bitLength() == 1 ? this : normalize(Z1.invert());
-    }
 
     ECPoint normalize(ECFieldElement zInv)
     {
-        switch (this.getCurveCoordinateSystem())
+
+        switch (curve == null ? ECCurve.COORD_AFFINE : curve.coord)
         {
             case ECCurve.COORD_HOMOGENEOUS:
             case ECCurve.COORD_JACOBIAN:
@@ -149,28 +136,6 @@ public abstract class ECPoint
     boolean isInfinity()
     {
         return x == null || y == null || (zs.length > 0 && zs[0].toBigInteger().signum() == 0);
-    }
-
-
-
-    
-
-    
-    public byte[] getEncoded() {
-
-
-        ECPoint normed = normalize();
-
-        byte[] X = normed.getXCoord().getEncoded();
-
-
-
-        byte[] Y = normed.getYCoord().getEncoded(), PO = new byte[X.length + Y.length + 1];
-
-        PO[0] = 0x04;
-        System.arraycopy(X, 0, PO, 1, X.length);
-        System.arraycopy(Y, 0, PO, X.length + 1, Y.length);
-        return PO;
     }
 
 
