@@ -2,17 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0773b1ca-6e4c-45cb-8a52-9d8d30635c36" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" afterPath="$PROJECT_DIR$/.project" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Keys/ECCurve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/ECCurve.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/ECFieldElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/ECFieldElement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/Hex.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/Mod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/Mod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Curve.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Curve.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/HexEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/HexEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/KeccakDigest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/KeccakDigest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/SecP256K1Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Keys/X9ECPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Keys/X9ECPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Generator/PKGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Generator/PKGenerator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Hack.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Hack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Keys/CustomNamedCurves.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/ECCurve$Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/ECCurve$Config.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/ECCurve.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/ECCurve.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Keys/Hex.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Keys/ECFieldElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/ECFieldElement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Keys/ECLookupTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/ECLookupTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Keys/ECPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/ECPoint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Keys/FixedPointCombMultiplier.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Keys/FixedPointPreCompInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/FixedPointPreCompInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Keys/FixedPointUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/FixedPointUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Keys/HexEncoder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/HexEncoder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Keys/KeccakDigest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/KeccakDigest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/Mod.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/Mod.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/Nat.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/Nat.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/Nat256.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/Nat256.class" afterDir="false" />
@@ -21,7 +31,9 @@
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Field.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Field.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/SecP256K1FieldElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/SecP256K1FieldElement.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Point.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/SecP256K1Point.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Keys/X9ECPoint.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/X9ECPoint.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Keys/testAll.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Keys/testAll.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/web3jFlatten.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Usage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Usage.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -36,30 +48,15 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECCurve.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Hack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="36" column="23" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECFieldElement.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/math/BigInteger.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="2547" column="29" selection-start-line="2547" selection-start-column="18" selection-end-line="2547" selection-end-column="29" />
+            <state relative-caret-position="315">
+              <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,8 +64,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="108" column="4" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
+            <state relative-caret-position="285">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Mod.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/KeccakDigest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="830" column="9" selection-start-line="830" selection-start-column="9" selection-end-line="830" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/testAll.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1FieldElement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -162,8 +195,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -209,6 +240,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -235,7 +268,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Hack">
+  <component name="RunManager" selected="Application.testAll">
     <configuration name="Hack" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Hack" />
       <module name="web3jFlatten" />
@@ -265,8 +298,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Hack" />
         <item itemvalue="Application.testAll" />
+        <item itemvalue="Application.Hack" />
         <item itemvalue="Application.Usage" />
       </list>
     </recent_temporary>
@@ -286,9 +319,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1040" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2497332" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -362,16 +394,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Keccak.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/X9ECParameters.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Config.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/X9ECParameters.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Config.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECLookupTable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -408,24 +432,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/KeccakDigest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="830" column="21" lean-forward="true" selection-start-line="830" selection-start-column="21" selection-end-line="830" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Keys/SecP256K1FieldElement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="132" column="42" selection-start-line="132" selection-start-column="42" selection-end-line="132" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/testAll.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="16" column="82" selection-start-line="16" selection-start-column="82" selection-end-line="16" selection-end-column="82" />
+        <state relative-caret-position="345">
+          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -489,17 +499,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Mod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="48" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Hack.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="37" lean-forward="true" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+        <state relative-caret-position="315">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -516,13 +519,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Hex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Hex.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Keys/ECCurve.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="381">
@@ -532,8 +529,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Keys/PublicFromPrivate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="108" column="4" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="4" />
+        <state relative-caret-position="285">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
@@ -548,6 +545,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/Mod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/KeccakDigest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="830" column="9" selection-start-line="830" selection-start-column="9" selection-end-line="830" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Keys/testAll.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
         </state>
       </provider>
     </entry>

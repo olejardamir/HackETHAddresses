@@ -1,6 +1,5 @@
 package Keys;
 
-
   class Nat
 {
     private static final long M = 4294967295L;
@@ -25,9 +24,9 @@ package Keys;
         z[1] = (int)c;
         c >>>= 32;
         if (c != 0)
-            for (int i = 2; i < 8; ++i)
-                if (++z[i] != 0)
-                    return;
+			for (int i = 2; i < 8; ++i)
+				if (++z[i] != 0)
+					return;
     }
 
       static int addTo(int len, int[] x, int[] z)
@@ -42,20 +41,18 @@ package Keys;
         return (int)c;
     }
 
-
       static boolean gte(int len, int[] x, int[] y)
     {
         for (int i = len - 1; i >= 0; --i)
         {
             int x_i = x[i] ^ Integer.MIN_VALUE, y_i = y[i] ^ Integer.MIN_VALUE;
             if (x_i < y_i)
-                return false;
+				return false;
             if (x_i > y_i)
-                return true;
+				return true;
         }
         return true;
     }
-
 
       static boolean isOne(int len, int[] x)
     {
@@ -67,20 +64,18 @@ package Keys;
         return true;
     }
 
-
       static void sub33From(int[] z)
     {
-        long c = (z[0] & M) - (977 & M);
+        long c = (z[0] & M) - (M & 977);
         z[0] = (int)c;
         c >>= 32;
         c += (z[1] & M) - 1;
         z[1] = (int)c;
         c >>= 32;
         if (c != 0)
-            for (int i = 2; i < 8; ++i)
-                if (--z[i] != -1) {
-                    return;
-                }
+			for (int i = 2; i < 8; ++i)
+				if (--z[i] != -1)
+					return;
     }
 
       static int subFrom(int len, int[] x, int[] z)
@@ -94,7 +89,4 @@ package Keys;
         }
         return (int)c;
     }
-
-
-
 }

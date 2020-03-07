@@ -20,8 +20,6 @@ public class SecP256K1Curve extends ECCurve {
     private SecP256K1Point infinity;
 
     SecP256K1Curve() throws Exception {
-
-
         this.infinity = new SecP256K1Point(this, null, null);
 
         this.order = new BigInteger(1, decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141"));
@@ -31,9 +29,7 @@ public class SecP256K1Curve extends ECCurve {
     static byte[] decode(String data) throws Exception {
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
 
-
         encoder.decode(data, bOut);
-
 
         return bOut.toByteArray();
     }
@@ -41,7 +37,6 @@ public class SecP256K1Curve extends ECCurve {
     protected ECCurve cloneCurve() throws Exception {
         return new SecP256K1Curve();
     }
-
 
     public int getFieldSize() {
         return q.bitLength();
@@ -74,14 +69,13 @@ public class SecP256K1Curve extends ECCurve {
         return index -> {
             int[] x = new int[8], y = new int[8];
             for (int pos = 0, i = 0; i < len; ++i) {
-                for (int MASK = ((i ^ index) - 1) >> 31, j = 0; j < FE_INTS; ++j) {
+                for (int MASK = (i ^ index) - 1 >> 31, j = 0; j < FE_INTS; ++j) {
                     x[j] ^= table[j + pos] & MASK;
                     y[j] ^= table[j + pos + FE_INTS] & MASK;
                 }
-                pos += (2 * FE_INTS);
+                pos += 2 * FE_INTS;
             }
             return createRawPoint(new SecP256K1FieldElement(x), new SecP256K1FieldElement(y), false);
         };
     }
-
 }

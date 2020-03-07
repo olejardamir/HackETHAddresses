@@ -1,12 +1,7 @@
 package Keys;
   class Mod {
-
-
-
-
 	  static void invert(int[] x, int[] z) {
         int len = 8;
-
 
 		int[] z2 = new int[len];
 		System.arraycopy(x, 0, z2, 0, len);
@@ -46,21 +41,16 @@ package Keys;
 		}
     }
 
-
 	private static int inversionStep(int[] u, int uLen, int[] x, int xc) {
-		int x1 = u[0];
+		int x1 = u[0], count1 = 0;
 
-
-		int count1 = 0;
 		for (; (x1 & 1) == 0; ++count1)
 			x1 >>>= 1;
 		int len = 8, count = 0, zeroes = count1;
 		if (zeroes > 0) {
-			int c = 0;
-
-			for (int i = uLen; --i >= 0;) {
+			for (int c = 0, i = uLen; --i >= 0;) {
 				int next = u[i];
-				u[i] = c << -zeroes | next >>> zeroes;
+				u[i] = (c << -zeroes) | (next >>> zeroes);
 				c = next;
 			}
 			count += zeroes;
@@ -68,14 +58,12 @@ package Keys;
 		for (int i = 0; i < count; ++i) {
 			if ((x[0] & 1) != 0)
 				xc += xc < 0 ? Nat.addTo(len, SecP256K1Field.P, x) : Nat.subFrom(len, SecP256K1Field.P, x);
-			int c = xc;
-			for (int i1 = len; --i1 >= 0;) {
+			for (int c = xc, i1 = len; --i1 >= 0;) {
 				int next = x[i1];
-				x[i1] = c << 31 | next >>> 1;
+				x[i1] = (c << 31) | (next >>> 1);
 				c = next;
 			}
 		}
 		return xc;
 	}
-
 }

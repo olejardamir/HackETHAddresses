@@ -4,28 +4,28 @@ package Keys;
 {
     private static final long M = 0xFFFFFFFFL;
 
-    //------------------------------------------------------------------
+    /** ------------------------------------------------------------------. */
       static int addBothTo(int[] x, int[] y, int[] z)
     {
         long c = 0;
-        for(int t=0;t<8;t++) {
+        for(int t=0;t<8;++t) {
             c += (x[t] & M) + (y[t] & M) + (z[t] & M);
             z[t] = (int) c;
             c >>>= 32;
         }
         return (int)c;
     }
-//------------------------------------------------------------------
+/** ------------------------------------------------------------------. */
 
       static boolean gte(int[] x)
     {
         for (int i = 7; i >= 0; --i)
         {
-            int x_i = x[i] ^ Integer.MIN_VALUE, y_i = SecP256K1Field.P[i] ^ Integer.MIN_VALUE;
+            int x_i = x[i] ^ Integer.MIN_VALUE, y_i = Integer.MIN_VALUE ^ SecP256K1Field.P[i];
             if (x_i < y_i)
-                return false;
+				return false;
             if (x_i > y_i)
-                return true;
+				return true;
         }
         return true;
     }
@@ -42,22 +42,19 @@ package Keys;
 
       static boolean isZero(int[] x)
     {
-        for (int i = 0; i < 8; ++i) {
-            if (x[i] != 0) {
-                return false;
-            }
-        }
+        for (int i = 0; i < 8; ++i)
+			if (x[i] != 0)
+				return false;
         return true;
     }
-//------------------------------------------------------------------
+/** ------------------------------------------------------------------. */
       static int mulAddTo(int[] x, int[] y, int[] zz)
     {
         long zc = 0;
         for (int i = 0; i < 8; ++i)
         {
-            long c = 0;
-            long x_i = x[i] & M;
-            for(int t=0;t<8;t++) {
+            long c = 0, x_i = x[i] & M;
+            for(int t=0;t<8;++t) {
                 c += x_i * (y[t] & M) + (zz[i+t] & M);
                 zz[i+t] = (int) c;
                 c >>>= 32;
@@ -68,41 +65,39 @@ package Keys;
         }
         return (int)zc;
     }
-//------------------------------------------------------------------
+/** ------------------------------------------------------------------. */
 
       static long mul33Add(int w, int[] x, int[] y, int[] z)
     {
-        
-
-        long c = 0, wVal = w & M, x0 = x[8] & M;
+                long c = 0, wVal = w & M, x0 = x[8] & M;
         c += x0 * wVal + (y[0] & M);
         z[0] = (int)c;
         c >>>= 32;
-        long x1 = x[8 + 1] & M;
+        long x1 = x[9] & M;
         c += x0 + x1 * wVal + (y[1] & M);
         z[1] = (int)c;
         c >>>= 32;
-        long x2 = x[8 + 2] & M;
+        long x2 = x[10] & M;
         c += x1 + x2 * wVal + (y[2] & M);
         z[2] = (int)c;
         c >>>= 32;
-        long x3 = x[8 + 3] & M;
+        long x3 = x[11] & M;
         c += x2 + x3 * wVal + (y[3] & M);
         z[3] = (int)c;
         c >>>= 32;
-        long x4 = x[8 + 4] & M;
+        long x4 = x[12] & M;
         c += x3 + x4 * wVal + (y[4] & M);
         z[4] = (int)c;
         c >>>= 32;
-        long x5 = x[8 + 5] & M;
+        long x5 = x[13] & M;
         c += x4 + x5 * wVal + (y[5] & M);
         z[5] = (int)c;
         c >>>= 32;
-        long x6 = x[8 + 6] & M;
+        long x6 = x[14] & M;
         c += x5 + x6 * wVal + (y[6] & M);
         z[6] = (int)c;
         c >>>= 32;
-        long x7 = x[8 + 7] & M;
+        long x7 = x[15] & M;
         c += x6 + x7 * wVal + (y[7] & M);
         z[7] = (int)c;
         c >>>= 32;
@@ -122,20 +117,20 @@ package Keys;
         c += y01 + (z[2] & M);
         z[2] = (int)c;
         c >>>= 32;
-        c += (z[3] & M);
+        c += z[3] & M;
         z[3] = (int)c;
     }
 
       static int mul33WordAdd(int x, int y, int[] z)
     {
-        long c = 0, xVal = x & M, yVal = y & M;
-        c += yVal * xVal + (z[0] & M);
+        long c = 0, yVal = y & M;
+        c += x * yVal & (z[0] & M) + M;
         z[0] = (int)c;
         c >>>= 32;
         c += yVal + (z[1] & M);
         z[1] = (int)c;
         c >>>= 32;
-        c += (z[2] & M);
+        c += z[2] & M;
         z[2] = (int)c;
          return 0;
     }
@@ -195,5 +190,4 @@ package Keys;
         c += (z[7] & M) - (SecP256K1Field.P[7] & M);
         z[7] = (int)c;
     }
-
 }
