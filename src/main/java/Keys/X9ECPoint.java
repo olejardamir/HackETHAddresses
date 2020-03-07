@@ -8,9 +8,9 @@ class X9ECPoint {
 
 
 
-    X9ECPoint(
-            ECCurve c,
-            byte[] encoding)
+    public X9ECPoint(
+            ECCurve          c,
+            byte[]           encoding)
     {
 
         this.c = c;
@@ -23,7 +23,7 @@ class X9ECPoint {
 
 
 
-    synchronized ECPoint getPoint() {
+    public synchronized ECPoint getPoint() {
         if (p == null)
         {
             p = c.decodePoint(encoding.string).normalize();

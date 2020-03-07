@@ -1,7 +1,7 @@
 package Keys;
 
 
-class FixedPointPreCompInfo {
+public class FixedPointPreCompInfo {
     private ECPoint offset;
 
 
@@ -10,32 +10,32 @@ class FixedPointPreCompInfo {
 
     private int width = -1;
 
-    ECLookupTable getLookupTable()
+    public ECLookupTable getLookupTable()
     {
         return lookupTable;
     }
 
-    void setLookupTable(ECLookupTable lookupTable)
+    public void setLookupTable(ECLookupTable lookupTable)
     {
         this.lookupTable = lookupTable;
     }
 
-    ECPoint getOffset()
+    public ECPoint getOffset()
     {
         return offset;
     }
 
-    void setOffset(ECPoint offset)
+    public void setOffset(ECPoint offset)
     {
         this.offset = offset;
     }
 
-    int getWidth()
+    public int getWidth()
     {
         return width;
     }
 
-    void setWidth(int width)
+    public void setWidth(int width)
     {
         this.width = width;
     }

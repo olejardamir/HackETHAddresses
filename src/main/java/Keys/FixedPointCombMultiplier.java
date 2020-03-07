@@ -27,15 +27,14 @@ class FixedPointCombMultiplier {
 				secretIndex <<= 1;
 				secretIndex ^= secretBit;
 			}
-            lookupTable.lookup(secretIndex);
-            R = null;
+			R = R.twicePlus(lookupTable.lookup(secretIndex));
 		}
 
         return R.add(info.getOffset());
     }
 
 
-    ECPoint multiply(ECPoint p, BigInteger k) {
+    public ECPoint multiply(ECPoint p, BigInteger k) {
         ECPoint positive = multiplyPositive(p, k.abs());
         return checkResult((k.signum() > 0 ? positive : positive.negate()));
     }

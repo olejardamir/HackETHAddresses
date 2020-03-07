@@ -3,6 +3,8 @@ import java.math.BigInteger;
 
 public class SecP256K1Curve extends ECCurve {
     public static BigInteger q;
+    public static ECFieldElement a;
+    public static ECFieldElement b;
 
     static {
         try {
@@ -22,6 +24,8 @@ public class SecP256K1Curve extends ECCurve {
 
         this.infinity = new SecP256K1Point(this, null, null);
 
+        this.a = fromBigInteger(ECFieldElement.ZERO);
+        this.b = fromBigInteger(BigInteger.valueOf(7));
         this.order = new BigInteger(1, Hex.decode("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141"));
         this.coord = SECP256K1_DEFAULT_COORDS;
     }
@@ -63,16 +67,21 @@ public class SecP256K1Curve extends ECCurve {
 			Nat256.copy(((SecP256K1FieldElement) p.getRawYCoord()).x, 0, table, pos);
 			pos += FE_INTS;
 		}
-		return index -> {
-            int[] x = new int[8], y = new int[8];
-            for (int pos = 0, i = 0; i < len; ++i) {
-                for (int MASK = ((i ^ index) - 1) >> 31, j = 0; j < FE_INTS; ++j) {
-                    x[j] ^= table[j + pos] & MASK;
-                    y[j] ^= table[j + pos + FE_INTS] & MASK;
-                }
-                pos += (2 * FE_INTS);
-            }
-        };
+		return new ECLookupTable() {
+
+
+            public ECPoint lookup(int index) {
+				int[] x = new int[8], y = new int[8];
+				for (int pos = 0, i = 0; i < len; ++i) {
+					for (int MASK = ((i ^ index) - 1) >> 31, j = 0; j < FE_INTS; ++j) {
+						x[j] ^= table[j + pos] & MASK;
+						y[j] ^= table[j + pos + FE_INTS] & MASK;
+					}
+					pos += (2 * FE_INTS);
+				}
+				return createRawPoint(new SecP256K1FieldElement(x), new SecP256K1FieldElement(y), false);
+			}
+		};
 	}
 
 }

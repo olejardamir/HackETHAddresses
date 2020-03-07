@@ -1,7 +1,7 @@
 package Keys;
 
 class ASN1OctetString {
-    final byte[]  string;
+    byte[]  string;
 
 
     ASN1OctetString(  byte[] string)

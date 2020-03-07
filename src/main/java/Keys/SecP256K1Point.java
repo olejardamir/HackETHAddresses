@@ -2,14 +2,14 @@ package Keys;
 
 public class SecP256K1Point extends ECPoint {
 
-    SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y)
+    public SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y)
     {
         this(curve, x, y, false);
     }
 
 
 
-    SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y, boolean withCompression)
+    public SecP256K1Point(ECCurve curve, ECFieldElement x, ECFieldElement y, boolean withCompression)
     {
         super(curve, x, y);
 
@@ -1571,7 +1571,7 @@ public class SecP256K1Point extends ECPoint {
     }
 
     //TODO, CONTINUE REFACTORING !
-    protected ECPoint twice()
+    public ECPoint twice()
     {
         if (this.isInfinity())
         {

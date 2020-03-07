@@ -9,8 +9,8 @@ public abstract class ECPoint
 
     private static ECFieldElement[] getInitialZCoords(ECCurve curve)
     {
-        
-        int coord = curve == null ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
+
+        int coord = curve == null ? ECCurve.COORD_AFFINE : curve.coord;
 
         switch (coord)
         {
@@ -63,15 +63,15 @@ public abstract class ECPoint
 
 
 
-    ECCurve getCurve()
+    public ECCurve getCurve()
     {
         return curve;
     }
 
     private int getCurveCoordinateSystem()
     {
-        
-        return curve == null ? ECCurve.COORD_AFFINE : curve.getCoordinateSystem();
+
+        return curve == null ? ECCurve.COORD_AFFINE : curve.coord;
     }
 
 
@@ -87,38 +87,38 @@ public abstract class ECPoint
         return y;
     }
 
-    ECFieldElement getZCoord(int index)
+    public ECFieldElement getZCoord(int index)
     {
-        return (0 >= zs.length) ? null : zs[index];
+        return (index < 0 || index >= zs.length) ? null : zs[index];
     }
 
-    final ECFieldElement getRawXCoord()
+    public final ECFieldElement getRawXCoord()
     {
         return x;
     }
 
-    final ECFieldElement getRawYCoord()
+    public final ECFieldElement getRawYCoord()
     {
         return y;
     }
 
 
-    boolean isNormalized()
+    public boolean isNormalized()
     {
         int coord = this.getCurveCoordinateSystem();
 
         return coord != ECCurve.COORD_AFFINE
                 && coord != ECCurve.COORD_LAMBDA_AFFINE
                 && !isInfinity()
-                && !zs[0].isOne();
+                && !(zs[0].toBigInteger().bitLength() == 1);
     }
 
     
-    ECPoint normalize() {
+    public ECPoint normalize() {
 
 
         ECFieldElement Z1 = getZCoord(0);
-        return Z1.isOne() ? this : normalize(Z1.invert());
+        return Z1.toBigInteger().bitLength() == 1 ? this : normalize(Z1.invert());
     }
 
     ECPoint normalize(ECFieldElement zInv)
@@ -148,7 +148,29 @@ public abstract class ECPoint
 
     boolean isInfinity()
     {
-        return x == null || y == null || (zs.length > 0 && zs[0].isZero());
+        return x == null || y == null || (zs.length > 0 && zs[0].toBigInteger().signum() == 0);
+    }
+
+
+
+    
+
+    
+    public byte[] getEncoded() {
+
+
+        ECPoint normed = normalize();
+
+        byte[] X = normed.getXCoord().getEncoded();
+
+
+
+        byte[] Y = normed.getYCoord().getEncoded(), PO = new byte[X.length + Y.length + 1];
+
+        PO[0] = 0x04;
+        System.arraycopy(X, 0, PO, 1, X.length);
+        System.arraycopy(Y, 0, PO, X.length + 1, Y.length);
+        return PO;
     }
 
 
@@ -158,7 +180,18 @@ public abstract class ECPoint
 
     public abstract ECPoint subtract(ECPoint b);
 
+    public ECPoint timesPow2(int e) {
+        ECPoint p = this;
+        while (--e >= 0)
+			p = p.twice();
+        return p;
+    }
+
     protected abstract ECPoint twice();
+
+    public ECPoint twicePlus(ECPoint b) {
+        return null;
+    }
 
 
 }

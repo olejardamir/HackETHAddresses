@@ -5,10 +5,12 @@ import java.math.BigInteger;
 public class SecP256K1FieldElement extends ECFieldElement {
     private static final BigInteger Q = SecP256K1Curve.q;
 
-    final int[] x;
+    int[] x;
 
-    SecP256K1FieldElement(BigInteger x)
+    public SecP256K1FieldElement(BigInteger x)
     {
+
+
         this.x = SecP256K1Field.fromBigInteger(x);
     }
 

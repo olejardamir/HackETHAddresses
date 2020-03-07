@@ -13,7 +13,7 @@ class HexEncoder {
 
     private final byte[] decodingTable = new byte[128];
 
-    public HexEncoder()
+    private void initialiseDecodingTable()
     {
         for (int i = 0; i < decodingTable.length; ++i)
 			decodingTable[i] = (byte) 0xff;
@@ -29,7 +29,12 @@ class HexEncoder {
         decodingTable['F'] = decodingTable['f'];
     }
 
+    public HexEncoder()
+    {
+        initialiseDecodingTable();
+    }
 
+    
 
     private static boolean ignore(
             char    c)
@@ -37,7 +42,7 @@ class HexEncoder {
         return c == '\n' || c =='\r' || c == '\t' || c == ' ';
     }
 
-
+    
     public void decode(
             String          data,
             OutputStream    out)

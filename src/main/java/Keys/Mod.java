@@ -19,7 +19,10 @@ abstract class Mod {
 				ac += Nat.subFrom(len, b, a) - bc;
 				ac = inversionStep(p, u, uvLen, a, ac);
 				if (Nat.isOne(uvLen, u)) {
-					inversionResult(p, ac, a, z);
+					if (ac < 0)
+						Nat.add(p.length, a, p, z);
+					else
+						System.arraycopy(a, 0, z, 0, p.length);
 					return;
 				}
 			} else {
@@ -27,7 +30,10 @@ abstract class Mod {
 				bc += Nat.subFrom(len, a, b) - ac;
 				bc = inversionStep(p, v, uvLen, b, bc);
 				if (Nat.isOne(uvLen, v)) {
-					inversionResult(p, bc, b, z);
+					if (bc < 0)
+						Nat.add(p.length, b, p, z);
+					else
+						System.arraycopy(b, 0, z, 0, p.length);
 					return;
 				}
 			}
@@ -35,15 +41,14 @@ abstract class Mod {
     }
 
 
-    private static void inversionResult(int[] p, int ac, int[] a, int[] z) {
-        if (ac < 0)
-			Nat.add(p.length, a, p, z);
-		else
-			System.arraycopy(a, 0, z, 0, p.length);
-    }
+	private static int inversionStep(int[] p, int[] u, int uLen, int[] x, int xc) {
+		int x1 = u[0];
 
-    private static int inversionStep(int[] p, int[] u, int uLen, int[] x, int xc) {
-		int len = p.length, count = 0, zeroes = getTrailingZeroes(u[0]);
+
+		int count1 = 0;
+		for (; (x1 & 1) == 0; ++count1)
+			x1 >>>= 1;
+		int len = p.length, count = 0, zeroes = count1;
 		if (zeroes > 0) {
 			Nat.shiftDownBits(uLen, u, zeroes, 0);
 			count += zeroes;
@@ -56,12 +61,4 @@ abstract class Mod {
 		return xc;
 	}
 
-    private static int getTrailingZeroes(int x) {
-
-
-        int count = 0;
-        for (; (x & 1) == 0; ++count)
-			x >>>= 1;
-        return count;
-    }
 }
