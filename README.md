@@ -1,4 +1,6 @@
  
+# HackETHAddresses
+
 UPDATE:
 
 The program is done, you may use it in any way you want. The purpose of this program is to answer any doubts concerning the hacking of Ethereum.
@@ -10,9 +12,10 @@ Although this program checks 10K addresses in 5-10 seconds, assuming the collisi
 
 
 This is where I will stop developing, and leave as is.
+
+
 ----------------------------------------------------------------------
 
-# HackETHAddresses
 Flattened and somewhat optimized version of web3j, which in my opinion is full of coding crap.
 
 This program is made as a fast and optimized converter of the private keys to public. 
