@@ -23,7 +23,7 @@ This program is made as a fast and optimized converter of the private keys to pu
 
 Do not waste electricity on this!
 
-Instead, look at the code, try to improve it or reverse-engineer it going from a public to private.
+Instead, look at the code, try to improve it or reverse-engineer it going from a public key to a private key.
 
 This code has been tested with only 1000 pairs while refactoring the gibberish from the Ethereum libraries using the bouncy castle libraries...
 This means: it is possible that some private keys won't give the proper public keys, so don't use this code for any serious development, before testing it inside out.
