@@ -8,7 +8,7 @@ The only thing that hasn't been done is transfering this program to a hardware-b
 
 HOWEVER!
 
-Although this program checks 10K addresses in 5-10 seconds, assuming the collisions, it takes 173 039 326 821 years (best-case scenario) with a 10 core GPU processor to hack Ethereum, assuming you got 10K addresses on a list. So, you'd need a super-computer about 10 billion times faster to get a collision in about 1 year of hacking, or 10 billion more addresses worth hacking.
+Although this program checks 10K addresses in 5-10 seconds (per core), assuming the collisions, it takes 173 039 326 821 years (best-case scenario) with a 10 core GPU processor to hack Ethereum, assuming you got 10K addresses on a list. So, you'd need a super-computer about 10 billion times faster than a gaming computer to get a collision in about 1 year of hacking, or 10 billion more addresses worth hacking.
 
 
 This is where I will stop developing, and leave as is.
