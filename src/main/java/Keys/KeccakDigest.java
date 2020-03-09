@@ -16,781 +16,255 @@ class KeccakDigest {
     private boolean squeezing;
 
     KeccakDigest() {
-        this.rate = 1600 - (256 << 1);
-        for (int i = 0; i < state.length; ++i)
-            state[i] = 0L;
-        for (int i = 0; i < this.dataQueue.length; ++i)
-            this.dataQueue[i] = 0;
-        this.bitsInQueue = 0;
-        this.squeezing = false;
-        this.fixedOutputLength = ((256 << 1) + 1600 - 1600) / 2;
+        extrcv(256, 512);
     }
 
-    int getDigestSize() {
-        return fixedOutputLength / 8;
-    }
+
 
     void update(byte[] in, int len) {
         int bytesInQueue = bitsInQueue >> 3, rateBytes = rate >> 3;
-        for (int count = 0; count < len; )
-            if (bytesInQueue == 0 && count <= len - rateBytes)
-                do {
-                    for (int off1 = count, count1 = rate >> 6, i = 0; i < count1; ++i) {
-                        int off11 = off1 + 4, off2 = off1;
-                        state[i] ^= (((in[off2] & 0xff) | ((in[++off2] & 0xff) << 8) | ((in[++off2] & 0xff) << 16)
-                                | (in[++off2] << 24)) & 0xffffffffL)
-                                | ((((in[off11] & 0xff) | ((in[++off11] & 0xff) << 8) | ((in[++off11] & 0xff) << 16)
-                                | (in[++off11] << 24)) & 0xffffffffL) << 32);
-                        off1 += 8;
-                    }
-                    long[] A = state;
-                    long a00 = A[0], a01 = A[1], a02 = A[2], a03 = A[3], a04 = A[4], a05 = A[5], a06 = A[6], a07 = A[7],
-                            a08 = A[8], a09 = A[9], a10 = A[10], a11 = A[11], a12 = A[12], a13 = A[13], a14 = A[14],
-                            a15 = A[15], a16 = A[16], a17 = A[17], a18 = A[18], a19 = A[19], a20 = A[20], a21 = A[21],
-                            a22 = A[22], a23 = A[23], a24 = A[24];
-                    for (int i = 0; i < 24; ++i) {
-                        long c0 = a00 ^ a05 ^ a10 ^ a15 ^ a20, c1 = a01 ^ a06 ^ a11 ^ a16 ^ a21,
-                                c2 = a02 ^ a07 ^ a12 ^ a17 ^ a22, c3 = a03 ^ a08 ^ a13 ^ a18 ^ a23,
-                                c4 = a04 ^ a09 ^ a14 ^ a19 ^ a24, d1 = c4 ^ ((c1 << 1) | (c1 >>> 63)),
-                                d2 = c0 ^ ((c2 << 1) | (c2 >>> 63)), d3 = c1 ^ ((c3 << 1) | (c3 >>> 63)),
-                                d4 = c2 ^ ((c4 << 1) | (c4 >>> 63)), d0 = c3 ^ ((c0 << 1) | (c0 >>> 63));
-                        a00 ^= d1;
-                        a05 ^= d1;
-                        a10 ^= d1;
-                        a15 ^= d1;
-                        a20 ^= d1;
-                        a01 ^= d2;
-                        a06 ^= d2;
-                        a11 ^= d2;
-                        a16 ^= d2;
-                        a21 ^= d2;
-                        a02 ^= d3;
-                        a07 ^= d3;
-                        a12 ^= d3;
-                        a17 ^= d3;
-                        a22 ^= d3;
-                        a03 ^= d4;
-                        a08 ^= d4;
-                        a13 ^= d4;
-                        a18 ^= d4;
-                        a23 ^= d4;
-                        a04 ^= d0;
-                        a09 ^= d0;
-                        a14 ^= d0;
-                        a19 ^= d0;
-                        a24 ^= d0;
-                        c1 = (a01 << 1) | (a01 >>> 63);
-                        a01 = (a06 << 44) | (a06 >>> 20);
-                        a06 = (a09 << 20) | (a09 >>> 44);
-                        a09 = (a22 << 61) | (a22 >>> 3);
-                        a22 = (a14 << 39) | (a14 >>> 25);
-                        a14 = (a20 << 18) | (a20 >>> 46);
-                        a20 = (a02 << 62) | (a02 >>> 2);
-                        a02 = (a12 << 43) | (a12 >>> 21);
-                        a12 = (a13 << 25) | (a13 >>> 39);
-                        a13 = (a19 << 8) | (a19 >>> 56);
-                        a19 = (a23 << 56) | (a23 >>> 8);
-                        a23 = (a15 << 41) | (a15 >>> 23);
-                        a15 = (a04 << 27) | (a04 >>> 37);
-                        a04 = (a24 << 14) | (a24 >>> 50);
-                        a24 = (a21 << 2) | (a21 >>> 62);
-                        a21 = (a08 << 55) | (a08 >>> 9);
-                        a08 = (a16 << 45) | (a16 >>> 19);
-                        a16 = (a05 << 36) | (a05 >>> 28);
-                        a05 = (a03 << 28) | (a03 >>> 36);
-                        a03 = (a18 << 21) | (a18 >>> 43);
-                        a18 = (a17 << 15) | (a17 >>> 49);
-                        a17 = (a11 << 10) | (a11 >>> 54);
-                        a11 = (a07 << 6) | (a07 >>> 58);
-                        a07 = (a10 << 3) | (a10 >>> 61);
-                        a10 = c1;
-                        c0 = a00 ^ (a02 & ~a01);
-                        c1 = a01 ^ (a03 & ~a02);
-                        a02 ^= a04 & ~a03;
-                        a03 ^= a00 & ~a04;
-                        a04 ^= a01 & ~a00;
-                        a00 = c0;
-                        a01 = c1;
-                        c0 = a05 ^ (a07 & ~a06);
-                        c1 = a06 ^ (a08 & ~a07);
-                        a07 ^= a09 & ~a08;
-                        a08 ^= a05 & ~a09;
-                        a09 ^= a06 & ~a05;
-                        a05 = c0;
-                        a06 = c1;
-                        c0 = a10 ^ (a12 & ~a11);
-                        c1 = a11 ^ (a13 & ~a12);
-                        a12 ^= a14 & ~a13;
-                        a13 ^= a10 & ~a14;
-                        a14 ^= a11 & ~a10;
-                        a10 = c0;
-                        a11 = c1;
-                        c0 = a15 ^ (a17 & ~a16);
-                        c1 = a16 ^ (a18 & ~a17);
-                        a17 ^= a19 & ~a18;
-                        a18 ^= a15 & ~a19;
-                        a19 ^= a16 & ~a15;
-                        a15 = c0;
-                        a16 = c1;
-                        c0 = a20 ^ (a22 & ~a21);
-                        c1 = a21 ^ (a23 & ~a22);
-                        a22 ^= a24 & ~a23;
-                        a23 ^= a20 & ~a24;
-                        a24 ^= a21 & ~a20;
-                        a20 = c0;
-                        a21 = c1;
-                        a00 ^= KeccakRoundConstants[i];
-                    }
-                    A[0] = a00;
-                    A[1] = a01;
-                    A[2] = a02;
-                    A[3] = a03;
-                    A[4] = a04;
-                    A[5] = a05;
-                    A[6] = a06;
-                    A[7] = a07;
-                    A[8] = a08;
-                    A[9] = a09;
-                    A[10] = a10;
-                    A[11] = a11;
-                    A[12] = a12;
-                    A[13] = a13;
-                    A[14] = a14;
-                    A[15] = a15;
-                    A[16] = a16;
-                    A[17] = a17;
-                    A[18] = a18;
-                    A[19] = a19;
-                    A[20] = a20;
-                    A[21] = a21;
-                    A[22] = a22;
-                    A[23] = a23;
-                    A[24] = a24;
-                    count += rateBytes;
-                } while (count <= len - rateBytes);
-            else {
+        for (int count = 0; count < len; ) {
+            if (bytesInQueue == 0 && count <= len - rateBytes) {
+                count = getCount1(in, len, rateBytes, count);
+            } else {
                 int partialBlock = Math.min(rateBytes - bytesInQueue, len - count);
                 System.arraycopy(in, count, dataQueue, bytesInQueue, partialBlock);
                 bytesInQueue += partialBlock;
                 count += partialBlock;
-                if (bytesInQueue == rateBytes) {
-                    for (int off1 = 0, count1 = rate >> 6, i = 0; i < count1; ++i) {
-                        int off11 = off1 + 4, off2 = off1;
-                        state[i] ^= (((dataQueue[off2] & 0xff) | ((dataQueue[++off2] & 0xff) << 8)
-                                | ((dataQueue[++off2] & 0xff) << 16) | (dataQueue[++off2] << 24)) & 0xffffffffL)
-                                | ((((dataQueue[off11] & 0xff) | ((dataQueue[++off11] & 0xff) << 8)
-                                | ((dataQueue[++off11] & 0xff) << 16) | (dataQueue[++off11] << 24))
-                                & 0xffffffffL) << 32);
-                        off1 += 8;
-                    }
-                    long[] A = state;
-                    long a00 = A[0], a01 = A[1], a02 = A[2], a03 = A[3], a04 = A[4], a05 = A[5], a06 = A[6], a07 = A[7],
-                            a08 = A[8], a09 = A[9], a10 = A[10], a11 = A[11], a12 = A[12], a13 = A[13], a14 = A[14],
-                            a15 = A[15], a16 = A[16], a17 = A[17], a18 = A[18], a19 = A[19], a20 = A[20], a21 = A[21],
-                            a22 = A[22], a23 = A[23], a24 = A[24];
-                    for (int i = 0; i < 24; ++i) {
-                        long c0 = a00 ^ a05 ^ a10 ^ a15 ^ a20, c1 = a01 ^ a06 ^ a11 ^ a16 ^ a21,
-                                c2 = a02 ^ a07 ^ a12 ^ a17 ^ a22, c3 = a03 ^ a08 ^ a13 ^ a18 ^ a23,
-                                c4 = a04 ^ a09 ^ a14 ^ a19 ^ a24, d1 = c4 ^ ((c1 << 1) | (c1 >>> 63)),
-                                d2 = c0 ^ ((c2 << 1) | (c2 >>> 63)), d3 = c1 ^ ((c3 << 1) | (c3 >>> 63)),
-                                d4 = c2 ^ ((c4 << 1) | (c4 >>> 63)), d0 = c3 ^ ((c0 << 1) | (c0 >>> 63));
-                        a00 ^= d1;
-                        a05 ^= d1;
-                        a10 ^= d1;
-                        a15 ^= d1;
-                        a20 ^= d1;
-                        a01 ^= d2;
-                        a06 ^= d2;
-                        a11 ^= d2;
-                        a16 ^= d2;
-                        a21 ^= d2;
-                        a02 ^= d3;
-                        a07 ^= d3;
-                        a12 ^= d3;
-                        a17 ^= d3;
-                        a22 ^= d3;
-                        a03 ^= d4;
-                        a08 ^= d4;
-                        a13 ^= d4;
-                        a18 ^= d4;
-                        a23 ^= d4;
-                        a04 ^= d0;
-                        a09 ^= d0;
-                        a14 ^= d0;
-                        a19 ^= d0;
-                        a24 ^= d0;
-                        c1 = (a01 << 1) | (a01 >>> 63);
-                        a01 = (a06 << 44) | (a06 >>> 20);
-                        a06 = (a09 << 20) | (a09 >>> 44);
-                        a09 = (a22 << 61) | (a22 >>> 3);
-                        a22 = (a14 << 39) | (a14 >>> 25);
-                        a14 = (a20 << 18) | (a20 >>> 46);
-                        a20 = (a02 << 62) | (a02 >>> 2);
-                        a02 = (a12 << 43) | (a12 >>> 21);
-                        a12 = (a13 << 25) | (a13 >>> 39);
-                        a13 = (a19 << 8) | (a19 >>> 56);
-                        a19 = (a23 << 56) | (a23 >>> 8);
-                        a23 = (a15 << 41) | (a15 >>> 23);
-                        a15 = (a04 << 27) | (a04 >>> 37);
-                        a04 = (a24 << 14) | (a24 >>> 50);
-                        a24 = (a21 << 2) | (a21 >>> 62);
-                        a21 = (a08 << 55) | (a08 >>> 9);
-                        a08 = (a16 << 45) | (a16 >>> 19);
-                        a16 = (a05 << 36) | (a05 >>> 28);
-                        a05 = (a03 << 28) | (a03 >>> 36);
-                        a03 = (a18 << 21) | (a18 >>> 43);
-                        a18 = (a17 << 15) | (a17 >>> 49);
-                        a17 = (a11 << 10) | (a11 >>> 54);
-                        a11 = (a07 << 6) | (a07 >>> 58);
-                        a07 = (a10 << 3) | (a10 >>> 61);
-                        a10 = c1;
-                        c0 = a00 ^ (a02 & ~a01);
-                        c1 = a01 ^ (a03 & ~a02);
-                        a02 ^= a04 & ~a03;
-                        a03 ^= a00 & ~a04;
-                        a04 ^= a01 & ~a00;
-                        a00 = c0;
-                        a01 = c1;
-                        c0 = a05 ^ (a07 & ~a06);
-                        c1 = a06 ^ (a08 & ~a07);
-                        a07 ^= a09 & ~a08;
-                        a08 ^= a05 & ~a09;
-                        a09 ^= a06 & ~a05;
-                        a05 = c0;
-                        a06 = c1;
-                        c0 = a10 ^ (a12 & ~a11);
-                        c1 = a11 ^ (a13 & ~a12);
-                        a12 ^= a14 & ~a13;
-                        a13 ^= a10 & ~a14;
-                        a14 ^= a11 & ~a10;
-                        a10 = c0;
-                        a11 = c1;
-                        c0 = a15 ^ (a17 & ~a16);
-                        c1 = a16 ^ (a18 & ~a17);
-                        a17 ^= a19 & ~a18;
-                        a18 ^= a15 & ~a19;
-                        a19 ^= a16 & ~a15;
-                        a15 = c0;
-                        a16 = c1;
-                        c0 = a20 ^ (a22 & ~a21);
-                        c1 = a21 ^ (a23 & ~a22);
-                        a22 ^= a24 & ~a23;
-                        a23 ^= a20 & ~a24;
-                        a24 ^= a21 & ~a20;
-                        a20 = c0;
-                        a21 = c1;
-                        a00 ^= KeccakRoundConstants[i];
-                    }
-                    A[0] = a00;
-                    A[1] = a01;
-                    A[2] = a02;
-                    A[3] = a03;
-                    A[4] = a04;
-                    A[5] = a05;
-                    A[6] = a06;
-                    A[7] = a07;
-                    A[8] = a08;
-                    A[9] = a09;
-                    A[10] = a10;
-                    A[11] = a11;
-                    A[12] = a12;
-                    A[13] = a13;
-                    A[14] = a14;
-                    A[15] = a15;
-                    A[16] = a16;
-                    A[17] = a17;
-                    A[18] = a18;
-                    A[19] = a19;
-                    A[20] = a20;
-                    A[21] = a21;
-                    A[22] = a22;
-                    A[23] = a23;
-                    A[24] = a24;
-                    bytesInQueue = 0;
-                }
+                bytesInQueue = getBytesInQueue(bytesInQueue, rateBytes);
             }
+        }
 
         bitsInQueue = bytesInQueue << 3;
     }
 
-    void doFinal(byte[] out) {
-        if (!squeezing) {
-            dataQueue[bitsInQueue >> 3] |= (byte) (1L << (bitsInQueue & 7));
-            if (++bitsInQueue == rate) {
-                for (int off = 0, count = rate >> 6, i = 0; i < count; ++i) {
-                    int off1 = off + 4, off2 = off;
-                    state[i] ^= (((dataQueue[off2] & 0xff) | ((dataQueue[++off2] & 0xff) << 8)
-                            | ((dataQueue[++off2] & 0xff) << 16) | (dataQueue[++off2] << 24)) & 0xffffffffL)
-                            | ((((dataQueue[off1] & 0xff) | ((dataQueue[++off1] & 0xff) << 8)
-                            | ((dataQueue[++off1] & 0xff) << 16) | (dataQueue[++off1] << 24))
-                            & 0xffffffffL) << 32);
-                    off += 8;
-                }
+    private int getCount1(byte[] in, int len, int rateBytes, int count) {
+        do {
+            count = getCount(in, rateBytes, count);
+        } while (count <= len - rateBytes);
+        return count;
+    }
 
-                long[] A = state;
+    private int getBytesInQueue(int bytesInQueue, int rateBytes) {
+        if (reftt(bytesInQueue != rateBytes)) return bytesInQueue;
+        extrFor(dataQueue, 0);
+		exctrc(state);
+		return 0;
+    }
 
-                long a00 = A[0], a01 = A[1], a02 = A[2], a03 = A[3], a04 = A[4], a05 = A[5], a06 = A[6], a07 = A[7], a08 = A[8],
-                        a09 = A[9], a10 = A[10], a11 = A[11], a12 = A[12], a13 = A[13], a14 = A[14], a15 = A[15], a16 = A[16],
-                        a17 = A[17], a18 = A[18], a19 = A[19], a20 = A[20], a21 = A[21], a22 = A[22], a23 = A[23], a24 = A[24];
-                for (int i = 0; i < 24; ++i) {
-                    long c0 = a00 ^ a05 ^ a10 ^ a15 ^ a20, c1 = a01 ^ a06 ^ a11 ^ a16 ^ a21, c2 = a02 ^ a07 ^ a12 ^ a17 ^ a22,
-                            c3 = a03 ^ a08 ^ a13 ^ a18 ^ a23, c4 = a04 ^ a09 ^ a14 ^ a19 ^ a24, d1 = c4 ^ ((c1 << 1) | (c1 >>> 63)),
-                            d2 = c0 ^ ((c2 << 1) | (c2 >>> 63)), d3 = c1 ^ ((c3 << 1) | (c3 >>> 63)), d4 = c2 ^ ((c4 << 1) | (c4 >>> 63)),
-                            d0 = c3 ^ ((c0 << 1) | (c0 >>> 63));
-                    a00 ^= d1;
-                    a05 ^= d1;
-                    a10 ^= d1;
-                    a15 ^= d1;
-                    a20 ^= d1;
-                    a01 ^= d2;
-                    a06 ^= d2;
-                    a11 ^= d2;
-                    a16 ^= d2;
-                    a21 ^= d2;
-                    a02 ^= d3;
-                    a07 ^= d3;
-                    a12 ^= d3;
-                    a17 ^= d3;
-                    a22 ^= d3;
-                    a03 ^= d4;
-                    a08 ^= d4;
-                    a13 ^= d4;
-                    a18 ^= d4;
-                    a23 ^= d4;
-                    a04 ^= d0;
-                    a09 ^= d0;
-                    a14 ^= d0;
-                    a19 ^= d0;
-                    a24 ^= d0;
-
-                    c1 = (a01 << 1) | (a01 >>> 63);
-                    a01 = (a06 << 44) | (a06 >>> 20);
-                    a06 = (a09 << 20) | (a09 >>> 44);
-                    a09 = (a22 << 61) | (a22 >>> 3);
-                    a22 = (a14 << 39) | (a14 >>> 25);
-                    a14 = (a20 << 18) | (a20 >>> 46);
-                    a20 = (a02 << 62) | (a02 >>> 2);
-                    a02 = (a12 << 43) | (a12 >>> 21);
-                    a12 = (a13 << 25) | (a13 >>> 39);
-                    a13 = (a19 << 8) | (a19 >>> 56);
-                    a19 = (a23 << 56) | (a23 >>> 8);
-                    a23 = (a15 << 41) | (a15 >>> 23);
-                    a15 = (a04 << 27) | (a04 >>> 37);
-                    a04 = (a24 << 14) | (a24 >>> 50);
-                    a24 = (a21 << 2) | (a21 >>> 62);
-                    a21 = (a08 << 55) | (a08 >>> 9);
-                    a08 = (a16 << 45) | (a16 >>> 19);
-                    a16 = (a05 << 36) | (a05 >>> 28);
-                    a05 = (a03 << 28) | (a03 >>> 36);
-                    a03 = (a18 << 21) | (a18 >>> 43);
-                    a18 = (a17 << 15) | (a17 >>> 49);
-                    a17 = (a11 << 10) | (a11 >>> 54);
-                    a11 = (a07 << 6) | (a07 >>> 58);
-                    a07 = (a10 << 3) | (a10 >>> 61);
-                    a10 = c1;
-
-                    c0 = a00 ^ (a02 & ~a01);
-                    c1 = a01 ^ (a03 & ~a02);
-                    a02 ^= a04 & ~a03;
-                    a03 ^= a00 & ~a04;
-                    a04 ^= a01 & ~a00;
-                    a00 = c0;
-                    a01 = c1;
-
-                    c0 = a05 ^ (a07 & ~a06);
-                    c1 = a06 ^ (a08 & ~a07);
-                    a07 ^= a09 & ~a08;
-                    a08 ^= a05 & ~a09;
-                    a09 ^= a06 & ~a05;
-                    a05 = c0;
-                    a06 = c1;
-
-                    c0 = a10 ^ (a12 & ~a11);
-                    c1 = a11 ^ (a13 & ~a12);
-                    a12 ^= a14 & ~a13;
-                    a13 ^= a10 & ~a14;
-                    a14 ^= a11 & ~a10;
-                    a10 = c0;
-                    a11 = c1;
-
-                    c0 = a15 ^ (a17 & ~a16);
-                    c1 = a16 ^ (a18 & ~a17);
-                    a17 ^= a19 & ~a18;
-                    a18 ^= a15 & ~a19;
-                    a19 ^= a16 & ~a15;
-                    a15 = c0;
-                    a16 = c1;
-
-                    c0 = a20 ^ (a22 & ~a21);
-                    c1 = a21 ^ (a23 & ~a22);
-                    a22 ^= a24 & ~a23;
-                    a23 ^= a20 & ~a24;
-                    a24 ^= a21 & ~a20;
-                    a20 = c0;
-                    a21 = c1;
-
-                    a00 ^= KeccakRoundConstants[i];
-                }
-
-                A[0] = a00;
-                A[1] = a01;
-                A[2] = a02;
-                A[3] = a03;
-                A[4] = a04;
-                A[5] = a05;
-                A[6] = a06;
-                A[7] = a07;
-                A[8] = a08;
-                A[9] = a09;
-                A[10] = a10;
-                A[11] = a11;
-                A[12] = a12;
-                A[13] = a13;
-                A[14] = a14;
-                A[15] = a15;
-                A[16] = a16;
-                A[17] = a17;
-                A[18] = a18;
-                A[19] = a19;
-                A[20] = a20;
-                A[21] = a21;
-                A[22] = a22;
-                A[23] = a23;
-                A[24] = a24;
-                bitsInQueue = 0;
-            }
-            int full = bitsInQueue >> 6, partial = bitsInQueue & 63, off = 0;
-            for (int i = 0; i < full; ++i) {
-                int off1 = off + 4, off2 = off;
-                state[i] ^= (((dataQueue[off2] & 0xff) | ((dataQueue[++off2] & 0xff) << 8) | ((dataQueue[++off2] & 0xff) << 16) | (dataQueue[++off2] << 24)) & 0xffffffffL) | ((((dataQueue[off1] & 0xff) | ((dataQueue[++off1] & 0xff) << 8) | ((dataQueue[++off1] & 0xff) << 16) | (dataQueue[++off1] << 24)) & 0xffffffffL) << 32);
-                off += 8;
-            }
-            if (partial > 0) {
-                int off1 = off + 4, off2 = off;
-                state[full] ^= ((((dataQueue[off2] & 0xff) | ((dataQueue[++off2] & 0xff) << 8) | ((dataQueue[++off2] & 0xff) << 16) | (dataQueue[++off2] << 24)) & 0xffffffffL) | ((((dataQueue[off1] & 0xff) | ((dataQueue[++off1] & 0xff) << 8) | ((dataQueue[++off1] & 0xff) << 16) | (dataQueue[++off1] << 24)) & 0xffffffffL) << 32)) & (1L << partial) - 1L;
-            }
-            state[rate - 1 >> 6] ^= 1L << 63;
-            long[] A = state;
-
-            long a00 = A[0], a01 = A[1], a02 = A[2], a03 = A[3], a04 = A[4], a05 = A[5], a06 = A[6], a07 = A[7], a08 = A[8],
-                    a09 = A[9], a10 = A[10], a11 = A[11], a12 = A[12], a13 = A[13], a14 = A[14], a15 = A[15], a16 = A[16],
-                    a17 = A[17], a18 = A[18], a19 = A[19], a20 = A[20], a21 = A[21], a22 = A[22], a23 = A[23], a24 = A[24];
-            for (int i = 0; i < 24; ++i) {
-                long c0 = a00 ^ a05 ^ a10 ^ a15 ^ a20, c1 = a01 ^ a06 ^ a11 ^ a16 ^ a21, c2 = a02 ^ a07 ^ a12 ^ a17 ^ a22,
-                        c3 = a03 ^ a08 ^ a13 ^ a18 ^ a23, c4 = a04 ^ a09 ^ a14 ^ a19 ^ a24, d1 = c4 ^ ((c1 << 1) | (c1 >>> 63)),
-                        d2 = c0 ^ ((c2 << 1) | (c2 >>> 63)), d3 = c1 ^ ((c3 << 1) | (c3 >>> 63)), d4 = c2 ^ ((c4 << 1) | (c4 >>> 63)),
-                        d0 = c3 ^ ((c0 << 1) | (c0 >>> 63));
-                a00 ^= d1;
-                a05 ^= d1;
-                a10 ^= d1;
-                a15 ^= d1;
-                a20 ^= d1;
-                a01 ^= d2;
-                a06 ^= d2;
-                a11 ^= d2;
-                a16 ^= d2;
-                a21 ^= d2;
-                a02 ^= d3;
-                a07 ^= d3;
-                a12 ^= d3;
-                a17 ^= d3;
-                a22 ^= d3;
-                a03 ^= d4;
-                a08 ^= d4;
-                a13 ^= d4;
-                a18 ^= d4;
-                a23 ^= d4;
-                a04 ^= d0;
-                a09 ^= d0;
-                a14 ^= d0;
-                a19 ^= d0;
-                a24 ^= d0;
-
-                c1 = (a01 << 1) | (a01 >>> 63);
-                a01 = (a06 << 44) | (a06 >>> 20);
-                a06 = (a09 << 20) | (a09 >>> 44);
-                a09 = (a22 << 61) | (a22 >>> 3);
-                a22 = (a14 << 39) | (a14 >>> 25);
-                a14 = (a20 << 18) | (a20 >>> 46);
-                a20 = (a02 << 62) | (a02 >>> 2);
-                a02 = (a12 << 43) | (a12 >>> 21);
-                a12 = (a13 << 25) | (a13 >>> 39);
-                a13 = (a19 << 8) | (a19 >>> 56);
-                a19 = (a23 << 56) | (a23 >>> 8);
-                a23 = (a15 << 41) | (a15 >>> 23);
-                a15 = (a04 << 27) | (a04 >>> 37);
-                a04 = (a24 << 14) | (a24 >>> 50);
-                a24 = (a21 << 2) | (a21 >>> 62);
-                a21 = (a08 << 55) | (a08 >>> 9);
-                a08 = (a16 << 45) | (a16 >>> 19);
-                a16 = (a05 << 36) | (a05 >>> 28);
-                a05 = (a03 << 28) | (a03 >>> 36);
-                a03 = (a18 << 21) | (a18 >>> 43);
-                a18 = (a17 << 15) | (a17 >>> 49);
-                a17 = (a11 << 10) | (a11 >>> 54);
-                a11 = (a07 << 6) | (a07 >>> 58);
-                a07 = (a10 << 3) | (a10 >>> 61);
-                a10 = c1;
-
-                c0 = a00 ^ (a02 & ~a01);
-                c1 = a01 ^ (a03 & ~a02);
-                a02 ^= a04 & ~a03;
-                a03 ^= a00 & ~a04;
-                a04 ^= a01 & ~a00;
-                a00 = c0;
-                a01 = c1;
-
-                c0 = a05 ^ (a07 & ~a06);
-                c1 = a06 ^ (a08 & ~a07);
-                a07 ^= a09 & ~a08;
-                a08 ^= a05 & ~a09;
-                a09 ^= a06 & ~a05;
-                a05 = c0;
-                a06 = c1;
-
-                c0 = a10 ^ (a12 & ~a11);
-                c1 = a11 ^ (a13 & ~a12);
-                a12 ^= a14 & ~a13;
-                a13 ^= a10 & ~a14;
-                a14 ^= a11 & ~a10;
-                a10 = c0;
-                a11 = c1;
-
-                c0 = a15 ^ (a17 & ~a16);
-                c1 = a16 ^ (a18 & ~a17);
-                a17 ^= a19 & ~a18;
-                a18 ^= a15 & ~a19;
-                a19 ^= a16 & ~a15;
-                a15 = c0;
-                a16 = c1;
-
-                c0 = a20 ^ (a22 & ~a21);
-                c1 = a21 ^ (a23 & ~a22);
-                a22 ^= a24 & ~a23;
-                a23 ^= a20 & ~a24;
-                a24 ^= a21 & ~a20;
-                a20 = c0;
-                a21 = c1;
-
-                a00 ^= KeccakRoundConstants[i];
-            }
-
-            A[0] = a00;
-            A[1] = a01;
-            A[2] = a02;
-            A[3] = a03;
-            A[4] = a04;
-            A[5] = a05;
-            A[6] = a06;
-            A[7] = a07;
-            A[8] = a08;
-            A[9] = a09;
-            A[10] = a10;
-            A[11] = a11;
-            A[12] = a12;
-            A[13] = a13;
-            A[14] = a14;
-            A[15] = a15;
-            A[16] = a16;
-            A[17] = a17;
-            A[18] = a18;
-            A[19] = a19;
-            A[20] = a20;
-            A[21] = a21;
-            A[22] = a22;
-            A[23] = a23;
-            A[24] = a24;
-            for (int bsOff = 0, i = 0; i < rate >> 6; ++i) {
-                int off2 = bsOff;
-                dataQueue[off2++] = (byte) (int) (state[i] & 0xffffffffL);
-                dataQueue[off2++] = (byte) ((int) (state[i] & 0xffffffffL) >>> 8);
-                dataQueue[off2++] = (byte) ((int) (state[i] & 0xffffffffL) >>> 16);
-                dataQueue[off2] = (byte) ((int) (state[i] & 0xffffffffL) >>> 24);
-                int off1 = bsOff + 4;
-                dataQueue[off1++] = (byte) (int) (state[i] >>> 32);
-                dataQueue[off1++] = (byte) ((int) (state[i] >>> 32) >>> 8);
-                dataQueue[off1++] = (byte) ((int) (state[i] >>> 32) >>> 16);
-                dataQueue[off1] = (byte) ((int) (state[i] >>> 32) >>> 24);
-                bsOff += 8;
-            }
-            bitsInQueue = rate;
-            squeezing = true;
+    private void exctrc(long[] a) {
+        for (int i = 0; i < 24; ++i) {
+            a[0] ^= KeccakRoundConstants[i];
         }
+    }
 
+    private int getCount(byte[] in, int rateBytes, int count) {
+        extrFor(in, count);
+        exctrc(state);
+        return count + rateBytes;
+    }
+
+    private void extrFor(byte[] in, int count) {
+        for (int off1 = count, count1 = rate >> 6, i = 0; i < count1; ++i) {
+            int off11 = off1 + 4, off2 = off1;
+            state[i] ^= (((in[off2] & 0xff) | ((in[++off2] & 0xff) << 8) | ((in[++off2] & 0xff) << 16)
+                    | (in[++off2] << 24)) & 0xffffffffL)
+                    | ((((in[off11] & 0xff) | ((in[++off11] & 0xff) << 8) | ((in[++off11] & 0xff) << 16)
+                    | (in[++off11] << 24)) & 0xffffffffL) << 32);
+            off1 += 8;
+        }
+    }
+
+    void doFinal(byte[] out) {
+        sqeez();
+        extrctg(out);
+        extrcv(fixedOutputLength, fixedOutputLength << 1);
+
+    }
+
+    private void extrcv(int fixedOutputLength, int i2) {
+        this.rate = 1600 - (fixedOutputLength << 1);
+        mthf();
+        reft();
+        this.bitsInQueue = 0;
+        this.squeezing = false;
+        this.fixedOutputLength = i2 / 2;
+    }
+
+    private void reft() {
+        for (int i = 0; i < this.dataQueue.length; ++i) {
+			this.dataQueue[i] = 0;
+		}
+    }
+
+    private void mthf() {
+        for (int i = 0; i < state.length; ++i) {
+			state[i] = 0L;
+		}
+    }
+
+    private void sqeez() {
+        if (reftt(squeezing)) return;
+        dataQueue[bitsInQueue >> 3] |= (byte) (1L << (bitsInQueue & 7));
+        meth4();
+        int full = bitsInQueue >> 6;
+        methj(full, bitsInQueue & 63, getOff(full, 0));
+        state[rate - 1 >> 6] ^= 1L << 63;
+		extrc3(state);
+		extractFor();
+		bitsInQueue = rate;
+		squeezing = true;
+    }
+
+    private boolean reftt(boolean squeezing) {
+		return squeezing;
+	}
+
+    private void methj(int full, int partial, int off) {
+        if (reftt(partial <= 0)) return;
+        int off1 = off + 4, off2 = off;
+		state[full] ^= ((((dataQueue[off2] & 0xff) | ((dataQueue[++off2] & 0xff) << 8)
+				| ((dataQueue[++off2] & 0xff) << 16) | (dataQueue[++off2] << 24)) & 0xffffffffL)
+				| ((((dataQueue[off1] & 0xff) | ((dataQueue[++off1] & 0xff) << 8) | ((dataQueue[++off1] & 0xff) << 16)
+						| (dataQueue[++off1] << 24)) & 0xffffffffL) << 32))
+				& (1L << partial) - 1L;
+    }
+
+    private void meth4() {
+        if (rfty()) return;
+        extrFor(dataQueue, 0);
+		exctrc(state);
+		bitsInQueue = 0;
+    }
+
+    private boolean rfty() {
+		return ++bitsInQueue != rate;
+	}
+
+    private int getOff(int full, int off) {
+        for (int i = 0; i < full; ++i) {
+            int off1 = off + 4, off2 = off;
+            state[i] ^= (((dataQueue[off2] & 0xff) | ((dataQueue[++off2] & 0xff) << 8)
+                    | ((dataQueue[++off2] & 0xff) << 16) | (dataQueue[++off2] << 24)) & 0xffffffffL)
+                    | ((((dataQueue[off1] & 0xff) | ((dataQueue[++off1] & 0xff) << 8)
+                            | ((dataQueue[++off1] & 0xff) << 16) | (dataQueue[++off1] << 24)) & 0xffffffffL) << 32);
+            off += 8;
+        }
+        return off;
+    }
+
+    private void extrctg(byte[] out) {
         for (long i = 0; i < fixedOutputLength; ) {
-            if (bitsInQueue == 0) {
-                long[] A = state;
-
-                long a00 = A[0], a01 = A[1], a02 = A[2], a03 = A[3], a04 = A[4], a05 = A[5], a06 = A[6], a07 = A[7], a08 = A[8],
-                        a09 = A[9], a10 = A[10], a11 = A[11], a12 = A[12], a13 = A[13], a14 = A[14], a15 = A[15], a16 = A[16],
-                        a17 = A[17], a18 = A[18], a19 = A[19], a20 = A[20], a21 = A[21], a22 = A[22], a23 = A[23], a24 = A[24];
-                for (int i1 = 0; i1 < 24; ++i1) {
-                    long c0 = a00 ^ a05 ^ a10 ^ a15 ^ a20, c1 = a01 ^ a06 ^ a11 ^ a16 ^ a21, c2 = a02 ^ a07 ^ a12 ^ a17 ^ a22,
-                            c3 = a03 ^ a08 ^ a13 ^ a18 ^ a23, c4 = a04 ^ a09 ^ a14 ^ a19 ^ a24, d1 = c4 ^ ((c1 << 1) | (c1 >>> 63)),
-                            d2 = c0 ^ ((c2 << 1) | (c2 >>> 63)), d3 = c1 ^ ((c3 << 1) | (c3 >>> 63)), d4 = c2 ^ ((c4 << 1) | (c4 >>> 63)),
-                            d0 = c3 ^ ((c0 << 1) | (c0 >>> 63));
-                    a00 ^= d1;
-                    a05 ^= d1;
-                    a10 ^= d1;
-                    a15 ^= d1;
-                    a20 ^= d1;
-                    a01 ^= d2;
-                    a06 ^= d2;
-                    a11 ^= d2;
-                    a16 ^= d2;
-                    a21 ^= d2;
-                    a02 ^= d3;
-                    a07 ^= d3;
-                    a12 ^= d3;
-                    a17 ^= d3;
-                    a22 ^= d3;
-                    a03 ^= d4;
-                    a08 ^= d4;
-                    a13 ^= d4;
-                    a18 ^= d4;
-                    a23 ^= d4;
-                    a04 ^= d0;
-                    a09 ^= d0;
-                    a14 ^= d0;
-                    a19 ^= d0;
-                    a24 ^= d0;
-
-                    c1 = (a01 << 1) | (a01 >>> 63);
-                    a01 = (a06 << 44) | (a06 >>> 20);
-                    a06 = (a09 << 20) | (a09 >>> 44);
-                    a09 = (a22 << 61) | (a22 >>> 3);
-                    a22 = (a14 << 39) | (a14 >>> 25);
-                    a14 = (a20 << 18) | (a20 >>> 46);
-                    a20 = (a02 << 62) | (a02 >>> 2);
-                    a02 = (a12 << 43) | (a12 >>> 21);
-                    a12 = (a13 << 25) | (a13 >>> 39);
-                    a13 = (a19 << 8) | (a19 >>> 56);
-                    a19 = (a23 << 56) | (a23 >>> 8);
-                    a23 = (a15 << 41) | (a15 >>> 23);
-                    a15 = (a04 << 27) | (a04 >>> 37);
-                    a04 = (a24 << 14) | (a24 >>> 50);
-                    a24 = (a21 << 2) | (a21 >>> 62);
-                    a21 = (a08 << 55) | (a08 >>> 9);
-                    a08 = (a16 << 45) | (a16 >>> 19);
-                    a16 = (a05 << 36) | (a05 >>> 28);
-                    a05 = (a03 << 28) | (a03 >>> 36);
-                    a03 = (a18 << 21) | (a18 >>> 43);
-                    a18 = (a17 << 15) | (a17 >>> 49);
-                    a17 = (a11 << 10) | (a11 >>> 54);
-                    a11 = (a07 << 6) | (a07 >>> 58);
-                    a07 = (a10 << 3) | (a10 >>> 61);
-                    a10 = c1;
-
-                    c0 = a00 ^ (a02 & ~a01);
-                    c1 = a01 ^ (a03 & ~a02);
-                    a02 ^= a04 & ~a03;
-                    a03 ^= a00 & ~a04;
-                    a04 ^= a01 & ~a00;
-                    a00 = c0;
-                    a01 = c1;
-
-                    c0 = a05 ^ (a07 & ~a06);
-                    c1 = a06 ^ (a08 & ~a07);
-                    a07 ^= a09 & ~a08;
-                    a08 ^= a05 & ~a09;
-                    a09 ^= a06 & ~a05;
-                    a05 = c0;
-                    a06 = c1;
-
-                    c0 = a10 ^ (a12 & ~a11);
-                    c1 = a11 ^ (a13 & ~a12);
-                    a12 ^= a14 & ~a13;
-                    a13 ^= a10 & ~a14;
-                    a14 ^= a11 & ~a10;
-                    a10 = c0;
-                    a11 = c1;
-
-                    c0 = a15 ^ (a17 & ~a16);
-                    c1 = a16 ^ (a18 & ~a17);
-                    a17 ^= a19 & ~a18;
-                    a18 ^= a15 & ~a19;
-                    a19 ^= a16 & ~a15;
-                    a15 = c0;
-                    a16 = c1;
-
-                    c0 = a20 ^ (a22 & ~a21);
-                    c1 = a21 ^ (a23 & ~a22);
-                    a22 ^= a24 & ~a23;
-                    a23 ^= a20 & ~a24;
-                    a24 ^= a21 & ~a20;
-                    a20 = c0;
-                    a21 = c1;
-
-                    a00 ^= KeccakRoundConstants[i1];
-                }
-
-                A[0] = a00;
-                A[1] = a01;
-                A[2] = a02;
-                A[3] = a03;
-                A[4] = a04;
-                A[5] = a05;
-                A[6] = a06;
-                A[7] = a07;
-                A[8] = a08;
-                A[9] = a09;
-                A[10] = a10;
-                A[11] = a11;
-                A[12] = a12;
-                A[13] = a13;
-                A[14] = a14;
-                A[15] = a15;
-                A[16] = a16;
-                A[17] = a17;
-                A[18] = a18;
-                A[19] = a19;
-                A[20] = a20;
-                A[21] = a21;
-                A[22] = a22;
-                A[23] = a23;
-                A[24] = a24;
-                for (int bsOff = 0, i1 = 0; i1 < rate >> 6; ++i1) {
-                    int off2 = bsOff;
-                    dataQueue[off2++] = (byte) (int) (state[i1] & 0xffffffffL);
-                    dataQueue[off2++] = (byte) ((int) (state[i1] & 0xffffffffL) >>> 8);
-                    dataQueue[off2++] = (byte) ((int) (state[i1] & 0xffffffffL) >>> 16);
-                    dataQueue[off2] = (byte) ((int) (state[i1] & 0xffffffffL) >>> 24);
-                    int off1 = bsOff + 4;
-                    dataQueue[off1++] = (byte) (int) (state[i1] >>> 32);
-                    dataQueue[off1++] = (byte) ((int) (state[i1] >>> 32) >>> 8);
-                    dataQueue[off1++] = (byte) ((int) (state[i1] >>> 32) >>> 16);
-                    dataQueue[off1] = (byte) ((int) (state[i1] >>> 32) >>> 24);
-                    bsOff += 8;
-                }
-                bitsInQueue = rate;
-            }
-            int partialBlock = (int) Math.min((long) bitsInQueue, (long) fixedOutputLength - i);
+            meth1();
+            int partialBlock = (int) Math.min( bitsInQueue,  fixedOutputLength - i);
             System.arraycopy(dataQueue, (rate - bitsInQueue) / 8, out, (int) (i / 8), partialBlock / 8);
             bitsInQueue -= partialBlock;
             i += partialBlock;
         }
-
-        switch (fixedOutputLength) {
-            case 128:
-            case 224:
-            case 256:
-            case 288:
-            case 384:
-            case 512:
-
-                this.rate = 1600 - (fixedOutputLength << 1);
-                for (int i = 0; i < state.length; ++i)
-                    state[i] = 0L;
-                for (int i = 0; i < this.dataQueue.length; ++i)
-                    this.dataQueue[i] = 0;
-                this.bitsInQueue = 0;
-                this.squeezing = false;
-                this.fixedOutputLength = (fixedOutputLength << 1) / 2;
-                break;
-            default:
-
-        }
-
-        getDigestSize();
     }
-}
+
+    private void meth1() {
+        if (reftt(bitsInQueue != 0)) return;
+        exctrc(state);
+		extractFor();
+		bitsInQueue = rate;
+    }
+
+    private void extrc3(long[] a) {
+        for (int i = 0; i < 24; ++i) {
+            eMs(a, a[0] ^ a[5] ^ a[10] ^ a[15] ^ a[20], a[1] ^ a[6] ^ a[11] ^ a[16] ^ a[21], a[2] ^ a[7] ^ a[12] ^ a[17] ^ a[22], a[3] ^ a[8] ^ a[13] ^ a[18] ^ a[23], a[4] ^ a[9] ^ a[14] ^ a[19] ^ a[24]);
+            a[0] ^= KeccakRoundConstants[i];
+        }
+    }
+
+    private void eMs(long[] a, long c0, long c1, long c2, long c3, long c4) {
+        extractM1(a, c4 ^ ((c1 << 1) | (c1 >>> 63)), c0 ^ ((c2 << 1) | (c2 >>> 63)), c1 ^ ((c3 << 1) | (c3 >>> 63)), c2 ^ ((c4 << 1) | (c4 >>> 63)), c3 ^ ((c0 << 1) | (c0 >>> 63)));
+        extractM2(a);
+        eM4(a, 0, 2, 1, 3, 4);
+        eM4(a, 5, 7, 6, 8, 9);
+        eM4(a, 10, 12, 11, 13, 14);
+        eM4(a, 15, 17, 16, 18, 19);
+        eM4(a, 20, 22, 21, 23, 24);
+    }
+
+    private void eM4(long[] a, int i2, int i3, int i4, int i5, int i6) {
+        long c0 = a[i2] ^ (a[i3] & ~a[i4]), c1 = a[i4] ^ (a[i5] & ~a[i3]);
+        a[i3] ^= a[i6] & ~a[i5];
+        a[i5] ^= a[i2] & ~a[i6];
+        a[i6] ^= a[i4] & ~a[i2];
+        a[i2] = c0;
+        a[i4] = c1;
+    }
+
+    private void extractM2(long[] a) {
+        long c1 = (a[1] << 1) | (a[1] >>> 63);
+        a[1] = (a[6] << 44) | (a[6] >>> 20);
+        a[6] = (a[9] << 20) | (a[9] >>> 44);
+        a[9] = (a[22] << 61) | (a[22] >>> 3);
+        a[22] = (a[14] << 39) | (a[14] >>> 25);
+        a[14] = (a[20] << 18) | (a[20] >>> 46);
+        a[20] = (a[2] << 62) | (a[2] >>> 2);
+        a[2] = (a[12] << 43) | (a[12] >>> 21);
+        a[12] = (a[13] << 25) | (a[13] >>> 39);
+        a[13] = (a[19] << 8) | (a[19] >>> 56);
+        a[19] = (a[23] << 56) | (a[23] >>> 8);
+        a[23] = (a[15] << 41) | (a[15] >>> 23);
+        a[15] = (a[4] << 27) | (a[4] >>> 37);
+        a[4] = (a[24] << 14) | (a[24] >>> 50);
+        a[24] = (a[21] << 2) | (a[21] >>> 62);
+        a[21] = (a[8] << 55) | (a[8] >>> 9);
+        a[8] = (a[16] << 45) | (a[16] >>> 19);
+        a[16] = (a[5] << 36) | (a[5] >>> 28);
+        a[5] = (a[3] << 28) | (a[3] >>> 36);
+        a[3] = (a[18] << 21) | (a[18] >>> 43);
+        a[18] = (a[17] << 15) | (a[17] >>> 49);
+        a[17] = (a[11] << 10) | (a[11] >>> 54);
+        a[11] = (a[7] << 6) | (a[7] >>> 58);
+        a[7] = (a[10] << 3) | (a[10] >>> 61);
+        a[10] = c1;
+    }
+
+    private void extractM1(long[] a, long d1, long d2, long d3, long d4, long d0) {
+        a[0] ^= d1;
+        a[5] ^= d1;
+        a[10] ^= d1;
+        a[15] ^= d1;
+        a[20] ^= d1;
+        a[1] ^= d2;
+        a[6] ^= d2;
+        a[11] ^= d2;
+        a[16] ^= d2;
+        a[21] ^= d2;
+        a[2] ^= d3;
+        a[7] ^= d3;
+        a[12] ^= d3;
+        a[17] ^= d3;
+        a[22] ^= d3;
+        a[3] ^= d4;
+        a[8] ^= d4;
+        a[13] ^= d4;
+        a[18] ^= d4;
+        a[23] ^= d4;
+        a[4] ^= d0;
+        a[9] ^= d0;
+        a[14] ^= d0;
+        a[19] ^= d0;
+        a[24] ^= d0;
+    }
+
+    private void extractFor() {
+        for (int bsOff = 0, i1 = 0; i1 < rate >> 6; ++i1) {
+            int off2 = bsOff;
+            dataQueue[off2++] = (byte) (int) (state[i1] & 0xffffffffL);
+            dataQueue[off2++] = (byte) ((int) (state[i1] & 0xffffffffL) >>> 8);
+            dataQueue[off2++] = (byte) ((int) (state[i1] & 0xffffffffL) >>> 16);
+            dataQueue[off2] = (byte) ((int) (state[i1] & 0xffffffffL) >>> 24);
+            int off1 = bsOff + 4;
+            dataQueue[off1++] = (byte) (int) (state[i1] >>> 32);
+            dataQueue[off1++] = (byte) ((int) (state[i1] >>> 32) >>> 8);
+            dataQueue[off1++] = (byte) ((int) (state[i1] >>> 32) >>> 16);
+            dataQueue[off1] = (byte) ((int) (state[i1] >>> 32) >>> 24);
+            bsOff += 8;
+        }
+    }
+ }

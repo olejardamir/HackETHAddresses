@@ -1,10 +1,8 @@
 package Keys;
 
+import java.io.IOException;
 import java.io.OutputStream;
 
-/**
- * Checkpoint clean.
- */
 class HexEncoder {
     private final byte[] encodingTable =
             {
@@ -39,28 +37,24 @@ class HexEncoder {
             String data,
             OutputStream out)
             throws Exception {
-        byte b1, b2;
+        extracted0(data, out, extracted9(data, data.length()));
+    }
 
-        int end = data.length();
+	private int extracted9(String data, int end) {
+		for (char c = data.charAt(end - 1); end > 0; --end) {
+			if (c != '\n' && c != '\r' && c != '\t' && c != ' ') {
+				break;
+			}
+		}
+		return end;
+	}
 
-        char c = data.charAt(end - 1);
-        for (; end > 0; --end) {
-            if (c != '\n' && c != '\r' && c != '\t' && c != ' ') {
-                break;
-            }
-        }
-
-        for (int i = 0; i < end; ) {
-            for (char c1 = data.charAt(i); i < end && (c1 == '\n' || c1 == '\r' || c1 == '\t' || c1 == ' '); ) {
-                ++i;
-            }
+	private void extracted0(String data, OutputStream out, int end) throws IOException {
+		byte b1, b2;
+		for (int i = 0; i < end; ) {
             b1 = decodingTable[data.charAt(i++)];
-            c = data.charAt(i);
-            while (i < end && (c == '\n' || c == '\r' || c == '\t' || c == ' ')) {
-                ++i;
-            }
             b2 = decodingTable[data.charAt(i++)];
             out.write(b2 | (b1 << 4));
         }
-    }
+	}
 }

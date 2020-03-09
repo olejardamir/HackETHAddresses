@@ -13,13 +13,14 @@ public class Hack {
 
 
         long start = System.nanoTime();
-        int f=1000;
+        int f=10000;
         for(int t=0;t<f;t++) {
             //generate some random private key
             String privateKey = pkGenerator.generateRandomPK();
 
             //turn private into public, the full length, no 0x ! 64 chars
             String publicKey = publicFromPrivate.getPublicNonFormat(privateKey);
+//            System.out.println(publicKey);
         }
         long end = System.nanoTime();
         System.out.println("It took: "+(end-start)+" nanoseconds for "+f+" keys");

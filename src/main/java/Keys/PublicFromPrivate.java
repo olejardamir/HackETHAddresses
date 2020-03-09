@@ -30,22 +30,18 @@ public class PublicFromPrivate implements Serializable {
     public String getPublicFromPrivate(String privatekey) {
         String ret = getPublicNonFormat(privatekey);
         ret = ret.substring(ret.length() - 40);
-        return ("0x") + ret;
+        return "0x" + ret;
     }
 
     public String getPublicNonFormat(String privatekey) {
-        byte[] encoded = extracted1(privatekey);
-        byte[] copy = new byte[64];
-
+        byte[] encoded = extracted1(privatekey), copy = new byte[64];
         System.arraycopy(encoded, 1, copy, 0, 64);
         String result10 = new BigInteger(1, copy).toString(16);
 
-        if (result10.length() < 64 << 1) {
-            String qq = String.valueOf(new char[(64 << 1) - result10.length()]).replace("\0", "0");
-            result10 = qq + result10;
-        }
-
-        return duplicate2(result10).toString();
+        if (result10.length() >= 64 << 1)
+			return duplicate2(result10).toString();
+		result10 = String.valueOf(new char[(64 << 1) - result10.length()]).replace("\0", "0") + result10;
+		return duplicate2(result10).toString();
     }
 
 
@@ -87,24 +83,23 @@ public class PublicFromPrivate implements Serializable {
             R = R.twicePlus(lookupTable.lookup(secretIndex));
         }
 
-        ECPoint positive = R.add(info.getOffset());
+        ECPoint positive = R.add(info.getOffset()), ecPoint = (i1.signum() > 0 ? positive : positive.negate());
 
 
-        ECPoint ecPoint = (i1.signum() > 0 ? positive : positive.negate());
-        ECFieldElement Z1 = (0 >= ecPoint.zs.length) ? null : ecPoint.zs[0];
-        ECPoint normed = (Z1 != null ? Z1.toBigInteger().bitLength() : 0) == 1 ? (i1.signum() > 0 ? positive : positive.negate())
-                : (i1.signum() > 0 ? positive : positive.negate()).normalize(Z1 != null ? Z1.invert() : null);
+        ECFieldElement Z1 = (ecPoint.zs.length <= 0) ? null : ecPoint.zs[0];
+        ECPoint normed = (Z1 == null ? 0 : Z1.toBigInteger().bitLength()) != 1
+				? (i1.signum() > 0 ? positive : positive.negate()).normalize(Z1 == null ? null : Z1.invert())
+				: i1.signum() <= 0 ? positive.negate() : positive;
 
-        byte[] X = normed.x.getEncoded();
+        byte[] X = normed.x.getEncoded(), Y = normed.y.getEncoded(), PO = new byte[X.length + Y.length + 1];
 
-
-        byte[] Y = normed.y.getEncoded(), PO = new byte[X.length + Y.length + 1];
 
         PO[0] = 0x04;
         System.arraycopy(X, 0, PO, 1, X.length);
         System.arraycopy(Y, 0, PO, X.length + 1, Y.length);
         return PO;
     }
+
 
 
     private StringBuilder duplicate2(String publicKeyNoPrefix) {
@@ -120,7 +115,7 @@ public class PublicFromPrivate implements Serializable {
 
         kecc.update(data, data.length);
 
-        byte[] digestBytes = new byte[kecc.getDigestSize()];
+        byte[] digestBytes = new byte[32];
         kecc.doFinal(digestBytes);
         for (byte b : digestBytes)
             stringBuilder1.append(String.format("%02x", b & 0xFF));
